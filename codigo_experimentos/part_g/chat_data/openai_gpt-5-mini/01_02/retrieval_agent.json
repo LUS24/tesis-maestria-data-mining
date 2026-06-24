@@ -1,0 +1,719 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Código de Minería Argentino: artículos sobre dominio de los minerales, propiedad del suelo versus subsuelo, concesión minera, necesidad de consentimiento del dueño del terreno, derechos de superficie, acceso a predio privado para exploración y explotación, disposiciones aplicables al litio. Solicitar textos y referencias de artículos relevantes del Código de Minería Argentino y jurisprudencia si disponible.\n        ",
+                    "timestamp": "2025-11-13T13:22:09.684353Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería de la Nación Argentina - dominio de las minas, propiedad del suelo vs. subsuelo, minas como bienes privados del Estado, artículos relevantes (arts. 1 a 20)\"}",
+                    "tool_call_id": "call_dh8U5DQ9lwnUEfJxa7lrLwAt",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 392,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1217,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1152,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T13:22:10Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbRZ4ffjXySncPYAPa3DNciBgCYCC",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7154887914657593,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas de petróleo e hidrocarburos fluidos son bienes del dominio privado de la Nación o de las provincias, según el territorio en que se encuentren.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 1,
+                                "titulo_parte": null,
+                                "id_parte": "78020a7e760ce39a4591da47093358d7"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7045559883117676,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La zona de explotación del yacimiento ferrífero de Sierra Grande, en la Provincia de Río Negro, queda fijada dentro de los límites de los lotes 20 y 21, fracción E, Colonia Pastoril Coronel Chilavert, Provincia de Río Negro.\n\nLa cuenca ferrífera de Sierra Grande será considerada como una sola mina, constituida por una sola pertenencia y su explotación será realizada por intermedio de HIERRO PATAGONICO DE SIERRA GRANDE, SOCIEDAD ANONIMA MINERA.\n\nLo dispuesto precedentemente no afectará derechos adquiridos ni la percepción por la Provincia de Río Negro del canon establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 350,
+                                "titulo_parte": null,
+                                "id_parte": "5d79b36a6bc696bc7c4b2c2cf54a06d2"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6928597092628479,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas son bienes privados de la Nación o de las Provincias , según el territorio en que se encuentren.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4f349b3799fb5e95b30eea8e2d13ca9a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "titulo_parte": null,
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6907457709312439,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los particulares pueden explorar y explotar minas de hidrocarburos fluidos con arreglo a las prescripciones de este Código y Ley N° 10.273, con las modificaciones introducidas en este APENDICE.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 6,
+                                "titulo_parte": null,
+                                "id_parte": "7d4a10eefb050b2abaadc2046b0e2e2b"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6661458611488342,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El canon anual establecido por el Artículo 4°, inciso 1° de la Ley N° 10.273, a cargo de los concesionarios de minas de hidrocarburos fluidos, será de DIEZ (10) PESOS moneda nacional por cada hectárea o fracción.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5b4cff76822bc02b19675d9a36793625",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 28,
+                                "titulo_parte": null,
+                                "id_parte": "3c9327d6a156bd3cbe0021dfdd0096ad"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_dh8U5DQ9lwnUEfJxa7lrLwAt",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T13:22:30.151968Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería Argentina - concesión minera, derecho de cateo y exploración, servidumbres mineras, acceso a predios privados, consentimiento del dueño del terreno, indemnización al superficiario\"}",
+                    "tool_call_id": "call_k6jRheffeRM3utmIqvMWILjm",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería de la Nación - clasificación de minerales (primera, segunda, tercera categoría), litio, salmueras, salares, sales alcalinas, boratos, disposiciones aplicables al litio\"}",
+                    "tool_call_id": "call_loJaycw2EVSA3fH0zlUGaOIs",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1313,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1232,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1088,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T13:22:32Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbRZQolffOjQd2PCz0QZDwHEqIlXX",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7088521122932434,
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6977723836898804,
+                                "id_padre": "cf24337039e4d80d81f68c9c9ea063bb",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 156,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La concesión de una mina comprende el derecho el derecho de exigir la venta del terreno correspondiente.\n\nMientras tanto, se sujetará a lo dispuesto en el parágrafo de las servidumbres.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "ab22d6e3cb64a7e29d0c0dc68298c74e"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6822382807731628,
+                                "id_padre": "cf24337039e4d80d81f68c9c9ea063bb",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 158,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si el terreno correspondiente a una concesión, es del Estado o Municipio, la cesión será gratuita.\n\nLa cesión comprende los derechos consignados en el Artículo 156.\n\nLa cesión del terreno subsistirá mientras la mina no se declare vacante, o sea abandonada.\n\nSi los terrenos estuvieren cultivados, el concesionario pagará la correspondiente indemnización.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "ec3aff3168d512ae59a0b56457b823aa"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6763011813163757,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 342,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "49d492c382c773510821a3778d3ec0c4"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6750249266624451,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 340,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\n\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b234c3008b7f7dab9d73e23e4c5b894e"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_k6jRheffeRM3utmIqvMWILjm",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T13:22:53.658999Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6370741128921509,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor, modificada",
+                                "contenido_texto": "Corresponden a la primera categoría: \n\na) Las sustancias metalíferas siguientes: oro, plata, platino, mercurio, cobre, hierro, plomo, estaño, zinc, níquel, cobalto, bismuto, manganeso, antimonio, wolfram, aluminio, berilio, vanadio, cadmio, tantalio, molibdeno, litio y potasio;\n\nb) Los combustibles: hulla, lignito, antracita e hidrocarburos sólidos;\n\nc) El arsénico, cuarzo, feldespato, mica, fluorita, fosfatos calizos, azufre, boratos y wollastonita;\n\nd) Las piedras preciosas.\n\ne) Los vapores endógenos.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e951a8bcd2ec577d42cf711ce64c6fb7",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 3,
+                                "id_parte": "63cd4d88a28c3de1e57aa737c6ae495d"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6155062317848206,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Corresponden a la segunda categoría:\n\na) Las arenas metalíferas y piedras preciosas que se encuentran en el lecho de los ríos, aguas corrientes y los placeres.\n\nb) Los desmontes, relaves y escoriales de explotaciones anteriores, mientras las minas permanecen sin amparo y los relaves y escoriales de los establecimientos de beneficio abandonados o abiertos, en tanto no los recobre su dueño.\n\nc) Los salitres, salinas y turberas.\n\nd) Los metales no comprendidos en la primera categoría.\n\ne) Las tierras piritosas y aluminosas, abrasivos, ocres, resinas, esteatitas, baritina, caparrosas, grafito, caolín, sales alcalinas o alcalino terrosas, amianto, bentonita, zeolitas o minerales permutantes o permutíticos.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e951a8bcd2ec577d42cf711ce64c6fb7",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 4,
+                                "id_parte": "b0e659f5cf64a11ccd3ca31e56f8c56f"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5728122591972351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Código de Minería rige los derechos, obligaciones y procedimientos referentes a la adquisición, explotación y aprovechamiento de las sustancias minerales.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ebad6798643112a64729d7cc7a1abf2c",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 1,
+                                "id_parte": "78020a7e760ce39a4591da47093358d7"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5415615439414978,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5220274329185486,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La exploración y explotación de las minas de hidrocarburos fluidos, se regirán por las disposiciones referentes a substancias de la primera categoría, en cuanto no estuvieran modificadas por este APENDICE,",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 8,
+                                "id_parte": "ec7955314f93bd799c6c695e2c1cda72"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_loJaycw2EVSA3fH0zlUGaOIs",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T13:22:53.657590Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería - servidumbres mineras: paso, caminos, acueductos, bocaminas, ocupación de superficie, depósito de minerales y desmontes, plantas de beneficio, indemnización al superficiario, oposición del dueño del predio\"}",
+                    "tool_call_id": "call_GcKrqIWNqETJAn1GAiryjFNB",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 3944,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 1280,
+                "output_tokens": 1422,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1344,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T13:22:55Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbRZnHvPQOl3vn419HWioC5231SPg",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.753980815410614,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7364625334739685,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 340,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\n\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.",
+                                "id_parte": "b234c3008b7f7dab9d73e23e4c5b894e"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.729200005531311,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cf24337039e4d80d81f68c9c9ea063bb",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 156,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La concesión de una mina comprende el derecho el derecho de exigir la venta del terreno correspondiente.\n\nMientras tanto, se sujetará a lo dispuesto en el parágrafo de las servidumbres.",
+                                "id_parte": "ab22d6e3cb64a7e29d0c0dc68298c74e"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.7275511026382446,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e788680f7f1abfa9081b7be18202348a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 148,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El uso de los caminos abiertos para UNA (1) o más minas se extenderá a todas las del mismo mineral o asiento, siempre que se paguen en proporción a los beneficios que reciban, los costos de la obra y gastos de conservación.",
+                                "id_parte": "9b226b76883d5ccb1ded82526e569eab"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.7123692035675049,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "412190d30bd291e0ce69995e3f96f9c6",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 185,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "A solicitud de cualquier persona, la autoridad declarará de aprovechamiento común, cualquiera que sea el dueño de los terrenos donde se encuentren; los terreros, relaves y escoriales, procedentes de minas o establecimientos de beneficio abandonados, previas las comprobaciones necesarias.\n\nCon la publicación de esa declaración, podrán aprovecharse los depósitos sin necesidad de licencia, aviso ni otra formalidad.",
+                                "id_parte": "8a0a72b87bc477968058d0f81e441afe"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_GcKrqIWNqETJAn1GAiryjFNB",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T13:23:25.001086Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería - cateo y exploración: permisos de cateo, derechos del cateador, deber de indemnizar al dueño del suelo, oposición del propietario, acceso a predio privado, artículos 224 a 232 u otros\"}",
+                    "tool_call_id": "call_jno9mCO6bXcCAXPbXyHJkWsz",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4890,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1033,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 960,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T13:23:26Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbRaIhnvPmca8Tygr3cG6MJ8RxBeN",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.690940260887146,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6692754030227661,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b5b728eab593acfd2edba9eb38187700",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 43,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El dueño del suelo no puede ni aún con licencia de la autoridad, hacer trabajo alguno minero dentro del perímetro de una concesión, ni en el recinto de un permiso de cateo.",
+                                "id_parte": "e03033f816b411ea43a6451b0ded7e2b"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6458412408828735,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 14,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todo permiso de exploración será previamente notificado al propietario u ocupante del suelo a los efectos de la segunda parte del Artículo 32 de este Código.",
+                                "id_parte": "47febf76b128dec17c5858ad982c06f3"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6368418335914612,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 135,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El permiso para labrar un socavón en terreno franco comprende el permiso para explorar una superficie de MIL (1.000) metros a cada uno de los lados y en toda la longitud concedida al socavón.\n\nEl empresario podrá denunciar y registrar preferiblemente las pertenencias abandonadas que en ese espacio se encuentren.\n\nNo obsta esta preferencia al denuncio de un tercero cuando la obra del socavón ha sido terminada o abandonada; o cuando habiéndose avanzado los trabajos más allá del perímetro correspondiente a esas pertenencias, hayan transcurrido CINCUENTA (50) días sin que se haya hecho uso de ese derecho.",
+                                "id_parte": "a6c115f2f2fc7ccf2b606969567c5b00"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.63490891456604,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "d8a286579fb868b94a145532972e7dba",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 231,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Admitido el abandono, cualquier persona podrá solicitar y registrar la mina sin otro requisito que la constancia del hecho.\n\nEn la solicitud se expresará el nombre del dueño, el de la mina, el del mineral en que se encuentra y la clase de sustancia que se ha explotado.",
+                                "id_parte": "358225199be806c75b608ed0597c6b39"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_jno9mCO6bXcCAXPbXyHJkWsz",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T13:23:48.327597Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería - art. 32 propietario del suelo: indemnización por daños, obligaciones del concesionario; servidumbres mineras arts. 207 a 218: paso, ocupación, caminos, aguas; acceso a predio privado para cateo y explotación; consentimiento del dueño del terreno\"}",
+                    "tool_call_id": "call_bfqH2UrRlH1BLI8s4VQ0jbp6",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 5827,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 4864,
+                "output_tokens": 1110,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1024,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T13:23:48Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbRaefanBej4owbiQWVme8PjIn5bC",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7685542702674866,
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7496622204780579,
+                                "id_padre": "cf24337039e4d80d81f68c9c9ea063bb",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 156,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La concesión de una mina comprende el derecho el derecho de exigir la venta del terreno correspondiente.\n\nMientras tanto, se sujetará a lo dispuesto en el parágrafo de las servidumbres.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "ab22d6e3cb64a7e29d0c0dc68298c74e"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.7450996041297913,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 340,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\n\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b234c3008b7f7dab9d73e23e4c5b894e"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.7246573567390442,
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 165,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El dueño del suelo debe indemnización al dueño de la mina por los perjuicios causados a la explotación con trabajos en obras posteriores a la concesión, en los mismos casos en que según el Artículo 162, no tiene el propietario derecho a cobrarlos.\n\nLas indemnizaciones en este caso se reducen al pago de los objetos inutilizados y al de las reparaciones o fortificaciones que sean necesarias para la completa habilitación de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "4d54127cd5f36af0ff301dc8b1e82720"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.7024645805358887,
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 136,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Tienen derecho a servirse del socavón, sin perjuicio de los derechos del socavonero, los dueños de las pertenencias atravesadas.\n\nLas dueños de minas que de cualquier manera aprovechan los servicios del socavón, pagarán al empresario una cantidad en dinero que se determinará por peritos, en consideración a los servicios que se presten, a los gastos que esos servicios ocasionen, al beneficio que el minero reciba y a los costos que economice.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "10fd6426a6d0dd5caf668ec2898430a1"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_bfqH2UrRlH1BLI8s4VQ0jbp6",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T13:24:27.255093Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 3, \"distance\": 0.6928597092628479, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las minas son bienes privados de la Nación o de las Provincias , según el territorio en que se encuentren.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"4f349b3799fb5e95b30eea8e2d13ca9a\", \"tipo_parte\": \"artículo\", \"numero_parte\": 7, \"titulo_parte\": null, \"id_parte\": \"7e30095ca21fb10aa2934c5f1bc0e873\"}, {\"index\": 1, \"distance\": 0.6370741128921509, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor, modificada\", \"contenido_texto\": \"Corresponden a la primera categoría: \\n\\na) Las sustancias metalíferas siguientes: oro, plata, platino, mercurio, cobre, hierro, plomo, estaño, zinc, níquel, cobalto, bismuto, manganeso, antimonio, wolfram, aluminio, berilio, vanadio, cadmio, tantalio, molibdeno, litio y potasio;\\n\\nb) Los combustibles: hulla, lignito, antracita e hidrocarburos sólidos;\\n\\nc) El arsénico, cuarzo, feldespato, mica, fluorita, fosfatos calizos, azufre, boratos y wollastonita;\\n\\nd) Las piedras preciosas.\\n\\ne) Los vapores endógenos.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e951a8bcd2ec577d42cf711ce64c6fb7\", \"tipo_parte\": \"artículo\", \"numero_parte\": 3, \"id_parte\": \"63cd4d88a28c3de1e57aa737c6ae495d\"}, {\"index\": 2, \"distance\": 0.6155062317848206, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Corresponden a la segunda categoría:\\n\\na) Las arenas metalíferas y piedras preciosas que se encuentran en el lecho de los ríos, aguas corrientes y los placeres.\\n\\nb) Los desmontes, relaves y escoriales de explotaciones anteriores, mientras las minas permanecen sin amparo y los relaves y escoriales de los establecimientos de beneficio abandonados o abiertos, en tanto no los recobre su dueño.\\n\\nc) Los salitres, salinas y turberas.\\n\\nd) Los metales no comprendidos en la primera categoría.\\n\\ne) Las tierras piritosas y aluminosas, abrasivos, ocres, resinas, esteatitas, baritina, caparrosas, grafito, caolín, sales alcalinas o alcalino terrosas, amianto, bentonita, zeolitas o minerales permutantes o permutíticos.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e951a8bcd2ec577d42cf711ce64c6fb7\", \"tipo_parte\": \"artículo\", \"numero_parte\": 4, \"id_parte\": \"b0e659f5cf64a11ccd3ca31e56f8c56f\"}, {\"index\": 4, \"distance\": 0.5415615439414978, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Reformase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\\n\\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e4ce42d4ff852f3bcdf1ce032991004d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 351, \"id_parte\": \"b0aa939bdb80e86c674b9ad98ce10026\"}, {\"index\": 2, \"distance\": 0.6977723836898804, \"id_padre\": \"cf24337039e4d80d81f68c9c9ea063bb\", \"tipo_parte\": \"artículo\", \"numero_parte\": 156, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La concesión de una mina comprende el derecho el derecho de exigir la venta del terreno correspondiente.\\n\\nMientras tanto, se sujetará a lo dispuesto en el parágrafo de las servidumbres.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"ab22d6e3cb64a7e29d0c0dc68298c74e\"}, {\"index\": 3, \"distance\": 0.6822382807731628, \"id_padre\": \"cf24337039e4d80d81f68c9c9ea063bb\", \"tipo_parte\": \"artículo\", \"numero_parte\": 158, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Si el terreno correspondiente a una concesión, es del Estado o Municipio, la cesión será gratuita.\\n\\nLa cesión comprende los derechos consignados en el Artículo 156.\\n\\nLa cesión del terreno subsistirá mientras la mina no se declare vacante, o sea abandonada.\\n\\nSi los terrenos estuvieren cultivados, el concesionario pagará la correspondiente indemnización.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"ec3aff3168d512ae59a0b56457b823aa\"}, {\"index\": 2, \"distance\": 0.6692754030227661, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b5b728eab593acfd2edba9eb38187700\", \"tipo_parte\": \"artículo\", \"numero_parte\": 43, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El dueño del suelo no puede ni aún con licencia de la autoridad, hacer trabajo alguno minero dentro del perímetro de una concesión, ni en el recinto de un permiso de cateo.\", \"id_parte\": \"e03033f816b411ea43a6451b0ded7e2b\"}, {\"index\": 3, \"distance\": 0.6458412408828735, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"260ade704be146a4ba0c87bed3c91eb9\", \"tipo_parte\": \"artículo\", \"numero_parte\": 14, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Todo permiso de exploración será previamente notificado al propietario u ocupante del suelo a los efectos de la segunda parte del Artículo 32 de este Código.\", \"id_parte\": \"47febf76b128dec17c5858ad982c06f3\"}, {\"index\": 4, \"distance\": 0.7275511026382446, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e788680f7f1abfa9081b7be18202348a\", \"tipo_parte\": \"artículo\", \"numero_parte\": 148, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El uso de los caminos abiertos para UNA (1) o más minas se extenderá a todas las del mismo mineral o asiento, siempre que se paguen en proporción a los beneficios que reciban, los costos de la obra y gastos de conservación.\", \"id_parte\": \"9b226b76883d5ccb1ded82526e569eab\"}, {\"index\": 4, \"distance\": 0.7246573567390442, \"id_padre\": \"085f8a5f42d6d7c643e8fa03ea2a9ee4\", \"tipo_parte\": \"artículo\", \"numero_parte\": 165, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El dueño del suelo debe indemnización al dueño de la mina por los perjuicios causados a la explotación con trabajos en obras posteriores a la concesión, en los mismos casos en que según el Artículo 162, no tiene el propietario derecho a cobrarlos.\\n\\nLas indemnizaciones en este caso se reducen al pago de los objetos inutilizados y al de las reparaciones o fortificaciones que sean necesarias para la completa habilitación de la mina.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"4d54127cd5f36af0ff301dc8b1e82720\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 6707,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 6119,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 4032,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T13:24:28Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbRbIokDackKxe7nCDwk03DmGC71s",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T13:24:28+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 23073,
+                "output_tokens": 12133,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 9600,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00838375,
+                "output_price": 0.06119,
+                "total_price": 0.06957375,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

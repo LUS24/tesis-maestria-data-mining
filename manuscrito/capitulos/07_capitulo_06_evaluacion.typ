@@ -1,0 +1,396 @@
+#import "@preview/oxdraw:0.1.0": *
+#import "@preview/tablem:0.3.0": three-line-table
+
+= Evaluación y Resultados <cap:evaluacion>
+
+// Este capítulo presenta los experimentos realizados, las métricas obtenidas
+// y el análisis de los resultados del sistema Agentic-RAG.
+
+== Introducción
+
+Este capítulo presenta la evaluación sistemática del sistema Agentic-RAG y los resultados obtenidos. Se describen el diseño experimental, las métricas empleadas, los resultados de cada configuración y el análisis estadístico que fundamenta las conclusiones. El análisis sigue una progresión desde la exploración descriptiva hasta pruebas de hipótesis y análisis de interacción factorial.
+
+== Diseño Experimental
+
+El diseño experimental sigue un esquema factorial 3 × 3 detallado en el capítulo @cap:metodologia (@tabla-diseno-factorial): tres estrategias de recuperación (sin RAG, RAG básico, Agentic-RAG) × tres modelos de lenguaje (gpt-5-nano, gpt-5-mini, gpt-5), con temperatura 0 en todas las configuraciones para garantizar reproducibilidad.
+
+El benchmark de evaluación —descrito en @cap:metodologia— está compuesto por 25 preguntas (76 subpreguntas explícitas más 3 preguntas evaluadas como unidad única, totalizando 79 unidades de evaluación × 9 configuraciones = 711 observaciones). Las métricas empleadas abarcan tres familias complementarias presentadas en dicho capítulo: solapamiento léxico (Token F1, Jaccard, Levenshtein, BLEU, ROUGE, CER), similitud semántica (SBERT Similarity, BERTScore) y evaluación LLM-as-a-Judge (`score_respuesta_correcta`, `score_precision_legal`) mediante tres jueces independientes (DeepSeek, Grok, Kimi K2).
+
+== Exploración Descriptiva y Selección de Variables de Respuesta
+
+=== Análisis de Correlación entre Métricas
+
+Se calcularon correlaciones de Spearman entre las 13 métricas textuales y las 2 métricas de evaluación por jueces. El análisis reveló cuatro clústeres de métricas:
+
++ *Clúster de volumen*: `word_count_ratio`, `length_ratio`, `character_error_rate` — métricas ortogonales a la calidad del contenido.
++ *Clúster de embeddings neuronales*: `bertscore`, `sbert_similarity_spanish`, `sbert_similarity_multilingual` — similitud semántica vía modelos de lenguaje.
++ *Clúster léxico/n-gramas*: `token_f1`, `jaccard_similarity`, `levenshtein_similarity`, `bleu`, `rouge_*` — solapamiento a nivel de tokens y n-gramas.
++ *Clúster agéntico*: `respuesta_correcta_avg` (alineada con el clúster semántico) y `precision_legal_avg` (alineada con el clúster léxico).
+
+La @fig-spearman-correlacion presenta la matriz de correlación completa, donde los bloques de alta correlación intra-clúster (rojo) y las líneas divisorias confirman visualmente la estructura de agrupamiento.
+
+#figure(
+  image("../media/spearman_correlacion_completa.pdf", width: 100%),
+  caption: [Matriz de correlación de Spearman entre las 13 métricas textuales y las 2 métricas de evaluación agéntica. Los bloques de correlación alta (rojo intenso) delimitan los cuatro clústeres: léxico/n-gramas (recuadro superior-izquierdo), embeddings neuronales (recuadro central), volumen (recuadro inferior-derecho) y agéntico (últimas dos filas/columnas). Las líneas punteadas separan los clústeres identificados.],
+) <fig-spearman-correlacion>
+
+=== Selección de Variables de Respuesta
+
+Empleando un umbral de |ρ| > 0.85 para identificar redundancias, se identificaron seis candidatas a variables de respuesta (VR) representativas de los clústeres:
+
++ `token_f1`: representante del clúster léxico.
++ `rouge_l`: representante de métricas de subsecuencia.
++ `sbert_similarity_spanish`: representante del clúster semántico.
++ `bertscore`: similitud contextualizada.
++ `respuesta_correcta_avg`: evaluación global de correctitud por jueces.
++ `precision_legal_avg`: evaluación de precisión en citación legal.
+
+El análisis de componentes principales (PCA) con biplot confirmó la estructura de clústeres, ubicando `respuesta_correcta_avg` con correlación moderada con PC1 ($r = +0.488$) y PC2 ($r = +0.429$), y `precision_legal_avg` con correlación predominante con PC1 ($r = +0.545$). La @fig-biplot-pca presenta el biplot con las 13 métricas textuales como variables activas (azul) y las 2 métricas agénticas como variables suplementarias (rojo).
+
+#figure(
+  image("../media/biplot_pca_suplementarias.pdf", width: 90%),
+  caption: [Biplot del análisis de componentes principales (PCA) sobre las 13 métricas textuales estandarizadas. Las flechas azules representan las métricas activas; las flechas rojas representan las variables agénticas proyectadas como suplementarias. PC1 (61,0%) captura principalmente el contraste entre métricas de similitud (derecha) y métricas de error/volumen (izquierda). PC2 (25,8%) separa las métricas de volumen del resto. `respuesta_correcta_avg` se ubica en una posición intermedia entre los clústeres semántico y léxico, mientras que `precision_legal_avg` se alinea más estrechamente con el clúster léxico. El círculo punteado indica el umbral de correlación $r = 0.6$ con las componentes principales.],
+) <fig-biplot-pca>
+
+Para las pruebas de hipótesis subsiguientes se retuvo exclusivamente `respuesta_correcta_avg` como variable de respuesta principal. Esta decisión se fundamenta en tres consideraciones: (1) es la métrica más directamente alineada con el objetivo de evaluar la calidad de las respuestas legales; (2) el análisis de acuerdo inter-juez (@sec:acuerdo-inter-juez) reveló que `precision_legal_avg` no alcanza confiabilidad suficiente; y (3) las métricas textuales y semánticas, aunque informativas, presentan alta redundancia interna y correlación moderada con la evaluación de correctitud. Las cinco métricas restantes se emplearon con fines descriptivos y complementarios, en particular en el análisis de costos.
+
+La @fig-boxplots-estrategia presenta la distribución de `respuesta_correcta_avg` agrupada por estrategia de recuperación.
+
+#figure(
+  image("../media/boxplots_por_estrategia.pdf", width: 100%),
+  caption: [Distribución de `respuesta_correcta_avg` por estrategia de recuperación. Las cajas representan el rango intercuartílico (IQR); la línea central indica la mediana; los diamantes rojos señalan la media. Se observa una tendencia general de mejora desde la configuración sin RAG hacia Agentic-RAG, con mayor variabilidad en esta última debido a la interacción con el modelo.],
+) <fig-boxplots-estrategia>
+
+=== Imputación de Valores Fuera de Rúbrica
+
+Se detectaron valores de evaluación por jueces fuera del conjunto válido {0.0, 0.25, 0.5, 0.75, 1.0} (11 combinaciones únicas juez-métrica-valor). Se aplicó una estrategia de imputación al valor de rúbrica más cercano, resolviendo empates en favor del valor mayor (sesgo conservador hacia el reconocimiento parcial):
+
+$ r^* = arg min_(r in cal(R)) |x - r| $
+
+donde $cal(R) = {0.0, 0.25, 0.5, 0.75, 1.0}$.
+
+Adicionalmente, se identificaron 27 observaciones (3.8% del total) con valores ausentes en las métricas de evaluación por jueces, atribuibles a fallos puntuales en la generación de respuestas para ciertas combinaciones subpregunta-configuración. Estos valores fueron excluidos de las pruebas de hipótesis mediante eliminación por lista (listwise deletion), reduciendo el conjunto efectivo a 684 observaciones para los análisis que involucran `respuesta_correcta_avg`.
+
+== Verificación de Normalidad
+
+=== Test de Shapiro-Wilk
+
+Se aplicó el test de Shapiro-Wilk ($H_0$: los datos siguen una distribución normal, $alpha = 0.05$) a nivel global (todas las observaciones por métrica) y a nivel de grupos (dentro de cada combinación estrategia × modelo).
+
+=== Resultados
+
+La mayoría de las métricas rechazan la hipótesis nula de normalidad tanto a nivel global como por grupos. Los scores de evaluación por jueces, al ser mediciones ordinales en escala discreta {0.0, 0.25, 0.5, 0.75, 1.0}, no satisfacen el supuesto de normalidad por construcción.
+
+=== Implicación Metodológica
+
+Los resultados justifican el uso de pruebas no paramétricas para las comparaciones posteriores:
+
++ *Kruskal-Wallis* en lugar de ANOVA unilateral.
++ *Dunn con corrección de Bonferroni* como prueba post-hoc.
++ *Scheirer-Ray-Hare* en lugar de ANOVA factorial para evaluar interacciones.
+
+== Comparaciones entre Estrategias y Modelos
+
+=== Test de Kruskal-Wallis
+
+Se aplicó el test de Kruskal-Wallis como alternativa no paramétrica al ANOVA para comparar las distribuciones de cada VR entre los niveles de cada factor.
+
+==== Efecto de la Estrategia de Recuperación
+
+Para la métrica `respuesta_correcta_avg`, el test arrojó $H = 21.83$, $p < 0.001$, indicando diferencias significativas entre las tres estrategias de recuperación. Las medianas observadas fueron:
+
++ Agentic-RAG: 0.8333
++ RAG básico: 0.7083
++ Sin RAG: 0.5833
+
+==== Efecto del Modelo
+
+Para la misma métrica, $H = 49.01$, $p < 0.001$, confirmando diferencias significativas entre modelos. Las medianas fueron:
+
++ gpt-5: 0.8333
++ gpt-5-mini: 0.5417
++ gpt-5-nano: 0.5833
+
+=== Prueba Post-Hoc de Dunn
+
+Las comparaciones por pares con corrección de Bonferroni revelaron los siguientes patrones para `respuesta_correcta_avg`:
+
+*Entre estrategias:*
++ Agentic-RAG vs. sin RAG: $p = 0.000014$ — diferencia significativa.
++ RAG básico vs. sin RAG: $p = 0.0066$ — diferencia significativa.
++ Agentic-RAG vs. RAG básico: $p = 0.383$ — sin diferencia significativa.
+
+*Entre modelos:*
++ gpt-5 vs. gpt-5-nano: $p < 0.0001$ — diferencia significativa.
++ gpt-5 vs. gpt-5-mini: $p = 0.000007$ — diferencia significativa.
++ gpt-5-mini vs. gpt-5-nano: $p = 0.101$ — sin diferencia significativa.
+
+=== Análisis Estratificado: Efecto del Modelo dentro de cada Sistema
+
+Se realizaron tests de Kruskal-Wallis estratificados por sistema de recuperación, con nivel de significación ajustado por Bonferroni ($alpha = 0.05 / 3 = 0.0167$):
+
++ *Agentic-RAG*: $H = 40.64$, $p < 0.0001$ — los modelos difieren significativamente.
++ *Sin RAG*: $H = 59.67$, $p < 0.0001$ — los modelos difieren significativamente.
++ *RAG básico*: $H = 4.71$, $p = 0.095$ — los modelos *no* difieren significativamente.
+
+Este último resultado sugiere un *efecto igualador* del RAG básico: al proveer contexto relevante, las diferencias de capacidad entre modelos se atenúan, permitiendo que modelos más pequeños y económicos alcancen un desempeño comparable al del modelo de mayor tamaño.
+
+La @tabla-resumen-medianas presenta las medianas de `respuesta_correcta_avg` y, con fines descriptivos, de las cinco métricas complementarias para las nueve configuraciones evaluadas. Los valores de las métricas textuales y semánticas se incluyen como referencia, pero las pruebas de hipótesis se realizaron exclusivamente sobre `respuesta_correcta_avg`.
+
+#figure(
+  three-line-table(
+    columns: (auto, auto, auto, auto, auto, auto, auto, auto),
+    [
+      | *Estrategia* | *Modelo*   | *Resp. correcta* | *Token F1* | *ROUGE-L* | *SBERT (es)* | *BERTScore* | *Prec. legal* |
+      | :----------- | :--------- | :--------------: | :--------: | :-------: | :----------: | :---------: | :-----------: |
+      | Sin RAG      | gpt-5-nano |      0,583       |   0,200    |   0,123   |    0,740     |    0,688    |     0,000     |
+      | Sin RAG      | gpt-5-mini |      0,333       |   0,176    |   0,123   |    0,629     |    0,674    |     0,000     |
+      | Sin RAG      | gpt-5      |      0,833       |   0,243    |   0,141   |    0,760     |    0,694    |     0,333     |
+      | RAG básico   | gpt-5-nano |      0,583       |   0,253    |   0,150   |    0,770     |    0,703    |     0,333     |
+      | RAG básico   | gpt-5-mini |      0,625       |   0,213    |   0,135   |    0,760     |    0,700    |     0,417     |
+      | RAG básico   | gpt-5      |      0,833       |   0,257    |   0,174   |    0,794     |    0,706    |     0,667     |
+      | Agentic-RAG  | gpt-5-nano |      0,083       |   0,125    |   0,083   |    0,389     |    0,648    |     0,125     |
+      | Agentic-RAG  | gpt-5-mini |      0,917       |   0,215    |   0,130   |    0,795     |    0,706    |     0,833     |
+      | Agentic-RAG  | gpt-5      |      0,958       |   0,277    |   0,190   |    0,791     |    0,708    |     0,875     |
+    ],
+  ),
+  caption: [Medianas por configuración (estrategia × modelo). `Resp. correcta` es la variable de respuesta principal utilizada en las pruebas de hipótesis; las columnas restantes (`Token F1`, `ROUGE-L`, `SBERT (es)`, `BERTScore`, `Prec. legal`) se incluyen con fines descriptivos. Los valores más altos indican mejor desempeño. Destaca la mediana de 0,958 de Agentic-RAG + gpt-5 en respuesta correcta, y el valor anómalamente bajo de 0,083 para Agentic-RAG + gpt-5-nano.],
+) <tabla-resumen-medianas>
+
+== Análisis Factorial: Interacción Estrategia × Modelo
+
+=== Test de Scheirer-Ray-Hare
+
+Para evaluar si los efectos de la estrategia de recuperación y del modelo operan de forma independiente o interactúan, se aplicó el test de Scheirer-Ray-Hare (SRH), análogo no paramétrico al ANOVA factorial de dos vías. El procedimiento consiste en:
+
++ Asignar rangos globales a todas las observaciones.
++ Aplicar ANOVA de dos vías sobre los rangos.
++ Calcular el estadístico $H$ para cada efecto:
+
+$ H = frac(S S_"efecto", M S_"total rangos") $
+
+donde $H$ sigue una distribución $chi^2$ con los grados de libertad correspondientes.
+
+=== Resultados de la Interacción
+
+Los resultados para `respuesta_correcta_avg` fueron:
+
+#figure(
+  three-line-table(
+    columns: (auto, auto, auto, auto, auto),
+    [
+      | *Efecto*         |  *H*  | *gl* |          *p*          | *Sig.* |
+      | :--------------- | :---: | :--: | :-------------------: | :----: |
+      | Sistema          | 21.83 |  2   |       0.000018        |   Sí   |
+      | Modelo           | 49.01 |  2   |       < 0.0001        |   Sí   |
+      | Sistema × Modelo | 56.62 |  4   | $1.48 times 10^(-11)$ |   Sí   |
+    ],
+  ),
+  caption: [Resultados del test de Scheirer-Ray-Hare para `respuesta_correcta_avg`.],
+)
+
+La interacción significativa ($H = 56.62$, $p < 10^(-11)$) indica que el efecto de la estrategia de recuperación *depende* del modelo empleado, y viceversa. El estadístico de interacción supera a ambos efectos principales, lo que implica que las combinaciones explican más varianza que los factores individuales.
+
+=== Patrón de Interacción
+
+La @fig-interaccion presenta el gráfico de interacción que visualiza cómo las líneas de los modelos se cruzan entre estrategias, evidenciando la interacción disordinal.
+
+#figure(
+  image("../media/interaccion_modelo_estrategia.pdf", width: 100%),
+  caption: [Gráficos de interacción modelo × estrategia de recuperación. Las líneas representan la media de cada modelo con intervalos de confianza del 95%. El cruce de las líneas confirma la interacción disordinal: el modelo óptimo depende de la estrategia empleada.],
+) <fig-interaccion>
+
+El análisis de las medias por combinación revela un patrón de interacción disordinal (líneas cruzadas):
+
+#figure(
+  three-line-table(
+    columns: (auto, auto, auto, auto),
+    [
+      | *Modelo*   | *agentic_rag* | *base_rag* | *no_rag* |
+      | :--------- | :-----------: | :--------: | :------: |
+      | gpt-5      |     0.80      |    0.70    |   0.73   |
+      | gpt-5-mini |     0.78      |    0.64    |   0.35   |
+      | gpt-5-nano |     0.40      |    0.59    |   0.58   |
+    ],
+  ),
+  caption: [Medias de `respuesta_correcta_avg` por combinación modelo × sistema.],
+)
+
+Las principales observaciones son:
+
++ *gpt-5 es robusto*: mantiene un desempeño alto (0.70–0.80) en todas las condiciones, compensando parcialmente la ausencia de contexto mediante su capacidad de razonamiento interna.
++ *gpt-5-mini es sensible al RAG*: con Agentic-RAG alcanza 0.78 (comparable a gpt-5), pero sin RAG cae a 0.35, evidenciando una dependencia crítica del contexto externo.
++ *gpt-5-nano muestra un comportamiento contraintuitivo*: su desempeño es *peor* con Agentic-RAG (0.40) que con RAG básico (0.59), lo que sugiere que el sistema agéntico genera instrucciones y contextos de complejidad excesiva para un modelo de capacidad reducida.
+
+=== Implicaciones para Resultados Previos
+
+La interacción significativa matiza las conclusiones del análisis de Kruskal-Wallis:
+
++ La no-diferencia marginal entre Agentic-RAG y RAG básico enmascara diferencias condicionales al modelo: para gpt-5-mini la diferencia es sustancial (0.78 vs. 0.64), mientras que para gpt-5-nano la relación se invierte (0.40 vs. 0.59).
++ El efecto igualador del RAG básico se confirma, pero no aplica al sistema agéntico, que amplifica las diferencias entre modelos.
+
+== Análisis de Costos
+
+=== Costos Descriptivos por Modelo y Sistema
+
+Se calculó el costo total de cada consulta sumando el costo de generación de la respuesta y el costo de recuperación (cuando aplica). Los costos se analizaron por modelo, por sistema y por combinación modelo × sistema. La @fig-costos-configuracion presenta el costo medio por configuración.
+
+#figure(
+  image("../media/costos_por_configuracion.pdf", width: 85%),
+  caption: [Costo medio por consulta (USD) para cada combinación modelo × estrategia de recuperación. El costo del sistema Agentic-RAG incluye las llamadas a los agentes de Recuperación y Calidad, que emplean gpt-5 independientemente del modelo del Agente Especialista.],
+) <fig-costos-configuracion>
+
+=== Relación Costo-Desempeño
+
+Para cada combinación se graficó el costo medio versus el desempeño medio en `respuesta_correcta_avg` y, complementariamente, en las cinco métricas textuales y semánticas (@fig-costo-desempenio). Este análisis permite identificar las configuraciones con mejor balance de eficiencia.
+
+#figure(
+  image("../media/costo_desempenio.pdf", width: 100%),
+  caption: [Relación costo-desempeño para `respuesta_correcta_avg` y las cinco métricas complementarias. Cada punto representa una combinación modelo × estrategia. El cuadrante superior-izquierdo (alto desempeño, bajo costo) contiene las configuraciones más eficientes.],
+) <fig-costo-desempenio>
+
+=== Índice de Eficiencia
+
+Se definió un índice de eficiencia como el cociente entre el desempeño y el costo normalizado (normalización min-max):
+
+$ "Eficiencia" = frac("Desempeño", "Costo normalizado") $
+
+donde el costo normalizado se calcula como:
+
+$ c_"norm" = max(frac(c - c_min, c_max - c_min), 0.01) $
+
+El piso de 0.01 evita la división por cero para la configuración de menor costo. Este índice permite comparar qué combinaciones ofrecen mayor desempeño por unidad de costo.
+
+La @fig-eficiencia presenta el índice de eficiencia para las nueve configuraciones, ordenadas de menor a mayor.
+
+#figure(
+  image("../media/eficiencia_costo.pdf", width: 85%),
+  caption: [Índice de eficiencia (desempeño / costo normalizado) para la métrica `respuesta_correcta_avg`. Las barras se colorean según el modelo y se texturizan según la estrategia. Las configuraciones más eficientes combinan alto desempeño con bajo costo relativo.],
+) <fig-eficiencia>
+
+=== Resumen de Tokens y Costos del Experimento
+
+Se reportaron los tokens totales consumidos y el costo acumulado por modelo y por estrategia. El costo total del experimento fue de USD 22.29, distribuido en Agentic-RAG (USD 14.24), RAG básico (USD 3.75) y sin RAG (USD 4.31). El mayor costo de Agentic-RAG refleja las llamadas adicionales a los agentes de Recuperación, que emplean gpt-5 independientemente del modelo del Agente Especialista.
+
+== Evaluación LLM-as-a-Judge
+
+=== Modelos de Juez
+
+Se emplearon tres modelos como jueces independientes, cuyas características y configuración se detallan en el capítulo @cap:metodologia: DeepSeek-V3, Grok 4.1 Fast y Kimi K2 0905. Cada juez evaluó las 9 configuraciones usando las dos rúbricas definidas en dicho capítulo (`score_respuesta_correcta`, @tabla-rubrica-correcta; `score_precision_legal`, @tabla-rubrica-legal).
+
+=== Resultados de Correctitud
+
+Los scores de `respuesta_correcta` muestran una distribución concentrada en los valores {0.5, 0.75, 1.0} para los sistemas con RAG, mientras que el sistema sin RAG presenta mayor dispersión hacia valores bajos, consistente con la menor calidad de las respuestas sin contexto externo.
+
+=== Resultados de Precisión Legal
+
+Los scores de `precision_legal` presentan mayor variabilidad entre jueces que los de correctitud, reflejando la mayor subjetividad inherente en evaluar la precisión de citación legal.
+
+La @fig-heatmap-jueces presenta la distribución de los puntajes asignados por cada juez para ambas rúbricas.
+
+#figure(
+  image("../media/heatmap_jueces.pdf", width: 100%),
+  caption: [Distribución proporcional de puntajes por juez y rúbrica. Cada celda indica la proporción de evaluaciones que recibieron cada puntaje. Se observan diferencias en los patrones de distribución: algunos jueces tienden a concentrar sus evaluaciones en valores centrales (0,50–0,75), mientras que otros exhiben distribuciones más polarizadas.],
+) <fig-heatmap-jueces>
+
+== Acuerdo Inter-Juez <sec:acuerdo-inter-juez>
+
+El análisis de acuerdo inter-juez evalúa la confiabilidad de las evaluaciones LLM-as-a-Judge.
+
+=== Correlación de Spearman entre Jueces
+
+Las correlaciones de Spearman entre pares de jueces resultaron altas y significativas:
+
++ Para `score_respuesta_correcta`: $rho = 0.79 – 0.84$ entre todos los pares.
++ Para `score_precision_legal`: $rho = 0.77 – 0.82$ entre todos los pares.
+
+Esto indica un ordenamiento relativo consistente de las respuestas entre los tres jueces.
+
+=== Alpha de Krippendorff
+
+El Alpha de Krippendorff ($alpha$) es un coeficiente de acuerdo inter-anotadores que corrige el acuerdo esperado por azar, soporta múltiples anotadores y datos faltantes, y admite escala ordinal. Los umbrales de interpretación según Krippendorff (2004) son: $alpha >= 0.800$ (bueno), $0.667 <= alpha < 0.800$ (aceptable), $alpha < 0.667$ (insuficiente).
+
+Los resultados globales fueron:
+
+#figure(
+  three-line-table(
+    columns: (auto, auto, auto),
+    [
+      | *Rúbrica*                  | *α ordinal* | *Interpretación* |
+      | :------------------------- | :---------: | :--------------: |
+      | `score_respuesta_correcta` |   0.8078    |      Bueno       |
+      | `score_precision_legal`    |   0.7846    |    Aceptable     |
+    ],
+  ),
+  caption: [Alpha de Krippendorff global por rúbrica.],
+)
+
+==== Alpha por Sistema de Recuperación
+
+#figure(
+  three-line-table(
+    columns: (auto, auto, auto, auto),
+    [
+      | *Rúbrica*                  | *agentic_rag* | *base_rag* | *no_rag* |
+      | :------------------------- | :-----------: | :--------: | :------: |
+      | `score_respuesta_correcta` |    0.8693     |   0.8219   |  0.6979  |
+      | `score_precision_legal`    |    0.7550     |   0.6389   |  0.6211  |
+    ],
+  ),
+  caption: [Alpha de Krippendorff ordinal por sistema de recuperación.],
+)
+
+La @fig-krippendorff-alpha visualiza estos resultados, permitiendo comparar de un vistazo la consistencia entre sistemas y rúbricas con respecto al umbral de aceptabilidad.
+
+#figure(
+  image("../media/krippendorff_alpha_por_sistema.pdf", width: 85%),
+  caption: [Alpha de Krippendorff ordinal por sistema de recuperación y rúbrica. Las líneas punteadas indican los umbrales de acuerdo aceptable ($alpha = 0.667$) y bueno ($alpha = 0.8$). Se observa que `score_respuesta_correcta` supera el umbral aceptable en todos los sistemas, mientras que `score_precision_legal` cae por debajo en _base_rag_ y _no_rag_.],
+) <fig-krippendorff-alpha>
+
+Para `score_respuesta_correcta`, el acuerdo es bueno o cercano al umbral en los tres sistemas. Para `score_precision_legal`, dos de los tres sistemas caen por debajo del umbral aceptable ($alpha < 0.667$), lo que indica que los jueces no miden de forma consistente la precisión legal en esas condiciones.
+
+=== Test Chi-Cuadrado de Homogeneidad
+
+Se aplicó el test chi-cuadrado de homogeneidad sobre la tabla de contingencia jueces × valores de score para evaluar si los jueces distribuyen los scores de la misma manera. El test rechazó la hipótesis nula para ambas rúbricas ($p < 0.001$), confirmando diferencias en los patrones de distribución de scores entre jueces.
+
+No obstante, este resultado es complementario al $alpha$ de Krippendorff: el chi-cuadrado detecta diferencias estadísticamente significativas (sensible al tamaño muestral), mientras que el $alpha$ cuantifica la magnitud del acuerdo y es el estadístico de decisión sobre la confiabilidad.
+
+=== Decisión sobre `score_precision_legal`
+
+Basándose en los resultados del acuerdo inter-juez, se decidió emplear exclusivamente `score_respuesta_correcta` para las comparaciones entre sistemas. Las razones principales son:
+
++ $alpha$ ordinal de `score_precision_legal` cae por debajo de 0.667 en base_rag y no_rag.
++ Su coeficiente de variación inter-juez (95–105%) duplica al de `score_respuesta_correcta` (58–62%).
++ La ambigüedad conceptual inherente a la "precisión legal" no es resoluble sin una reformulación de la rúbrica con anclas específicas del dominio.
++ `score_respuesta_correcta` es suficiente para el objetivo de comparar estrategias, con $alpha >= 0.82$ en los sistemas RAG.
+
+=== Análisis de Sesgo Sistemático
+
+Se analizó el sesgo de cada juez mediante la media, mediana, desviación estándar y coeficiente de variación de sus scores. Se identificaron patrones de lenidad/severidad leves pero consistentes. El sesgo se analizó también de forma estratificada por sistema de recuperación, confirmando que las diferencias entre jueces son uniformes a través de los sistemas (sesgo no diferencial).
+
+== Discusión de Resultados
+
+=== Fortalezas del Sistema
+
++ Los sistemas con recuperación (RAG básico y Agentic-RAG) superan significativamente al baseline sin RAG en la métrica de correctitud.
++ El sistema Agentic-RAG combinado con gpt-5-mini alcanza un desempeño comparable al de gpt-5 (0.78 vs. 0.80), ofreciendo una alternativa de menor costo.
++ El RAG básico presenta un efecto igualador sobre los modelos, eliminando las diferencias significativas de desempeño entre gpt-5, gpt-5-mini y gpt-5-nano.
++ El acuerdo inter-juez para `score_respuesta_correcta` es bueno ($alpha = 0.81$), validando la confiabilidad de las evaluaciones.
+
+=== Debilidades y Limitaciones
+
++ El sistema Agentic-RAG degrada el desempeño de gpt-5-nano (0.40 vs. 0.58 sin RAG), indicando que la complejidad agéntica es excesiva para modelos de capacidad reducida.
++ La métrica `score_precision_legal` no alcanza confiabilidad inter-juez suficiente para ser empleada en comparaciones, lo que limita la evaluación de la precisión de citación.
++ No se encontró diferencia marginal significativa entre Agentic-RAG y RAG básico, aunque el análisis de interacción revela que esta conclusión global enmascara patrones condicionales al modelo.
++ El benchmark se limita al Código de Minería Argentino, por lo que la generalización a otros cuerpos normativos requiere validación adicional.
+
+=== Implicaciones Prácticas
+
++ *Combinación óptima*: Agentic-RAG + gpt-5 (media 0.80), pero con costo superior.
++ *Combinación costo-eficiente*: Agentic-RAG + gpt-5-mini (media 0.78) para escenarios con restricciones presupuestarias, siempre que el sistema RAG esté activo.
++ *No existe una recomendación universal*: la interacción significativa entre factores implica que la selección de modelo y estrategia debe hacerse conjuntamente, no de forma independiente.
++ *Advertencia para modelos pequeños*: evitar la combinación Agentic-RAG + gpt-5-nano, que constituye la peor configuración evaluada.
+
+== Conclusiones del Capítulo
+
+Los resultados confirman que la incorporación de un sistema de recuperación de información mejora significativamente la calidad de las respuestas de los LLM en el dominio legal argentino. La interacción significativa entre la estrategia de recuperación y el modelo ($H = 56.62$, $p < 10^(-11)$) es el hallazgo más relevante: demuestra que la efectividad de una estrategia depende del modelo con el que se combine, y viceversa. El RAG básico actúa como igualador de capacidades entre modelos, mientras que el sistema agéntico amplifica las diferencias, beneficiando a modelos de capacidad media (gpt-5-mini) pero perjudicando a los de menor capacidad (gpt-5-nano). La evaluación LLM-as-a-Judge con tres jueces es confiable para la métrica de correctitud ($alpha = 0.81$) pero no para la de precisión legal ($alpha = 0.78$ global, con valores insuficientes por sistema).

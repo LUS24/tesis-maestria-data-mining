@@ -1,0 +1,346 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Con consecuencias legales en caso de que GeoExplora S.A. hubiera omitido entregar la documentación técnica a la entidad estatal provincial, según el Código de Minería Argentino.\n        ",
+                    "timestamp": "2025-11-13T11:50:42.352213Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"\\\"Código de Minería\\\" Argentina sanciones por no presentar o entregar documentación técnica a autoridad provincial minera\"}",
+                    "tool_call_id": "call_DLv3VHLYCTbeTECrZNK1qfOW",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Ley 24.585 Título XIII del Código de Minería sanciones por incumplimiento de Informe de Impacto Ambiental autoridad de aplicación provincial\"}",
+                    "tool_call_id": "call_57NSot3ZF15heTGaHYX8PadC",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería obligación de presentar mensura, planos, documentos técnicos consecuencias por omisión o falta de presentación\"}",
+                    "tool_call_id": "call_4oWws2OGQighatd7ofsrxCgl",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 351,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 976,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 832,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T11:50:44Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbQ8ae6NQLCzzvxYFgVENeIqvqYQj",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.597720205783844,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Dentro del plazo se sesenta (60) días a contar de la notificación que realice la autoridad minera, el titular de una solicitud de permiso de exploración o de una manifestación de descubrimiento en trámite y sin petición de mensura, deberá presentar una nueva graficación de su solicitud y cumplir con lo dispuesto en el último párrafo del Artículo 45, de conformidad con las disposiciones de este Código, indicando las coordenadas de cada uno de los vértices que conforman el polígono, dentro de cuyos límites se encuentra el área descrita. El plazo antes indicado será improrrogable y el incumplimiento de lo dispuesto causará el abandono automático del trámite y la liberación de la zona.\n\nPresentadas las coordenadas, la autoridad minera las examinará y, encontrándolas correctas, otorgará la respectiva matrícula catastral.\n\nEn el caso de permisos de exploración otorgados o de minas con petición de mensura o de minas mensuradas, la autoridad minera deberá establecer en el campo las coordenadas de la ubicación real del permiso o de la mina, la cual deberá ser notificada a su titular y posteriormente se emitirá la respectiva matrícula catastral, a menos que lo realice directamente el titular, en cuyo caso la autoridad minera las examinará y, encontrándolas correctas, otorgará la correspondiente matrícula.\n\nUna vez concluido en cada provincia el catastro de que trata este artículo, la ubicación que resulta de sus coordenadas para cada derecho minero será inmutable. Todos aquellos derechos mineros que por causa imputable a su titular no hubieren quedado incluidos en el catastro al finalizar éste, se considerarán inexistentes por el solo ministerio de la ley y sin necesidad de acto alguno de la autoridad minera.\n\nSin perjuicio de lo dispuesto en los párrafos precedentes, cada provincia regulará las etapas, procedimientos, recursos y demás materias relacionados al catastro al que se refiere este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 353,
+                                "titulo_parte": null,
+                                "id_parte": "fa1b37762f0923058b5bdf5119bca5a2"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5954262614250183,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El minero es dueño de todos los criaderos que se encuentren dentro de los límites de su pertenencia, cualesquiera que sean las sustancias minerales que contengan.\n\nEl concesionario está obligado a dar cuenta a la autoridad minera del hallazgo de cualquier sustancia concesible distinta de las que constaren en el registro y empadronamiento de la mina, para su anotación en los mismos y, en su caso, efectos consiguientes en materia de canon y de inversión de capital.\n\nEl concesionario que no cumpliere esta obligación dentro de los SESENTA (60) días del hallazgo, se hará pasible de una multa de DIEZ (10) a CIEN (100) veces el canon de explotación correspondiente a la sustancia omitida.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "876f2765f9270036f9747dad1d5ff4fa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 99,
+                                "titulo_parte": null,
+                                "id_parte": "35c4ee5963fd171ded8743b34319c955"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5558538436889648,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Son obligaciones de los concesionarios:\n\na) Remitir al MINISTERIO DE ECONOMIA Y OBRAS Y SERVICIOS PUBLICOS y autoridad minera local:\n\n1° Las muestras testigos del corte geológico de las perforaciones de exploración.\n\n2° La comunicación, dentro de los TREINTA (30) días de cada hallazgo, de horizontes petrolíferos que atraviesen las perforaciones de exploración, su espesor, probable rendimiento y calidad del mineral.\n\n3° En el primer trimestre de cada año, el programa aproximado de trabajos a desarrollar en el transcurso del mismo y informe general sobre el efectuado en el año anterior.\n\n4° Mensualmente, una planilla demostrativa de la producción de cada pozo.\n\nb) Facilitar a las mismas autoridades toda investigación que crean necesaria para controlar el estricto cumplimiento de este ACAPITE.\n\nc) Asegurar a sus empleados y obreros contra todo riesgo proveniente del trabajo de las minas.\n\nToda infracción a estas disposiciones será castigada con una multa de MIL (1.000) a DIEZ MIL (10.000) pesos moneda nacional. En caso de reincidencia el Poder Ejecutivo podrá suspender los trabajos hasta tanto el concesionario cumpla las obligaciones impuestas por este artículo. Estas penalidades se aplicarán sin perjuicio de las medidas coercitivas que adoptará la autoridad administrativa.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "22b9fc25cf3b1b6dddcaf62084e7b541",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 22,
+                                "titulo_parte": null,
+                                "id_parte": "c87f87446e97f2d4ef743ec75065c652"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5537218451499939,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La investigación geológico-minera de base que realice el Estado Nacional en todo el país y las que efectúen las provincias en sus territorios es libre y no requiere permiso de la autoridad minera. Aquella que realice el Estado Nacional se efectuará con consentimiento previo de las provincias donde se practicará la actividad.\n\nLa autoridad provincial o, en su caso, y en forma excluyente, la empresa o entidad estatal provincial que tenga a su cargo la investigación podrá disponer, mediante comunicación cursada a la autoridad minera, zonas exclusivas de interés especial para la prospección minera, que realizará en forma directa o con participación de terceros.\n\nLas zonas de interés especial podrán tener en conjunto una extensión máxima de CIEN MIL (100.000) hectáreas por provincia y su duración no excederá el plazo improrrogable de DOS (2) años.\n\nEn caso de decidir la intervención de terceros, los organismos a que se refiere el segundo párrafo de este artículo, sin perjuicio de los trabajos propios que se proponga desarrollar en el área, deberán convocar a un concurso invitando públicamente a empresas a presentar sus antecedentes, un programa de trabajos y un compromiso de inversión compatibles con los objetivos de investigación propuestos.\n\nLa invitación se publicará por TRES (3) días en el plazo de QUINCE (15) días en el Boletín Oficial y en oficinas de la autoridad minera y del organismo convocante y contendrá los objetivos de la investigación, los requisitos mínimos que deberán contener las propuestas, el lugar de presentación, el plazo dentro del cual serán recibidas y las bases para la comparación de las propuestas.\n\nCuando se estime conveniente podrá optarse por desarrollar las condiciones del llamado en un pliego.\n\nDentro del plazo fijado para la prospección, el adjudicatario de la zona podrá solicitar uno o más permisos de exploración o efectuar manifestaciones de descubrimientos, quedando sujetos estos derechos a las disposiciones generales del Código de Minería, sin perjuicio de las obligaciones que pudieren corresponder en virtud de la convocatoria o que resulten de la propuesta.\n\nLos adjudicatarios quedan obligados a suministrar al organismo convocante la información y la documentación técnica obtenida en el curso de las etapas de la investigación, sin necesidad de requerimiento y dentro de los plazos que fije aquel organismo, bajo pena de una multa de hasta VEINTE (20) veces el valor del canon de exploración que corresponda a un permiso de CUATRO (4) unidades de medida.\n\nLas áreas de interés especial en las que no hubiese realizado el Estado o la empresa o entidad estatal provincial trabajos de prospección, o efectuado adjudicación alguna en el transcurso del primer año, contado desde la fecha en que fueron dispuestas, quedarán automáticamente liberadas. La autoridad minera dará curso a las solicitudes de derechos mineros que presenten los particulares previa verificación de la inexistencia de los referidos trabajos o adjudicación.\n\nLas minas que descubran los organismos antes mencionados en el curso de sus investigaciones y, en las zonas de interés especial que establezcan éstos, cuando no hayan dado participación a terceros, deberán ser transferidas a la actividad privada dentro del año de operado el descubrimiento y por el procedimiento que determina este artículo. Caso contrario, quedarán automáticamente vacantes y a disposición de cualquier interesado en adquirirlas.\n\nLas empresas o entidades estatales provinciales autorizadas por ley para efectuar exploraciones y explotaciones mineras podrán encuadrar sus investigaciones en las disposiciones del presente artículo, sin perjuicio de su derecho a solicitar permisos y concesiones con arreglo a las normas generales de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9e7dcf9a230fcc582eebdccc11e27282",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 346,
+                                "titulo_parte": null,
+                                "id_parte": "dbd7f8bf18fbee80542f1074013f2dad"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5459966659545898,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El concesionario tendrá colocados los linderos de su pertenencia dentro de los VEINTE (20) días siguientes a la designación de los puntos correspondientes.\n\nNo verificándolo así, se hará pasible a una multa cuyo monto será TRES (3) a DIEZ (10) veces el canon anual que devengare la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "d06b9956af3dfa67ed14d4059f0592db",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 94,
+                                "titulo_parte": null,
+                                "id_parte": "c96a40c6eafc57a7f0b98aee268ef90c"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_DLv3VHLYCTbeTECrZNK1qfOW",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T11:51:06.040465Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.572248101234436,
+                                "id_padre": "499422e974936597bb886163f4a375de",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 264,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El incumplimiento de las disposiciones establecidas en esta Sección, cuando no estén comprendidas dentro del ámbito de las responsabilidades penales, será sancionado con:\n\na) Apercibimiento.\n\nb) Multas, las que serán establecidas por la Autoridad de Aplicación conforme las pautas dispuestas en el Artículo 243 del Código de Minería.\n\nc) Suspensión del goce del Certificado de Calidad Ambiental de los productos.\n\nd) Reparación de los daños ambientales.\n\ne) Clausura temporal, la que será progresiva en los casos de reincidencia. En caso de TRES (3) infracciones graves se procederá al cierre definitivo del establecimiento.\n\nf) Inhabilitación.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "4750b0ef86d1ae9f9353482c36e714af"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5521014332771301,
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 251,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los responsables comprendidos en el articulo 248 deberán presentar ante la autoridad de aplicación, y antes del inicio de cualquier actividad especificada en el Artículo 249, un Informe de Impacto Ambiental.\n\nLa autoridad de aplicación podrá prestar asesoramiento a los pequeños productores para la elaboración del mismo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b49e40a64d3a73bf5a64bba831c6e0da"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5480212569236755,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 355,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Para aquellas actividades comprendidas en el ARTICULO 249, y cuya iniciación sea anterior a la vigencia de la Ley 24.585, el concesionario o titular de la planta e instalaciones deberá presentar, dentro del año de su entrada en vigor, el informe de impacto ambiental.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "0b16c35d5add538f9b334e45ff89d04e"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5460095405578613,
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 252,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La autoridad de aplicación evaluará el informe de impacto Ambiental, y se pronunciará por la aprobación mediante una Declaración de Impacto Ambiental para cada una de las etapas del proyecto o de implementación efectiva.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "e4bd71fd24572ca6e8f85a80e6fffc41"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5422784090042114,
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 253,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Informe de Impacto Ambiental para la etapa de prospección deberá contener el tipo de acciones a desarrollar y el eventual riesgo de impacto ambiental que las mismas pudieran acarrear.\n\nPara la etapa de exploración el citado Informe deberá contener una descripción de los métodos a emplear y las medidas de protección ambiental que resultaren necesarias.\n\nEn las etapas mencionadas precedentemente será necesaria la previa aprobación del Informe por parte de la autoridad de aplicación para el inicio de las actividades, sin perjuicio de las responsabilidades previstas en el Artículo 248 por los daños que se pudieran ocasionar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2d9aa57f90f610a1d33322184745765a"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_57NSot3ZF15heTGaHYX8PadC",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T11:51:06.039441Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5641323924064636,
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5469105839729309,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 353,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Dentro del plazo se sesenta (60) días a contar de la notificación que realice la autoridad minera, el titular de una solicitud de permiso de exploración o de una manifestación de descubrimiento en trámite y sin petición de mensura, deberá presentar una nueva graficación de su solicitud y cumplir con lo dispuesto en el último párrafo del Artículo 45, de conformidad con las disposiciones de este Código, indicando las coordenadas de cada uno de los vértices que conforman el polígono, dentro de cuyos límites se encuentra el área descrita. El plazo antes indicado será improrrogable y el incumplimiento de lo dispuesto causará el abandono automático del trámite y la liberación de la zona.\n\nPresentadas las coordenadas, la autoridad minera las examinará y, encontrándolas correctas, otorgará la respectiva matrícula catastral.\n\nEn el caso de permisos de exploración otorgados o de minas con petición de mensura o de minas mensuradas, la autoridad minera deberá establecer en el campo las coordenadas de la ubicación real del permiso o de la mina, la cual deberá ser notificada a su titular y posteriormente se emitirá la respectiva matrícula catastral, a menos que lo realice directamente el titular, en cuyo caso la autoridad minera las examinará y, encontrándolas correctas, otorgará la correspondiente matrícula.\n\nUna vez concluido en cada provincia el catastro de que trata este artículo, la ubicación que resulta de sus coordenadas para cada derecho minero será inmutable. Todos aquellos derechos mineros que por causa imputable a su titular no hubieren quedado incluidos en el catastro al finalizar éste, se considerarán inexistentes por el solo ministerio de la ley y sin necesidad de acto alguno de la autoridad minera.\n\nSin perjuicio de lo dispuesto en los párrafos precedentes, cada provincia regulará las etapas, procedimientos, recursos y demás materias relacionados al catastro al que se refiere este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "fa1b37762f0923058b5bdf5119bca5a2"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5369777083396912,
+                                "id_padre": "d8a286579fb868b94a145532972e7dba",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 226,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Es denunciable una concesión aunque haya pasado a terceros, por abandono, cuando los dueños por un acto directo y espontáneo, manifiestan a la autoridad la resolución de no continuar los trabajos.\n\nEl dueño de una mina que quiera abandonarla, lo declarará por escrito ante la autoridad minera con VEINTE (20) días de anticipación.\n\nEste escrito comprenderá el nombre de la mina, el del mineral en que se encuentra, la clase de sustancia que se explota y el estado de sus labores.\n\nEl escrito con su proveído se asentará en el libro correspondiente a los registros, y se publicará.\n\nSubsisten los derechos y obligaciones del dueño de una mina, mientras la autoridad competente no admita el abandono.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "aa715b4f940cee451a4c80fe9a18e6ed"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.534717857837677,
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 225,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando la mina hubiera estado inactiva por más de CUATRO (4) años, la autoridad minera podrá exigir la presentación de un proyecto de activación o reactivación, con ajuste a la capacidad productiva de la concesión, a las características de la zona, medios de transporte disponibles, demanda de los productos y existencia de equipos de laboreo.\n\nSe considera que la mina ha estado inactiva cuando no se han efectuado en ella trabajos regulares de exploración, preparación o producción, durante el plazo señalado en el párrafo precedente.\n\nLa intimación deberá ser cumplida en el plazo de SEIS (6) meses, bajo pena de caducidad de la concesión.\n\nPresentado el proyecto, el concesionario deberá cumplimentar cada una de sus etapas dentro de los plazos para ellas previstos, que no podrán exceder en su conjunto, de CINCO (5) años, bajo pena de caducidad de la concesión, a aplicarse en el primer incumplimiento.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2cb5e2ed9105d27925d4d1dd101326b7"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5346208810806274,
+                                "id_padre": "d8a286579fb868b94a145532972e7dba",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 229,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Presentado el escrito, se tendrá por admitido el abandono, y se ordenará al mismo tiempo que el ingeniero oficial practique el reconocimiento de la mina e informe sobre su estado y sobre los trabajos que hubiere necesidad o conveniencia de ejecutar.\n\nEl informe, que se evacuará en el más corto tiempo posible, se depositará en la oficina para conocimiento de los interesados.\n\nEl dueño de la mina no es responsable por los gastos de esta diligencia ni de ninguna de las demás concernientes al abandono.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "ca64c605e1ff5293aaac96c526f481a2"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_4oWws2OGQighatd7ofsrxCgl",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T11:51:06.039721Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 4, \"distance\": 0.5537218451499939, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La investigación geológico-minera de base que realice el Estado Nacional en todo el país y las que efectúen las provincias en sus territorios es libre y no requiere permiso de la autoridad minera. Aquella que realice el Estado Nacional se efectuará con consentimiento previo de las provincias donde se practicará la actividad.\\n\\nLa autoridad provincial o, en su caso, y en forma excluyente, la empresa o entidad estatal provincial que tenga a su cargo la investigación podrá disponer, mediante comunicación cursada a la autoridad minera, zonas exclusivas de interés especial para la prospección minera, que realizará en forma directa o con participación de terceros.\\n\\nLas zonas de interés especial podrán tener en conjunto una extensión máxima de CIEN MIL (100.000) hectáreas por provincia y su duración no excederá el plazo improrrogable de DOS (2) años.\\n\\nEn caso de decidir la intervención de terceros, los organismos a que se refiere el segundo párrafo de este artículo, sin perjuicio de los trabajos propios que se proponga desarrollar en el área, deberán convocar a un concurso invitando públicamente a empresas a presentar sus antecedentes, un programa de trabajos y un compromiso de inversión compatibles con los objetivos de investigación propuestos.\\n\\nLa invitación se publicará por TRES (3) días en el plazo de QUINCE (15) días en el Boletín Oficial y en oficinas de la autoridad minera y del organismo convocante y contendrá los objetivos de la investigación, los requisitos mínimos que deberán contener las propuestas, el lugar de presentación, el plazo dentro del cual serán recibidas y las bases para la comparación de las propuestas.\\n\\nCuando se estime conveniente podrá optarse por desarrollar las condiciones del llamado en un pliego.\\n\\nDentro del plazo fijado para la prospección, el adjudicatario de la zona podrá solicitar uno o más permisos de exploración o efectuar manifestaciones de descubrimientos, quedando sujetos estos derechos a las disposiciones generales del Código de Minería, sin perjuicio de las obligaciones que pudieren corresponder en virtud de la convocatoria o que resulten de la propuesta.\\n\\nLos adjudicatarios quedan obligados a suministrar al organismo convocante la información y la documentación técnica obtenida en el curso de las etapas de la investigación, sin necesidad de requerimiento y dentro de los plazos que fije aquel organismo, bajo pena de una multa de hasta VEINTE (20) veces el valor del canon de exploración que corresponda a un permiso de CUATRO (4) unidades de medida.\\n\\nLas áreas de interés especial en las que no hubiese realizado el Estado o la empresa o entidad estatal provincial trabajos de prospección, o efectuado adjudicación alguna en el transcurso del primer año, contado desde la fecha en que fueron dispuestas, quedarán automáticamente liberadas. La autoridad minera dará curso a las solicitudes de derechos mineros que presenten los particulares previa verificación de la inexistencia de los referidos trabajos o adjudicación.\\n\\nLas minas que descubran los organismos antes mencionados en el curso de sus investigaciones y, en las zonas de interés especial que establezcan éstos, cuando no hayan dado participación a terceros, deberán ser transferidas a la actividad privada dentro del año de operado el descubrimiento y por el procedimiento que determina este artículo. Caso contrario, quedarán automáticamente vacantes y a disposición de cualquier interesado en adquirirlas.\\n\\nLas empresas o entidades estatales provinciales autorizadas por ley para efectuar exploraciones y explotaciones mineras podrán encuadrar sus investigaciones en las disposiciones del presente artículo, sin perjuicio de su derecho a solicitar permisos y concesiones con arreglo a las normas generales de este Código.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"9e7dcf9a230fcc582eebdccc11e27282\", \"tipo_parte\": \"artículo\", \"numero_parte\": 346, \"titulo_parte\": null, \"id_parte\": \"dbd7f8bf18fbee80542f1074013f2dad\"}, {\"index\": 1, \"distance\": 0.572248101234436, \"id_padre\": \"499422e974936597bb886163f4a375de\", \"tipo_parte\": \"artículo\", \"numero_parte\": 264, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El incumplimiento de las disposiciones establecidas en esta Sección, cuando no estén comprendidas dentro del ámbito de las responsabilidades penales, será sancionado con:\\n\\na) Apercibimiento.\\n\\nb) Multas, las que serán establecidas por la Autoridad de Aplicación conforme las pautas dispuestas en el Artículo 243 del Código de Minería.\\n\\nc) Suspensión del goce del Certificado de Calidad Ambiental de los productos.\\n\\nd) Reparación de los daños ambientales.\\n\\ne) Clausura temporal, la que será progresiva en los casos de reincidencia. En caso de TRES (3) infracciones graves se procederá al cierre definitivo del establecimiento.\\n\\nf) Inhabilitación.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"4750b0ef86d1ae9f9353482c36e714af\"}, {\"index\": 2, \"distance\": 0.5521014332771301, \"id_padre\": \"ea6061e5cad21d1fc261c7a43c937e35\", \"tipo_parte\": \"artículo\", \"numero_parte\": 251, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Los responsables comprendidos en el articulo 248 deberán presentar ante la autoridad de aplicación, y antes del inicio de cualquier actividad especificada en el Artículo 249, un Informe de Impacto Ambiental.\\n\\nLa autoridad de aplicación podrá prestar asesoramiento a los pequeños productores para la elaboración del mismo.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"b49e40a64d3a73bf5a64bba831c6e0da\"}, {\"index\": 5, \"distance\": 0.5422784090042114, \"id_padre\": \"ea6061e5cad21d1fc261c7a43c937e35\", \"tipo_parte\": \"artículo\", \"numero_parte\": 253, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El Informe de Impacto Ambiental para la etapa de prospección deberá contener el tipo de acciones a desarrollar y el eventual riesgo de impacto ambiental que las mismas pudieran acarrear.\\n\\nPara la etapa de exploración el citado Informe deberá contener una descripción de los métodos a emplear y las medidas de protección ambiental que resultaren necesarias.\\n\\nEn las etapas mencionadas precedentemente será necesaria la previa aprobación del Informe por parte de la autoridad de aplicación para el inicio de las actividades, sin perjuicio de las responsabilidades previstas en el Artículo 248 por los daños que se pudieran ocasionar.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"2d9aa57f90f610a1d33322184745765a\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 6949,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 4029,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2432,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T11:51:06Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbQ8wmYwCpv2iiVzqS8iVWhSYbXGS",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T11:51:06+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 7300,
+                "output_tokens": 5005,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3264,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00868625,
+                "output_price": 0.04029,
+                "total_price": 0.04897625,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

@@ -1,0 +1,301 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Según el Código de Minería argentino, ¿es válido el subarrendamiento de una mina por el arrendatario cuando el contrato de arrendamiento no contiene cláusula que lo autorice? Además, ¿qué dispone el Código respecto a la rebaja de puentes y macizos por el arrendatario sin cláusula específica? Indicar artículos aplicables.\n        ",
+                    "timestamp": "2025-11-12T18:33:08.746058Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería argentino arrendamiento de minas subarrendamiento sin cláusula que lo autorice válido artículos\"}",
+                    "tool_call_id": "call_SbUKOBRnO7joVcMlQyjmY27o",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 393,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 304,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 256,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T18:33:10Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb9wUF7Yo0pGDHOptbpyDvUvEdFIg",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7295653820037842,
+                                "contenido_texto": "Las minas no pueden subarrendarse sino cuando en el contrato se haya acordado esa facultad al arrendatario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 335,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "f2410e1fa198506486ddadc8bbf7f8d0"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7043701410293579,
+                                "contenido_texto": "Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 342,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "49d492c382c773510821a3778d3ec0c4"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.672770082950592,
+                                "contenido_texto": "El arrendatario puede aprovechar la mina en los mismos términos que puede hacerlo el propietario.\n\nPero para rebajar puentes y macizos es necesario una estipulación especial.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 330,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "691a19129cc1af078b47c1b08cbc1757"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6650875210762024,
+                                "contenido_texto": "La concesión de una mina comprende el derecho el derecho de exigir la venta del terreno correspondiente.\n\nMientras tanto, se sujetará a lo dispuesto en el parágrafo de las servidumbres.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cf24337039e4d80d81f68c9c9ea063bb",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 156,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "ab22d6e3cb64a7e29d0c0dc68298c74e"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6649973392486572,
+                                "contenido_texto": "El usufructo constituido sobre todos los bienes de una persona, comprende el usufructo de las minas comprendidas en esos bienes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 343,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "24aa6aab0c760ddc5c359520fd54a554"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_SbUKOBRnO7joVcMlQyjmY27o",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T18:33:16.638497Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"rebajar puentes y macizos arrendatario Código de Minería artículo\"}",
+                    "tool_call_id": "call_vpjPfmEHEl6x1f6OT77VFJy5",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1138,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 425,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 384,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T18:33:17Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb9wbkmahkgUl8UEGnbVi86tS5NGy",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7373339533805847,
+                                "contenido_texto": "El arrendatario puede aprovechar la mina en los mismos términos que puede hacerlo el propietario.\n\nPero para rebajar puentes y macizos es necesario una estipulación especial.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 330,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "691a19129cc1af078b47c1b08cbc1757"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6682244539260864,
+                                "contenido_texto": "El minero puede pedir el cambio parcial del perímetro de su pertenencia en cualquiera dirección de sus líneas confinantes, habiendo terreno franco. Este cambio constituye la mejora.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eb2df76fbd81dc74976554caf4a051c3",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 114,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "cfc4d66f997e008114f5da7c281fcc50"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6085138320922852,
+                                "contenido_texto": "El dueño del suelo debe indemnización al dueño de la mina por los perjuicios causados a la explotación con trabajos en obras posteriores a la concesión, en los mismos casos en que según el Artículo 162, no tiene el propietario derecho a cobrarlos.\n\nLas indemnizaciones en este caso se reducen al pago de los objetos inutilizados y al de las reparaciones o fortificaciones que sean necesarias para la completa habilitación de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 165,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "4d54127cd5f36af0ff301dc8b1e82720"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5937875509262085,
+                                "contenido_texto": "Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\n\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 339,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "2ca3c839ca5d493bad04e3fdbbd4edb3"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5935251712799072,
+                                "contenido_texto": "Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\n\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 340,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "b234c3008b7f7dab9d73e23e4c5b894e"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_vpjPfmEHEl6x1f6OT77VFJy5",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T18:33:26.439297Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\":[{\"contenido_texto\":\"Las minas no pueden subarrendarse sino cuando en el contrato se haya acordado esa facultad al arrendatario.\",\"codigo_norma\":\"Código de Minería Argentino\",\"id_padre\":\"c1780adff00ba057a75cc65fea273fcd\",\"tipo_parte\":\"artículo\",\"numero_parte\":335,\"titulo_parte\":null,\"ultimo_estado\":\"en vigor\",\"id_parte\":\"f2410e1fa198506486ddadc8bbf7f8d0\"},{\"contenido_texto\":\"El arrendatario puede aprovechar la mina en los mismos términos que puede hacerlo el propietario.\\n\\nPero para rebajar puentes y macizos es necesario una estipulación especial.\",\"codigo_norma\":\"Código de Minería Argentino\",\"id_padre\":\"c1780adff00ba057a75cc65fea273fcd\",\"tipo_parte\":\"artículo\",\"numero_parte\":330,\"titulo_parte\":null,\"ultimo_estado\":\"en vigor\",\"id_parte\":\"691a19129cc1af078b47c1b08cbc1757\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2047,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1590,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1344,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T18:33:28Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-Cb9wmW5r05SRwOD4qQYQVLIUSMzVa",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-12T18:33:28+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 3578,
+                "output_tokens": 2319,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1984,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00255875,
+                "output_price": 0.0159,
+                "total_price": 0.01845875,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

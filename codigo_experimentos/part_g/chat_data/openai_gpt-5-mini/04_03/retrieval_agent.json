@@ -1,0 +1,685 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Derechos del descubridor respecto al criadero hallado, obligaciones para conservarlos, y reglas cuando hay varios participantes en el descubrimiento y relación con propietario del terreno, según Código de Minería Argentino (artículos relevantes).\n        ",
+                    "timestamp": "2025-11-13T14:00:03.989248Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería Argentina derechos del descubridor criadero hallado artículos\"}",
+                    "tool_call_id": "call_2kMzbMh3XhTDCDAzdDiegrFZ",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 361,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 807,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 768,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T14:00:06Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbS9m5CcVbIO4QRFtbh1Ssds24A5t",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6310939192771912,
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 133,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El socavonero goza de los privilegios de descubridor los criaderos nuevos que siguiendo su labor, encuentre en terreno vacante.\n\nEstas pertenencias se demarcarán en la superficie con arreglo a la situación, dirección y demás circunstancias del criadero, reconocidas en profundidad.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "7fce2f9d0a3065fb14ebf6fb3ec588b4"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5870314836502075,
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 134,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El socavonero tiene derecho a explotar el criadero nuevo que encuentre en pertenencia correspondiente a otro criadero registrado en la superficie, abriendo nuevas labores en seguimiento del nuevo criadero y aprovechando exclusivamente los minerales que extraiga.\n\nCesa este derecho desde el momento en que las labores de la mina se comuniquen con las del socavón.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "3c130aaed007dd527b96f24559d80424"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5396535992622375,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 349,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La zona de explotación del yacimiento Carbonífero Río Turbio, en la Provincia de Santa Cruz, queda fijada dentro de los siguientes límites: al Norte el Paralelo 51 16' 00\"; al Este el Meridiano 72 11' 00\"; al Sur y al Oeste la frontera con la REPUBLICA DE CHILE.\n\nLa cuenca carbonífera de Río Turbio será considerada como una mina constituida por una sola pertenencia y su explotación será realizada por el Estado Nacional, por intermedio de YACIMIENTOS CARBONÍFEROS FISCALES.\n\nLo dispuesto precedentemente no afectará la percepción por la provincia de Santa Cruz del canon minero establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "f2accc98ff6a0e95d8b2724bb15d4dd5"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5386579036712646,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 350,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La zona de explotación del yacimiento ferrífero de Sierra Grande, en la Provincia de Río Negro, queda fijada dentro de los límites de los lotes 20 y 21, fracción E, Colonia Pastoril Coronel Chilavert, Provincia de Río Negro.\n\nLa cuenca ferrífera de Sierra Grande será considerada como una sola mina, constituida por una sola pertenencia y su explotación será realizada por intermedio de HIERRO PATAGONICO DE SIERRA GRANDE, SOCIEDAD ANONIMA MINERA.\n\nLo dispuesto precedentemente no afectará derechos adquiridos ni la percepción por la Provincia de Río Negro del canon establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "5d79b36a6bc696bc7c4b2c2cf54a06d2"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5364412665367126,
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 336,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El arrendatario de un fundo común no puede explotar las minas que dentro de sus límites se encuentren y que el propietario haya registrado y explotado.\n\nSi descubre un criadero o hay alguna pertenencia abandonada, usará de los derechos que la ley ha establecido en estos casos.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "7729b03e9941eee361c1cd2b064cc0cd"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_2kMzbMh3XhTDCDAzdDiegrFZ",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T14:00:25.601348Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"descubridor derechos criadero hallado obligaciones conservar Código de Minería Argentino artículos\"}",
+                    "tool_call_id": "call_RXtMZQGJQwphOZ1SAF8J6Cno",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"varios participantes descubrimiento reglas co-descubridor participación descubrimiento Código de Minería artículos\"}",
+                    "tool_call_id": "call_irr5AYjiyeSexlGEgT5kbm3Z",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"relación con propietario del terreno dueño del suelo derechos descubridor criadero Código de Minería argentino artículos\"}",
+                    "tool_call_id": "call_O3lFrlwYCy2wkjSBqHhoNLjO",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1469,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 513,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 384,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T14:00:26Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbSA6o9zxbiAxit0vWzoJPCMoNGUF",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7009080648422241,
+                                "contenido_texto": "El socavonero goza de los privilegios de descubridor los criaderos nuevos que siguiendo su labor, encuentre en terreno vacante.\n\nEstas pertenencias se demarcarán en la superficie con arreglo a la situación, dirección y demás circunstancias del criadero, reconocidas en profundidad.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 133,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "7fce2f9d0a3065fb14ebf6fb3ec588b4"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6764581203460693,
+                                "contenido_texto": "El arrendatario de un fundo común no puede explotar las minas que dentro de sus límites se encuentren y que el propietario haya registrado y explotado.\n\nSi descubre un criadero o hay alguna pertenencia abandonada, usará de los derechos que la ley ha establecido en estos casos.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 336,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "7729b03e9941eee361c1cd2b064cc0cd"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6348787546157837,
+                                "contenido_texto": "El socavonero tiene derecho a explotar el criadero nuevo que encuentre en pertenencia correspondiente a otro criadero registrado en la superficie, abriendo nuevas labores en seguimiento del nuevo criadero y aprovechando exclusivamente los minerales que extraiga.\n\nCesa este derecho desde el momento en que las labores de la mina se comuniquen con las del socavón.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 134,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "3c130aaed007dd527b96f24559d80424"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6261470913887024,
+                                "contenido_texto": "Si en el curso de sus trabajos encuentra el socavonero un criadero correspondiente a pertenencia ajena, lo explotará sin variar la dirección ni las dimensiones de la obra.\n\nLos minerales extraídos se entregarán al dueño de la pertenencia, pagando éste los gastos de explotación y acarreo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 132,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "dd105b69d27d008ac73ca024d41a7438"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6102873682975769,
+                                "contenido_texto": "El minero es dueño de todos los criaderos que se encuentren dentro de los límites de su pertenencia, cualesquiera que sean las sustancias minerales que contengan.\n\nEl concesionario está obligado a dar cuenta a la autoridad minera del hallazgo de cualquier sustancia concesible distinta de las que constaren en el registro y empadronamiento de la mina, para su anotación en los mismos y, en su caso, efectos consiguientes en materia de canon y de inversión de capital.\n\nEl concesionario que no cumpliere esta obligación dentro de los SESENTA (60) días del hallazgo, se hará pasible de una multa de DIEZ (10) a CIEN (100) veces el canon de explotación correspondiente a la sustancia omitida.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "876f2765f9270036f9747dad1d5ff4fa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 99,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "35c4ee5963fd171ded8743b34319c955"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_RXtMZQGJQwphOZ1SAF8J6Cno",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T14:00:37.406566Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6081858277320862,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La persona que ejecutando por otro trabajos mineros, hace un descubrimiento, descubre para el dueño de los trabajos.\n\nPero si los trabajos no son verdaderamente mineros, el descubrimiento pertenece a ambos por mitad.\n\nEsto mismo se observará cuando cualquier empleado que goce sueldo o salario de una mina, aunque no ejecute trabajo alguno, descubre dentro del radio de UN (1) kilómetro, tomado desde los límites de esa mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c2422a1c629cff5791d1b4b0c379547d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 58,
+                                "id_parte": "9d1e43a1b63428bde9f54b7d6b7fcefd"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5509617328643799,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si los individuos empleados de una expedición exploradora manifiestan o registran a su propio nombre o al de otras personas un descubrimiento hecho en el terreno explorado durante la expedición, la manifestación y el registro corresponde exclusivamente al dueño del cateo, aunque se haya estipulado participación.\n\nEsta disposición queda sin efecto UN (1) año después de terminada la exploración.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c2422a1c629cff5791d1b4b0c379547d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 57,
+                                "id_parte": "3695eb0fd4a512618b00946e77d10791"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5493154525756836,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los productos que extraiga el explorador antes de hacer la manifestación del descubrimiento. pagarán una regalía del VEINTICINCO POR CIENTO (25%).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5b4cff76822bc02b19675d9a36793625",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 30,
+                                "id_parte": "ce540d98d8b3a1c9bb479e413651e597"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5276131629943848,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El descubrimiento de un yacimiento de hidrocarburos fluidos que se manifieste con las formalidades requeridas por este Código dará derecho al descubridor, por cada permiso de exploración, hasta DOS (2) pertenencias de QUINIENTAS (500) hectáreas cada una, que ubicará conjunta o separadamente, sin distinción entre descubridor individual y compañía.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "972d274a7b431594c6f1ac1513f5dc30",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 16,
+                                "id_parte": "29bb34e2f4d79e186d96f1d1da046d8e"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5209110379219055,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_irr5AYjiyeSexlGEgT5kbm3Z",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T14:00:37.405712Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7258216142654419,
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 133,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El socavonero goza de los privilegios de descubridor los criaderos nuevos que siguiendo su labor, encuentre en terreno vacante.\n\nEstas pertenencias se demarcarán en la superficie con arreglo a la situación, dirección y demás circunstancias del criadero, reconocidas en profundidad.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "7fce2f9d0a3065fb14ebf6fb3ec588b4"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.673491895198822,
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 336,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El arrendatario de un fundo común no puede explotar las minas que dentro de sus límites se encuentren y que el propietario haya registrado y explotado.\n\nSi descubre un criadero o hay alguna pertenencia abandonada, usará de los derechos que la ley ha establecido en estos casos.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "7729b03e9941eee361c1cd2b064cc0cd"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6631764769554138,
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 134,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El socavonero tiene derecho a explotar el criadero nuevo que encuentre en pertenencia correspondiente a otro criadero registrado en la superficie, abriendo nuevas labores en seguimiento del nuevo criadero y aprovechando exclusivamente los minerales que extraiga.\n\nCesa este derecho desde el momento en que las labores de la mina se comuniquen con las del socavón.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "3c130aaed007dd527b96f24559d80424"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.622180163860321,
+                                "id_padre": "ee54a3b20a9dac1f871c62ef6486863c",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 79,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El concesionario tiene derecho a que, en la demarcación de la pertenencia, se de a la corrida del criadero la extensión asignada a su inclinación, y a ésta la asignada a la corrida; pero esto sólo tendrá lugar cuando no resulte perjuicio de tercero.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "5d4f471d84eb906b7a848cba53e57cc8"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6146730780601501,
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 132,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si en el curso de sus trabajos encuentra el socavonero un criadero correspondiente a pertenencia ajena, lo explotará sin variar la dirección ni las dimensiones de la obra.\n\nLos minerales extraídos se entregarán al dueño de la pertenencia, pagando éste los gastos de explotación y acarreo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "dd105b69d27d008ac73ca024d41a7438"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_O3lFrlwYCy2wkjSBqHhoNLjO",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T14:00:37.405985Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"obligaciones del descubridor conservar derechos manifestación registro plazo Código de Minería Argentino\"}",
+                    "tool_call_id": "call_aFjsbKajUzoIyNEQK2h5v5uf",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 5149,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 1408,
+                "output_tokens": 939,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 896,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T14:00:39Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbSAJYCoPkDcbbsp71O0bu6gaVmHO",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6485900282859802,
+                                "numero_parte": 24,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Una vez que el explorador haya obtenido la concesión de explotación que le corresponda, toda la extensión sobrante de cada permiso de exploración quedará como reserva petrolífera fiscal del Estado Nacional o Provincial.\n\nEstas reservas sólo serán exploradas y explotadas por el Estado Nacional o Provincial, directamente o por medio de sociedades mixtas o por Yacimientos Petrolíferos Fiscales.\n\nNo podrá el Estado Nacional o Provincial mantener estas reservas como tales por más de DIEZ (10) años.\n\nVencido este plazo, podrán ser adjudicadas a particulares en licitación pública dando preferencia al explorador originario de la concesión en igualdad de condiciones, y en su defecto, pasarán a ser zonas en disponibilidad.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "0f959ff09577c347feebae6400cac8f1",
+                                "tipo_parte": "artículo",
+                                "id_parte": "5f3d0545a4122e81ddba9c1b27eb3945"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6051107048988342,
+                                "numero_parte": 173,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El descubridor de las sustancias de segunda clase en terrenos de dominio particular, tendrá derecho a una indemnización por parte del propietario, si éste prefiere explotar por su cuenta el descubrimiento.\n\nEl valor de la indemnización se determinará por la importancia del descubrimiento y de los gastos de la exploración, hecha dentro de los límites de la propiedad particular.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "06c6502893a2bf9625ae182607f0548b",
+                                "tipo_parte": "artículo",
+                                "id_parte": "6f14c6762a768fa53f53ac5e153ebc45"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5948917269706726,
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5930988192558289,
+                                "numero_parte": 10,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio del dominio originario del Estado reconocido por el Artículo 7, la propiedad particular de las minas se establece por la concesión legal.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4f349b3799fb5e95b30eea8e2d13ca9a",
+                                "tipo_parte": "artículo",
+                                "id_parte": "15fae8d5ad2c466361dc76ce3f016c3a"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5883103609085083,
+                                "numero_parte": 1,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Código de Minería rige los derechos, obligaciones y procedimientos referentes a la adquisición, explotación y aprovechamiento de las sustancias minerales.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ebad6798643112a64729d7cc7a1abf2c",
+                                "tipo_parte": "artículo",
+                                "id_parte": "78020a7e760ce39a4591da47093358d7"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_aFjsbKajUzoIyNEQK2h5v5uf",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T14:01:02.726066Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería Argentino artículo 67 descubridor número de pertenencias; artículo 176; artículo 312 derechos del descubridor co-descubridor obligaciones conservación criaderos\"}",
+                    "tool_call_id": "call_d6tC3hpg589JxbaJxM2vVf4A",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 6075,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1148,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1088,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T14:01:04Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbSAiANVrDzcIX6Jfnmwm2wCtRSTn",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6121842265129089,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5830821394920349,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El socavonero goza de los privilegios de descubridor los criaderos nuevos que siguiendo su labor, encuentre en terreno vacante.\n\nEstas pertenencias se demarcarán en la superficie con arreglo a la situación, dirección y demás circunstancias del criadero, reconocidas en profundidad.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 133,
+                                "titulo_parte": null,
+                                "id_parte": "7fce2f9d0a3065fb14ebf6fb3ec588b4"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.546002984046936,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El arrendatario de un fundo común no puede explotar las minas que dentro de sus límites se encuentren y que el propietario haya registrado y explotado.\n\nSi descubre un criadero o hay alguna pertenencia abandonada, usará de los derechos que la ley ha establecido en estos casos.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 336,
+                                "titulo_parte": null,
+                                "id_parte": "7729b03e9941eee361c1cd2b064cc0cd"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5378367304801941,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El concesionario tiene derecho a que, en la demarcación de la pertenencia, se de a la corrida del criadero la extensión asignada a su inclinación, y a ésta la asignada a la corrida; pero esto sólo tendrá lugar cuando no resulte perjuicio de tercero.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ee54a3b20a9dac1f871c62ef6486863c",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 79,
+                                "titulo_parte": null,
+                                "id_parte": "5d4f471d84eb906b7a848cba53e57cc8"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5241915583610535,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si en el curso de sus trabajos encuentra el socavonero un criadero correspondiente a pertenencia ajena, lo explotará sin variar la dirección ni las dimensiones de la obra.\n\nLos minerales extraídos se entregarán al dueño de la pertenencia, pagando éste los gastos de explotación y acarreo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 132,
+                                "titulo_parte": null,
+                                "id_parte": "dd105b69d27d008ac73ca024d41a7438"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_d6tC3hpg589JxbaJxM2vVf4A",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T14:01:34.453132Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 4, \"distance\": 0.6261470913887024, \"contenido_texto\": \"Si en el curso de sus trabajos encuentra el socavonero un criadero correspondiente a pertenencia ajena, lo explotará sin variar la dirección ni las dimensiones de la obra.\\n\\nLos minerales extraídos se entregarán al dueño de la pertenencia, pagando éste los gastos de explotación y acarreo.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"5f917aee9a130dba897e2de38a186b8d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 132, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"dd105b69d27d008ac73ca024d41a7438\"}, {\"index\": 1, \"distance\": 0.6310939192771912, \"id_padre\": \"5f917aee9a130dba897e2de38a186b8d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 133, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El socavonero goza de los privilegios de descubridor los criaderos nuevos que siguiendo su labor, encuentre en terreno vacante.\\n\\nEstas pertenencias se demarcarán en la superficie con arreglo a la situación, dirección y demás circunstancias del criadero, reconocidas en profundidad.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"7fce2f9d0a3065fb14ebf6fb3ec588b4\"}, {\"index\": 2, \"distance\": 0.5870314836502075, \"id_padre\": \"5f917aee9a130dba897e2de38a186b8d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 134, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El socavonero tiene derecho a explotar el criadero nuevo que encuentre en pertenencia correspondiente a otro criadero registrado en la superficie, abriendo nuevas labores en seguimiento del nuevo criadero y aprovechando exclusivamente los minerales que extraiga.\\n\\nCesa este derecho desde el momento en que las labores de la mina se comuniquen con las del socavón.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"3c130aaed007dd527b96f24559d80424\"}, {\"index\": 1, \"distance\": 0.6081858277320862, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La persona que ejecutando por otro trabajos mineros, hace un descubrimiento, descubre para el dueño de los trabajos.\\n\\nPero si los trabajos no son verdaderamente mineros, el descubrimiento pertenece a ambos por mitad.\\n\\nEsto mismo se observará cuando cualquier empleado que goce sueldo o salario de una mina, aunque no ejecute trabajo alguno, descubre dentro del radio de UN (1) kilómetro, tomado desde los límites de esa mina.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"c2422a1c629cff5791d1b4b0c379547d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 58, \"id_parte\": \"9d1e43a1b63428bde9f54b7d6b7fcefd\"}, {\"index\": 2, \"distance\": 0.5509617328643799, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Si los individuos empleados de una expedición exploradora manifiestan o registran a su propio nombre o al de otras personas un descubrimiento hecho en el terreno explorado durante la expedición, la manifestación y el registro corresponde exclusivamente al dueño del cateo, aunque se haya estipulado participación.\\n\\nEsta disposición queda sin efecto UN (1) año después de terminada la exploración.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"c2422a1c629cff5791d1b4b0c379547d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 57, \"id_parte\": \"3695eb0fd4a512618b00946e77d10791\"}, {\"index\": 5, \"distance\": 0.6102873682975769, \"contenido_texto\": \"El minero es dueño de todos los criaderos que se encuentren dentro de los límites de su pertenencia, cualesquiera que sean las sustancias minerales que contengan.\\n\\nEl concesionario está obligado a dar cuenta a la autoridad minera del hallazgo de cualquier sustancia concesible distinta de las que constaren en el registro y empadronamiento de la mina, para su anotación en los mismos y, en su caso, efectos consiguientes en materia de canon y de inversión de capital.\\n\\nEl concesionario que no cumpliere esta obligación dentro de los SESENTA (60) días del hallazgo, se hará pasible de una multa de DIEZ (10) a CIEN (100) veces el canon de explotación correspondiente a la sustancia omitida.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"876f2765f9270036f9747dad1d5ff4fa\", \"tipo_parte\": \"artículo\", \"numero_parte\": 99, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"35c4ee5963fd171ded8743b34319c955\"}, {\"index\": 2, \"distance\": 0.6051107048988342, \"numero_parte\": 173, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El descubridor de las sustancias de segunda clase en terrenos de dominio particular, tendrá derecho a una indemnización por parte del propietario, si éste prefiere explotar por su cuenta el descubrimiento.\\n\\nEl valor de la indemnización se determinará por la importancia del descubrimiento y de los gastos de la exploración, hecha dentro de los límites de la propiedad particular.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"06c6502893a2bf9625ae182607f0548b\", \"tipo_parte\": \"artículo\", \"id_parte\": \"6f14c6762a768fa53f53ac5e153ebc45\"}, {\"index\": 5, \"distance\": 0.5364412665367126, \"id_padre\": \"c1780adff00ba057a75cc65fea273fcd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 336, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El arrendatario de un fundo común no puede explotar las minas que dentro de sus límites se encuentren y que el propietario haya registrado y explotado.\\n\\nSi descubre un criadero o hay alguna pertenencia abandonada, usará de los derechos que la ley ha establecido en estos casos.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"7729b03e9941eee361c1cd2b064cc0cd\"}, {\"index\": 5, \"distance\": 0.5209110379219055, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Reformase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\\n\\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e4ce42d4ff852f3bcdf1ce032991004d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 351, \"id_parte\": \"b0aa939bdb80e86c674b9ad98ce10026\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 6882,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 5219,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3328,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T14:01:36Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbSBEOdlfbnJkJIqmIGjjdhQrvfWR",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T14:01:36+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 19936,
+                "output_tokens": 8626,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 6464,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.0086025,
+                "output_price": 0.05219,
+                "total_price": 0.0607925,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

@@ -1,0 +1,527 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > La empresa \"Minerales del Plata S.A.\" obtiene en enero de 2024 la concesión de una mina de oro (sustancia de primera categoría) de cuatro pertenencias, ubicada en territorio provincial. Abona el canon anual correspondiente. A mediados del segundo año de la concesión, decide introducir una modificación en el plan de inversiones originalmente presentado ante la autoridad minera, reduciendo el monto global de la inversión en un 30 % respecto del plan inicial, sin previa comunicación a la autoridad competente. Paralelamente, en el cuarto año, la empresa incurre en el incumplimiento del pago del canon anual correspondiente al segundo semestre, lo que es detectado y notificado formalmente por la autoridad minera dos meses después del vencimiento. De acuerdo Código de Minería Argentino, responda las siguientes consultas: ¿Cuál es el plazo y procedimiento que debe seguir la autoridad minera ante la falta de pago del canon anual antes de declarar la caducidad de la concesión? ¿Existe alguna instancia de rescate para el concesionario?\n        ",
+                    "timestamp": "2025-11-13T10:09:18.432544Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería de la Nación Argentina canon anual falta de pago procedimiento caducidad plazo intimación notificación artículos\"}",
+                    "tool_call_id": "call_DDmQ0t61XOJtTK3tHaLPua53",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 528,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 560,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 512,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:09:20Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOYSiVpK4i7VuKInIkHA1Ot5dIoT",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6449630260467529,
+                                "numero_parte": 222,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todo concesionario o minero puede hacer abandono de su concesión o su mina, de acuerdo con el Artículo 226 del Código y sólo desde la fecha de su manifestación a la autoridad competente queda libre del pago del impuesto. La autoridad minera de la respectiva jurisdicción deberá publicar cada semestre o a más tardar cada año, un padrón en el que se anotarán todas las minas por distritos, secciones o departamentos, y el estado en que se hallasen las concesiones.\n\nDentro del término de las publicaciones en caso de abandono o hasta TREINTA (30) días después, podrán pedir los acreedores hipotecarios o privilegiados que se ponga en venta pública la mina para pagarse con su producido, después de abonado el canon y los gastos; no haciéndose uso de este derecho, quedan extinguidos los gravámenes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "id_parte": "60ad26895bf31578edcf53320d2ed512"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6246886849403381,
+                                "numero_parte": 306,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "No rindiendo productos la mina, o no siendo éstos suficientes para cubrir los gastos y las anticipaciones en todo o en parte, cualquiera de los socios contribuyentes puede pedir a la autoridad que el socio inconcurrente sea requerido de pago, con apercibimiento de tenérsele por desistido de sus derechos.\n\nNo verificándose el pago dentro de los TREINTA (30) días siguientes al requerimiento, la parte de mina queda acrecida proporcionadamente a la de los socios contribuyentes.\n\nLa parte que a cada uno corresponda, se inscribirá en el registro de minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "12998a2782cacb6cb5e890225637e4ed",
+                                "tipo_parte": "artículo",
+                                "id_parte": "229097aeb3a3df1c0202028a5263a254"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.602091908454895,
+                                "numero_parte": 353,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Dentro del plazo se sesenta (60) días a contar de la notificación que realice la autoridad minera, el titular de una solicitud de permiso de exploración o de una manifestación de descubrimiento en trámite y sin petición de mensura, deberá presentar una nueva graficación de su solicitud y cumplir con lo dispuesto en el último párrafo del Artículo 45, de conformidad con las disposiciones de este Código, indicando las coordenadas de cada uno de los vértices que conforman el polígono, dentro de cuyos límites se encuentra el área descrita. El plazo antes indicado será improrrogable y el incumplimiento de lo dispuesto causará el abandono automático del trámite y la liberación de la zona.\n\nPresentadas las coordenadas, la autoridad minera las examinará y, encontrándolas correctas, otorgará la respectiva matrícula catastral.\n\nEn el caso de permisos de exploración otorgados o de minas con petición de mensura o de minas mensuradas, la autoridad minera deberá establecer en el campo las coordenadas de la ubicación real del permiso o de la mina, la cual deberá ser notificada a su titular y posteriormente se emitirá la respectiva matrícula catastral, a menos que lo realice directamente el titular, en cuyo caso la autoridad minera las examinará y, encontrándolas correctas, otorgará la correspondiente matrícula.\n\nUna vez concluido en cada provincia el catastro de que trata este artículo, la ubicación que resulta de sus coordenadas para cada derecho minero será inmutable. Todos aquellos derechos mineros que por causa imputable a su titular no hubieren quedado incluidos en el catastro al finalizar éste, se considerarán inexistentes por el solo ministerio de la ley y sin necesidad de acto alguno de la autoridad minera.\n\nSin perjuicio de lo dispuesto en los párrafos precedentes, cada provincia regulará las etapas, procedimientos, recursos y demás materias relacionados al catastro al que se refiere este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "id_parte": "fa1b37762f0923058b5bdf5119bca5a2"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.582758367061615,
+                                "numero_parte": 99,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El minero es dueño de todos los criaderos que se encuentren dentro de los límites de su pertenencia, cualesquiera que sean las sustancias minerales que contengan.\n\nEl concesionario está obligado a dar cuenta a la autoridad minera del hallazgo de cualquier sustancia concesible distinta de las que constaren en el registro y empadronamiento de la mina, para su anotación en los mismos y, en su caso, efectos consiguientes en materia de canon y de inversión de capital.\n\nEl concesionario que no cumpliere esta obligación dentro de los SESENTA (60) días del hallazgo, se hará pasible de una multa de DIEZ (10) a CIEN (100) veces el canon de explotación correspondiente a la sustancia omitida.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "876f2765f9270036f9747dad1d5ff4fa",
+                                "tipo_parte": "artículo",
+                                "id_parte": "35c4ee5963fd171ded8743b34319c955"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5798236727714539,
+                                "numero_parte": 219,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "En cualquier caso de caducidad la mina volverá al dominio originario del Estado y será inscrita como vacante, en condiciones de ser adquirida como tal de acuerdo con las prescripciones de este Código.\n\nCuando la caducidad fuera dispuesta por falta de pago del canon minero, será notificada al concesionario en el último domicilio constituido en el expediente de concesión. El concesionario tendrá un plazo improrrogable de cuarenta y cinco (45) días para rescatar la mina, abonando el canon adeudado actualizado más un recargo del cien por ciento (100%) operándose automáticamente la vacancia si la deuda no fuera abonada en término.\n\nSi existieran acreedores hipotecarios o privilegiados registrados o titulares de derechos reales o personales relativos a la mina, también registrados, éstos podrán solicitar la concesión de la mina dentro de los CUARENTA Y CINCO (45) días de notificados en el respectivo domicilio constituido, de la declaración de caducidad, abonando el canon adeudado hasta el momento de haberse operado la caducidad.\n\nLos acreedores hipotecarios o privilegiados tendrán prioridad para la concesión respecto a los demás titulares de derechos registrados.\n\nCuando la caducidad fuera dispuesta por falta de pago del canon la concesión quedará supeditada a que el concesionario no haya ejercido en término el derecho de rescate.\n\nInscripta y publicada la mina como vacante, el solicitante deberá abonar el canon adeudado hasta el momento de haberse operado la caducidad, ingresando con la solicitud el importe correspondiente.\n\nCaso contrario la solicitud será rechazada y archivada sin dar lugar a recurso alguno. No podrá solicitar la mina el anterior concesionario, sino después de transcurrido UN (1) año de inscripta la vacancia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "id_parte": "c51bf4abf64739b81176618c658eba19"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_DDmQ0t61XOJtTK3tHaLPua53",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:09:35.510258Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería canon minero semestral falta de pago intimación notificación procedimiento caducidad plazo artículo 219 213\"}",
+                    "tool_call_id": "call_PrAyXsd4vHc6RjdCtVoQ7KRN",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2353,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 436,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 384,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:09:35Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOYhqdpB57tW1U9VblIkPM62UBN3",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6124527454376221,
+                                "id_padre": "12998a2782cacb6cb5e890225637e4ed",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 306,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "No rindiendo productos la mina, o no siendo éstos suficientes para cubrir los gastos y las anticipaciones en todo o en parte, cualquiera de los socios contribuyentes puede pedir a la autoridad que el socio inconcurrente sea requerido de pago, con apercibimiento de tenérsele por desistido de sus derechos.\n\nNo verificándose el pago dentro de los TREINTA (30) días siguientes al requerimiento, la parte de mina queda acrecida proporcionadamente a la de los socios contribuyentes.\n\nLa parte que a cada uno corresponda, se inscribirá en el registro de minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "229097aeb3a3df1c0202028a5263a254"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5758849382400513,
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 216,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El canon se pagará adelantado y por partes iguales en DOS (2) semestres, que vencerán el TREINTA (30) de junio y el TREINTA Y UNO (31) de diciembre de cada año, contándose toda fracción de semestre como semestre completo.\n\nEl canon comenzará a devengarse desde el día del registro salvo lo dispuesto en el Artículo 224, esté o no mensurada la mina.\n\nLa concesión de la mina caduca ipso facto por la falta de pago de una anualidad después de transcurridos DOS (2) meses desde el vencimiento.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "349f072349704bcc906eda119fb4e5fd"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5522173047065735,
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 222,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todo concesionario o minero puede hacer abandono de su concesión o su mina, de acuerdo con el Artículo 226 del Código y sólo desde la fecha de su manifestación a la autoridad competente queda libre del pago del impuesto. La autoridad minera de la respectiva jurisdicción deberá publicar cada semestre o a más tardar cada año, un padrón en el que se anotarán todas las minas por distritos, secciones o departamentos, y el estado en que se hallasen las concesiones.\n\nDentro del término de las publicaciones en caso de abandono o hasta TREINTA (30) días después, podrán pedir los acreedores hipotecarios o privilegiados que se ponga en venta pública la mina para pagarse con su producido, después de abonado el canon y los gastos; no haciéndose uso de este derecho, quedan extinguidos los gravámenes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "60ad26895bf31578edcf53320d2ed512"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5381278991699219,
+                                "id_padre": "12998a2782cacb6cb5e890225637e4ed",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 304,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Hay inconcurrencia:\n\n1° No pagándose en el plazo prefijado las cuotas correspondientes.\n\n2° Cuando, a falta de estipulación o acuerdo, no se han entregado estas cuotas TREINTA (30) días después de haberse pedido.\n\n3° Si habiéndose hecho los gastos sin pedir cuotas, o habiendo éstos excedido del valor de las entregas, no se paga la parte correspondiente en el término de QUINCE (15) días.\n\n4° Cuando no se contribuye a los gastos necesarios para la seguridad y conservación de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "5344bc25cde5c4061d56af3d636dc125"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5355353355407715,
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 219,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "En cualquier caso de caducidad la mina volverá al dominio originario del Estado y será inscrita como vacante, en condiciones de ser adquirida como tal de acuerdo con las prescripciones de este Código.\n\nCuando la caducidad fuera dispuesta por falta de pago del canon minero, será notificada al concesionario en el último domicilio constituido en el expediente de concesión. El concesionario tendrá un plazo improrrogable de cuarenta y cinco (45) días para rescatar la mina, abonando el canon adeudado actualizado más un recargo del cien por ciento (100%) operándose automáticamente la vacancia si la deuda no fuera abonada en término.\n\nSi existieran acreedores hipotecarios o privilegiados registrados o titulares de derechos reales o personales relativos a la mina, también registrados, éstos podrán solicitar la concesión de la mina dentro de los CUARENTA Y CINCO (45) días de notificados en el respectivo domicilio constituido, de la declaración de caducidad, abonando el canon adeudado hasta el momento de haberse operado la caducidad.\n\nLos acreedores hipotecarios o privilegiados tendrán prioridad para la concesión respecto a los demás titulares de derechos registrados.\n\nCuando la caducidad fuera dispuesta por falta de pago del canon la concesión quedará supeditada a que el concesionario no haya ejercido en término el derecho de rescate.\n\nInscripta y publicada la mina como vacante, el solicitante deberá abonar el canon adeudado hasta el momento de haberse operado la caducidad, ingresando con la solicitud el importe correspondiente.\n\nCaso contrario la solicitud será rechazada y archivada sin dar lugar a recurso alguno. No podrá solicitar la mina el anterior concesionario, sino después de transcurrido UN (1) año de inscripta la vacancia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "c51bf4abf64739b81176618c658eba19"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_PrAyXsd4vHc6RjdCtVoQ7KRN",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:09:44.309040Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería canon anual falta de pago procedimiento notificación domicilio 45 días rescate recargo 100% artículo 219 216\"}",
+                    "tool_call_id": "call_7PYBbU13UrHbInG4JjZpQLOs",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 3860,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 885,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 832,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:09:45Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOYrgUFGMagb2FROiiw3ULbYJT09",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.4819087088108063,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 306,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "No rindiendo productos la mina, o no siendo éstos suficientes para cubrir los gastos y las anticipaciones en todo o en parte, cualquiera de los socios contribuyentes puede pedir a la autoridad que el socio inconcurrente sea requerido de pago, con apercibimiento de tenérsele por desistido de sus derechos.\n\nNo verificándose el pago dentro de los TREINTA (30) días siguientes al requerimiento, la parte de mina queda acrecida proporcionadamente a la de los socios contribuyentes.\n\nLa parte que a cada uno corresponda, se inscribirá en el registro de minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "12998a2782cacb6cb5e890225637e4ed",
+                                "id_parte": "229097aeb3a3df1c0202028a5263a254"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.4634815454483032,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 54,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La explotación anotará el hecho en el expediente del registro, sin que obsten reclamaciones ni pleitos referentes a la mina o al terreno que debe ocupar.\n\nCompréndense en esta disposición los trabajos anteriores al registro.\n\nLos reclamantes pueden nombrar interventores por su cuenta, y exigir una fianza, para impedir que el tenedor de la mina disponga de los productos.\n\nLas funciones del interventor se reducen a una simple inspección en la mina y a llevar cuenta y razón de gastos y productos.\n\nLa fianza exigida u ofrecida, excusa los interventores; pero en este caso el poseedor deberá llevar esa cuenta y razón.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cc7624d26883dbac7fb4e82ed39f56dd",
+                                "id_parte": "a2bd461ea33a2f6d2a5a3174dfff0109"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.4487563967704773,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 214,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Durante los CINCO (5) primeros años de la concesión, contados a partir del registro, no se impondrá sobre la propiedad de las minas otra contribución que la establecida en el artículo precedente ni sobre sus productos, establecimientos de beneficio, maquinaria, talleres y vehículos destinados al laboreo o explotación.\n\nLa exención fiscal consagrada por este artículo alcanza a todo gravamen o impuesto, cualquiera fuere su denominación y ya sea nacional, provincial o municipal, presente o futuro, aplicable a la explotación y a la comercialización de la producción minera.\n\nQuedan excluidos de esta exención las tasas por retribución de servicios y el sellado de actuación, el cual, en todo caso, será el común que rija en el orden administrativo o judicial.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "id_parte": "20987df2ecbb4d72adc9f5f533b7cbaa"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.443192720413208,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 307,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si el socio inconcurrente no se encuentra en el distrito a que la mina corresponde, ni en el lugar de su residencia, el requerimiento se hará por avisos y edictos, según lo establecido en el Artículo 288.\n\nPero en el caso presente, las publicaciones se harán CINCO (5) veces en el espacio de TREINTA (30) días, y durante igual término se fijarán los carteles.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "12998a2782cacb6cb5e890225637e4ed",
+                                "id_parte": "2123b2d10869f0e97318bb3468a4b22b"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.43739330768585205,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 305,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "En cualquiera de los casos expresados en el artículo precedente, el administrador de la sociedad podrá disponer de la parte de minerales, pastas o dinero correspondientes al inconcurrente, que baste para cubrir los gastos y las cuotas que han debido anticiparse.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "12998a2782cacb6cb5e890225637e4ed",
+                                "id_parte": "993e6a00cb6917ad0b5015983faaf590"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_7PYBbU13UrHbInG4JjZpQLOs",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:10:10.045648Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería caduca ipso facto falta de pago canon procedimiento notificación vacancia artículo 217 218 autoridad minera antes de declarar caducidad\"}",
+                    "tool_call_id": "call_679Ve8xIfSLT4teEQ5GxKRqr",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 5007,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 3840,
+                "output_tokens": 1016,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 960,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:10:10Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOZGtqQYHUY29E8uh4s58tnwy8AP",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6597265601158142,
+                                "numero_parte": 220,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La autoridad minera considerará automáticamente anulados los actuales registros de minas vacantes y los que disponga en el futuro, cualquiera sea su causa y tengan o no mensura aprobada, cuando hayan transcurrido TRES (3) años de su empadronamiento como tales. Los terrenos en que se encuentran ubicadas estas minas quedarán francos e incorporados de pleno derecho y sin cargo alguno a los permisos de exploración y áreas de protección o sujetas a contrataciones que eventualmente estuvieren vigentes. El mismo procedimiento se aplicará a las minas empadronadas como caducas, en el caso en que no hayan regularizado su situación legal dentro de los NOVENTA (90) días de publicada la presente ley, salvo el caso de caducidad contemplado en el segundo párrafo del Artículo 219.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "id_parte": "da029255b596eec5f328f11ce4516831"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6567112803459167,
+                                "numero_parte": 232,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El dueño de la mina puede conservar sus derechos, retirando la declaración de abandono por medio de un escrito presentado dentro del término de las publicaciones.\n\nPuede registrar nuevamente la mina SESENTA (60) días después de vencido el término de las publicaciones.\n\nEn uno y otro caso se supone que la mina no ha sido antes concedida, o solicitada.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "d8a286579fb868b94a145532972e7dba",
+                                "tipo_parte": "artículo",
+                                "id_parte": "c415813aad84a24790f79209c5811869"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6541219353675842,
+                                "numero_parte": 219,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "En cualquier caso de caducidad la mina volverá al dominio originario del Estado y será inscrita como vacante, en condiciones de ser adquirida como tal de acuerdo con las prescripciones de este Código.\n\nCuando la caducidad fuera dispuesta por falta de pago del canon minero, será notificada al concesionario en el último domicilio constituido en el expediente de concesión. El concesionario tendrá un plazo improrrogable de cuarenta y cinco (45) días para rescatar la mina, abonando el canon adeudado actualizado más un recargo del cien por ciento (100%) operándose automáticamente la vacancia si la deuda no fuera abonada en término.\n\nSi existieran acreedores hipotecarios o privilegiados registrados o titulares de derechos reales o personales relativos a la mina, también registrados, éstos podrán solicitar la concesión de la mina dentro de los CUARENTA Y CINCO (45) días de notificados en el respectivo domicilio constituido, de la declaración de caducidad, abonando el canon adeudado hasta el momento de haberse operado la caducidad.\n\nLos acreedores hipotecarios o privilegiados tendrán prioridad para la concesión respecto a los demás titulares de derechos registrados.\n\nCuando la caducidad fuera dispuesta por falta de pago del canon la concesión quedará supeditada a que el concesionario no haya ejercido en término el derecho de rescate.\n\nInscripta y publicada la mina como vacante, el solicitante deberá abonar el canon adeudado hasta el momento de haberse operado la caducidad, ingresando con la solicitud el importe correspondiente.\n\nCaso contrario la solicitud será rechazada y archivada sin dar lugar a recurso alguno. No podrá solicitar la mina el anterior concesionario, sino después de transcurrido UN (1) año de inscripta la vacancia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "id_parte": "c51bf4abf64739b81176618c658eba19"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6420694589614868,
+                                "numero_parte": 222,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todo concesionario o minero puede hacer abandono de su concesión o su mina, de acuerdo con el Artículo 226 del Código y sólo desde la fecha de su manifestación a la autoridad competente queda libre del pago del impuesto. La autoridad minera de la respectiva jurisdicción deberá publicar cada semestre o a más tardar cada año, un padrón en el que se anotarán todas las minas por distritos, secciones o departamentos, y el estado en que se hallasen las concesiones.\n\nDentro del término de las publicaciones en caso de abandono o hasta TREINTA (30) días después, podrán pedir los acreedores hipotecarios o privilegiados que se ponga en venta pública la mina para pagarse con su producido, después de abonado el canon y los gastos; no haciéndose uso de este derecho, quedan extinguidos los gravámenes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "id_parte": "60ad26895bf31578edcf53320d2ed512"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6120808124542236,
+                                "numero_parte": 306,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "No rindiendo productos la mina, o no siendo éstos suficientes para cubrir los gastos y las anticipaciones en todo o en parte, cualquiera de los socios contribuyentes puede pedir a la autoridad que el socio inconcurrente sea requerido de pago, con apercibimiento de tenérsele por desistido de sus derechos.\n\nNo verificándose el pago dentro de los TREINTA (30) días siguientes al requerimiento, la parte de mina queda acrecida proporcionadamente a la de los socios contribuyentes.\n\nLa parte que a cada uno corresponda, se inscribirá en el registro de minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "12998a2782cacb6cb5e890225637e4ed",
+                                "tipo_parte": "artículo",
+                                "id_parte": "229097aeb3a3df1c0202028a5263a254"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_679Ve8xIfSLT4teEQ5GxKRqr",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:10:31.644678Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 2, \"distance\": 0.5758849382400513, \"id_padre\": \"48189d59386b7439d913d7e9802bfefd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 216, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El canon se pagará adelantado y por partes iguales en DOS (2) semestres, que vencerán el TREINTA (30) de junio y el TREINTA Y UNO (31) de diciembre de cada año, contándose toda fracción de semestre como semestre completo.\\n\\nEl canon comenzará a devengarse desde el día del registro salvo lo dispuesto en el Artículo 224, esté o no mensurada la mina.\\n\\nLa concesión de la mina caduca ipso facto por la falta de pago de una anualidad después de transcurridos DOS (2) meses desde el vencimiento.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"349f072349704bcc906eda119fb4e5fd\"}, {\"index\": 5, \"distance\": 0.5355353355407715, \"id_padre\": \"48189d59386b7439d913d7e9802bfefd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 219, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"En cualquier caso de caducidad la mina volverá al dominio originario del Estado y será inscrita como vacante, en condiciones de ser adquirida como tal de acuerdo con las prescripciones de este Código.\\n\\nCuando la caducidad fuera dispuesta por falta de pago del canon minero, será notificada al concesionario en el último domicilio constituido en el expediente de concesión. El concesionario tendrá un plazo improrrogable de cuarenta y cinco (45) días para rescatar la mina, abonando el canon adeudado actualizado más un recargo del cien por ciento (100%) operándose automáticamente la vacancia si la deuda no fuera abonada en término.\\n\\nSi existieran acreedores hipotecarios o privilegiados registrados o titulares de derechos reales o personales relativos a la mina, también registrados, éstos podrán solicitar la concesión de la mina dentro de los CUARENTA Y CINCO (45) días de notificados en el respectivo domicilio constituido, de la declaración de caducidad, abonando el canon adeudado hasta el momento de haberse operado la caducidad.\\n\\nLos acreedores hipotecarios o privilegiados tendrán prioridad para la concesión respecto a los demás titulares de derechos registrados.\\n\\nCuando la caducidad fuera dispuesta por falta de pago del canon la concesión quedará supeditada a que el concesionario no haya ejercido en término el derecho de rescate.\\n\\nInscripta y publicada la mina como vacante, el solicitante deberá abonar el canon adeudado hasta el momento de haberse operado la caducidad, ingresando con la solicitud el importe correspondiente.\\n\\nCaso contrario la solicitud será rechazada y archivada sin dar lugar a recurso alguno. No podrá solicitar la mina el anterior concesionario, sino después de transcurrido UN (1) año de inscripta la vacancia.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"c51bf4abf64739b81176618c658eba19\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 6509,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 4992,
+                "output_tokens": 2108,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1344,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:10:34Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbOZemG29AetfT8tuuvWSAY1eFret",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T10:10:34+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 18257,
+                "output_tokens": 5005,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 4032,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00252025,
+                "output_price": 0.02108,
+                "total_price": 0.02360025,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

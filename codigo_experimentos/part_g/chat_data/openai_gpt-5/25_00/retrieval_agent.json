@@ -1,0 +1,685 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Régimen de asignación/multiplicidad de pertenencias aplicable a yacimientos de litio en Argentina al año 2025: categorías del Código de Minería, tamaño y número de pertenencias por mina, reglas especiales para salmueras/salares, leyes y decretos modificatorios relevantes (1990-2025), jurisprudencia si la hay.\n        ",
+                    "timestamp": "2025-11-12T19:25:58.631592Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería de la Nación Argentina: categorías de minas (primera, segunda, tercera), régimen de pertenencias (tamaño de pertenencia, número de pertenencias por mina), reglas para salmueras/salares\"}",
+                    "tool_call_id": "call_ZqpCYndOCFcP6TO8zyoABkIB",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 393,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 968,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 896,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T19:26:00Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbAlcUhDoT3D0OKXNYbOrQKPkSyyJ",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.675052285194397,
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6679568886756897,
+                                "contenido_texto": "La zona de explotación del yacimiento ferrífero de Sierra Grande, en la Provincia de Río Negro, queda fijada dentro de los límites de los lotes 20 y 21, fracción E, Colonia Pastoril Coronel Chilavert, Provincia de Río Negro.\n\nLa cuenca ferrífera de Sierra Grande será considerada como una sola mina, constituida por una sola pertenencia y su explotación será realizada por intermedio de HIERRO PATAGONICO DE SIERRA GRANDE, SOCIEDAD ANONIMA MINERA.\n\nLo dispuesto precedentemente no afectará derechos adquiridos ni la percepción por la Provincia de Río Negro del canon establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 350,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "5d79b36a6bc696bc7c4b2c2cf54a06d2"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6557943820953369,
+                                "contenido_texto": "La zona de explotación del yacimiento Carbonífero Río Turbio, en la Provincia de Santa Cruz, queda fijada dentro de los siguientes límites: al Norte el Paralelo 51 16' 00\"; al Este el Meridiano 72 11' 00\"; al Sur y al Oeste la frontera con la REPUBLICA DE CHILE.\n\nLa cuenca carbonífera de Río Turbio será considerada como una mina constituida por una sola pertenencia y su explotación será realizada por el Estado Nacional, por intermedio de YACIMIENTOS CARBONÍFEROS FISCALES.\n\nLo dispuesto precedentemente no afectará la percepción por la provincia de Santa Cruz del canon minero establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 349,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "f2accc98ff6a0e95d8b2724bb15d4dd5"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6542580127716064,
+                                "contenido_texto": "Las minas son bienes privados de la Nación o de las Provincias , según el territorio en que se encuentren.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4f349b3799fb5e95b30eea8e2d13ca9a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6414474248886108,
+                                "contenido_texto": "El REGISTRO CATASTRAL MINERO dependerá de la autoridad minera de cada jurisdicción y quedará constituido con la finalidad principal de reflejar la situación física, jurídica y demás antecedentes que conduzcan a la confección de la matrícula catastral correspondiente a cada derecho minero que reconoce este Código.\n\nLas provincias procurarán el establecimiento de sistemas catastrales mineros uniformes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8052e97dce5d023ad033ecb592c6d4b3",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 20,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "8900371ff9cc8538be182a9a20fe3a5f"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_ZqpCYndOCFcP6TO8zyoABkIB",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T19:26:12.447945Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería: clasificación de minas que incluye salinas, salitres, nitratos, boratos, salmueras; litio; categoría tercera o primera? artículos que mencionan salinas y salmueras\"}",
+                    "tool_call_id": "call_twaNPgfBhfJ2YUGVXWmQ70Yr",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1513,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1032,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 960,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T19:26:15Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbAlraTJcPIu0WMXTKZvCZqMPUk1t",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7132598161697388,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 4,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Corresponden a la segunda categoría:\n\na) Las arenas metalíferas y piedras preciosas que se encuentran en el lecho de los ríos, aguas corrientes y los placeres.\n\nb) Los desmontes, relaves y escoriales de explotaciones anteriores, mientras las minas permanecen sin amparo y los relaves y escoriales de los establecimientos de beneficio abandonados o abiertos, en tanto no los recobre su dueño.\n\nc) Los salitres, salinas y turberas.\n\nd) Los metales no comprendidos en la primera categoría.\n\ne) Las tierras piritosas y aluminosas, abrasivos, ocres, resinas, esteatitas, baritina, caparrosas, grafito, caolín, sales alcalinas o alcalino terrosas, amianto, bentonita, zeolitas o minerales permutantes o permutíticos.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e951a8bcd2ec577d42cf711ce64c6fb7",
+                                "id_parte": "b0e659f5cf64a11ccd3ca31e56f8c56f"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6787812113761902,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 179,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los depósitos de salitre, las salinas y turberas, se solicitarán en la misma forma que las sustancias de la primera categoría.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9e1522f656ee97f638318bc2f9ecebda",
+                                "id_parte": "0474a0a46e0433e80e3b7ace6da00d13"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6080916523933411,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 5,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Componen la tercera categoría las producciones minerales de naturaleza pétrea o terrosa, y en general todas las que sirven para materiales de construcción y ornamento, cuyo conjunto forma las canteras.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e951a8bcd2ec577d42cf711ce64c6fb7",
+                                "id_parte": "60dfbac337127c856b521b7a4d275a34"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5798525214195251,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5781832337379456,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 1,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Código de Minería rige los derechos, obligaciones y procedimientos referentes a la adquisición, explotación y aprovechamiento de las sustancias minerales.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ebad6798643112a64729d7cc7a1abf2c",
+                                "id_parte": "78020a7e760ce39a4591da47093358d7"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_twaNPgfBhfJ2YUGVXWmQ70Yr",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T19:26:33.763042Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería Argentina artículos sobre pertenencias: tamaño de la pertenencia minera, dimensiones, artículos 67, 76, 176, 181, 312; yacimientos diseminados, boratos y litio, multiplicidad de pertenencias, grupos mineros\"}",
+                    "tool_call_id": "call_EzJm2HQuvP6uNfJAgsmd8mct",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2529,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 658,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 576,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T19:26:35Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbAmB1pERLvNtXFTT9iRrYfzDZxLs",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7310789227485657,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6705230474472046,
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6332224011421204,
+                                "id_padre": "8052e97dce5d023ad033ecb592c6d4b3",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 20,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El REGISTRO CATASTRAL MINERO dependerá de la autoridad minera de cada jurisdicción y quedará constituido con la finalidad principal de reflejar la situación física, jurídica y demás antecedentes que conduzcan a la confección de la matrícula catastral correspondiente a cada derecho minero que reconoce este Código.\n\nLas provincias procurarán el establecimiento de sistemas catastrales mineros uniformes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8900371ff9cc8538be182a9a20fe3a5f"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6156004667282104,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 349,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La zona de explotación del yacimiento Carbonífero Río Turbio, en la Provincia de Santa Cruz, queda fijada dentro de los siguientes límites: al Norte el Paralelo 51 16' 00\"; al Este el Meridiano 72 11' 00\"; al Sur y al Oeste la frontera con la REPUBLICA DE CHILE.\n\nLa cuenca carbonífera de Río Turbio será considerada como una mina constituida por una sola pertenencia y su explotación será realizada por el Estado Nacional, por intermedio de YACIMIENTOS CARBONÍFEROS FISCALES.\n\nLo dispuesto precedentemente no afectará la percepción por la provincia de Santa Cruz del canon minero establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "f2accc98ff6a0e95d8b2724bb15d4dd5"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6052848696708679,
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 223,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las disposiciones de los artículos anteriores relativas al pago de la patente o al canon minero, se aplicarán en la misma forma, aun en los casos que por ampliación o acrecentamiento, o formación de grupos mineros, o compañías de minas, conforme a los Artículos 87, 109, 113, 116, y 140 aumentase el número de unidades de medidas de cada concesión.\n\nLas demasías, sea cualquiera su extensión, serán consideradas a los efectos del pago de la patente como una pertenencia completa en todos los casos y variantes establecidos en el Acápite III, del Título VII.\n\nCuando el concesionario o dueño de la demasía no fuera un colindante, además del pago del canon tendrá la obligación de invertir capital como lo dispone la presente ley.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "1adc32d645730ce4350230d75547b0b0"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_EzJm2HQuvP6uNfJAgsmd8mct",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T19:26:42.965806Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería Argentino Artículo 67 descubridor número de pertenencias por descubrimiento primera categoría\"}",
+                    "tool_call_id": "call_M07RNe4J7L1JP5aovZlQTfH6",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería Argentino Artículo 76 yacimientos de tipo diseminado borato y litio contenido literal\"}",
+                    "tool_call_id": "call_tUdlbxfnxlYo9j5lew82Co3y",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería Argentino Artículo 176 181 salitres salinas salmueras salares \\\"de cosecha\\\" pertenencias\"}",
+                    "tool_call_id": "call_DHvDsfRGnlFuys6Zk2gP20BM",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 3753,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 1408,
+                "output_tokens": 1365,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1216,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T19:26:46Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbAmM67kbEbu65oKiXcasplpNt3IU",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6446890830993652,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6172252297401428,
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5709324479103088,
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5631836652755737,
+                                "id_padre": "8052e97dce5d023ad033ecb592c6d4b3",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 20,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El REGISTRO CATASTRAL MINERO dependerá de la autoridad minera de cada jurisdicción y quedará constituido con la finalidad principal de reflejar la situación física, jurídica y demás antecedentes que conduzcan a la confección de la matrícula catastral correspondiente a cada derecho minero que reconoce este Código.\n\nLas provincias procurarán el establecimiento de sistemas catastrales mineros uniformes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8900371ff9cc8538be182a9a20fe3a5f"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5552814602851868,
+                                "id_padre": "c2422a1c629cff5791d1b4b0c379547d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 58,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La persona que ejecutando por otro trabajos mineros, hace un descubrimiento, descubre para el dueño de los trabajos.\n\nPero si los trabajos no son verdaderamente mineros, el descubrimiento pertenece a ambos por mitad.\n\nEsto mismo se observará cuando cualquier empleado que goce sueldo o salario de una mina, aunque no ejecute trabajo alguno, descubre dentro del radio de UN (1) kilómetro, tomado desde los límites de esa mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "9d1e43a1b63428bde9f54b7d6b7fcefd"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_M07RNe4J7L1JP5aovZlQTfH6",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T19:27:05.079873Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6531965136528015,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5925843715667725,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e951a8bcd2ec577d42cf711ce64c6fb7",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 4,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Corresponden a la segunda categoría:\n\na) Las arenas metalíferas y piedras preciosas que se encuentran en el lecho de los ríos, aguas corrientes y los placeres.\n\nb) Los desmontes, relaves y escoriales de explotaciones anteriores, mientras las minas permanecen sin amparo y los relaves y escoriales de los establecimientos de beneficio abandonados o abiertos, en tanto no los recobre su dueño.\n\nc) Los salitres, salinas y turberas.\n\nd) Los metales no comprendidos en la primera categoría.\n\ne) Las tierras piritosas y aluminosas, abrasivos, ocres, resinas, esteatitas, baritina, caparrosas, grafito, caolín, sales alcalinas o alcalino terrosas, amianto, bentonita, zeolitas o minerales permutantes o permutíticos.",
+                                "id_parte": "b0e659f5cf64a11ccd3ca31e56f8c56f"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5645599961280823,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 349,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La zona de explotación del yacimiento Carbonífero Río Turbio, en la Provincia de Santa Cruz, queda fijada dentro de los siguientes límites: al Norte el Paralelo 51 16' 00\"; al Este el Meridiano 72 11' 00\"; al Sur y al Oeste la frontera con la REPUBLICA DE CHILE.\n\nLa cuenca carbonífera de Río Turbio será considerada como una mina constituida por una sola pertenencia y su explotación será realizada por el Estado Nacional, por intermedio de YACIMIENTOS CARBONÍFEROS FISCALES.\n\nLo dispuesto precedentemente no afectará la percepción por la provincia de Santa Cruz del canon minero establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.",
+                                "id_parte": "f2accc98ff6a0e95d8b2724bb15d4dd5"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5389940738677979,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ebad6798643112a64729d7cc7a1abf2c",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 1,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Código de Minería rige los derechos, obligaciones y procedimientos referentes a la adquisición, explotación y aprovechamiento de las sustancias minerales.",
+                                "id_parte": "78020a7e760ce39a4591da47093358d7"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5371757745742798,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 208,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los titulares de minas que contengan minerales nucleares deberán suministrar con carácter de declaración jurada, a requerimiento del organismo a que se refiere el Artículo 205 y de la autoridad minera, la información relativa a reservas y producción de tales minerales y sus concentrados, bajo sanción de una multa de hasta QUINIENTAS (500) veces el valor del canon que corresponda a la pertenencia indicada en el artículo anterior.",
+                                "id_parte": "26275af2f24e81591ad0814c80b19286"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_tUdlbxfnxlYo9j5lew82Co3y",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T19:27:05.078629Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6609501838684082,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las pertenencias de los depósitos de salitre y de las salinas de cosecha constarán de CIEN (100) hectáreas.\n\nLas de sal de roca y las de turba de VEINTE (20) hectáreas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9e1522f656ee97f638318bc2f9ecebda",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 181,
+                                "id_parte": "b9116fc9f7d8797041b5722f41e9cdf3"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6257885694503784,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6250197887420654,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Corresponden a la segunda categoría:\n\na) Las arenas metalíferas y piedras preciosas que se encuentran en el lecho de los ríos, aguas corrientes y los placeres.\n\nb) Los desmontes, relaves y escoriales de explotaciones anteriores, mientras las minas permanecen sin amparo y los relaves y escoriales de los establecimientos de beneficio abandonados o abiertos, en tanto no los recobre su dueño.\n\nc) Los salitres, salinas y turberas.\n\nd) Los metales no comprendidos en la primera categoría.\n\ne) Las tierras piritosas y aluminosas, abrasivos, ocres, resinas, esteatitas, baritina, caparrosas, grafito, caolín, sales alcalinas o alcalino terrosas, amianto, bentonita, zeolitas o minerales permutantes o permutíticos.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e951a8bcd2ec577d42cf711ce64c6fb7",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 4,
+                                "id_parte": "b0e659f5cf64a11ccd3ca31e56f8c56f"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6152921915054321,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los depósitos de salitre, las salinas y turberas, se solicitarán en la misma forma que las sustancias de la primera categoría.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9e1522f656ee97f638318bc2f9ecebda",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 179,
+                                "id_parte": "0474a0a46e0433e80e3b7ace6da00d13"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6138092279434204,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El socavonero tiene derecho a explotar el criadero nuevo que encuentre en pertenencia correspondiente a otro criadero registrado en la superficie, abriendo nuevas labores en seguimiento del nuevo criadero y aprovechando exclusivamente los minerales que extraiga.\n\nCesa este derecho desde el momento en que las labores de la mina se comuniquen con las del socavón.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 134,
+                                "id_parte": "3c130aaed007dd527b96f24559d80424"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_DHvDsfRGnlFuys6Zk2gP20BM",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T19:27:05.078386Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "Voy a realizar una última búsqueda para capturar los artículos del Código de Minería que fijan las medidas/dimensiones de las pertenencias (tamaños por categoría), y en particular el Art. 76 que menciona yacimientos diseminados, borato y litio.\n{\"query\":\"Código de Minería Argentino medidas de las pertenencias dimensiones hectáreas artículos 67 68 69 70 71 72 73 74 75 76 litio borato yacimiento diseminado tamaño pertenencia primera categoría\"}\n{\"selected_documents\": [{\"index\": 1, \"distance\": 0.7132598161697388, \"tipo_parte\": \"artículo\", \"numero_parte\": 4, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Corresponden a la segunda categoría:\\n\\na) Las arenas metalíferas y piedras preciosas que se encuentran en el lecho de los ríos, aguas corrientes y los placeres.\\n\\nb) Los desmontes, relaves y escoriales de explotaciones anteriores, mientras las minas permanecen sin amparo y los relaves y escoriales de los establecimientos de beneficio abandonados o abiertos, en tanto no los recobre su dueño.\\n\\nc) Los salitres, salinas y turberas.\\n\\nd) Los metales no comprendidos en la primera categoría.\\n\\ne) Las tierras piritosas y aluminosas, abrasivos, ocres, resinas, esteatitas, baritina, caparrosas, grafito, caolín, sales alcalinas o alcalino terrosas, amianto, bentonita, zeolitas o minerales permutantes o permutíticos.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e951a8bcd2ec577d42cf711ce64c6fb7\", \"id_parte\": \"b0e659f5cf64a11ccd3ca31e56f8c56f\"}, {\"index\": 4, \"distance\": 0.5798525214195251, \"tipo_parte\": \"artículo\", \"numero_parte\": 351, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\\n\\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e4ce42d4ff852f3bcdf1ce032991004d\", \"id_parte\": \"b0aa939bdb80e86c674b9ad98ce10026\"}, {\"index\": 1, \"distance\": 0.6609501838684082, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las pertenencias de los depósitos de salitre y de las salinas de cosecha constarán de CIEN (100) hectáreas.\\n\\nLas de sal de roca y las de turba de VEINTE (20) hectáreas.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"9e1522f656ee97f638318bc2f9ecebda\", \"tipo_parte\": \"artículo\", \"numero_parte\": 181, \"id_parte\": \"b9116fc9f7d8797041b5722f41e9cdf3\"}, {\"index\": 2, \"distance\": 0.6787812113761902, \"tipo_parte\": \"artículo\", \"numero_parte\": 179, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Los depósitos de salitre, las salinas y turberas, se solicitarán en la misma forma que las sustancias de la primera categoría.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"9e1522f656ee97f638318bc2f9ecebda\", \"id_parte\": \"0474a0a46e0433e80e3b7ace6da00d13\"}, {\"index\": 2, \"distance\": 0.6705230474472046, \"id_padre\": \"b7b2395165f9da1733259a939cbc3912\", \"tipo_parte\": \"artículo\", \"numero_parte\": 145, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"d96ffc6be11f4b7087cd65d35f95f9aa\"}, {\"index\": 5, \"distance\": 0.6052848696708679, \"id_padre\": \"48189d59386b7439d913d7e9802bfefd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 223, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las disposiciones de los artículos anteriores relativas al pago de la patente o al canon minero, se aplicarán en la misma forma, aun en los casos que por ampliación o acrecentamiento, o formación de grupos mineros, o compañías de minas, conforme a los Artículos 87, 109, 113, 116, y 140 aumentase el número de unidades de medidas de cada concesión.\\n\\nLas demasías, sea cualquiera su extensión, serán consideradas a los efectos del pago de la patente como una pertenencia completa en todos los casos y variantes establecidos en el Acápite III, del Título VII.\\n\\nCuando el concesionario o dueño de la demasía no fuera un colindante, además del pago del canon tendrá la obligación de invertir capital como lo dispone la presente ley.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"1adc32d645730ce4350230d75547b0b0\"}, {\"index\": 4, \"distance\": 0.6542580127716064, \"contenido_texto\": \"Las minas son bienes privados de la Nación o de las Provincias , según el territorio en que se encuentren.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"4f349b3799fb5e95b30eea8e2d13ca9a\", \"tipo_parte\": \"artículo\", \"numero_parte\": 7, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"7e30095ca21fb10aa2934c5f1bc0e873\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 7648,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 2484,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 832,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T19:27:06Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbAmgswIRYLPcJoQuWCrCNrCanbBt",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-12T19:27:06+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 15836,
+                "output_tokens": 6507,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 4480,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00956,
+                "output_price": 0.02484,
+                "total_price": 0.0344,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

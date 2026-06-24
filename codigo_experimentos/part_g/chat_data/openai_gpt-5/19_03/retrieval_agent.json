@@ -1,0 +1,459 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Según el Código de Minería argentino, ¿cuáles son las obligaciones del arrendatario de una mina en relación con: (a) los daños ocasionados a terceros por la actividad minera; y (b) el cumplimiento del contrato de arrendamiento (incluyendo subarrendar y rebajar puentes y macizos)?\n        ",
+                    "timestamp": "2025-11-12T18:34:21.594828Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería arrendatario daños a terceros actividad minera responsabilidad terceros\"}",
+                    "tool_call_id": "call_Jqe0Rp8iDDnfYHwDfx7WsQ30",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 384,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 488,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 448,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T18:34:23Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb9xfl0lTTC2J1h4L4qdelt1gZcUc",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6459188461303711,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 342,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.",
+                                "id_parte": "49d492c382c773510821a3778d3ec0c4"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6257539987564087,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 337,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando se ha entregado una mina con la condición de dar al propietario una parte de los productos libres, el empresario tiene las mismas obligaciones y derechos que el arrendatario.\n\nEn caso de que se suspenda la explotación, contraviniendo a las estipulaciones del contrato, el dueño puede rescindirlo y cobrar daños y perjuicios.",
+                                "id_parte": "6211fbd12ed55b4491cb9042d92c66fc"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6175073981285095,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 334,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El arrendatario es responsable de los daños y perjuicios causados a otras personas por hechos propios.",
+                                "id_parte": "8b0814a89610b9f2f1357fc64cd08b4b"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6065372228622437,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 340,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\n\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.",
+                                "id_parte": "b234c3008b7f7dab9d73e23e4c5b894e"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5935648083686829,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 333,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si la mina es denunciada por actos u omisiones del arrendatario, el propietario no podrá defenderse con la excepción del hecho ajeno, salvo si hubiese mediado dolo o fraude.\n\nPero el arrendatario pagará los gastos de la defensa o del rescate de la mina; y en el caso de declararse el desamparo, su valor y los daños y perjuicios.",
+                                "id_parte": "909faa5c4663f7d1fbd7792c0a6f4f29"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_Jqe0Rp8iDDnfYHwDfx7WsQ30",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T18:34:33.746387Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"rebajar puentes y macizos arrendatario Código de Minería\"}",
+                    "tool_call_id": "call_5Ge9ipB2siTqPdDohi1xcUdK",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"subarrendar mina arrendatario Código de Minería subarrendar\"}",
+                    "tool_call_id": "call_7ghxkccoWNbtJACVJp6buNNU",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"obligaciones del arrendatario contrato arrendamiento mina Código de Minería\"}",
+                    "tool_call_id": "call_JAEfLfd3Pd0hh4kLylM3DWlo",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1260,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 568,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 448,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T18:34:38Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb9xuOipE4alLUOTTDSQSxdg8jy7O",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7216870784759521,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El arrendatario puede aprovechar la mina en los mismos términos que puede hacerlo el propietario.\n\nPero para rebajar puentes y macizos es necesario una estipulación especial.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 330,
+                                "titulo_parte": null,
+                                "id_parte": "691a19129cc1af078b47c1b08cbc1757"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6484586596488953,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El minero puede pedir el cambio parcial del perímetro de su pertenencia en cualquiera dirección de sus líneas confinantes, habiendo terreno franco. Este cambio constituye la mejora.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eb2df76fbd81dc74976554caf4a051c3",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 114,
+                                "titulo_parte": null,
+                                "id_parte": "cfc4d66f997e008114f5da7c281fcc50"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5916760563850403,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El dueño del suelo debe indemnización al dueño de la mina por los perjuicios causados a la explotación con trabajos en obras posteriores a la concesión, en los mismos casos en que según el Artículo 162, no tiene el propietario derecho a cobrarlos.\n\nLas indemnizaciones en este caso se reducen al pago de los objetos inutilizados y al de las reparaciones o fortificaciones que sean necesarias para la completa habilitación de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 165,
+                                "titulo_parte": null,
+                                "id_parte": "4d54127cd5f36af0ff301dc8b1e82720"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5728656649589539,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El concesionario de una mina no puede oponerse al establecimiento de caminos, canales y otras vías públicas de circulación, cuando las obras deban ejecutarse por el Estado, o por particulares que hayan obtenido el derecho de expropiación por causa de utilidad pública, y cuando la dirección de las vías o la ubicación de las obras no pueda variarse ni modificarse en sentido favorable a la concesión.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 167,
+                                "titulo_parte": null,
+                                "id_parte": "2606d965dba61e358c2d6a9af976ccc4"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5717261433601379,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El usufructuario puede disfrutar los puentes y macizos como puede hacerlo el propietario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 341,
+                                "titulo_parte": null,
+                                "id_parte": "28bd686fb4d9854f6c5c7702cf0f90a8"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_5Ge9ipB2siTqPdDohi1xcUdK",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T18:34:54.665241Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.702833890914917,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 342,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "id_parte": "49d492c382c773510821a3778d3ec0c4"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6684039235115051,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 330,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El arrendatario puede aprovechar la mina en los mismos términos que puede hacerlo el propietario.\n\nPero para rebajar puentes y macizos es necesario una estipulación especial.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "id_parte": "691a19129cc1af078b47c1b08cbc1757"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.647514820098877,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 335,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas no pueden subarrendarse sino cuando en el contrato se haya acordado esa facultad al arrendatario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "id_parte": "f2410e1fa198506486ddadc8bbf7f8d0"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6332080960273743,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 331,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El arrendatario debe mantener el amparo de la mina y conducir sus trabajos con arreglo a las prescripciones de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "id_parte": "a4f2b32708233ec9008559159062678e"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6227272748947144,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 336,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El arrendatario de un fundo común no puede explotar las minas que dentro de sus límites se encuentren y que el propietario haya registrado y explotado.\n\nSi descubre un criadero o hay alguna pertenencia abandonada, usará de los derechos que la ley ha establecido en estos casos.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "id_parte": "7729b03e9941eee361c1cd2b064cc0cd"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_7ghxkccoWNbtJACVJp6buNNU",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T18:34:54.665667Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.724425196647644,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 342,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "49d492c382c773510821a3778d3ec0c4"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7201130390167236,
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 330,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El arrendatario puede aprovechar la mina en los mismos términos que puede hacerlo el propietario.\n\nPero para rebajar puentes y macizos es necesario una estipulación especial.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "691a19129cc1af078b47c1b08cbc1757"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.7120627164840698,
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 337,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando se ha entregado una mina con la condición de dar al propietario una parte de los productos libres, el empresario tiene las mismas obligaciones y derechos que el arrendatario.\n\nEn caso de que se suspenda la explotación, contraviniendo a las estipulaciones del contrato, el dueño puede rescindirlo y cobrar daños y perjuicios.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "6211fbd12ed55b4491cb9042d92c66fc"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.689563512802124,
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 331,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El arrendatario debe mantener el amparo de la mina y conducir sus trabajos con arreglo a las prescripciones de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "a4f2b32708233ec9008559159062678e"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6834444403648376,
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_JAEfLfd3Pd0hh4kLylM3DWlo",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T18:34:54.666846Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 3, \"distance\": 0.6175073981285095, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"c1780adff00ba057a75cc65fea273fcd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 334, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El arrendatario es responsable de los daños y perjuicios causados a otras personas por hechos propios.\", \"id_parte\": \"8b0814a89610b9f2f1357fc64cd08b4b\"}, {\"index\": 4, \"distance\": 0.6332080960273743, \"tipo_parte\": \"artículo\", \"numero_parte\": 331, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El arrendatario debe mantener el amparo de la mina y conducir sus trabajos con arreglo a las prescripciones de este Código.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"c1780adff00ba057a75cc65fea273fcd\", \"id_parte\": \"a4f2b32708233ec9008559159062678e\"}, {\"index\": 3, \"distance\": 0.647514820098877, \"tipo_parte\": \"artículo\", \"numero_parte\": 335, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las minas no pueden subarrendarse sino cuando en el contrato se haya acordado esa facultad al arrendatario.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"c1780adff00ba057a75cc65fea273fcd\", \"id_parte\": \"f2410e1fa198506486ddadc8bbf7f8d0\"}, {\"index\": 1, \"distance\": 0.7216870784759521, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El arrendatario puede aprovechar la mina en los mismos términos que puede hacerlo el propietario.\\n\\nPero para rebajar puentes y macizos es necesario una estipulación especial.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"c1780adff00ba057a75cc65fea273fcd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 330, \"titulo_parte\": null, \"id_parte\": \"691a19129cc1af078b47c1b08cbc1757\"}, {\"index\": 2, \"distance\": 0.6257539987564087, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"c1780adff00ba057a75cc65fea273fcd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 337, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Cuando se ha entregado una mina con la condición de dar al propietario una parte de los productos libres, el empresario tiene las mismas obligaciones y derechos que el arrendatario.\\n\\nEn caso de que se suspenda la explotación, contraviniendo a las estipulaciones del contrato, el dueño puede rescindirlo y cobrar daños y perjuicios.\", \"id_parte\": \"6211fbd12ed55b4491cb9042d92c66fc\"}, {\"index\": 5, \"distance\": 0.5935648083686829, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"c1780adff00ba057a75cc65fea273fcd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 333, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Si la mina es denunciada por actos u omisiones del arrendatario, el propietario no podrá defenderse con la excepción del hecho ajeno, salvo si hubiese mediado dolo o fraude.\\n\\nPero el arrendatario pagará los gastos de la defensa o del rescate de la mina; y en el caso de declararse el desamparo, su valor y los daños y perjuicios.\", \"id_parte\": \"909faa5c4663f7d1fbd7792c0a6f4f29\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4235,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 3299,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2304,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T18:34:55Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-Cb9yB9nStA2IOGwuR51Mib5IE8uT2",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-12T18:34:55+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 5879,
+                "output_tokens": 4355,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3200,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00529375,
+                "output_price": 0.03299,
+                "total_price": 0.03828375,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

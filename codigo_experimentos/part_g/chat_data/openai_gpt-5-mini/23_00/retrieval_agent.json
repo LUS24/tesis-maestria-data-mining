@@ -1,0 +1,617 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Viabilidad de denunciar judicialmente un yacimiento carbonífero en la zona de Río Turbio (Santa Cruz) actualmente en explotación bajo un régimen especial: normativa aplicable, órgano competente, posibles acciones judiciales, efectos del régimen especial, precedentes y limitaciones constitucionales y legales en Argentina.\n        ",
+                    "timestamp": "2025-11-13T17:45:29.010661Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Yacimientos Carbon\\u0000feros R\\ro Turbio r\\u000069gimen especial decreto ley creaci\\u00000d\\u00000f YCRT marco normativo competencias\"}",
+                    "tool_call_id": "call_n8x3oPr5ealXj1wJ30CYuplz",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Argentina miner\\u00000da normativa ambiental aplicable Ley 24.585 t\\u00008dtulo XIII C\\u00000fdigo de Miner\\u00000da Ley General del Ambiente 25.675 provincia de Santa Cruz autoridad de aplicaci\\u00000d\\u00000f evaluaci\\u00000d\\u00000f de impacto ambiental\"}",
+                    "tool_call_id": "call_3PjwAeOnMSFaVzngFy8xzoIr",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"jurisprudencia Corte Suprema amparo ambiental miner\\u00000da Santa Cruz precedentes art\\u00000dculo 43 Constituci\\u00000d\\u00000f acci\\u00000d\\u00000f de da\\u00000f\\u00000ds ambiental colectivo art 30 Ley 25.675 art\\u00000dculo 124 Constituci\\u00000d\\u00000f competencia minas\"}",
+                    "tool_call_id": "call_9KeDTIQZNiZsjxEOT1rMo0eu",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 378,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1426,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1152,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:45:32Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbVfwWxwNtTInbxak1jjD5piNkUNx",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5638240575790405,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Estado Nacional puede solicitar ante las autoridades provinciales permisos de exploración, concesiones de explotación de hidrocarburos fluidos, construcción y explotación de oleoductos, en las condiciones determinadas para los particulares.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 3,
+                                "id_parte": "63cd4d88a28c3de1e57aa737c6ae495d"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5032252669334412,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El canon establecido por el Artículo 4°, inciso 3° de la Ley N° 10.273, será para los concesionarios de exploración de hidrocarburos fluidos, de UN (1) PESO moneda nacional por cada hectárea o fracción que comprenda el permiso correspondiente.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5b4cff76822bc02b19675d9a36793625",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 27,
+                                "id_parte": "d6e846ab845819289b041d5efda6018d"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.49197834730148315,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las servidumbres para la instalación de oleoductos, cañerías de gas u otras vías de transporte para uso minero, serán otorgados de acuerdo al Artículo 146 y siguientes de este Código por la respectiva autoridad provincial, cuando sus recorridos no excedan los límites de la provincia. Pero si el oleoducto llegara a una estación de ferrocarril de Jurisdicción nacional, o el transporte de petróleo a que estuviere destinado se vinculara al realizado por un ferrocarril de Jurisdicción nacional, la concesión deberá ser aprobada por el Poder Ejecutivo Nacional.\n\nEn todos los demás casos y cuando el oleoducto pudiera ser destinado al transporte interprovincial o internacional, la concesión será otorgada exclusivamente por ley de la Nación.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "52eaf0ef45ce807cfb6d6693afb9bc02",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 32,
+                                "id_parte": "8410e687722cb9e3be85a3a7d2282869"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.48802971839904785,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los particulares pueden explorar y explotar minas de hidrocarburos fluidos con arreglo a las prescripciones de este Código y Ley N° 10.273, con las modificaciones introducidas en este APENDICE.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 6,
+                                "id_parte": "7d4a10eefb050b2abaadc2046b0e2e2b"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.4786176085472107,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando el Estado Nacional ejerza las facultades conferidas por las disposiciones precedentes, lo hará por intermedio de Yacimientos Petrolíferos Fiscales.\n\nCuando los Estados Provinciales ejerzan este mismo derecho, lo harán por intermedio de una repartición con personería jurídica creada al efecto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 4,
+                                "id_parte": "b0e659f5cf64a11ccd3ca31e56f8c56f"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_n8x3oPr5ealXj1wJ30CYuplz",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:46:09.962674Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.4879777133464813,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La zona de explotación del yacimiento Carbonífero Río Turbio, en la Provincia de Santa Cruz, queda fijada dentro de los siguientes límites: al Norte el Paralelo 51 16' 00\"; al Este el Meridiano 72 11' 00\"; al Sur y al Oeste la frontera con la REPUBLICA DE CHILE.\n\nLa cuenca carbonífera de Río Turbio será considerada como una mina constituida por una sola pertenencia y su explotación será realizada por el Estado Nacional, por intermedio de YACIMIENTOS CARBONÍFEROS FISCALES.\n\nLo dispuesto precedentemente no afectará la percepción por la provincia de Santa Cruz del canon minero establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 349,
+                                "id_parte": "f2accc98ff6a0e95d8b2724bb15d4dd5"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.4802195727825165,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Estado Nacional o Provincial podrá exigir que la explotación se realice con la intensidad razonable que corresponda a la productividad comprobada de la concesión, a las características de la zona, medios de transporte disponibles y a las condiciones en que se encuentre la industria petrolífera del país.\n\nLa resolución que se dicte por el Poder Ejecutivo Nacional o Provincial puede ser impugnada por acción judicial dentro de los DIEZ (10) días de notificarse personalmente o por cédula en el domicilio legal constituido en la solicitud de exploración. La resolución administrativa no se ejecutará mientras no se dicte la sentencia definitiva.\n\nSi no se cumpliera lo resuelto dentro de los SEIS (6) meses de la notificación administrativa o de la sentencia confirmatoria cuando mediare acción judicial, la concesión podrá ser declarada caduca por el Poder Ejecutivo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "972d274a7b431594c6f1ac1513f5dc30",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 21,
+                                "id_parte": "c1df043f607b09e101cba67444b4bb6e"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.4385247826576233,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas son concedidas a los particulares mediante un canon anual por pertenencia, cuyos montos se actualizarán mediante resolución dictada por la Secretaría de Minería de la Nación, o el organismo que la reemplace, conforme la variación interanual del Índice de Precios al Consumidor (IPC) elaborado y publicado por el Instituto Nacional de Estadística y Censos (INDEC) en los términos que establezca la reglamentación. El concesionario abonará al gobierno de la Nación o de las provincias, según la jurisdicción en que las mismas se hallaren situadas y conforme a las medidas establecidas por este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 213,
+                                "id_parte": "bd701ec8875cebae46908b32323067fd"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.43847936391830444,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El REGISTRO CATASTRAL MINERO dependerá de la autoridad minera de cada jurisdicción y quedará constituido con la finalidad principal de reflejar la situación física, jurídica y demás antecedentes que conduzcan a la confección de la matrícula catastral correspondiente a cada derecho minero que reconoce este Código.\n\nLas provincias procurarán el establecimiento de sistemas catastrales mineros uniformes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8052e97dce5d023ad033ecb592c6d4b3",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 20,
+                                "id_parte": "8900371ff9cc8538be182a9a20fe3a5f"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.4323712885379791,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Para aquellas actividades comprendidas en el ARTICULO 249, y cuya iniciación sea anterior a la vigencia de la Ley 24.585, el concesionario o titular de la planta e instalaciones deberá presentar, dentro del año de su entrada en vigor, el informe de impacto ambiental.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 355,
+                                "id_parte": "0b16c35d5add538f9b334e45ff89d04e"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_3PjwAeOnMSFaVzngFy8xzoIr",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:46:09.963821Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5424695611000061,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 359,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Deróganse el párrafo V del Título IV; el artículo 137, el inc. 2 del Artículo 147; el Artículo 168, el párrafo 2 de la Sección III, del Título VI y la Sección I del Título IX y en todas las demás divisiones del Código y en los mismos artículos citados, se entenderán inaplicables todas aquellas disposiciones que tengan por fundamento la existencia de la obligación del amparo o pueble de la mina, con trabajo, y los que establezcan, reconozcan o reglamenten el derecho de denuncio de concesiones por despueble (Texto según Ley N 10.273, Artículo 17).",
+                                "id_parte": "72c8b9b8a92c91367ade5cbbe0d204fd"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.4971340298652649,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4d442cd021677333a58832d245596294",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 16,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas sólo pueden ser expropiadas por causa de utilidad pública de un orden superior a la razón del privilegio que les acuerda el Artículo 13 de este Código.",
+                                "id_parte": "29bb34e2f4d79e186d96f1d1da046d8e"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.4574599266052246,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4f349b3799fb5e95b30eea8e2d13ca9a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 10,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio del dominio originario del Estado reconocido por el Artículo 7, la propiedad particular de las minas se establece por la concesión legal.",
+                                "id_parte": "15fae8d5ad2c466361dc76ce3f016c3a"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.45538654923439026,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "d06b9956af3dfa67ed14d4059f0592db",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 95,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La autoridad no permitirá no ordenará la remoción de los linderos sino en los casos de mejora y ampliación de pertenencias, determinados por la ley; o en virtud de sentencia del Tribunal Superior de minería en los recursos contra la ilegalidad de las mensuras; o cuando se haya definitivamente declarado que hay lugar a rectificación, o en los casos que expresamente determina la ley.",
+                                "id_parte": "ed9e292c06fe24cf4a66cd6edee156e5"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.45231178402900696,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5b4cff76822bc02b19675d9a36793625",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 28,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El canon anual establecido por el Artículo 4°, inciso 1° de la Ley N° 10.273, a cargo de los concesionarios de minas de hidrocarburos fluidos, será de DIEZ (10) PESOS moneda nacional por cada hectárea o fracción.",
+                                "id_parte": "3c9327d6a156bd3cbe0021dfdd0096ad"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_9KeDTIQZNiZsjxEOT1rMo0eu",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:46:09.961225Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Ley 24.585 impacto ambiental minero procedimiento informe de impacto ambiental autoridad minera fiscalizaci\\u0000n cierre de mina Art\\u0000ddculos 249 a 260 C\\u0000fddigo de Miner\\u0000eda\"}",
+                    "tool_call_id": "call_jlotmJ2IQyl2WNhXHZ8PkzZB",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Ley General del Ambiente 25.675 acci\\u0000f3n de da\\u0000f1o ambiental colectivo art\\u0000ddculo 30 presupuestos m\\u0000adnimos participaci\\u0000f3n acceso a informaci\\u0000f3n evaluaci\\u0000f3n de impacto ambiental\"}",
+                    "tool_call_id": "call_F6zwoOajmjqhCajd0LlKdWs0",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Constituci\\u0000f3n Nacional Argentina art\\u0000ddculo 41 derecho a un ambiente sano art\\u0000ddculo 43 amparo colectivo art\\u0000ddculo 124 dominio originario de los recursos naturales\"}",
+                    "tool_call_id": "call_Bg7ghArM0wheJPrdRZOYC2RA",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4643,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1462,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1216,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:46:10Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbVgYsL8qpSv49YCmZeM9A15ZzQcZ",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.4757038652896881,
+                                "numero_parte": 204,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La explotación de las canteras está sometida a las disposiciones de este Código y de los reglamentos de minas en lo concerniente a la policía y seguridad de las labores.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "7bfb6f0ccbf08975801e2a948a0e2f0d",
+                                "tipo_parte": "artículo",
+                                "id_parte": "7f2091e3b92f0a5cec8b800683491715"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.4733637571334839,
+                                "numero_parte": 134,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El socavonero tiene derecho a explotar el criadero nuevo que encuentre en pertenencia correspondiente a otro criadero registrado en la superficie, abriendo nuevas labores en seguimiento del nuevo criadero y aprovechando exclusivamente los minerales que extraiga.\n\nCesa este derecho desde el momento en que las labores de la mina se comuniquen con las del socavón.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "id_parte": "3c130aaed007dd527b96f24559d80424"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.46577778458595276,
+                                "numero_parte": 355,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Para aquellas actividades comprendidas en el ARTICULO 249, y cuya iniciación sea anterior a la vigencia de la Ley 24.585, el concesionario o titular de la planta e instalaciones deberá presentar, dentro del año de su entrada en vigor, el informe de impacto ambiental.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "id_parte": "0b16c35d5add538f9b334e45ff89d04e"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.46459031105041504,
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.46378204226493835,
+                                "numero_parte": 6,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los particulares pueden explorar y explotar minas de hidrocarburos fluidos con arreglo a las prescripciones de este Código y Ley N° 10.273, con las modificaciones introducidas en este APENDICE.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "id_parte": "7d4a10eefb050b2abaadc2046b0e2e2b"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_jlotmJ2IQyl2WNhXHZ8PkzZB",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:46:45.484740Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.48643559217453003,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 251,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los responsables comprendidos en el articulo 248 deberán presentar ante la autoridad de aplicación, y antes del inicio de cualquier actividad especificada en el Artículo 249, un Informe de Impacto Ambiental.\n\nLa autoridad de aplicación podrá prestar asesoramiento a los pequeños productores para la elaboración del mismo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "id_parte": "b49e40a64d3a73bf5a64bba831c6e0da"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.43043237924575806,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 261,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las normas que reglamenten esta Sección establecerán:\n\na) Los procedimientos, métodos y estándares requeridos, conducentes a la protección ambiental, según las etapas de actividad comprendidas en el Artículo 249, categorización de las actividades por grado de riesgo ambiental y caracterización ecosistemática del área de influencia.\n\nb) La creación de un Registro de consultores y laboratorios a los que los interesados y la Autoridad de Aplicación podrán solicitar asistencia para la realización de trabajos de monitoreo y auditoría externa.\n\nc) La creación de un Registro de Infractores.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b23efc44d95a6f6d789f11fb7fdf24e7",
+                                "id_parte": "8c3875db2648a96ec105037ab6b3dd27"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.4096336364746094,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 258,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los equipos, instalaciones, sistemas, acciones y actividades de prevención, mitigación, rehabilitación, restauración o recomposición ambiental, consignadas por el responsable e incluidas en la Declaración de Impacto Ambiental constituirán obligación del responsable y serán susceptibles de fiscalización de cumplimiento por parte de la autoridad de aplicación.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "id_parte": "c573ab8ab04bb9280d91ff2df9b9e76a"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.38530778884887695,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 257,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La autoridad de aplicación, en el caso de producirse desajustes entre los resultados efectivamente alcanzados y los esperados según la Declaración de Impacto Ambiental, dispondrá la introducción de modificaciones, atendiendo la existencia de nuevos conocimientos acerca del comportamiento de los ecosistemas afectados y las acciones tendientes a una mayor eficiencia para la protección del área de influencia de la actividad. Estas medidas podrán ser consideradas también a solicitud del operador minero.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "id_parte": "b9f8e1c1522fca8128786740fbdec40e"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.36798468232154846,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 262,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El informe de Impacto Ambiental debe incluir:\n\na) La ubicación y descripción ambiental del área de influencia.\n\nb) La descripción del proyecto minero.\n\nc) Las eventuales modificaciones sobre suelo, agua, atmósfera, flora y fauna, relieve y ámbito sociocultural.\n\nd) Las medidas de prevención, mitigación, rehabilitación, restauración o recomposición del medio alterado, según correspondiere.\n\ne) Métodos utilizados.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b23efc44d95a6f6d789f11fb7fdf24e7",
+                                "id_parte": "54c7b047a6be3a2797a7e99d7cf0085d"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_F6zwoOajmjqhCajd0LlKdWs0",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:46:45.485965Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.4183427691459656,
+                                "numero_parte": 349,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La zona de explotación del yacimiento Carbonífero Río Turbio, en la Provincia de Santa Cruz, queda fijada dentro de los siguientes límites: al Norte el Paralelo 51 16' 00\"; al Este el Meridiano 72 11' 00\"; al Sur y al Oeste la frontera con la REPUBLICA DE CHILE.\n\nLa cuenca carbonífera de Río Turbio será considerada como una mina constituida por una sola pertenencia y su explotación será realizada por el Estado Nacional, por intermedio de YACIMIENTOS CARBONÍFEROS FISCALES.\n\nLo dispuesto precedentemente no afectará la percepción por la provincia de Santa Cruz del canon minero establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "id_parte": "f2accc98ff6a0e95d8b2724bb15d4dd5"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.3782145082950592,
+                                "numero_parte": 20,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El REGISTRO CATASTRAL MINERO dependerá de la autoridad minera de cada jurisdicción y quedará constituido con la finalidad principal de reflejar la situación física, jurídica y demás antecedentes que conduzcan a la confección de la matrícula catastral correspondiente a cada derecho minero que reconoce este Código.\n\nLas provincias procurarán el establecimiento de sistemas catastrales mineros uniformes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8052e97dce5d023ad033ecb592c6d4b3",
+                                "tipo_parte": "artículo",
+                                "id_parte": "8900371ff9cc8538be182a9a20fe3a5f"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.3658704459667206,
+                                "numero_parte": 4,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando el Estado Nacional ejerza las facultades conferidas por las disposiciones precedentes, lo hará por intermedio de Yacimientos Petrolíferos Fiscales.\n\nCuando los Estados Provinciales ejerzan este mismo derecho, lo harán por intermedio de una repartición con personería jurídica creada al efecto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "id_parte": "b0e659f5cf64a11ccd3ca31e56f8c56f"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.3559071719646454,
+                                "numero_parte": 28,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El canon anual establecido por el Artículo 4°, inciso 1° de la Ley N° 10.273, a cargo de los concesionarios de minas de hidrocarburos fluidos, será de DIEZ (10) PESOS moneda nacional por cada hectárea o fracción.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5b4cff76822bc02b19675d9a36793625",
+                                "tipo_parte": "artículo",
+                                "id_parte": "3c9327d6a156bd3cbe0021dfdd0096ad"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.35549622774124146,
+                                "numero_parte": 79,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El concesionario tiene derecho a que, en la demarcación de la pertenencia, se de a la corrida del criadero la extensión asignada a su inclinación, y a ésta la asignada a la corrida; pero esto sólo tendrá lugar cuando no resulte perjuicio de tercero.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ee54a3b20a9dac1f871c62ef6486863c",
+                                "tipo_parte": "artículo",
+                                "id_parte": "5d4f471d84eb906b7a848cba53e57cc8"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_Bg7ghArM0wheJPrdRZOYC2RA",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:46:45.484470Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 1, \"distance\": 0.4183427691459656, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La zona de explotación del yacimiento Carbonífero Río Turbio, en la Provincia de Santa Cruz, queda fijada dentro de los siguientes límites: al Norte el Paralelo 51 16' 00\\\"; al Este el Meridiano 72 11' 00\\\"; al Sur y al Oeste la frontera con la REPUBLICA DE CHILE.\\n\\nLa cuenca carbonífera de Río Turbio será considerada como una mina constituida por una sola pertenencia y su explotación será realizada por el Estado Nacional, por intermedio de YACIMIENTOS CARBONÍFEROS FISCALES.\\n\\nLo dispuesto precedentemente no afectará la percepción por la provincia de Santa Cruz del canon minero establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e4ce42d4ff852f3bcdf1ce032991004d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 349, \"id_parte\": \"f2accc98ff6a0e95d8b2724bb15d4dd5\"}, {\"index\": 5, \"distance\": 0.4323712885379791, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Para aquellas actividades comprendidas en el ARTICULO 249, y cuya iniciación sea anterior a la vigencia de la Ley 24.585, el concesionario o titular de la planta e instalaciones deberá presentar, dentro del año de su entrada en vigor, el informe de impacto ambiental.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e4ce42d4ff852f3bcdf1ce032991004d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 355, \"id_parte\": \"0b16c35d5add538f9b334e45ff89d04e\"}, {\"index\": 1, \"distance\": 0.48643559217453003, \"tipo_parte\": \"artículo\", \"numero_parte\": 251, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Los responsables comprendidos en el articulo 248 deberán presentar ante la autoridad de aplicación, y antes del inicio de cualquier actividad especificada en el Artículo 249, un Informe de Impacto Ambiental.\\n\\nLa autoridad de aplicación podrá prestar asesoramiento a los pequeños productores para la elaboración del mismo.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"ea6061e5cad21d1fc261c7a43c937e35\", \"id_parte\": \"b49e40a64d3a73bf5a64bba831c6e0da\"}, {\"index\": 5, \"distance\": 0.36798468232154846, \"tipo_parte\": \"artículo\", \"numero_parte\": 262, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El informe de Impacto Ambiental debe incluir:\\n\\na) La ubicación y descripción ambiental del área de influencia.\\n\\nb) La descripción del proyecto minero.\\n\\nc) Las eventuales modificaciones sobre suelo, agua, atmósfera, flora y fauna, relieve y ámbito sociocultural.\\n\\nd) Las medidas de prevención, mitigación, rehabilitación, restauración o recomposición del medio alterado, según correspondiere.\\n\\ne) Métodos utilizados.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b23efc44d95a6f6d789f11fb7fdf24e7\", \"id_parte\": \"54c7b047a6be3a2797a7e99d7cf0085d\"}, {\"index\": 3, \"distance\": 0.4096336364746094, \"tipo_parte\": \"artículo\", \"numero_parte\": 258, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Los equipos, instalaciones, sistemas, acciones y actividades de prevención, mitigación, rehabilitación, restauración o recomposición ambiental, consignadas por el responsable e incluidas en la Declaración de Impacto Ambiental constituirán obligación del responsable y serán susceptibles de fiscalización de cumplimiento por parte de la autoridad de aplicación.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"ea6061e5cad21d1fc261c7a43c937e35\", \"id_parte\": \"c573ab8ab04bb9280d91ff2df9b9e76a\"}, {\"index\": 4, \"distance\": 0.38530778884887695, \"tipo_parte\": \"artículo\", \"numero_parte\": 257, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La autoridad de aplicación, en el caso de producirse desajustes entre los resultados efectivamente alcanzados y los esperados según la Declaración de Impacto Ambiental, dispondrá la introducción de modificaciones, atendiendo la existencia de nuevos conocimientos acerca del comportamiento de los ecosistemas afectados y las acciones tendientes a una mayor eficiencia para la protección del área de influencia de la actividad. Estas medidas podrán ser consideradas también a solicitud del operador minero.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"ea6061e5cad21d1fc261c7a43c937e35\", \"id_parte\": \"b9f8e1c1522fca8128786740fbdec40e\"}, {\"index\": 2, \"distance\": 0.43043237924575806, \"tipo_parte\": \"artículo\", \"numero_parte\": 261, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las normas que reglamenten esta Sección establecerán:\\n\\na) Los procedimientos, métodos y estándares requeridos, conducentes a la protección ambiental, según las etapas de actividad comprendidas en el Artículo 249, categorización de las actividades por grado de riesgo ambiental y caracterización ecosistémica del área de influencia.\\n\\nb) La creación de un Registro de consultores y laboratorios a los que los interesados y la Autoridad de Aplicación podrán solicitar asistencia para la realización de trabajos de monitoreo y auditoría externa.\\n\\nc) La creación de un Registro de Infractores.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b23efc44d95a6f6d789f11fb7fdf24e7\", \"id_parte\": \"8c3875db2648a96ec105037ab6b3dd27\"}, {\"index\": 4, \"distance\": 0.43847936391830444, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El REGISTRO CATASTRAL MINERO dependerá de la autoridad minera de cada jurisdicción y quedará constituido con la finalidad principal de reflejar la situación física, jurídica y demás antecedentes que conduzcan a la confección de la matrícula catastral correspondiente a cada derecho minero que reconoce este Código.\\n\\nLas provincias procurarán el establecimiento de sistemas catastrales mineros uniformes.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"8052e97dce5d023ad033ecb592c6d4b3\", \"tipo_parte\": \"artículo\", \"numero_parte\": 20, \"id_parte\": \"8900371ff9cc8538be182a9a20fe3a5f\"}, {\"index\": 1, \"distance\": 0.5424695611000061, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e4ce42d4ff852f3bcdf1ce032991004d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 359, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Deróganse el párrafo V del Título IV; el artículo 137, el inc. 2 del Artículo 147; el Artículo 168, el párrafo 2 de la Sección III, del Título VI y la Sección I del Título IX y en todas las demás divisiones del Código y en los mismos artículos citados, se entenderán inaplicables todas aquellas disposiciones que tengan por fundamento la existencia de la obligación del amparo o pueble de la mina, con trabajo, y los que establezcan, reconozcan o reglamenten el derecho de denuncio de concesiones por despueble (Texto según Ley N 10.273, Artículo 17).\", \"id_parte\": \"72c8b9b8a92c91367ade5cbbe0d204fd\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 8501,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 4463,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2432,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:46:46Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbVh8fCisPb3VgDGKAQN6IHT4h1La",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T17:46:46+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 13522,
+                "output_tokens": 7351,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 4800,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.01062625,
+                "output_price": 0.04463,
+                "total_price": 0.05525625,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

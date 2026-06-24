@@ -1,0 +1,753 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > ¿Puede una usufructuaria ceder a un tercero el derecho de explotación de una mina de subsuelo de acuerdo al Código de Minería Argentino y normativa aplicable? Caso: usufructo por 30 años de predio rural con mina de oro registrada a nombre de los propietarios; buscada validez de cesión de explotación por la usufructuaria.\n        ",
+                    "timestamp": "2025-11-13T17:28:29.894774Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería de la Nación Argentina: cesión de minas, cesión de derechos de explotación, arrendamiento o contrato de laboreo; titular de la concesión; relación con propietario del suelo y con usufructuario\"}",
+                    "tool_call_id": "call_Ya1wFUPBuql3noqrve6xBQyc",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 395,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 840,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 768,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:28:32Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbVPUqVZLNfa3oQcRpkvZ4yqMpCg8",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7866528034210205,
+                                "numero_parte": 342,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "id_parte": "49d492c382c773510821a3778d3ec0c4"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7733438014984131,
+                                "numero_parte": 201,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Estado y las municipalidades pueden ceder gratuita o condicionalmente y celebrar toda clase de contratos con referencia a las canteras, cuando se encuentran en terrenos de su dominio.\n\nMientras tanto, estas canteras serán de aprovechamiento común.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "7bfb6f0ccbf08975801e2a948a0e2f0d",
+                                "tipo_parte": "artículo",
+                                "id_parte": "cadccae5303ac811dc282e884bee7ad6"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.7656030654907227,
+                                "numero_parte": 158,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si el terreno correspondiente a una concesión, es del Estado o Municipio, la cesión será gratuita.\n\nLa cesión comprende los derechos consignados en el Artículo 156.\n\nLa cesión del terreno subsistirá mientras la mina no se declare vacante, o sea abandonada.\n\nSi los terrenos estuvieren cultivados, el concesionario pagará la correspondiente indemnización.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cf24337039e4d80d81f68c9c9ea063bb",
+                                "tipo_parte": "artículo",
+                                "id_parte": "ec3aff3168d512ae59a0b56457b823aa"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.7323194146156311,
+                                "numero_parte": 156,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La concesión de una mina comprende el derecho el derecho de exigir la venta del terreno correspondiente.\n\nMientras tanto, se sujetará a lo dispuesto en el parágrafo de las servidumbres.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cf24337039e4d80d81f68c9c9ea063bb",
+                                "tipo_parte": "artículo",
+                                "id_parte": "ab22d6e3cb64a7e29d0c0dc68298c74e"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.7313361763954163,
+                                "numero_parte": 343,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El usufructo constituido sobre todos los bienes de una persona, comprende el usufructo de las minas comprendidas en esos bienes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "id_parte": "24aa6aab0c760ddc5c359520fd54a554"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_Ya1wFUPBuql3noqrve6xBQyc",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:28:54.905683Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería Argentino: del usufructo de minas, obligaciones y derechos del usufructuario de minas, arrendamiento del usufructo, cesión del derecho de explotación, inscripción registral\"}",
+                    "tool_call_id": "call_BZCEDpG5kwIuLjouIedwqKCt",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1239,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1350,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1280,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:28:56Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbVPs22qbNrtzhACWzVFOb6La9I79",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7861897349357605,
+                                "contenido_texto": "El usufructo constituido sobre todos los bienes de una persona, comprende el usufructo de las minas comprendidas en esos bienes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 343,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "24aa6aab0c760ddc5c359520fd54a554"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7845194935798645,
+                                "contenido_texto": "Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 342,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "49d492c382c773510821a3778d3ec0c4"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.7150070667266846,
+                                "contenido_texto": "Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\n\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 340,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "b234c3008b7f7dab9d73e23e4c5b894e"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.7132779955863953,
+                                "contenido_texto": "La extensión del terreno dentro de cuyos límites puede el minero explotar su concesión, se llama pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ee54a3b20a9dac1f871c62ef6486863c",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 72,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "a9d5f1710a4dff2a926474dcd168627a"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.7091689109802246,
+                                "contenido_texto": "El usufructo debe comprender toda la mina, aunque se haya constituido a favor de diferentes personas.\n\nEl usufructuario tiene derecho a aprovechar los productos y beneficios de la mina, como puede aprovecharlos el propietario.\n\nPero el usufructuario de un fundo común no podrá explotar las minas que en sus límites se comprendan, aunque se encuentren en actual trabajo.\n\nEl usufructo de minas podrá celebrarse por un plazo de hasta CUARENTA (40) años, ya fuere constituido a favor de una persona jurídica o natural y no se extingue por muerte del usufructuario, salvo pacto en contrario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 338,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "7462f1125277d5596ca7d17c74f9df82"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_BZCEDpG5kwIuLjouIedwqKCt",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:29:26.234692Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería Argentino: arrendamiento de mina, contrato de laboreo, cesión del derecho de explotación, inscripción registral, formalidades y aprobación por autoridad minera, Registro de Minas\"}",
+                    "tool_call_id": "call_vyf5Lygca3kLdsIWhXPvayO2",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2166,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1089,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1024,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:29:27Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbVQNXRqlpj7fPSlj9eDUKEYkbaUM",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7326112985610962,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7194198966026306,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4f349b3799fb5e95b30eea8e2d13ca9a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 8,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Concédese a los particulares la facultad de buscar minas, de aprovecharlas y disponer de ellas como dueños, con arreglo a las prescripciones de este Código.",
+                                "id_parte": "ec7955314f93bd799c6c695e2c1cda72"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.7014222741127014,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.7008704543113708,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ee54a3b20a9dac1f871c62ef6486863c",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 72,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La extensión del terreno dentro de cuyos límites puede el minero explotar su concesión, se llama pertenencia.",
+                                "id_parte": "a9d5f1710a4dff2a926474dcd168627a"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6978780031204224,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 342,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.",
+                                "id_parte": "49d492c382c773510821a3778d3ec0c4"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_vyf5Lygca3kLdsIWhXPvayO2",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:29:49.359342Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería Argentino: cesión de minas, cesión de concesiones mineras, contratos de laboreo o arrendamiento de minas, inscripción en registro de minas, formalidades y aprobación de cesiones, subarrendamiento, transferencia del derecho de explotación\"}",
+                    "tool_call_id": "call_P9SEVJaWkEnnSmrc1e1vndw7",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2992,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 1152,
+                "output_tokens": 848,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 768,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:29:49Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbVQj0WPn4ZKUIWhBIihNWarIDPbM",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7527438998222351,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7267163395881653,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "7bfb6f0ccbf08975801e2a948a0e2f0d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 201,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Estado y las municipalidades pueden ceder gratuita o condicionalmente y celebrar toda clase de contratos con referencia a las canteras, cuando se encuentran en terrenos de su dominio.\n\nMientras tanto, estas canteras serán de aprovechamiento común.",
+                                "id_parte": "cadccae5303ac811dc282e884bee7ad6"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6964020133018494,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4f349b3799fb5e95b30eea8e2d13ca9a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 8,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Concédese a los particulares la facultad de buscar minas, de aprovecharlas y disponer de ellas como dueños, con arreglo a las prescripciones de este Código.",
+                                "id_parte": "ec7955314f93bd799c6c695e2c1cda72"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6962358355522156,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cf24337039e4d80d81f68c9c9ea063bb",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 158,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si el terreno correspondiente a una concesión, es del Estado o Municipio, la cesión será gratuita.\n\nLa cesión comprende los derechos consignados en el Artículo 156.\n\nLa cesión del terreno subsistirá mientras la mina no se declare vacante, o sea abandonada.\n\nSi los terrenos estuvieren cultivados, el concesionario pagará la correspondiente indemnización.",
+                                "id_parte": "ec3aff3168d512ae59a0b56457b823aa"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6937962174415588,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cf24337039e4d80d81f68c9c9ea063bb",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 156,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La concesión de una mina comprende el derecho el derecho de exigir la venta del terreno correspondiente.\n\nMientras tanto, se sujetará a lo dispuesto en el parágrafo de las servidumbres.",
+                                "id_parte": "ab22d6e3cb64a7e29d0c0dc68298c74e"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_P9SEVJaWkEnnSmrc1e1vndw7",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:30:10.557531Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería Argentino: inscripción de contratos mineros, inscripción de cesiones o arrendamientos, registro de minas, formalidades de cesión o arrendamiento del usufructo o del derecho de explotación\"}",
+                    "tool_call_id": "call_s0WLjCJ0BY9363MvhdpGRdD9",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 3875,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 2048,
+                "output_tokens": 1862,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1792,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:30:13Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbVR7MXhohIMxP6sc4uXBV33bekzM",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7141377925872803,
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7065200209617615,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 342,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "49d492c382c773510821a3778d3ec0c4"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.7001636624336243,
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 222,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todo concesionario o minero puede hacer abandono de su concesión o su mina, de acuerdo con el Artículo 226 del Código y sólo desde la fecha de su manifestación a la autoridad competente queda libre del pago del impuesto. La autoridad minera de la respectiva jurisdicción deberá publicar cada semestre o a más tardar cada año, un padrón en el que se anotarán todas las minas por distritos, secciones o departamentos, y el estado en que se hallasen las concesiones.\n\nDentro del término de las publicaciones en caso de abandono o hasta TREINTA (30) días después, podrán pedir los acreedores hipotecarios o privilegiados que se ponga en venta pública la mina para pagarse con su producido, después de abonado el canon y los gastos; no haciéndose uso de este derecho, quedan extinguidos los gravámenes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "60ad26895bf31578edcf53320d2ed512"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6985624432563782,
+                                "id_padre": "7bfb6f0ccbf08975801e2a948a0e2f0d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 201,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Estado y las municipalidades pueden ceder gratuita o condicionalmente y celebrar toda clase de contratos con referencia a las canteras, cuando se encuentran en terrenos de su dominio.\n\nMientras tanto, estas canteras serán de aprovechamiento común.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "cadccae5303ac811dc282e884bee7ad6"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6976214647293091,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 343,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El usufructo constituido sobre todos los bienes de una persona, comprende el usufructo de las minas comprendidas en esos bienes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "24aa6aab0c760ddc5c359520fd54a554"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_s0WLjCJ0BY9363MvhdpGRdD9",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:30:45.885772Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código Civil y Comercial de la Nación Argentina: usufructo, facultad de ceder o arrendar el usufructo, límites, responsabilidad del usufructuario, necesidad de consentimiento del nudo propietario, inscripción registral\"}",
+                    "tool_call_id": "call_5Gr8kYBj5dcYscG9Ch0HMBme",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4824,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 2944,
+                "output_tokens": 777,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 704,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:30:49Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbVRhOgeHNqh9f93vEYcWpJdu9y08",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6486008763313293,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 342,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.",
+                                "id_parte": "49d492c382c773510821a3778d3ec0c4"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6449245810508728,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 345,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Corresponden al usufructuario lo mismo que al arrendatario, los derechos acordados al propietario en los casos de ampliación e internación.",
+                                "id_parte": "5b0e119891c07bee25f236ec8ac715fc"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6060816049575806,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 344,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Son aplicables al derecho de usufructo las disposiciones referentes al arrendamiento contenidas en los Artículos 332, 333, 334 y 335.",
+                                "id_parte": "5a6de61669b136e0b1da14d3f9087e7e"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5856814384460449,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 343,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El usufructo constituido sobre todos los bienes de una persona, comprende el usufructo de las minas comprendidas en esos bienes.",
+                                "id_parte": "24aa6aab0c760ddc5c359520fd54a554"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5682950019836426,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "12b50b66829b120198f30d38a0860322",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 197,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El concesionario no tiene derecho a exigir la venta del terreno comprendido en el perímetro de su pertenencia, cuando se trata de sustancias de aprovechamiento común, o de cualesquiera otras que, por su yacimiento o su naturaleza, no tengan el carácter de permanentes.",
+                                "id_parte": "6400f01d8d396873c8fc7540ab09b376"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_5Gr8kYBj5dcYscG9Ch0HMBme",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:31:17.210878Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\":[{\"index\":2,\"distance\":0.7845194935798645,\"contenido_texto\":\"Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.\",\"codigo_norma\":\"Código de Minería Argentino\",\"id_padre\":\"9ee91f71e729cab437b6c11b9c5c0d49\",\"tipo_parte\":\"artículo\",\"numero_parte\":342,\"titulo_parte\":null,\"ultimo_estado\":\"en vigor\",\"id_parte\":\"49d492c382c773510821a3778d3ec0c4\"},{\"index\":5,\"distance\":0.7091689109802246,\"contenido_texto\":\"El usufructo debe comprender toda la mina, aunque se haya constituido a favor de diferentes personas.\\n\\nEl usufructuario tiene derecho a aprovechar los productos y beneficios de la mina, como puede aprovecharlos el propietario.\\n\\nPero el usufructuario de un fundo común no podrá explotar las minas que en sus límites se comprendan, aunque se encuentren en actual trabajo.\\n\\nEl usufructo de minas podrá celebrarse por un plazo de hasta CUARENTA (40) años, ya fuere constituido a favor de una persona jurídica o natural y no se extingue por muerte del usufructuario, salvo pacto en contrario.\",\"codigo_norma\":\"Código de Minería Argentino\",\"id_padre\":\"9ee91f71e729cab437b6c11b9c5c0d49\",\"tipo_parte\":\"artículo\",\"numero_parte\":338,\"titulo_parte\":null,\"ultimo_estado\":\"en vigor\",\"id_parte\":\"7462f1125277d5596ca7d17c74f9df82\"},{\"index\":1,\"distance\":0.7861897349357605,\"contenido_texto\":\"El usufructo constituido sobre todos los bienes de una persona, comprende el usufructo de las minas comprendidas en esos bienes.\",\"codigo_norma\":\"Código de Minería Argentino\",\"id_padre\":\"9ee91f71e729cab437b6c11b9c5c0d49\",\"tipo_parte\":\"artículo\",\"numero_parte\":343,\"titulo_parte\":null,\"ultimo_estado\":\"en vigor\",\"id_parte\":\"24aa6aab0c760ddc5c359520fd54a554\"},{\"index\":3,\"distance\":0.6060816049575806,\"codigo_norma\":\"Código de Minería Argentino\",\"id_padre\":\"9ee91f71e729cab437b6c11b9c5c0d49\",\"tipo_parte\":\"artículo\",\"numero_parte\":344,\"titulo_parte\":null,\"ultimo_estado\":\"en vigor\",\"contenido_texto\":\"Son aplicables al derecho de usufructo las disposiciones referentes al arrendamiento contenidas en los Artículos 332, 333, 334 y 335.\",\"id_parte\":\"5a6de61669b136e0b1da14d3f9087e7e\"},{\"index\":2,\"distance\":0.6449245810508728,\"codigo_norma\":\"Código de Minería Argentino\",\"id_padre\":\"9ee91f71e729cab437b6c11b9c5c0d49\",\"tipo_parte\":\"artículo\",\"numero_parte\":345,\"titulo_parte\":null,\"ultimo_estado\":\"en vigor\",\"contenido_texto\":\"Corresponden al usufructuario lo mismo que al arrendatario, los derechos acordados al propietario en los casos de ampliación e internación.\",\"id_parte\":\"5b0e119891c07bee25f236ec8ac715fc\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 5478,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 3755,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2944,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:31:19Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbVSBOIJX7n2XXg6y7rZEVJoVehgK",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T17:31:19+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 20969,
+                "output_tokens": 10521,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 9280,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.0068475,
+                "output_price": 0.03755,
+                "total_price": 0.0443975,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

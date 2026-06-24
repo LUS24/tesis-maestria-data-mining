@@ -1,0 +1,447 @@
+---
+title: "Análisis de datos Tesis MCD"
+format: html
+editor: 
+  editor: source
+  render-on-save: false
+---
+
+## Configuración Inicial
+
+```{r, echo=FALSE, results=FALSE, message=FALSE}
+## Install packages and load libraries
+if (!require(here)) install.packages("here")
+if (!require(tidyverse))install.packages("tidyverse")
+if (!require(rstatix)) install.packages("rstatix")
+if (!require(ggpubr)) install.packages("ggpubr")
+if (!require(ggpubr)) install.packages("RColorBrewer")
+if (!require(GGally)) install.packages("GGally")
+```
+
+### Carga de librerías
+
+```{r}
+library("here")
+library("tidyverse")
+library("rstatix")
+library("RColorBrewer")
+library("GGally")
+```
+
+
+### Configuración de directorio de trabajo
+
+```{r, results=FALSE, message=FALSE}
+i_am("part_i/analisis_datos.qmd")
+
+```
+
+## Carga de datos
+
+```{r}
+metrics_source_data = read_csv(here("part_i", "metric_comparison_source_data_cleaned.csv"))
+```
+
+## Comparación de métricas de similitud
+
+No se observan diferencias en los boxplots
+
+```{r}
+lista_metricas <- metrics_source_data %>% 
+  select(metrica) %>%
+  unique() %>%
+  .$metrica
+lista_metricas
+```
+
+```{r}
+selected_metric <- "jaccard_similarity"
+
+metrics_source_data %>% 
+  filter(metrica == "jaccard_similarity") %>% 
+  ggplot(aes(x=id_modelo_especialista, y=valor)) +
+    # geom_boxplot(outlier.shape = NA) +
+    geom_violin() +
+    geom_dotplot(binaxis = "y", stackdir = "center", dotsize = 0.5) +
+    facet_wrap(~estrategia) +
+    labs(title="Índice de Jaccard",x = "Modelos", y = "Valor métrica") + 
+    theme_bw()
+```
+
+```{r}
+metrics_source_data %>% 
+  filter(metrica == "jaccard_similarity") %>% 
+  write_tsv(here("part_i", "jaccard_similarity.csv"))
+```
+
+```{r}
+selected_metric <- "sbert_similarity_spanish"
+
+metrics_source_data %>% 
+  filter(metrica == "sbert_similarity_spanish") %>% 
+  ggplot(aes(x=id_modelo_especialista, y=valor)) +
+    geom_boxplot() +
+    facet_wrap(~estrategia) +
+    labs(title="sbert_similarity_spanish",x = "Modelos", y = "Valor métrica") + 
+    theme_bw()
+```
+
+```{r}
+selected_metric <- "bleu"
+
+metrics_source_data %>% 
+  filter(metrica == "bleu") %>% 
+  ggplot(aes(x=id_modelo_especialista, y=valor)) +
+    geom_boxplot() +
+    facet_wrap(~estrategia) +
+    labs(title="bleu",x = "Modelos", y = "Valor métrica") + 
+    theme_bw()
+```
+
+## Pruebas estadísticas para evaluar métricas de similitud
+
+```{r}
+# Convert grouping variables to factors
+df <- metrics_source_data
+
+df$estrategia <- as.factor(df$estrategia)
+df$id_modelo_especialista <- as.factor(df$id_modelo_especialista)
+```
+
+```{r}
+df
+```
+
+### jaccard_similarity
+
+```{r}
+# ---------------------------------------------------------
+# METHOD 1: Shapiro-Wilk Test by Group (Cell)
+# ---------------------------------------------------------
+# This checks if the data is normal within every specific subgroup.
+# p > 0.05 implies normality.
+
+normality_by_group <- df %>%
+  filter(metrica=="jaccard_similarity") %>% 
+  group_by(estrategia, id_modelo_especialista) %>%
+  shapiro_test(valor) %>% 
+  mutate(p=round(p, 4)) %>% 
+  write_csv(here("part_i", "jaccard_similarity_shapiro_results.csv"))
+
+print("Shapiro-Wilk Test by Group:")
+print(normality_by_group)
+
+```
+
+```{r}
+# Visualization: Q-Q Plots for each group
+df %>%
+  filter(metrica=="jaccard_similarity") %>% 
+  ggqqplot("valor", ggtheme = theme_bw()) +
+  facet_grid(estrategia ~ id_modelo_especialista) +
+  labs(title = "Q-Q Plots by Strategy and Model")#+
+  #ylim(-0.1, 0.45)
+```
+
+### sbert_similarity_spanish
+
+```{r}
+# ---------------------------------------------------------
+# METHOD 1: Shapiro-Wilk Test by Group (Cell)
+# ---------------------------------------------------------
+# This checks if the data is normal within every specific subgroup.
+# p > 0.05 implies normality.
+
+normality_by_group <- df %>%
+  filter(metrica=="sbert_similarity_spanish") %>% 
+  group_by(estrategia, id_modelo_especialista) %>%
+  shapiro_test(valor) %>% 
+  mutate(p=round(p, 4))
+
+print("Shapiro-Wilk Test by Group:")
+print(normality_by_group)
+```
+
+```{r}
+# Visualization: Q-Q Plots for each group
+df %>%
+  filter(metrica=="sbert_similarity_spanish") %>% 
+  ggqqplot("valor", ggtheme = theme_bw()) +
+  facet_grid(estrategia ~ id_modelo_especialista) +
+  labs(title = "Q-Q Plots by Strategy and Model")#+
+  #ylim(-0.1, 0.45)
+```
+
+## Exploración de LLM as a judge
+
+### Carga de datos
+
+```{r}
+llm_judge_data <- read_csv(here("part_i","final_judge_results.csv"))
+```
+
+```{r}
+llm_judge_data
+```
+
+```{r}
+llm_judge_data %>% colnames()
+```
+
+### Exploración "Respuesta correcta"
+
+Métrica que compara la respuesta de los modelos con la respuesta revisada por un profesional del derecho.
+
+```{r}
+llm_judge_data %>% 
+  .$modelo_juez %>% 
+  unique()
+```
+
+#### Respuestas fuera de rúbrica
+
+En los gráficos se observó que algunos modelos no cumplieron con los valores de la rúbrica (0.0, 0.25, 0.50, 0.75, 1).
+
+Al momento del análisis estadístico estos valores se deberían asignar a alguno de los grupos por cercanía.
+
+```{r}
+plot_llm_judge_alignment <- function(data, x_var, judge_names) {
+  data %>%
+    mutate(en_rubrica = !!sym(x_var) %in% c(0.0, 0.25, 0.50, 0.75, 1)) %>%
+    ggplot(aes(x = as_factor(!!sym(x_var)))) +
+    geom_bar(aes(colour = en_rubrica, fill = en_rubrica)) +
+    geom_text(
+      stat = "count",
+      aes(label = after_stat(count)),
+      angle = 90,
+      vjust = 0.40,
+      hjust = 1.5,
+      size = 3,
+      color = "black",
+      fontface = "bold"
+    ) +
+    facet_wrap(~modelo_juez, labeller = as_labeller(judge_names)) +
+    labs(x = x_var, y = "Recuento") +
+    scale_color_manual(
+      name = NULL,
+      labels = c("FALSE" = "Fuera de rúbrica", "TRUE" = "En rúbrica"),
+      values = setNames(brewer.pal(name = "Set2", n = 3), c("FALSE", "TRUE"))
+    ) +
+    scale_fill_manual(
+      name = NULL,
+      labels = c("FALSE" = "Fuera de rúbrica", "TRUE" = "En rúbrica"),
+      values = setNames(brewer.pal(name = "Set2", n = 3), c("FALSE", "TRUE"))
+    ) +
+    theme_bw() +
+    theme(legend.position = "bottom")
+}
+
+judge_model_names <- c(
+  `grok_4_1_fast_free` = "Grok 4.1 Fast",
+  `openrouter_deepseek_deepseek-chat-v3-1` = "DeepSeek Chat V3.1",
+  `openrouter_moonshotai_kimi-k2-0905` = "Kimi K2"
+)
+
+llm_judge_data %>% plot_llm_judge_alignment("score_respuesta_correcta", judge_model_names)
+
+```
+```{r}
+llm_judge_data_fixed_rubric <- llm_judge_data %>% 
+  mutate(
+    score_respuesta_correcta = case_when(
+      score_respuesta_correcta >= 0 & score_respuesta_correcta < 0.125 ~ 0.0,
+      score_respuesta_correcta >= 0.125 & score_respuesta_correcta < 0.375 ~ 0.25,
+      score_respuesta_correcta >= 0.375 & score_respuesta_correcta < 0.625 ~ 0.5,
+      score_respuesta_correcta >= 0.625 & score_respuesta_correcta < 0.875 ~ 0.75,
+      score_respuesta_correcta >= 0.875 ~ 1.0
+    )
+  ) %>% 
+  mutate(
+    score_precision_legal = case_when(
+      score_precision_legal >= 0 & score_precision_legal < 0.125 ~ 0.0,
+      score_precision_legal >= 0.125 & score_precision_legal < 0.375 ~ 0.25,
+      score_precision_legal >= 0.375 & score_precision_legal < 0.625 ~ 0.5,
+      score_precision_legal >= 0.625 & score_precision_legal < 0.875 ~ 0.75,
+      score_precision_legal >= 0.875 ~ 1.0
+    )
+  )
+  
+llm_judge_data_fixed_rubric %>% plot_llm_judge_alignment("score_respuesta_correcta", judge_model_names)
+```
+#### Alineación de los jueces
+
+```{r}
+llm_judge_data_fixed_rubric %>% 
+  .$modelo_respuesta %>% unique()
+```
+
+Contar las veces que:
+1) Coincidieron los 3
+2) Coincidieron 2
+3) Los 3 dieron respuestas distintas
+
+Identificar preguntas problemáticas -> aquellas en que ninguno de los 3 modelos coincidieron -> considerar quitarlas
+
+Determinar porcentajes de preguntas para cada uno de los valores de la rúbrica en facetas por sistema y modelo de respuesta. Eje y el porcentaje, x el modelo juez
+
+- preguntas:
+  - El uso de agentes en RAG mejora la calidad de las respuestas?
+  
+  - Depende del modelo que usa la herramienta? el nano parece que empeora en agentic rag, el mini parece que mejora bastante y el gpt 5 parece que mejora un poco
+  
+  
+```{r}
+judge_model_names <- c(
+  `grok_4_1_fast_free` = "Grok 4.1 Fast",
+  `openrouter_deepseek_deepseek-chat-v3-1` = "DeepSeek Chat V3.1",
+  `openrouter_moonshotai_kimi-k2-0905` = "Kimi K2"
+)
+
+modelo_respuesta <- c(
+  `gpt-5-nano` = "GPT-5-Nano",
+  `gpt-5-mini` = "GPT-5-Mini",
+  `gpt-5` = "GPT-5"
+)
+
+sistema <- c(
+  `llm_responses_no_rag` = "No RAG",
+  `llm_responses_base_rag` = "Base RAG",
+  `llm_responses_agentic_rag` = "Agentic RAG"
+)
+
+# Combine labellers for both facet variables
+combined_labeller <- labeller(
+  modelo_respuesta = as_labeller(modelo_respuesta),
+  sistema = as_labeller(sistema)
+)
+
+judge_model_labels <- c("grok_4_1_fast_free", "openrouter_deepseek_deepseek-chat-v3-1", "openrouter_moonshotai_kimi-k2-0905")
+
+llm_judge_data_fixed_rubric %>% 
+  select(numero_pregunta, numero_subpregunta, sistema, modelo_respuesta, modelo_juez, score_respuesta_correcta) %>% 
+  mutate(id_pregunta = paste(numero_pregunta, numero_subpregunta, sep = ".")) %>% 
+  ggplot(aes(x=id_pregunta, y=score_respuesta_correcta, fill = modelo_juez, colour = modelo_juez)) +
+  geom_point() +
+  facet_grid(modelo_respuesta~sistema, labeller = combined_labeller) +
+  scale_fill_manual(values = setNames(brewer.pal(name = "Set2", n = 3), judge_model_labels), labels = judge_model_names) +
+  scale_color_manual(values = setNames(brewer.pal(name = "Set2", n = 3), judge_model_labels), labels = judge_model_names) +
+  theme_bw() +
+  theme(legend.position = "bottom",
+        strip.text.x = element_text(size = 8),
+        strip.text.y = element_text(size = 8)
+        )
+  ggsave("alineacion_jueces.png", units = "cm", width = 60, height = 20)
+```
+
+```{r}
+llm_judge_data_fixed_rubric %>% 
+  select(numero_pregunta, numero_subpregunta, sistema, modelo_respuesta, modelo_juez, score_respuesta_correcta) %>% 
+  mutate(id_pregunta = paste(numero_pregunta, numero_subpregunta, sep = ".")) %>% 
+  ggplot(aes(x = modelo_juez, y = id_pregunta, colour = as.numeric(score_respuesta_correcta))) +
+  geom_point() +
+  facet_grid(modelo_respuesta~sistema) +
+  theme(legend.position = "bottom") +
+  theme_bw()
+```
+
+
+
+
+```{r}
+llm_judge_data_fixed_rubric %>% 
+  select(numero_pregunta, numero_subpregunta, sistema, modelo_respuesta, modelo_juez, score_precision_legal) %>% 
+  pivot_wider(
+    names_from = modelo_juez, 
+    values_from = score_precision_legal,
+  )
+```
+
+```{r}
+llm_judge_data %>%
+  distinct(across(everything()))
+```
+
+
+
+### Exploración "Precisión Legal"
+
+La métrica se emplea para identificar si los modelos citaron los artículos correctos en base a los artículos citados para la respuesta correcta.
+
+#### Respuestas fuera de rúbrica
+
+```{r}
+judge_model_names <- c(
+  `grok_4_1_fast_free` = "Grok 4.1 Fast",
+  `openrouter_deepseek_deepseek-chat-v3-1` = "DeepSeek Chat V3.1",
+  `openrouter_moonshotai_kimi-k2-0905` = "Kimi K2"
+)
+
+llm_judge_data %>% plot_llm_judge_alignment("score_precision_legal", judge_model_names)
+```
+```{r}
+llm_judge_data_fixed_rubric <- llm_judge_data %>% 
+  mutate(
+    score_precision_legal = case_when(
+      score_precision_legal >= 0 & score_precision_legal < 0.125 ~ 0.0,
+      score_precision_legal >= 0.125 & score_precision_legal < 0.375 ~ 0.25,
+      score_precision_legal >= 0.375 & score_precision_legal < 0.625 ~ 0.5,
+      score_precision_legal >= 0.625 & score_precision_legal < 0.875 ~ 0.75,
+      score_precision_legal >= 0.875 ~ 1.0
+    )
+  )
+  
+llm_judge_data_fixed_rubric %>% plot_llm_judge_alignment("score_precision_legal", judge_model_names)
+```
+
+
+## Recommendations for statistics to use
+
+Thank you for clarifying your experimental setup. Here’s how you can approach the statistical analysis:
+
+### **1. Data Structure**
+
+-   **Independent Variable**: System type (No RAG, Basic RAG, Agentic RAG)
+
+-   **Dependent Variable**: Judge scores (ordinal: 0.0, 0.25, 0.5, 0.75, 1.0)
+
+-   **Design**: Each question was answered by all three models, and each answer was evaluated by three judges.
+
+### **2. Key Questions to Address**
+
+-   **Inter-rater Reliability**: Are the judges consistent in their scoring?
+
+-   **System Comparison**: Do the systems (No RAG, Basic RAG, Agentic RAG) differ in their average scores?
+
+### **3. Recommended Statistical Tests**
+
+#### **A. Inter-rater Reliability**
+
+-   **Krippendorff’s Alpha**:
+
+    -   Best for multiple raters and ordinal data.
+
+    -   Measures agreement among all three judges, accounting for chance.
+
+#### **B. Comparing Systems**
+
+-   **Friedman Test**:
+
+    -   Non-parametric test for repeated measures (since each question was answered by all three systems).
+
+    -   Tests if there are significant differences between the three systems across all questions.
+
+-   **Post-hoc Analysis (if Friedman is significant)**:
+
+    -   Use **Wilcoxon Signed-Rank Tests** with Bonferroni correction to identify which systems differ.
+
+#### **C. Visualization**
+
+-   Plot the average scores for each system to visually compare performance.
+
+### **4. Steps to Proceed**
+
+1.  **Calculate Krippendorff’s Alpha** for each system to check judge consistency.
+
+2.  **Run the Friedman Test** to see if there are overall differences between systems.
+
+3.  **Perform post-hoc tests** if the Friedman test is significant.

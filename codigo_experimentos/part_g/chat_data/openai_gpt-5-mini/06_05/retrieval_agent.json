@@ -1,0 +1,346 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Código de Minería Argentino visitas de inspección entre pertenencias colindantes condiciones autorizar visitas inspección límites derecho mensura deslinde linderos provisionales colindantes propietario superficiario yeso tercera categoría extracción compensación artículos jurisprudencia\n        ",
+                    "timestamp": "2025-11-13T14:38:48.125919Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"\\\"Código de Minería\\\" visitas de inspección entre pertenencias colindantes autorización inspección límites derecho de mensura deslinde linderos provisionales colindantes\"}",
+                    "tool_call_id": "call_IEzbEdDyN2UA72dpGBxaBdaL",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"yeso \\\"tercera categoría\\\" extracción propietario superficiario compensación artículos \\\"Código de Minería\\\" Argentina\"}",
+                    "tool_call_id": "call_foCaoy0hAeDyHAlgrVA2X0K3",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"jurisprudencia minería argentina visitas de inspección colindantes mensura deslinde linderos provisionales\"}",
+                    "tool_call_id": "call_MvZu0ibNCfk6AgIkErBYwOhA",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 367,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 600,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 448,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T14:38:50Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbSlGygA4bqJgf0NNSr4WC93fJkgr",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6778869032859802,
+                                "contenido_texto": "Cuando las minas no se encuentran en estado de recibir mensura y sus dueños han colocado linderos provisorios para determinar sus pertenencias, estos linderos servirán de base para el aviso y demás efectos consiguientes.\n\nPero, practicada la mensura y demarcación legal, los derechos de las partes se arreglarán a los nuevos linderos, haciéndose las correspondientes restituciones.\n\nNo tendrá lugar lo dispuesto en los incisos anteriores, después de vencidos los plazos fijados por la ley para la ejecución de la labor legal.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e7b4895a2749d7b7f90218bdf1f68108",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 106,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "23e444b632cd2a74d88e1107783fdf75"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6438621878623962,
+                                "contenido_texto": "No hay obligación de hacer restitución ni participación alguna de los productos de una internación entre minas que no han sido demarcadas o cuyos linderos no se conserven.\n\nPero el dueño de la mina que se considere invadida puede pedir la mensura, y en su caso, la reparación o reposición de los linderos.\n\nDesde el día en que se haga saber esta petición al dueño de la mina invasora, se considerará determinada la línea divisoria.\n\nSellados los remates de las labores denunciadas, podrán continuarse sin otra responsabilidad que la de entregar, previo el pago de los costos, la mitad de los minerales extraídos en la continuación de esas labores, si resultaren internadas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e7b4895a2749d7b7f90218bdf1f68108",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 105,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "7244db98f1c5e85a427a5399d03efb96"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6177247166633606,
+                                "contenido_texto": "La autoridad no permitirá no ordenará la remoción de los linderos sino en los casos de mejora y ampliación de pertenencias, determinados por la ley; o en virtud de sentencia del Tribunal Superior de minería en los recursos contra la ilegalidad de las mensuras; o cuando se haya definitivamente declarado que hay lugar a rectificación, o en los casos que expresamente determina la ley.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "d06b9956af3dfa67ed14d4059f0592db",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 95,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "ed9e292c06fe24cf4a66cd6edee156e5"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6145338416099548,
+                                "contenido_texto": "Practicada la mensura y demarcación con arreglo a lo dispuesto en los artículos precedentes, la autoridad mandará inscribirla en el registro, y que de ella se de copia al interesado, como título definitivo de propiedad.\n\nEl expediente de mensura se archivará en un libro especial a cargo del escribano de minas.\n\nCon la diligencia de mensura queda constituida la plena y legal posesión de la pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cabb9d71c2bfa97835fd007c8bf38635",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 93,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "038584060b97d590bcdf234f6ee404e9"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6093869805335999,
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_IEzbEdDyN2UA72dpGBxaBdaL",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T14:38:58.659645Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6226222515106201,
+                                "id_padre": "e788680f7f1abfa9081b7be18202348a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 150,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los minerales extraídos en el curso de estos trabajos, deben ser puestos gratuitamente a disposición del dueño de la mina ocupada.\n\nCuando los trabajos se siguen en terreno franco los minerales corresponden al empresario, como si hubiesen sido extraídos de su propia pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "5bac1a97134d1fcfd2d6f2660e8be318"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6175609230995178,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 339,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\n\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2ca3c839ca5d493bad04e3fdbbd4edb3"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6164726614952087,
+                                "id_padre": "e951a8bcd2ec577d42cf711ce64c6fb7",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 5,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Componen la tercera categoría las producciones minerales de naturaleza pétrea o terrosa, y en general todas las que sirven para materiales de construcción y ornamento, cuyo conjunto forma las canteras.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "60dfbac337127c856b521b7a4d275a34"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6015052795410156,
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5887720584869385,
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_foCaoy0hAeDyHAlgrVA2X0K3",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T14:38:58.659902Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6503029465675354,
+                                "id_padre": "e7b4895a2749d7b7f90218bdf1f68108",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 106,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando las minas no se encuentran en estado de recibir mensura y sus dueños han colocado linderos provisorios para determinar sus pertenencias, estos linderos servirán de base para el aviso y demás efectos consiguientes.\n\nPero, practicada la mensura y demarcación legal, los derechos de las partes se arreglarán a los nuevos linderos, haciéndose las correspondientes restituciones.\n\nNo tendrá lugar lo dispuesto en los incisos anteriores, después de vencidos los plazos fijados por la ley para la ejecución de la labor legal.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "23e444b632cd2a74d88e1107783fdf75"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6234298944473267,
+                                "id_padre": "d06b9956af3dfa67ed14d4059f0592db",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 95,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La autoridad no permitirá no ordenará la remoción de los linderos sino en los casos de mejora y ampliación de pertenencias, determinados por la ley; o en virtud de sentencia del Tribunal Superior de minería en los recursos contra la ilegalidad de las mensuras; o cuando se haya definitivamente declarado que hay lugar a rectificación, o en los casos que expresamente determina la ley.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "ed9e292c06fe24cf4a66cd6edee156e5"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6081207394599915,
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5965943336486816,
+                                "id_padre": "cabb9d71c2bfa97835fd007c8bf38635",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 86,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La operación principiará por el reconocimiento de la labor legal; y resultando cumplidas sus condiciones, se procederá a medir la longitud y enseguida la latitud conforme a lo dispuesto en los Artículos 77 y siguientes.\n\nActo continuo se marcarán los puntos donde deben fijarse los linderos que determinen la figura y el espacio correspondiente a la pertenencia.\n\nEstos linderos, a cuya construcción se procederá inmediatamente, deben ser sólidos, bien perceptibles y duraderos.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "94420b88b840be54911320cd0c806d3b"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5936070680618286,
+                                "id_padre": "9e1522f656ee97f638318bc2f9ecebda",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 174,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las concesiones constarán de un sólo cuerpo de forma rectangular o cuadrada en cuanto lo permitan los accidentes del terreno y yacimiento de las sustancias.\n\nServirán de base a la demarcación los pozos o zanjas ejecutadas por el concesionario; debiendo fijarse linderos firmes en los puntos convenientes para dejar clara y precisamente determinada la forma y ubicación de la pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2281e215d5cd94195b24708c6f5f3a97"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_MvZu0ibNCfk6AgIkErBYwOhA",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T14:38:58.660951Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 1, \"distance\": 0.6778869032859802, \"contenido_texto\": \"Cuando las minas no se encuentran en estado de recibir mensura y sus dueños han colocado linderos provisorios para determinar sus pertenencias, estos linderos servirán de base para el aviso y demás efectos consiguientes.\\n\\nPero, practicada la mensura y demarcación legal, los derechos de las partes se arreglarán a los nuevos linderos, haciéndose las correspondientes restituciones.\\n\\nNo tendrá lugar lo dispuesto en los incisos anteriores, después de vencidos los plazos fijados por la ley para la ejecución de la labor legal.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e7b4895a2749d7b7f90218bdf1f68108\", \"tipo_parte\": \"artículo\", \"numero_parte\": 106, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"23e444b632cd2a74d88e1107783fdf75\"}, {\"index\": 2, \"distance\": 0.6438621878623962, \"contenido_texto\": \"No hay obligación de hacer restitución ni participación alguna de los productos de una internación entre minas que no han sido demarcadas o cuyos linderos no se conserven.\\n\\nPero el dueño de la mina que se considere invadida puede pedir la mensura, y en su caso, la reparación o reposición de los linderos.\\n\\nDesde el día en que se haga saber esta petición al dueño de la mina invasora, se considerará determinada la línea divisoria.\\n\\nSellados los remates de las labores denunciadas, podrán continuarse sin otra responsabilidad que la de entregar, previo el pago de los costos, la mitad de los minerales extraídos en la continuación de esas labores, si resultaren internadas.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e7b4895a2749d7b7f90218bdf1f68108\", \"tipo_parte\": \"artículo\", \"numero_parte\": 105, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"7244db98f1c5e85a427a5399d03efb96\"}, {\"index\": 3, \"distance\": 0.6177247166633606, \"contenido_texto\": \"La autoridad no permitirá no ordenará la remoción de los linderos sino en los casos de mejora y ampliación de pertenencias, determinados por la ley; o en virtud de sentencia del Tribunal Superior de minería en los recursos contra la ilegalidad de las mensuras; o cuando se haya definitivamente declarado que hay lugar a rectificación, o en los casos que expresamente determina la ley.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"d06b9956af3dfa67ed14d4059f0592db\", \"tipo_parte\": \"artículo\", \"numero_parte\": 95, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"ed9e292c06fe24cf4a66cd6edee156e5\"}, {\"index\": 4, \"distance\": 0.6145338416099548, \"contenido_texto\": \"Practicada la mensura y demarcación con arreglo a lo dispuesto en los artículos precedentes, la autoridad mandará inscribirla en el registro, y que de ella se de copia al interesado, como título definitivo de propiedad.\\n\\nEl expediente de mensura se archivará en un libro especial a cargo del escribano de minas.\\n\\nCon la diligencia de mensura queda constituida la plena y legal posesión de la pertenencia.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"cabb9d71c2bfa97835fd007c8bf38635\", \"tipo_parte\": \"artículo\", \"numero_parte\": 93, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"038584060b97d590bcdf234f6ee404e9\"}, {\"index\": 4, \"distance\": 0.5965943336486816, \"contenido_texto\": \"La operación principiará por el reconocimiento de la labor legal; y resultando cumplidas sus condiciones, se procederá a medir la longitud y enseguida la latitud conforme a lo dispuesto en los Artículos 77 y siguientes.\\n\\nActo continuo se marcarán los puntos donde deben fijarse los linderos que determinen la figura y el espacio correspondiente a la pertenencia.\\n\\nEstos linderos, a cuya construcción se procederá inmediatamente, deben ser sólidos, bien perceptibles y duraderos.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"cabb9d71c2bfa97835fd007c8bf38635\", \"tipo_parte\": \"artículo\", \"numero_parte\": 86, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"94420b88b840be54911320cd0c806d3b\"}, {\"index\": 5, \"distance\": 0.5936070680618286, \"contenido_texto\": \"Las concesiones constarán de un sólo cuerpo de forma rectangular o cuadrada en cuanto lo permitan los accidentes del terreno y yacimiento de las sustancias.\\n\\nServirán de base a la demarcación los pozos o zanjas ejecutadas por el concesionario; debiendo fijarse linderos firmes en los puntos convenientes para dejar clara y precisamente determinada la forma y ubicación de la pertenencia.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"9e1522f656ee97f638318bc2f9ecebda\", \"tipo_parte\": \"artículo\", \"numero_parte\": 174, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"2281e215d5cd94195b24708c6f5f3a97\"}, {\"index\": 3, \"distance\": 0.6164726614952087, \"id_padre\": \"e951a8bcd2ec577d42cf711ce64c6fb7\", \"tipo_parte\": \"artículo\", \"numero_parte\": 5, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Componen la tercera categoría las producciones minerales de naturaleza pétrea o terrosa, y en general todas las que sirven para materiales de construcción y ornamento, cuyo conjunto forma las canteras.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"60dfbac337127c856b521b7a4d275a34\"}, {\"index\": 2, \"distance\": 0.6175609230995178, \"id_padre\": \"9ee91f71e729cab437b6c11b9c5c0d49\", \"tipo_parte\": \"artículo\", \"numero_parte\": 339, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\\n\\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"2ca3c839ca5d493bad04e3fdbbd4edb3\"}, {\"index\": 1, \"distance\": 0.6226222515106201, \"id_padre\": \"e788680f7f1abfa9081b7be18202348a\", \"tipo_parte\": \"artículo\", \"numero_parte\": 150, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Los minerales extraídos en el curso de estos trabajos, deben ser puestos gratuitamente a disposición del dueño de la mina ocupada.\\n\\nCuando los trabajos se siguen en terreno franco los minerales corresponden al empresario, como si hubiesen sido extraídos de su propia pertenencia.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"5bac1a97134d1fcfd2d6f2660e8be318\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4227,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 4283,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2368,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T14:39:01Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbSlRQZD7y14NH3pgRMYlascr84lN",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T14:39:01+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 4594,
+                "output_tokens": 4883,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2816,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00528375,
+                "output_price": 0.04283,
+                "total_price": 0.04811375,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

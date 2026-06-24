@@ -1,0 +1,685 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > En un terreno de un particular que contiene una cantera de granito autorizada para explotación por un tercero que solicita la explotación declarando la utilidad pública de la empresa, ¿qué derecho posee el propietario privado sobre la explotación? Explicar a la luz del Código de Minería Argentino.\n        ",
+                    "timestamp": "2025-11-13T09:49:20.390027Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"C\\u0013digo de Miner\\u001a Argentina canteras rocas de aplicaci\\u0013n granito tercera categor\\u001a derecho del propietario del suelo art\\u001culos\"}",
+                    "tool_call_id": "call_ZACjG6BWvLyCFcQ65kbRiV9Z",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"utilidad p\\u001ablica canteras tercera categor\\u001a expropiaci\\u0013n servidumbres mineras C\\u0013digo de Miner\\u001a Argentina art\\u001culos\"}",
+                    "tool_call_id": "call_atwLDHJfkCfJkX8egbWktcsR",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"derechos del due\\u001a\\u001bo del suelo frente a explotaci\\u0013n por tercero de cantera de granito C\\u0013digo de Miner\\u001a art\\u001culos autorizaci\\u0013n\"}",
+                    "tool_call_id": "call_xn7m4sSUgWBlPzvtAcRhVRTG",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 372,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 987,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 768,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T09:49:23Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOF9xIUPUQIWNCiRnVzMMToVyG7V",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6418091058731079,
+                                "id_padre": "e951a8bcd2ec577d42cf711ce64c6fb7",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 5,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Componen la tercera categoría las producciones minerales de naturaleza pétrea o terrosa, y en general todas las que sirven para materiales de construcción y ornamento, cuyo conjunto forma las canteras.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "60dfbac337127c856b521b7a4d275a34"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6057552695274353,
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5923639535903931,
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5886257290840149,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 339,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\n\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2ca3c839ca5d493bad04e3fdbbd4edb3"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5844274759292603,
+                                "id_padre": "4f349b3799fb5e95b30eea8e2d13ca9a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas son bienes privados de la Nación o de las Provincias , según el territorio en que se encuentren.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_ZACjG6BWvLyCFcQ65kbRiV9Z",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:49:42.645654Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6358722448348999,
+                                "contenido_texto": "Las minas sólo pueden ser expropiadas por causa de utilidad pública de un orden superior a la razón del privilegio que les acuerda el Artículo 13 de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4d442cd021677333a58832d245596294",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 16,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "29bb34e2f4d79e186d96f1d1da046d8e"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6196258068084717,
+                                "contenido_texto": "Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\n\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 340,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "b234c3008b7f7dab9d73e23e4c5b894e"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6167500019073486,
+                                "contenido_texto": "Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\n\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 339,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "2ca3c839ca5d493bad04e3fdbbd4edb3"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6088260412216187,
+                                "contenido_texto": "Es prohibida la división material de las minas, tanto relación a sus dueños, como respecto de terceros.\n\nNi los dueños, ni terceros pueden explotar una región o una parte de la mina, independientemente de la explotación general.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4d442cd021677333a58832d245596294",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 14,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "47febf76b128dec17c5858ad982c06f3"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6077095866203308,
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_atwLDHJfkCfJkX8egbWktcsR",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:49:42.645225Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6582979559898376,
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6172038912773132,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 339,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\n\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2ca3c839ca5d493bad04e3fdbbd4edb3"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.616526186466217,
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 330,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El arrendatario puede aprovechar la mina en los mismos términos que puede hacerlo el propietario.\n\nPero para rebajar puentes y macizos es necesario una estipulación especial.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "691a19129cc1af078b47c1b08cbc1757"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6107551455497742,
+                                "id_padre": "ee54a3b20a9dac1f871c62ef6486863c",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 72,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La extensión del terreno dentro de cuyos límites puede el minero explotar su concesión, se llama pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "a9d5f1710a4dff2a926474dcd168627a"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6106586456298828,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 342,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "49d492c382c773510821a3778d3ec0c4"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_xn7m4sSUgWBlPzvtAcRhVRTG",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:49:42.646631Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"C\\u001acigo de Miner\\u001aa Argentina tercera categor\\u00001a pertenecen al propietario del suelo canteras due\\u00001bo del suelo art\\u00001a\\u00001culos 9 10 11\"}",
+                    "tool_call_id": "call_2zZt2DU1eKyXn7mw1IUHx9Ow",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 3706,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1098,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1024,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T09:49:44Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOFUMHyj6r6FwCl2qjf7wJlSCxId",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6300965547561646,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 5,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Componen la tercera categoría las producciones minerales de naturaleza pétrea o terrosa, y en general todas las que sirven para materiales de construcción y ornamento, cuyo conjunto forma las canteras.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e951a8bcd2ec577d42cf711ce64c6fb7",
+                                "id_parte": "60dfbac337127c856b521b7a4d275a34"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6102586984634399,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 28,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El canon anual establecido por el Artículo 4°, inciso 1° de la Ley N° 10.273, a cargo de los concesionarios de minas de hidrocarburos fluidos, será de DIEZ (10) PESOS moneda nacional por cada hectárea o fracción.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5b4cff76822bc02b19675d9a36793625",
+                                "id_parte": "3c9327d6a156bd3cbe0021dfdd0096ad"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5928305387496948,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 350,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La zona de explotación del yacimiento ferrífero de Sierra Grande, en la Provincia de Río Negro, queda fijada dentro de los límites de los lotes 20 y 21, fracción E, Colonia Pastoril Coronel Chilavert, Provincia de Río Negro.\n\nLa cuenca ferrífera de Sierra Grande será considerada como una sola mina, constituida por una sola pertenencia y su explotación será realizada por intermedio de HIERRO PATAGONICO DE SIERRA GRANDE, SOCIEDAD ANONIMA MINERA.\n\nLo dispuesto precedentemente no afectará derechos adquiridos ni la percepción por la Provincia de Río Negro del canon establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "id_parte": "5d79b36a6bc696bc7c4b2c2cf54a06d2"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5910933017730713,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas son bienes privados de la Nación o de las Provincias , según el territorio en que se encuentren.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4f349b3799fb5e95b30eea8e2d13ca9a",
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.590790867805481,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 339,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\n\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "id_parte": "2ca3c839ca5d493bad04e3fdbbd4edb3"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_2zZt2DU1eKyXn7mw1IUHx9Ow",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:50:08.162723Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"C\\u0003digo de Miner\\u001da Argentino canteras pertenecen al propietario del suelo tercera categor\\u00001a due\\u00001bo del terreno puede explotarlas sin concesi\\u00013n art\\u00001culos\"}",
+                    "tool_call_id": "call_FJoyFRnRdYihOBofpFCSpkR8",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4678,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1099,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1024,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T09:50:09Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOFtjpUUaA03VLrdRvsq7QGYHydT",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7215118408203125,
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7067538499832153,
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6965748071670532,
+                                "contenido_texto": "La extensión del terreno dentro de cuyos límites puede el minero explotar su concesión, se llama pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ee54a3b20a9dac1f871c62ef6486863c",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 72,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "a9d5f1710a4dff2a926474dcd168627a"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6950581669807434,
+                                "contenido_texto": "El dueño del suelo no puede ni aún con licencia de la autoridad, hacer trabajo alguno minero dentro del perímetro de una concesión, ni en el recinto de un permiso de cateo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b5b728eab593acfd2edba9eb38187700",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 43,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "e03033f816b411ea43a6451b0ded7e2b"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6949811577796936,
+                                "contenido_texto": "Es prohibida la división material de las minas, tanto relación a sus dueños, como respecto de terceros.\n\nNi los dueños, ni terceros pueden explotar una región o una parte de la mina, independientemente de la explotación general.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4d442cd021677333a58832d245596294",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 14,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "47febf76b128dec17c5858ad982c06f3"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_FJoyFRnRdYihOBofpFCSpkR8",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:50:26.364895Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"C\\u001f\\u001adigo de Miner\\u001da Argentina tercera categor\\u001da canteras pertenecen al due\\u001ao del suelo o del terreno derechos del propietario explotaci\\u001dn por terceros utilidad p\\u001dblica expropiaci\\u001dn servidumbres mineras art\\u001dculos due\\u001ao del suelo puede impedir\"}",
+                    "tool_call_id": "call_jB3FusvJ9NdS1FEhGk8grYQz",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 5521,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 4608,
+                "output_tokens": 685,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 576,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T09:50:29Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOGD9PSnUpHGRecq2uTHmkFlgUER",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6795123815536499,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 340,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\n\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b234c3008b7f7dab9d73e23e4c5b894e"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6432734727859497,
+                                "id_padre": "4d442cd021677333a58832d245596294",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 14,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Es prohibida la división material de las minas, tanto relación a sus dueños, como respecto de terceros.\n\nNi los dueños, ni terceros pueden explotar una región o una parte de la mina, independientemente de la explotación general.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "47febf76b128dec17c5858ad982c06f3"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6427676677703857,
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.620954692363739,
+                                "id_padre": "ee54a3b20a9dac1f871c62ef6486863c",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 72,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La extensión del terreno dentro de cuyos límites puede el minero explotar su concesión, se llama pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "a9d5f1710a4dff2a926474dcd168627a"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6180074214935303,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 339,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\n\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2ca3c839ca5d493bad04e3fdbbd4edb3"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_jB3FusvJ9NdS1FEhGk8grYQz",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:50:41.692830Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 1, \"distance\": 0.6418091058731079, \"id_padre\": \"e951a8bcd2ec577d42cf711ce64c6fb7\", \"tipo_parte\": \"artículo\", \"numero_parte\": 5, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Componen la tercera categoría las producciones minerales de naturaleza pétrea o terrosa, y en general todas las que sirven para materiales de construcción y ornamento, cuyo conjunto forma las canteras.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"60dfbac337127c856b521b7a4d275a34\"}, {\"index\": 3, \"distance\": 0.6167500019073486, \"contenido_texto\": \"Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\\n\\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"9ee91f71e729cab437b6c11b9c5c0d49\", \"tipo_parte\": \"artículo\", \"numero_parte\": 339, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"2ca3c839ca5d493bad04e3fdbbd4edb3\"}, {\"index\": 2, \"distance\": 0.6196258068084717, \"contenido_texto\": \"Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\\n\\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"9ee91f71e729cab437b6c11b9c5c0d49\", \"tipo_parte\": \"artículo\", \"numero_parte\": 340, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"b234c3008b7f7dab9d73e23e4c5b894e\"}, {\"index\": 4, \"distance\": 0.6950581669807434, \"contenido_texto\": \"El dueño del suelo no puede ni aún con licencia de la autoridad, hacer trabajo alguno minero dentro del perímetro de una concesión, ni en el recinto de un permiso de cateo.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b5b728eab593acfd2edba9eb38187700\", \"tipo_parte\": \"artículo\", \"numero_parte\": 43, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"e03033f816b411ea43a6451b0ded7e2b\"}, {\"index\": 1, \"distance\": 0.6358722448348999, \"contenido_texto\": \"Las minas sólo pueden ser expropiadas por causa de utilidad pública de un orden superior a la razón del privilegio que les acuerda el Artículo 13 de este Código.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"4d442cd021677333a58832d245596294\", \"tipo_parte\": \"artículo\", \"numero_parte\": 16, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"29bb34e2f4d79e186d96f1d1da046d8e\"}, {\"index\": 5, \"distance\": 0.5844274759292603, \"id_padre\": \"4f349b3799fb5e95b30eea8e2d13ca9a\", \"tipo_parte\": \"artículo\", \"numero_parte\": 7, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las minas son bienes privados de la Nación o de las Provincias , según el territorio en que se encuentren.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"7e30095ca21fb10aa2934c5f1bc0e873\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 6318,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 3167,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2112,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T09:50:43Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbOGRUN9J3T43G8si8wWEpXwN9CRv",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T09:50:43+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 20595,
+                "output_tokens": 7036,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 5504,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.0078975,
+                "output_price": 0.03167,
+                "total_price": 0.0395675,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

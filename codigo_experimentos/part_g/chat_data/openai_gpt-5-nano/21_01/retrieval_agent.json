@@ -1,0 +1,685 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > La provincia de Neuquén ha decidido intensificar la investigación geológico-minera sobre su territorio y, a tales efectos, a través de una empresa estatal provincial, delimita una zona exclusiva de interés especial para la prospección minera de 90.000 hectáreas, por un plazo de dos años. La empresa estatal provincial convoca a terceros mediante concurso público, cumpliendo con los requisitos legales para la presentación de propuestas y selecciona finalmente a una empresa privada (\"GeoExplora S.A.\") como adjudicataria para llevar adelante trabajos de investigación, prospección y exploración en la zona.\n\nCumplidos 22 meses del plazo, GeoExplora S.A. no solicita ningún permiso de exploración ni realiza manifestación alguna de descubrimiento, pero ha entregado en tiempo y forma toda la documentación e información técnica a la empresa estatal provincial.\n\nAdemás, durante este período, una sociedad ajena (\"Minas del Sur S.R.L.\") solicita concurrir sobre un área dentro de la zona exclusiva, alegando que en parte del primer año no se habrían hecho trabajos en esa fracción.\n\nDe acuerdo al Código de Minería Argentino: ¿Qué ocurre con la zona de interés especial una vez transcurridos los dos años, puede GeoExplora S.A. mantener algún derecho preferente sobre el área?\n        ",
+                    "timestamp": "2025-11-13T11:43:18.901748Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería argentino \\\"área de interés especial\\\" zona de interés especial investigación geológico-minera provincias empresa estatal plazo dos años exclusividad\"}",
+                    "tool_call_id": "call_pImbW82Q4dXT9G6FOJbwdSJx",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 584,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 502,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 448,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T11:43:22Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbQ1SQfmaRGNDGtexyb6zriLMLabA",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5744812488555908,
+                                "id_padre": "0f959ff09577c347feebae6400cac8f1",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 24,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Una vez que el explorador haya obtenido la concesión de explotación que le corresponda, toda la extensión sobrante de cada permiso de exploración quedará como reserva petrolífera fiscal del Estado Nacional o Provincial.\n\nEstas reservas sólo serán exploradas y explotadas por el Estado Nacional o Provincial, directamente o por medio de sociedades mixtas o por Yacimientos Petrolíferos Fiscales.\n\nNo podrá el Estado Nacional o Provincial mantener estas reservas como tales por más de DIEZ (10) años.\n\nVencido este plazo, podrán ser adjudicadas a particulares en licitación pública dando preferencia al explorador originario de la concesión en igualdad de condiciones, y en su defecto, pasarán a ser zonas en disponibilidad.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "5f3d0545a4122e81ddba9c1b27eb3945"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5727999210357666,
+                                "id_padre": "4d442cd021677333a58832d245596294",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 13,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La explotación de las minas, su exploración, concesión y demás actos consiguientes, revisten el carácter de utilidad pública.\n\nLa utilidad pública se supone en todo lo relativo al espacio comprendido dentro del perímetro de la concesión.\n\nLa utilidad pública se establece fuera de ese perímetro, probando ante la autoridad minera la utilidad inmediata que resulta a la explotación.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "29e37cf4b97293026184d5cef7779c8f"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5708011984825134,
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 8,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La exploración y explotación de las minas de hidrocarburos fluidos, se regirán por las disposiciones referentes a substancias de la primera categoría, en cuanto no estuvieran modificadas por este APENDICE,",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "ec7955314f93bd799c6c695e2c1cda72"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5672584176063538,
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 205,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La exploración y explotación de minerales nucleares y de los desmontes, relaves y escoriales que los contengan, se regirán por las disposiciones de este Código referentes a las minas de primera y segunda categoría, en todo lo que no se encuentre modificado por el presente Título.\n\nEl organismo que por ley se designe, prestará a los estados provinciales asesoramiento técnico, minero y de prevención de riesgos, con respecto a las actividades de exploración y explotación nuclear que se desarrollen en cada provincia. A tales efectos dicho organismo podrá celebrar convenios con las provincias respecto a las actividades a desarrollar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "ebcc32cba1d9fb59d90e65e3ccc71d45"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5660155415534973,
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_pImbW82Q4dXT9G6FOJbwdSJx",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T11:43:32.468182Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"\\\"área de reserva\\\" \\\"Código de Minería\\\" dos años prospección empresas del Estado provincial zona de interés especial investigación geológico-minera artículos\"}",
+                    "tool_call_id": "call_X7OERgsSq138cS2E24Z5uqWl",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería \\\"prospección\\\" \\\"cateo\\\" zona exclusiva reservas provinciales autoridad minera duración dos años tercer solicitante concurrir por falta de trabajos en parte del área\"}",
+                    "tool_call_id": "call_3RcRYHkZW5TEUmd8mznTsqEk",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"derecho preferente finalizado plazo reserva investigación geológico-minera empresas estatales concurso público adjudicataria puede mantener preferencia Código de Minería\"}",
+                    "tool_call_id": "call_PYKgDowSym3bzcooyDBbZXP4",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1636,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1002,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 832,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T11:43:33Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbQ1dc5c0ji0HtpmoAYWi1jq8Ht6c",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6372418999671936,
+                                "numero_parte": 8,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La exploración y explotación de las minas de hidrocarburos fluidos, se regirán por las disposiciones referentes a substancias de la primera categoría, en cuanto no estuvieran modificadas por este APENDICE,",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "id_parte": "ec7955314f93bd799c6c695e2c1cda72"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6198849678039551,
+                                "numero_parte": 205,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La exploración y explotación de minerales nucleares y de los desmontes, relaves y escoriales que los contengan, se regirán por las disposiciones de este Código referentes a las minas de primera y segunda categoría, en todo lo que no se encuentre modificado por el presente Título.\n\nEl organismo que por ley se designe, prestará a los estados provinciales asesoramiento técnico, minero y de prevención de riesgos, con respecto a las actividades de exploración y explotación nuclear que se desarrollen en cada provincia. A tales efectos dicho organismo podrá celebrar convenios con las provincias respecto a las actividades a desarrollar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "id_parte": "ebcc32cba1d9fb59d90e65e3ccc71d45"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6140971779823303,
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6127809286117554,
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6084885001182556,
+                                "numero_parte": 1,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Código de Minería rige los derechos, obligaciones y procedimientos referentes a la adquisición, explotación y aprovechamiento de las sustancias minerales.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ebad6798643112a64729d7cc7a1abf2c",
+                                "tipo_parte": "artículo",
+                                "id_parte": "78020a7e760ce39a4591da47093358d7"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_X7OERgsSq138cS2E24Z5uqWl",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T11:43:49.671328Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6845136880874634,
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 11,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "En los primeros DIECIOCHO (18) meses del término de exploración, deberá quedar instalado y en funcionamiento dentro del terreno a explorar un equipo perforador adecuado a esta clase de trabajo y a la zona, bajo pena de caducidad de la concesión, salvo caso fortuito o de fuerza mayor.\n\nSi vencido el plazo de exploración no se hubiere encontrado el mineral y a juicio de la autoridad minera se hubieran hecho los trabajos formales a una profundidad suficiente para el hallazgo del mismo, podrá prorrogarse el término por UN (1) año más.\n\nSi el concesionario del permiso de exploración. vencida la prorroga, no hubiera hallado el mineral y manifestara deseos de continuar los trabajos, podrá acordársele un nuevo plazo de UN (1) año más, siempre que hubiera efectuado, por cada unidad de medida, DOS (2) perforaciones en cualquiera o cualesquiera de ellas si el permiso comprende más de UNA (1) unidad, a una profundidad que justifique a juicio de la autoridad minera, la seriedad de dichos trabajos.\n\nDentro del término de la exploración deberán hacerse las manifestaciones de descubrimiento y en su defecto la concesión quedará caduca de pleno derecho.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "cff27d65382d7a3bc237b279ecd0ad4d"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.672849714756012,
+                                "id_padre": "972d274a7b431594c6f1ac1513f5dc30",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 18,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La ubicación y mensura de las pertenencias a que se refiere el Artículo 15 de este APENDICE, deberá ser solicitada con los requisitos establecidos en el Artículo 82, dentro del término de duración del permiso de exploración prorrogable por SEIS (6) meses con causa justificada. Si así no se hiciera se dará por desistida la concesión.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "74513e0e2a98e5e636fcfa7b8ae77761"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6722323298454285,
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.650682270526886,
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 162,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La responsabilidad del dueño de la mina, cesa:\n\n1° Cuando los trabajos perjudicados han sido emprendidos después de la concesión sobre lugares explotados, o en actual explotación, o en dirección de los trabajos en actividad, o sobre el criadero manifestado o reconocido.\n\n2° Cuando, después de la concesión se emprenda cualquier trabajo sin previo aviso a la autoridad ni citación del dueño de la mina.\n\n3° Cuando se continúen trabajos suspendidos UN (1) año antes de la concesión.\n\n4° Cuando el peligro para las obras o trabajos que se emprendan, existía antes o era consiguiente a la nueva explotación.\n\nDado el aviso, se procederá al reconocimiento de los lugares, dejándose constancia de que el punto designado por el propietario del suelo está comprendido o no en alguno de los casos indicados en los incisos precedentes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "d763ad979c986d874666bdfa9eb9dabf"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6460398435592651,
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_3RcRYHkZW5TEUmd8mznTsqEk",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T11:43:49.672491Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6392074227333069,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6176519393920898,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 24,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Una vez que el explorador haya obtenido la concesión de explotación que le corresponda, toda la extensión sobrante de cada permiso de exploración quedará como reserva petrolífera fiscal del Estado Nacional o Provincial.\n\nEstas reservas sólo serán exploradas y explotadas por el Estado Nacional o Provincial, directamente o por medio de sociedades mixtas o por Yacimientos Petrolíferos Fiscales.\n\nNo podrá el Estado Nacional o Provincial mantener estas reservas como tales por más de DIEZ (10) años.\n\nVencido este plazo, podrán ser adjudicadas a particulares en licitación pública dando preferencia al explorador originario de la concesión en igualdad de condiciones, y en su defecto, pasarán a ser zonas en disponibilidad.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "0f959ff09577c347feebae6400cac8f1",
+                                "id_parte": "5f3d0545a4122e81ddba9c1b27eb3945"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5882076025009155,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5791103839874268,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 2,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Con relación a los derechos que este Código reconoce y acuerda, las minas se dividen en tres categorías. \n\n1& Minas de las que el suelo es un accesorio, que pertenecen exclusivamente al Estado, y que sólo pueden explotarse en virtud de concesión legal otorgada por autoridad competente.\n\n2& Minas que, por razón de su importancia, se conceden preferentemente al dueño del suelo; y minas que, por las condiciones de su yacimiento, se destinan al aprovechamiento común.\n\n3& Minas que pertenecen únicamente al propietario, y que nadie puede explotar sin su consentimiento, salvo por motivos de utilidad pública.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e951a8bcd2ec577d42cf711ce64c6fb7",
+                                "id_parte": "845967b6821b6b963355ac57c9acbdde"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5783489942550659,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 201,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Estado y las municipalidades pueden ceder gratuita o condicionalmente y celebrar toda clase de contratos con referencia a las canteras, cuando se encuentran en terrenos de su dominio.\n\nMientras tanto, estas canteras serán de aprovechamiento común.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "7bfb6f0ccbf08975801e2a948a0e2f0d",
+                                "id_parte": "cadccae5303ac811dc282e884bee7ad6"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_PYKgDowSym3bzcooyDBbZXP4",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T11:43:49.671788Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería concurrencia cateo tercero solicitar concurrencia falta de trabajos en fracción del cateo zona exclusiva de cateo artículos plazo trabajos mínimos cateo\"}",
+                    "tool_call_id": "call_Zde1tMzdmI5AhVBzidWoINlA",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 5870,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 1536,
+                "output_tokens": 825,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 768,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T11:43:52Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbQ1wBGpuN3pTQJk5MaGHmrXsFB62",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5606691837310791,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "0f6fae08eb359b1e5391b8a7ca423c97",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 302,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La minoría podrá impedir, previa resolución de la autoridad , que se ocupen más de DIEZ (10) operarios cuando no sean necesarios, o cuando sin aumentar su número, las obras puedan oportuna y satisfactoriamente realizarse.\n\nLa autoridad resolverá con el informe del director de los trabajos de la mina y con el del ingeniero oficial, o con el de los peritos que las partes puedan nombrar.",
+                                "id_parte": "445f9f9538f184bb30295b77e2cef589"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5555019378662109,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cabb9d71c2bfa97835fd007c8bf38635",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 91,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "En la mensura y demarcación de las pertenencias practicadas según las prescripciones de la ley, pueden comprenderse los edificios, caminos, sitios cultivados y cerrados y toda otra clase de obras y terrenos.\n\nEl concesionario puede extender sus trabajos debajo de las habitaciones y demás lugares reservados, dando fianzas por los daños y perjuicios que puedan sobrevenir.\n\nCuando el daño sea grave e inminente y no fuese posible fortificar satisfactoriamente el cerro, podrá el minero solicitar la adjudicación del terreno y construcciones correspondientes, previa la comprobación de utilidad, según lo dispuesto en el inciso tercero del Artículo 13.\n\nNo regirá lo dispuesto en los precedentes incisos, respecto de los edificios públicos y demás contenido en el Artículo 36, salvo si se comprobaren los hechos expresados en su inciso segundo.\n\nLos trabajos subterráneos no podrán penetrar en el radio correspondiente a las fortificaciones, sino en el caso que puedan penetrar los trabajos superficiales.\n\nTodos estos trabajos se sujetarán estrictamente a las reglas de seguridad y policía.",
+                                "id_parte": "2f4c825dcd5a61abbee7bccd27f3a2d3"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5539005398750305,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 162,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La responsabilidad del dueño de la mina, cesa:\n\n1° Cuando los trabajos perjudicados han sido emprendidos después de la concesión sobre lugares explotados, o en actual explotación, o en dirección de los trabajos en actividad, o sobre el criadero manifestado o reconocido.\n\n2° Cuando, después de la concesión se emprenda cualquier trabajo sin previo aviso a la autoridad ni citación del dueño de la mina.\n\n3° Cuando se continúen trabajos suspendidos UN (1) año antes de la concesión.\n\n4° Cuando el peligro para las obras o trabajos que se emprendan, existía antes o era consiguiente a la nueva explotación.\n\nDado el aviso, se procederá al reconocimiento de los lugares, dejándose constancia de que el punto designado por el propietario del suelo está comprendido o no en alguno de los casos indicados en los incisos precedentes.",
+                                "id_parte": "d763ad979c986d874666bdfa9eb9dabf"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5528064966201782,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "2ae9da79cb8555d8c2d36ba0127c1663",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 37,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "No pueden emprenderse trabajos mineros a menor distancia de UN (1) kilómetro de instalaciones militares, sin que preceda permiso del MINISTERIO DE DEFENSA.\n\nCuando la exploración incluya fotografía aérea, independientemente de lo expresado en el párrafo precedente, deberá requerirse la autorización respectiva.",
+                                "id_parte": "70eb860c75479d373c6706f4b5937eb8"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5396791696548462,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b5b728eab593acfd2edba9eb38187700",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 43,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El dueño del suelo no puede ni aún con licencia de la autoridad, hacer trabajo alguno minero dentro del perímetro de una concesión, ni en el recinto de un permiso de cateo.",
+                                "id_parte": "e03033f816b411ea43a6451b0ded7e2b"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_Zde1tMzdmI5AhVBzidWoINlA",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T11:44:02.999200Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"\\\"áreas de reserva\\\" investigación geológico-minera plazo dos años empresa estatal provincial exclusividad \\\"Código de Minería\\\" zona de interés especial preferencia vencer plazo\"}",
+                    "tool_call_id": "call_uumHtYFeTIu3eZKQtp5oEY3h",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 7084,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 698,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 640,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T11:44:03Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbQ27X6EQfMB2FAD7MadyVZwkn2N2",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6287225484848022,
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6250525116920471,
+                                "id_padre": "0f959ff09577c347feebae6400cac8f1",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 24,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Una vez que el explorador haya obtenido la concesión de explotación que le corresponda, toda la extensión sobrante de cada permiso de exploración quedará como reserva petrolífera fiscal del Estado Nacional o Provincial.\n\nEstas reservas sólo serán exploradas y explotadas por el Estado Nacional o Provincial, directamente o por medio de sociedades mixtas o por Yacimientos Petrolíferos Fiscales.\n\nNo podrá el Estado Nacional o Provincial mantener estas reservas como tales por más de DIEZ (10) años.\n\nVencido este plazo, podrán ser adjudicadas a particulares en licitación pública dando preferencia al explorador originario de la concesión en igualdad de condiciones, y en su defecto, pasarán a ser zonas en disponibilidad.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "5f3d0545a4122e81ddba9c1b27eb3945"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5973962545394897,
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 8,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La exploración y explotación de las minas de hidrocarburos fluidos, se regirán por las disposiciones referentes a substancias de la primera categoría, en cuanto no estuvieran modificadas por este APENDICE,",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "ec7955314f93bd799c6c695e2c1cda72"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.594190239906311,
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.592889666557312,
+                                "id_padre": "0f959ff09577c347feebae6400cac8f1",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 23,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Estado Nacional y los Estados Provinciales en sus respectivas jurisdicciones, pueden reservar zonas de exploración de hidrocarburos fluidos en tierras fiscales y del dominio particular, dentro de las cuales no se concederán permisos de exploración ni concesiones de explotación. Estas reservas no se harán por más de DIEZ (10) años.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "57fc10e51b5c655e9b6d86277113a187"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_uumHtYFeTIu3eZKQtp5oEY3h",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T11:44:19.199619Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 5, \"distance\": 0.592889666557312, \"id_padre\": \"0f959ff09577c347feebae6400cac8f1\", \"tipo_parte\": \"artículo\", \"numero_parte\": 23, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El Estado Nacional y los Estados Provinciales en sus respectivas jurisdicciones, pueden reservar zonas de exploración de hidrocarburos fluidos en tierras fiscales y del dominio particular, dentro de las cuales no se concederán permisos de exploración ni concesiones de explotación. Estas reservas no se harán por más de DIEZ (10) años.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"57fc10e51b5c655e9b6d86277113a187\"}, {\"index\": 2, \"distance\": 0.6250525116920471, \"id_padre\": \"0f959ff09577c347feebae6400cac8f1\", \"tipo_parte\": \"artículo\", \"numero_parte\": 24, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Una vez que el explorador haya obtenido la concesión de explotación que le corresponda, toda la extensión sobrante de cada permiso de exploración quedará como reserva petrolífera fiscal del Estado Nacional o Provincial.\\n\\nEstas reservas sólo serán exploradas y explotadas por el Estado Nacional o Provincial, directamente o por medio de sociedades mixtas o por Yacimientos Petrolíferos Fiscales.\\n\\nNo podrá el Estado Nacional o Provincial mantener estas reservas como tales por más de DIEZ (10) años.\\n\\nVencido este plazo, podrán ser adjudicadas a particulares en licitación pública dando preferencia al explorador originario de la concesión en igualdad de condiciones, y en su defecto, pasarán a ser zonas en disponibilidad.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"5f3d0545a4122e81ddba9c1b27eb3945\"}, {\"index\": 5, \"distance\": 0.5396791696548462, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b5b728eab593acfd2edba9eb38187700\", \"tipo_parte\": \"artículo\", \"numero_parte\": 43, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El dueño del suelo no puede ni aún con licencia de la autoridad, hacer trabajo alguno minero dentro del perímetro de una concesión, ni en el recinto de un permiso de cateo.\", \"id_parte\": \"e03033f816b411ea43a6451b0ded7e2b\"}, {\"index\": 1, \"distance\": 0.6287225484848022, \"id_padre\": \"eae4a44f252a6d8634c5e80f096d1258\", \"tipo_parte\": \"artículo\", \"numero_parte\": 44, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\\n\\nSon objeto de concesión:\\n\\nSon objeto de concesión:\\n\\nLos descubrimientos.\\n\\nLas minas caducadas y vacantes.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"54650cd907659eb336e9c7c841b58c17\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 7925,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 3444,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2624,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T11:44:21Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbQ2PAosAmmy6v40XslL4vSz89fWM",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T11:44:21+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 23099,
+                "output_tokens": 6471,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 5312,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00990625,
+                "output_price": 0.03444,
+                "total_price": 0.04434625,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

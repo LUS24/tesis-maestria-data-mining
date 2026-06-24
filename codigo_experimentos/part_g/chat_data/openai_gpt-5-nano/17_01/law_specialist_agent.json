@@ -1,0 +1,140 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "El Sr. Adrián López descubre un yacimiento de litio en la provincia de Catamarca, realiza las denuncias y obtiene los derechos sobre el criadero. Tiempo después, acuerda la venta de su derecho de descubridor a la empresa Litio S.A. mediante un contrato privado firmado por ambas partes. La mina aún no cuenta con mensura y demarcación finalizada. Al mismo tiempo, un empleado de la mina comienza a vender mineral extraído a un tercero sin conocimiento ni autorización escrita del Sr. López. De acuerdo al Código de Minería Argentino: ¿Cuál el estado de la validez y eficacia de la venta de los derechos sobre el criadero?",
+                    "timestamp": "2025-11-13T10:55:57.325987Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "args": "{\"question\":\"Validez y eficacia de la venta de los derechos sobre el criadero en el Código de Minería Argentino; supuesto: el descubridor vende a Litio S.A. derechos de descubrimiento en Catamarca; la mina aún no tiene mensura y demarcación; empleado de la mina vende mineral a tercero sin autorización escrita.\"}",
+                    "tool_call_id": "call_0MGAMkZfcDeku41gvFOr8vNs",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 514,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 538,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 448,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-nano-2025-08-07",
+            "timestamp": "2025-11-13T10:55:57Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbPHZjzCwLddEAZko8DIl0fkF4R0S",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "content": "{\"selected_documents\": [{\"index\": 2, \"distance\": 0.6820396780967712, \"contenido_texto\": \"Las minas pueden venderse y transmitirse como se venden y transmiten los bienes raíces.\\n\\nEn consecuencia, el descubridor de un criadero puede vender y transmitir los derechos que adquiere por el hecho del descubrimiento.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"728ed31deba02de655a821e1df3a6058\", \"tipo_parte\": \"artículo\", \"numero_parte\": 323, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"a2d8678cc1ccdcc544b38a16bfc4ea22\"}, {\"index\": 3, \"distance\": 0.5766264200210571, \"tipo_parte\": \"artículo\", \"numero_parte\": 324, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Nadie puede comprar minerales a los operarios o empleados de una mina, sin autorización escrita de su dueño.\\n\\nLos que contravengan lo dispuesto en el párrafo anterior, pagarán una multa cuyo monto será CUATRO (4) a TREINTA (30) veces el canon anual que devengare la mina, debiendo embargarse los minerales hasta que se pruebe que pertenecían al vendedor o que estaba autorizado a venderlos.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"728ed31deba02de655a821e1df3a6058\", \"id_parte\": \"9f2997b985ab27fa37e0e0f48c87af39\"}, {\"index\": 2, \"distance\": 0.7228329181671143, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\\n\\nSon objeto de concesión:\\n\\nSon objeto de concesión:\\n\\nLos descubrimientos.\\n\\nLas minas caducadas y vacantes.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"eae4a44f252a6d8634c5e80f096d1258\", \"tipo_parte\": \"artículo\", \"numero_parte\": 44, \"id_parte\": \"54650cd907659eb336e9c7c841b58c17\"}, {\"index\": 1, \"distance\": 0.6352609992027283, \"tipo_parte\": \"artículo\", \"numero_parte\": 71, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Si TREINTA (30) días después de vencidos los plazos concedidos por los Artículos 68, 69 y 70, el descubridor no hubiese solicitado la mensura, la autoridad procederá a darla de oficio a cargo del interesado, situando a todas las minas pedidas en la corrida del criadero.\\n\\nLos derechos del descubridor serán declarados caducos y la mina o minas pedidas por él serán registradas en calidad de vacantes.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"025888a5a9fc6657dec51ff5d345d690\", \"id_parte\": \"e759274464a53a1a24fef4fc490ad5e4\"}, {\"index\": 1, \"distance\": 0.7271922826766968, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"No hay obligación de hacer restitución ni participación alguna de los productos de una internación entre minas que no han sido demarcadas o cuyos linderos no se conserven.\\n\\nPero el dueño de la mina que se considere invadida puede pedir la mensura, y en su caso, la reparación o reposición de los linderos.\\n\\nDesde el día en que se haga saber esta petición al dueño de la mina invasora, se considerará determinada la línea divisoria.\\n\\nSellados los remates de las labores denunciadas, podrán continuarse sin otra responsabilidad que la de entregar, previo el pago de los costos, la mitad de los minerales extraídos en la continuación de esas labores, si resultaren internadas.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e7b4895a2749d7b7f90218bdf1f68108\", \"tipo_parte\": \"artículo\", \"numero_parte\": 105, \"id_parte\": \"7244db98f1c5e85a427a5399d03efb96\"}]}",
+                    "tool_call_id": "call_0MGAMkZfcDeku41gvFOr8vNs",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:58:22.406435Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "args": "{\"response_text\":\"\"}",
+                    "tool_call_id": "call_l80zbIPrGcIlXIGEtbfCCqec",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1651,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 2648,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2624,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-nano-2025-08-07",
+            "timestamp": "2025-11-13T10:58:24Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbPJw8rIWxTLvT3wIw6CDCSRFGq4U",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "content": "Final result processed.",
+                    "tool_call_id": "call_l80zbIPrGcIlXIGEtbfCCqec",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:58:48.624053Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": null,
+            "kind": "request"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-nano-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T10:58:24+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 2165,
+                "output_tokens": 3186,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3072,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 8.255e-05,
+                "output_price": 0.0010592,
+                "total_price": 0.00114175,
+                "model_input_price_mtok": 0.05,
+                "model_output_price_mtok": 0.4,
+                "model_id": "gpt-5-nano",
+                "model_name": "GPT-5 nano"
+            }
+        }
+    }
+}

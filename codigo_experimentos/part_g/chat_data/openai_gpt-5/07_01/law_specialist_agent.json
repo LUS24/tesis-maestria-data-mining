@@ -1,0 +1,140 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "Usted es asesor legal de un consorcio de mineros que explotan diversas pertenencias contiguas en una región de la provincia de San Juan. Los clientes están considerando varias operaciones para optimizar su explotación: desean, por un lado, ampliar una de sus pertenencias, mejorar otra y, adicionalmente, consideran constituir un grupo minero para gestionar de manera más eficiente varias de sus minas. Asimismo, detectaron que existe una \"demasía\" entre dos de sus minas y quieren saber cómo pueden adjudicársela.\n\nExplique, de acuerdo al Código de Minería Argentino: ¿Qué requisitos y procedimientos deben cumplirse para ampliar una pertenencia, detallando los conceptos de internación y criadero en mano, y los efectos de la ampliación aprobada?",
+                    "timestamp": "2025-11-12T14:17:48.908825Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "args": "{\"question\":\"Código de Minería argentino: requisitos y procedimiento para la ampliación de una pertenencia minera, definición de internación y de criadero en mano, y efectos de la ampliación aprobada. Normas aplicables y artículos específicos.\"}",
+                    "tool_call_id": "call_NH4RQAwPXZNl8K5i6YCw4onu",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 537,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 327,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 256,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T14:17:51Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb5xPxxlVjzNE8LuTo5kxuVGOJvY5",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "content": "Voy a hacer una última búsqueda para localizar los artículos exactos sobre “criadero en mano” y completar los relativos a demasías/ampliación. Luego te devolveré solo los documentos seleccionados en formato JSON.\n{\"query\":\"\\\"criadero en mano\\\" \\\"Código de Minería\\\" Argentina artículo definicion\", \"top_k\": 5}\n{\"selected_documents\": [{\"index\": 1, \"distance\": 0.6378782987594604, \"contenido_texto\": \"El dueño de una pertenencia no puede avanzar labores fuera de sus límites y penetrar con ellas en pertenencia ajena, aunque vaya en seguimiento de su criadero.\\n\\nPero, cuando el criadero contenga mineral, hay derecho para internarse por la latitud hasta el punto en que las labores de una y otra pertenencia se comuniquen.\\n\\nLo mismo sucederá cuando antes de haber pasado los límites de la pertenencia, se descubra el mineral.\\n\\nPara usar de estos derechos deberá darse aviso al colindante de la aproximación de las labores y del propósito de internarlas.\\n\\nLos minerales que se extraigan de la internación se partirán por mitad con el colindante, lo mismo que los costos.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e7b4895a2749d7b7f90218bdf1f68108\", \"tipo_parte\": \"artículo\", \"numero_parte\": 102, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"24b5d480af81ef2582b8a600828e7a0c\"}, {\"index\": 2, \"distance\": 0.5384306907653809, \"contenido_texto\": \"La demasía entre las líneas de aspas de DOS(2) o más pertenencias se adjudicará a aquella o a aquellas minas cuyas labores, siguiendo el criadero en su recuesto, se hayan internado o estén próximas a internarse en el terreno vacante.\\n\\nSe entenderá que las labores están próximas a internarse, cuando hubieren avanzado hasta la mitad de la cuadra correspondiente al recuesto del criadero.\\n\\nSe consideran en el mismo caso desde que disten TREINTA (30) metros del límite de la cuadra.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"954656c63126ba38885976cc1d4c90f2\", \"tipo_parte\": \"artículo\", \"numero_parte\": 118, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"c340c9d3592fec7cd09f85fed23ec6f6\"}, {\"index\": 3, \"distance\": 0.5177206993103027, \"contenido_texto\": \"Fuera de los casos de internación realizada o próxima a realizarse, se distribuirá la demasía entre todas las minas colindantes en proporción de sus respectivas líneas de contacto con la demasía.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"954656c63126ba38885976cc1d4c90f2\", \"tipo_parte\": \"artículo\", \"numero_parte\": 119, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"363449b42e1ac79caa56dd8321ea3491\"}, {\"index\": 5, \"distance\": 0.6129039525985718, \"id_padre\": \"954656c63126ba38885976cc1d4c90f2\", \"tipo_parte\": \"artículo\", \"numero_parte\": 120, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Adjudicada la demasía en parte o en todo, se incorpora a las respectivas pertenencias.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"f1e55b13c72abf12446510868ae1b590\"}, {\"index\": 2, \"distance\": 0.6788344383239746, \"id_padre\": \"954656c63126ba38885976cc1d4c90f2\", \"tipo_parte\": \"artículo\", \"numero_parte\": 122, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Cualquier persona podrá constituir una mina nueva en la demasía por renuncia o cesión de todos los colindantes, o por no ocuparla con alguna obra o trabajo verdaderamente útil, UN (1) año después de requeridos al efecto.\\n\\nEsta disposición tiene lugar en el caso de no hallarse las demasías incorporadas a las minas colindantes.\\n\\nLa parte del colindante que renuncia, que cede o que pierde su derecho, acrece a la de los otros colindantes.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"47ee12c9ac75733ffc0a9588f9c7df74\"}, {\"index\": 1, \"distance\": 0.7108651399612427, \"id_padre\": \"48189d59386b7439d913d7e9802bfefd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 223, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las disposiciones de los artículos anteriores relativas al pago de la patente o al canon minero, se aplicarán en la misma forma, aun en los casos que por ampliación o acrecentamiento, o formación de grupos mineros, o compañías de minas, conforme a los Artículos 87, 109, 113, 116, y 140 aumentase el número de unidades de medidas de cada concesión.\\n\\nLas demasías, sea cualquiera su extensión, serán consideradas a los efectos del pago de la patente como una pertenencia completa en todos los casos y variantes establecidos en el Acápite III, del Título VII.\\n\\nCuando el concesionario o dueño de la demasía no fuera un colindante, además del pago del canon tendrá la obligación de invertir capital como lo dispone la presente ley.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"1adc32d645730ce4350230d75547b0b0\"}, {\"index\": 1, \"distance\": 0.7108651399612427, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las disposiciones de los artículos anteriores relativas al pago de la patente o al canon minero, se aplicarán en la misma forma, aun en los casos que por ampliación o acrecentamiento, o formación de grupos mineros, o compañías de minas, conforme a los Artículos 87, 109, 113, 116, y 140 aumentase el número de unidades de medidas de cada concesión.\\n\\nLas demasías, sea cualquiera su extensión, serán consideradas a los efectos del pago de la patente como una pertenencia completa en todos los casos y variantes establecidos en el Acápite III, del Título VII.\\n\\nCuando el concesionario o dueño de la demasía no fuera un colindante, además del pago del canon tendrá la obligación de invertir capital como lo dispone la presente ley.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"48189d59386b7439d913d7e9802bfefd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 223, \"id_parte\": \"1adc32d645730ce4350230d75547b0b0\"}, {\"index\": 4, \"distance\": 0.6402156949043274, \"id_padre\": \"ee54a3b20a9dac1f871c62ef6486863c\", \"tipo_parte\": \"artículo\", \"numero_parte\": 72, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La extensión del terreno dentro de cuyos límites puede el minero explotar su concesión, se llama pertenencia.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"a9d5f1710a4dff2a926474dcd168627a\"}, {\"index\": 1, \"distance\": 0.5909112095832825, \"id_padre\": \"e7b4895a2749d7b7f90218bdf1f68108\", \"tipo_parte\": \"artículo\", \"numero_parte\": 102, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El dueño de una pertenencia no puede avanzar labores fuera de sus límites y penetrar con ellas en pertenencia ajena, aunque vaya en seguimiento de su criadero.\\n\\nPero, cuando el criadero contenga mineral, hay derecho para internarse por la latitud hasta el punto en que las labores de una y otra pertenencia se comuniquen.\\n\\nLo mismo sucederá cuando antes de haber pasado los límites de la pertenencia, se descubra el mineral.\\n\\nPara usar de estos derechos deberá darse aviso al colindante de la aproximación de las labores y del propósito de internarlas.\\n\\nLos minerales que se extraigan de la internación se partirán por mitad con el colindante, lo mismo que los costos.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"24b5d480af81ef2582b8a600828e7a0c\"}, {\"index\": 4, \"distance\": 0.5174538493156433, \"contenido_texto\": \"No hay obligación de hacer restitución ni participación alguna de los productos de una internación entre minas que no han sido demarcadas o cuyos linderos no se conserven.\\n\\nPero el dueño de la mina que se considere invadida puede pedir la mensura, y en su caso, la reparación o reposición de los linderos.\\n\\nDesde el día en que se haga saber esta petición al dueño de la mina invasora, se considerará determinada la línea divisoria.\\n\\nSellados los remates de las labores denunciadas, podrán continuarse sin otra responsabilidad que la de entregar, previo el pago de los costos, la mitad de los minerales extraídos en la continuación de esas labores, si resultaren internadas.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e7b4895a2749d7b7f90218bdf1f68108\", \"tipo_parte\": \"artículo\", \"numero_parte\": 105, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"7244db98f1c5e85a427a5399d03efb96\"}, {\"index\": 1, \"distance\": 0.6363464593887329, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"5f917aee9a130dba897e2de38a186b8d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 134, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El socavonero tiene derecho a explotar el criadero nuevo que encuentre en pertenencia correspondiente a otro criadero registrado en la superficie, abriendo nuevas labores en seguimiento del nuevo criadero y aprovechando exclusivamente los minerales que extraiga.\\n\\nCesa este derecho desde el momento en que las labores de la mina se comuniquen con las del socavón.\", \"id_parte\": \"3c130aaed007dd527b96f24559d80424\"}, {\"index\": 4, \"distance\": 0.5491842031478882, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"5f917aee9a130dba897e2de38a186b8d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 133, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El socavonero goza de los privilegios de descubridor los criaderos nuevos que siguiendo su labor, encuentre en terreno vacante.\\n\\nEstas pertenencias se demarcarán en la superficie con arreglo a la situación, dirección y demás circunstancias del criadero, reconocidas en profundidad.\", \"id_parte\": \"7fce2f9d0a3065fb14ebf6fb3ec588b4\"}]}",
+                    "tool_call_id": "call_NH4RQAwPXZNl8K5i6YCw4onu",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T14:20:25.962822Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "args": "{\"response_text\":\"Respuesta breve y práctica\\n\\n1) Ampliación de una pertenencia: requisitos y procedimiento\\n- Vía típica: la ampliación suele materializarse por incorporación de “demasías” (espacios vacantes entre las líneas de aspas de pertenencias contiguas).\\n- Paso a paso (en la autoridad minera provincial):\\n  a) Petición fundada de ampliación, con plano y memoria de mensura que identifique la demasía o el acrecentamiento pretendido y los linderos afectados; acreditación de la titularidad y del pago del canon.\\n  b) Notificación a colindantes y sustanciación de oposiciones.\\n  c) Preferencia: la demasía se adjudica a la(s) mina(s) cuyas labores, siguiendo el criadero en su recuesto, se hayan internado o estén próximas a internarse en el terreno vacante. Se entiende “próximas” si avanzaron hasta la mitad de la cuadra del recuesto o desde que disten 30 m del límite de la cuadra (art. 118, Código de Minería). Fuera de ese caso, se distribuye entre todas las colindantes en proporción a sus líneas de contacto (art. 119, Cód. Min.).\\n  d) Resolución y mensura definitiva: adjudicada la demasía, “se incorpora” a la(s) pertenencia(s) beneficiaria(s) (art. 120, Cód. Min.). Si no se incorpora y transcurre un año sin ocuparla con obra útil tras requerimiento, cualquier persona puede constituir mina nueva en la demasía, por renuncia/cesión de todos los colindantes o por inacción (art. 122, Cód. Min.).\\n\\n2) Conceptos clave: internación y “criadero en mano”\\n- Internación: derecho excepcional a penetrar por la latitud en pertenencia ajena, siguiendo el criadero, cuando éste “contenga mineral”, hasta que las labores de una y otra pertenencia se comuniquen. Requiere aviso previo al colindante de la aproximación y del propósito de internar; los minerales extraídos y los costos durante la internación se parten por mitad (art. 102, Cód. Min.). Si las minas no están demarcadas o no conservan linderos, no hay deber de restitución/participación hasta que el dueño de la invadida pida mensura; desde la notificación de esa petición se tiene por determinada la línea divisoria y, si resultare internación, corresponde entregar la mitad de los minerales extraídos en la continuación de esas labores, previo pago de costos (art. 105, Cód. Min.).\\n- Criadero en mano: noción práctica/doctrinal que alude a que el criadero está “en mano” (descubierto y con mineral) dentro de la pertenencia. El propio Código vincula la internación a: (i) que el criadero “contenga mineral”, y (ii) aun “antes de haber pasado los límites de la pertenencia, se descubra el mineral” (art. 102, Cód. Min.). Ese descubrimiento con mineral habilita el uso del derecho de internarse, con los límites y cargas indicados.\\n\\n3) Efectos de la ampliación aprobada\\n- Incorporación real: la superficie adjudicada (p. ej., demasía) se incorpora a la pertenencia y pasa a quedar regida por sus linderos y régimen jurídico (art. 120, Cód. Min.).\\n- Canon/patente: el aumento de unidades de medida por ampliación o acrecentamiento impacta en el canon minero; las demasías, cualquiera sea su extensión, se consideran como una pertenencia completa a efectos del pago de la patente/canon. Si el dueño de la demasía no es colindante, además del canon debe invertir capital como dispone la ley (art. 223, Cód. Min.).\\n- Coordinación con internación: la ampliación de linderos por incorporación de demasía redefine la línea divisoria; desde entonces cesa el carácter “provisional” de la internación en ese tramo y rigen los linderos ampliados. Lo extraído durante la internación previa se rige por el régimen de partición por mitad y costos (arts. 102 y 105, Cód. Min.).\\n\\nFuentes legales citadas\\n- Código de Minería. Ley 1919 y modif. Artículos 72, 102, 105, 118, 119, 120, 122 y 223 (Argentina).\"}",
+                    "tool_call_id": "call_wji6uxfDNEixzKjQtpT7G7wz",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 3400,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 3328,
+                "output_tokens": 3900,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2880,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T14:22:29Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb61tG1TJNLuZyeVxFtLvf5whb2QE",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "content": "Final result processed.",
+                    "tool_call_id": "call_wji6uxfDNEixzKjQtpT7G7wz",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T14:23:52.886892Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": null,
+            "kind": "request"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-12T14:22:29+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 3937,
+                "output_tokens": 4227,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3136,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.000506,
+                "output_price": 0.039,
+                "total_price": 0.039506,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

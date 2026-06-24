@@ -1,0 +1,140 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "La empresa \"Minerales Andinos S.A.\" descubre la existencia de un importante depósito de turba en un terreno de dominio particular perteneciente a la familia López en la provincia de Tierra del Fuego. La empresa, luego de comprobar la existencia del recurso y realizar gastos de exploración, solicita ante la autoridad competente el otorgamiento de la concesión para explotar el depósito según lo dispuesto en el Código de Minería.\n\nAl ser notificado, el propietario del terreno manifiesta, dentro del plazo legal, su voluntad de explotar el depósito de turba por cuenta propia. Sin embargo, la familia López no ha efectuado aún la demarcación de las pertenencias mineras.\n\nSe plantean las siguientes cuestiones: ¿Corresponde alguna indemnización al concesionario o al propietario por la ocupación del suelo o el valor de las sustancias?",
+                    "timestamp": "2025-11-13T15:13:46.035992Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "args": "{\"question\":\"Indemnización por ocupación de suelo o valor de sustancias cuando propietario dice explotar por cuenta propia pero no demarcó pertenencias mineras; legislación argentina Código de Minería, normas aplicables, jurisprudencia. Caso: turba en terreno privado en Tierra del Fuego; concesión solicitada por empresa tras exploración y gastos; propietario manifestó voluntad de explotar en plazo legal pero no demarcó pertenencias mineras. ¿Corresponde indemnización al concesionario o al propietario por ocupación del suelo o el valor de las sustancias? Cite normas y jurisprudencia relevantes.\"}",
+                    "tool_call_id": "call_R8uzwHZFGKEjD2aoCWOMUFdv",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 549,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 335,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 192,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-mini-2025-08-07",
+            "timestamp": "2025-11-13T15:13:48Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbTJ6j3bNajfGM5DrX6gN84zInZJo",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "content": "{\"selected_documents\": [{\"index\": 2, \"distance\": 0.45585376024246216, \"contenido_texto\": \"Corresponden a la segunda categoría:\\n\\na) Las arenas metalíferas y piedras preciosas que se encuentran en el lecho de los ríos, aguas corrientes y los placeres.\\n\\nb) Los desmontes, relaves y escoriales de explotaciones anteriores, mientras las minas permanecen sin amparo y los relaves y escoriales de los establecimientos de beneficio abandonados o abiertos, en tanto no los recobre su dueño.\\n\\nc) Los salitres, salinas y turberas.\\n\\nd) Los metales no comprendidos en la primera categoría.\\n\\ne) Las tierras piritosas y aluminosas, abrasivos, ocres, resinas, esteatitas, baritina, caparrosas, grafito, caolín, sales alcalinas o alcalino terrosas, amianto, bentonita, zeolitas o minerales permutantes o permutíticos.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e951a8bcd2ec577d42cf711ce64c6fb7\", \"tipo_parte\": \"artículo\", \"numero_parte\": 4, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"b0e659f5cf64a11ccd3ca31e56f8c56f\"}, {\"index\": 4, \"distance\": 0.4517042636871338, \"contenido_texto\": \"Los depósitos de salitre, las salinas y turberas, se solicitarán en la misma forma que las sustancias de la primera categoría.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"9e1522f656ee97f638318bc2f9ecebda\", \"tipo_parte\": \"artículo\", \"numero_parte\": 179, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"0474a0a46e0433e80e3b7ace6da00d13\"}, {\"index\": 5, \"distance\": 0.6446858048439026, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El descubridor de las sustancias de segunda clase en terrenos de dominio particular, tendrá derecho a una indemnización por parte del propietario, si éste prefiere explotar por su cuenta el descubrimiento.\\n\\nEl valor de la indemnización se determinará por la importancia del descubrimiento y de los gastos de la exploración, hecha dentro de los límites de la propiedad particular.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"06c6502893a2bf9625ae182607f0548b\", \"tipo_parte\": \"artículo\", \"numero_parte\": 173, \"titulo_parte\": null, \"id_parte\": \"6f14c6762a768fa53f53ac5e153ebc45\"}, {\"index\": 1, \"distance\": 0.67682284116745, \"id_padre\": \"cf24337039e4d80d81f68c9c9ea063bb\", \"tipo_parte\": \"artículo\", \"numero_parte\": 159, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Cuando los terrenos pertenecen a particulares, deberá pagarse previamente su valor y los perjuicios; pero si el minero los tiene ocupados o quisiera ocuparlos, otorgará fianza suficiente mientras se practican las diligencias conducentes al pago.\\n\\nEn la valoración se considerará el espacio comprendido dentro de las señales o linderos provisionales que se fijen para determinar las pertenencias.\\n\\nPracticada la mensura y demarcación legal, se harán las restituciones correspondientes, según la mayor o menor extensión que definitivamente se adjudique.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"b9f7b9b7be6e927d8914895ae7f3fa93\"}, {\"index\": 3, \"distance\": 0.6525170803070068, \"id_padre\": \"9e1522f656ee97f638318bc2f9ecebda\", \"tipo_parte\": \"artículo\", \"numero_parte\": 174, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las concesiones constarán de un sólo cuerpo de forma rectangular o cuadrada en cuanto lo permitan los accidentes del terreno y yacimiento de las sustancias.\\n\\nServirán de base a la demarcación los pozos o zanjas ejecutadas por el concesionario; debiendo fijarse linderos firmes en los puntos convenientes para dejar clara y precisamente determinada la forma y ubicación de la pertenencia.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"2281e215d5cd94195b24708c6f5f3a97\"}, {\"index\": 4, \"distance\": 0.7051448822021484, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\\n\\nSon objeto de concesión:\\n\\nSon objeto de concesión:\\n\\nLos descubrimientos.\\n\\nLas minas caducadas y vacantes.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"eae4a44f252a6d8634c5e80f096d1258\", \"tipo_parte\": \"artículo\", \"numero_parte\": 44, \"id_parte\": \"54650cd907659eb336e9c7c841b58c17\"}, {\"index\": 3, \"distance\": 0.6709370613098145, \"contenido_texto\": \"El explorador no puede establecer una explotación formal, ni hacer extracción de minerales, antes de la concesión legal de la mina; pero hace suyos y podrá disponer de los que extraiga de las calicatas, o encuentre en la superficie, o necesite arrancar para la prosecución de las trabajos de cateo.\\n\\nEn caso de contravención, se mandará suspender todo trabajo, hasta que se haga la manifestación y registro, y se pagará una multa cuyo monto será VEINTE (20) a DOSCIENTAS (200) veces el canon de explotación correspondiente a la categoría de las sustancias extraídas.\\n\\nNo solicitándose el registro TREINTA (30) días después de requerido, se adjudicarán los derechos del explorador al primer denunciante.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"2ae9da79cb8555d8c2d36ba0127c1663\", \"tipo_parte\": \"artículo\", \"numero_parte\": 40, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"351b82d4479593b56a14e8cabb37c792\"}]}",
+                    "tool_call_id": "call_R8uzwHZFGKEjD2aoCWOMUFdv",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T15:17:47.777727Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "args": "{\"response_text\":\"Puntos relevantes extraídos: depósito de turba (sustancia de segunda clase), descubrimiento por Minerales Andinos S.A. con gastos de exploración, propietario (familia López) declaró dentro del plazo legal su voluntad de explotar por su cuenta pero no ha hecho la demarcación de pertenencias mineras.\\n\\nRespuesta breve y directa:\\n\\n1) Indemnización al descubridor (Minerales Andinos S.A.): Sí. La turba es sustancia de segunda clase; el artículo 173 del Código de Minería establece que “El descubridor de las sustancias de segunda clase en terrenos de dominio particular, tendrá derecho a una indemnización por parte del propietario, si éste prefiere explotar por su cuenta el descubrimiento”. El monto se determinará atendiendo a la importancia del descubrimiento y a los gastos de exploración realizados dentro de los límites de la propiedad. Por tanto, la empresa tiene derecho a que la familia López la indemnice por los gastos y el valor del descubrimiento.\\n\\n2) Indemnización o pago al propietario por ocupación del suelo o valor de las sustancias (cuando el concesionario ocupa): Sí. Si la autoridad otorga la concesión y ello implica ocupación de terrenos de dominio particular, el artículo 159 del Código de Minería dispone que “Cuando los terrenos pertenecen a particulares, deberá pagarse previamente su valor y los perjuicios”; además, si el minero los tiene ocupados deberá otorgar fianza mientras se practican las diligencias conducentes al pago. La valoración se hará considerando los linderos provisionales y, practicada la mensura y demarcación legal, se efectuarán las restituciones según la extensión definitiva.\\n\\n3) Efecto de no haber demarcado aún las pertenencias mineras: La falta de demarcación no impide el derecho del descubridor a la indemnización (art. 173), ni el derecho del propietario al pago del valor del suelo si se hace efectiva la ocupación por concesión (art. 159). La demarcación y mensura servirán para la determinación final de linderos y para ajustar restituciones o valoraciones (art. 159, art. 174 sobre demarcación de pertenencias).\\n\\n4) Observaciones adicionales:\\n- La turba está expresamente incluida entre las sustancias de segunda clase (arts. 4 y 179 del Código de Minería), por lo que se aplica el régimen citado.\\n- El explorador no puede establecer explotación formal ni extraer minerales más que lo permitido para cateo antes de la concesión (art. 40), por lo que eventuales extracciones no autorizadas pueden acarrear sanciones.\\n\\nConclusión práctica: Minerales Andinos S.A. (como descubridor) tiene derecho a una indemnización por parte de la familia López si ésta opta por explotar por su cuenta (art. 173). Si, por el contrario, se concede la mina al concesionario y esto implica ocupación del terreno, corresponde el pago previo del valor del suelo y perjuicios al propietario (art. 159), con seguimiento mediante mensura/demarcación conforme a lo previsto en el Código.\\n\\nFuentes legales consultadas: Código de Minería (República Argentina). Artículos 4, 40, 44, 159, 173, 174 y 179.\"}",
+                    "tool_call_id": "call_CNYLAREi5enDugxY4i1sIT6r",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2263,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 2136,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1408,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-mini-2025-08-07",
+            "timestamp": "2025-11-13T15:17:48Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbTMydP2ZHFlXzNVmk0jLSkJ8awei",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "content": "Final result processed.",
+                    "tool_call_id": "call_CNYLAREi5enDugxY4i1sIT6r",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T15:18:25.509250Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": null,
+            "kind": "request"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-mini-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T15:17:48+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 2812,
+                "output_tokens": 2471,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1600,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00056575,
+                "output_price": 0.004272,
+                "total_price": 0.00483775,
+                "model_input_price_mtok": 0.25,
+                "model_output_price_mtok": 2.0,
+                "model_id": "gpt-5-mini",
+                "model_name": "GPT-5 mini"
+            }
+        }
+    }
+}

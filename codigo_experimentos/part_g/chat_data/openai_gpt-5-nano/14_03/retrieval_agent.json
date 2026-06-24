@@ -1,0 +1,572 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > La empresa minera es titular de una mina de plata en Jujuy. Contrato de avío por dos años con Avíos del Plata S.R.L. (aviador). El aviador suministra materiales y dinero por $10.000.000. En compensación, el aviador recibe el 25% de los productos hasta cubrir el capital, más 8% de interés anual sobre sumas entregadas. Pago en dinero o en especie según el precio de mercado de la plata. Si los productos no cubren lo adelantado, el remanente se paga en dinero. Durante ejecución, el dueño desvía parte de fondos para maquinaria agrícola para empresa propia. Se ha desviado 30% del capital entregado. El aviador solicita explicaciones y exige restitución; el dueño no restituye ni justifica. Pregunta: En caso de decidir rescindir el contrato, ¿qué derechos asisten al aviador sobre los fondos y efectos ya suministrados?\n        ",
+                    "timestamp": "2025-11-13T10:29:17.093683Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Contrato de av\\u001bo minero en el C\\u001bdigo de Miner\\u001ba de la Naci\\u001bn Argentina: derechos del aviador, rescisi\\u001bn por incumplimiento del due\\u001bo, desvío de fondos, restituci\\u001bn de capital y efectos. Art\\u001bculos aplicables y jurisprudencia.\"}",
+                    "tool_call_id": "call_BeRB5W5Ie8SdBKubxkxnjYZQ",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Privilegios y garant\\u001bas del aviador: derecho de retenci\\u001bn sobre productos de la mina, privilegio sobre la mina o su producci\\u001bn, pago en especie o dinero seg\\u001bn precio de mercado, inter\\u001bes en contrato de av\\u001bo. C\\u001bdigo de Miner\\u001ba arts. av\\u001bo.\"}",
+                    "tool_call_id": "call_qTVvom9Iqgzy5UYOswJSc7sU",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Resoluci\\u001bn de contratos por incumplimiento en el C\\u001bdigo Civil y Comercial de la Naci\\u001bn aplicable al contrato de av\\u001bo minero; efectos de la resoluci\\u001bn sobre prestaciones ya ejecutadas; restituci\\u001bn, intereses, da\\u001bos y derecho de retenci\\u001bn.\"}",
+                    "tool_call_id": "call_2c4EkgihQnlwgZaAaEFER1HG",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 516,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 777,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 448,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:29:18Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOrmqMfiepzuU9xM3dbfKVJDI2uZ",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6584926843643188,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 278,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Rescindido el contrato por culpa del aviador, éste no tiene privilegio alguno por los avíos suministrados, ni derecho a ejecutar la mina.",
+                                "id_parte": "308eadf0549a6aa0004c89fb64f631b1"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6528293490409851,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 276,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Terminado el contrato y resultando que no ha sido pagado el valor de los avíos, cuando el aviador no tiene parte en la mina o en sus productos, puede éste ejercitar los derechos del acreedor no pagado, si no se renueva el contrato.",
+                                "id_parte": "7fb60e55c1b962831afc408c3c5347bd"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6308876872062683,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3d79851a8bc24458a12f1c183a9208e2",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 281,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si el dueño de la mina no emplea en su explotación los dineros o efectos suministrados para el avío, dándoles una inversión diferente, el aviador puede optar entre desistir del contrato, cobrando los valores distraídos con sus intereses y tomar la administración de la mina hasta ser enteramente cubierto.\n\nEn este caso se considerarán esos valores como capital invertido en el avío.",
+                                "id_parte": "c9f4414aecf3edd1d5093550d6c3fd10"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5948673486709595,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 272,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "En los demás casos, con los productos de la parte de mina asignada al aviador, se pagará ante todo el valor de los avíos.\n\nNo puede pretenderse derecho alguno a los productos de la mina, antes de que se haya cubierto la cantidad convenida o se haya vencido el tiempo señalado.",
+                                "id_parte": "bc74a8fd061e0419e37b51033443d1f6"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5821056365966797,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 271,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede convenirse que el aviador tome una parte de la mina en pago de los avíos que debe suministrar.\n\nO puede dársele participación en los productos por un tiempo determinado, o hasta cubrir el valor de los avíos.\n\nEn el primer caso, queda el aviador sujeto a las disposiciones que reglan las compañías de minas.",
+                                "id_parte": "8f84c59e6e94563b022d20aa4dd80525"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_BeRB5W5Ie8SdBKubxkxnjYZQ",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:29:33.677743Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7170670628547668,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede convenirse que el aviador tome una parte de la mina en pago de los avíos que debe suministrar.\n\nO puede dársele participación en los productos por un tiempo determinado, o hasta cubrir el valor de los avíos.\n\nEn el primer caso, queda el aviador sujeto a las disposiciones que reglan las compañías de minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 271,
+                                "titulo_parte": null,
+                                "id_parte": "8f84c59e6e94563b022d20aa4dd80525"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7004483938217163,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "En los demás casos, con los productos de la parte de mina asignada al aviador, se pagará ante todo el valor de los avíos.\n\nNo puede pretenderse derecho alguno a los productos de la mina, antes de que se haya cubierto la cantidad convenida o se haya vencido el tiempo señalado.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 272,
+                                "titulo_parte": null,
+                                "id_parte": "bc74a8fd061e0419e37b51033443d1f6"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6905047297477722,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si el dueño de la mina no emplea en su explotación los dineros o efectos suministrados para el avío, dándoles una inversión diferente, el aviador puede optar entre desistir del contrato, cobrando los valores distraídos con sus intereses y tomar la administración de la mina hasta ser enteramente cubierto.\n\nEn este caso se considerarán esos valores como capital invertido en el avío.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3d79851a8bc24458a12f1c183a9208e2",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 281,
+                                "titulo_parte": null,
+                                "id_parte": "c9f4414aecf3edd1d5093550d6c3fd10"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6820327639579773,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Terminado el contrato y resultando que no ha sido pagado el valor de los avíos, cuando el aviador no tiene parte en la mina o en sus productos, puede éste ejercitar los derechos del acreedor no pagado, si no se renueva el contrato.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 276,
+                                "titulo_parte": null,
+                                "id_parte": "7fb60e55c1b962831afc408c3c5347bd"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6763868927955627,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Rescindido el contrato por culpa del aviador, éste no tiene privilegio alguno por los avíos suministrados, ni derecho a ejecutar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 278,
+                                "titulo_parte": null,
+                                "id_parte": "308eadf0549a6aa0004c89fb64f631b1"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_qTVvom9Iqgzy5UYOswJSc7sU",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:29:33.677344Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6464663743972778,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Terminado el contrato y resultando que no ha sido pagado el valor de los avíos, cuando el aviador no tiene parte en la mina o en sus productos, puede éste ejercitar los derechos del acreedor no pagado, si no se renueva el contrato.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 276,
+                                "id_parte": "7fb60e55c1b962831afc408c3c5347bd"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6282753348350525,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Termina el contrato de avíos por el vencimiento del tiempo, por la inversión del capital, o por la ejecución de las obras, según lo pactado en el contrato.\n\nPero, cuando no se hubiese estipulado el tiempo de la duración de los avíos, ni la cantidad que debía suministrarse, ni las obras que había obligación de ejecutar, cualquiera de los interesados puede, dando aviso con SESENTA (60) días de anticipación, poner término al contrato.\n\nEn este caso, el aviador desahuciado tiene derecho a cobrar el valor de los efectos entregados y el valor de su crédito con los premios estipulados.\n\nTiene derecho a que se reciban los efectos que se le hubieren pedido.\n\nCuando el minero sea el desaviado, el pago se hará con los productos libres de la mina, después de los hipotecarios y de los aviadores posteriores.\n\nSi la obligación es de pagar en dinero, tendrá el propietario desahuciado el plazo de CUATRO (4) meses sin interés.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "fbd69de8cf0d4e06aa35da1ace0f3874",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 284,
+                                "id_parte": "3d168759c28fb4486a17693416ce4da0"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6104264259338379,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El dueño del suelo debe indemnización al dueño de la mina por los perjuicios causados a la explotación con trabajos en obras posteriores a la concesión, en los mismos casos en que según el Artículo 162, no tiene el propietario derecho a cobrarlos.\n\nLas indemnizaciones en este caso se reducen al pago de los objetos inutilizados y al de las reparaciones o fortificaciones que sean necesarias para la completa habilitación de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 165,
+                                "id_parte": "4d54127cd5f36af0ff301dc8b1e82720"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5887501835823059,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando se ha entregado una mina con la condición de dar al propietario una parte de los productos libres, el empresario tiene las mismas obligaciones y derechos que el arrendatario.\n\nEn caso de que se suspenda la explotación, contraviniendo a las estipulaciones del contrato, el dueño puede rescindirlo y cobrar daños y perjuicios.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c1780adff00ba057a75cc65fea273fcd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 337,
+                                "id_parte": "6211fbd12ed55b4491cb9042d92c66fc"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5832991600036621,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "No rindiendo productos la mina, o no siendo éstos suficientes para cubrir los gastos y las anticipaciones en todo o en parte, cualquiera de los socios contribuyentes puede pedir a la autoridad que el socio inconcurrente sea requerido de pago, con apercibimiento de tenérsele por desistido de sus derechos.\n\nNo verificándose el pago dentro de los TREINTA (30) días siguientes al requerimiento, la parte de mina queda acrecida proporcionadamente a la de los socios contribuyentes.\n\nLa parte que a cada uno corresponda, se inscribirá en el registro de minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "12998a2782cacb6cb5e890225637e4ed",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 306,
+                                "id_parte": "229097aeb3a3df1c0202028a5263a254"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_2c4EkgihQnlwgZaAaEFER1HG",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:29:33.678820Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"C\\u001bdigo de Miner\\u001aa de la Naci\\u001bn - contrato de av\\u001bo - privilegios del aviador sobre mina, productos, efectos y maquinarias; derecho de ejecuci\\u001bn; art\\u001bculos 270 a 286.\"}",
+                    "tool_call_id": "call_AhdqPCCXnjtntSY3vVQn6ZdA",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4394,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 923,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 832,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:29:35Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOs3yU8diruTQeJKQmS5A3QbRuy3",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5797710418701172,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Rescindido el contrato por culpa del aviador, éste no tiene privilegio alguno por los avíos suministrados, ni derecho a ejecutar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 278,
+                                "titulo_parte": null,
+                                "id_parte": "308eadf0549a6aa0004c89fb64f631b1"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5555993318557739,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si el dueño de la mina no emplea en su explotación los dineros o efectos suministrados para el avío, dándoles una inversión diferente, el aviador puede optar entre desistir del contrato, cobrando los valores distraídos con sus intereses y tomar la administración de la mina hasta ser enteramente cubierto.\n\nEn este caso se considerarán esos valores como capital invertido en el avío.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3d79851a8bc24458a12f1c183a9208e2",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 281,
+                                "titulo_parte": null,
+                                "id_parte": "c9f4414aecf3edd1d5093550d6c3fd10"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5479010939598083,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La administración de la mina corresponde a sus dueños exceptuando los casos en que la ley la concede a los aviadores.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3d79851a8bc24458a12f1c183a9208e2",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 279,
+                                "titulo_parte": null,
+                                "id_parte": "bd2fdf8ad4aec1e8528649712ccd18cd"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5441685914993286,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede convenirse que el aviador tome una parte de la mina en pago de los avíos que debe suministrar.\n\nO puede dársele participación en los productos por un tiempo determinado, o hasta cubrir el valor de los avíos.\n\nEn el primer caso, queda el aviador sujeto a las disposiciones que reglan las compañías de minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 271,
+                                "titulo_parte": null,
+                                "id_parte": "8f84c59e6e94563b022d20aa4dd80525"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5353597402572632,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "En los demás casos, con los productos de la parte de mina asignada al aviador, se pagará ante todo el valor de los avíos.\n\nNo puede pretenderse derecho alguno a los productos de la mina, antes de que se haya cubierto la cantidad convenida o se haya vencido el tiempo señalado.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 272,
+                                "titulo_parte": null,
+                                "id_parte": "bc74a8fd061e0419e37b51033443d1f6"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_AhdqPCCXnjtntSY3vVQn6ZdA",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:29:54.595037Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"C\\u001bdigo de Miner\\u001aa - art\\u001bculos 280, 282, 283, 285, 286 contrato de av\\u001bo: derechos del aviador ante incumplimiento del due\\u001bo, restituci\\u001bn, administraci\\u001bn, ejecuci\\u001bn, privilegios, intereses.\"}",
+                    "tool_call_id": "call_nBwoq1oyWrEzINMJsvm8i5NV",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 5294,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 4352,
+                "output_tokens": 875,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 768,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:29:55Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOsNHCBiJH6RMhcO6JH9BryaJdkM",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5638388395309448,
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 276,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Terminado el contrato y resultando que no ha sido pagado el valor de los avíos, cuando el aviador no tiene parte en la mina o en sus productos, puede éste ejercitar los derechos del acreedor no pagado, si no se renueva el contrato.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "7fb60e55c1b962831afc408c3c5347bd"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5635883808135986,
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 278,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Rescindido el contrato por culpa del aviador, éste no tiene privilegio alguno por los avíos suministrados, ni derecho a ejecutar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "308eadf0549a6aa0004c89fb64f631b1"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.562913715839386,
+                                "id_padre": "3d79851a8bc24458a12f1c183a9208e2",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 281,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si el dueño de la mina no emplea en su explotación los dineros o efectos suministrados para el avío, dándoles una inversión diferente, el aviador puede optar entre desistir del contrato, cobrando los valores distraídos con sus intereses y tomar la administración de la mina hasta ser enteramente cubierto.\n\nEn este caso se considerarán esos valores como capital invertido en el avío.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "c9f4414aecf3edd1d5093550d6c3fd10"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.48411670327186584,
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 271,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede convenirse que el aviador tome una parte de la mina en pago de los avíos que debe suministrar.\n\nO puede dársele participación en los productos por un tiempo determinado, o hasta cubrir el valor de los avíos.\n\nEn el primer caso, queda el aviador sujeto a las disposiciones que reglan las compañías de minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8f84c59e6e94563b022d20aa4dd80525"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.47304099798202515,
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 272,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "En los demás casos, con los productos de la parte de mina asignada al aviador, se pagará ante todo el valor de los avíos.\n\nNo puede pretenderse derecho alguno a los productos de la mina, antes de que se haya cubierto la cantidad convenida o se haya vencido el tiempo señalado.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "bc74a8fd061e0419e37b51033443d1f6"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_nBwoq1oyWrEzINMJsvm8i5NV",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:30:32.325896Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 3, \"distance\": 0.6308876872062683, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"3d79851a8bc24458a12f1c183a9208e2\", \"tipo_parte\": \"artículo\", \"numero_parte\": 281, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Si el dueño de la mina no emplea en su explotación los dineros o efectos suministrados para el avío, dándoles una inversión diferente, el aviador puede optar entre desistir del contrato, cobrando los valores distraídos con sus intereses y tomar la administración de la mina hasta ser enteramente cubierto.\\n\\nEn este caso se considerarán esos valores como capital invertido en el avío.\", \"id_parte\": \"c9f4414aecf3edd1d5093550d6c3fd10\"}, {\"index\": 1, \"distance\": 0.6464663743972778, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Terminado el contrato y resultando que no ha sido pagado el valor de los avíos, cuando el aviador no tiene parte en la mina o en sus productos, puede éste ejercitar los derechos del acreedor no pagado, si no se renueva el contrato.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"3015f1950aa24aba22986b87a1a43bfa\", \"tipo_parte\": \"artículo\", \"numero_parte\": 276, \"id_parte\": \"7fb60e55c1b962831afc408c3c5347bd\"}, {\"index\": 4, \"distance\": 0.5948673486709595, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"3015f1950aa24aba22986b87a1a43bfa\", \"tipo_parte\": \"artículo\", \"numero_parte\": 272, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"En los demás casos, con los productos de la parte de mina asignada al aviador, se pagará ante todo el valor de los avíos.\\n\\nNo puede pretenderse derecho alguno a los productos de la mina, antes de que se haya cubierto la cantidad convenida o se haya vencido el tiempo señalado.\", \"id_parte\": \"bc74a8fd061e0419e37b51033443d1f6\"}, {\"index\": 3, \"distance\": 0.5479010939598083, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La administración de la mina corresponde a sus dueños exceptuando los casos en que la ley la concede a los aviadores.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"3d79851a8bc24458a12f1c183a9208e2\", \"tipo_parte\": \"artículo\", \"numero_parte\": 279, \"titulo_parte\": null, \"id_parte\": \"bd2fdf8ad4aec1e8528649712ccd18cd\"}, {\"index\": 2, \"distance\": 0.6282753348350525, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Termina el contrato de avíos por el vencimiento del tiempo, por la inversión del capital, o por la ejecución de las obras, según lo pactado en el contrato.\\n\\nPero, cuando no se hubiese estipulado el tiempo de la duración de los avíos, ni la cantidad que debía suministrarse, ni las obras que había obligación de ejecutar, cualquiera de los interesados puede, dando aviso con SESENTA (60) días de anticipación, poner término al contrato.\\n\\nEn este caso, el aviador desahuciado tiene derecho a cobrar el valor de los efectos entregados y el valor de su crédito con los premios estipulados.\\n\\nTiene derecho a que se reciban los efectos que se le hubieren pedido.\\n\\nCuando el minero sea el desaviado, el pago se hará con los productos libres de la mina, después de los hipotecarios y de los aviadores posteriores.\\n\\nSi la obligación es de pagar en dinero, tendrá el propietario desahuciado el plazo de CUATRO (4) meses sin interés.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"fbd69de8cf0d4e06aa35da1ace0f3874\", \"tipo_parte\": \"artículo\", \"numero_parte\": 284, \"id_parte\": \"3d168759c28fb4486a17693416ce4da0\"}, {\"index\": 5, \"distance\": 0.5821056365966797, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"3015f1950aa24aba22986b87a1a43bfa\", \"tipo_parte\": \"artículo\", \"numero_parte\": 271, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Puede convenirse que el aviador tome una parte de la mina en pago de los avíos que debe suministrar.\\n\\nO puede dársele participación en los productos por un tiempo determinado, o hasta cubrir el valor de los avíos.\\n\\nEn el primer caso, queda el aviador sujeto a las disposiciones que reglan las compañías de minas.\", \"id_parte\": \"8f84c59e6e94563b022d20aa4dd80525\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 6237,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 5248,
+                "output_tokens": 2614,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1344,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:30:34Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbOt06lED2dRSdkH4zItlg1uyUDjs",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T10:30:34+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 16441,
+                "output_tokens": 5189,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3392,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00189225,
+                "output_price": 0.02614,
+                "total_price": 0.02803225,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

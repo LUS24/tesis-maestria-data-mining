@@ -1,0 +1,651 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > En el marco del Código de Minería Argentino, ¿puede la esposa del Sr. Juárez adquirir y mantener la mina que recibió por legado, siendo no divorciada, cuando el esposo es designado juez en la jurisdicción de un distrito minero y posee el 50% de participación en una mina de plata en ese distrito? Considerar incompatibilidades, conflictos de interés y normas de titularidad de concesiones/minería a familiares y cónyuges, y posibles denuncias de terceros.\n        ",
+                    "timestamp": "2025-11-13T08:17:05.638304Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería de la Nación Argentina incompatibilidades jueces de minas funcionarios prohibición adquirir minas por sí o por interpósita persona cónyuges parientes artículos\"}",
+                    "tool_call_id": "call_BElFpDVbGjvOSULwq88kLoER",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 420,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 892,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 832,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T08:17:08Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbMns9R1f8UFyZoRZ1B1Q3pMDIOdD",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5944945812225342,
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 138,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los dueños de DOS (2) o más minas contiguas pueden constituir con ellas una sola propiedad con una sola explotación.\n\nDesígnase esta reunión de pertenencias, correspondan a un solo dueño o a dueños diferentes, con el nombre de grupo minero.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "c1106e37e7debecd659de486cbec220f"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5846922397613525,
+                                "id_padre": "4d442cd021677333a58832d245596294",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 14,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Es prohibida la división material de las minas, tanto relación a sus dueños, como respecto de terceros.\n\nNi los dueños, ni terceros pueden explotar una región o una parte de la mina, independientemente de la explotación general.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "47febf76b128dec17c5858ad982c06f3"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5810530781745911,
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio de lo dispuesto en los artículos 22 y 23 de este Código, en la parte no modificada por leyes posteriores, no pueden adquirir por si ni por interpósita persona ninguno de los derechos mineros enumerados en este APENDICE.\n\n1° Las autoridades mineras y demás funcionarios o empleados dependientes de las mismas, cualquiera sea la naturaleza de sus funciones;\n\n2° Los directores y empleados de empresas fiscales;\n\n3° Los Estados extranjeros y las sociedades no constituidas en la República o cuyo funcionamiento como personas jurídicas no haya sido reconocido por las autoridades argentinas;\n\n4° Los extranjeros que no tengan domicilio real en la República.\n\nLas interdicciones impuestas por los incisos 1° y 2° durarán hasta CINCO (5) años después de haber cesado en sus funciones las personas comprendidas en ellas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5506443977355957,
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 2,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Estado Nacional y los Estados Provinciales pueden explorar y explotar minas e industrializar, comerciar y transportar los productos de las mismas directamente o por convenios entre si o mediante las sociedades mixtas autorizadas por este APENDICE.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "845967b6821b6b963355ac57c9acbdde"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5505846738815308,
+                                "id_padre": "a46500afa576f71f17c87fcb3f776baf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 23,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La prohibición no comprende las minas adquiridas antes del nombramiento de los funcionarios; ni las que la mujer casada hubiese llevado al matrimonio.\n\nTampoco comprende las minas posteriormente adquiridas por herencia o legado.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "57fc10e51b5c655e9b6d86277113a187"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_BElFpDVbGjvOSULwq88kLoER",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T08:17:24.269848Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería inhabilidad prohibición adquirir minas por interpuesta persona denuncia terceros artículo 22 23 autoridades mineras juez de minas conflicto de intereses cónyuges parientes Argentina\"}",
+                    "tool_call_id": "call_i7pbA6XhGLWksIErqUD4v331",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1382,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1087,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1024,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T08:17:25Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbMo90OMpKTZXXmU0la67NJOMyaP0",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5967457294464111,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio de lo dispuesto en los artículos 22 y 23 de este Código, en la parte no modificada por leyes posteriores, no pueden adquirir por si ni por interpósita persona ninguno de los derechos mineros enumerados en este APENDICE.\n\n1° Las autoridades mineras y demás funcionarios o empleados dependientes de las mismas, cualquiera sea la naturaleza de sus funciones;\n\n2° Los directores y empleados de empresas fiscales;\n\n3° Los Estados extranjeros y las sociedades no constituidas en la República o cuyo funcionamiento como personas jurídicas no haya sido reconocido por las autoridades argentinas;\n\n4° Los extranjeros que no tengan domicilio real en la República.\n\nLas interdicciones impuestas por los incisos 1° y 2° durarán hasta CINCO (5) años después de haber cesado en sus funciones las personas comprendidas en ellas.",
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5511832237243652,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.536331832408905,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5297234654426575,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "954656c63126ba38885976cc1d4c90f2",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 122,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cualquier persona podrá constituir una mina nueva en la demasía por renuncia o cesión de todos los colindantes, o por no ocuparla con alguna obra o trabajo verdaderamente útil, UN (1) año después de requeridos al efecto.\n\nEsta disposición tiene lugar en el caso de no hallarse las demasías incorporadas a las minas colindantes.\n\nLa parte del colindante que renuncia, que cede o que pierde su derecho, acrece a la de los otros colindantes.",
+                                "id_parte": "47ee12c9ac75733ffc0a9588f9c7df74"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5258219242095947,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4d442cd021677333a58832d245596294",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 14,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Es prohibida la división material de las minas, tanto relación a sus dueños, como respecto de terceros.\n\nNi los dueños, ni terceros pueden explotar una región o una parte de la mina, independientemente de la explotación general.",
+                                "id_parte": "47febf76b128dec17c5858ad982c06f3"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_i7pbA6XhGLWksIErqUD4v331",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T08:17:48.194253Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería de la Nación artículos 22 y 23 prohibiciones de adquirir minas autoridades mineras juez de minas mujer casada herencia legado\"}",
+                    "tool_call_id": "call_F3gpAfMqAlRVYHX5rYPM4BN6",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería recusación o excusación del juez de minas conflicto de interés participación en mina prohibición actuar en causas donde tenga interés\"}",
+                    "tool_call_id": "call_7Z50JCk33n05MauiGifxbpbK",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería adquisición por interpósita persona sanciones nulidad caducidad denuncias de terceros inhabilidad funcionarios autoridades mineras\"}",
+                    "tool_call_id": "call_8WcYoQecaxOF0W5FsWJmkCg5",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería sociedad conyugal cónyuges mujer casada propiedad de minas administración participación del marido artículos\"}",
+                    "tool_call_id": "call_nMqxCBKWIrm2ah8fKKkjRYTT",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2399,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 1280,
+                "output_tokens": 1158,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 960,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T08:17:48Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbMoWHxWg1u2EdOudSbzoV6GC1gmp",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6216365098953247,
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5817713141441345,
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5766465067863464,
+                                "id_padre": "a46500afa576f71f17c87fcb3f776baf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 22,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "No pueden adquirir minas, ni tener en ellas parte, interés ni derecho alguno:\n\n1- Los jueces, cualquiera que sea su jerarquía, en la sección o distritos mineros donde ejercen su jurisdicción en el ramo de minas.\n\n2- Los ingenieros rentados por el Estado, los escribanos de minas y sus oficiales en la sección o distritos en donde desempeñan sus funciones.\n\n3- Las mujeres no divorciadas y los hijos bajo la patria potestad de las personas mencionadas en los números precedentes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "c87f87446e97f2d4ef743ec75065c652"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5742635726928711,
+                                "id_padre": "a46500afa576f71f17c87fcb3f776baf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 23,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La prohibición no comprende las minas adquiridas antes del nombramiento de los funcionarios; ni las que la mujer casada hubiese llevado al matrimonio.\n\nTampoco comprende las minas posteriormente adquiridas por herencia o legado.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "57fc10e51b5c655e9b6d86277113a187"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.572424590587616,
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 322,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El mayor valor adquirido por la mina durante el matrimonio, corresponde al propietario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "cf9ceb7f594273a55a28031e99b61980"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_F3gpAfMqAlRVYHX5rYPM4BN6",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T08:18:06.605655Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5773826241493225,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Dentro del plazo se sesenta (60) días a contar de la notificación que realice la autoridad minera, el titular de una solicitud de permiso de exploración o de una manifestación de descubrimiento en trámite y sin petición de mensura, deberá presentar una nueva graficación de su solicitud y cumplir con lo dispuesto en el último párrafo del Artículo 45, de conformidad con las disposiciones de este Código, indicando las coordenadas de cada uno de los vértices que conforman el polígono, dentro de cuyos límites se encuentra el área descrita. El plazo antes indicado será improrrogable y el incumplimiento de lo dispuesto causará el abandono automático del trámite y la liberación de la zona.\n\nPresentadas las coordenadas, la autoridad minera las examinará y, encontrándolas correctas, otorgará la respectiva matrícula catastral.\n\nEn el caso de permisos de exploración otorgados o de minas con petición de mensura o de minas mensuradas, la autoridad minera deberá establecer en el campo las coordenadas de la ubicación real del permiso o de la mina, la cual deberá ser notificada a su titular y posteriormente se emitirá la respectiva matrícula catastral, a menos que lo realice directamente el titular, en cuyo caso la autoridad minera las examinará y, encontrándolas correctas, otorgará la correspondiente matrícula.\n\nUna vez concluido en cada provincia el catastro de que trata este artículo, la ubicación que resulta de sus coordenadas para cada derecho minero será inmutable. Todos aquellos derechos mineros que por causa imputable a su titular no hubieren quedado incluidos en el catastro al finalizar éste, se considerarán inexistentes por el solo ministerio de la ley y sin necesidad de acto alguno de la autoridad minera.\n\nSin perjuicio de lo dispuesto en los párrafos precedentes, cada provincia regulará las etapas, procedimientos, recursos y demás materias relacionados al catastro al que se refiere este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 353,
+                                "id_parte": "fa1b37762f0923058b5bdf5119bca5a2"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.565194308757782,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando la mina demarcada contenga una extensión mayor de la que sus títulos expresan, podrá rectificarse la mensura a solicitud de otro registrador inmediato, que pretenda el exceso para completar su pertenencia.\n\nPero esta rectificación sólo tendrá efecto cuando se han removido clandestinamente los linderos, o cuando en la designación de los puntos donde debían colocarse, o en la colocación misma, ha habido dolo o fraude.\n\nLa solicitud del nuevo registrador no será admitida después de los QUINIENTOS (500) días siguientes al de la mensura.\n\nEn esta rectificación se procederá, tomando por base el punto de partida y los rumbos fijados en la mensura y demarcación de la pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "2dc8dd7340a4f1012b96d4169871e3de",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 98,
+                                "id_parte": "bf01f791851076a42a19e4fa54bb1ddf"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5639876127243042,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La responsabilidad del dueño de la mina, cesa:\n\n1° Cuando los trabajos perjudicados han sido emprendidos después de la concesión sobre lugares explotados, o en actual explotación, o en dirección de los trabajos en actividad, o sobre el criadero manifestado o reconocido.\n\n2° Cuando, después de la concesión se emprenda cualquier trabajo sin previo aviso a la autoridad ni citación del dueño de la mina.\n\n3° Cuando se continúen trabajos suspendidos UN (1) año antes de la concesión.\n\n4° Cuando el peligro para las obras o trabajos que se emprendan, existía antes o era consiguiente a la nueva explotación.\n\nDado el aviso, se procederá al reconocimiento de los lugares, dejándose constancia de que el punto designado por el propietario del suelo está comprendido o no en alguno de los casos indicados en los incisos precedentes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 162,
+                                "id_parte": "d763ad979c986d874666bdfa9eb9dabf"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5547112822532654,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todo concesionario o minero puede hacer abandono de su concesión o su mina, de acuerdo con el Artículo 226 del Código y sólo desde la fecha de su manifestación a la autoridad competente queda libre del pago del impuesto. La autoridad minera de la respectiva jurisdicción deberá publicar cada semestre o a más tardar cada año, un padrón en el que se anotarán todas las minas por distritos, secciones o departamentos, y el estado en que se hallasen las concesiones.\n\nDentro del término de las publicaciones en caso de abandono o hasta TREINTA (30) días después, podrán pedir los acreedores hipotecarios o privilegiados que se ponga en venta pública la mina para pagarse con su producido, después de abonado el canon y los gastos; no haciéndose uso de este derecho, quedan extinguidos los gravámenes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 222,
+                                "id_parte": "60ad26895bf31578edcf53320d2ed512"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.552621066570282,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Admitido el abandono, cualquier persona podrá solicitar y registrar la mina sin otro requisito que la constancia del hecho.\n\nEn la solicitud se expresará el nombre del dueño, el de la mina, el del mineral en que se encuentra y la clase de sustancia que se ha explotado.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "d8a286579fb868b94a145532972e7dba",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 231,
+                                "id_parte": "358225199be806c75b608ed0597c6b39"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_7Z50JCk33n05MauiGifxbpbK",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T08:18:06.606260Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5993233323097229,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5906290411949158,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio de lo dispuesto en los artículos 22 y 23 de este Código, en la parte no modificada por leyes posteriores, no pueden adquirir por si ni por interpósita persona ninguno de los derechos mineros enumerados en este APENDICE.\n\n1° Las autoridades mineras y demás funcionarios o empleados dependientes de las mismas, cualquiera sea la naturaleza de sus funciones;\n\n2° Los directores y empleados de empresas fiscales;\n\n3° Los Estados extranjeros y las sociedades no constituidas en la República o cuyo funcionamiento como personas jurídicas no haya sido reconocido por las autoridades argentinas;\n\n4° Los extranjeros que no tengan domicilio real en la República.\n\nLas interdicciones impuestas por los incisos 1° y 2° durarán hasta CINCO (5) años después de haber cesado en sus funciones las personas comprendidas en ellas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "titulo_parte": null,
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5852670073509216,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "En cualquier caso de caducidad la mina volverá al dominio originario del Estado y será inscrita como vacante, en condiciones de ser adquirida como tal de acuerdo con las prescripciones de este Código.\n\nCuando la caducidad fuera dispuesta por falta de pago del canon minero, será notificada al concesionario en el último domicilio constituido en el expediente de concesión. El concesionario tendrá un plazo improrrogable de cuarenta y cinco (45) días para rescatar la mina, abonando el canon adeudado actualizado más un recargo del cien por ciento (100%) operándose automáticamente la vacancia si la deuda no fuera abonada en término.\n\nSi existieran acreedores hipotecarios o privilegiados registrados o titulares de derechos reales o personales relativos a la mina, también registrados, éstos podrán solicitar la concesión de la mina dentro de los CUARENTA Y CINCO (45) días de notificados en el respectivo domicilio constituido, de la declaración de caducidad, abonando el canon adeudado hasta el momento de haberse operado la caducidad.\n\nLos acreedores hipotecarios o privilegiados tendrán prioridad para la concesión respecto a los demás titulares de derechos registrados.\n\nCuando la caducidad fuera dispuesta por falta de pago del canon la concesión quedará supeditada a que el concesionario no haya ejercido en término el derecho de rescate.\n\nInscripta y publicada la mina como vacante, el solicitante deberá abonar el canon adeudado hasta el momento de haberse operado la caducidad, ingresando con la solicitud el importe correspondiente.\n\nCaso contrario la solicitud será rechazada y archivada sin dar lugar a recurso alguno. No podrá solicitar la mina el anterior concesionario, sino después de transcurrido UN (1) año de inscripta la vacancia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 219,
+                                "titulo_parte": null,
+                                "id_parte": "c51bf4abf64739b81176618c658eba19"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5770432353019714,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El usufructo debe comprender toda la mina, aunque se haya constituido a favor de diferentes personas.\n\nEl usufructuario tiene derecho a aprovechar los productos y beneficios de la mina, como puede aprovecharlos el propietario.\n\nPero el usufructuario de un fundo común no podrá explotar las minas que en sus límites se comprendan, aunque se encuentren en actual trabajo.\n\nEl usufructo de minas podrá celebrarse por un plazo de hasta CUARENTA (40) años, ya fuere constituido a favor de una persona jurídica o natural y no se extingue por muerte del usufructuario, salvo pacto en contrario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 338,
+                                "titulo_parte": null,
+                                "id_parte": "7462f1125277d5596ca7d17c74f9df82"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.56670081615448,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cualquier persona podrá constituir una mina nueva en la demasía por renuncia o cesión de todos los colindantes, o por no ocuparla con alguna obra o trabajo verdaderamente útil, UN (1) año después de requeridos al efecto.\n\nEsta disposición tiene lugar en el caso de no hallarse las demasías incorporadas a las minas colindantes.\n\nLa parte del colindante que renuncia, que cede o que pierde su derecho, acrece a la de los otros colindantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "954656c63126ba38885976cc1d4c90f2",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 122,
+                                "titulo_parte": null,
+                                "id_parte": "47ee12c9ac75733ffc0a9588f9c7df74"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_8WcYoQecaxOF0W5FsWJmkCg5",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T08:18:06.606278Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7466318607330322,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 322,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El mayor valor adquirido por la mina durante el matrimonio, corresponde al propietario.",
+                                "id_parte": "cf9ceb7f594273a55a28031e99b61980"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7316834330558777,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.712682843208313,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 318,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los productos de las minas particulares de cada uno de los cónyuges, pertenecen a la sociedad.",
+                                "id_parte": "1dbbb8405c935dfaf7cb7e001c086b82"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6664795875549316,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 320,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las deudas de cualquiera de los cónyuges, contraídas antes del matrimonio, se pagarán durante él, con los productos de sus respectivas minas.",
+                                "id_parte": "3540b41fca5e8f0c84106803d378d348"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6541255116462708,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "a46500afa576f71f17c87fcb3f776baf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 23,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La prohibición no comprende las minas adquiridas antes del nombramiento de los funcionarios; ni las que la mujer casada hubiese llevado al matrimonio.\n\nTampoco comprende las minas posteriormente adquiridas por herencia o legado.",
+                                "id_parte": "57fc10e51b5c655e9b6d86277113a187"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_nMqxCBKWIrm2ah8fKKkjRYTT",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T08:18:06.607435Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 3, \"distance\": 0.5766465067863464, \"id_padre\": \"a46500afa576f71f17c87fcb3f776baf\", \"tipo_parte\": \"artículo\", \"numero_parte\": 22, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"No pueden adquirir minas, ni tener en ellas parte, interés ni derecho alguno:\\n\\n1- Los jueces, cualquiera que sea su jerarquía, en la sección o distritos mineros donde ejercen su jurisdicción en el ramo de minas.\\n\\n2- Los ingenieros rentados por el Estado, los escribanos de minas y sus oficiales en la sección o distritos en donde desempeñan sus funciones.\\n\\n3- Las mujeres no divorciadas y los hijos bajo la patria potestad de las personas mencionadas en los números precedentes.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"c87f87446e97f2d4ef743ec75065c652\"}, {\"index\": 4, \"distance\": 0.5742635726928711, \"id_padre\": \"a46500afa576f71f17c87fcb3f776baf\", \"tipo_parte\": \"artículo\", \"numero_parte\": 23, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La prohibición no comprende las minas adquiridas antes del nombramiento de los funcionarios; ni las que la mujer casada hubiese llevado al matrimonio.\\n\\nTampoco comprende las minas posteriormente adquiridas por herencia o legado.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"57fc10e51b5c655e9b6d86277113a187\"}, {\"index\": 3, \"distance\": 0.5810530781745911, \"id_padre\": \"9eec2892196e94330096f9a98795266a\", \"tipo_parte\": \"artículo\", \"numero_parte\": 7, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Sin perjuicio de lo dispuesto en los artículos 22 y 23 de este Código, en la parte no modificada por leyes posteriores, no pueden adquirir por si ni por interpósita persona ninguno de los derechos mineros enumerados en este APENDICE.\\n\\n1° Las autoridades mineras y demás funcionarios o empleados dependientes de las mismas, cualquiera sea la naturaleza de sus funciones;\\n\\n2° Los directores y empleados de empresas fiscales;\\n\\n3° Los Estados extranjeros y las sociedades no constituidas en la República o cuyo funcionamiento como personas jurídicas no haya sido reconocido por las autoridades argentinas;\\n\\n4° Los extranjeros que no tengan domicilio real en la República.\\n\\nLas interdicciones impuestas por los incisos 1° y 2° durarán hasta CINCO (5) años después de haber cesado en sus funciones las personas comprendidas en ellas.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"7e30095ca21fb10aa2934c5f1bc0e873\"}, {\"index\": 3, \"distance\": 0.712682843208313, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"400919fc7dc9d437674b0599e5b1d88f\", \"tipo_parte\": \"artículo\", \"numero_parte\": 318, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Los productos de las minas particulares de cada uno de los cónyuges, pertenecen a la sociedad.\", \"id_parte\": \"1dbbb8405c935dfaf7cb7e001c086b82\"}, {\"index\": 2, \"distance\": 0.7316834330558777, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"400919fc7dc9d437674b0599e5b1d88f\", \"tipo_parte\": \"artículo\", \"numero_parte\": 319, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.\", \"id_parte\": \"8481a13e4d7cc653c596e67aec304339\"}, {\"index\": 1, \"distance\": 0.7466318607330322, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"400919fc7dc9d437674b0599e5b1d88f\", \"tipo_parte\": \"artículo\", \"numero_parte\": 322, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El mayor valor adquirido por la mina durante el matrimonio, corresponde al propietario.\", \"id_parte\": \"cf9ceb7f594273a55a28031e99b61980\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 8297,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 4219,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3072,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T08:18:08Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbMoq6xzOEr79hSPI9npdbt00e9Jt",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T08:18:08+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 12498,
+                "output_tokens": 7356,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 5888,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.01037125,
+                "output_price": 0.04219,
+                "total_price": 0.05256125,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

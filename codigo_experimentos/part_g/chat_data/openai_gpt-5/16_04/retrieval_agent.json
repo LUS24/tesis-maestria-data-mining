@@ -1,0 +1,617 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Desde el punto de vista del derecho minero argentino y del régimen de sociedad conyugal/comunidad, ¿con qué bienes o productos mineros pueden satisfacerse las deudas anteriores al matrimonio del cónyuge deudor durante la vigencia de la sociedad conyugal? Considerar: minas preexistentes de un cónyuge, aumentos de valor por inversiones gananciales, frutos/beneficios de la explotación, y concesiones o pertenencias adquiridas durante el matrimonio. Citar artículos aplicables del Código de Minería y del Código Civil y Comercial (o Código Civil derogado si correspondiera), y jurisprudencia si la hay.\n        ",
+                    "timestamp": "2025-11-12T17:47:19.655837Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Derecho minero argentino y sociedad conyugal: minas preexistentes de un c\\u0000f3nyuge como bienes propios vs. concesiones mineras adquiridas durante el matrimonio como gananciales; tratamiento de aumentos de valor por inversiones gananciales y frutos de la explotaci\\u0000f3n. Citar art\\u0000edculos del C\\u0000f3digo de Miner\\u0000eda y del C\\u0000f3digo Civil y Comercial (o C\\u0000f3digo Civil derogado).\"}",
+                    "tool_call_id": "call_UJ3XrsUwge2qry3EjOdrN6za",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"CCyC (r\\u0000e9gimen de comunidad): responsabilidad por deudas anteriores al matrimonio del c\\u0000f3nyuge deudor, bienes con los que se pueden satisfacer; afectaci\\u0000f3n de bienes gananciales, frutos y productos. Art\\u0000edculos aplicables (arts. 463 y ss., 467, 468, etc.).\"}",
+                    "tool_call_id": "call_S4m0yMKxyHWKHoy1pmWYIfVj",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Jurisprudencia argentina sobre: deudas anteriores al matrimonio y ejecuci\\u0000f3n sobre frutos/beneficios de explotaciones mineras o concesiones; minas preexistentes y aumentos de valor por inversiones de la sociedad conyugal.\"}",
+                    "tool_call_id": "call_t4ebM54vZC9i4u7ACHE0UdRw",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 450,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 841,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 512,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T17:47:22Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb9EAQSgjeTxSx9KpCd73hYQ9Z0uO",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6444362998008728,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6295135021209717,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El usufructo debe comprender toda la mina, aunque se haya constituido a favor de diferentes personas.\n\nEl usufructuario tiene derecho a aprovechar los productos y beneficios de la mina, como puede aprovecharlos el propietario.\n\nPero el usufructuario de un fundo común no podrá explotar las minas que en sus límites se comprendan, aunque se encuentren en actual trabajo.\n\nEl usufructo de minas podrá celebrarse por un plazo de hasta CUARENTA (40) años, ya fuere constituido a favor de una persona jurídica o natural y no se extingue por muerte del usufructuario, salvo pacto en contrario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 338,
+                                "id_parte": "7462f1125277d5596ca7d17c74f9df82"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6293870210647583,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio de lo dispuesto en los artículos 22 y 23 de este Código, en la parte no modificada por leyes posteriores, no pueden adquirir por si ni por interpósita persona ninguno de los derechos mineros enumerados en este APENDICE.\n\n1° Las autoridades mineras y demás funcionarios o empleados dependientes de las mismas, cualquiera sea la naturaleza de sus funciones;\n\n2° Los directores y empleados de empresas fiscales;\n\n3° Los Estados extranjeros y las sociedades no constituidas en la República o cuyo funcionamiento como personas jurídicas no haya sido reconocido por las autoridades argentinas;\n\n4° Los extranjeros que no tengan domicilio real en la República.\n\nLas interdicciones impuestas por los incisos 1° y 2° durarán hasta CINCO (5) años después de haber cesado en sus funciones las personas comprendidas en ellas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.628560483455658,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los productos de las minas particulares de cada uno de los cónyuges, pertenecen a la sociedad.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 318,
+                                "id_parte": "1dbbb8405c935dfaf7cb7e001c086b82"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6282777190208435,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El mayor valor adquirido por la mina durante el matrimonio, corresponde al propietario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 322,
+                                "id_parte": "cf9ceb7f594273a55a28031e99b61980"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_UJ3XrsUwge2qry3EjOdrN6za",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T17:47:45.737690Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6333248615264893,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 317,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La sociedad conyugal, lo mismo que los demás actos y contratos de minas, están sujetos a las leyes comunes en cuanto no esté establecido en este Código, o contraríe sus disposiciones.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "id_parte": "e9434ba0b337f1e8120284db392df1b3"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5202144980430603,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 322,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El mayor valor adquirido por la mina durante el matrimonio, corresponde al propietario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "id_parte": "cf9ceb7f594273a55a28031e99b61980"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5129683613777161,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 320,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las deudas de cualquiera de los cónyuges, contraídas antes del matrimonio, se pagarán durante él, con los productos de sus respectivas minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "id_parte": "3540b41fca5e8f0c84106803d378d348"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5007809400558472,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 313,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los socios no son responsables por las obligaciones de la sociedad, sino en proporción a la parte que tienen en la mina, salvo si otra cosa se hubiere estipulado.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cb9d08fe353a369d0b0988772ae63de2",
+                                "id_parte": "b9509999c8e0356af7bbdbeeb8f25797"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.49740007519721985,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 338,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El usufructo debe comprender toda la mina, aunque se haya constituido a favor de diferentes personas.\n\nEl usufructuario tiene derecho a aprovechar los productos y beneficios de la mina, como puede aprovecharlos el propietario.\n\nPero el usufructuario de un fundo común no podrá explotar las minas que en sus límites se comprendan, aunque se encuentren en actual trabajo.\n\nEl usufructo de minas podrá celebrarse por un plazo de hasta CUARENTA (40) años, ya fuere constituido a favor de una persona jurídica o natural y no se extingue por muerte del usufructuario, salvo pacto en contrario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "id_parte": "7462f1125277d5596ca7d17c74f9df82"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_S4m0yMKxyHWKHoy1pmWYIfVj",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T17:47:45.736769Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6782914400100708,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 320,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las deudas de cualquiera de los cónyuges, contraídas antes del matrimonio, se pagarán durante él, con los productos de sus respectivas minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "id_parte": "3540b41fca5e8f0c84106803d378d348"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6444604992866516,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6366780400276184,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 322,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El mayor valor adquirido por la mina durante el matrimonio, corresponde al propietario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "id_parte": "cf9ceb7f594273a55a28031e99b61980"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6273495554924011,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 340,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\n\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "id_parte": "b234c3008b7f7dab9d73e23e4c5b894e"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6268452405929565,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 165,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El dueño del suelo debe indemnización al dueño de la mina por los perjuicios causados a la explotación con trabajos en obras posteriores a la concesión, en los mismos casos en que según el Artículo 162, no tiene el propietario derecho a cobrarlos.\n\nLas indemnizaciones en este caso se reducen al pago de los objetos inutilizados y al de las reparaciones o fortificaciones que sean necesarias para la completa habilitación de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "id_parte": "4d54127cd5f36af0ff301dc8b1e82720"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_t4ebM54vZC9i4u7ACHE0UdRw",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T17:47:45.736519Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"C\\u0013digo de Miner\\u001da arts. 317 a 322 sociedad conyugal: productos de minas, deudas anteriores al matrimonio, mayor valor, concesiones o pertenencias adquiridas durante el matrimonio (art. 321). Texto exacto.\"}",
+                    "tool_call_id": "call_w5z2S06wIZvdluODxS1GzxdF",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"C\\u0013digo Civil y Comercial de la Naci\\u001dn r\\u001egimen de comunidad: responsabilidad por deudas anteriores al matrimonio del c\\u001fnyuge deudor; bienes con los que pueden satisfacerse; afectaci\\u001dn de bienes gananciales y propios; frutos y productos. Art\\u001dculos 463 a 490 (especialmente 465, 466, 467, 468, 469, 470). Texto.\"}",
+                    "tool_call_id": "call_uJlCiLxLjuysYXLBtFcmmucl",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Jurisprudencia argentina minas sociedad conyugal art. 320 C\\u001digo de Miner\\u001da 'deudas anteriores al matrimonio' 'productos de sus respectivas minas' concesiones adquiridas durante el matrimonio ganancialidad.\"}",
+                    "tool_call_id": "call_ilgzLKWeuJDUwlN7NtAIFvhf",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4008,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1377,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1088,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T17:47:46Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb9EYOP7cGKtPeoudZoGmHfCoPawO",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6912810802459717,
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6825936436653137,
+                                "numero_parte": 322,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El mayor valor adquirido por la mina durante el matrimonio, corresponde al propietario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "id_parte": "cf9ceb7f594273a55a28031e99b61980"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6611440777778625,
+                                "numero_parte": 338,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El usufructo debe comprender toda la mina, aunque se haya constituido a favor de diferentes personas.\n\nEl usufructuario tiene derecho a aprovechar los productos y beneficios de la mina, como puede aprovecharlos el propietario.\n\nPero el usufructuario de un fundo común no podrá explotar las minas que en sus límites se comprendan, aunque se encuentren en actual trabajo.\n\nEl usufructo de minas podrá celebrarse por un plazo de hasta CUARENTA (40) años, ya fuere constituido a favor de una persona jurídica o natural y no se extingue por muerte del usufructuario, salvo pacto en contrario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "id_parte": "7462f1125277d5596ca7d17c74f9df82"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6523009538650513,
+                                "numero_parte": 318,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los productos de las minas particulares de cada uno de los cónyuges, pertenecen a la sociedad.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "id_parte": "1dbbb8405c935dfaf7cb7e001c086b82"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6276170015335083,
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_w5z2S06wIZvdluODxS1GzxdF",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T17:48:14.122696Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6094193458557129,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La sociedad conyugal, lo mismo que los demás actos y contratos de minas, están sujetos a las leyes comunes en cuanto no esté establecido en este Código, o contraríe sus disposiciones.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 317,
+                                "id_parte": "e9434ba0b337f1e8120284db392df1b3"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.4831685423851013,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las deudas de cualquiera de los cónyuges, contraídas antes del matrimonio, se pagarán durante él, con los productos de sus respectivas minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 320,
+                                "id_parte": "3540b41fca5e8f0c84106803d378d348"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.47703298926353455,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El mayor valor adquirido por la mina durante el matrimonio, corresponde al propietario.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 322,
+                                "id_parte": "cf9ceb7f594273a55a28031e99b61980"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.4582882821559906,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los dueños de las pertenencias con que debe formarse el grupo, ocurrirán para su concesión a la autoridad por medio de un pedimento.\n\nEl pedimento contendrá:\n\n1° Los títulos correspondientes a cada una de las pertenencias.\n\n2° Un plano del grupo en el que se manifieste la situación relativa, la extensión y forma de las minas concurrentes, sus nombres, el de sus dueños, el que ha de llevar la nueva propiedad y el de las minas colindantes.\n\n3° La parte o derecho asignado a cada uno de los interesados.\n\n4° La declaración del gravamen que afecta a cada pertenencia y el nombre de las personas a cuyo favor esté constituido.\n\n5° El acuerdo celebrado entre los acreedores sobre la manera cómo deben pasar esos gravámenes al grupo; y en su defecto, la propuesta de bases para un arreglo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 140,
+                                "id_parte": "d4da40747f2f21ce99c9831326ad632f"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.4519704580307007,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las disposiciones de los artículos anteriores relativas al pago de la patente o al canon minero, se aplicarán en la misma forma, aun en los casos que por ampliación o acrecentamiento, o formación de grupos mineros, o compañías de minas, conforme a los Artículos 87, 109, 113, 116, y 140 aumentase el número de unidades de medidas de cada concesión.\n\nLas demasías, sea cualquiera su extensión, serán consideradas a los efectos del pago de la patente como una pertenencia completa en todos los casos y variantes establecidos en el Acápite III, del Título VII.\n\nCuando el concesionario o dueño de la demasía no fuera un colindante, además del pago del canon tendrá la obligación de invertir capital como lo dispone la presente ley.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 223,
+                                "id_parte": "1adc32d645730ce4350230d75547b0b0"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_uJlCiLxLjuysYXLBtFcmmucl",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T17:48:14.121476Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.7253390550613403,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.7109012603759766,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 318,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los productos de las minas particulares de cada uno de los cónyuges, pertenecen a la sociedad.",
+                                "id_parte": "1dbbb8405c935dfaf7cb7e001c086b82"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6942280530929565,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 338,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El usufructo debe comprender toda la mina, aunque se haya constituido a favor de diferentes personas.\n\nEl usufructuario tiene derecho a aprovechar los productos y beneficios de la mina, como puede aprovecharlos el propietario.\n\nPero el usufructuario de un fundo común no podrá explotar las minas que en sus límites se comprendan, aunque se encuentren en actual trabajo.\n\nEl usufructo de minas podrá celebrarse por un plazo de hasta CUARENTA (40) años, ya fuere constituido a favor de una persona jurídica o natural y no se extingue por muerte del usufructuario, salvo pacto en contrario.",
+                                "id_parte": "7462f1125277d5596ca7d17c74f9df82"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6938939690589905,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 322,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El mayor valor adquirido por la mina durante el matrimonio, corresponde al propietario.",
+                                "id_parte": "cf9ceb7f594273a55a28031e99b61980"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6807755827903748,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 320,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las deudas de cualquiera de los cónyuges, contraídas antes del matrimonio, se pagarán durante él, con los productos de sus respectivas minas.",
+                                "id_parte": "3540b41fca5e8f0c84106803d378d348"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_ilgzLKWeuJDUwlN7NtAIFvhf",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T17:48:14.121760Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "Voy a hacer una consulta adicional a la base para localizar artículos específicos del Código Civil y Comercial sobre deudas anteriores al matrimonio y responsabilidad patrimonial dentro del régimen de comunidad.\nLlamando a la herramienta cosine_distance_vector_search para recuperar normativa aplicable (límite de uso remanente: 1).\n{\"query\":\"C\\u00f3digo Civil y Comercial r\\u00e9gimen de comunidad matrimonio deudas anteriores al matrimonio responsabilidad frente a terceros bienes con los que se hacen efectivas arts. 463 465 466 467 468 470 471 472 frutos y productos de bienes propios gananciales\"}\n{\"selected_documents\": [{\"index\": 4, \"distance\": 0.4831685423851013, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las deudas de cualquiera de los cónyuges, contraídas antes del matrimonio, se pagarán durante él, con los productos de sus respectivas minas.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"400919fc7dc9d437674b0599e5b1d88f\", \"tipo_parte\": \"artículo\", \"numero_parte\": 320, \"id_parte\": \"3540b41fca5e8f0c84106803d378d348\"}, {\"index\": 4, \"distance\": 0.6523009538650513, \"numero_parte\": 318, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Los productos de las minas particulares de cada uno de los cónyuges, pertenecen a la sociedad.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"400919fc7dc9d437674b0599e5b1d88f\", \"tipo_parte\": \"artículo\", \"id_parte\": \"1dbbb8405c935dfaf7cb7e001c086b82\"}, {\"index\": 3, \"distance\": 0.47703298926353455, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El mayor valor adquirido por la mina durante el matrimonio, corresponde al propietario.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"400919fc7dc9d437674b0599e5b1d88f\", \"tipo_parte\": \"artículo\", \"numero_parte\": 322, \"id_parte\": \"cf9ceb7f594273a55a28031e99b61980\"}, {\"index\": 1, \"distance\": 0.6094193458557129, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La sociedad conyugal, lo mismo que los demás actos y contratos de minas, están sujetos a las leyes comunes en cuanto no esté establecido en este Código, o contraríe sus disposiciones.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"400919fc7dc9d437674b0599e5b1d88f\", \"tipo_parte\": \"artículo\", \"numero_parte\": 317, \"id_parte\": \"e9434ba0b337f1e8120284db392df1b3\"}, {\"index\": 1, \"distance\": 0.6444362998008728, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"400919fc7dc9d437674b0599e5b1d88f\", \"tipo_parte\": \"artículo\", \"numero_parte\": 319, \"id_parte\": \"8481a13e4d7cc653c596e67aec304339\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 7525,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 2318,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1408,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T17:49:00Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-Cb9Fk6wMz30Ou6dg4VsnODu2FBLHL",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-12T17:49:00+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 11983,
+                "output_tokens": 4536,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3008,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00940625,
+                "output_price": 0.02318,
+                "total_price": 0.03258625,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

@@ -1,0 +1,617 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Requisitos, limitaciones y posibles sanciones establecidos en el Código de Minería Argentino para la exploración, explotación, comercialización y exportación de minerales nucleares (uranio y torio). ¿El Estado Nacional posee derecho preferente y bajo qué condiciones puede adquirir los minerales nucleares explotados, y qué requisitos impone la ley para su exportación?\n        ",
+                    "timestamp": "2025-11-13T10:01:09.167223Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería Argentina minerales nucleares uranio torio exploración explotación comercialización exportación requisitos limitaciones sanciones derecho preferente estado nacional\"}",
+                    "tool_call_id": "call_DxixvSre6mXAkSVLcOpD3KM6",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería Título Minerales nucleares uranio torio derecho preferente adquisición por el Estado Nacional exportación requisitos artículos\"}",
+                    "tool_call_id": "call_j9vbw7YSUogMHN9IIsbQOTUl",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería régimen especial minerales radiactivos uranio torio sanciones infracciones exportación comercialización autorización autoridad de aplicación\"}",
+                    "tool_call_id": "call_SPQOqmJBWeGTQznuUQ18q0kz",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 391,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 859,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 704,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:01:11Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOQZn5Qv9zgti9rHQBIbrDRpEmr7",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6408060193061829,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 211,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La COMISION NACIONAL DE ENERGIA ATOMICA podrá efectuar prospección, exploración y explotación de minerales nucleares, con arreglo a las normas generales del Código de Minería. De adoptarse un nuevo estatuto para dicho organismo, tales actividades se sujetarán a las disposiciones que, al respecto, contenga ese estatuto.\n\nLa COMISION NACIONAL DE ENERGIA ATOMICA queda facultada a decidir la explotación o pase a reserva de los siguientes yacimientos nucleares registrados a su nombre: «Doctor Baulies», «Los Reyunos» (Provincia de Mendoza) y «Cerro Solo» (Provincia del Chubut).",
+                                "id_parte": "f5c32f45b0b3c098fbd4c88a1fd82c97"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6226320862770081,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.621050238609314,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ebad6798643112a64729d7cc7a1abf2c",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 1,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Código de Minería rige los derechos, obligaciones y procedimientos referentes a la adquisición, explotación y aprovechamiento de las sustancias minerales.",
+                                "id_parte": "78020a7e760ce39a4591da47093358d7"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6201846599578857,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 205,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La exploración y explotación de minerales nucleares y de los desmontes, relaves y escoriales que los contengan, se regirán por las disposiciones de este Código referentes a las minas de primera y segunda categoría, en todo lo que no se encuentre modificado por el presente Título.\n\nEl organismo que por ley se designe, prestará a los estados provinciales asesoramiento técnico, minero y de prevención de riesgos, con respecto a las actividades de exploración y explotación nuclear que se desarrollen en cada provincia. A tales efectos dicho organismo podrá celebrar convenios con las provincias respecto a las actividades a desarrollar.",
+                                "id_parte": "ebcc32cba1d9fb59d90e65e3ccc71d45"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6007062196731567,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4f349b3799fb5e95b30eea8e2d13ca9a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 10,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio del dominio originario del Estado reconocido por el Artículo 7, la propiedad particular de las minas se establece por la concesión legal.",
+                                "id_parte": "15fae8d5ad2c466361dc76ce3f016c3a"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_DxixvSre6mXAkSVLcOpD3KM6",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:01:25.025338Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5921757817268372,
+                                "numero_parte": 206,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Decláranse minerales nucleares el uranio y el torio",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "id_parte": "789ed8b98f8f8cf43f8b44bf2013b245"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5914407968521118,
+                                "numero_parte": 210,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La exportación de minerales nucleares, concentrados sus derivados requerirá la previa aprobación, respecto a cada contrato que se celebre del organismo a que se refiere el Artículo 205, debiendo quedar garantizado el abastecimiento interno y el control sobre el destino final del mineral o material a exportar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "id_parte": "97c80becdc91f18e240b29f9f1b9b2d4"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5675045847892761,
+                                "numero_parte": 1,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Código de Minería rige los derechos, obligaciones y procedimientos referentes a la adquisición, explotación y aprovechamiento de las sustancias minerales.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ebad6798643112a64729d7cc7a1abf2c",
+                                "tipo_parte": "artículo",
+                                "id_parte": "78020a7e760ce39a4591da47093358d7"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5546221733093262,
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5420016050338745,
+                                "numero_parte": 170,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los establecimientos públicos de fundición y beneficio de minerales se sujetarán a las disposiciones que rigen las empresas industriales comunes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "tipo_parte": "artículo",
+                                "id_parte": "46f871d9d75a125da279dff9df51677c"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_j9vbw7YSUogMHN9IIsbQOTUl",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:01:25.025316Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6118493676185608,
+                                "contenido_texto": "Decláranse minerales nucleares el uranio y el torio",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 206,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "789ed8b98f8f8cf43f8b44bf2013b245"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5350874066352844,
+                                "contenido_texto": "Los establecimientos públicos de fundición y beneficio de minerales se sujetarán a las disposiciones que rigen las empresas industriales comunes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 170,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "46f871d9d75a125da279dff9df51677c"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5212914347648621,
+                                "contenido_texto": "Los titulares de minas que contengan minerales nucleares deberán suministrar con carácter de declaración jurada, a requerimiento del organismo a que se refiere el Artículo 205 y de la autoridad minera, la información relativa a reservas y producción de tales minerales y sus concentrados, bajo sanción de una multa de hasta QUINIENTAS (500) veces el valor del canon que corresponda a la pertenencia indicada en el artículo anterior.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 208,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "26275af2f24e81591ad0814c80b19286"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.506638765335083,
+                                "contenido_texto": "La exportación de minerales nucleares, concentrados sus derivados requerirá la previa aprobación, respecto a cada contrato que se celebre del organismo a que se refiere el Artículo 205, debiendo quedar garantizado el abastecimiento interno y el control sobre el destino final del mineral o material a exportar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 210,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "97c80becdc91f18e240b29f9f1b9b2d4"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.48245903849601746,
+                                "contenido_texto": "La explotación de las canteras está sometida a las disposiciones de este Código y de los reglamentos de minas en lo concerniente a la policía y seguridad de las labores.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "7bfb6f0ccbf08975801e2a948a0e2f0d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 204,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "id_parte": "7f2091e3b92f0a5cec8b800683491715"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_SPQOqmJBWeGTQznuUQ18q0kz",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:01:25.026939Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"derecho preferente Estado Nacional adquirir minerales nucleares C\\u0000f3digo de Miner\\u0000eda art\\u0000edculo preferente de compra CNEA uranio torio\"}",
+                    "tool_call_id": "call_8HtjCk7pG0jfDMjbAJQYMZMx",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"C\\u0000f3digo de Miner\\u0000eda art\\u0000edculo 207 209 212 213 minerales nucleares uranio torio comercializaci\\u0000f3n compra del Estado\"}",
+                    "tool_call_id": "call_41IruZmvYG0Pz3xcUXyMcRCd",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"minerales nucleares comercializaci\\u0000f3n interna requisitos autorizaci\\u0000f3n control sanciones multas clausura art\\u0000edculo\"}",
+                    "tool_call_id": "call_zeRrzowEFOOVYWtpSRCu6Yr5",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 3742,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 773,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 576,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:01:25Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOQnVyWR5YcpTdKIhDVbMMdvw56r",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5690590143203735,
+                                "numero_parte": 343,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El usufructo constituido sobre todos los bienes de una persona, comprende el usufructo de las minas comprendidas en esos bienes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "id_parte": "24aa6aab0c760ddc5c359520fd54a554"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5628066658973694,
+                                "numero_parte": 210,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La exportación de minerales nucleares, concentrados sus derivados requerirá la previa aprobación, respecto a cada contrato que se celebre del organismo a que se refiere el Artículo 205, debiendo quedar garantizado el abastecimiento interno y el control sobre el destino final del mineral o material a exportar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "id_parte": "97c80becdc91f18e240b29f9f1b9b2d4"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5567650198936462,
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5529274344444275,
+                                "numero_parte": 72,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La extensión del terreno dentro de cuyos límites puede el minero explotar su concesión, se llama pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ee54a3b20a9dac1f871c62ef6486863c",
+                                "tipo_parte": "artículo",
+                                "id_parte": "a9d5f1710a4dff2a926474dcd168627a"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.543289065361023,
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_8HtjCk7pG0jfDMjbAJQYMZMx",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:01:38.022554Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5850856304168701,
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 206,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Decláranse minerales nucleares el uranio y el torio",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "789ed8b98f8f8cf43f8b44bf2013b245"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5509290099143982,
+                                "id_padre": "c2422a1c629cff5791d1b4b0c379547d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 58,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La persona que ejecutando por otro trabajos mineros, hace un descubrimiento, descubre para el dueño de los trabajos.\n\nPero si los trabajos no son verdaderamente mineros, el descubrimiento pertenece a ambos por mitad.\n\nEsto mismo se observará cuando cualquier empleado que goce sueldo o salario de una mina, aunque no ejecute trabajo alguno, descubre dentro del radio de UN (1) kilómetro, tomado desde los límites de esa mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "9d1e43a1b63428bde9f54b7d6b7fcefd"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5077375769615173,
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 210,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La exportación de minerales nucleares, concentrados sus derivados requerirá la previa aprobación, respecto a cada contrato que se celebre del organismo a que se refiere el Artículo 205, debiendo quedar garantizado el abastecimiento interno y el control sobre el destino final del mineral o material a exportar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "97c80becdc91f18e240b29f9f1b9b2d4"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.49701762199401855,
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 208,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los titulares de minas que contengan minerales nucleares deberán suministrar con carácter de declaración jurada, a requerimiento del organismo a que se refiere el Artículo 205 y de la autoridad minera, la información relativa a reservas y producción de tales minerales y sus concentrados, bajo sanción de una multa de hasta QUINIENTAS (500) veces el valor del canon que corresponda a la pertenencia indicada en el artículo anterior.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "26275af2f24e81591ad0814c80b19286"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.48408010601997375,
+                                "id_padre": "9ee91f71e729cab437b6c11b9c5c0d49",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 339,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\n\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2ca3c839ca5d493bad04e3fdbbd4edb3"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_41IruZmvYG0Pz3xcUXyMcRCd",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:01:38.022772Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.46069395542144775,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 208,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los titulares de minas que contengan minerales nucleares deberán suministrar con carácter de declaración jurada, a requerimiento del organismo a que se refiere el Artículo 205 y de la autoridad minera, la información relativa a reservas y producción de tales minerales y sus concentrados, bajo sanción de una multa de hasta QUINIENTAS (500) veces el valor del canon que corresponda a la pertenencia indicada en el artículo anterior.",
+                                "id_parte": "26275af2f24e81591ad0814c80b19286"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.45340412855148315,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 210,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La exportación de minerales nucleares, concentrados sus derivados requerirá la previa aprobación, respecto a cada contrato que se celebre del organismo a que se refiere el Artículo 205, debiendo quedar garantizado el abastecimiento interno y el control sobre el destino final del mineral o material a exportar.",
+                                "id_parte": "97c80becdc91f18e240b29f9f1b9b2d4"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.43156129121780396,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "085f8a5f42d6d7c643e8fa03ea2a9ee4",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 170,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los establecimientos públicos de fundición y beneficio de minerales se sujetarán a las disposiciones que rigen las empresas industriales comunes.",
+                                "id_parte": "46f871d9d75a125da279dff9df51677c"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.41291937232017517,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8c3c4817de97b391d3e49b91953e04bf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 206,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Decláranse minerales nucleares el uranio y el torio",
+                                "id_parte": "789ed8b98f8f8cf43f8b44bf2013b245"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.3924216628074646,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "412190d30bd291e0ce69995e3f96f9c6",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 185,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "A solicitud de cualquier persona, la autoridad declarará de aprovechamiento común, cualquiera que sea el dueño de los terrenos donde se encuentren; los terreros, relaves y escoriales, procedentes de minas o establecimientos de beneficio abandonados, previas las comprobaciones necesarias.\n\nCon la publicación de esa declaración, podrán aprovecharse los depósitos sin necesidad de licencia, aviso ni otra formalidad.",
+                                "id_parte": "8a0a72b87bc477968058d0f81e441afe"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_zeRrzowEFOOVYWtpSRCu6Yr5",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:01:38.023854Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 4, \"distance\": 0.6201846599578857, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"8c3c4817de97b391d3e49b91953e04bf\", \"tipo_parte\": \"artículo\", \"numero_parte\": 205, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La exploración y explotación de minerales nucleares y de los desmontes, relaves y escoriales que los contengan, se regirán por las disposiciones de este Código referentes a las minas de primera y segunda categoría, en todo lo que no se encuentre modificado por el presente Título.\\n\\nEl organismo que por ley se designe, prestará a los estados provinciales asesoramiento técnico, minero y de prevención de riesgos, con respecto a las actividades de exploración y explotación nuclear que se desarrollen en cada provincia. A tales efectos dicho organismo podrá celebrar convenios con las provincias respecto a las actividades a desarrollar.\", \"id_parte\": \"ebcc32cba1d9fb59d90e65e3ccc71d45\"}, {\"index\": 1, \"distance\": 0.5921757817268372, \"numero_parte\": 206, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Decláranse minerales nucleares el uranio y el torio\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"8c3c4817de97b391d3e49b91953e04bf\", \"tipo_parte\": \"artículo\", \"id_parte\": \"789ed8b98f8f8cf43f8b44bf2013b245\"}, {\"index\": 3, \"distance\": 0.5212914347648621, \"contenido_texto\": \"Los titulares de minas que contengan minerales nucleares deberán suministrar con carácter de declaración jurada, a requerimiento del organismo a que se refiere el Artículo 205 y de la autoridad minera, la información relativa a reservas y producción de tales minerales y sus concentrados, bajo sanción de una multa de hasta QUINIENTAS (500) veces el valor del canon que corresponda a la pertenencia indicada en el artículo anterior.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"8c3c4817de97b391d3e49b91953e04bf\", \"tipo_parte\": \"artículo\", \"numero_parte\": 208, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"26275af2f24e81591ad0814c80b19286\"}, {\"index\": 2, \"distance\": 0.5914407968521118, \"numero_parte\": 210, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La exportación de minerales nucleares, concentrados sus derivados requerirá la previa aprobación, respecto a cada contrato que se celebre del organismo a que se refiere el Artículo 205, debiendo quedar garantizado el abastecimiento interno y el control sobre el destino final del mineral o material a exportar.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"8c3c4817de97b391d3e49b91953e04bf\", \"tipo_parte\": \"artículo\", \"id_parte\": \"97c80becdc91f18e240b29f9f1b9b2d4\"}, {\"index\": 1, \"distance\": 0.6408060193061829, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"8c3c4817de97b391d3e49b91953e04bf\", \"tipo_parte\": \"artículo\", \"numero_parte\": 211, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La COMISION NACIONAL DE ENERGIA ATOMICA podrá efectuar prospección, exploración y explotación de minerales nucleares, con arreglo a las normas generales del Código de Minería. De adoptarse un nuevo estatuto para dicho organismo, tales actividades se sujetarán a las disposiciones que, al respecto, contenga ese estatuto.\\n\\nLa COMISION NACIONAL DE ENERGIA ATOMICA queda facultada a decidir la explotación o pase a reserva de los siguientes yacimientos nucleares registrados a su nombre: «Doctor Baulies», «Los Reyunos» (Provincia de Mendoza) y «Cerro Solo» (Provincia del Chubut).\", \"id_parte\": \"f5c32f45b0b3c098fbd4c88a1fd82c97\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 6994,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 3244,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2176,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:01:39Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbOR1WrRKHIWxkRzfQtkP34DUJXFY",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T10:01:39+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 11127,
+                "output_tokens": 4876,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3456,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.0087425,
+                "output_price": 0.03244,
+                "total_price": 0.0411825,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

@@ -1,0 +1,346 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Consecuencias legales para el tercero que compra minerales directamente a un empleado de una mina, sin conocimiento ni autorización escrita del titular, en el marco del Código de Minería Argentino.\n        ",
+                    "timestamp": "2025-11-13T10:58:52.257026Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"\\\"C\\u0003\\u00000\\u00008digo de Miner\\u000061 de la Naci\\u0000f3n\\\" compra de minerales a empleado sin autorizaci\\u0000f3n del titular consecuencias legales comprador autorizaci\\u0000f3n escrita \\\"empleado de la mina\\\"\"}",
+                    "tool_call_id": "call_6lDVChKQUDSxsiIwIHfwTkgd",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"C\\u0000f3digo de Miner\\u000061 Argentina contravenciones penalidades apropiaci\\u0000f3n de minerales venta no autorizada receptaci\\u0000f3n comprador de minerales sin autorizaci\\u0000f3n del concesionario\"}",
+                    "tool_call_id": "call_kiAlphZUsMUNPcd4pzZoQICW",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"C\\u0000f3digo de Miner\\u000061 gu\\u0000edas minerales transporte y circulaci\\u0000f3n de minerales compra venta fuera de la mina sin gu\\u0000eda sanciones responsabilidad de compradores y transportistas\"}",
+                    "tool_call_id": "call_W4Lc5lCmtG8I176Sc3s04rsd",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 353,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 632,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 384,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:58:54Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbPKQa6U4YK6Jy6pDxxztFZT53QKg",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6623286604881287,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6537991166114807,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 43,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El dueño del suelo no puede ni aún con licencia de la autoridad, hacer trabajo alguno minero dentro del perímetro de una concesión, ni en el recinto de un permiso de cateo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b5b728eab593acfd2edba9eb38187700",
+                                "id_parte": "e03033f816b411ea43a6451b0ded7e2b"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6277376413345337,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 58,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La persona que ejecutando por otro trabajos mineros, hace un descubrimiento, descubre para el dueño de los trabajos.\n\nPero si los trabajos no son verdaderamente mineros, el descubrimiento pertenece a ambos por mitad.\n\nEsto mismo se observará cuando cualquier empleado que goce sueldo o salario de una mina, aunque no ejecute trabajo alguno, descubre dentro del radio de UN (1) kilómetro, tomado desde los límites de esa mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c2422a1c629cff5791d1b4b0c379547d",
+                                "id_parte": "9d1e43a1b63428bde9f54b7d6b7fcefd"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.620880663394928,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 128,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando se pretenda abrir socavones generales que comprendan una vasta región mineral, por personas que no tengan minas propias que habilitar, es necesario el consentimiento de los dueños de las pertenencias que deban ocuparse.\n\nPero, los dueños de las que han de ser habilitadas pueden dar participación en la empresa a personas extrañas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "id_parte": "5d322d931d5a160b4cc2ef2ea5204531"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6150619387626648,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_6lDVChKQUDSxsiIwIHfwTkgd",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:59:03.901264Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5592524409294128,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Nadie puede comprar minerales a los operarios o empleados de una mina, sin autorización escrita de su dueño.\n\nLos que contravengan lo dispuesto en el párrafo anterior, pagarán una multa cuyo monto será CUATRO (4) a TREINTA (30) veces el canon anual que devengare la mina, debiendo embargarse los minerales hasta que se pruebe que pertenecían al vendedor o que estaba autorizado a venderlos.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "728ed31deba02de655a821e1df3a6058",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 324,
+                                "titulo_parte": null,
+                                "id_parte": "9f2997b985ab27fa37e0e0f48c87af39"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.547527551651001,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El permiso es indispensable para hacer cualquier trabajo de exploración.\n\nEl explorador que no ha tenido el consentimiento del propietario del suelo ni el permiso de la autoridad, pagará a más de los daños y perjuicios ocasionados, una multa a favor de aquél cuyo monto será de DIEZ (10) a CIEN (100) veces el canon de exploración correspondiente a UNA (1) unidad de medida, según la naturaleza del caso.\n\nLa multa no podrá cobrarse pasados TREINTA (30) días desde la publicación del registro de la manifestación de descubrimiento que hubiere efectuado el explorador.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "7305f9fee43e3553ad5e856cdf3c99ff",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 26,
+                                "titulo_parte": null,
+                                "id_parte": "d48664f3a341f220c0a8a7d9c93551b8"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5472045540809631,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La concesión de la mina caducará:\n\na) Cuando las inversiones estimadas a que se refiere el Artículo precedente, no tuvieren el destino previsto en dicha norma.\n\nb) Cuando dichas inversiones fueren inferiores a una suma igual a QUINIENTAS (500) veces el canon anual que le corresponda a la mina de acuerdo con su categoría y con el número de pertenencias.\n\nc) Por falta de presentación de la estimación referida en el Artículo precedente.\n\nd) Por falta de presentación de las declaraciones juradas exigidas por el mismo artículo.\n\ne) Por falsedad en tales declaraciones.\n\nf) Cuando no se hubieren efectuado las inversiones proyectadas.\n\ng) Cuando el concesionario hubiere introducido modificaciones a las inversiones estimadas sin aviso previo, reduciendo el monto de las mismas.\n\nh) Cuando hubiere desafectado bienes comprendidos en las inversiones ya practicadas, reduciendo el monto de las estimadas.\n\nEn los casos de los incisos a), b), c) y d), la caducidad se declarará si el concesionario no salva el error o la omisión dentro de los TREINTA (30) días de la intimación previa que debe practicarle la autoridad minera.\n\nEn los casos de los incisos e), f), g) y h), se dará previa vista de lo actuado al concesionario por QUINCE (15) días para su defensa.\n\nLos recursos contra las declaraciones de caducidad se concederán con efecto suspensivo.\n\nEn ningún caso de caducidad, el concesionario podrá reclamar indemnización alguna por las obras que hubiere ejecutado en la mina, pero tendrá derecho a retirar con intervención de la autoridad minera, los equipos, máquinas, herramientas y demás bienes destinados a la explotación y al tratamiento y beneficio de los productos, que pudieren separarse sin perjudicar a la mina, así como también el mineral ya extraído que se encontrare en depósito. No podrá usarse de este derecho si existieren acreedores hipotecarios o privilegiados.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 218,
+                                "titulo_parte": null,
+                                "id_parte": "242dbd3bd93aff5375e73ecfe443ff77"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5469291806221008,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.540280818939209,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Una vez que el explorador haya obtenido la concesión de explotación que le corresponda, toda la extensión sobrante de cada permiso de exploración quedará como reserva petrolífera fiscal del Estado Nacional o Provincial.\n\nEstas reservas sólo serán exploradas y explotadas por el Estado Nacional o Provincial, directamente o por medio de sociedades mixtas o por Yacimientos Petrolíferos Fiscales.\n\nNo podrá el Estado Nacional o Provincial mantener estas reservas como tales por más de DIEZ (10) años.\n\nVencido este plazo, podrán ser adjudicadas a particulares en licitación pública dando preferencia al explorador originario de la concesión en igualdad de condiciones, y en su defecto, pasarán a ser zonas en disponibilidad.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "0f959ff09577c347feebae6400cac8f1",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 24,
+                                "titulo_parte": null,
+                                "id_parte": "5f3d0545a4122e81ddba9c1b27eb3945"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_kiAlphZUsMUNPcd4pzZoQICW",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:59:03.898961Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6629648804664612,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 150,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los minerales extraídos en el curso de estos trabajos, deben ser puestos gratuitamente a disposición del dueño de la mina ocupada.\n\nCuando los trabajos se siguen en terreno franco los minerales corresponden al empresario, como si hubiesen sido extraídos de su propia pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e788680f7f1abfa9081b7be18202348a",
+                                "id_parte": "5bac1a97134d1fcfd2d6f2660e8be318"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6412264108657837,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6276572346687317,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 12,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario, poseedor, arrendatario u ocupante del suelo, no puede, sin permiso de la autoridad minera, hacer perforaciones en busca de hidrocarburos fluidos, so pena de no acordársele concesión para explotar la mina que descubriese, salvo el caso de descubrimiento accidental o casual por trabajos que no tenían ese objeto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "260ade704be146a4ba0c87bed3c91eb9",
+                                "id_parte": "bedf2671d4f34be93a52c2253f634015"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6175092458724976,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 100,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El propietario del terreno tiene derecho a las sustancias correspondientes a la tercera categoría, que el propietario de la mina extrajere; exceptuando los casos siguientes:\n\nCuando no la ha reclamado ni ha pagado los gastos de su explotación y extracción TREINTA (30) días después del aviso que debe darle el concesionario.\n\nCuando éste los necesita para su industria y cuando estén de tal suerte unidas las sustancias, que no puedan sin dificultad o sin aumento de gastos extraerse separadamente.\n\nEn estos casos no hay derecho a cobrar indemnizaciones.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "876f2765f9270036f9747dad1d5ff4fa",
+                                "id_parte": "2f68bfa7f4b1bb05003d1070c830ba52"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6016365885734558,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 14,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Es prohibida la división material de las minas, tanto relación a sus dueños, como respecto de terceros.\n\nNi los dueños, ni terceros pueden explotar una región o una parte de la mina, independientemente de la explotación general.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4d442cd021677333a58832d245596294",
+                                "id_parte": "47febf76b128dec17c5858ad982c06f3"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_W4Lc5lCmtG8I176Sc3s04rsd",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:59:03.900096Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 1, \"distance\": 0.5592524409294128, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Nadie puede comprar minerales a los operarios o empleados de una mina, sin autorización escrita de su dueño.\\n\\nLos que contravengan lo dispuesto en el párrafo anterior, pagarán una multa cuyo monto será CUATRO (4) a TREINTA (30) veces el canon anual que devengare la mina, debiendo embargarse los minerales hasta que se pruebe que pertenecían al vendedor o que estaba autorizado a venderlos.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"728ed31deba02de655a821e1df3a6058\", \"tipo_parte\": \"artículo\", \"numero_parte\": 324, \"titulo_parte\": null, \"id_parte\": \"9f2997b985ab27fa37e0e0f48c87af39\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4638,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1380,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1152,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:59:06Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbPKchNmUqm7aqZy1wnIarUOqeKv0",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T10:59:06+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 4991,
+                "output_tokens": 2012,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1536,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.0057975,
+                "output_price": 0.0138,
+                "total_price": 0.0195975,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

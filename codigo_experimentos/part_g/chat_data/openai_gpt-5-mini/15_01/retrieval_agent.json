@@ -1,0 +1,719 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > ¿Fue válida la designación del administrador ajeno a la sociedad en una sociedad minera registrada bajo el Código de Minería Argentino? Hechos: S.R.L. constituida por escritura pública por 4 socios en Chubut; estatutos: cada socio igual número de acciones y votos. En junta debidamente convocada, dos socios expresan voluntad de destituir al administrador y designar a una persona ajena a la sociedad, que obtuvo en total dos votos; los otros dos socios se oponen. Consulto validez de la designación conforme al Código de Minería Argentino y normativa aplicable y jurisprudencia relevante.\n        ",
+                    "timestamp": "2025-11-13T16:14:45.772576Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería argentino sociedad minera administrador designación remoción administrador ajeno a la sociedad mayoría votos\"}",
+                    "tool_call_id": "call_aHtCh8tli5afPYUSRnczEXdj",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 445,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 557,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 512,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T16:14:47Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbUG7bIXhDxc59ZRj6F0VQNhO9sf7",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5664175152778625,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio de lo dispuesto en los artículos 22 y 23 de este Código, en la parte no modificada por leyes posteriores, no pueden adquirir por si ni por interpósita persona ninguno de los derechos mineros enumerados en este APENDICE.\n\n1° Las autoridades mineras y demás funcionarios o empleados dependientes de las mismas, cualquiera sea la naturaleza de sus funciones;\n\n2° Los directores y empleados de empresas fiscales;\n\n3° Los Estados extranjeros y las sociedades no constituidas en la República o cuyo funcionamiento como personas jurídicas no haya sido reconocido por las autoridades argentinas;\n\n4° Los extranjeros que no tengan domicilio real en la República.\n\nLas interdicciones impuestas por los incisos 1° y 2° durarán hasta CINCO (5) años después de haber cesado en sus funciones las personas comprendidas en ellas.",
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5483852028846741,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "d38092a1514cddf2d0dc4b366ef7ec10",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 297,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La administración de la compañía corresponde a todos los socios; pero pueden nombrarse una o más personas elegidas entre los mismos.\n\nEl nombramiento podrá recaer en personas extrañas; pero se necesitará el concurso de DOS (2) tercios de votos, si dos o más socios se opusieren.\n\nLa duración, atribuciones, deberes, recompensas y duración de los administradores, se determinarán en junta, si no se hubiesen estipulado en el contrato de compañía.\n\nLos administradores no pueden contraer créditos, gravar las minas en todo ni en parte, vender los minerales o pastas, nombrar ni destituir los administradores de la faena, sin especial autorización.\n\nEn todo caso, los socios pueden impedir la venta de los minerales y pastas, pagando los gastos y cuotas correspondientes.",
+                                "id_parte": "8980adea706836f6b4d06ac3d09cd268"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5394912958145142,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "4d442cd021677333a58832d245596294",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 14,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Es prohibida la división material de las minas, tanto relación a sus dueños, como respecto de terceros.\n\nNi los dueños, ni terceros pueden explotar una región o una parte de la mina, independientemente de la explotación general.",
+                                "id_parte": "47febf76b128dec17c5858ad982c06f3"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5344971418380737,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5255061388015747,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "5f917aee9a130dba897e2de38a186b8d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 128,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando se pretenda abrir socavones generales que comprendan una vasta región mineral, por personas que no tengan minas propias que habilitar, es necesario el consentimiento de los dueños de las pertenencias que deban ocuparse.\n\nPero, los dueños de las que han de ser habilitadas pueden dar participación en la empresa a personas extrañas.",
+                                "id_parte": "5d322d931d5a160b4cc2ef2ea5204531"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_aHtCh8tli5afPYUSRnczEXdj",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T16:15:04.032890Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería compañías mineras junta socios votos mayoría designación administrador remoción artículos 295 296 297 298 299 Argentina\"}",
+                    "tool_call_id": "call_GuDr3oE4LPcxcQi71OvLvkAl",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1524,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1397,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1344,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T16:15:04Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbUGO2tbEMeO48odxdiWBgmnSlrcy",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5056425333023071,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio de lo dispuesto en los artículos 22 y 23 de este Código, en la parte no modificada por leyes posteriores, no pueden adquirir por si ni por interpósita persona ninguno de los derechos mineros enumerados en este APENDICE.\n\n1° Las autoridades mineras y demás funcionarios o empleados dependientes de las mismas, cualquiera sea la naturaleza de sus funciones;\n\n2° Los directores y empleados de empresas fiscales;\n\n3° Los Estados extranjeros y las sociedades no constituidas en la República o cuyo funcionamiento como personas jurídicas no haya sido reconocido por las autoridades argentinas;\n\n4° Los extranjeros que no tengan domicilio real en la República.\n\nLas interdicciones impuestas por los incisos 1° y 2° durarán hasta CINCO (5) años después de haber cesado en sus funciones las personas comprendidas en ellas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.46377891302108765,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 35,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La organización de sociedades mixtas entre el Estado y los particulares, autorizadas por el Artículo 2 de este APENDICE, estarán sujetas a las condiciones siguientes:\n\na) El Estado y los particulares contribuirán a la formación del capital social en la proporción que convengan;\n\nb) Estas sociedades se regirán por las disposiciones del Código de Comercio sobre sociedades anónimas con las modificaciones siguientes:\n\n1° El presidente y por lo menos el tercio del número de directores que se fije por los estatutos, representarán al Estado. Deberán ser argentinos y nombrados por el Poder Ejecutivo respectivo, con acuerdo del Senado o de la Legislatura. Los demás directores y el sindico serán nombrados por los accionistas;\n\n2° El presidente, y en su ausencia cualquiera de los directores nombrados por el Estado, tendrán la facultad de vetar las resoluciones de las asambleas o las del directorio que fueran contrarias a la ley o a los estatutos, o que puedan comprometer las conveniencias superiores del Estado. En este caso se elevarán los antecedentes al Poder Ejecutivo para que se pronuncie en definitiva sobre la confirmación o revocación pondiente, al veto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "6f4f4b41dce910a492a232974a44a258",
+                                "id_parte": "2d6ed8f19dd0cac984d059aab9dd4a66"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.46191442012786865,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 297,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La administración de la compañía corresponde a todos los socios; pero pueden nombrarse una o más personas elegidas entre los mismos.\n\nEl nombramiento podrá recaer en personas extrañas; pero se necesitará el concurso de DOS (2) tercios de votos, si dos o más socios se opusieren.\n\nLa duración, atribuciones, deberes, recompensas y duración de los administradores, se determinarán en junta, si no se hubiesen estipulado en el contrato de compañía.\n\nLos administradores no pueden contraer créditos, gravar las minas en todo ni en parte, vender los minerales o pastas, nombrar ni destituir los administradores de la faena, sin especial autorización.\n\nEn todo caso, los socios pueden impedir la venta de los minerales y pastas, pagando los gastos y cuotas correspondientes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "d38092a1514cddf2d0dc4b366ef7ec10",
+                                "id_parte": "8980adea706836f6b4d06ac3d09cd268"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.44775867462158203,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.40490108728408813,
+                                "tipo_parte": "artículo",
+                                "numero_parte": 319,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todos los minerales arrancados y extraídos después de la disolución de la sociedad conyugal, pertenecen exclusivamente al dueño de la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "id_parte": "8481a13e4d7cc653c596e67aec304339"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_GuDr3oE4LPcxcQi71OvLvkAl",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T16:15:44.162202Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería compañía minera administración junta dos tercios votos oposición artículos 295 296 297 298 299 300 301\"}",
+                    "tool_call_id": "call_HIds7OQaOdu7PQTQ8i5OIJjD",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Ley General de Sociedades 19.550 SRL gerente designación remoción mayoría contrato social oposición socios Chubut jurisprudencia\"}",
+                    "tool_call_id": "call_2aqejbBDMFkQeeaDWnItmqWj",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2873,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1263,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1152,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T16:15:45Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbUH3J4qhjQCDK4hpXUvenKmmzaRu",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.396759033203125,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.3755360543727875,
+                                "id_padre": "d38092a1514cddf2d0dc4b366ef7ec10",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 297,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La administración de la compañía corresponde a todos los socios; pero pueden nombrarse una o más personas elegidas entre los mismos.\n\nEl nombramiento podrá recaer en personas extrañas; pero se necesitará el concurso de DOS (2) tercios de votos, si dos o más socios se opusieren.\n\nLa duración, atribuciones, deberes, recompensas y duración de los administradores, se determinarán en junta, si no se hubiesen estipulado en el contrato de compañía.\n\nLos administradores no pueden contraer créditos, gravar las minas en todo ni en parte, vender los minerales o pastas, nombrar ni destituir los administradores de la faena, sin especial autorización.\n\nEn todo caso, los socios pueden impedir la venta de los minerales y pastas, pagando los gastos y cuotas correspondientes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8980adea706836f6b4d06ac3d09cd268"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.37043386697769165,
+                                "id_padre": "6f4f4b41dce910a492a232974a44a258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 35,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La organización de sociedades mixtas entre el Estado y los particulares, autorizadas por el Artículo 2 de este APENDICE, estarán sujetas a las condiciones siguientes:\n\na) El Estado y los particulares contribuirán a la formación del capital social en la proporción que convengan;\n\nb) Estas sociedades se regirán por las disposiciones del Código de Comercio sobre sociedades anónimas con las modificaciones siguientes:\n\n1° El presidente y por lo menos el tercio del número de directores que se fije por los estatutos, representarán al Estado. Deberán ser argentinos y nombrados por el Poder Ejecutivo respectivo, con acuerdo del Senado o de la Legislatura. Los demás directores y el sindico serán nombrados por los accionistas;\n\n2° El presidente, y en su ausencia cualquiera de los directores nombrados por el Estado, tendrán la facultad de vetar las resoluciones de las asambleas o las del directorio que fueran contrarias a la ley o a los estatutos, o que puedan comprometer las conveniencias superiores del Estado. En este caso se elevarán los antecedentes al Poder Ejecutivo para que se pronuncie en definitiva sobre la confirmación o revocación pondiente, al veto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2d6ed8f19dd0cac984d059aab9dd4a66"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.36811888217926025,
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 215,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El canon queda fijado en la siguiente forma y escala:\n\n1° Para las sustancias de la primera categoría enunciadas en el artículo 3° y las producciones de ríos y placeres del artículo 4°, inciso a), siempre que se exploten en establecimientos fijos conforme el artículo 186 de este Código, mil novecientos pesos ($ 1.900) por pertenencia o unidad de medida, de cualquiera de las formas consignadas en los artículos 74 a 80.\n\n2° Para las sustancias de la segunda categoría enumeradas en el artículo 4º, con excepción de las del inciso b), novecientos sesenta pesos ($ 960) por pertenencia, de acuerdo con las medidas del título 9, sección 1, acápite 2. Exceptúense también de esta disposición las sustancias del artículo 4°, inciso a), en cuanto estén incluidas en el número anterior y en cuanto sean de aprovechamiento común.\n\n3° Las concesiones provisorias para la exploración o cateo de las sustancias de la primera y segunda categoría, sea cualquiera el tiempo que dure, según las disposiciones de este Código, pagarán nueve mil seiscientos ochenta pesos ($ 9.680) por unidad de medida o fracción, de acuerdo con las dimensiones fijadas en el artículo 29.\n\n4° Las minas cuyo dominio corresponda al dueño del suelo, una vez transferidas a un tercero o registradas por el propietario, pagarán en la misma forma y escala de los artículos anteriores, según su categoría.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b682bbeccbe62030866ca75bfe7feb1a"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.35187986493110657,
+                                "id_padre": "7305f9fee43e3553ad5e856cdf3c99ff",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 31,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando los trabajos de investigación se realicen desde aeronaves, el permiso podrá constar de hasta veinte mil (20.000) kilómetros cuadrados por provincia, sea que el solicitante se trate de la misma o de diferentes personas y el tiempo de duración no superara los ciento veinte (120) días contados a partir de la fecha de otorgamiento del permiso de la autoridad minera o de la autorización de vuelo emitida por la autoridad aeronáutica, lo que ocurra en último término. La solicitud contendrá el programa de trabajos a realizar, indicando además los elementos y equipos que se emplearán en los mismos.\n\nEn las provincias cuya extensión territorial exceda los doscientos mil (200.000) kilómetros cuadrados, el permiso podrá constar de hasta cuarenta mil (40.000) kilómetros cuadrados sin modificar el plazo ya establecido.\n\nEl permiso se otorgará sin otro trámite y se publicará por un (1) día en el Boletín Oficial. La publicación servirá de suficiente citación a propietarios y terceros.\n\nEl permiso no podrá afectar otros derechos mineros solicitados o concedidos anteriormente en el área. El solicitante abonará, en forma provisional, un canon de veinticuatro pesos ($ 24) por kilómetro cuadrado, que se hará efectivo, en la forma, oportunidad y con los efectos que determina el artículo 25 para las solicitudes de permisos de exploración.\n\nDentro de los cinco (5) días de solicitado el permiso, el peticionante deberá acompañar copia del pedido de autorización de vuelo presentado ante la autoridad aeronáutica, bajo pena de archivarse su solicitud sin más trámite.\n\nLas solicitudes que no fueran resueltas dentro del plazo de treinta (30) días desde su presentación, por falta de impulso administrativo del interesado, verificado por la autoridad minera, se considerarán automáticamente desistidas y quedarán archivadas sin necesidad de requerimiento y notificación alguna.\n\nLos permisos que se otorguen se anotarán en el registro de exploraciones y en los correspondientes a los catastros.\n\nNo podrán otorgarse permisos sucesivos de esta clase sobre la misma zona o parte de ella, debiendo mediar entre la caducidad de uno y la solicitud del otro, el plazo de ciento cincuenta (150) días.\n\nLa autoridad minera podrá exigir la presentación de la información y documentación a que se refiere la última parte del artículo 30, dentro del término y bajo la sanción que el mismo establece.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "cf67b5d0070abd59cb15c4008bcb4a9e"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_HIds7OQaOdu7PQTQ8i5OIJjD",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T16:16:22.685886Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5433821082115173,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio de lo dispuesto en los artículos 22 y 23 de este Código, en la parte no modificada por leyes posteriores, no pueden adquirir por si ni por interpósita persona ninguno de los derechos mineros enumerados en este APENDICE.\n\n1° Las autoridades mineras y demás funcionarios o empleados dependientes de las mismas, cualquiera sea la naturaleza de sus funciones;\n\n2° Los directores y empleados de empresas fiscales;\n\n3° Los Estados extranjeros y las sociedades no constituidas en la República o cuyo funcionamiento como personas jurídicas no haya sido reconocido por las autoridades argentinas;\n\n4° Los extranjeros que no tengan domicilio real en la República.\n\nLas interdicciones impuestas por los incisos 1° y 2° durarán hasta CINCO (5) años después de haber cesado en sus funciones las personas comprendidas en ellas.",
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.4928637742996216,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "49a58ae107946722c3afff435ed5a863",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 296,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Ningún socio puede trasmitir a otra persona que no sea socio, el interés que tenga en la sociedad, ni sustituirla en su lugar para que desempeñe las funciones que le tocaren en la administración social, sin expreso consentimiento de todos los socios, so pena de nulidad del contrato.\n\nSin embargo, podrá asociarlo a su parte y aun cedérsela íntegra, sin que por tal hecho el asociado se haga miembro de la sociedad.",
+                                "id_parte": "818d1576220c47550176776fd64ed32a"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.4526245594024658,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 318,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los productos de las minas particulares de cada uno de los cónyuges, pertenecen a la sociedad.",
+                                "id_parte": "1dbbb8405c935dfaf7cb7e001c086b82"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.452385276556015,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 350,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La zona de explotación del yacimiento ferrífero de Sierra Grande, en la Provincia de Río Negro, queda fijada dentro de los límites de los lotes 20 y 21, fracción E, Colonia Pastoril Coronel Chilavert, Provincia de Río Negro.\n\nLa cuenca ferrífera de Sierra Grande será considerada como una sola mina, constituida por una sola pertenencia y su explotación será realizada por intermedio de HIERRO PATAGONICO DE SIERRA GRANDE, SOCIEDAD ANONIMA MINERA.\n\nLo dispuesto precedentemente no afectará derechos adquiridos ni la percepción por la Provincia de Río Negro del canon establecido por el Artículo 213, determinándose el número de pertenencias conforme a las disposiciones de este Código.",
+                                "id_parte": "5d79b36a6bc696bc7c4b2c2cf54a06d2"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.4517982304096222,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "400919fc7dc9d437674b0599e5b1d88f",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 321,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las pertenencias que se adquieren por ampliación, corresponden exclusivamente al dueño de la pertenencia primitiva.",
+                                "id_parte": "276f891fda1bd65dd181aab7444df9c5"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_2aqejbBDMFkQeeaDWnItmqWj",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T16:16:22.684951Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería compañías mineras artículos 295 296 297 298 299 300 junta socios votos mayoría remoción designación administrador oposición dos tercios\"}",
+                    "tool_call_id": "call_tcmP3fowABERfz4nvSJ1ik65",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 7007,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 2816,
+                "output_tokens": 890,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 832,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T16:16:24Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbUHgfzRBJN0IMQfXgcYh3OCBPLbL",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.4822222888469696,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "d38092a1514cddf2d0dc4b366ef7ec10",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 297,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La administración de la compañía corresponde a todos los socios; pero pueden nombrarse una o más personas elegidas entre los mismos.\n\nEl nombramiento podrá recaer en personas extrañas; pero se necesitará el concurso de DOS (2) tercios de votos, si dos o más socios se opusieren.\n\nLa duración, atribuciones, deberes, recompensas y duración de los administradores, se determinarán en junta, si no se hubiesen estipulado en el contrato de compañía.\n\nLos administradores no pueden contraer créditos, gravar las minas en todo ni en parte, vender los minerales o pastas, nombrar ni destituir los administradores de la faena, sin especial autorización.\n\nEn todo caso, los socios pueden impedir la venta de los minerales y pastas, pagando los gastos y cuotas correspondientes.",
+                                "id_parte": "8980adea706836f6b4d06ac3d09cd268"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.45468300580978394,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "6f4f4b41dce910a492a232974a44a258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 35,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La organización de sociedades mixtas entre el Estado y los particulares, autorizadas por el Artículo 2 de este APENDICE, estarán sujetas a las condiciones siguientes:\n\na) El Estado y los particulares contribuirán a la formación del capital social en la proporción que convengan;\n\nb) Estas sociedades se regirán por las disposiciones del Código de Comercio sobre sociedades anónimas con las modificaciones siguientes:\n\n1° El presidente y por lo menos el tercio del número de directores que se fije por los estatutos, representarán al Estado. Deberán ser argentinos y nombrados por el Poder Ejecutivo respectivo, con acuerdo del Senado o de la Legislatura. Los demás directores y el sindico serán nombrados por los accionistas;\n\n2° El presidente, y en su ausencia cualquiera de los directores nombrados por el Estado, tendrán la facultad de vetar las resoluciones de las asambleas o las del directorio que fueran contrarias a la ley o a los estatutos, o que puedan comprometer las conveniencias superiores del Estado. En este caso se elevarán los antecedentes al Poder Ejecutivo para que se pronuncie en definitiva sobre la confirmación o revocación pondiente, al veto.",
+                                "id_parte": "2d6ed8f19dd0cac984d059aab9dd4a66"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.43601173162460327,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.4236864447593689,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9eec2892196e94330096f9a98795266a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 7,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio de lo dispuesto en los artículos 22 y 23 de este Código, en la parte no modificada por leyes posteriores, no pueden adquirir por si ni por interpósita persona ninguno de los derechos mineros enumerados en este APENDICE.\n\n1° Las autoridades mineras y demás funcionarios o empleados dependientes de las mismas, cualquiera sea la naturaleza de sus funciones;\n\n2° Los directores y empleados de empresas fiscales;\n\n3° Los Estados extranjeros y las sociedades no constituidas en la República o cuyo funcionamiento como personas jurídicas no haya sido reconocido por las autoridades argentinas;\n\n4° Los extranjeros que no tengan domicilio real en la República.\n\nLas interdicciones impuestas por los incisos 1° y 2° durarán hasta CINCO (5) años después de haber cesado en sus funciones las personas comprendidas en ellas.",
+                                "id_parte": "7e30095ca21fb10aa2934c5f1bc0e873"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.4160531759262085,
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 215,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El canon queda fijado en la siguiente forma y escala:\n\n1° Para las sustancias de la primera categoría enunciadas en el artículo 3° y las producciones de ríos y placeres del artículo 4°, inciso a), siempre que se exploten en establecimientos fijos conforme el artículo 186 de este Código, mil novecientos pesos ($ 1.900) por pertenencia o unidad de medida, de cualquiera de las formas consignadas en los artículos 74 a 80.\n\n2° Para las sustancias de la segunda categoría enumeradas en el artículo 4º, con excepción de las del inciso b), novecientos sesenta pesos ($ 960) por pertenencia, de acuerdo con las medidas del título 9, sección 1, acápite 2. Exceptúense también de esta disposición las sustancias del artículo 4°, inciso a), en cuanto estén incluidas en el número anterior y en cuanto sean de aprovechamiento común.\n\n3° Las concesiones provisorias para la exploración o cateo de las sustancias de la primera y segunda categoría, sea cualquiera el tiempo que dure, según las disposiciones de este Código, pagarán nueve mil seiscientos ochenta pesos ($ 9.680) por unidad de medida o fracción, de acuerdo con las dimensiones fijadas en el artículo 29.\n\n4° Las minas cuyo dominio corresponda al dueño del suelo, una vez transferidas a un tercero o registradas por el propietario, pagarán en la misma forma y escala de los artículos anteriores, según su categoría.",
+                                "id_parte": "b682bbeccbe62030866ca75bfe7feb1a"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_tcmP3fowABERfz4nvSJ1ik65",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T16:16:48.413502Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"\\\"compañía\\\" \\\"junta\\\" votos mayoría Código de Minería artículos 295 298 299 300 compañías mineras administración junta designación\"}",
+                    "tool_call_id": "call_I88gEQw7V9DuPcui1aUNvi08",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 8652,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 6912,
+                "output_tokens": 1272,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1216,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T16:16:49Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbUI5tLlJH6e4B5e2Gl9n77IW8oxE",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5092027187347412,
+                                "id_padre": "d38092a1514cddf2d0dc4b366ef7ec10",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 297,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La administración de la compañía corresponde a todos los socios; pero pueden nombrarse una o más personas elegidas entre los mismos.\n\nEl nombramiento podrá recaer en personas extrañas; pero se necesitará el concurso de DOS (2) tercios de votos, si dos o más socios se opusieren.\n\nLa duración, atribuciones, deberes, recompensas y duración de los administradores, se determinarán en junta, si no se hubiesen estipulado en el contrato de compañía.\n\nLos administradores no pueden contraer créditos, gravar las minas en todo ni en parte, vender los minerales o pastas, nombrar ni destituir los administradores de la faena, sin especial autorización.\n\nEn todo caso, los socios pueden impedir la venta de los minerales y pastas, pagando los gastos y cuotas correspondientes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8980adea706836f6b4d06ac3d09cd268"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.4993325471878052,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.48345765471458435,
+                                "id_padre": "d50f644aa32e3d3208599265a3f0aa67",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 311,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las compañías de minas se disuelven:\n\n1° Por el hecho de haberse reunido en una sola persona todas las partes de la mina.\n\n2° Por el abandono y desamparo.\n\n3° Cuando, habiéndose formado la compañía bajo estipulaciones especiales, se verifica alguno de los hechos que, con arreglo a esas estipulaciones, produzca la disolución.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "ce4a49ff0ea31bc642719ce821733d08"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.45494991540908813,
+                                "id_padre": "49a58ae107946722c3afff435ed5a863",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 286,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Hay compañía cuando DOS (2) o más personas trabajan en común una o más minas, con arreglo a las prescripciones de este Código.\n\nLas compañías se constituyen:\n\n1° Por el hecho de registrarse una mina.\n\n2° Por el hecho de adquirirse parte en minas registradas.\n\n3° Por un contrato especial de compañía.\n\nEste contrato deberá hacerse constar por escritura pública.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "cbc6aa15d2a25f5f648927cb7460001c"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.4523664116859436,
+                                "id_padre": "6f4f4b41dce910a492a232974a44a258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 35,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La organización de sociedades mixtas entre el Estado y los particulares, autorizadas por el Artículo 2 de este APENDICE, estarán sujetas a las condiciones siguientes:\n\na) El Estado y los particulares contribuirán a la formación del capital social en la proporción que convengan;\n\nb) Estas sociedades se regirán por las disposiciones del Código de Comercio sobre sociedades anónimas con las modificaciones siguientes:\n\n1° El presidente y por lo menos el tercio del número de directores que se fije por los estatutos, representarán al Estado. Deberán ser argentinos y nombrados por el Poder Ejecutivo respectivo, con acuerdo del Senado o de la Legislatura. Los demás directores y el sindico serán nombrados por los accionistas;\n\n2° El presidente, y en su ausencia cualquiera de los directores nombrados por el Estado, tendrán la facultad de vetar las resoluciones de las asambleas o las del directorio que fueran contrarias a la ley o a los estatutos, o que puedan comprometer las conveniencias superiores del Estado. En este caso se elevarán los antecedentes al Poder Ejecutivo para que se pronuncie en definitiva sobre la confirmación o revocación pondiente, al veto.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2d6ed8f19dd0cac984d059aab9dd4a66"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_I88gEQw7V9DuPcui1aUNvi08",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T16:17:30.937892Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 3, \"distance\": 0.46191442012786865, \"tipo_parte\": \"artículo\", \"numero_parte\": 297, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La administración de la compañía corresponde a todos los socios; pero pueden nombrarse una o más personas elegidas entre los mismos.\\n\\nEl nombramiento podrá recaer en personas extrañas; pero se necesitará el concurso de DOS (2) tercios de votos, si dos o más socios se opusieren.\\n\\nLa duración, atribuciones, deberes, recompensas y duración de los administradores, se determinarán en junta, si no se hubiesen estipulado en el contrato de compañía.\\n\\nLos administradores no pueden contraer créditos, gravar las minas en todo ni en parte, vender los minerales o pastas, nombrar ni destituir los administradores de la faena, sin especial autorización.\\n\\nEn todo caso, los socios pueden impedir la venta de los minerales y pastas, pagando los gastos y cuotas correspondientes.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"d38092a1514cddf2d0dc4b366ef7ec10\", \"id_parte\": \"8980adea706836f6b4d06ac3d09cd268\"}, {\"index\": 2, \"distance\": 0.4928637742996216, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"49a58ae107946722c3afff435ed5a863\", \"tipo_parte\": \"artículo\", \"numero_parte\": 296, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Ningún socio puede trasmitir a otra persona que no sea socio, el interés que tenga en la sociedad, ni sustituirla en su lugar para que desempeñe las funciones que le tocaren en la administración social, sin expreso consentimiento de todos los socios, so pena de nulidad del contrato.\\n\\nSin embargo, podrá asociarlo a su parte y aun cedérsela íntegra, sin que por tal hecho el asociado se haga miembro de la sociedad.\", \"id_parte\": \"818d1576220c47550176776fd64ed32a\"}, {\"index\": 4, \"distance\": 0.45494991540908813, \"id_padre\": \"49a58ae107946722c3afff435ed5a863\", \"tipo_parte\": \"artículo\", \"numero_parte\": 286, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Hay compañía cuando DOS (2) o más personas trabajan en común una o más minas, con arreglo a las prescripciones de este Código.\\n\\nLas compañías se constituyen:\\n\\n1° Por el hecho de registrarse una mina.\\n\\n2° Por el hecho de adquirirse parte en minas registradas.\\n\\n3° Por un contrato especial de compañía.\\n\\nEste contrato deberá hacerse constar por escritura pública.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"cbc6aa15d2a25f5f648927cb7460001c\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 9814,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 2264,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1536,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T16:17:32Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbUImZHRVHBVtrXySECaamm7FsCI5",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T16:17:32+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 30315,
+                "output_tokens": 7643,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 6592,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.0122675,
+                "output_price": 0.02264,
+                "total_price": 0.0349075,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

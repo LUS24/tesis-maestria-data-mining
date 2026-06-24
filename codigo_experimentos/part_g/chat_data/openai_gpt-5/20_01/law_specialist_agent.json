@@ -1,0 +1,140 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "La señora Ana López ha recibido en usufructo por un plazo de 30 años un predio rural que pertenece a la familia Fernández. Dentro de este predio se encuentra una cantera de piedra que no se encuentra en actual explotación, así como una mina de oro en explotación registrada a nombre de los propietarios. A los pocos años, se concede otra mina dentro del mismo predio a una empresa minera, y durante los trabajos, se producen destrucciones de cultivos y deterioro del suelo. De acuerdo al Código de Minería Argentino: ¿Puede la señora Ana López explotar por sí o por terceros la cantera y la mina de oro, y en qué condiciones?",
+                    "timestamp": "2025-11-12T18:41:34.066870Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "args": "{\"question\":\"La señora Ana López ha recibido en usufructo por un plazo de 30 años un predio rural que pertenece a la familia Fernández. Dentro de este predio se encuentra una cantera de piedra que no se encuentra en actual explotación, así como una mina de oro en explotación registrada a nombre de los propietarios. A los pocos años, se concede otra mina dentro del mismo predio a una empresa minera, y durante los trabajos, se producen destrucciones de cultivos y deterioro del suelo. De acuerdo al Código de Minería Argentino: ¿Puede la señora Ana López explotar por sí o por terceros la cantera y la mina de oro, y en qué condiciones?\"}",
+                    "tool_call_id": "call_OUdPy5RTZS418gSk6MvwAEKq",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 513,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 415,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 256,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T18:41:35Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbA4dxs1cHUrXFp6MzHCGrC1efyrC",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "content": "Voy a dividir la consulta en subconsultas y realizar búsquedas para cada una:\n- Usufructo y explotación de canteras (tercera categoría) por usufructuario.\n- Usufructo y explotación de minas concesibles ya en trabajo dentro de un fundo común.\n- Indemnizaciones por concesión de nueva mina durante el usufructo (daños a cultivos y suelo).\nAhora busco en la base normativa aplicable.\nRealizando búsqueda: reglas sobre canteras de tercera categoría en predios privados y pertenencia al dueño del suelo.\nLlamando a herramienta de búsqueda vectorial (límite total de 7).\n- Consulta 1: reglas sobre canteras de tercera categoría y usufructo (art. 339 y conexos).\n- Consulta 2: limitaciones del usufructuario de fundo común para explotar minas ya en trabajo (art. 338, 342).\n- Consulta 3: indemnizaciones por concesión de nueva mina durante el usufructo (art. 340).\nEjecutando la búsqueda final.\nLlamo a la herramienta con la última consulta.\nUsaré los mejores resultados para responder.\nA continuación, presento los documentos seleccionados.\n(Nota: Incluyo el texto pertinente de cada artículo para permitir su verificación.)\nProcedo a listar los documentos relevantes.\nConsultas realizadas: 6 previas + 1 actual = 7 totales (límite alcanzado).\nDevuelvo los documentos seleccionados.\n{\"query\":\"Código de Minería canteras pertenecen al dueño del suelo tercera categoría pertenecen al propietario del suelo artículos 193 194 195 due\\u00f1o del suelo cantera privada\"}\nSe han alcanzado 7 llamadas a la herramienta de búsqueda (límite máximo). A continuación, presento los documentos más relevantes encontrados.\n{\"selected_documents\": [{\"index\": 5, \"distance\": 0.6372904181480408, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"9ee91f71e729cab437b6c11b9c5c0d49\", \"tipo_parte\": \"artículo\", \"numero_parte\": 339, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\\n\\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.\", \"id_parte\": \"2ca3c839ca5d493bad04e3fdbbd4edb3\"}, {\"index\": 1, \"distance\": 0.7101861238479614, \"tipo_parte\": \"artículo\", \"numero_parte\": 338, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El usufructo debe comprender toda la mina, aunque se haya constituido a favor de diferentes personas.\\n\\nEl usufructuario tiene derecho a aprovechar los productos y beneficios de la mina, como puede aprovecharlos el propietario.\\n\\nPero el usufructuario de un fundo común no podrá explotar las minas que en sus límites se comprendan, aunque se encuentren en actual trabajo.\\n\\nEl usufructo de minas podrá celebrarse por un plazo de hasta CUARENTA (40) años, ya fuere constituido a favor de una persona jurídica o natural y no se extingue por muerte del usufructuario, salvo pacto en contrario.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"9ee91f71e729cab437b6c11b9c5c0d49\", \"id_parte\": \"7462f1125277d5596ca7d17c74f9df82\"}, {\"index\": 2, \"distance\": 0.715308666229248, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Puede el usufructuario, bajo su responsabilidad, dar en arrendamiento el usufructo o ceder a otros el derecho de explotar la mina.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"9ee91f71e729cab437b6c11b9c5c0d49\", \"tipo_parte\": \"artículo\", \"numero_parte\": 342, \"titulo_parte\": null, \"id_parte\": \"49d492c382c773510821a3778d3ec0c4\"}, {\"index\": 2, \"distance\": 0.6659575700759888, \"id_padre\": \"9ee91f71e729cab437b6c11b9c5c0d49\", \"tipo_parte\": \"artículo\", \"numero_parte\": 340, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\\n\\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"b234c3008b7f7dab9d73e23e4c5b894e\"}, {\"index\": 2, \"distance\": 0.6644368171691895, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e951a8bcd2ec577d42cf711ce64c6fb7\", \"tipo_parte\": \"artículo\", \"numero_parte\": 5, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Componen la tercera categoría las producciones minerales de naturaleza pétrea o terrosa, y en general todas las que sirven para materiales de construcción y ornamento, cuyo conjunto forma las canteras.\", \"id_parte\": \"60dfbac337127c856b521b7a4d275a34\"}]}",
+                    "tool_call_id": "call_OUdPy5RTZS418gSk6MvwAEKq",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T18:45:31.909090Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "args": "{\"response_text\":\"Respuesta breve\\n- Cantera de piedra (tercera categoría): Solo puede explotarla si la industria principal del fundo en usufructo es la explotación de canteras o de sustancias de tercera categoría; estén o no en actual trabajo y salvo cláusula en contrario. En cualquier caso, puede extraer materiales necesarios para reparaciones u obras a su cargo. Si está habilitada a explotar, puede hacerlo por sí o ceder/arrendar la explotación a terceros bajo su responsabilidad. Fuentes: Código de Minería, arts. 5 y 339, y 342.\\n\\n- Mina de oro en explotación (concesible y registrada a nombre de los propietarios): Como usufructuaria de un fundo común, no puede explotar las minas comprendidas en sus límites, aun cuando estén en actual trabajo. Por tanto, no puede explotarla ni por sí ni por terceros, salvo que se le hubiese constituido un usufructo específico sobre la mina (instituto distinto del usufructo del inmueble). Fuente: Código de Minería, art. 338.\\n\\n- Nueva concesión minera y daños al fundo durante el usufructo: La indemnización por el no uso y aprovechamiento del terreno, pérdida de cosechas y destrucción/inutilización de trabajos corresponde a la usufructuaria. La indemnización por deterioro o inutilización del suelo corresponde al propietario. Fuente: Código de Minería, art. 340.\\n\\nFuentes legales consultadas\\n- Código de Minería de la Nación Argentina (Ley 1919 y mod.). Arts. 5, 338, 339, 340 y 342.\"}",
+                    "tool_call_id": "call_FJZXeI6DFWzW2aRYONwxn4UN",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2061,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 3247,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2880,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T18:45:35Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbA8VbBDfvoEAmP4SzPsNdxjcGqeO",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "content": "Final result processed.",
+                    "tool_call_id": "call_FJZXeI6DFWzW2aRYONwxn4UN",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T18:46:18.990940Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": null,
+            "kind": "request"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-12T18:45:35+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 2574,
+                "output_tokens": 3662,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3136,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00257625,
+                "output_price": 0.03247,
+                "total_price": 0.03504625,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

@@ -1,0 +1,140 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "La empresa \"Minerales Andinos S.A.\" descubre la existencia de un importante depósito de turba en un terreno de dominio particular perteneciente a la familia López en la provincia de Tierra del Fuego. La empresa, luego de comprobar la existencia del recurso y realizar gastos de exploración, solicita ante la autoridad competente el otorgamiento de la concesión para explotar el depósito según lo dispuesto en el Código de Minería.\n\nAl ser notificado, el propietario del terreno manifiesta, dentro del plazo legal, su voluntad de explotar el depósito de turba por cuenta propia. Sin embargo, la familia López no ha efectuado aún la demarcación de las pertenencias mineras.\n\nSe plantean las siguientes cuestiones: ¿Corresponde alguna indemnización al concesionario o al propietario por la ocupación del suelo o el valor de las sustancias?",
+                    "timestamp": "2025-11-12T15:36:04.290929Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "args": "{\"question\": \"En el C\\u0003\\u0014digo de Miner\\u0003\\u0019a argentino, \\u0017dqu\\u000000\\u00011\\u000000 es la clasificaci\\u000003n de la turba y cu\\u000000les son los derechos del propietario del suelo frente a un descubridor o solicitante de concesi\\u000003n en yacimientos de 3\\u000000 categoria? Indemnizaciones por ocupaci\\u000003n del suelo o por valor de las sustancias; preferencia del propietario que manifiesta explotar; derechos del descubridor a reembolso de gastos; requisitos de demarcaci\\u000003n; normativa aplicable y art\\u000000culos espec\\u00000dficos.\"}",
+                    "tool_call_id": "call_BuGPSvzYIwa1oX3dwUt45t9C",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 549,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1086,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 896,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T15:36:05Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb7B79YrYtAccVemKbGe91YDI9gTg",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "content": "Llamaré a la herramienta de búsqueda una vez más para localizar artículos que mencionen explícitamente \"turba\" en el Código de Minería argentino y normas sobre tercera categoría (propietario vs. descubridor, indemnizaciones, preferencia y demarcación). Luego te devuelvo solo los documentos más pertinentes en el formato solicitado.\n{\"query\":\"turba C\\u00f3digo de Miner\\u00eda Argentino art\\u00edculo categor\\u00eda segunda tercera canteras combustibles yacimientos tercera derechos propietario descubridor indemnizaci\\u00f3n demarcaci\\u00f3n\"}\n{\"selected_documents\": [{\"codigo_norma\": \"Código de Minería Argentino\", \"tipo_parte\": \"artículo\", \"numero_parte\": 5, \"ultimo_estado\": \"en vigor\", \"titulo_parte\": null, \"contenido_texto\": \"Componen la tercera categoría las producciones minerales de naturaleza pétrea o terrosa, y en general todas las que sirven para materiales de construcción y ornamento, cuyo conjunto forma las canteras.\", \"id_padre\": \"e951a8bcd2ec577d42cf711ce64c6fb7\", \"id_parte\": \"60dfbac337127c856b521b7a4d275a34\"}, {\"codigo_norma\": \"Código de Minería Argentino\", \"tipo_parte\": \"artículo\", \"numero_parte\": 101, \"ultimo_estado\": \"en vigor\", \"titulo_parte\": null, \"contenido_texto\": \"Cuando en el terreno ocupado con una explotación de sustancias de la segunda o tercera categoría, se descubre un criadero de la primera, el propietario podrá continuar sus trabajos no perjudicando los de la nueva mina; pero el descubridor podrá hacerlos variar o cesar, pagando los perjuicios o el valor del terreno.\\n\\nCon relación a la extracción que haga el descubridor, regirán las disposiciones contenidas en los TRES (3) incisos finales del artículo precedente.\", \"id_padre\": \"876f2765f9270036f9747dad1d5ff4fa\", \"id_parte\": \"f85cac11ee14ed858908166878e93590\"}, {\"codigo_norma\": \"Código de Minería Argentino\", \"tipo_parte\": \"artículo\", \"numero_parte\": 43, \"ultimo_estado\": \"en vigor\", \"titulo_parte\": null, \"contenido_texto\": \"El dueño del suelo no puede ni aún con licencia de la autoridad, hacer trabajo alguno minero dentro del perímetro de una concesión, ni en el recinto de un permiso de cateo.\", \"id_padre\": \"b5b728eab593acfd2edba9eb38187700\", \"id_parte\": \"e03033f816b411ea43a6451b0ded7e2b\"}, {\"codigo_norma\": \"Código de Minería Argentino\", \"tipo_parte\": \"artículo\", \"numero_parte\": 173, \"ultimo_estado\": \"en vigor\", \"titulo_parte\": null, \"contenido_texto\": \"El descubridor de las sustancias de segunda clase en terrenos de dominio particular, tendrá derecho a una indemnización por parte del propietario, si éste prefiere explotar por su cuenta el descubrimiento.\\n\\nEl valor de la indemnización se determinará por la importancia del descubrimiento y de los gastos de la exploración, hecha dentro de los límites de la propiedad particular.\", \"id_padre\": \"06c6502893a2bf9625ae182607f0548b\", \"id_parte\": \"6f14c6762a768fa53f53ac5e153ebc45\"}, {\"codigo_norma\": \"Código de Minería Argentino\", \"tipo_parte\": \"artículo\", \"numero_parte\": 187, \"ultimo_estado\": \"en vigor\", \"titulo_parte\": null, \"contenido_texto\": \"Cuando se quiera hacer una explotación exclusiva de los ríos y placeres en establecimientos fijos, se solicitarán pertenencias mineras.\\n\\nEn la solicitud se expresará la situación precisa del sitio que se pretende, determinándolo por medio de linderos provisorios, si no hubiese objetos firmes a que referirse.\", \"id_padre\": \"c20e9597bcfea74618435466231a75c3\", \"id_parte\": \"a1fafd3ee4df86c032c2ad9c4a65c8d6\"}, {\"codigo_norma\": \"Código de Minería Argentino\", \"tipo_parte\": \"artículo\", \"numero_parte\": 340, \"ultimo_estado\": \"en vigor\", \"titulo_parte\": null, \"contenido_texto\": \"Si durante el usufructo se hace concesión de una mina dentro del perímetro de un fundo común, el valor de las indemnizaciones correspondientes al no uso y aprovechamiento del terreno, a la pérdida de las cosechas, a la destrucción o inutilización de los trabajos, pertenece al usufructuario.\\n\\nCorresponde al propietario el valor de las indemnizaciones por el deterioro o inutilización del suelo.\", \"id_padre\": \"9ee91f71e729cab437b6c11b9c5c0d49\", \"id_parte\": \"b234c3008b7f7dab9d73e23e4c5b894e\"}]}",
+                    "tool_call_id": "call_BuGPSvzYIwa1oX3dwUt45t9C",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T15:38:16.678100Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "args": "{\"response_text\":\"Respuesta breve\\n- La turba es una sustancia de 2ª categoría. En tierras de dominio particular, si el propietario manifiesta en término su voluntad de explotarla, desplaza la solicitud del tercero. \\n- En ese supuesto, sí corresponde una indemnización al descubridor: el propietario debe pagarle la indemnización por la importancia del descubrimiento y por los gastos de exploración realizados dentro del inmueble. \\n- No corresponde indemnización al propietario por ocupación del suelo ni por el valor de las sustancias, porque no habrá concesionario ocupando ni extrayendo: explotará él mismo.\\n- Solo si el propietario no perfecciona su preferencia (p. ej., no cumple en tiempo con la tramitación y demarcación y termina perdiéndola) y se otorgara la concesión al descubridor, entonces el concesionario debería indemnizar al propietario por la ocupación y los daños que cause en el fundo, conforme el régimen general del Código de Minería sobre servidumbres e indemnizaciones.\\n\\nFuentes legales\\n- Código de Minería. Ley 1919 y sus modificatorias. Artículo 173 (indemnización al descubridor cuando el propietario prefiere explotar). Artículo 43 (limitación a trabajos del dueño del suelo dentro del perímetro de una concesión ajena).\"}",
+                    "tool_call_id": "call_d9H6R5ywUSLmYHULdokJpjm2",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1887,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 1792,
+                "output_tokens": 4524,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 4224,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T15:38:18Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb7DGsDSPYjDufOFKiWMNBS9oOLpt",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "content": "Final result processed.",
+                    "tool_call_id": "call_d9H6R5ywUSLmYHULdokJpjm2",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T15:40:07.608569Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": null,
+            "kind": "request"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-12T15:38:18+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 2436,
+                "output_tokens": 5610,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 5120,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00034275,
+                "output_price": 0.04524,
+                "total_price": 0.04558275,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

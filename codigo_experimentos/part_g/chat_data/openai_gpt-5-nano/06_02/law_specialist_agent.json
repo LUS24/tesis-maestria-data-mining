@@ -1,0 +1,140 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "La empresa minera \"Aurífera Patagónica S.A.\" es titular de una concesión para la explotación de oro (primera categoría) dentro de su pertenencia debidamente registrada en la provincia de Chubut. Durante las tareas de exploración, descubre un importante yacimiento de litio (también de primera categoría) y, además, depósitos de yeso (tercera categoría), sin que estén anotadas estas sustancias en el registro original.\n\nSimultáneamente, la mina colindante \"Andina Litios S.A.\" detecta que las labores subterráneas de \"Aurífera Patagónica S.A.\" han avanzado inesperadamente cinco metros dentro de los límites de su propia concesión, sin que medie aviso previo. Andina Litios aún no ha practicado la mensura legal, pero sus linderos provisorios son reconocidos por ambas partes.\n\nEl propietario superficiario, don José Maldonado, toma conocimiento del descubrimiento de yeso y reclama la totalidad de lo extraído, solicitando además el pago de costos de extracción. Finalmente, la autoridad minera recibe la solicitud de \"Andina Litios S.A.\" para practicar mensura a fin de determinar la línea divisoria y evalúa la posibilidad de autorizar visitas de inspección de ambas partes en las labores colindantes.\n\nResponda de acuerdo al Código de Minería Argentino: ¿Corresponde el reclamo de don José Maldonado sobre el yeso? ¿En qué casos podría tener éxito en su petición, y en cuáles no?",
+                    "timestamp": "2025-11-13T09:02:24.087651Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "args": "{\"question\":\"En el marco del Código de Minería Argentino, ¿corresponde el reclamo del superficiario don José Maldonado sobre el yeso descubierto por Aurífera Patagónica S.A., cuando el yeso no estaba anotado en el registro? ¿En qué casos podría tener éxito en su petición y en cuáles no, considerando la eventual superposición con otras concesiones, el descubrimiento de yeso y su no anotación, y las posibles vías de mensura y de inspección? cita normativa relevante.\"}",
+                    "tool_call_id": "call_PQbvFqNN0rYLpVTv7H84BqrS",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 695,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 705,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 576,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-nano-2025-08-07",
+            "timestamp": "2025-11-13T09:02:26Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbNViiRzbBzzOSgBLYmXyDqttPpVx",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "content": "{\"selected_documents\": [{\"index\": 3, \"distance\": 0.5050063133239746, \"tipo_parte\": \"artículo\", \"numero_parte\": 5, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Componen la tercera categoría las producciones minerales de naturaleza pétrea o terrosa, y en general todas las que sirven para materiales de construcción y ornamento, cuyo conjunto forma las canteras.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e951a8bcd2ec577d42cf711ce64c6fb7\", \"id_parte\": \"60dfbac337127c856b521b7a4d275a34\"}, {\"index\": 2, \"distance\": 0.5999005436897278, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Cuando la industria principal del fundo fructuario sea la explotación de canteras o de cualquier sustancia perteneciente a la tercera categoría, el usufructuario podrá explotarlas, estén o no en actual trabajo; salvo cláusula en contrario.\\n\\nEn todo caso, podrá tomar los materiales necesarios para las reparaciones que exija el fundo y para las obras que esté obligado a ejecutar.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"9ee91f71e729cab437b6c11b9c5c0d49\", \"tipo_parte\": \"artículo\", \"numero_parte\": 339, \"id_parte\": \"2ca3c839ca5d493bad04e3fdbbd4edb3\"}, {\"index\": 2, \"distance\": 0.58167964220047, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El dueño del suelo no puede ni aún con licencia de la autoridad, hacer trabajo alguno minero dentro del perímetro de una concesión, ni en el recinto de un permiso de cateo.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b5b728eab593acfd2edba9eb38187700\", \"tipo_parte\": \"artículo\", \"numero_parte\": 43, \"id_parte\": \"e03033f816b411ea43a6451b0ded7e2b\"}, {\"index\": 4, \"distance\": 0.5972325205802917, \"tipo_parte\": \"artículo\", \"numero_parte\": 40, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El explorador no puede establecer una explotación formal, ni hacer extracción de minerales, antes de la concesión legal de la mina; pero hace suyos y podrá disponer de los que extraiga de las calicatas, o encuentre en la superficie, o necesite arrancar para la prosecución de las trabajos de cateo.\\n\\nEn caso de contravención, se mandará suspender todo trabajo, hasta que se haga la manifestación y registro, y se pagará una multa cuyo monto será VEINTE (20) a DOSCIENTAS (200) veces el canon de explotación correspondiente a la categoría de las sustancias extraídas.\\n\\nNo solicitándose el registro TREINTA (30) días después de requerido, se adjudicarán los derechos del explorador al primer denunciante.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"2ae9da79cb8555d8c2d36ba0127c1663\", \"id_parte\": \"351b82d4479593b56a14e8cabb37c792\"}, {\"index\": 4, \"distance\": 0.56480473279953, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Practicada la mensura y demarcación con arreglo a lo dispuesto en los artículos precedentes, la autoridad mandará inscribirla en el registro, y que de ella se de copia al interesado, como título definitivo de propiedad.\\n\\nEl expediente de mensura se archivará en un libro especial a cargo del escribano de minas.\\n\\nCon la diligencia de mensura queda constituida la plena y legal posesión de la pertenencia.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"cabb9d71c2bfa97835fd007c8bf38635\", \"tipo_parte\": \"artículo\", \"numero_parte\": 93, \"id_parte\": \"038584060b97d590bcdf234f6ee404e9\"}, {\"index\": 3, \"distance\": 0.5655291080474854, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\\n\\nSon objeto de concesión:\\n\\nSon objeto de concesión:\\n\\nLos descubrimientos.\\n\\nLas minas caducadas y vacantes.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"eae4a44f252a6d8634c5e80f096d1258\", \"tipo_parte\": \"artículo\", \"numero_parte\": 44, \"id_parte\": \"54650cd907659eb336e9c7c841b58c17\"}, {\"index\": 2, \"distance\": 0.6284711956977844, \"tipo_parte\": \"artículo\", \"numero_parte\": 348, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las sustancias minerales que por las leyes anteriores pertenecían al dueño del suelo y que actualmente estuvieren en explotación, no podrán ser denunciadas.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e4ce42d4ff852f3bcdf1ce032991004d\", \"id_parte\": \"69227c57c0156f5f83e0e9a4ab03bab3\"}, {\"index\": 4, \"distance\": 0.5775433778762817, \"contenido_texto\": \"Cuando se soliciten pertenencias mineras para establecimientos fijos, se notificarán las personas que ocupen el espacio denunciado.\\n\\nSi se solicitan pertenencias de las sustancias comprendidas en el Inciso c) y siguientes del Artículo 4, se expresarán los nombres de las personas y demás indicaciones exigidas en las manifestaciones o denuncios de minas.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"c20e9597bcfea74618435466231a75c3\", \"tipo_parte\": \"artículo\", \"numero_parte\": 190, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"id_parte\": \"3938da8edbaeba31dfeaac9776f5f1c9\"}, {\"index\": 5, \"distance\": 0.5872617959976196, \"tipo_parte\": \"artículo\", \"numero_parte\": 162, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La responsabilidad del dueño de la mina, cesa:\\n\\n1° Cuando los trabajos perjudicados han sido emprendidos después de la concesión sobre lugares explotados, o en actual explotación, o en dirección de los trabajos en actividad, o sobre el criadero manifestado o reconocido.\\n\\n2° Cuando, después de la concesión se emprenda cualquier trabajo sin previo aviso a la autoridad ni citación del dueño de la mina.\\n\\n3° Cuando se continúen trabajos suspendidos UN (1) año antes de la concesión.\\n\\n4° Cuando el peligro para las obras o trabajos que se emprendan, existía antes o era consiguiente a la nueva explotación.\\n\\nDado el aviso, se procederá al reconocimiento de los lugares, dejándose constancia de que el punto designado por el propietario del suelo está comprendido o no en alguno de los casos indicados en los incisos precedentes.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"085f8a5f42d6d7c643e8fa03ea2a9ee4\", \"id_parte\": \"d763ad979c986d874666bdfa9eb9dabf\"}, {\"index\": 3, \"distance\": 0.6227715611457825, \"tipo_parte\": \"artículo\", \"numero_parte\": 336, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El arrendatario de un fundo común no puede explotar las minas que dentro de sus límites se encuentren y que el propietario haya registrado y explotado.\\n\\nSi descubre un criadero o hay alguna pertenencia abandonada, usará de los derechos que la ley ha establecido en estos casos.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"c1780adff00ba057a75cc65fea273fcd\", \"id_parte\": \"7729b03e9941eee361c1cd2b064cc0cd\"}]}",
+                    "tool_call_id": "call_PQbvFqNN0rYLpVTv7H84BqrS",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:04:46.169338Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "args": "{\"response_text\": \"TEST\"}",
+                    "tool_call_id": "call_0wSV9HDqPIz0GNDO6tDyOtqN",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2852,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 2688,
+                "output_tokens": 6441,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 6400,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-nano-2025-08-07",
+            "timestamp": "2025-11-13T09:05:10Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbNYMseBhwORblqPkyPHIKi4uIKVN",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "content": "Final result processed.",
+                    "tool_call_id": "call_0wSV9HDqPIz0GNDO6tDyOtqN",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:06:13.652365Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": null,
+            "kind": "request"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-nano-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T09:05:10+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 3547,
+                "output_tokens": 7146,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 6976,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 2.164e-05,
+                "output_price": 0.0025764,
+                "total_price": 0.00259804,
+                "model_input_price_mtok": 0.05,
+                "model_output_price_mtok": 0.4,
+                "model_id": "gpt-5-nano",
+                "model_name": "GPT-5 nano"
+            }
+        }
+    }
+}

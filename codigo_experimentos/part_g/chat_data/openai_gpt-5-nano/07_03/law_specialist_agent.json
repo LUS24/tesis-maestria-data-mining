@@ -1,0 +1,140 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "Usted es asesor legal de un consorcio de mineros que explotan diversas pertenencias contiguas en una región de la provincia de San Juan. Los clientes están considerando varias operaciones para optimizar su explotación: desean, por un lado, ampliar una de sus pertenencias, mejorar otra y, adicionalmente, consideran constituir un grupo minero para gestionar de manera más eficiente varias de sus minas. Asimismo, detectaron que existe una \"demasía\" entre dos de sus minas y quieren saber cómo pueden adjudicársela.\n\nExplique, de acuerdo al Código de Minería Argentino: ¿Qué requisitos y procedimientos deben cumplirse para adjudicarse una demasía existente entre dos de sus minas?",
+                    "timestamp": "2025-11-13T09:16:25.950599Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "args": "{\"question\":\"Qué requisitos y procedimientos deben cumplirse para adjudicarse una demasía existente entre dos de sus minas según el Código de Minería Argentino\"}",
+                    "tool_call_id": "call_H90di0hpiaFjr84dNDSnwZek",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 523,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 309,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 256,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-nano-2025-08-07",
+            "timestamp": "2025-11-13T09:16:27Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbNjHWv6Qjx9QcvtkvQ63ulZWCGiu",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "content": "{\"selected_documents\": [{\"index\": 4, \"distance\": 0.6253901124000549, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Demasía es el terreno sobrante entre DOS (2)o más minas demarcadas, en el cual no puede formarse una pertenencia.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"954656c63126ba38885976cc1d4c90f2\", \"tipo_parte\": \"artículo\", \"numero_parte\": 116, \"titulo_parte\": null, \"id_parte\": \"597f91d21fc2b7a065fc05d70c5bcfad\"}, {\"index\": 4, \"distance\": 0.6304437518119812, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Adjudicada la demasía en parte o en todo, se incorpora a las respectivas pertenencias.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"954656c63126ba38885976cc1d4c90f2\", \"tipo_parte\": \"artículo\", \"numero_parte\": 120, \"titulo_parte\": null, \"id_parte\": \"f1e55b13c72abf12446510868ae1b590\"}, {\"index\": 1, \"distance\": 0.666053831577301, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Cualquier persona podrá constituir una mina nueva en la demasía por renuncia o cesión de todos los colindantes, o por no ocuparla con alguna obra o trabajo verdaderamente útil, UN (1) año después de requeridos al efecto.\\n\\nEsta disposición tiene lugar en el caso de no hallarse las demasías incorporadas a las minas colindantes.\\n\\nLa parte del colindante que renuncia, que cede o que pierde su derecho, acrece a la de los otros colindantes.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"954656c63126ba38885976cc1d4c90f2\", \"tipo_parte\": \"artículo\", \"numero_parte\": 122, \"titulo_parte\": null, \"id_parte\": \"47ee12c9ac75733ffc0a9588f9c7df74\"}, {\"index\": 2, \"distance\": 0.6034031510353088, \"id_padre\": \"48189d59386b7439d913d7e9802bfefd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 223, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las disposiciones de los artículos anteriores relativas al pago de la patente o al canon minero, se aplicarán en la misma forma, aun en los casos que por ampliación o acrecentamiento, o formación de grupos mineros, o compañías de minas, conforme a los Artículos 87, 109, 113, 116, y 140 aumentase el número de unidades de medidas de cada concesión.\\n\\nLas demasías, sea cualquiera su extensión, serán consideradas a los efectos del pago de la patente como una pertenencia completa en todos los casos y variantes establecidos en el Acápite III, del Título VII.\\n\\nCuando el concesionario o dueño de la demasía no fuera un colindante, además del pago del canon tendrá la obligación de invertir capital como lo dispone la presente ley.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"1adc32d645730ce4350230d75547b0b0\"}, {\"index\": 5, \"distance\": 0.5762760043144226, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Se procede a la mensura y demarcación de las pertenencias en virtud de petición escrita presentada por el registrador o por otra persona interesada.\\n\\nLa petición y su proveído se publicarán en la forma prescripta en el Artículo 53.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"cabb9d71c2bfa97835fd007c8bf38635\", \"tipo_parte\": \"artículo\", \"numero_parte\": 81, \"titulo_parte\": null, \"id_parte\": \"aead8356af641fede36d6409135d5461\"}, {\"index\": 3, \"distance\": 0.6292110681533813, \"id_padre\": \"cabb9d71c2bfa97835fd007c8bf38635\", \"tipo_parte\": \"artículo\", \"numero_parte\": 93, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Practicada la mensura y demarcación con arreglo a lo dispuesto en los artículos precedentes, la autoridad mandará inscribirla en el registro, y que de ella se de copia al interesado, como título definitivo de propiedad.\\n\\nEl expediente de mensura se archivará en un libro especial a cargo del escribano de minas.\\n\\nCon la diligencia de mensura queda constituida la plena y legal posesión de la pertenencia.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"038584060b97d590bcdf234f6ee404e9\"}]}",
+                    "tool_call_id": "call_H90di0hpiaFjr84dNDSnwZek",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:18:14.513232Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "args": "{\"response_text\":\" \"}",
+                    "tool_call_id": "call_a5vwyRfAtYNSI8RJqqUXsVGI",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1756,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 279,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 256,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-nano-2025-08-07",
+            "timestamp": "2025-11-13T09:18:17Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbNl3bSJUpjnqFsTPgzwDF5RD2ffv",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "content": "Final result processed.",
+                    "tool_call_id": "call_a5vwyRfAtYNSI8RJqqUXsVGI",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:18:21.312395Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": null,
+            "kind": "request"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-nano-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T09:18:17+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 2279,
+                "output_tokens": 588,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 512,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 8.78e-05,
+                "output_price": 0.0001116,
+                "total_price": 0.0001994,
+                "model_input_price_mtok": 0.05,
+                "model_output_price_mtok": 0.4,
+                "model_id": "gpt-5-nano",
+                "model_name": "GPT-5 nano"
+            }
+        }
+    }
+}

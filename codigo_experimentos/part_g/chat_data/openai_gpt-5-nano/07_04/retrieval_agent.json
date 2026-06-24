@@ -1,0 +1,685 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > Constituir un grupo minero. requisitos formales del pedimento y pasos procesales principales, según el Código de Minería Argentino.\n        ",
+                    "timestamp": "2025-11-13T09:18:26.862571Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería Argentina requisitos del pedimento minero (contenido formal del pedimento)\"}",
+                    "tool_call_id": "call_k98KjmfqnWrYxGEbFCmRwYzw",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería Argentina pasos procesales para constituir un grupo minero (agrupación de pertenencias), trámite, solicitud, publicación, oposición, resolución, inscripción\"}",
+                    "tool_call_id": "call_d94bxg7VWgIMU93PTSCAHuiG",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Código de Minería Argentina definici\\u0003n y r\\u0003gimen del grupo minero; agrupaci\\u0003n de pertenencias; requisitos y efectos\"}",
+                    "tool_call_id": "call_CFQdB003WfW9ISSO0LnDkcsA",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 345,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 865,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 704,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T09:18:28Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbNlEFFvQhJ86whYa5GLX66RbXOPg",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.48489129543304443,
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.4798739552497864,
+                                "id_padre": "22a8b92472d8cef0269fc8264bc99cb1",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 50,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Presentada la solicitud o pedimento, se le asignará un número, cronológico y secuencial y sin más la autoridad del catastro minero lo analizará para determinar si la misma recae en terreno franco o no, hecho que se notificará al peticionario, dándole copia de la matrícula catastral. Excepto que el terreno esté franco en su totalidad, el peticionario deberá pronunciarse en QUINCE (15) días sobre su interés o no respecto del área libre. De no existir un pronunciamiento expreso, la petición se archivará sin más trámite.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "9d328795b2bd6eac1790981fa49c1857"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.45415422320365906,
+                                "id_padre": "8052e97dce5d023ad033ecb592c6d4b3",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 20,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El REGISTRO CATASTRAL MINERO dependerá de la autoridad minera de cada jurisdicción y quedará constituido con la finalidad principal de reflejar la situación física, jurídica y demás antecedentes que conduzcan a la confección de la matrícula catastral correspondiente a cada derecho minero que reconoce este Código.\n\nLas provincias procurarán el establecimiento de sistemas catastrales mineros uniformes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8900371ff9cc8538be182a9a20fe3a5f"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.4259660840034485,
+                                "id_padre": "9e7dcf9a230fcc582eebdccc11e27282",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 346,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La investigación geológico-minera de base que realice el Estado Nacional en todo el país y las que efectúen las provincias en sus territorios es libre y no requiere permiso de la autoridad minera. Aquella que realice el Estado Nacional se efectuará con consentimiento previo de las provincias donde se practicará la actividad.\n\nLa autoridad provincial o, en su caso, y en forma excluyente, la empresa o entidad estatal provincial que tenga a su cargo la investigación podrá disponer, mediante comunicación cursada a la autoridad minera, zonas exclusivas de interés especial para la prospección minera, que realizará en forma directa o con participación de terceros.\n\nLas zonas de interés especial podrán tener en conjunto una extensión máxima de CIEN MIL (100.000) hectáreas por provincia y su duración no excederá el plazo improrrogable de DOS (2) años.\n\nEn caso de decidir la intervención de terceros, los organismos a que se refiere el segundo párrafo de este artículo, sin perjuicio de los trabajos propios que se proponga desarrollar en el área, deberán convocar a un concurso invitando públicamente a empresas a presentar sus antecedentes, un programa de trabajos y un compromiso de inversión compatibles con los objetivos de investigación propuestos.\n\nLa invitación se publicará por TRES (3) días en el plazo de QUINCE (15) días en el Boletín Oficial y en oficinas de la autoridad minera y del organismo convocante y contendrá los objetivos de la investigación, los requisitos mínimos que deberán contener las propuestas, el lugar de presentación, el plazo dentro del cual serán recibidas y las bases para la comparación de las propuestas.\n\nCuando se estime conveniente podrá optarse por desarrollar las condiciones del llamado en un pliego.\n\nDentro del plazo fijado para la prospección, el adjudicatario de la zona podrá solicitar uno o más permisos de exploración o efectuar manifestaciones de descubrimientos, quedando sujetos estos derechos a las disposiciones generales del Código de Minería, sin perjuicio de las obligaciones que pudieren corresponder en virtud de la convocatoria o que resulten de la propuesta.\n\nLos adjudicatarios quedan obligados a suministrar al organismo convocante la información y la documentación técnica obtenida en el curso de las etapas de la investigación, sin necesidad de requerimiento y dentro de los plazos que fije aquel organismo, bajo pena de una multa de hasta VEINTE (20) veces el valor del canon de exploración que corresponda a un permiso de CUATRO (4) unidades de medida.\n\nLas áreas de interés especial en las que no hubiese realizado el Estado o la empresa o entidad estatal provincial trabajos de prospección, o efectuado adjudicación alguna en el transcurso del primer año, contado desde la fecha en que fueron dispuestas, quedarán automáticamente liberadas. La autoridad minera dará curso a las solicitudes de derechos mineros que presenten los particulares previa verificación de la inexistencia de los referidos trabajos o adjudicación.\n\nLas minas que descubran los organismos antes mencionados en el curso de sus investigaciones y, en las zonas de interés especial que establezcan éstos, cuando no hayan dado participación a terceros, deberán ser transferidas a la actividad privada dentro del año de operado el descubrimiento y por el procedimiento que determina este artículo. Caso contrario, quedarán automáticamente vacantes y a disposición de cualquier interesado en adquirirlas.\n\nLas empresas o entidades estatales provinciales autorizadas por ley para efectuar exploraciones y explotaciones mineras podrán encuadrar sus investigaciones en las disposiciones del presente artículo, sin perjuicio de su derecho a solicitar permisos y concesiones con arreglo a las normas generales de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "dbd7f8bf18fbee80542f1074013f2dad"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.4203144609928131,
+                                "id_padre": "22a8b92472d8cef0269fc8264bc99cb1",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 46,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El descubridor presentará un escrito ante la autoridad minera haciendo la manifestación del hallazgo y acompañando muestra del mineral.\n\nEl escrito, del que se presentarán DOS (2) ejemplares, contendrá el nombre, estado y domicilio del descubridor, el nombre y el domicilio de sus compañeros, si los tuviere, y el nombre que ha de llevar la mina.\n\nContendrá también el escrito, en la forma que determina el Artículo 19, el punto del descubrimiento que será el mismo de extracción de la muestra.\n\nSe expresará, también el nombre y mineral de las minas colindantes y a quién pertenece el terreno, si al Estado, al municipio o a los particulares.\n\nEn este último caso, se declarará el nombre y domicilio de sus dueños.\n\nEl descubridor, al formular la manifestación de descubrimiento, deberá indicar, en la misma forma que determina el Artículo 19, una superficie no superior al doble de la máxima extensión posible de la concesión de explotación, dentro de la cual deberá efectuar los trabajos de reconocimiento del criadero y quedar circunscriptas las pertenencias mineras a mensurar. El área determinada deberá tener la forma de un cuadrado o aquella que resulte de la preexistencia de otros derechos mineros o accidentes del terreno y dentro de la cual deberá quedar incluido el punto del descubrimiento. Dicha área quedará indisponible hasta que se opere la aprobación de la mensura.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2200477b6d0869d19b89608eafa6fc34"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_k98KjmfqnWrYxGEbFCmRwYzw",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:18:44.241268Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6134322881698608,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El REGISTRO CATASTRAL MINERO dependerá de la autoridad minera de cada jurisdicción y quedará constituido con la finalidad principal de reflejar la situación física, jurídica y demás antecedentes que conduzcan a la confección de la matrícula catastral correspondiente a cada derecho minero que reconoce este Código.\n\nLas provincias procurarán el establecimiento de sistemas catastrales mineros uniformes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8052e97dce5d023ad033ecb592c6d4b3",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 20,
+                                "titulo_parte": null,
+                                "id_parte": "8900371ff9cc8538be182a9a20fe3a5f"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6066429018974304,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6048654317855835,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Para la constitución de un grupo minero se requiere:\n\nQue las pertenencias estén unidas en toda la extensión de uno de sus lados, formando un solo cuerpo, sin que entre ellos quede ningún espacio vacante.\n\nQue el grupo se preste a una cómoda y provechosa explotación.\n\nY que la autoridad otorgue con conocimiento de causa, la correspondiente concesión.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 139,
+                                "titulo_parte": null,
+                                "id_parte": "ecaf94bbda10c8928b8566549b899d57"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5974519848823547,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "De todo lo obrado, se extenderá acta que firmarán los interesados, la autoridad, el perito, y que autorizará el escribano.\n\nEl acta contendrá:\n\nEl número de pertenencias concurrentes, su nombre y el de sus dueños.\n\nLa forma y dimensiones del grupo y los linderos que lo determinan; expresando los que deban conservarse y designando los puntos para los nuevos que sea preciso colocar.\n\nLa situación relativa de las minas y de los objetos con que linden.\n\nA continuación del acta se extenderá la providencia de concesión, declarando si hubiere lugar, el orden y manera cómo deben pasar al grupo los gravámenes de las pertenencias; sea con referencia al acuerdo de las partes, sea con referencia a la resolución dictada, si el acuerdo no hubiese tenido lugar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 143,
+                                "titulo_parte": null,
+                                "id_parte": "5786940adf521ef0e268761981486757"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5846561789512634,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La investigación geológico-minera de base que realice el Estado Nacional en todo el país y las que efectúen las provincias en sus territorios es libre y no requiere permiso de la autoridad minera. Aquella que realice el Estado Nacional se efectuará con consentimiento previo de las provincias donde se practicará la actividad.\n\nLa autoridad provincial o, en su caso, y en forma excluyente, la empresa o entidad estatal provincial que tenga a su cargo la investigación podrá disponer, mediante comunicación cursada a la autoridad minera, zonas exclusivas de interés especial para la prospección minera, que realizará en forma directa o con participación de terceros.\n\nLas zonas de interés especial podrán tener en conjunto una extensión máxima de CIEN MIL (100.000) hectáreas por provincia y su duración no excederá el plazo improrrogable de DOS (2) años.\n\nEn caso de decidir la intervención de terceros, los organismos a que se refiere el segundo párrafo de este artículo, sin perjuicio de los trabajos propios que se proponga desarrollar en el área, deberán convocar a un concurso invitando públicamente a empresas a presentar sus antecedentes, un programa de trabajos y un compromiso de inversión compatibles con los objetivos de investigación propuestos.\n\nLa invitación se publicará por TRES (3) días en el plazo de QUINCE (15) días en el Boletín Oficial y en oficinas de la autoridad minera y del organismo convocante y contendrá los objetivos de la investigación, los requisitos mínimos que deberán contener las propuestas, el lugar de presentación, el plazo dentro del cual serán recibidas y las bases para la comparación de las propuestas.\n\nCuando se estime conveniente podrá optarse por desarrollar las condiciones del llamado en un pliego.\n\nDentro del plazo fijado para la prospección, el adjudicatario de la zona podrá solicitar uno o más permisos de exploración o efectuar manifestaciones de descubrimientos, quedando sujetos estos derechos a las disposiciones generales del Código de Minería, sin perjuicio de las obligaciones que pudieren corresponder en virtud de la convocatoria o que resulten de la propuesta.\n\nLos adjudicatarios quedan obligados a suministrar al organismo convocante la información y la documentación técnica obtenida en el curso de las etapas de la investigación, sin necesidad de requerimiento y dentro de los plazos que fije aquel organismo, bajo pena de una multa de hasta VEINTE (20) veces el valor del canon de exploración que corresponda a un permiso de CUATRO (4) unidades de medida.\n\nLas áreas de interés especial en las que no hubiese realizado el Estado o la empresa o entidad estatal provincial trabajos de prospección, o efectuado adjudicación alguna en el transcurso del primer año, contado desde la fecha en que fueron dispuestas, quedarán automáticamente liberadas. La autoridad minera dará curso a las solicitudes de derechos mineros que presenten los particulares previa verificación de la inexistencia de los referidos trabajos o adjudicación.\n\nLas minas que descubran los organismos antes mencionados en el curso de sus investigaciones y, en las zonas de interés especial que establezcan éstos, cuando no hayan dado participación a terceros, deberán ser transferidas a la actividad privada dentro del año de operado el descubrimiento y por el procedimiento que determina este artículo. Caso contrario, quedarán automáticamente vacantes y a disposición de cualquier interesado en adquirirlas.\n\nLas empresas o entidades estatales provinciales autorizadas por ley para efectuar exploraciones y explotaciones mineras podrán encuadrar sus investigaciones en las disposiciones del presente artículo, sin perjuicio de su derecho a solicitar permisos y concesiones con arreglo a las normas generales de este Código.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "9e7dcf9a230fcc582eebdccc11e27282",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 346,
+                                "titulo_parte": null,
+                                "id_parte": "dbd7f8bf18fbee80542f1074013f2dad"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_d94bxg7VWgIMU93PTSCAHuiG",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:18:44.346646Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6049914956092834,
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5767418146133423,
+                                "id_padre": "8052e97dce5d023ad033ecb592c6d4b3",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 20,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El REGISTRO CATASTRAL MINERO dependerá de la autoridad minera de cada jurisdicción y quedará constituido con la finalidad principal de reflejar la situación física, jurídica y demás antecedentes que conduzcan a la confección de la matrícula catastral correspondiente a cada derecho minero que reconoce este Código.\n\nLas provincias procurarán el establecimiento de sistemas catastrales mineros uniformes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8900371ff9cc8538be182a9a20fe3a5f"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5614003539085388,
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 139,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Para la constitución de un grupo minero se requiere:\n\nQue las pertenencias estén unidas en toda la extensión de uno de sus lados, formando un solo cuerpo, sin que entre ellos quede ningún espacio vacante.\n\nQue el grupo se preste a una cómoda y provechosa explotación.\n\nY que la autoridad otorgue con conocimiento de causa, la correspondiente concesión.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "ecaf94bbda10c8928b8566549b899d57"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.530255138874054,
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 140,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los dueños de las pertenencias con que debe formarse el grupo, ocurrirán para su concesión a la autoridad por medio de un pedimento.\n\nEl pedimento contendrá:\n\n1° Los títulos correspondientes a cada una de las pertenencias.\n\n2° Un plano del grupo en el que se manifieste la situación relativa, la extensión y forma de las minas concurrentes, sus nombres, el de sus dueños, el que ha de llevar la nueva propiedad y el de las minas colindantes.\n\n3° La parte o derecho asignado a cada uno de los interesados.\n\n4° La declaración del gravamen que afecta a cada pertenencia y el nombre de las personas a cuyo favor esté constituido.\n\n5° El acuerdo celebrado entre los acreedores sobre la manera cómo deben pasar esos gravámenes al grupo; y en su defecto, la propuesta de bases para un arreglo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "d4da40747f2f21ce99c9831326ad632f"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5271729826927185,
+                                "id_padre": "4d442cd021677333a58832d245596294",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 14,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Es prohibida la división material de las minas, tanto relación a sus dueños, como respecto de terceros.\n\nNi los dueños, ni terceros pueden explotar una región o una parte de la mina, independientemente de la explotación general.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "47febf76b128dec17c5858ad982c06f3"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_CFQdB003WfW9ISSO0LnDkcsA",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:18:44.240367Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería Argentino grupo minero trámite: artículo 141, 142, 144; citación de acreedores, mensura, perito, oposición, concesión e inscripción del grupo minero\"}",
+                    "tool_call_id": "call_Z7OeA8WGvx3yEtlIR1hf8veh",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 6888,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 516,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 448,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T09:18:47Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbNlXQuTw8UZoehCUYiO5R6ZzZxHL",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6784219741821289,
+                                "id_padre": "cc7624d26883dbac7fb4e82ed39f56dd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 54,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La explotación anotará el hecho en el expediente del registro, sin que obsten reclamaciones ni pleitos referentes a la mina o al terreno que debe ocupar.\n\nCompréndense en esta disposición los trabajos anteriores al registro.\n\nLos reclamantes pueden nombrar interventores por su cuenta, y exigir una fianza, para impedir que el tenedor de la mina disponga de los productos.\n\nLas funciones del interventor se reducen a una simple inspección en la mina y a llevar cuenta y razón de gastos y productos.\n\nLa fianza exigida u ofrecida, excusa los interventores; pero en este caso el poseedor deberá llevar esa cuenta y razón.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "a2bd461ea33a2f6d2a5a3174dfff0109"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6463897228240967,
+                                "id_padre": "cabb9d71c2bfa97835fd007c8bf38635",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 93,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Practicada la mensura y demarcación con arreglo a lo dispuesto en los artículos precedentes, la autoridad mandará inscribirla en el registro, y que de ella se de copia al interesado, como título definitivo de propiedad.\n\nEl expediente de mensura se archivará en un libro especial a cargo del escribano de minas.\n\nCon la diligencia de mensura queda constituida la plena y legal posesión de la pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "038584060b97d590bcdf234f6ee404e9"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6167766451835632,
+                                "id_padre": "d8a286579fb868b94a145532972e7dba",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 231,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Admitido el abandono, cualquier persona podrá solicitar y registrar la mina sin otro requisito que la constancia del hecho.\n\nEn la solicitud se expresará el nombre del dueño, el de la mina, el del mineral en que se encuentra y la clase de sustancia que se ha explotado.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "358225199be806c75b608ed0597c6b39"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6113277673721313,
+                                "id_padre": "cf24337039e4d80d81f68c9c9ea063bb",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 159,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando los terrenos pertenecen a particulares, deberá pagarse previamente su valor y los perjuicios; pero si el minero los tiene ocupados o quisiera ocuparlos, otorgará fianza suficiente mientras se practican las diligencias conducentes al pago.\n\nEn la valoración se considerará el espacio comprendido dentro de las señales o linderos provisionales que se fijen para determinar las pertenencias.\n\nPracticada la mensura y demarcación legal, se harán las restituciones correspondientes, según la mayor o menor extensión que definitivamente se adjudique.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b9f7b9b7be6e927d8914895ae7f3fa93"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.6109523177146912,
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 222,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Todo concesionario o minero puede hacer abandono de su concesión o su mina, de acuerdo con el Artículo 226 del Código y sólo desde la fecha de su manifestación a la autoridad competente queda libre del pago del impuesto. La autoridad minera de la respectiva jurisdicción deberá publicar cada semestre o a más tardar cada año, un padrón en el que se anotarán todas las minas por distritos, secciones o departamentos, y el estado en que se hallasen las concesiones.\n\nDentro del término de las publicaciones en caso de abandono o hasta TREINTA (30) días después, podrán pedir los acreedores hipotecarios o privilegiados que se ponga en venta pública la mina para pagarse con su producido, después de abonado el canon y los gastos; no haciéndose uso de este derecho, quedan extinguidos los gravámenes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "60ad26895bf31578edcf53320d2ed512"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_Z7OeA8WGvx3yEtlIR1hf8veh",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:19:09.756988Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"\\\"art\\u001culo 141\\\" C\\u0003digo de Miner\\u0019a Argentino grupo minero (tr\\u001fmite, citaci\\u001fn, perito, mensura)\"}",
+                    "tool_call_id": "call_SrdIMMKaXEK269Z2PLEkGIYn",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 8065,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 841,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 768,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T09:19:11Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbNlviUtr6WRFSEG6xEERhQnakmxO",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5844699740409851,
+                                "id_padre": "cabb9d71c2bfa97835fd007c8bf38635",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 88,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las personas interesadas en la mensura pueden nombrar, cada una por su parte un perito que presencie la operación y haga las indicaciones, reparos y reclamaciones a que los procedimientos periciales dieren lugar; todo lo que quedará decidido antes de darse por concluida la diligencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "80c14d7ef76711447f3cd060efd42e71"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5723385810852051,
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5638178586959839,
+                                "id_padre": "cc7624d26883dbac7fb4e82ed39f56dd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 54,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La explotación anotará el hecho en el expediente del registro, sin que obsten reclamaciones ni pleitos referentes a la mina o al terreno que debe ocupar.\n\nCompréndense en esta disposición los trabajos anteriores al registro.\n\nLos reclamantes pueden nombrar interventores por su cuenta, y exigir una fianza, para impedir que el tenedor de la mina disponga de los productos.\n\nLas funciones del interventor se reducen a una simple inspección en la mina y a llevar cuenta y razón de gastos y productos.\n\nLa fianza exigida u ofrecida, excusa los interventores; pero en este caso el poseedor deberá llevar esa cuenta y razón.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "a2bd461ea33a2f6d2a5a3174dfff0109"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5456963181495667,
+                                "id_padre": "c2422a1c629cff5791d1b4b0c379547d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 58,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La persona que ejecutando por otro trabajos mineros, hace un descubrimiento, descubre para el dueño de los trabajos.\n\nPero si los trabajos no son verdaderamente mineros, el descubrimiento pertenece a ambos por mitad.\n\nEsto mismo se observará cuando cualquier empleado que goce sueldo o salario de una mina, aunque no ejecute trabajo alguno, descubre dentro del radio de UN (1) kilómetro, tomado desde los límites de esa mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "9d1e43a1b63428bde9f54b7d6b7fcefd"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5454655885696411,
+                                "id_padre": "cabb9d71c2bfa97835fd007c8bf38635",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 93,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Practicada la mensura y demarcación con arreglo a lo dispuesto en los artículos precedentes, la autoridad mandará inscribirla en el registro, y que de ella se de copia al interesado, como título definitivo de propiedad.\n\nEl expediente de mensura se archivará en un libro especial a cargo del escribano de minas.\n\nCon la diligencia de mensura queda constituida la plena y legal posesión de la pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "038584060b97d590bcdf234f6ee404e9"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_SrdIMMKaXEK269Z2PLEkGIYn",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:19:27.083019Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería Argentino grupo minero art\\u0000edculos 141, 142, 144 (procedimiento, audiencia con acreedores, nombramiento de perito, mensura, demarcaci\\u0000f3n, publicaciones, oposiciones)\"}",
+                    "tool_call_id": "call_yDBnkqIzvcJmD9PZm5FvaipA",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 9123,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 6784,
+                "output_tokens": 593,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 512,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T09:19:27Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbNmBXNM8KAAmNzotwZz14YDYNFSe",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.635275661945343,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Practicada la mensura y demarcación con arreglo a lo dispuesto en los artículos precedentes, la autoridad mandará inscribirla en el registro, y que de ella se de copia al interesado, como título definitivo de propiedad.\n\nEl expediente de mensura se archivará en un libro especial a cargo del escribano de minas.\n\nCon la diligencia de mensura queda constituida la plena y legal posesión de la pertenencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cabb9d71c2bfa97835fd007c8bf38635",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 93,
+                                "titulo_parte": null,
+                                "id_parte": "038584060b97d590bcdf234f6ee404e9"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6304437518119812,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las personas interesadas en la mensura pueden nombrar, cada una por su parte un perito que presencie la operación y haga las indicaciones, reparos y reclamaciones a que los procedimientos periciales dieren lugar; todo lo que quedará decidido antes de darse por concluida la diligencia.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cabb9d71c2bfa97835fd007c8bf38635",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 88,
+                                "titulo_parte": null,
+                                "id_parte": "80c14d7ef76711447f3cd060efd42e71"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6119440197944641,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 145,
+                                "titulo_parte": null,
+                                "id_parte": "d96ffc6be11f4b7087cd65d35f95f9aa"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6027126312255859,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Se procede a la mensura y demarcación de las pertenencias en virtud de petición escrita presentada por el registrador o por otra persona interesada.\n\nLa petición y su proveído se publicarán en la forma prescripta en el Artículo 53.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "cabb9d71c2bfa97835fd007c8bf38635",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 81,
+                                "titulo_parte": null,
+                                "id_parte": "aead8356af641fede36d6409135d5461"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5999135375022888,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El REGISTRO CATASTRAL MINERO dependerá de la autoridad minera de cada jurisdicción y quedará constituido con la finalidad principal de reflejar la situación física, jurídica y demás antecedentes que conduzcan a la confección de la matrícula catastral correspondiente a cada derecho minero que reconoce este Código.\n\nLas provincias procurarán el establecimiento de sistemas catastrales mineros uniformes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "8052e97dce5d023ad033ecb592c6d4b3",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 20,
+                                "titulo_parte": null,
+                                "id_parte": "8900371ff9cc8538be182a9a20fe3a5f"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_yDBnkqIzvcJmD9PZm5FvaipA",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T09:19:41.084002Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 3, \"distance\": 0.6048654317855835, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Para la constitución de un grupo minero se requiere:\\n\\nQue las pertenencias estén unidas en toda la extensión de uno de sus lados, formando un solo cuerpo, sin que entre ellos quede ningún espacio vacante.\\n\\nQue el grupo se preste a una cómoda y provechosa explotación.\\n\\nY que la autoridad otorgue con conocimiento de causa, la correspondiente concesión.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b7b2395165f9da1733259a939cbc3912\", \"tipo_parte\": \"artículo\", \"numero_parte\": 139, \"titulo_parte\": null, \"id_parte\": \"ecaf94bbda10c8928b8566549b899d57\"}, {\"index\": 4, \"distance\": 0.530255138874054, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Los dueños de las pertenencias con que debe formarse el grupo, ocurrirán para su concesión a la autoridad por medio de un pedimento.\\n\\nEl pedimento contendrá:\\n\\n1° Los títulos correspondientes a cada una de las pertenencias.\\n\\n2° Un plano del grupo en el que se manifieste la situación relativa, la extensión y forma de las minas concurrentes, sus nombres, el de sus dueños, el que ha de llevar la nueva propiedad y el de las minas colindantes.\\n\\n3° La parte o derecho asignado a cada uno de los interesados.\\n\\n4° La declaración del gravamen que afecta a cada pertenencia y el nombre de las personas a cuyo favor esté constituido.\\n\\n5° El acuerdo celebrado entre los acreedores sobre la manera cómo deben pasar esos gravámenes al grupo; y en su defecto, la propuesta de bases para un arreglo.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b7b2395165f9da1733259a939cbc3912\", \"tipo_parte\": \"artículo\", \"numero_parte\": 140, \"titulo_parte\": null, \"id_parte\": \"d4da40747f2f21ce99c9831326ad632f\"}, {\"index\": 4, \"distance\": 0.5974519848823547, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"De todo lo obrado, se extenderá acta que firmarán los interesados, la autoridad, el perito, y que autorizará el escribano.\\n\\nEl acta contendrá:\\n\\nEl número de pertenencias concurrentes, su nombre y el de sus dueños.\\n\\nLa forma y dimensiones del grupo y los linderos que lo determinan; expresando los que deban conservarse y designando los puntos para los nuevos que sea preciso colocar.\\n\\nLa situación relativa de las minas y de los objetos con que linden.\\n\\nA continuación del acta se extenderá la providencia de concesión, declarando si hubiere lugar, el orden y manera cómo deben pasar al grupo los gravámenes de las pertenencias; sea con referencia al acuerdo de las partes, sea con referencia a la resolución dictada, si el acuerdo no hubiese tenido lugar.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b7b2395165f9da1733259a939cbc3912\", \"tipo_parte\": \"artículo\", \"numero_parte\": 143, \"titulo_parte\": null, \"id_parte\": \"5786940adf521ef0e268761981486757\"}, {\"index\": 2, \"distance\": 0.6066429018974304, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El grupo minero puede constar del número de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geológica del o de los yacimientos cubiertos por aquéllas, circunstancia cuyo cumplimiento se verificará en la oportunidad señalada por el artículo 142.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b7b2395165f9da1733259a939cbc3912\", \"tipo_parte\": \"artículo\", \"numero_parte\": 145, \"titulo_parte\": null, \"id_parte\": \"d96ffc6be11f4b7087cd65d35f95f9aa\"}, {\"index\": 4, \"distance\": 0.6027126312255859, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Se procede a la mensura y demarcación de las pertenencias en virtud de petición escrita presentada por el registrador o por otra persona interesada.\\n\\nLa petición y su proveído se publicarán en la forma prescripta en el Artículo 53.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"cabb9d71c2bfa97835fd007c8bf38635\", \"tipo_parte\": \"artículo\", \"numero_parte\": 81, \"titulo_parte\": null, \"id_parte\": \"aead8356af641fede36d6409135d5461\"}, {\"index\": 1, \"distance\": 0.5844699740409851, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las personas interesadas en la mensura pueden nombrar, cada una por su parte un perito que presencie la operación y haga las indicaciones, reparos y reclamaciones a que los procedimientos periciales dieren lugar; todo lo que quedará decidido antes de darse por concluida la diligencia.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"cabb9d71c2bfa97835fd007c8bf38635\", \"tipo_parte\": \"artículo\", \"numero_parte\": 88, \"titulo_parte\": null, \"id_parte\": \"80c14d7ef76711447f3cd060efd42e71\"}, {\"index\": 5, \"distance\": 0.5454655885696411, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Practicada la mensura y demarcación con arreglo a lo dispuesto en los artículos precedentes, la autoridad mandará inscribirla en el registro, y que de ella se de copia al interesado, como título definitivo de propiedad.\\n\\nEl expediente de mensura se archivará en un libro especial a cargo del escribano de minas.\\n\\nCon la diligencia de mensura queda constituida la plena y legal posesión de la pertenencia.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"cabb9d71c2bfa97835fd007c8bf38635\", \"tipo_parte\": \"artículo\", \"numero_parte\": 93, \"titulo_parte\": null, \"id_parte\": \"038584060b97d590bcdf234f6ee404e9\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 9939,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 3620,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2048,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T09:19:43Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbNmRpJa886t2pKvrRP7fE7llR04g",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T09:19:43+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 34360,
+                "output_tokens": 6435,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 4480,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.01242375,
+                "output_price": 0.0362,
+                "total_price": 0.04862375,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

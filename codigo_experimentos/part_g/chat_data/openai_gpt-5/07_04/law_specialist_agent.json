@@ -1,0 +1,140 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "Usted es asesor legal de un consorcio de mineros que explotan diversas pertenencias contiguas en una región de la provincia de San Juan. Los clientes están considerando varias operaciones para optimizar su explotación: desean, por un lado, ampliar una de sus pertenencias, mejorar otra y, adicionalmente, consideran constituir un grupo minero para gestionar de manera más eficiente varias de sus minas. Asimismo, detectaron que existe una \"demasía\" entre dos de sus minas y quieren saber cómo pueden adjudicársela.\n\nExplique, de acuerdo al Código de Minería Argentino: ¿Qué requisitos y procedimientos deben cumplirse para constituir un grupo minero, enumerando los requisitos formales del pedimento y pasos procesales principales?",
+                    "timestamp": "2025-11-12T14:33:47.348790Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "args": "{\"question\":\"Código de Minería Argentino: constitución de grupo minero, requisitos y procedimiento; requisitos formales del pedimento y pasos procesales. ¿Artículos aplicables sobre \\\"grupo minero\\\", agrupación de pertenencias, pedimento, publicación, oposición, inscripciones, administración, desmembración y efectos? También referencias a demasías y amojonamiento si relevantes.\"}",
+                    "tool_call_id": "call_1S3yuJrj5GkwqB3gOmp0e1XN",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 531,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 359,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 256,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T14:33:49Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb6Cry1wHIvtyqNFhc3jrh560bgFy",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "retrieve_relevant_documents",
+                    "content": "{\"selected_documents\": [{\"index\": 2, \"distance\": 0.5479126572608948, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b7b2395165f9da1733259a939cbc3912\", \"tipo_parte\": \"artículo\", \"numero_parte\": 138, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Los due\\u00f1os de DOS (2) o m\\u00e1s minas contiguas pueden constituir con ellas una sola propiedad con una sola explotaci\\u00f3n.\\n\\nDes\\u00edgnase esta reuni\\u00f3n de pertenencias, correspondan a un solo due\\u00f1o o a due\\u00f1os diferentes, con el nombre de grupo minero.\", \"id_parte\": \"c1106e37e7debecd659de486cbec220f\"}, {\"index\": 5, \"distance\": 0.6564404368400574, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b7b2395165f9da1733259a939cbc3912\", \"tipo_parte\": \"artículo\", \"numero_parte\": 139, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Para la constituci\\u00f3n de un grupo minero se requiere:\\n\\nQue las pertenencias est\\u00e9n unidas en toda la extensi\\u00f3n de uno de sus lados, formando un solo cuerpo, sin que entre ellos quede ning\\u00fan espacio vacante.\\n\\nQue el grupo se preste a una c\\u00f3moda y provechosa explotaci\\u00f3n.\\n\\nY que la autoridad otorgue con conocimiento de causa, la correspondiente concesi\\u00f3n.\", \"id_parte\": \"ecaf94bbda10c8928b8566549b899d57\"}, {\"index\": 5, \"distance\": 0.4075019955635071, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b7b2395165f9da1733259a939cbc3912\", \"tipo_parte\": \"artículo\", \"numero_parte\": 143, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"De todo lo obrado, se extender\\u00e1 acta que firmar\\u00e1n los interesados, la autoridad, el perito, y que autorizar\\u00e1 el escribano.\\n\\nEl acta contendr\\u00e1:\\n\\nEl n\\u00famero de pertenencias concurrentes, su nombre y el de sus due\\u00f1os.\\n\\nLa forma y dimensiones del grupo y los linderos que lo determinan; expresando los que deban conservarse y designando los puntos para los nuevos que sea preciso colocar.\\n\\nLa situaci\\u00f3n relativa de las minas y de los objetos con que linden.\\n\\nA continuaci\\u00f3n del acta se extender\\u00e1 la providencia de concesi\\u00f3n, declarando si hubiere lugar, el orden y manera c\\u00f3mo deben pasar al grupo los grav\\u00e1menes de las pertenencias; sea con referencia al acuerdo de las partes, sea con referencia a la resoluci\\u00f3n dictada, si el acuerdo no hubiese tenido lugar.\", \"id_parte\": \"5786940adf521ef0e268761981486757\"}, {\"index\": 1, \"distance\": 0.5826742053031921, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"b7b2395165f9da1733259a939cbc3912\", \"tipo_parte\": \"artículo\", \"numero_parte\": 145, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El grupo minero puede constar del n\\u00famero de pertenencias previamente mensuradas que fueren necesarias, a juicio de la autoridad minera, para abarcar la unidad geol\\u00f3gica del o de los yacimientos cubiertos por aqu\\u00e9llas, circunstancia cuyo cumplimiento se verificar\\u00e1 en la oportunidad se\\u00f1alada por el art\\u00edculo 142.\", \"id_parte\": \"d96ffc6be11f4b7087cd65d35f95f9aa\"}, {\"index\": 3, \"distance\": 0.5242800712585449, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"48189d59386b7439d913d7e9802bfefd\", \"tipo_parte\": \"artículo\", \"numero_parte\": 223, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las disposiciones de los art\\u00edculos anteriores relativas al pago de la patente o al canon minero, se aplicar\\u00e1n en la misma forma, aun en los casos que por ampliaci\\u00f3n o acrecentamiento, o formaci\\u00f3n de grupos mineros, o compa\\u00f1\\u00edas de minas, conforme a los Art\\u00edculos 87, 109, 113, 116, y 140 aumentase el n\\u00famero de unidades de medidas de cada concesi\\u00f3n.\\n\\nLas demas\\u00edas, sea cualquiera su extensi\\u00f3n, ser\\u00e1n consideradas a los efectos del pago de la patente como una pertenencia completa en todos los casos y variantes establecidos en el Ac\\u00e1pite III, del T\\u00edtulo VII.\\n\\nCuando el concesionario o due\\u00f1o de la demas\\u00eda no fuera un colindante, adem\\u00e1s del pago del canon tendr\\u00e1 la obligaci\\u00f3n de invertir capital como lo dispone la presente ley.\", \"id_parte\": \"1adc32d645730ce4350230d75547b0b0\"}, {\"index\": 1, \"distance\": 0.4344528615474701, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"22a8b92472d8cef0269fc8264bc99cb1\", \"tipo_parte\": \"artículo\", \"numero_parte\": 49, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El escribano de minas pondr\\u00e1 constancia en cada uno de los ejemplares del pedimento, del d\\u00eda y hora en que le fuere presentado, aunque el interesado no lo solicite.\\n\\nEl escribano certificar\\u00e1 a continuaci\\u00f3n, si hay otro u otros pedimentos o registros del mismo cerro o criadero; y en su caso, lo manifestar\\u00e1 al interesado, quien firmar\\u00e1 la diligencia.\\n\\nDespu\\u00e9s de esto, se devolver\\u00e1 UNO (1) de los ejemplares al solicitante, reteni\\u00e9ndose el otro para la formaci\\u00f3n del expediente de concesi\\u00f3n.\\n\\nSi s\\u00f3lo se ha presentado UN (1) ejemplar del pedimento, se dar\\u00e1 de \\u00e9l copia autorizada al interesado, con sus anotaciones y certificaciones.\", \"id_parte\": \"2800d8fb0db06ea80bf09f0a1507a8c9\"}, {\"index\": 1, \"distance\": 0.6412261724472046, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Presentada la solicitud o pedimento, se le asignar\\u00e1 un n\\u00famero, cronol\\u00f3gico y secuencial y sin m\\u00e1s la autoridad del catastro minero lo analizar\\u00e1 para determinar si la misma recae en terreno franco o no, hecho que se notificar\\u00e1 al peticionario, d\\u00e1ndole copia de la matr\\u00edcula catastral. Excepto que el terreno est\\u00e9 franco en su totalidad, el peticionario deber\\u00e1 pronunciarse en QUINCE (15) d\\u00edas sobre su inter\\u00e9s o no respecto del \\u00e1rea libre. De no existir un pronunciamiento expreso, la petici\\u00f3n se archivar\\u00e1 sin m\\u00e1s tr\\u00e1mite.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"22a8b92472d8cef0269fc8264bc99cb1\", \"tipo_parte\": \"artículo\", \"numero_parte\": 50, \"id_parte\": \"9d328795b2bd6eac1790981fa49c1857\"}, {\"index\": 3, \"distance\": 0.600607693195343, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Presentada la solicitud y anotada en el registro de exploraciones, que deber\\u00e1 llevar el escribano de minas, se notificar\\u00e1 al propietario, y se mandar\\u00e1 a publicar al efecto, de que dentro de VEINTE (20) d\\u00edas, comparezcan todos los que con alg\\u00fan derecho se creyeren, a deducirlo.\\n\\nNo encontr\\u00e1ndose el propietario en el lugar de su residencia, o trat\\u00e1ndose de propietario incierto, la publicaci\\u00f3n ser\\u00e1 citaci\\u00f3n suficiente. La autoridad minera determinar\\u00e1 el procedimiento para realizar la notificaci\\u00f3n personal a los propietarios en los distritos en que la propiedad se encuentre en extremo parcelada.\\n\\nLa publicaci\\u00f3n se har\\u00e1 insertando la solicitud con su prove\\u00eddo por DOS (2) veces en el plazo de DIEZ (10) d\\u00edas en un peri\\u00f3dico si lo hubiere; y en todo caso, fij\\u00e1ndose en las puertas del oficio del escribano.\\n\\nLos VEINTE (20) d\\u00edas a que se refiere el p\\u00e1rrafo primero, correr\\u00e1n inmediatamente despu\\u00e9s de los DIEZ d\\u00edas (10) de la publicaci\\u00f3n.\\n\\nNo resultando oposici\\u00f3n en el t\\u00e9rmino se\\u00f1alado, o decidida breve y sumariamente si la hubiese, se otorgar\\u00e1 inmediatamente el permiso y se proceder\\u00e1 a determinar su situaci\\u00f3n.\\n\\nPracticadas las diligencias se inscribir\\u00e1n en el correspondiente registro.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"7305f9fee43e3553ad5e856cdf3c99ff\", \"tipo_parte\": \"artículo\", \"numero_parte\": 27, \"id_parte\": \"d6e846ab845819289b041d5efda6018d\"}, {\"index\": 2, \"distance\": 0.699885368347168, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"8052e97dce5d023ad033ecb592c6d4b3\", \"tipo_parte\": \"artículo\", \"numero_parte\": 20, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El REGISTRO CATASTRAL MINERO depender\\u00e1 de la autoridad minera de cada jurisdicci\\u00f3n y quedar\\u00e1 constituido con la finalidad principal de reflejar la situaci\\u00f3n f\\u00edsica, jur\\u00eddica y dem\\u00e1s antecedentes que conduzcan a la confecci\\u00f3n de la matr\\u00edcula catastral correspondiente a cada derecho minero que reconoce este C\\u00f3digo.\\n\\nLas provincias procurar\\u00e1n el establecimiento de sistemas catastrales mineros uniformes.\", \"id_parte\": \"8900371ff9cc8538be182a9a20fe3a5f\"}, {\"index\": 3, \"distance\": 0.411617636680603, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"cabb9d71c2bfa97835fd007c8bf38635\", \"tipo_parte\": \"artículo\", \"numero_parte\": 81, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Se procede a la mensura y demarcaci\\u00f3n de las pertenencias en virtud de petici\\u00f3n escrita presentada por el registrador o por otra persona interesada.\\n\\nLa petici\\u00f3n y su prove\\u00eddo se publicar\\u00e1n en la forma prescripta en el Art\\u00edculo 53.\", \"id_parte\": \"aead8356af641fede36d6409135d5461\"}, {\"index\": 5, \"distance\": 0.5840216875076294, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"cabb9d71c2bfa97835fd007c8bf38635\", \"tipo_parte\": \"artículo\", \"numero_parte\": 82, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"En la petici\\u00f3n de mensura se expresar\\u00e1 la aplicaci\\u00f3n, distribuci\\u00f3n y puntos de partida de las l\\u00edneas de longitud y latitud, de manera que pueda conocerse la situaci\\u00f3n de la pertenencia y del terreno que debe ocupar.\", \"id_parte\": \"378bfe483598bec5f28d73378aa82330\"}, {\"index\": 1, \"distance\": 0.6393433809280396, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"8052e97dce5d023ad033ecb592c6d4b3\", \"tipo_parte\": \"artículo\", \"numero_parte\": 19, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"En la determinaci\\u00f3n de los puntos correspondientes a los v\\u00e9rtices del \\u00e1rea comprendida en las solicitudes de los permisos de exploraci\\u00f3n, manifestaciones de descubrimientos, labor legal, petici\\u00f3n de mensura y otros derechos mineros, deber\\u00e1 utilizarse un \\u00fanico sistema de coordenadas, que ser\\u00e1 el que se encuentre en uso en la cartograf\\u00eda minera oficial.\", \"id_parte\": \"3d2627715c5978cb1ed27c7cf81c6c22\"}, {\"index\": 3, \"distance\": 0.6170343160629272, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"e7b4895a2749d7b7f90218bdf1f68108\", \"tipo_parte\": \"artículo\", \"numero_parte\": 106, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Cuando las minas no se encuentran en estado de recibir mensura y sus due\\u00f1os han colocado linderos provisorios para determinar sus pertenencias, estos linderos servir\\u00e1n de base para el aviso y dem\\u00e1s efectos consiguientes.\\n\\nPero, practicada la mensura y demarcaci\\u00f3n legal, los derechos de las partes se arreglar\\u00e1n a los nuevos linderos, haci\\u00e9ndose las correspondientes restituciones.\\n\\nNo tendr\\u00e1 lugar lo dispuesto en los incisos anteriores, despu\\u00e9s de vencidos los plazos fijados por la ley para la ejecuci\\u00f3n de la labor legal.\", \"id_parte\": \"23e444b632cd2a74d88e1107783fdf75\"}, {\"index\": 2, \"distance\": 0.42132827639579773, \"codigo_norma\": \"Código de Minería Argentino\", \"id_padre\": \"025888a5a9fc6657dec51ff5d345d690\", \"tipo_parte\": \"artículo\", \"numero_parte\": 68, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Dentro del plazo de CIEN (100) d\\u00edas contados desde el d\\u00eda siguiente al del registro, el descubridor tendr\\u00e1 hecha una labor que ponga de manifiesto el criadero, de manera que pueda reconocerse su direcci\\u00f3n, inclinaci\\u00f3n y grueso, y comprobarse la existencia y clase del mineral descubierto.\\n\\nLa labor tendr\\u00e1 DIEZ (10) metros de extensi\\u00f3n y se abrir\\u00e1 sobre el cuerpo del criadero, siguiendo su inclinaci\\u00f3n o vari\\u00e1ndola si fuere conveniente.\\n\\nPero no es necesario trabajar los DIEZ (10) metros, cuando en la labor ejecutada puede reconocerse satisfactoriamente las circunstancias expresadas.\\n\\nCuando las pertenencias fueren contiguas, bastar\\u00e1 una sola labor legal, con tal que cualquier medio id\\u00f3neo permita presumir, con base cient\\u00edfica suficiente, la continuidad del yacimiento en todas ellas.\", \"id_parte\": \"fae0a7dc18363f54d8b4e5957528093d\"}]}",
+                    "tool_call_id": "call_1S3yuJrj5GkwqB3gOmp0e1XN",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T14:37:36.519324Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma.",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "args": "{\"response_text\":\"Resumen práctico para constituir un grupo minero (Código de Minería Argentino)\\n\\n1) Requisitos materiales del grupo minero\\n- Titularidad y contigüidad: Deben concurrir dos o más minas contiguas, pertenecientes a un mismo dueño o a dueños distintos, que puedan reunirse en una sola propiedad y explotación (art. 138). Deben estar unidas en toda la extensión de uno de sus lados, formando un solo cuerpo, sin espacios vacantes (art. 139).\\n- Racionalidad técnica: El conjunto debe prestarse a una explotación cómoda y provechosa (art. 139).\\n- Unidad geológica y mensuras: El grupo puede abarcar el número de pertenencias previamente mensuradas que sean necesarias, a juicio de la autoridad minera, para cubrir la unidad geológica del o los yacimientos; esta verificación se realiza en la oportunidad prevista por el art. 142 (remisión del art. 145).\\n- Concesión: Requiere concesión otorgada por la autoridad minera con conocimiento de causa (art. 139).\\n\\n2) Requisitos formales del pedimento (solicitud)\\n- Presentación y constancias: Presentación escrita ante el escribano/autoridad minera, con constancia de día y hora; el escribano certifica la existencia de otros pedimentos y entrega copia al interesado (art. 49).\\n- Identificación completa de las minas: Indicar número de pertenencias concurrentes, nombre de cada mina y de sus dueños, con referencias catastrales y de mensura si existieran (contenido que luego integrará el acta; art. 143; catastro: arts. 19 y 20).\\n- Descripción del futuro grupo: Formas y dimensiones propuestas, linderos que determinan el grupo (cuáles se conservan y dónde colocar nuevos mojones), situación relativa de las minas y colindancias (art. 143). Usar el sistema oficial de coordenadas para vértices y planos (art. 19).\\n- Títulos y acuerdos: Acompañar títulos que acrediten la titularidad de las pertenencias y, si hay distintos dueños, el acuerdo sobre cómo se trasladarán o respetarán los gravámenes; si no hay acuerdo, quedará a decisión de la autoridad en la concesión (art. 143).\\n- Base técnica y mensura: Cuando corresponda, solicitar/acompañar mensura o elementos suficientes sobre aplicación, distribución y puntos de partida de líneas de longitud/latitud para ubicar el área del grupo (arts. 81 y 82), y los antecedentes catastrales (art. 20).\\n\\n3) Pasos procesales principales\\n- a) Presentación y registro: Ingreso del pedimento, anotación registral y apertura de expediente. La autoridad catastral asigna número y analiza la situación catastral, utilizando el sistema de coordenadas oficial (arts. 49, 19 y 20; v. gr., registración administrativa conforme art. 50 en procedimientos de pedimento).\\n- b) Publicación y vistas a interesados: Publicación de la solicitud con su proveído y citación a quienes pudieran tener derechos u oponerse, conforme las reglas de publicación y registración que el Código prevé para solicitudes y diligencias (v. gr., régimen de publicaciones y oposiciones: art. 27; en mensuras: art. 81 remite al art. 53). De existir oposiciones, se resuelven breve y sumariamente (art. 27, por analogía procedimental).\\n- c) Verificación técnica y contornos: Intervención pericial y diligencias para constatar contigüidad sin vacíos, unidad geológica y linderos; en su caso, mensura/demarcación (arts. 139, 145, 81 y 82).\\n- d) Acta y concesión: De todo lo actuado se labra acta firmada por interesados, autoridad y perito, autorizada por el escribano. El acta debe contener: número de pertenencias, nombres y dueños; forma y dimensiones del grupo y linderos; situación relativa de las minas y colindancias. A continuación se dicta la providencia de concesión, que también establece el orden y modo en que pasarán al grupo los gravámenes, según acuerdo de partes o resolución de la autoridad si no hubo acuerdo (art. 143).\\n- e) Inscripción: Practicadas las diligencias, se inscribe el grupo y su concesión en los registros correspondientes (art. 27, último párrafo; Registro Catastral Minero: art. 20).\\n\\n4) Efectos y obligaciones\\n- El grupo minero es una sola propiedad con una sola explotación (art. 138) y los gravámenes de las pertenencias se trasladan al grupo según lo resuelto en la concesión (art. 143).\\n- Canon/patente: Si por la formación del grupo aumenta el número de unidades de medida de la concesión, el pago del canon se ajusta conforme las reglas generales; las demasías se consideran, a los efectos del canon, como una pertenencia completa (art. 223).\\n\\nFuentes consultadas\\n- Código de Minería. Ley 1.919 y sus modificatorias. Artículos 138, 139, 143, 145, 19, 20, 27, 49, 50, 81, 82 y 223 (Argentina).\"}",
+                    "tool_call_id": "call_hOEhX4NK5E43E2H2FUxbt5lF",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4735,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 4608,
+                "output_tokens": 4527,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3328,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-12T14:37:40Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-Cb6GazeVAT5utuGLQFfQMnCINKaFs",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "final_result",
+                    "content": "Final result processed.",
+                    "tool_call_id": "call_hOEhX4NK5E43E2H2FUxbt5lF",
+                    "metadata": null,
+                    "timestamp": "2025-11-12T14:39:15.250961Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": null,
+            "kind": "request"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-12T14:37:40+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 5266,
+                "output_tokens": 4886,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 3584,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00073475,
+                "output_price": 0.04527,
+                "total_price": 0.04600475,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+sequenceDiagram
+  actor U as Usuario
+  participant AEL as Especialista Legal
+  participant AR as Ag. Recuperacion
+  participant BV as Base Vectorial
+  U->>AEL: Pregunta
+  activate AEL
+  AEL->>AR: retrieve_relevant_documents
+  activate AR
+  loop Hasta 6 busquedas
+    AR->>BV: Subconsulta
+    BV-->>AR: Fragmentos
+  end
+  AR-->>AEL: Fragmentos recuperados
+  deactivate AR
+  AEL-->>U: Respuesta
+  deactivate AEL

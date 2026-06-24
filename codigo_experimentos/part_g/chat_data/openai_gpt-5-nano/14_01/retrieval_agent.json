@@ -1,0 +1,753 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > De acuerdo al Código de Minería Argentino: ¿cuáles son los derechos y opciones del aviador frente a la conducta del dueño de la mina cuando este desvía fondos de un contrato de avío por instrumento privado en una mina de plata en Jujuy?\n        ",
+                    "timestamp": "2025-11-13T10:24:00.004991Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería de la Nación Argentina contrato de avío minero derechos del aviador frente al incumplimiento del dueño de la mina desvío de fondos de avío\"}",
+                    "tool_call_id": "call_sjCCU1NHapZ2hdo6OnEgf530",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 370,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 509,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 448,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:24:02Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOmgmQmGckfglGL1TXXak0c9Dtq4",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6452139019966125,
+                                "id_padre": "3d79851a8bc24458a12f1c183a9208e2",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 281,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si el dueño de la mina no emplea en su explotación los dineros o efectos suministrados para el avío, dándoles una inversión diferente, el aviador puede optar entre desistir del contrato, cobrando los valores distraídos con sus intereses y tomar la administración de la mina hasta ser enteramente cubierto.\n\nEn este caso se considerarán esos valores como capital invertido en el avío.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "c9f4414aecf3edd1d5093550d6c3fd10"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6405469179153442,
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 278,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Rescindido el contrato por culpa del aviador, éste no tiene privilegio alguno por los avíos suministrados, ni derecho a ejecutar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "308eadf0549a6aa0004c89fb64f631b1"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6124447584152222,
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 276,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Terminado el contrato y resultando que no ha sido pagado el valor de los avíos, cuando el aviador no tiene parte en la mina o en sus productos, puede éste ejercitar los derechos del acreedor no pagado, si no se renueva el contrato.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "7fb60e55c1b962831afc408c3c5347bd"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5683842301368713,
+                                "id_padre": "3d79851a8bc24458a12f1c183a9208e2",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 279,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La administración de la mina corresponde a sus dueños exceptuando los casos en que la ley la concede a los aviadores.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "bd2fdf8ad4aec1e8528649712ccd18cd"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5483435392379761,
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 271,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Puede convenirse que el aviador tome una parte de la mina en pago de los avíos que debe suministrar.\n\nO puede dársele participación en los productos por un tiempo determinado, o hasta cubrir el valor de los avíos.\n\nEn el primer caso, queda el aviador sujeto a las disposiciones que reglan las compañías de minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8f84c59e6e94563b022d20aa4dd80525"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_sjCCU1NHapZ2hdo6OnEgf530",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:24:08.190290Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería contrato de avío instrumento privado inscripción registro privilegio del aviador administración de la mina\"}",
+                    "tool_call_id": "call_7CNpmLOJZxCN0l6Yuja9SfhW",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 1235,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 750,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 704,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:24:10Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOmoZ2AtKBA8MZHwyVGFdlKx5FYl",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6480582356452942,
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 269,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El avío es un contrato por el cual una persona se obliga a suministrar lo necesario para la explotación de una mina.\n\nLos aviadores tienen preferencia sobre todo otro acreedor.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "cc1dd57a55c6641d9a02279ca78c3e93"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6412338018417358,
+                                "id_padre": "3d79851a8bc24458a12f1c183a9208e2",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 279,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La administración de la mina corresponde a sus dueños exceptuando los casos en que la ley la concede a los aviadores.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "bd2fdf8ad4aec1e8528649712ccd18cd"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6257282495498657,
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.6253102421760559,
+                                "id_padre": "4f349b3799fb5e95b30eea8e2d13ca9a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 10,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio del dominio originario del Estado reconocido por el Artículo 7, la propiedad particular de las minas se establece por la concesión legal.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "15fae8d5ad2c466361dc76ce3f016c3a"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.618852972984314,
+                                "id_padre": "3015f1950aa24aba22986b87a1a43bfa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 278,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Rescindido el contrato por culpa del aviador, éste no tiene privilegio alguno por los avíos suministrados, ni derecho a ejecutar la mina.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "308eadf0549a6aa0004c89fb64f631b1"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_7CNpmLOJZxCN0l6Yuja9SfhW",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:24:28.537224Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"instrumento privado contrato de avío artículo Código de Minería firmas certificadas registro de minas oponibilidad tercero\"}",
+                    "tool_call_id": "call_83ElRHtN1bq0mgshpIvgDlX5",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2003,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 1152,
+                "output_tokens": 239,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 192,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:24:29Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOn7MsOCOij40bc5f0dv7MiqIXhp",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6568766832351685,
+                                "id_padre": "eae4a44f252a6d8634c5e80f096d1258",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 44,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las minas se adquieren en virtud de la concesión legal otorgada por autoridad competente con arreglo a las prescripciones del presente Código.\n\nSon objeto de concesión:\n\nSon objeto de concesión:\n\nLos descubrimientos.\n\nLas minas caducadas y vacantes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "54650cd907659eb336e9c7c841b58c17"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.6040075421333313,
+                                "id_padre": "728ed31deba02de655a821e1df3a6058",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 325,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las ventas y enajenaciones de minas deben hacerse constar por escrito, en instrumentos públicos o privados.\n\nPodrán extenderse en instrumento privado todos los contratos que se celebren antes del vencimiento del plazo señalado para la ejecución de la labor legal.\n\nPracticada la mensura y demarcación de la mina, esos contratos se reducirán a instrumento público.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "a837604cc9c75b705cb41c0a6cd944ea"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.6022279858589172,
+                                "id_padre": "49a58ae107946722c3afff435ed5a863",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 286,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Hay compañía cuando DOS (2) o más personas trabajan en común una o más minas, con arreglo a las prescripciones de este Código.\n\nLas compañías se constituyen:\n\n1° Por el hecho de registrarse una mina.\n\n2° Por el hecho de adquirirse parte en minas registradas.\n\n3° Por un contrato especial de compañía.\n\nEste contrato deberá hacerse constar por escritura pública.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "cbc6aa15d2a25f5f648927cb7460001c"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5891351699829102,
+                                "id_padre": "a46500afa576f71f17c87fcb3f776baf",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 21,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Toda persona capaz de adquirir y poseer legalmente propiedades raíces, puede adquirir y poseer las minas.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "c1df043f607b09e101cba67444b4bb6e"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5884094834327698,
+                                "id_padre": "4f349b3799fb5e95b30eea8e2d13ca9a",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 10,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio del dominio originario del Estado reconocido por el Artículo 7, la propiedad particular de las minas se establece por la concesión legal.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "15fae8d5ad2c466361dc76ce3f016c3a"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_83ElRHtN1bq0mgshpIvgDlX5",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:24:33.532947Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"avío aviador Código de Minería privilegio registro contrato avío artículos 269 270 271 272 273 274 275 276 277 278 279 280 281 desvío de fondos administración de la mina\"}",
+                    "tool_call_id": "call_KDdlldxYUWUoWZmDKZL4hIQs",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 2857,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 1920,
+                "output_tokens": 651,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 576,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:24:35Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOnD8NNOrtSdcDJeD7vey5OubpuQ",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 4,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.49173322319984436,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 359,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Deróganse el párrafo V del Título IV; el artículo 137, el inc. 2 del Artículo 147; el Artículo 168, el párrafo 2 de la Sección III, del Título VI y la Sección I del Título IX y en todas las demás divisiones del Código y en los mismos artículos citados, se entenderán inaplicables todas aquellas disposiciones que tengan por fundamento la existencia de la obligación del amparo o pueble de la mina, con trabajo, y los que establezcan, reconozcan o reglamenten el derecho de denuncio de concesiones por despueble (Texto según Ley N 10.273, Artículo 17).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "72c8b9b8a92c91367ade5cbbe0d204fd"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.467041015625,
+                                "id_padre": "3d79851a8bc24458a12f1c183a9208e2",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 281,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Si el dueño de la mina no emplea en su explotación los dineros o efectos suministrados para el avío, dándoles una inversión diferente, el aviador puede optar entre desistir del contrato, cobrando los valores distraídos con sus intereses y tomar la administración de la mina hasta ser enteramente cubierto.\n\nEn este caso se considerarán esos valores como capital invertido en el avío.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "c9f4414aecf3edd1d5093550d6c3fd10"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.45218461751937866,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.4479407072067261,
+                                "id_padre": "d38092a1514cddf2d0dc4b366ef7ec10",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 297,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La administración de la compañía corresponde a todos los socios; pero pueden nombrarse una o más personas elegidas entre los mismos.\n\nEl nombramiento podrá recaer en personas extrañas; pero se necesitará el concurso de DOS (2) tercios de votos, si dos o más socios se opusieren.\n\nLa duración, atribuciones, deberes, recompensas y duración de los administradores, se determinarán en junta, si no se hubiesen estipulado en el contrato de compañía.\n\nLos administradores no pueden contraer créditos, gravar las minas en todo ni en parte, vender los minerales o pastas, nombrar ni destituir los administradores de la faena, sin especial autorización.\n\nEn todo caso, los socios pueden impedir la venta de los minerales y pastas, pagando los gastos y cuotas correspondientes.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "8980adea706836f6b4d06ac3d09cd268"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.4460330307483673,
+                                "id_padre": "876f2765f9270036f9747dad1d5ff4fa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 101,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando en el terreno ocupado con una explotación de sustancias de la segunda o tercera categoría, se descubre un criadero de la primera, el propietario podrá continuar sus trabajos no perjudicando los de la nueva mina; pero el descubridor podrá hacerlos variar o cesar, pagando los perjuicios o el valor del terreno.\n\nCon relación a la extracción que haga el descubridor, regirán las disposiciones contenidas en los TRES (3) incisos finales del artículo precedente.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "f85cac11ee14ed858908166878e93590"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_KDdlldxYUWUoWZmDKZL4hIQs",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:24:43.732057Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"Código de Minería artículos 270 271 272 273 274 275 280 avío obligaciones del dueño de la mina aviador privilegios formalidades\"}",
+                    "tool_call_id": "call_2upQG9OFssOrKzDJE3kKh9bK",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4083,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 2816,
+                "output_tokens": 634,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 576,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:24:46Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOnOcjSClmMABxAHYCA2Oj3R32xG",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 5,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5222282409667969,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los dueños de las pertenencias con que debe formarse el grupo, ocurrirán para su concesión a la autoridad por medio de un pedimento.\n\nEl pedimento contendrá:\n\n1° Los títulos correspondientes a cada una de las pertenencias.\n\n2° Un plano del grupo en el que se manifieste la situación relativa, la extensión y forma de las minas concurrentes, sus nombres, el de sus dueños, el que ha de llevar la nueva propiedad y el de las minas colindantes.\n\n3° La parte o derecho asignado a cada uno de los interesados.\n\n4° La declaración del gravamen que afecta a cada pertenencia y el nombre de las personas a cuyo favor esté constituido.\n\n5° El acuerdo celebrado entre los acreedores sobre la manera cómo deben pasar esos gravámenes al grupo; y en su defecto, la propuesta de bases para un arreglo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 140,
+                                "titulo_parte": null,
+                                "id_parte": "d4da40747f2f21ce99c9831326ad632f"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5155166387557983,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las disposiciones de los artículos anteriores relativas al pago de la patente o al canon minero, se aplicarán en la misma forma, aun en los casos que por ampliación o acrecentamiento, o formación de grupos mineros, o compañías de minas, conforme a los Artículos 87, 109, 113, 116, y 140 aumentase el número de unidades de medidas de cada concesión.\n\nLas demasías, sea cualquiera su extensión, serán consideradas a los efectos del pago de la patente como una pertenencia completa en todos los casos y variantes establecidos en el Acápite III, del Título VII.\n\nCuando el concesionario o dueño de la demasía no fuera un colindante, además del pago del canon tendrá la obligación de invertir capital como lo dispone la presente ley.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 223,
+                                "titulo_parte": null,
+                                "id_parte": "1adc32d645730ce4350230d75547b0b0"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5071240067481995,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Hay compañía cuando DOS (2) o más personas trabajan en común una o más minas, con arreglo a las prescripciones de este Código.\n\nLas compañías se constituyen:\n\n1° Por el hecho de registrarse una mina.\n\n2° Por el hecho de adquirirse parte en minas registradas.\n\n3° Por un contrato especial de compañía.\n\nEste contrato deberá hacerse constar por escritura pública.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "49a58ae107946722c3afff435ed5a863",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 286,
+                                "titulo_parte": null,
+                                "id_parte": "cbc6aa15d2a25f5f648927cb7460001c"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5045459866523743,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Nadie puede manifestar ni registrar minas para otra persona sin poder especial, que podrá otorgarse ante la autoridad más inmediata, o ante DOS (2) testigos o por medio de una carta.\n\nNo necesitan poder los ascendientes, descendientes, ni los hermanos del descubridor.\n\nTampoco han menester poder los socios en la empresa, ni los cateadores e individuos que compongan la expedición exploradora.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "c2422a1c629cff5791d1b4b0c379547d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 55,
+                                "titulo_parte": null,
+                                "id_parte": "d68abf1d259f08a97362c3987c7f582d"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5042318105697632,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_2upQG9OFssOrKzDJE3kKh9bK",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:24:56.057146Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\":\"\\\"avío\\\" Código de Minería artículos 270 271 272 273 274 275 280 formalidades privilegio inscripción contrato de avío\"}",
+                    "tool_call_id": "call_3ZGdtefwc8QkHf4zPSlZvrsK",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 5319,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 3968,
+                "output_tokens": 761,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 704,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:24:56Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbOnYhCpYHS5sjS8FUAnXdK49CtnU",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 6,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5234459042549133,
+                                "id_padre": "b7b2395165f9da1733259a939cbc3912",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 140,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los dueños de las pertenencias con que debe formarse el grupo, ocurrirán para su concesión a la autoridad por medio de un pedimento.\n\nEl pedimento contendrá:\n\n1° Los títulos correspondientes a cada una de las pertenencias.\n\n2° Un plano del grupo en el que se manifieste la situación relativa, la extensión y forma de las minas concurrentes, sus nombres, el de sus dueños, el que ha de llevar la nueva propiedad y el de las minas colindantes.\n\n3° La parte o derecho asignado a cada uno de los interesados.\n\n4° La declaración del gravamen que afecta a cada pertenencia y el nombre de las personas a cuyo favor esté constituido.\n\n5° El acuerdo celebrado entre los acreedores sobre la manera cómo deben pasar esos gravámenes al grupo; y en su defecto, la propuesta de bases para un arreglo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "d4da40747f2f21ce99c9831326ad632f"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5162121653556824,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 351,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Refórmase los Artículos 67, 176 y 312 del Código de Minería dejando establecido que el número de pertenencias que dichos artículos asignan a los descubridores y compañías será multiplicado por DIEZ (10).\n\nEn el caso de los yacimientos de tipo diseminado de la primera categoría, borato y litio, del Artículo 76, ese número se multiplicará por CINCO (5) y en los de salitres y salinas de cosecha del Artículo 181, se multiplicará por DOS (2).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b0aa939bdb80e86c674b9ad98ce10026"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5151144862174988,
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 223,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Las disposiciones de los artículos anteriores relativas al pago de la patente o al canon minero, se aplicarán en la misma forma, aun en los casos que por ampliación o acrecentamiento, o formación de grupos mineros, o compañías de minas, conforme a los Artículos 87, 109, 113, 116, y 140 aumentase el número de unidades de medidas de cada concesión.\n\nLas demasías, sea cualquiera su extensión, serán consideradas a los efectos del pago de la patente como una pertenencia completa en todos los casos y variantes establecidos en el Acápite III, del Título VII.\n\nCuando el concesionario o dueño de la demasía no fuera un colindante, además del pago del canon tendrá la obligación de invertir capital como lo dispone la presente ley.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "1adc32d645730ce4350230d75547b0b0"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.5146939754486084,
+                                "id_padre": "c2422a1c629cff5791d1b4b0c379547d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 55,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Nadie puede manifestar ni registrar minas para otra persona sin poder especial, que podrá otorgarse ante la autoridad más inmediata, o ante DOS (2) testigos o por medio de una carta.\n\nNo necesitan poder los ascendientes, descendientes, ni los hermanos del descubridor.\n\nTampoco han menester poder los socios en la empresa, ni los cateadores e individuos que compongan la expedición exploradora.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "d68abf1d259f08a97362c3987c7f582d"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.5143837928771973,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 359,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Deróganse el párrafo V del Título IV; el artículo 137, el inc. 2 del Artículo 147; el Artículo 168, el párrafo 2 de la Sección III, del Título VI y la Sección I del Título IX y en todas las demás divisiones del Código y en los mismos artículos citados, se entenderán inaplicables todas aquellas disposiciones que tengan por fundamento la existencia de la obligación del amparo o pueble de la mina, con trabajo, y los que establezcan, reconozcan o reglamenten el derecho de denuncio de concesiones por despueble (Texto según Ley N 10.273, Artículo 17).",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "72c8b9b8a92c91367ade5cbbe0d204fd"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_3ZGdtefwc8QkHf4zPSlZvrsK",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T10:25:35.784354Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 2, \"distance\": 0.467041015625, \"id_padre\": \"3d79851a8bc24458a12f1c183a9208e2\", \"tipo_parte\": \"artículo\", \"numero_parte\": 281, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Si el dueño de la mina no emplea en su explotación los dineros o efectos suministrados para el avío, dándoles una inversión diferente, el aviador puede optar entre desistir del contrato, cobrando los valores distraídos con sus intereses y tomar la administración de la mina hasta ser enteramente cubierto.\\n\\nEn este caso se considerarán esos valores como capital invertido en el avío.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"c9f4414aecf3edd1d5093550d6c3fd10\"}, {\"index\": 1, \"distance\": 0.6480582356452942, \"id_padre\": \"3015f1950aa24aba22986b87a1a43bfa\", \"tipo_parte\": \"artículo\", \"numero_parte\": 269, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"El avío es un contrato por el cual una persona se obliga a suministrar lo necesario para la explotación de una mina.\\n\\nLos aviadores tienen preferencia sobre todo otro acreedor.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"cc1dd57a55c6641d9a02279ca78c3e93\"}, {\"index\": 3, \"distance\": 0.6124447584152222, \"id_padre\": \"3015f1950aa24aba22986b87a1a43bfa\", \"tipo_parte\": \"artículo\", \"numero_parte\": 276, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Terminado el contrato y resultando que no ha sido pagado el valor de los avíos, cuando el aviador no tiene parte en la mina o en sus productos, puede éste ejercitar los derechos del acreedor no pagado, si no se renueva el contrato.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"7fb60e55c1b962831afc408c3c5347bd\"}, {\"index\": 4, \"distance\": 0.5683842301368713, \"id_padre\": \"3d79851a8bc24458a12f1c183a9208e2\", \"tipo_parte\": \"artículo\", \"numero_parte\": 279, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"La administración de la mina corresponde a sus dueños exceptuando los casos en que la ley la concede a los aviadores.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"bd2fdf8ad4aec1e8528649712ccd18cd\"}, {\"index\": 5, \"distance\": 0.5483435392379761, \"id_padre\": \"3015f1950aa24aba22986b87a1a43bfa\", \"tipo_parte\": \"artículo\", \"numero_parte\": 271, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Puede convenirse que el aviador tome una parte de la mina en pago de los avíos que debe suministrar.\\n\\nO puede dársele participación en los productos por un tiempo determinado, o hasta cubrir el valor de los avíos.\\n\\nEn el primer caso, queda el aviador sujeto a las disposiciones que reglan las compañías de minas.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"8f84c59e6e94563b022d20aa4dd80525\"}, {\"index\": 2, \"distance\": 0.6040075421333313, \"id_padre\": \"728ed31deba02de655a821e1df3a6058\", \"tipo_parte\": \"artículo\", \"numero_parte\": 325, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Las ventas y enajenaciones de minas deben hacerse constar por escrito, en instrumentos públicos o privados.\\n\\nPodrán extenderse en instrumento privado todos los contratos que se celebren antes del vencimiento del plazo señalado para la ejecución de la labor legal.\\n\\nPracticada la mensura y demarcación de la mina, esos contratos se reducirán a instrumento público.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"a837604cc9c75b705cb41c0a6cd944ea\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 6471,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 2505,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1408,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T10:25:37Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbOoD20IPbRCIEqUv4ZyoUER3tqA4",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T10:25:37+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 22338,
+                "output_tokens": 6049,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 4608,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.00808875,
+                "output_price": 0.02505,
+                "total_price": 0.03313875,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

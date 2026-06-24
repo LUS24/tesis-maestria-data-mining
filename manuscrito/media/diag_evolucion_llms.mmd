@@ -1,0 +1,72 @@
+flowchart TB
+    %% Evolución de los modelos del lenguaje (1948 - 2025)
+    %% Timeline vertical alineado con espaciado optimizado
+
+    subgraph ERA1["Era clásica / estadística (1948 – 2010)"]
+        direction TB
+        M1["1948 — First model<br/>(Shannon)"]
+        M2["1950 — Turing Test"]
+        M3["1954 — Rule-based MT"]
+        M4["1960s — Stochastic /<br/>Perceptron"]
+        M5["1967 — Eliza-type<br/>chatbots"]
+        M6["1970 — SHRDLU"]
+        M7["1980 — Corpus-based<br/>statistical methods"]
+        M8["1990s — Self-supervised<br/>learning"]
+        
+        M1 --> M2 --> M3 --> M4 --> M5 --> M6 --> M7 --> M8
+    end
+
+    subgraph ERA2["Era Neural NLU (2001 – 2014)"]
+        direction TB
+        M9["2001 — Neural language<br/>models"]
+        M10["2008 — Multi-task<br/>learning"]
+        M11["2013 — Word2Vec / GloVe"]
+        M12["2014 — Sequence-to-sequence<br/>models"]
+        
+        M9 --> M10 --> M11 --> M12
+    end
+
+    subgraph ERA3["Era Early Transformers (2015 – 2017)"]
+        direction TB
+        M13["2015 — Memory networks<br/>(MemNN)"]
+        M14["2017 — Transformers<br/>(Vaswani et al.)"]
+        
+        M13 --> M14
+    end
+
+    subgraph ERA4["Era Foundation models (2018 – 2021)"]
+        direction TB
+        M15["2018 — BERT"]
+        M16["2019 — T5 / BART /<br/>GPT-2"]
+        M17["2020 — GPT-3"]
+        M18["2021 — Codex / CLIP"]
+        
+        M15 --> M16 --> M17 --> M18
+    end
+
+    subgraph ERA5["Era LLM (2022 – 2025)"]
+        direction TB
+        M19["2022 — ChatGPT /<br/>InstructGPT"]
+        M20["2023 — LLaMA 2 / GPT-4"]
+        M21["2024 — RAG agents"]
+        M22["2025 — Agentic AI"]
+        
+        M19 --> M20 --> M21 --> M22
+    end
+
+    %% Conexiones de transición limpia entre Eras (Corrige distancias y deformaciones)
+    M8 --> M9
+    M12 --> M13
+    M14 --> M15
+    M18 --> M19
+
+    %% Estilos de los contenedores (Subgraphs)
+    style ERA1 fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#000
+    style ERA2 fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+    style ERA3 fill:#f1f8e9,stroke:#33691e,stroke-width:2px,color:#000
+    style ERA4 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000
+    style ERA5 fill:#ede7f6,stroke:#311b92,stroke-width:2px,color:#000
+
+    %% Definición de estilo unificado para ancho idéntico en todos los nodos
+    classDef hito fill:#ffffff,stroke:#333,stroke-width:1px,color:#000,min-width:260px,padding:8px
+    class M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12,M13,M14,M15,M16,M17,M18,M19,M20,M21,M22 hito

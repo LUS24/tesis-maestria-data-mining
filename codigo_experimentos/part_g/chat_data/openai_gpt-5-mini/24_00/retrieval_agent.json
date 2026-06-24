@@ -1,0 +1,346 @@
+{
+    "messages": [
+        {
+            "parts": [
+                {
+                    "content": "\n        Please retrieve documents for this user query:\n        > ¿Qué obligación ambiental transitoria debe cumplir un concesionario que explota una mina desde antes de la vigencia de la Ley 24.585? Ley 24.585 Argentina obligaciones transitorias concesionarios minería\n        ",
+                    "timestamp": "2025-11-13T17:48:56.520005Z",
+                    "part_kind": "user-prompt"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Ley 24.585 disposiciones transitorias concesionarios minas explotaci\\u0003n previa obligaci\\u0003n presentar Informe de Impacto Ambiental plazo\"}",
+                    "tool_call_id": "call_uaPjzoelLOL3Bd4mdXELNje2",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"C\\u00051digo de Miner\\u00069a T\\u00074tulo protecci\\u00048n ambiental 1995 Informe Impacto Ambiental actividades preexistentes plazo 180 d\\u00069as Ley 24.585\"}",
+                    "tool_call_id": "call_veiyjlbOLQkmClsIkfPg7WXF",
+                    "id": null,
+                    "part_kind": "tool-call"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "args": "{\"query\": \"Ley 24585 art\\u00069culos transitorios explotaciones en curso obligaciones ambientales DIA IIA plazos\"}",
+                    "tool_call_id": "call_StfLCjnKHbrBnlae7gae1U27",
+                    "id": null,
+                    "part_kind": "tool-call"
+                }
+            ],
+            "usage": {
+                "input_tokens": 362,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 820,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 640,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:48:57Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "tool_calls"
+            },
+            "provider_response_id": "chatcmpl-CbVjFZl79KV31dZxwcTz9FyEKrBri",
+            "finish_reason": "tool_call"
+        },
+        {
+            "parts": [
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 1,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.6064164638519287,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 355,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Para aquellas actividades comprendidas en el ARTICULO 249, y cuya iniciación sea anterior a la vigencia de la Ley 24.585, el concesionario o titular de la planta e instalaciones deberá presentar, dentro del año de su entrada en vigor, el informe de impacto ambiental.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "0b16c35d5add538f9b334e45ff89d04e"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5464943051338196,
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 251,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los responsables comprendidos en el articulo 248 deberán presentar ante la autoridad de aplicación, y antes del inicio de cualquier actividad especificada en el Artículo 249, un Informe de Impacto Ambiental.\n\nLa autoridad de aplicación podrá prestar asesoramiento a los pequeños productores para la elaboración del mismo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b49e40a64d3a73bf5a64bba831c6e0da"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5411337018013,
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 252,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La autoridad de aplicación evaluará el informe de impacto Ambiental, y se pronunciará por la aprobación mediante una Declaración de Impacto Ambiental para cada una de las etapas del proyecto o de implementación efectiva.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "e4bd71fd24572ca6e8f85a80e6fffc41"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.4990357756614685,
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 258,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los equipos, instalaciones, sistemas, acciones y actividades de prevención, mitigación, rehabilitación, restauración o recomposición ambiental, consignadas por el responsable e incluidas en la Declaración de Impacto Ambiental constituirán obligación del responsable y serán susceptibles de fiscalización de cumplimiento por parte de la autoridad de aplicación.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "c573ab8ab04bb9280d91ff2df9b9e76a"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.49112221598625183,
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 253,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El Informe de Impacto Ambiental para la etapa de prospección deberá contener el tipo de acciones a desarrollar y el eventual riesgo de impacto ambiental que las mismas pudieran acarrear.\n\nPara la etapa de exploración el citado Informe deberá contener una descripción de los métodos a emplear y las medidas de protección ambiental que resultaren necesarias.\n\nEn las etapas mencionadas precedentemente será necesaria la previa aprobación del Informe por parte de la autoridad de aplicación para el inicio de las actividades, sin perjuicio de las responsabilidades previstas en el Artículo 248 por los daños que se pudieran ocasionar.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "2d9aa57f90f610a1d33322184745765a"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_uaPjzoelLOL3Bd4mdXELNje2",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:49:30.518765Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 3,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.5335026383399963,
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 355,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Para aquellas actividades comprendidas en el ARTICULO 249, y cuya iniciación sea anterior a la vigencia de la Ley 24.585, el concesionario o titular de la planta e instalaciones deberá presentar, dentro del año de su entrada en vigor, el informe de impacto ambiental.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "0b16c35d5add538f9b334e45ff89d04e"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.5259984731674194,
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 251,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los responsables comprendidos en el articulo 248 deberán presentar ante la autoridad de aplicación, y antes del inicio de cualquier actividad especificada en el Artículo 249, un Informe de Impacto Ambiental.\n\nLa autoridad de aplicación podrá prestar asesoramiento a los pequeños productores para la elaboración del mismo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "b49e40a64d3a73bf5a64bba831c6e0da"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.5095522999763489,
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 258,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los equipos, instalaciones, sistemas, acciones y actividades de prevención, mitigación, rehabilitación, restauración o recomposición ambiental, consignadas por el responsable e incluidas en la Declaración de Impacto Ambiental constituirán obligación del responsable y serán susceptibles de fiscalización de cumplimiento por parte de la autoridad de aplicación.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "c573ab8ab04bb9280d91ff2df9b9e76a"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.508330762386322,
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 252,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La autoridad de aplicación evaluará el informe de impacto Ambiental, y se pronunciará por la aprobación mediante una Declaración de Impacto Ambiental para cada una de las etapas del proyecto o de implementación efectiva.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "e4bd71fd24572ca6e8f85a80e6fffc41"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.499551385641098,
+                                "id_padre": "13a752c6f9291512875313d7c69393d6",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 263,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Sin perjuicio de las sanciones administrativas y penales que establezcan las normas vigentes, todo el que causare daño actual o residual al patrimonio ambiental, estará obligado a mitigarlo, rehabilitarlo, restaurarlo o recomponerlo, según correspondiere.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_parte": "78873f111f1e5c24b24eb3cc4a95be04"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_veiyjlbOLQkmClsIkfPg7WXF",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:49:30.520202Z",
+                    "part_kind": "tool-return"
+                },
+                {
+                    "tool_name": "cosine_distance_vector_search",
+                    "content": {
+                        "usage_counts": 2,
+                        "search_result": [
+                            {
+                                "index": 1,
+                                "distance": 0.48073461651802063,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Para aquellas actividades comprendidas en el ARTICULO 249, y cuya iniciación sea anterior a la vigencia de la Ley 24.585, el concesionario o titular de la planta e instalaciones deberá presentar, dentro del año de su entrada en vigor, el informe de impacto ambiental.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "e4ce42d4ff852f3bcdf1ce032991004d",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 355,
+                                "id_parte": "0b16c35d5add538f9b334e45ff89d04e"
+                            },
+                            {
+                                "index": 2,
+                                "distance": 0.469159871339798,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Cuando en el terreno ocupado con una explotación de sustancias de la segunda o tercera categoría, se descubre un criadero de la primera, el propietario podrá continuar sus trabajos no perjudicando los de la nueva mina; pero el descubridor podrá hacerlos variar o cesar, pagando los perjuicios o el valor del terreno.\n\nCon relación a la extracción que haga el descubridor, regirán las disposiciones contenidas en los TRES (3) incisos finales del artículo precedente.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "876f2765f9270036f9747dad1d5ff4fa",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 101,
+                                "id_parte": "f85cac11ee14ed858908166878e93590"
+                            },
+                            {
+                                "index": 3,
+                                "distance": 0.46039101481437683,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "El incumplimiento de las disposiciones establecidas en esta Sección, cuando no estén comprendidas dentro del ámbito de las responsabilidades penales, será sancionado con:\n\na) Apercibimiento.\n\nb) Multas, las que serán establecidas por la Autoridad de Aplicación conforme las pautas dispuestas en el Artículo 243 del Código de Minería.\n\nc) Suspensión del goce del Certificado de Calidad Ambiental de los productos.\n\nd) Reparación de los daños ambientales.\n\ne) Clausura temporal, la que será progresiva en los casos de reincidencia. En caso de TRES (3) infracciones graves se procederá al cierre definitivo del establecimiento.\n\nf) Inhabilitación.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "499422e974936597bb886163f4a375de",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 264,
+                                "id_parte": "4750b0ef86d1ae9f9353482c36e714af"
+                            },
+                            {
+                                "index": 4,
+                                "distance": 0.4541565179824829,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "La autoridad minera considerará automáticamente anulados los actuales registros de minas vacantes y los que disponga en el futuro, cualquiera sea su causa y tengan o no mensura aprobada, cuando hayan transcurrido TRES (3) años de su empadronamiento como tales. Los terrenos en que se encuentran ubicadas estas minas quedarán francos e incorporados de pleno derecho y sin cargo alguno a los permisos de exploración y áreas de protección o sujetas a contrataciones que eventualmente estuvieren vigentes. El mismo procedimiento se aplicará a las minas empadronadas como caducas, en el caso en que no hayan regularizado su situación legal dentro de los NOVENTA (90) días de publicada la presente ley, salvo el caso de caducidad contemplado en el segundo párrafo del Artículo 219.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "48189d59386b7439d913d7e9802bfefd",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 220,
+                                "id_parte": "da029255b596eec5f328f11ce4516831"
+                            },
+                            {
+                                "index": 5,
+                                "distance": 0.4489977955818176,
+                                "titulo_parte": null,
+                                "ultimo_estado": "en vigor",
+                                "contenido_texto": "Los responsables comprendidos en el articulo 248 deberán presentar ante la autoridad de aplicación, y antes del inicio de cualquier actividad especificada en el Artículo 249, un Informe de Impacto Ambiental.\n\nLa autoridad de aplicación podrá prestar asesoramiento a los pequeños productores para la elaboración del mismo.",
+                                "codigo_norma": "Código de Minería Argentino",
+                                "id_padre": "ea6061e5cad21d1fc261c7a43c937e35",
+                                "tipo_parte": "artículo",
+                                "numero_parte": 251,
+                                "id_parte": "b49e40a64d3a73bf5a64bba831c6e0da"
+                            }
+                        ]
+                    },
+                    "tool_call_id": "call_StfLCjnKHbrBnlae7gae1U27",
+                    "metadata": null,
+                    "timestamp": "2025-11-13T17:49:30.519174Z",
+                    "part_kind": "tool-return"
+                }
+            ],
+            "instructions": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}",
+            "kind": "request"
+        },
+        {
+            "parts": [
+                {
+                    "content": "{\"selected_documents\": [{\"index\": 1, \"distance\": 0.6064164638519287, \"id_padre\": \"e4ce42d4ff852f3bcdf1ce032991004d\", \"tipo_parte\": \"artículo\", \"numero_parte\": 355, \"titulo_parte\": null, \"ultimo_estado\": \"en vigor\", \"contenido_texto\": \"Para aquellas actividades comprendidas en el ARTICULO 249, y cuya iniciación sea anterior a la vigencia de la Ley 24.585, el concesionario o titular de la planta e instalaciones deberá presentar, dentro del año de su entrada en vigor, el informe de impacto ambiental.\", \"codigo_norma\": \"Código de Minería Argentino\", \"id_parte\": \"0b16c35d5add538f9b334e45ff89d04e\"}]}",
+                    "id": null,
+                    "part_kind": "text"
+                }
+            ],
+            "usage": {
+                "input_tokens": 4298,
+                "cache_write_tokens": 0,
+                "cache_read_tokens": 0,
+                "output_tokens": 1859,
+                "input_audio_tokens": 0,
+                "cache_audio_read_tokens": 0,
+                "output_audio_tokens": 0,
+                "details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 1664,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "model_name": "gpt-5-2025-08-07",
+            "timestamp": "2025-11-13T17:49:31Z",
+            "kind": "response",
+            "provider_name": "openai",
+            "provider_details": {
+                "finish_reason": "stop"
+            },
+            "provider_response_id": "chatcmpl-CbVjnmKg3GELsOQPDIAHru7fbX2HO",
+            "finish_reason": "stop"
+        }
+    ],
+    "metadata": {
+        "model_settings": {},
+        "model_version": "gpt-5-2025-08-07",
+        "provider_name": "openai",
+        "timestamp": "2025-11-13T17:49:31+00:00",
+        "usage": {
+            "tokens": {
+                "input_tokens": 4660,
+                "output_tokens": 2679,
+                "tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 2304,
+                    "rejected_prediction_tokens": 0
+                }
+            },
+            "cost": {
+                "input_price": 0.0053725,
+                "output_price": 0.01859,
+                "total_price": 0.0239625,
+                "model_input_price_mtok": 1.25,
+                "model_output_price_mtok": 10.0,
+                "model_id": "gpt-5",
+                "model_name": "GPT-5"
+            }
+        }
+    }
+}

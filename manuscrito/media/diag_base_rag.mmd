@@ -1,0 +1,12 @@
+sequenceDiagram
+  actor U as Usuario
+  participant BV as Base Vectorial
+  participant AEL as Especialista Legal
+  U->>BV: Consulta
+  activate BV
+  BV-->>AEL: Top-10 fragmentos
+  deactivate BV
+  activate AEL
+  Note over AEL: Inyecta contexto<br/>en el prompt
+  AEL-->>U: Respuesta
+  deactivate AEL
