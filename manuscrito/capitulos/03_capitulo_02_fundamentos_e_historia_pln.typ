@@ -397,20 +397,20 @@ A partir del transformer la investigación en los modelos se aceleró cada vez m
   caption: [Cronología de los hitos principales en la evolución de los modelos del lenguaje (2022--2025). Tercera parte.],
 ) <fig_evolucion_llms_3>
 
-==== 2022
+==== Año 2022
 
 - *Emergent Abilities of Large Language Models* @wei2022emergent: Wei y colaboradores documentaron que ciertas capacidades de los modelos de lenguaje —resolución de problemas aritméticos simples, comprensión lectora de varios pasos, decodificación de instrucciones compuestas, razonamiento por analogías, entre otras— aparecen de manera discontinua y no predecible a partir de cierto umbral de escala (número de parámetros y de datos de entrenamiento). Estas _capacidades emergentes_ no se observan en modelos pequeños ni pueden extrapolarse linealmente desde su comportamiento, lo que sugiere que los LLMs no son simplemente una versión _a mayor escala_ de sus contrapartes pequeñas, sino que en cierto régimen de tamaño exhiben habilidades cualitativamente nuevas. La caracterización rigurosa de este fenómeno abrió una línea de investigación muy activa sobre sus condiciones, límites e implicaciones para la seguridad y la interpretabilidad de los modelos.
 - *InstructGPT* @ouyang2022instructgpt: entrenamiento de modelos de lenguaje para seguir instrucciones con retroalimentación humana (RLHF, por sus siglas en inglés).
 - *Constitutional AI* @bai2022constitutional: método para entrenar asistentes inofensivos mediante retroalimentación generada por la propia IA.
 - *ChatGPT* (noviembre 2022) @openai2022chatgpt: lanzamiento público que popularizó el acceso masivo a los LLMs. Este hito puede entenderse como una manifestación a gran escala de las capacidades emergentes descritas por @wei2022emergent: aunque los modelos GPT-3 de acceso programático ya exhibían buena parte de esas habilidades, fue la interfaz conversacional de ChatGPT la que las volvió evidentes para el público general. En la práctica, ChatGPT demostró que modelos entrenados primariamente para predecir el siguiente token eran capaces de seguir instrucciones matizadas, mantener el contexto a lo largo de un diálogo, rechazar pedidos inapropiados y producir texto de apariencia humana en una amplia variedad de dominios —capacidades para las que no habían sido entrenados de forma explícita. Este comportamiento, interpretado a la luz del trabajo de Wei y colaboradores, reforzó la idea de que las capacidades emergentes no son un artefacto de evaluación, sino una propiedad intrínseca de los modelos suficientemente grandes.
 
-==== 2023
+==== Año 2023
 
 - *GPT-4* @openai2023gpt4: modelo multimodal con arquitectura *Mixture of Experts* (MoE), cuyos orígenes se remontan a @jacobs1991moe y @shazeer2017moe.
 - *Claude* (marzo 2023) @anthropic2023claude: asistente desarrollado por Anthropic con énfasis en seguridad y alineamiento.
 - *Toolformer* @schick2023toolformer y *OpenAI Function Calling*: incorporación de uso de herramientas externas por parte de los LLMs.
 
-==== 2024 y 2025
+==== Años 2024 y 2025
 
 - *OpenAI o1* @openai2024o1: modelo con capacidades de razonamiento mejoradas mediante cadenas de pensamiento internas.
 - *DeepSeek-V3* @deepseek2024v3 y *DeepSeek-R1* @deepseek2025r1: modelos que demostraron que el aprendizaje por refuerzo sin supervisión humana —con técnicas como GRPO (*Group Relative Policy Optimization*)— puede alcanzar calidad comparable al estado del arte a un costo significativamente menor.
