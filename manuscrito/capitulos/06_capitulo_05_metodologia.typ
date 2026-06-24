@@ -656,6 +656,8 @@ Para comparar las métricas entre los tres sistemas de recuperación (no RAG, RA
 
 Ante resultados significativos en Kruskal-Wallis, se aplicó el test post-hoc de Dunn @dunn1964multiple con corrección de Bonferroni @bonferroni1936teoria para identificar qué pares de grupos presentan diferencias significativas, controlando la tasa de error familiar (family-wise error rate).
 
+Para los análisis con más de cinco comparaciones —en particular, los efectos simples de estrategia dentro de cada modelo (9 comparaciones)— se aplicó adicionalmente la corrección de Holm-Bonferroni @holm1979simple, un procedimiento step-down secuencialmente rejectivo que ofrece mayor potencia estadística que Bonferroni manteniendo el control de la tasa de error familiar. El método de Holm ordena los p-values de menor a mayor y compara cada uno contra un umbral decreciente $alpha/(m - k + 1)$, donde $m$ es el número total de comparaciones y $k$ la posición en el ordenamiento. Ambas correcciones se implementaron mediante la función `multipletests` de la librería statsmodels @seabold2010statsmodels.
+
 ==== Análisis de Interacción Factorial (Scheirer-Ray-Hare)
 
 Para evaluar la interacción entre los factores "sistema de recuperación" y "modelo" sobre las métricas de calidad, se empleó el test de Scheirer-Ray-Hare @scheirer1976analysis. Este test constituye la alternativa no paramétrica al ANOVA de dos factores y se basa en aplicar ANOVA sobre los rangos de los datos. Permite evaluar los efectos principales de cada factor y su interacción, siendo particularmente útil cuando no se cumplen los supuestos de normalidad y homocedasticidad del ANOVA paramétrico.

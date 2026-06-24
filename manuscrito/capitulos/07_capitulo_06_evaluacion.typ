@@ -135,6 +135,40 @@ Se realizaron tests de Kruskal-Wallis estratificados por sistema de recuperació
 
 Este último resultado sugiere un *efecto igualador* del RAG básico: al proveer contexto relevante, las diferencias de capacidad entre modelos se atenúan, permitiendo que modelos más pequeños y económicos alcancen un desempeño comparable al del modelo de mayor tamaño.
 
+=== Efectos Simples: Estrategia dentro de cada Modelo
+
+El test de Scheirer-Ray-Hare reveló una interacción significativa entre estrategia y modelo ($H = 56.62$, $p < 10^(-11)$). Cuando existe interacción, los efectos principales no son interpretables de forma aislada: el efecto de la estrategia depende del modelo empleado. El análisis estratificado anterior evaluó el efecto del modelo dentro de cada estrategia; como complemento necesario, se evaluó el efecto de la estrategia dentro de cada modelo mediante tests de Mann-Whitney U (efectos simples de estrategia).
+
+Dado que se realizan 9 comparaciones (3 modelos × 3 pares de estrategias), se aplicaron correcciones de Bonferroni y Holm-Bonferroni @holm1979simple mediante `statsmodels.stats.multitest.multipletests` @seabold2010statsmodels. La @tabla-efectos-simples presenta los resultados completos.
+
+#figure(
+  three-line-table(
+    columns: (auto, auto, auto, auto, auto, auto, auto, auto, auto),
+    [
+      | *Modelo*   | *Estrategia 1* | *Estrategia 2* | *Med. 1* | *Med. 2* |  *U*   |    *p*    | *p corr. Holm* | *Sig. Holm* |
+      | :--------- | :------------- | :------------- | :------: | :------: | :----: | :-------: | :------------: | :---------: |
+      | gpt-5      | agentic_rag    | base_rag       |  0.9583  |  0.8333  | 3475.5 | 0.024606  |    0.073819    |             |
+      | gpt-5      | agentic_rag    | no_rag         |  0.9583  |  0.8333  | 3545.5 | 0.012841  |    0.063887    |             |
+      | gpt-5      | base_rag       | no_rag         |  0.8333  |  0.8333  | 2850.5 | 0.889993  |    1.000000    |             |
+      | gpt-5-mini | agentic_rag    | base_rag       |  0.9167  |  0.6250  | 3666.0 | 0.003055  |    0.018331    |     ✓      |
+      | gpt-5-mini | agentic_rag    | no_rag         |  0.9167  |  0.3333  | 4964.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
+      | gpt-5-mini | base_rag       | no_rag         |  0.6250  |  0.3333  | 4349.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
+      | gpt-5-nano | agentic_rag    | base_rag       |  0.0833  |  0.5833  | 2076.0 | 0.002382  |    0.016676    |     ✓      |
+      | gpt-5-nano | agentic_rag    | no_rag         |  0.0833  |  0.5833  | 2221.5 | 0.012777  |    0.063887    |             |
+      | gpt-5-nano | base_rag       | no_rag         |  0.5833  |  0.5833  | 2923.5 | 0.896927  |    1.000000    |             |
+    ],
+  ),
+  caption: [Efectos simples de estrategia dentro de cada modelo (Mann-Whitney U). `Med. 1` y `Med. 2` son las medianas de `respuesta_correcta_avg` para cada estrategia. `p corr. Holm` es el p-value corregido por Holm-Bonferroni; ✓ indica significativo con corrección de Holm ($p_"corr" < 0.05$). $m = 9$ comparaciones.],
+) <tabla-efectos-simples>
+
+Los resultados revelan patrones diferenciados por modelo:
+
++ *gpt-5-mini* es el modelo más sensible a la estrategia: las tres comparaciones son significativas incluso con corrección de Holm-Bonferroni. Agentic-RAG (mediana 0.92) supera ampliamente a RAG básico (0.63) y a sin RAG (0.33), evidenciando una dependencia crítica del contexto externo.
++ *gpt-5-nano* muestra un comportamiento contraintuitivo: Agentic-RAG (0.08) degrada significativamente el desempeño respecto a RAG básico (0.58, $p_"corr" = 0.017$), pero la degradación frente a sin RAG (0.58, $p_"corr" = 0.064$) no alcanza significación con corrección de Holm. Esto sugiere que la complejidad agéntica es excesiva para modelos de capacidad reducida.
++ *gpt-5* se beneficia de Agentic-RAG (0.96 vs. 0.83 sin RAG, $p = 0.013$), aunque esta mejora no sobrevive a la corrección por comparaciones múltiples ($p_"corr" = 0.064$), indicando un efecto positivo pero moderado.
+
+Estos resultados refuerzan el hallazgo de interacción: el efecto de Agentic-RAG es marcadamente beneficioso para modelos de capacidad media-alta pero perjudicial para el modelo más pequeño.
+
 La @tabla-resumen-medianas presenta las medianas de `respuesta_correcta_avg` y, con fines descriptivos, de las cinco métricas complementarias para las nueve configuraciones evaluadas. Los valores de las métricas textuales y semánticas se incluyen como referencia, pero las pruebas de hipótesis se realizaron exclusivamente sobre `respuesta_correcta_avg`.
 
 #figure(
@@ -379,10 +413,12 @@ Se analizó el sesgo de cada juez mediante la media, mediana, desviación están
 
 === Debilidades y Limitaciones
 
-+ El sistema Agentic-RAG degrada el desempeño de gpt-5-nano (0.40 vs. 0.58 sin RAG), indicando que la complejidad agéntica es excesiva para modelos de capacidad reducida.
++ El sistema Agentic-RAG degrada el desempeño de gpt-5-nano frente a RAG básico (0.40 vs. 0.59, $p_"corr" = 0.017$, Holm-Bonferroni), indicando que la complejidad agéntica es excesiva para modelos de capacidad reducida. La diferencia frente a sin RAG no es significativa tras la corrección ($p_"corr" = 0.064$).
 + La métrica `score_precision_legal` no alcanza confiabilidad inter-juez suficiente para ser empleada en comparaciones, lo que limita la evaluación de la precisión de citación.
 + No se encontró diferencia marginal significativa entre Agentic-RAG y RAG básico, aunque el análisis de interacción revela que esta conclusión global enmascara patrones condicionales al modelo.
 + El benchmark se limita al Código de Minería Argentino, por lo que la generalización a otros cuerpos normativos requiere validación adicional.
+
+La ausencia de diferencias significativas para gpt-5 entre estrategias tras la corrección de Holm-Bonferroni admite múltiples interpretaciones no mutuamente excluyentes. En primer lugar, el modelo podría poseer conocimiento paramétrico suficiente del Código de Minería —cuya última modificación data de 2024 y cuyos textos son de acceso público— para responder correctamente sin necesidad de recuperación externa, lo que explicaría su elevada mediana sin RAG (0.83). En segundo lugar, la escala discreta de cinco niveles de la rúbrica de evaluación podría generar un efecto de techo: si las respuestas de gpt-5 se concentran en los valores superiores (0.75–1.00), la resolución de la rúbrica resulta insuficiente para discriminar mejoras marginales que el RAG podría aportar. En tercer lugar, la potencia estadística disponible (n = 79 observaciones por celda, 9 comparaciones) podría ser insuficiente para detectar efectos moderados tras una corrección exigente como Holm-Bonferroni; la diferencia cruda entre Agentic-RAG y sin RAG ($p = 0.013$) es significativa sin corregir, pero no sobrevive a la corrección. Finalmente, la capacidad discriminatoria de los jueces LLM —que no fueron configurados con cadenas de razonamiento explícitas y cuya alineación con criterios humanos no ha sido validada— podría ser limitada para distinguir matices de corrección jurídica entre respuestas de alta calidad. La validación con expertos legales humanos constituye el único camino para dirimir entre estas hipótesis.
 
 === Implicaciones Prácticas
 
@@ -393,4 +429,4 @@ Se analizó el sesgo de cada juez mediante la media, mediana, desviación están
 
 == Conclusiones del Capítulo
 
-Los resultados confirman que la incorporación de un sistema de recuperación de información mejora significativamente la calidad de las respuestas de los LLM en el dominio legal argentino. La interacción significativa entre la estrategia de recuperación y el modelo ($H = 56.62$, $p < 10^(-11)$) es el hallazgo más relevante: demuestra que la efectividad de una estrategia depende del modelo con el que se combine, y viceversa. El RAG básico actúa como igualador de capacidades entre modelos, mientras que el sistema agéntico amplifica las diferencias, beneficiando a modelos de capacidad media (gpt-5-mini) pero perjudicando a los de menor capacidad (gpt-5-nano). La evaluación LLM-as-a-Judge con tres jueces es confiable para la métrica de corrección ($alpha = 0.81$) pero no para la de precisión legal ($alpha = 0.78$ global, con valores insuficientes por sistema).
+Los resultados confirman que la incorporación de un sistema de recuperación de información mejora significativamente la calidad de las respuestas de los LLM en el dominio legal argentino. La interacción significativa entre la estrategia de recuperación y el modelo ($H = 56.62$, $p < 10^(-11)$) es el hallazgo más relevante: demuestra que la efectividad de una estrategia depende del modelo con el que se combine, y viceversa. El análisis de efectos simples mediante Mann-Whitney U con corrección de Holm-Bonferroni revela que Agentic-RAG beneficia significativamente a gpt-5-mini (las tres comparaciones entre estrategias son significativas, $p_"corr" < 0.05$) pero degrada a gpt-5-nano frente a RAG básico ($p_"corr" = 0.017$). Para gpt-5, no se detectan diferencias significativas entre estrategias tras la corrección por comparaciones múltiples. El RAG básico actúa como igualador de capacidades entre modelos, mientras que el sistema agéntico amplifica las diferencias. La evaluación LLM-as-a-Judge con tres jueces es confiable para la métrica de corrección ($alpha = 0.81$) pero no para la de precisión legal ($alpha = 0.78$ global, con valores insuficientes por sistema).
