@@ -27,13 +27,13 @@ El sistema permite realizar consultas en lenguaje natural sobre el Código de Mi
 
 ### 🔬 Hallazgos principales
 
-| Hallazgo                                     | Descripción                                                                             |
-| -------------------------------------------- | --------------------------------------------------------------------------------------- |
-| **RAG mejora significativamente la calidad** | Tanto RAG básico como Agentic-RAG superan al baseline sin recuperación (p < 0.001)      |
-| **Efecto igualador del RAG**                 | Con RAG básico, modelos pequeños alcanzan desempeño comparable al de modelos superiores |
-| **Interacción estrategia × modelo**          | La efectividad de cada estrategia depende del modelo con el que se combine (p < 10⁻¹¹)  |
-| **Sobrecarga agéntica en modelos pequeños**  | Agentic-RAG puede degradar el desempeño de modelos de capacidad reducida                |
-| **LLM-as-a-Judge validado**                  | Acuerdo inter-juez bueno (α = 0.81) para evaluación de correctitud en dominio legal     |
+| Hallazgo                                     | Descripción                                                                                                                         |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **RAG mejora significativamente la calidad** | Tanto RAG básico como Agentic-RAG superan al baseline sin recuperación (p < 0.001)                                                  |
+| **Efecto igualador del RAG**                 | Con RAG básico, modelos pequeños alcanzan desempeño comparable al de modelos superiores                                             |
+| **Interacción estrategia × modelo**          | La efectividad de cada estrategia depende del modelo con el que se combine (p < 10⁻¹¹)                                              |
+| **Sobrecarga agéntica en modelos pequeños**  | Agentic-RAG puede degradar el desempeño de modelos de capacidad reducida                                                            |
+| **LLM-as-a-Judge validado**                  | Acuerdo inter-juez bueno (α = 0.81) para evaluación de la variable "respuesta correcta" en dominio legal |
 
 ### 🌍 ¿Por qué es relevante?
 
@@ -135,7 +135,7 @@ El sistema fue evaluado mediante un **diseño factorial 3 × 3**:
 **Métricas de evaluación**:
 - **Textuales**: BLEU, ROUGE-1, ROUGE-L, METEOR, exactitud de tokens
 - **Semánticas**: BERTScore (precisión, recall, F1)
-- **LLM-as-a-Judge**: Correctitud de respuesta y precisión legal (3 jueces: DeepSeek, Grok, Kimi K2)
+- **LLM-as-a-Judge**: "respuesta correcta" y precisión legal (3 jueces: DeepSeek, Grok, Kimi K2)
 
 **Análisis estadístico**: Kruskal-Wallis, Dunn con corrección Bonferroni, Scheirer-Ray-Hare (interacción), Krippendorff's alpha (acuerdo inter-juez).
 

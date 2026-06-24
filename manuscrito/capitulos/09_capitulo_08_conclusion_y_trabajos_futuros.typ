@@ -34,7 +34,7 @@ Las principales contribuciones del presente trabajo son:
 
 + *Benchmark para el Código de Minería Argentino.* Se creó un benchmark específico con 25 preguntas (79 unidades de evaluación), elaborado con asistencia de LLM y validado por profesionales del derecho, que puede emplearse como referencia para futuras evaluaciones de sistemas de consulta legal sobre esta normativa.
 
-+ *Validación de LLM-as-a-Judge para evaluación legal.* Se demostró que la evaluación mediante tres jueces LLM (DeepSeek, Grok, Kimi K2) alcanza un acuerdo inter-juez bueno ($alpha = 0.81$) para la métrica de correctitud de respuestas, validando su uso como herramienta de evaluación en este dominio.
++ *Validación de LLM-as-a-Judge para evaluación legal.* Se demostró que la evaluación mediante tres jueces LLM (DeepSeek, Grok, Kimi K2) alcanza un acuerdo inter-juez bueno ($alpha = 0.81$) para la métrica de "respuesta correcta", validando su uso como herramienta de evaluación en este dominio.
 
 + *Metodología replicable y documentada.* La documentación completa de la metodología, las decisiones de diseño y los resultados permite la replicación del sistema para otros cuerpos normativos y jurisdicciones.
 
@@ -42,7 +42,7 @@ Cabe destacar que la contribución principal del trabajo no reside en los valore
 
 === Impacto de la Propuesta
 
-El presente trabajo demuestra la viabilidad técnica de aplicar sistemas Agentic-RAG de código abierto a la consulta de normativa legal argentina. Los resultados confirman que la incorporación de mecanismos de recuperación de información mejora significativamente la calidad de las respuestas de los modelos de lenguaje en el dominio legal, con mejoras que van desde las medianas de 0.58 (sin RAG) hasta 0.83 (Agentic-RAG) en la evaluación de correctitud.
+El presente trabajo demuestra la viabilidad técnica de aplicar sistemas Agentic-RAG de código abierto a la consulta de normativa legal argentina. Los resultados confirman que la incorporación de mecanismos de recuperación de información mejora significativamente la calidad de las respuestas de los modelos de lenguaje en el dominio legal, con mejoras que van desde una mediana global de 0.58 (sin RAG) hasta 0.83 (Agentic-RAG) en la evaluación de "respuesta correcta". Cabe precisar que este beneficio es dependiente del modelo: Agentic-RAG potencia sustancialmente a los modelos de mayor capacidad (gpt-5: 0.96, gpt-5-mini: 0.92) pero degrada a los de menor capacidad (gpt-5-nano: 0.08 frente a 0.58 sin RAG). El RAG básico, aunque con una mejora más modesta (mediana global de 0.71), ofrece el beneficio adicional de igualar el desempeño entre modelos de distinta capacidad.
 
 La disponibilidad del código y la metodología como recurso abierto habilita su adaptación por instituciones públicas, organizaciones de la sociedad civil y desarrolladores independientes que busquen mejorar el acceso ciudadano a la información legal. En un contexto donde las herramientas avanzadas de consulta legal son predominantemente comerciales y de acceso restringido, esta contribución tiene el potencial de reducir las barreras de acceso a la normativa para usuarios no especializados.
 
@@ -54,7 +54,7 @@ El sistema desarrollado presenta las siguientes fortalezas:
 
 + *Mejora significativa con recuperación.* Tanto el RAG básico como el Agentic-RAG superan significativamente al baseline sin RAG ($p < 0.001$ para Agentic-RAG vs. sin RAG; $p = 0.0066$ para RAG básico vs. sin RAG), confirmando el valor de anclar las respuestas en evidencia documental.
 
-+ *Configuración costo-eficiente viable.* La combinación Agentic-RAG con gpt-5-mini alcanza una media de 0.78 en correctitud, comparable al 0.80 de gpt-5, ofreciendo una alternativa práctica para escenarios con restricciones presupuestarias.
++ *Configuración costo-eficiente viable.* La combinación Agentic-RAG con gpt-5-mini alcanza una media de 0.78 en corrección, comparable al 0.80 de gpt-5, ofreciendo una alternativa práctica para escenarios con restricciones presupuestarias.
 
 + *Evaluación multidimensional robusta.* La combinación de métricas textuales, semánticas y evaluación por jueces LLM proporciona una visión multidimensional de la calidad, mitigando los sesgos de cada familia de métricas por separado.
 

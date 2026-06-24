@@ -42,7 +42,7 @@ Empleando un umbral de |ρ| > 0.85 para identificar redundancias, se identificar
 + `rouge_l`: representante de métricas de subsecuencia.
 + `sbert_similarity_spanish`: representante del clúster semántico.
 + `bertscore`: similitud contextualizada.
-+ `respuesta_correcta_avg`: evaluación global de correctitud por jueces.
++ `respuesta_correcta_avg`: evaluación global de qué tan correcta es una respuesta de acuerdo al método LLM-as-a-judge.
 + `precision_legal_avg`: evaluación de precisión en citación legal.
 
 El análisis de componentes principales (PCA) con biplot confirmó la estructura de clústeres, ubicando `respuesta_correcta_avg` con correlación moderada con PC1 ($r = +0.488$) y PC2 ($r = +0.429$), y `precision_legal_avg` con correlación predominante con PC1 ($r = +0.545$). La @fig-biplot-pca presenta el biplot con las 13 métricas textuales como variables activas (azul) y las 2 métricas agénticas como variables suplementarias (rojo).
@@ -52,7 +52,7 @@ El análisis de componentes principales (PCA) con biplot confirmó la estructura
   caption: [Biplot del análisis de componentes principales (PCA) sobre las 13 métricas textuales estandarizadas. Las flechas azules representan las métricas activas; las flechas rojas representan las variables agénticas proyectadas como suplementarias. PC1 (61,0%) captura principalmente el contraste entre métricas de similitud (derecha) y métricas de error/volumen (izquierda). PC2 (25,8%) separa las métricas de volumen del resto. `respuesta_correcta_avg` se ubica en una posición intermedia entre los clústeres semántico y léxico, mientras que `precision_legal_avg` se alinea más estrechamente con el clúster léxico. El círculo punteado indica el umbral de correlación $r = 0.6$ con las componentes principales.],
 ) <fig-biplot-pca>
 
-Para las pruebas de hipótesis subsiguientes se retuvo exclusivamente `respuesta_correcta_avg` como variable de respuesta principal. Esta decisión se fundamenta en tres consideraciones: (1) es la métrica más directamente alineada con el objetivo de evaluar la calidad de las respuestas legales; (2) el análisis de acuerdo inter-juez (@sec:acuerdo-inter-juez) reveló que `precision_legal_avg` no alcanza confiabilidad suficiente; y (3) las métricas textuales y semánticas, aunque informativas, presentan alta redundancia interna y correlación moderada con la evaluación de correctitud. Las cinco métricas restantes se emplearon con fines descriptivos y complementarios, en particular en el análisis de costos.
+Para las pruebas de hipótesis subsiguientes se retuvo exclusivamente `respuesta_correcta_avg` como variable de respuesta principal. Esta decisión se fundamenta en tres consideraciones: (1) es la métrica más directamente alineada con el objetivo de evaluar la calidad de las respuestas legales; (2) el análisis de acuerdo inter-juez (@sec:acuerdo-inter-juez) reveló que `precision_legal_avg` no alcanza confiabilidad suficiente; y (3) las métricas textuales y semánticas, aunque informativas, presentan alta redundancia interna y correlación moderada con la evaluación de corrección. Las cinco métricas restantes se emplearon con fines descriptivos y complementarios, en particular en el análisis de costos.
 
 La @fig-boxplots-estrategia presenta la distribución de `respuesta_correcta_avg` agrupada por estrategia de recuperación.
 
@@ -278,13 +278,13 @@ Se reportaron los tokens totales consumidos y el costo acumulado por modelo y po
 
 Se emplearon tres modelos como jueces independientes, cuyas características y configuración se detallan en el capítulo @cap:metodologia: DeepSeek-V3, Grok 4.1 Fast y Kimi K2 0905. Cada juez evaluó las 9 configuraciones usando las dos rúbricas definidas en dicho capítulo (`score_respuesta_correcta`, @tabla-rubrica-correcta; `score_precision_legal`, @tabla-rubrica-legal).
 
-=== Resultados de Correctitud
+=== Resultados de "respuesta_correcta"
 
 Los scores de `respuesta_correcta` muestran una distribución concentrada en los valores {0.5, 0.75, 1.0} para los sistemas con RAG, mientras que el sistema sin RAG presenta mayor dispersión hacia valores bajos, consistente con la menor calidad de las respuestas sin contexto externo.
 
 === Resultados de Precisión Legal
 
-Los scores de `precision_legal` presentan mayor variabilidad entre jueces que los de correctitud, reflejando la mayor subjetividad inherente en evaluar la precisión de citación legal.
+Los scores de `precision_legal` presentan mayor variabilidad entre jueces que los de corrección, reflejando la mayor subjetividad inherente en evaluar la precisión de citación legal.
 
 La @fig-heatmap-jueces presenta la distribución de los puntajes asignados por cada juez para ambas rúbricas.
 
@@ -372,7 +372,7 @@ Se analizó el sesgo de cada juez mediante la media, mediana, desviación están
 
 === Fortalezas del Sistema
 
-+ Los sistemas con recuperación (RAG básico y Agentic-RAG) superan significativamente al baseline sin RAG en la métrica de correctitud.
++ Los sistemas con recuperación (RAG básico y Agentic-RAG) superan significativamente al baseline sin RAG en la métrica de corrección.
 + El sistema Agentic-RAG combinado con gpt-5-mini alcanza un desempeño comparable al de gpt-5 (0.78 vs. 0.80), ofreciendo una alternativa de menor costo.
 + El RAG básico presenta un efecto igualador sobre los modelos, eliminando las diferencias significativas de desempeño entre gpt-5, gpt-5-mini y gpt-5-nano.
 + El acuerdo inter-juez para `score_respuesta_correcta` es bueno ($alpha = 0.81$), validando la confiabilidad de las evaluaciones.
@@ -393,4 +393,4 @@ Se analizó el sesgo de cada juez mediante la media, mediana, desviación están
 
 == Conclusiones del Capítulo
 
-Los resultados confirman que la incorporación de un sistema de recuperación de información mejora significativamente la calidad de las respuestas de los LLM en el dominio legal argentino. La interacción significativa entre la estrategia de recuperación y el modelo ($H = 56.62$, $p < 10^(-11)$) es el hallazgo más relevante: demuestra que la efectividad de una estrategia depende del modelo con el que se combine, y viceversa. El RAG básico actúa como igualador de capacidades entre modelos, mientras que el sistema agéntico amplifica las diferencias, beneficiando a modelos de capacidad media (gpt-5-mini) pero perjudicando a los de menor capacidad (gpt-5-nano). La evaluación LLM-as-a-Judge con tres jueces es confiable para la métrica de correctitud ($alpha = 0.81$) pero no para la de precisión legal ($alpha = 0.78$ global, con valores insuficientes por sistema).
+Los resultados confirman que la incorporación de un sistema de recuperación de información mejora significativamente la calidad de las respuestas de los LLM en el dominio legal argentino. La interacción significativa entre la estrategia de recuperación y el modelo ($H = 56.62$, $p < 10^(-11)$) es el hallazgo más relevante: demuestra que la efectividad de una estrategia depende del modelo con el que se combine, y viceversa. El RAG básico actúa como igualador de capacidades entre modelos, mientras que el sistema agéntico amplifica las diferencias, beneficiando a modelos de capacidad media (gpt-5-mini) pero perjudicando a los de menor capacidad (gpt-5-nano). La evaluación LLM-as-a-Judge con tres jueces es confiable para la métrica de corrección ($alpha = 0.81$) pero no para la de precisión legal ($alpha = 0.78$ global, con valores insuficientes por sistema).
