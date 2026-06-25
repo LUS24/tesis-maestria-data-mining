@@ -1,4 +1,4 @@
-= Fundamentos e Historia del procesamiento del lenguaje natural (PLN) <cap:fundamentos-pln>
+= Fundamentos e Historia del procesamiento de lenguaje natural (PLN) <cap:fundamentos-pln>
 
 #import "@preview/mmdr:0.2.2": mermaid
 #import "@preview/tablem:0.3.0": three-line-table
@@ -8,9 +8,9 @@
   *Nota:* El campo de los grandes modelos de lenguaje evoluciona a un ritmo sin precedentes. Este capítulo presenta los fundamentos teóricos vigentes al momento del diseño del sistema (segundo semestre de 2025). Los desarrollos posteriores al período experimental se discuten en el capítulo de trabajos relacionados.
 ]
 
-== Introducción al Procesamiento de Lenguaje Natural
+== Introducción al procesamiento de lenguaje natural
 
-El Procesamiento de Lenguaje Natural (PLN o NLP, por sus siglas en inglés) es un área de la inteligencia artificial centrada en desarrollar modelos computacionales que permitan a las máquinas comprender, generar y razonar sobre lenguaje humano. En el corazón de muchas aplicaciones de PLN se encuentran los modelos de lenguaje, que asignan probabilidades a secuencias de palabras y permiten estimar la probabilidad de la siguiente palabra dado un contexto @jurafsky_martin_2026.
+El procesamiento de lenguaje natural (PLN o NLP, por sus siglas en inglés) es un área de la inteligencia artificial centrada en desarrollar modelos computacionales que permitan a las máquinas comprender, generar y razonar sobre lenguaje humano. En el corazón de muchas aplicaciones de PLN se encuentran los modelos de lenguaje, que asignan probabilidades a secuencias de palabras y permiten estimar la probabilidad de la siguiente palabra dado un contexto @jurafsky_martin_2026.
 
 La historia del desarrollo de los modelos del lenguaje se remota hace más de 100 años a los inicios del siglo XX, comenzando desde modelos estadísticos relativamente simples, basados en distribuciones de frecuencias de palabras, hasta redes neuronales, basados en la arquitectura del Transformer. En este capítulo se realiza una breve reseña de las diferentes estrategias para el desarrollo de los modelos del lenguaje.
 
@@ -239,7 +239,7 @@ Los modelos de espacio de vectores (VSM, por sus siglas en inglés) son enfoques
   caption: [Visualización t-SNE de _word embeddings_ generados a partir de literatura del siglo XIX. Los puntos próximos en el plano corresponden a palabras con significado o contexto de uso similar, ilustrando cómo los VSM codifican relaciones semánticas como relaciones geométricas entre vectores @grayson2017tsne.],
 ) <fig_word_embeddings>
 
-Mientras que los VSM se han aplicado masivamente en el modelado del lenguaje, los modelos de espacio de estados (SSM, por sus siglas en inglés) han comenzado a captar el interés en el campo del procesamiento del lenguaje natural recientemente @dao2022. Se utilizaban tradicionalmente en la teoría de control y el procesamiento de señales para modelar secuencias de datos, por lo que se destacan por su gran capacidad para gestionar y procesar secuencias de texto muy largas. Por este motivo se perfilan como candidatos ideales para diseñar nuevas arquitecturas y optimizar los modelos de lenguaje actuales. Para más información puede consultar las publicaciones de Mamba de #cite(<gu_dao_2023>, form: "prose").
+Mientras que los VSM se han aplicado masivamente en el modelado del lenguaje, los modelos de espacio de estados (SSM, por sus siglas en inglés) han comenzado a captar el interés en el campo del procesamiento de lenguaje natural recientemente @dao2022. Se utilizaban tradicionalmente en la teoría de control y el procesamiento de señales para modelar secuencias de datos, por lo que se destacan por su gran capacidad para gestionar y procesar secuencias de texto muy largas. Por este motivo se perfilan como candidatos ideales para diseñar nuevas arquitecturas y optimizar los modelos de lenguaje actuales. Para más información puede consultar las publicaciones de Mamba de #cite(<gu_dao_2023>, form: "prose").
 
 #figure(
   [#align(center)[
@@ -427,6 +427,6 @@ Paralelamente, el local-first AI se posiciona como estándar para la soberanía 
 
 == Síntesis del capítulo
 
-A lo largo de este capítulo se ha trazado la evolución del procesamiento del lenguaje natural desde sus orígenes estadísticos hasta los grandes modelos de lenguaje contemporáneos. Se partió de los modelos de n-gramas fundados en los trabajos de Markov y Shannon, se revisaron los sistemas basados en reglas y recuperación de información como ELIZA, y se introdujeron los espacios vectoriales y de estados como representaciones distribuidas del lenguaje. Posteriormente, se describió el desarrollo de las redes neuronales artificiales —desde el perceptrón de Rosenblatt y el algoritmo de _backpropagation_ hasta las redes recurrentes, LSTM y GRU— que culminó en la arquitectura Transformer, basada enteramente en mecanismos de atención. Finalmente, se presentó una cronología de las innovaciones recientes (2022--2025), incluyendo las capacidades emergentes, el alineamiento mediante RLHF, el razonamiento encadenado y los agentes de programación autónoma.
+A lo largo de este capítulo se ha trazado la evolución del procesamiento de lenguaje natural desde sus orígenes estadísticos hasta los grandes modelos de lenguaje contemporáneos. Se partió de los modelos de n-gramas fundados en los trabajos de Markov y Shannon, se revisaron los sistemas basados en reglas y recuperación de información como ELIZA, y se introdujeron los espacios vectoriales y de estados como representaciones distribuidas del lenguaje. Posteriormente, se describió el desarrollo de las redes neuronales artificiales —desde el perceptrón de Rosenblatt y el algoritmo de _backpropagation_ hasta las redes recurrentes, LSTM y GRU— que culminó en la arquitectura Transformer, basada enteramente en mecanismos de atención. Finalmente, se presentó una cronología de las innovaciones recientes (2022--2025), incluyendo las capacidades emergentes, el alineamiento mediante RLHF, el razonamiento encadenado y los agentes de programación autónoma.
 
 Esta progresión sienta las bases técnicas necesarias para abordar la aplicación del PLN a dominios especializados. En particular, el dominio legal presenta desafíos propios —vocabulario técnico, razonamiento normativo y estructuras documentales extensas— que motivan el desarrollo de sistemas de recuperación aumentada y agentes capaces de operar sobre corpus jurídicos. Estos temas se abordan en el siguiente capítulo, dedicado a la aplicación del PLN al dominio legal.
