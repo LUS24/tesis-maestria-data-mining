@@ -44,11 +44,11 @@ El proyecto se estructura en las siguientes fases:
 
 === Características del Código de Minería Argentino
 
-Se seleccionó el Código de Minería de la Nación Argentina como corpus de prueba de concepto. Este cuerpo normativo presenta una estructura jerárquica definida (títulos, capítulos, secciones y artículos) que facilita la segmentación y vectorización. Además, su extensión es acotada (comparada con la totalidad de la legislación nacional), lo que permite iterar sobre el diseño del sistema sin incurrir en costos prohibitivos de procesamiento.
+Se seleccionó el Código de Minería Argentino#footnote[Ley Nacional 1.919, sancionada el 25 de noviembre de 1886, con las modificaciones introducidas por leyes posteriores. El texto actualizado puede consultarse en el sitio Infoleg del Ministerio de Justicia de la Nación (http://servicios.infoleg.gob.ar).] como corpus de prueba de concepto. Este cuerpo normativo presenta una estructura jerárquica definida (títulos, capítulos, secciones y artículos) que facilita la segmentación y vectorización. Además, su extensión es acotada (comparada con la totalidad de la legislación nacional), lo que permite iterar sobre el diseño del sistema sin incurrir en costos prohibitivos de procesamiento.
 
 === Obtención del Texto Legal
 
-El Código de Minería fue descargado manualmente desde el sitio del Boletín Oficial de la República Argentina (#link("https://www.boletinoficial.gob.ar")[www.boletinoficial.gob.ar] #label("boletinoficial")) en formato PDF. Este documento constituye la fuente primaria del corpus.
+El texto del Código de Minería fue obtenido de la sección primera boletín oficial N°28.658 del día viernes 30 de mayo de 1997, descargado manualmente desde el sitio del Boletín Oficial de la República Argentina (#link("https://www.boletinoficial.gob.ar")[www.boletinoficial.gob.ar] #label("boletinoficial")) en formato PDF. Este documento constituye la fuente primaria del corpus.
 
 Se exploraron dos estrategias adicionales de descarga desde el sistema Infoleg del Ministerio de Justicia de la Nación, que provee los textos legislativos en formato HTML:
 
@@ -98,7 +98,7 @@ El corpus resultante está compuesto por un total de 482 partes distribuidas seg
   caption: [Estadísticas del corpus del Código de Minería Argentino. Desglose por tipo de parte estructural.],
 ) <tabla-estadisticas-corpus>
 
-El Código de Minería se organiza en 22 títulos que abarcan desde el dominio de las minas y su clasificación (Título I) hasta disposiciones sobre la caducidad de las concesiones (Título XXII). Los 398 artículos constituyen las unidades normativas fundamentales, cada uno con contenido jurídico específico. Los 55 acápites agrupan artículos bajo subtemas dentro de cada título, mientras que las 6 secciones y el apéndice completan la estructura jerárquica del cuerpo legal. Esta organización jerárquica facilita la segmentación del corpus en fragmentos semánticamente coherentes para su indexación y recuperación en el sistema RAG.
+El Código de Minería se organiza en 22 títulos que abarcan desde el dominio de las minas y su clasificación (Título I) hasta disposiciones sobre la caducidad de las concesiones (Título XXII). Los 399 artículos#footnote[362 en su cuerpo principal y 36 en su pie de apéndice.] constituyen las unidades normativas fundamentales, cada uno con contenido jurídico específico. Los 55 acápites agrupan artículos bajo subtemas dentro de cada título, mientras que las 6 secciones y el apéndice completan la estructura jerárquica del cuerpo legal. Esta organización jerárquica facilita la segmentación del corpus en fragmentos semánticamente coherentes para su indexación y recuperación en el sistema RAG.
 
 == Base de Datos Vectorial
 

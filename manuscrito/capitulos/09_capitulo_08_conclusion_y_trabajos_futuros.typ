@@ -92,7 +92,7 @@ A partir de las limitaciones identificadas y los resultados obtenidos, se propon
 
 === Extensión del Corpus Legal
 
-La extensión natural del trabajo consiste en ampliar el corpus más allá del Código de Minería para incluir la totalidad de la normativa nacional disponible en Infoleg. Esto implicaría abordar desafíos adicionales como la heterogeneidad de formatos, la mayor profundidad de las estructuras jerárquicas y el volumen significativamente mayor de documentos. En una etapa posterior, podría incorporarse normativa provincial y municipal, así como jurisprudencia y dictámenes.
+La extensión natural del trabajo consiste en ampliar el corpus más allá del Código de Minería para incluir la totalidad de la normativa nacional disponible en Infoleg. Esto implicaría abordar desafíos adicionales como la heterogeneidad de formatos, la mayor profundidad de las estructuras jerárquicas y el volumen significativamente mayor de documentos. En una etapa posterior, podría incorporarse normativa provincial y municipal, así como jurisprudencia, doctrina y dictámenes.
 
 === Mejoras en la Arquitectura
 

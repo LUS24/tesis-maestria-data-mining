@@ -5,7 +5,7 @@ Presentamos el diseño, implementación y evaluación de un sistema Agentic-RAG 
 
 *Palabras claves*
 
-_Agentic-RAG, Generación Aumentada por Recuperación, Código de Minería Argentino, PLN jurídico, LLM-as-a-Judge, benchmark legal, base de datos vectorial, agentes inteligentes_
+_Agentic-RAG, Generación Aumentada por Recuperación, Código de Minería Argentino, Procesamiento de lenguaje natural jurídico, LLM-as-a-Judge, benchmark legal, base de datos vectorial, agentes inteligentes_
 
 // Dedicatoria
 #heading(outlined: false, numbering: none)[Dedicatoria]

@@ -284,7 +284,7 @@ A continuación se describen los mecanismos fundamentales que rigen el funcionam
   ) <fig_mlp_ejemplo>
 
 + *Aprendizaje.* Tanto la red biológica como la artificial ajustan incrementalmente la magnitud de los pesos. En el perceptrón simple, los pesos se modifican en proporción al error entre la salida deseada $Y$ y la obtenida $y$. En los MLP, este ajuste se realiza típicamente mediante el algoritmo de *retropropagación* (*backpropagation*) con la regla delta, que busca (mediante una técnica de búsqueda especializada) el conjunto de pesos que minimiza el error.
- + *Objetivo.* Desarrollar algoritmos matemáticos que permitan a las RNA aprender imitando el procesamiento de información y la adquisición de conocimiento del cerebro humano, aunque sin pretender replicar la operación del sistema biológico, sino aprovechar lo que se conoce de su funcionalidad para resolver problemas complejos.
++ *Objetivo.* Desarrollar algoritmos matemáticos que permitan a las RNA aprender imitando el procesamiento de información y la adquisición de conocimiento del cerebro humano, aunque sin pretender replicar la operación del sistema biológico, sino aprovechar lo que se conoce de su funcionalidad para resolver problemas complejos.
 
 ==== Redes neuronales recurrentes (RNN)
 
@@ -326,7 +326,7 @@ Las unidades recurrentes con compuertas (GRU, por sus siglas en inglés) fueron 
 
 === La arquitectura Transformer
 
-El Transformer, introducido por #cite(<vaswani2017>, form: "prose") , representa un cambio de paradigma frente a las arquitecturas recurrentes. A diferencia de las RNN y LSTM, que procesan secuencias de manera secuencial, el Transformer se basa enteramente en mecanismos de atención, lo que permite el procesamiento paralelo de todos los tokens de una secuencia simultáneamente. Esta propiedad, sumada a la posibilidad de entrenar a gran escala sobre hardware masivamente paralelo (GPUs y TPUs), es la principal razón por la que el Transformer se convirtió en la arquitectura dominante del PLN desde 2017 @tunstall2022natural.
+El Transformer, introducido por #cite(<vaswani2017>, form: "prose"), representa un cambio de paradigma frente a las arquitecturas recurrentes. A diferencia de las RNN y LSTM, que procesan secuencias de manera secuencial, el Transformer se basa enteramente en mecanismos de atención, lo que permite el procesamiento paralelo de todos los tokens de una secuencia simultáneamente. Esta propiedad, sumada a la posibilidad de entrenar a gran escala sobre hardware masivamente paralelo (GPUs y TPUs), es la principal razón por la que el Transformer se convirtió en la arquitectura dominante del PLN desde 2017 @tunstall2022natural.
 
 *Arquitectura encoder--decoder.* El Transformer original se organiza en dos mitades simétricas. El _encoder_ recibe la secuencia de entrada y produce, para cada token, una representación contextual que incorpora información de todos los demás tokens. El _decoder_ genera la secuencia de salida token a token, consumiendo tanto la salida del encoder como los tokens previamente generados. Cada mitad es una pila de bloques que se compone, básicamente, de dos sub-capas: una de atención multi-cabezal seguida de una red _feed-forward_ posición por posición, con conexiones residuales y normalización de capa.
 

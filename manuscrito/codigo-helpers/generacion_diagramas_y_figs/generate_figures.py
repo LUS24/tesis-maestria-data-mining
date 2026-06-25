@@ -285,8 +285,6 @@ def fig_cost_performance(df_metrics: pd.DataFrame, df_cost: pd.DataFrame):
     for j in range(i + 1, len(axes)):
         axes[j].set_visible(False)
 
-    fig.suptitle("Relación costo-desempeño para respuesta_correcta_avg y las cinco métricas complementarias.\nCada punto representa una combinación modelo × estrategia",
-                 fontsize=15, y=1.02)
     fig.savefig(OUT_DIR / "costo_desempenio.pdf")
     plt.close(fig)
     print("  ✓ costo_desempenio.pdf")

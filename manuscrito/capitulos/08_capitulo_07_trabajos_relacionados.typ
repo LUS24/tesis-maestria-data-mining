@@ -14,7 +14,7 @@ Los sistemas de consulta legal más establecidos en Argentina operan mediante b�
 
 *Infoleg* @infoleg2025 es una base de datos legislativa nacional de acceso libre y gratuito, administrada por la Dirección Nacional del Sistema Argentino de Información Jurídica del Ministerio de Justicia de la Nación. Contiene leyes, decretos, decisiones administrativas, resoluciones, disposiciones y todo acto cuya publicación sea obligatoria en la primera sección del Boletín Oficial de la República Argentina. Sus contenidos están licenciados bajo Creative Commons Reconocimiento 2.5 Argentina.
 
-*SAIJ* (Sistema Argentino de Información Jurídica) @saij2025 es un servicio de la Dirección Nacional del SAIJ, dependiente del Ministerio de Justicia y Derechos Humanos de la Nación. Fundado en 1981 con apoyo de la UNESCO, incluye todas las leyes nacionales sancionadas desde 1853, tratados internacionales, decretos nacionales y provinciales, jurisprudencia de tribunales federales, nacionales y provinciales, proyectos legislativos, dictámenes de la Procuración del Tesoro de la Nación, artículos de doctrina y publicaciones de Ediciones SAIJ. Su motor de búsqueda permite filtrar por tipo de contenido (legislación, fallos, sumarios, doctrina), tipo de norma (ley, decreto, resolución, disposición), jurisdicción y fecha.
+*SAIJ* (Sistema Argentino de Información Jurídica) @saij2025 es un servicio de la Dirección Nacional del SAIJ, dependiente del Ministerio de Justicia de la Nación. Fundado en 1981 con apoyo de la UNESCO, incluye todas las leyes nacionales sancionadas desde 1853, tratados internacionales, decretos nacionales y provinciales, jurisprudencia de tribunales federales, nacionales y provinciales, proyectos legislativos, dictámenes de la Procuración del Tesoro de la Nación, artículos de doctrina y publicaciones de Ediciones SAIJ. Su motor de búsqueda permite filtrar por tipo de contenido (legislación, fallos, sumarios, doctrina), tipo de norma (ley, decreto, resolución, disposición), jurisdicción y fecha.
 
 A nivel internacional, plataformas como *Westlaw* @westlaw2025 y *LexisNexis* @lexisplus2025 han sido durante décadas los referentes en investigación legal, operando inicialmente con motores de búsqueda por palabras clave sobre extensas bases de datos de jurisprudencia y legislación, principalmente de Estados Unidos y otros países anglosajones.
 
@@ -145,20 +145,105 @@ El presente trabajo se diferencia de los trabajos y sistemas revisados en los si
 
 == Desarrollos Posteriores al Período Experimental
 
-El ritmo de evolución del campo de la inteligencia artificial implicó que, entre la finalización de los experimentos (segundo semestre de 2025) y la redacción final de este manuscrito, se produjeran avances significativos. Esta sección documenta los desarrollos más relevantes organizados en tres ejes: modelos de lenguaje propietarios, modelos de código abierto y _frameworks_ agénticos. La @fig:timeline_desarrollos presenta una línea de tiempo con los principales hitos.
+El ritmo de evolución del campo de la inteligencia artificial implicó que, entre la finalización de los experimentos (segundo semestre de 2025) y la redacción final de este manuscrito, se produjeran avances significativos. Esta sección documenta los desarrollos más relevantes organizados en tres ejes: modelos de lenguaje propietarios, modelos de código abierto y _frameworks_ agénticos. Las @fig:timeline_desarrollos_1, @fig:timeline_desarrollos_2, @fig:timeline_desarrollos_3 y @fig:timeline_desarrollos_4 presentan líneas de tiempo con los principales hitos.
 
-#figure(
-  image("../media/timeline_desarrollos_posteriores.svg", width: 85%),
-  caption: [Línea de tiempo de los principales desarrollos en LLMs y Agentic-RAG entre noviembre de 2025 y abril de 2026, período posterior a la finalización de los experimentos de este trabajo.],
-) <fig:timeline_desarrollos>
+#import "@preview/zeitline:0.1.1": timeline
+
+#let eventos_propietarios_2025 = (
+  (date: "2025-11-12", desc: [OpenAI lanza GPT-5.1 (Instant y Thinking), con razonamiento adaptativo y tono más cálido @openai_gpt5_1.]),
+  (date: "2025-11-18", desc: [Google lanza Gemini 3 Pro, su modelo más inteligente hasta la fecha, con razonamiento de nivel de doctorado y ventana de 1M de tokens @google_gemini3.]),
+  (date: "2025-11-24", desc: [Anthropic presenta Claude Opus 4.5, con el nuevo parámetro _effort_ y reducción del 67\% en precio @anthropic_opus4_5.]),
+  (date: "2025-12-11", desc: [OpenAI lanza GPT-5.2, enfocado en trabajo profesional de conocimiento @openai_gpt5_2.]),
+)
+
+#let eventos_propietarios_2026 = (
+  (date: "2026-02-05", desc: [Anthropic lanza Claude Opus 4.6, con ventana de contexto de 1M de tokens y _Agent Teams_ en Claude Code @anthropic_opus4_6.]),
+  (date: "2026-02-17", desc: [Anthropic presenta Claude Sonnet 4.6, con rendimiento cercano a Opus a un costo significativamente menor @anthropic_sonnet4_6.]),
+  (date: "2026-02-19", desc: [Google lanza Gemini 3.1 Pro, líder en 13 de 16 benchmarks principales @google_gemini3_1.]),
+  (date: "2026-03-05", desc: [OpenAI lanza GPT-5.4, primer modelo general con capacidades nativas de _computer use_ y 1M de tokens de contexto @openai_gpt5_4.]),
+  (date: "2026-04-16", desc: [Anthropic lanza Claude Opus 4.7, con visión de alta resolución y nivel de esfuerzo _xhigh_ @anthropic_opus4_7.]),
+  (date: "2026-04-23", desc: [OpenAI lanza GPT-5.5, modelo frontera con rendimiento líder en codificación y razonamiento @openai_gpt5_5.]),
+  (date: "2026-05-28", desc: [Anthropic presenta Claude Opus 4.8, con _Dynamic Workflows_ y 4 veces menos probabilidad de pasar errores de código @anthropic_opus4_8.]),
+  (date: "2026-06-09", desc: [Anthropic lanza Claude Fable 5 y Mythos 5, primera generación Claude 5 con la nueva clase Mythos por encima de Opus @anthropic_fable5.]),
+)
+
+#let eventos_abiertos_frameworks_1 = (
+  (date: "2025-12", desc: [DeepSeek lanza DeepSeek-V3.2, modelo MoE de 671B parámetros con rendimiento comparable a GPT-5 a una fracción del costo @deepseek_v3_2.]),
+  (date: "2026-01", desc: [DeepSeek-R1, modelo de razonamiento entrenado con aprendizaje por refuerzo, demuestra capacidades a nivel GPT-4 en tareas complejas @deepseek_r1.]),
+  (date: "2026-01", desc: [Microsoft fusiona AutoGen y Semantic Kernel en el _Microsoft Agent Framework_ unificado @microsoft_agent_framework.]),
+  (date: "2026-01", desc: [Mastra, _framework_ agéntico TypeScript, alcanza versión 1.0 con más de 1.77M de descargas mensuales @mastra_1_0.]),
+  (date: "2026-02-16", desc: [Alibaba lanza Qwen 3.5, modelo de 397B parámetros (17B activos) bajo licencia Apache 2.0 @qwen3_5.]),
+  (date: "2026-03", desc: [Meta publica Llama 4 (Scout y Maverick), con arquitectura MoE y capacidades multimodales @llama4.]),
+  (date: "2026-03", desc: [Google contribuye con Gemma 4, modelos compactos (hasta 26B) bajo licencia Apache 2.0 @gemma4.]),
+  (date: "2026-04-20", desc: [Moonshot AI lanza Kimi K2.6, modelo MoE de 1T parámetros (32B activos) con _Agent Swarm_ de hasta 300 subagentes @kimi_k2_6.]),
+  (date: "2026-04-24", desc: [DeepSeek lanza V4-Pro y V4-Flash, modelos MoE con atención híbrida (CSA+HCA), 1M de contexto y licencia MIT @deepseek_v4.]),
+)
+
+#let eventos_abiertos_frameworks_2 = (
+  (date: "2026-06-01", desc: [MiniMax lanza M3, modelo MoE con atención dispersa (MSA), 1M de contexto y capacidades multimodales nativas @minimax_m3.]),
+  (date: "2026-06-12", desc: [Moonshot AI lanza Kimi K2.7-Code, con 30\% menos _tokens_ de razonamiento y mejoras en tareas de codificación @kimi_k2_7_code.]),
+  (date: "2026-06-13", desc: [Zhipu AI (Z.ai) lanza GLM-5.2, modelo MoE de 744B parámetros con 1M de contexto y licencia MIT @glm_5_2.]),
+)
 
 === Modelos Propietarios de Nueva Generación
 
-En un lapso de apenas doce días en noviembre de 2025, los tres principales laboratorios de IA lanzaron nuevos modelos insignia: OpenAI publicó GPT-5.1 (12 de noviembre), que introdujo razonamiento adaptativo donde el modelo decide autónomamente cuánto tiempo de "pensamiento" asignar a cada consulta; Google lanzó Gemini 3 Pro (20 de noviembre), que alcanzó el primer puesto en múltiples _benchmarks_ académicos con una ventana de contexto de un millón de _tokens_; y Anthropic presentó Claude Opus 4.5 (24 de noviembre), con mejoras sustanciales en razonamiento avanzado.
+En un lapso de apenas doce días en noviembre de 2025, los tres principales laboratorios de IA lanzaron nuevos modelos insignia: OpenAI publicó GPT-5.1 (12 de noviembre), que introdujo razonamiento adaptativo donde el modelo decide autónomamente cuánto tiempo de "pensamiento" asignar a cada consulta @openai_gpt5_1; Google lanzó Gemini 3 Pro (20 de noviembre), que alcanzó el primer puesto en múltiples _benchmarks_ académicos con una ventana de contexto de un millón de _tokens_ @google_gemini3; y Anthropic presentó Claude Opus 4.5 (24 de noviembre), con el nuevo parámetro _effort_ para balancear capacidad y costo @anthropic_opus4_5.
 
-La cadencia se aceleró en los meses siguientes. OpenAI iteró rápidamente con GPT-5.2 (diciembre de 2025), GPT-5.4 estándar (5 de marzo de 2026) y las variantes GPT-5.4 mini y nano (17 de marzo de 2026). Anthropic respondió con Claude Opus 4.6 y Sonnet 4.6 (febrero de 2026), donde Sonnet 4.6 alcanzó rendimiento cercano a Opus a un costo significativamente menor. Google presentó Gemini 3.1 Pro (19 de febrero de 2026), que lideró 13 de 16 _benchmarks_ principales y empató con GPT-5.4 Pro en el índice de inteligencia de Artificial Analysis a aproximadamente un tercio del costo de API. xAI lanzó Grok 4.20 (febrero--marzo de 2026), notable por introducir una arquitectura multi-agente novedosa.
+La cadencia se aceleró en los meses siguientes. OpenAI iteró rápidamente con GPT-5.2 (diciembre de 2025) @openai_gpt5_2, GPT-5.4 estándar (5 de marzo de 2026) @openai_gpt5_4 y las variantes GPT-5.4 mini y nano (17 de marzo de 2026). Anthropic respondió con Claude Opus 4.6 (5 de febrero de 2026) @anthropic_opus4_6 y Sonnet 4.6 (17 de febrero de 2026) @anthropic_sonnet4_6, donde Sonnet 4.6 alcanzó rendimiento cercano a Opus a un costo significativamente menor. Google presentó Gemini 3.1 Pro (19 de febrero de 2026) @google_gemini3_1, que lideró 13 de 16 _benchmarks_ principales y empató con GPT-5.4 Pro en el índice de inteligencia de Artificial Analysis a aproximadamente un tercio del costo de API. xAI lanzó Grok 4.20 (febrero--marzo de 2026), notable por introducir una arquitectura multi-agente novedosa.
+
+La competencia se intensificó en el segundo trimestre de 2026. Anthropic lanzó Claude Opus 4.7 (16 de abril) @anthropic_opus4_7, con visión de alta resolución y un nuevo nivel de esfuerzo _xhigh_. OpenAI contraatacó con GPT-5.5 (23 de abril) @openai_gpt5_5, estableciendo un nuevo estado del arte en codificación y razonamiento. Anthropic continuó con Claude Opus 4.8 (28 de mayo) @anthropic_opus4_8, que introdujo _Dynamic Workflows_ con cientos de subagentes paralelos y redujo cuatro veces la probabilidad de pasar errores de código inadvertidos. Finalmente, Anthropic lanzó Claude Fable 5 y Mythos 5 (9 de junio) @anthropic_fable5, la primera generación Claude 5 con la nueva clase Mythos por encima de Opus, aunque el acceso a estos modelos fue suspendido días después por una directiva de control de exportaciones del gobierno de Estados Unidos.
 
 El dato más revelador del período es la densidad de lanzamientos: solo en el primer trimestre de 2026 se registraron más de 255 lanzamientos de modelos por parte de organizaciones relevantes, con siete modelos de frontera publicados únicamente en febrero de 2026.
+
+#figure(
+  placement: top,
+  timeline(
+    eventos_propietarios_2025,
+    theme: (
+      colors: (
+        accent: rgb("#0050b3"),
+        muted: rgb("#555555"),
+        line:  rgb("#aaaaaa"),
+      ),
+      sizes: (
+        date: 10pt,
+        body: 8.5pt,
+        dot: 5pt,
+        line-width: 2.5pt,
+      ),
+      spacing: (
+        row: 1.2em,
+        arm:  2.4em,
+      ),
+    ),
+  ),
+  caption: [Línea de tiempo de los principales desarrollos en modelos de lenguaje propietarios durante 2025.],
+) <fig:timeline_desarrollos_1>
+
+#figure(
+  placement: top,
+  timeline(
+    eventos_propietarios_2026,
+    theme: (
+      colors: (
+        accent: rgb("#0050b3"),
+        muted: rgb("#555555"),
+        line:  rgb("#aaaaaa"),
+      ),
+      sizes: (
+        date: 10pt,
+        body: 8.5pt,
+        dot: 5pt,
+        line-width: 2.5pt,
+      ),
+      spacing: (
+        row: 1.2em,
+        arm:  2.4em,
+      ),
+    ),
+  ),
+  caption: [Línea de tiempo de los principales desarrollos en modelos de lenguaje propietarios durante 2026.],
+) <fig:timeline_desarrollos_2>
 
 === Modelos de Código Abierto y Razonamiento
 
@@ -166,23 +251,73 @@ Uno de los desarrollos más disruptivos del período fue la irrupción de modelo
 
 *DeepSeek* captó la atención global con dos lanzamientos clave: DeepSeek-V3.2 (diciembre de 2025), un modelo de 671B parámetros con arquitectura _Mixture-of-Experts_ (MoE, 37B activos) que alcanzó rendimiento comparable a GPT-5 en razonamiento a una fracción del costo de entrenamiento (aproximadamente \$6 millones frente a más de \$100 millones estimados para modelos propietarios equivalentes); y DeepSeek-R1 (enero de 2026), un modelo de razonamiento entrenado con aprendizaje por refuerzo a gran escala que demostró capacidades a nivel de GPT-4 en tareas de razonamiento complejo. DeepSeek-R1 introdujo además una familia de modelos destilados (_DeepSeek-R1-Distill_) basados en arquitecturas Qwen y Llama, diseñados para entornos de producción con restricciones de cómputo.
 
-*Qwen* (Alibaba) avanzó desde Qwen3 (diciembre de 2025) hasta Qwen 3.5 (16 de febrero de 2026), un modelo de 397B parámetros totales con 17B activos por paso de inferencia, licenciado bajo Apache 2.0. Qwen 3.5 se posicionó como líder en tareas de visión, seguimiento de instrucciones y comprensión multimodal, áreas directamente relevantes para aplicaciones de producción.
+*DeepSeek* continuó su avance con DeepSeek-V4 (abril de 2026) @deepseek_v4, presentado en dos variantes: V4-Pro (1.6T parámetros totales, 49B activos) y V4-Flash (284B totales, 13B activos), ambos con ventana de contexto de 1M de _tokens_ y licencia MIT. V4 incorpora una arquitectura de atención híbrida que combina _Compressed Sparse Attention_ (CSA) y _Heavily Compressed Attention_ (HCA), reduciendo los FLOPs de inferencia al 27\% y la _KV cache_ al 10\% respecto a V3.2 en contexto de 1M de _tokens_. En _benchmarks_ de codificación, V4-Pro alcanzó 80.6\% en SWE-Bench Verified y 93.5\% en LiveCodeBench, posicionándose como el modelo de código abierto más fuerte en tareas de ingeniería de _software_.
 
-*Meta* publicó Llama 4 con las variantes Scout (109B totales/17B activos) y Maverick (400B totales/17B activos), ambas con arquitectura MoE, capacidades multimodales y contexto extendido, manteniendo la línea de modelos abiertos que ha catalizado el ecosistema de código abierto desde 2023. *Google* contribuyó con Gemma 4, una familia de modelos compactos (hasta 26B parámetros) con licencia Apache 2.0, donde el modelo de 9B parámetros alcanzó un 81.7\% en GPQA Diamond, superando a modelos de código abierto hasta 13 veces más grandes.
+*Qwen* (Alibaba) avanzó desde Qwen3 (diciembre de 2025) hasta Qwen 3.5 (16 de febrero de 2026), un modelo de 397B parámetros totales con 17B activos por paso de inferencia, licenciado bajo Apache 2.0 @qwen3_5. Qwen 3.5 se posicionó como líder en tareas de visión, seguimiento de instrucciones y comprensión multimodal, áreas directamente relevantes para aplicaciones de producción.
 
-El resultado neto es que, para abril de 2026, la brecha de rendimiento entre modelos de código abierto y propietarios se ha reducido sustancialmente. Análisis independientes sugieren que para aproximadamente el 80\% de tareas empresariales comunes (clasificación, extracción, resumen, traducción), los modelos abiertos ofrecen rendimiento comparable a un costo significativamente menor.
+*Meta* publicó Llama 4 con las variantes Scout (109B totales/17B activos) y Maverick (400B totales/17B activos), ambas con arquitectura MoE, capacidades multimodales y contexto extendido @llama4. *Google* contribuyó con Gemma 4, una familia de modelos compactos (hasta 26B parámetros) con licencia Apache 2.0, donde el modelo de 9B parámetros alcanzó un 81.7\% en GPQA Diamond, superando a modelos de código abierto hasta 13 veces más grandes @gemma4.
 
-=== _Frameworks_ Agénticos y Agentic-RAG
+*Moonshot AI* emergió como un competidor relevante con Kimi K2.6 (abril de 2026) @kimi_k2_6, un modelo MoE de 1 billón de parámetros totales (32B activos) con ventana de contexto de 256K _tokens_ y un sistema _Agent Swarm_ capaz de orquestar hasta 300 subagentes ejecutando 4.000 pasos coordinados simultáneamente. K2.6 alcanzó 58.6\% en SWE-Bench Pro, superando a GPT-5.4 en esta métrica de referencia para tareas de ingeniería de _software_. Poco después, Moonshot lanzó Kimi K2.7-Code (junio de 2026) @kimi_k2_7_code, una versión optimizada que reduce en aproximadamente un 30\% los _tokens_ de razonamiento necesarios por tarea, manteniendo la misma arquitectura de 1T parámetros.
 
-El ecosistema de _frameworks_ para construir sistemas agénticos y Agentic-RAG maduró considerablemente durante el período. Microsoft fusionó AutoGen y Semantic Kernel en el unificado Microsoft Agent Framework (enero de 2026), con disponibilidad general prevista para fines del primer trimestre de 2026. Mastra, un _framework_ agéntico basado en TypeScript, alcanzó la versión 1.0 (enero de 2026) y superó 1.77 millones de descargas mensuales en NPM. LangGraph consolidó su posición como herramienta de referencia para orquestación de flujos agénticos multi-paso, mientras que LlamaIndex se especializó en pipelines RAG de producción con soporte nativo para flujos agénticos.
+*MiniMax* presentó M3 (junio de 2026) @minimax_m3, un modelo que combina por primera vez en un peso abierto tres capacidades de frontera: codificación de nivel competitivo (59.0\% en SWE-Bench Pro, superando a GPT-5.5), una ventana de contexto de 1M de _tokens_ gracias a su novedosa arquitectura de atención dispersa (MSA), y capacidades multimodales nativas (imagen y video). Su precio de API (\$0.30 por millón de _tokens_ de entrada) representa una fracción del costo de los modelos propietarios equivalentes.
 
-En el ámbito de herramientas especializadas para RAG, RAGFlow evolucionó como motor de RAG de código abierto con soporte para GraphRAG y razonamiento agéntico. RAGAS se estableció como el estándar _de facto_ para evaluación de pipelines RAG, proporcionando métricas de relevancia, fidelidad y calidad de respuesta. AutoRAG introdujo la automatización de la optimización de pipelines RAG mediante experimentación sistemática.
+*Zhipu AI* (Z.ai) lanzó GLM-5.2 (junio de 2026) @glm_5_2, un modelo MoE de 744B parámetros totales (~40B activos) con ventana de contexto de 1M de _tokens_, licencia MIT y dos modos de razonamiento seleccionables (High y Max). GLM-5.2 se posicionó como el modelo de código abierto más fuerte en codificación, alcanzando 81.0 en Terminal-Bench 2.1 y 62.1 en SWE-Bench Pro, con un rendimiento cercano a Claude Opus 4.8 en tareas de horizonte largo.
 
-Según proyecciones de Gartner, se espera que el 40\% de las aplicaciones empresariales incluyan agentes de IA específicos para tareas a fines de 2026, frente a menos del 5\% en 2025. El mercado global de agentes de IA pasó de \$5.4 mil millones en 2024 a \$7.6 mil millones en 2025, con proyecciones de alcanzar \$50 mil millones para 2030.
+El resultado neto es que, para mediados de 2026, la brecha de rendimiento entre modelos de código abierto y propietarios se ha reducido sustancialmente. Análisis independientes sugieren que para aproximadamente el 80\% de tareas empresariales comunes (clasificación, extracción, resumen, traducción), los modelos abiertos ofrecen rendimiento comparable a un costo significativamente menor.
+
+#figure(
+  placement: top,
+  timeline(
+    eventos_abiertos_frameworks_1,
+    theme: (
+      colors: (
+        accent: rgb("#0050b3"),
+        muted: rgb("#555555"),
+        line:  rgb("#aaaaaa"),
+      ),
+      sizes: (
+        date: 10pt,
+        body: 8.5pt,
+        dot: 5pt,
+        line-width: 2.5pt,
+      ),
+      spacing: (
+        row: 1.2em,
+        arm:  2.4em,
+      ),
+    ),
+  ),
+  caption: [Línea de tiempo de los principales desarrollos en modelos de código abierto y _frameworks_ agénticos (diciembre de 2025 a abril de 2026).],
+) <fig:timeline_desarrollos_3>
+
+#figure(
+  placement: top,
+  timeline(
+    eventos_abiertos_frameworks_2,
+    theme: (
+      colors: (
+        accent: rgb("#0050b3"),
+        muted: rgb("#555555"),
+        line:  rgb("#aaaaaa"),
+      ),
+      sizes: (
+        date: 10pt,
+        body: 8.5pt,
+        dot: 5pt,
+        line-width: 2.5pt,
+      ),
+      spacing: (
+        row: 1.2em,
+        arm:  2.4em,
+      ),
+    ),
+  ),
+  caption: [Línea de tiempo de los principales desarrollos en modelos de código abierto y _frameworks_ agénticos durante junio de 2026 (continuación).],
+) <fig:timeline_desarrollos_4>
 
 === Implicaciones para el Presente Trabajo
 
-Estos desarrollos tienen implicaciones directas para la interpretación de los resultados de esta tesis. En primer lugar, el hallazgo de la sobrecarga agéntica observada en modelos de menor capacidad (gpt-5-nano) podría no reproducirse con los modelos de razonamiento de nueva generación (DeepSeek-R1, Gemini 3.1 Pro), que integran cadenas de pensamiento explícitas capaces de gestionar instrucciones complejas de manera más efectiva. En segundo lugar, la disponibilidad de modelos de código abierto competitivos con las APIs propietarias abre la posibilidad de eliminar la dependencia de APIs comerciales identificada como limitación del sistema, habilitando despliegues locales relevantes para entornos donde la confidencialidad de las consultas legales sea un requisito. Por último, la maduración de los _frameworks_ agénticos simplificaría una futura reimplementación del sistema multi-agente, potencialmente mejorando la eficiencia y modularidad de la arquitectura.
+Estos desarrollos tienen implicaciones directas para la interpretación de los resultados de esta tesis. En primer lugar, el hallazgo de la sobrecarga agéntica observada en modelos de menor capacidad (gpt-5-nano) podría no reproducirse con los modelos de razonamiento de nueva generación (DeepSeek-R1, Gemini 3.1 Pro, Claude Opus 4.8), que integran cadenas de pensamiento explícitas capaces de gestionar instrucciones complejas de manera más efectiva. En segundo lugar, la disponibilidad de modelos de código abierto competitivos con las APIs propietarias (Kimi K2.7-Code, MiniMax M3, GLM-5.2) abre la posibilidad de eliminar la dependencia de APIs comerciales identificada como limitación del sistema, habilitando despliegues locales relevantes para entornos donde la confidencialidad de las consultas legales sea un requisito. Por último, la maduración de los _frameworks_ agénticos (Microsoft Agent Framework, Mastra) simplificaría una futura reimplementación del sistema multi-agente, potencialmente mejorando la eficiencia y modularidad de la arquitectura.
 
 La inclusión de estos desarrollos en el análisis comparativo requeriría experimentación adicional fuera del alcance del presente trabajo; no obstante, la metodología propuesta ---diseño factorial, _benchmark_ específico y evaluación LLM-as-a-Judge--- es directamente aplicable a futuras generaciones de modelos sin modificaciones sustanciales.
 
