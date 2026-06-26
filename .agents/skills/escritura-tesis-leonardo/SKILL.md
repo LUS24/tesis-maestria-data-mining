@@ -452,3 +452,87 @@ Las mejores opciones para el proceso de revisión son:
 - minimax-m3:cloud (Vision)
 - deepseek-v4-flash:cloud
 - kimi-k2.6:cloud (Vision)
+
+
+## Presentación (Diatypst)
+
+**Objetivo**: Crear y mantener la presentación de la tesis usando [Diatypst](https://typst.app/universe/package/diatypst/), un paquete Typst para diapositivas.
+
+La presentación se encuentra en `presentacion/diatypst/main.typ` y se compila con `make presentation`.
+
+### Cuándo usar esta sección
+
+- Cuando necesites **crear la presentación desde cero** para la defensa de tesis.
+- Cuando el manuscrito haya cambiado y necesites **sincronizar la presentación**.
+- Cuando necesites **agregar, modificar o eliminar diapositivas**.
+- Cuando necesites **actualizar figuras, tablas o resultados** en la presentación.
+
+### Filosofía
+
+1. **La presentación deriva del manuscrito, no es independiente.** Cada diapositiva debe tener una correspondencia clara con una sección del manuscrito.
+2. **Una idea por diapositiva.** Si una diapositiva tiene más de 3 viñetas o cubre múltiples conceptos, divídela.
+3. **Prioriza lo visual sobre el texto.** Usa diagramas, tablas y gráficos del manuscrito. El público debe entender la diapositiva en 3 segundos.
+4. **Reescribe, no copies.** El texto de las diapositivas debe estar adaptado para formato oral, no pegado literalmente del manuscrito.
+
+### Flujo de trabajo
+
+#### 1. Extraer la narrativa central del manuscrito
+
+Antes de escribir diapositivas, identifica desde el manuscrito:
+
+- **Problema**: ¿Qué problema resuelve la tesis? (1-2 diapositivas)
+- **Contribución**: ¿Cuál es la contribución principal? (1 diapositiva)
+- **Método**: ¿Cómo se aborda el problema? (2-4 diapositivas)
+- **Resultados**: ¿Qué evidencia respalda la contribución? (2-3 diapositivas)
+- **Conclusiones**: ¿Qué implicaciones tiene? (1-2 diapositivas)
+
+#### 2. Mapear capítulos a secciones de la presentación
+
+| Capítulo del manuscrito | Sección en presentación |
+| --- | --- |
+| 01 — Introducción | Introducción (3-4 slides) |
+| 02 — Fundamentos e historia del PLN | Contexto (1-2 slides) |
+| 03 — Aplicación de PLN al dominio legal | Contexto (1-2 slides) |
+| 04 — Marco teórico Agentic RAG | Marco Teórico (2-3 slides) |
+| 05 — Metodología | Método (3-4 slides) |
+| 06 — Evaluación | Resultados (3-4 slides) |
+| 07 — Trabajos relacionados | (Integrar en contexto/método) |
+| 08 — Conclusiones y trabajos futuros | Conclusiones (2-3 slides) |
+
+#### 3. Sincronizar tras cambios en el manuscrito
+
+Cuando el manuscrito cambie:
+
+1. Identifica qué capítulos cambiaron.
+2. Localiza las diapositivas correspondientes en `presentacion/diatypst/main.typ`.
+3. Actualiza:
+   - **Figuras**: si cambió el diagrama en `manuscrito/media/`, la presentación lo refleja automáticamente (misma ruta relativa).
+   - **Resultados**: actualiza tablas y métricas numéricas.
+   - **Narrativa**: ajusta el texto para reflejar cambios en la argumentación.
+4. Recompila: `make presentation`.
+
+### Compilación
+
+```bash
+# Desde la raíz del repositorio
+make presentation
+
+# O manualmente
+cd presentacion/diatypst
+typst compile main.typ ../../presentacion_latest.pdf
+
+# Vista previa en vivo
+cd presentacion/diatypst
+typst watch main.typ ../../presentacion_latest.pdf
+```
+
+### Guía detallada
+
+Consulta [references/guia-de-preparacion-presentacion.md](references/guia-de-preparacion-presentacion.md) para la documentación completa incluyendo:
+
+- Configuración inicial y opciones de Diatypst
+- Estructura de diapositivas (secciones, contenido)
+- Elementos de contenido (términos, código, tablas, imágenes, citas)
+- Tema y personalización de estilo
+- Estructura recomendada para defensa de tesis (~15-20 diapositivas)
+- Buenas prácticas y errores comunes

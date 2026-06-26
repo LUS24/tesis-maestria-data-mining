@@ -14,6 +14,9 @@ TYPST_INPUTS := --input hour=$(BUILD_HOUR) --input minute=$(BUILD_MINUTE) --inpu
 pdf:
 	cd manuscrito && typst compile $(TYPST_INPUTS) main.typ ../manuscrito_latest.pdf
 
+presentation:
+	cd ./presentacion/diatypst && typst compile $(TYPST_INPUTS) main.typ ../../presentacion_latest.pdf
+
 save:
 	git add .
 	git commit -m "chore: checkpoint"
