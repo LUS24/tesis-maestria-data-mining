@@ -1,6 +1,6 @@
 # Makefile para la tesis
 
-.PHONY: pdf save watch
+.PHONY: pdf save watch presentation
 
 # Timestamp al momento de compilar (formato: YYYYMMDD_HHMMSS)
 TIMESTAMP := $(shell date +%Y%m%d_%H%M%S)
@@ -15,7 +15,10 @@ pdf:
 	cd manuscrito && typst compile $(TYPST_INPUTS) main.typ ../manuscrito_latest.pdf
 
 presentation:
-	cd ./presentacion/diatypst && typst compile $(TYPST_INPUTS) main.typ ../../presentacion_latest.pdf
+	cd ./presentacion/diatypst && typst compile --root ../.. $(TYPST_INPUTS) main.typ ../../presentacion_latest.pdf
+
+presentation-watch:
+	cd ./presentacion/diatypst && typst watch --root ../.. $(TYPST_INPUTS) main.typ ../../presentacion_latest.pdf
 
 save:
 	git add .
