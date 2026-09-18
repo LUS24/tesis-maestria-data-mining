@@ -11,6 +11,10 @@
 #set heading(numbering: "1.1")
 #show outline.entry: set par(justify: true)
 
+// Todos los enlaces del documento se muestran en azul (#0000FF), tanto en el
+// cuerpo del texto como en las URLs de la lista de referencias.
+#show link: set text(fill: rgb("#0000FF"))
+
 #show heading.where(level: 1): it => {
   pagebreak(weak: true)
   text(18pt, weight: "bold", it)

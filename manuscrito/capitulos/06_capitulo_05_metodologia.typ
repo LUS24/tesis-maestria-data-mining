@@ -137,7 +137,7 @@ La @tabla-esquema-milvus ilustra la estructura de la colección en Milvus.
 
 === Creación de Índices
 
-Se creó un índice de tipo IVF_FLAT sobre el campo de embeddings, que ofrece un balance entre velocidad de búsqueda y precisión de los resultados. La métrica de distancia empleada fue la similitud coseno (COSINE), adecuada para comparar representaciones semánticas.
+Se creó un índice de tipo IVF_FLAT sobre el campo de embeddings, que ofrece un balance entre velocidad de búsqueda y precisión de los resultados. La métrica de distancia empleada fue la similitud coseno (COSINE), adecuada para comparar representaciones semánticas: al medir el coseno del ángulo entre dos vectores, es invariante a la magnitud de estos y captura su orientación relativa, propiedad que la torna la medida estándar para comparar embeddings de oraciones @reimers2019sentence @zhelezniak2019correlation.
 
 === Estrategia de Chunking
 
@@ -161,12 +161,15 @@ La @fig-esquema-milvus ilustra el proceso de generación de embeddings e inserci
 
 === Criterios de Selección
 
-Los criterios para la selección del modelo de embeddings fueron:
+La selección del modelo de embeddings se guió por cuatro criterios:
 
-+ Soporte para el idioma español.
-+ Desempeño en tareas de similitud semántica.
-+ Dimensionalidad de los vectores resultantes.
-+ Disponibilidad como modelo de código abierto.
++ *Soporte para el idioma español*: el corpus y las consultas están íntegramente en español, con terminología del dominio jurídico. Un modelo entrenado específicamente en español evita la pérdida de matices que introduce la traducción implícita de los modelos multilingües de propósito general y evita depender de una etapa de traducción previa a la codificación.
+
++ *Desempeño en tareas de similitud semántica*: la recuperación se resuelve íntegramente por similitud entre la consulta y los artículos, de modo que la calidad del ranking depende directamente de la capacidad del modelo de ordenar pares de textos según su cercanía semántica. Los modelos de la familia _sentence-transformers_ entrenados para similitud textual ofrecen un desempeño sustancialmente superior al de los embeddings estáticos en esta tarea @reimers2019sentence.
+
++ *Dimensionalidad de los vectores resultantes*: una dimensionalidad moderada (768 dimensiones) mantiene el costo de almacenamiento y de búsqueda dentro de lo que permite una instancia de Milvus _standalone_, sin degradar la capacidad representativa. Dimensiones muy reducidas comprometen la separación entre artículos temáticamente próximos —riesgo relevante en un corpus con disposiciones que se repiten a lo largo de títulos distintos—, mientras que dimensiones muy altas encarecen la indexación sin beneficios proporcionales para un corpus de 482 partes.
+
++ *Disponibilidad como modelo de código abierto*: permite ejecutar la codificación en infraestructura propia (CPU), auditar el modelo, reproducir los experimentos y redistribuir el sistema, requisitos alineados con el carácter abierto del prototipo. Al no depender de una API externa, la generación de embeddings no introduce costo por token ni latencia de red, y el corpus completo permanece en la infraestructura local.
 
 === Modelo Seleccionado
 
@@ -311,7 +314,7 @@ Se implementó un sistema de logging que registra la conversación completa entr
 + Los fragmentos recuperados en cada iteración de búsqueda.
 + Los metadatos de tokens consumidos y costos asociados a cada llamada a la API.
 
-Los logs se almacenan en formato JSON para facilitar el análisis posterior del comportamiento del sistema. Nota: las decisiones del Agente de Calidad no aparecen en los logs de la configuración experimental final, dado que este agente fue desactivado.
+Los logs se almacenan en formato JSON (JavaScript Object Notation) para facilitar el análisis posterior del comportamiento del sistema. Nota: las decisiones del Agente de Calidad no aparecen en los logs de la configuración experimental final, dado que este agente fue desactivado.
 
 === Definición de Agentes y Herramientas
 
@@ -418,6 +421,25 @@ La función `get_document_matches` codifica la consulta mediante `SentenceTransf
 
 El límite global de 6 invocaciones se implementa mediante `cap_total_tool_calls`, que contabiliza todas las llamadas a herramientas en la sesión y deshabilita las herramientas al alcanzar el umbral. Esto permite que el agente descomponga la consulta en hasta 3 subconsultas con hasta 2 búsquedas cada una, o realice hasta 6 búsquedas con una única formulación.
 
+Cabe precisar que el límite de seis búsquedas no depende únicamente de la indicación del prompt: está impuesto en el código de orquestación, en dos capas complementarias. En primer lugar, la ejecución del Agente de Recuperación se invoca con `usage_limits=VECTOR_SEARCH_LIMIT`, una instancia de `UsageLimits(tool_calls_limit=6)` que interrumpe la ejecución al alcanzar el tope de llamadas. En segundo lugar, `cap_total_tool_calls` actúa como función `prepare_tools` del agente: cuando contabiliza seis llamadas previas (`TOTAL_TOOL_CALL_LIMIT = 6`), devuelve una lista vacía de herramientas, de modo que el agente ya no dispone de ninguna herramienta para invocar. El mismo mecanismo acota la actuación del Agente Especialista Legal, cuyo límite es `DOCUMENT_RETRIEVAL_LIMIT = 1`.
+
+#block(
+  width: 100%,
+  inset: 10pt,
+  stroke: 0.5pt + luma(180),
+  radius: 4pt,
+  [
+    #set text(size: 9pt, font: "DejaVu Sans Mono")
+    ```python
+    TOTAL_TOOL_CALL_LIMIT = 6          # Agente de Recuperación
+    DOCUMENT_RETRIEVAL_LIMIT = 1       # Agente Especialista Legal
+    VECTOR_SEARCH_LIMIT = UsageLimits(tool_calls_limit=6)
+    ```
+  ],
+)
+
+Los dos mecanismos son redundantes de forma deliberada: el límite declarado en `UsageLimits` interrumpe la ejecución aun si el modelo intentara continuar, mientras que `cap_total_tool_calls` retira las herramientas antes de que el modelo pueda solicitarlas, lo que además evita llamadas fallidas y consumo innecesario de tokens.
+
 === Ejemplo de Interacción entre Agentes
 
 Para ilustrar el flujo completo de comunicación, se presenta a continuación un ejemplo concreto extraído de los logs de ejecución correspondientes a la pregunta 1.1 del benchmark (modelo gpt-5-mini como Agente Especialista Legal, gpt-5 como Agente de Recuperación). Los logs completos de todas las interacciones se encuentran en `codigo_experimentos/part_g/chat_data/`.
@@ -457,6 +479,8 @@ La @tabla-hiperparametros-agentes presenta los hiperparámetros de configuració
 ) <tabla-hiperparametros-agentes>
 
 El límite total de llamadas a herramientas del sistema está fijado en 6 invocaciones, lo que permite al Agente de Recuperación descomponer la consulta en hasta 3 subconsultas y realizar hasta 2 búsquedas por subconsulta, o realizar hasta 6 búsquedas con una única formulación.
+
+En cuanto al registro de costos, la ejecución del Agente de Recuperación se contabiliza de forma independiente de la del Agente Especialista Legal: los metadatos de cada respuesta de la configuración Agentic-RAG incluyen los campos `retrieval_input_tokens`, `retrieval_output_tokens` y `retrieval_total_price`, que registran el consumo del modelo de recuperación (`gpt-5`). El costo informado para cada consulta con Agentic-RAG es, por lo tanto, la suma del costo del Agente Especialista Legal (`total_price`, con el modelo que corresponda a la configuración) y del costo del Agente de Recuperación (`retrieval_total_price`); los 79 registros de la estrategia agéntica incluyen este segundo componente, mientras que las estrategias sin RAG y RAG básico no registran costo de recuperación por tokens (en el RAG básico la búsqueda vectorial se ejecuta localmente sobre Milvus y no consume tokens de API). Dado que el Agente de Recuperación emplea siempre `gpt-5`, este componente domina el costo de la estrategia agéntica, en particular cuando el Agente Especialista Legal es un modelo pequeño: en el ejemplo del anexo @anexo-ejemplos, el Agente de Recuperación representó USD 0,05037 frente a USD 0,00285 del Agente Especialista Legal.
 
 == Selección de Modelos LLM
 
@@ -498,7 +522,7 @@ La @tabla-costos-modelos presenta los costos por token de los tres modelos emple
   caption: [Costos por millón de tokens (Mtok) de los modelos GPT-5 empleados. El ratio indica el factor de costo relativo al modelo más económico (gpt-5-nano).],
 ) <tabla-costos-modelos>
 
-La diferencia de costos entre modelos es significativa: gpt-5 es 25 veces más costoso que gpt-5-nano por token de entrada y salida. Esta variación permite analizar la relación costo-beneficio de cada configuración en el capítulo de evaluación. Cabe señalar que en la configuración Agentic-RAG, los agentes de Recuperación y Calidad emplean gpt-5 independientemente del modelo del Agente Especialista Legal, lo que incrementa el costo base de esta estrategia.
+La diferencia de costos entre modelos es significativa: gpt-5 es 25 veces más costoso que gpt-5-nano por token de entrada y salida. Esta variación permite analizar la relación costo-beneficio de cada configuración en el capítulo de evaluación. Cabe señalar que en la configuración Agentic-RAG, el Agente de Recuperación emplea gpt-5 independientemente del modelo del Agente Especialista Legal, lo que incrementa el costo base de esta estrategia.
 
 == Diseño del Benchmark
 
@@ -523,9 +547,9 @@ Las preguntas se normalizaron a un formato unificado donde cada subpregunta cons
 
 === Colaboración con Profesionales del Derecho
 
-Las preguntas generadas y sus respuestas esperadas fueron revisadas por profesionales del derecho con experiencia en legislación minera argentina, con el objetivo de validar la pertinencia, corrección y completitud de las respuestas de referencia. El proceso de validación se estructuró en las siguientes etapas:
+Las preguntas generadas y sus respuestas esperadas fueron revisadas por un profesional del derecho con experiencia en legislación minera argentina, con el objetivo de validar la pertinencia, corrección y completitud de las respuestas de referencia. El proceso de validación se estructuró en las siguientes etapas:
 
-+ *Revisión inicial*: los profesionales examinaron la totalidad de las preguntas generadas por GPT-4.1, verificando que los escenarios planteados fueran jurídicamente plausibles y que las subpreguntas abordaran aspectos relevantes de la normativa.
++ *Revisión inicial*: el profesional examinó la totalidad de las preguntas generadas por GPT-4.1, verificando que los escenarios planteados fueran jurídicamente plausibles y que las subpreguntas abordaran aspectos relevantes de la normativa.
 
 + *Verificación de respuestas esperadas*: se contrastaron las respuestas de referencia con el texto vigente del Código de Minería, evaluando tres criterios: (a) correcta identificación de los artículos aplicables, (b) interpretación adecuada de las disposiciones normativas, y (c) coherencia entre la fundamentación y la conclusión jurídica.
 
@@ -638,7 +662,32 @@ Las versiones exactas de todas las librerías empleadas, incluyendo dependencias
 
 === Infraestructura
 
-+ *Milvus*: base de datos vectorial desplegada mediante Docker Compose.
+La infraestructura empleada combina un equipo local —donde se ejecutan íntegramente los notebooks de experimentación y el modelo de embeddings— con servicios externos accedidos por API para la generación de respuestas y la evaluación por jueces. La @fig-infraestructura resume los componentes y las conexiones entre ellos.
+
+#figure(
+  mermaid(
+    "graph TD
+     subgraph SL[Equipo local: x86_64, 16 nucleos, 32 GB RAM, sin GPU]
+       NB[Notebooks de experimentacion]
+       EMB[Modelo de embeddings sentence-transformers]
+       MIL[Milvus standalone en Docker Compose]
+       ETCD[etcd: almacen de metadatos]
+       NB --> EMB
+       EMB -->|Insercion de embeddings 768d| MIL
+       NB -->|Busqueda vectorial| MIL
+       MIL --- ETCD
+     end
+     subgraph SE[Servicios externos accedidos por API]
+       OAI[OpenAI API: GPT-5 nano, mini y estandar, GPT-4.1, o4-mini]
+       JUE[Jueces LLM: DeepSeek-V3, Grok 4.1 Fast, Kimi K2 0905]
+     end
+     NB -->|Generacion de respuestas| OAI
+     NB -->|Evaluacion por jueces| JUE",
+  ),
+  caption: [Infraestructura empleada en los experimentos. El equipo local aloja la base de datos vectorial (Milvus _standalone_ y etcd, desplegados con Docker Compose) y el modelo de embeddings, que se ejecuta en CPU; los notebooks de experimentación (Python con `uv`) orquestan la generación de respuestas —bajo las tres estrategias de recuperación— y la evaluación LLM-as-a-Judge, que se realizan mediante APIs externas.],
+) <fig-infraestructura>
+
++ *Milvus*: base de datos vectorial desplegada mediante Docker Compose, junto con etcd como almacén de metadatos. La instancia se ejecuta en el equipo local descrito en la @fig-infraestructura.
 + *OpenAI API*: acceso a los modelos GPT-5 (nano, mini, estándar), GPT-4.1 para generación de preguntas y o4-mini para extracción de contenido de archivos PDF.
 + *APIs de terceros*: DeepSeek, Grok y Kimi K2 como modelos jueces.
 
@@ -671,6 +720,8 @@ Para evaluar la confiabilidad de las evaluaciones LLM-as-a-Judge, se calculó el
 === Manejo de Errores y Reintentos
 
 Se implementó un sistema de manejo de errores que registra las respuestas fallidas y permite su reprocesamiento selectivo. Los errores más frecuentes fueron timeouts de la API y límites de tasa (rate limits), que se gestionaron mediante reintentos con backoff exponencial.
+
+En la etapa de evaluación LLM-as-a-Judge se detectaron, además, errores sistemáticos de formato en las salidas de los jueces: en algunos casos la respuesta del modelo juez no constituía un JSON válido —texto explicativo antes o después del objeto JSON, comillas sin escapar o bloques truncados—, lo que impedía el parseo del reporte de evaluación y dejaba el caso sin puntaje. Estos errores se concentraron en un único modelo juez, Grok 4.1 Fast, y fueron corregidos de forma manual: se revisó el reporte de cada caso afectado, se recuperó del texto devuelto por el juez el puntaje y la justificación correspondientes, y el registro corregido se incorporó al conjunto de resultados consolidado. Dado que la incidencia fue acotada y estuvo concentrada en un solo juez, no se instrumentó un reintento automático ni una reparación programática de las salidas malformadas. La consecuencia metodológica de esta decisión se discute en @sec:limitaciones.
 
 === Optimización de Rendimiento
 

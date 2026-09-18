@@ -66,7 +66,7 @@ La segunda funcionalidad será atender las consultas de los usuarios, lo que des
 
 Para evaluar la efectividad del sistema propuesto, se llevarán a cabo pruebas utilizando un conjunto de consultas representativas del dominio legal argentino. Se medirán métricas como la precisión, exhaustividad, relevancia y coherencia de las respuestas generadas, comparando el rendimiento del sistema Agentic-RAG con soluciones existentes.
 
-Además, se realizarán pruebas utilizando un *benchmark a pequeña escala, generado con asistencia de LLM y validado por profesionales del derecho argentino*. Este benchmark, al ser revisado por expertos en el campo, garantizará que las evaluaciones se basen en casos de uso reales y desafiantes, proporcionando una medida fidedigna de la capacidad del sistema para asistir en la práctica jurídica diaria.
+Además, se realizarán pruebas utilizando un *benchmark a pequeña escala, generado con asistencia de LLM y validado por un profesional del derecho argentino*. Este benchmark, al ser revisado por un experto en el campo, garantizará que las evaluaciones se basen en casos de uso reales y desafiantes, proporcionando una medida fidedigna de la capacidad del sistema para asistir en la práctica jurídica diaria.
 
 === Limitaciones de la solución propuesta
 
@@ -92,7 +92,7 @@ A continuación, se detallan los principales problemas identificados, con un bre
       | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
       | Sistemas de búsqueda legal basados en palabras clave con limitada comprensión semántica | Implementación de búsqueda semántica mediante base de datos vectorial con embeddings                                 |
       | Alucinaciones en modelos de lenguaje que generan información no verificable             | Uso de RAG para anclar respuestas en documentos reales y verificables                                                |
-      | Ausencia de benchmarks para normativa argentina                                         | Desarrollo de benchmark específico generado con asistencia de LLM y validado por profesionales del derecho argentino |
+      | Ausencia de benchmarks para normativa argentina                                         | Desarrollo de benchmark específico generado con asistencia de LLM y validado por un profesional del derecho argentino |
     ],
   ),
   caption: [Resumen de problemas identificados y soluciones propuestas],
@@ -136,7 +136,7 @@ Las principales contribuciones del presente trabajo final son:
 
 + *Base de datos vectorial del Código de Minería*: Creación de una base de datos especializada con embeddings semánticos de los artículos del Código de Minería Argentino, optimizada para búsquedas por similitud.
 
-+ *Benchmark para el Código de Minería Argentino*: Desarrollo de un benchmark específico para evaluar sistemas de consulta legal sobre el Código de Minería, generado con asistencia de LLM y validado por profesionales del derecho.
++ *Benchmark para el Código de Minería Argentino*: Desarrollo de un benchmark específico para evaluar sistemas de consulta legal sobre el Código de Minería, generado con asistencia de LLM y validado por un profesional del derecho.
 
 + *Metodología replicable*: Documentación detallada de la metodología empleada, permitiendo la replicación del sistema para otras normativas y jurisdicciones.
 

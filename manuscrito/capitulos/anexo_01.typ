@@ -185,8 +185,11 @@ En la configuración de RAG básico, el sistema realiza una búsqueda vectorial 
     radius: 4pt,
     [
       *Modelo:* gpt-5-nano (RAG básico, top-10) \
+      *Tokens de entrada:* 3.858 | *Tokens de salida:* 8.638 | *Costo:* USD 0,0036 | *Fragmentos recuperados:* 10 \
 
-      Al disponer de los artículos relevantes como contexto, la respuesta cita correctamente el artículo 3° inciso a) y el artículo 2° inciso 1, identificando el litio como mina de primera categoría perteneciente al Estado. La extensión de la respuesta se reduce significativamente y la argumentación se estructura en torno a los artículos recuperados.
+      _Respuesta (extracto):_ "Bajo el Código de Minería Argentino (CMA), la titularidad de un yacimiento mineral depende de a cuál de las tres categorías de minas reconoce el art. 2 del CMA... Si el yacimiento de litio encuadrara en la categoría 1, el dominio del yacimiento correspondería al Estado y la explotación requeriría concesión administrativa... En ausencia de una clasificación específica de la autoridad minera que sitúe el yacimiento de litio en la categoría 3, la posición más conservadora es que el litio del subsuelo de una finca privada pertenece al Estado (categoría 1) y su explotación debe hacerse mediante concesión administrativa." \
+
+      Con los artículos recuperados como contexto, la respuesta reconoce la existencia del sistema de categorías y la primacía del dominio estatal, aunque no identifica con precisión el litio como sustancia de primera categoría: la clasificación queda condicionada a una decisión de la autoridad minera ("podría caer en cualquiera de estas categorías"). Las citas se concentran en los artículos 2, 25 y 99 recuperados, y no en el artículo 3 que resulta aplicable al caso.
     ],
   ),
   caption: [Respuesta con RAG básico (gpt-5-nano) para la subpregunta 1.1.],
@@ -213,9 +216,14 @@ Nota: un tercer agente ---el Agente de Calidad--- fue diseñado e implementado p
     stroke: 0.5pt + luma(180),
     radius: 4pt,
     [
-      *Modelo:* gpt-5-nano (Agentic-RAG) \
+      *Modelo:* gpt-5-nano (Agentic-RAG; Agente de Recuperación: gpt-5) \
+      *Agente Especialista Legal:* 2.706 tokens de entrada, 7.395 de salida, USD 0,00285 \
+      *Agente de Recuperación:* 16.787 tokens de entrada, 7.257 de salida, USD 0,05037 \
+      *Costo total:* USD 0,05322 \
 
-      El sistema agéntico recupera los artículos 2° y 3° del Código de Minería con alta precisión, gracias a la descomposición de la consulta por el Agente de Recuperación. La respuesta identifica correctamente la clasificación del litio como mina de primera categoría, establece el dominio exclusivo del Estado y fundamenta en los artículos pertinentes con mayor especificidad que el RAG básico.
+      _Respuesta (extracto):_ "- Categoría del litio: El litio es una sustancia de primera categoría conforme al Artículo 3, inciso a, del Código de Minería Argentino («Corresponden a la primera categoría: a) Las sustancias metalíferas... litio»)... - Dominio del yacimiento: Las minas son bienes privados de la Nación o de las Provincias, según el territorio en que se encuentren (Art. 7). El dominio originario de las minas es del Estado; sin perjuicio de ello, la propiedad particular de las minas se establece por concesión legal (Art. 10). Las minas forman una propiedad distinta de la del terreno en que se encuentran (Art. 11)... - Síntesis para el caso: En Salta, la Sra. Marta Gómez es dueña del suelo, pero no del litio; el yacimiento recae sobre dominio estatal y solo puede ser explotado por medio de una concesión otorgada por la autoridad competente." \
+
+      La respuesta identifica correctamente el litio como sustancia de primera categoría (art. 3, inc. a) y funda el dominio estatal en los artículos 7, 10 y 11, con una extensión y una estructura de citación más próximas a la respuesta esperada que en el caso del RAG básico. El costo del Agente de Recuperación (USD 0,0504, con gpt-5) resulta más de diecisiete veces superior al del Agente Especialista Legal (USD 0,0029, con gpt-5-nano).
     ],
   ),
   caption: [Respuesta con Agentic-RAG (gpt-5-nano) para la subpregunta 1.1.],
@@ -223,9 +231,11 @@ Nota: un tercer agente ---el Agente de Calidad--- fue diseñado e implementado p
 
 La ventaja del enfoque agéntico se evidencia en la capacidad de descomponer consultas complejas en búsquedas más específicas, lo que mejora la precisión de la recuperación y, consecuentemente, la calidad de la respuesta generada.
 
-= Benchmark Completo <anexo-benchmark>
+= Benchmark Empleado <anexo-benchmark>
 
-Este anexo presenta el benchmark utilizado para la evaluación del sistema. El conjunto de datos consta de 25 preguntas principales tipo caso de estudio legal, que se descomponen en 76 subpreguntas explícitas más 3 preguntas evaluadas como unidad única, totalizando 79 unidades de evaluación. Las preguntas fueron generadas a partir de los títulos del Código de Minería Argentino mediante GPT-4.1, y las respuestas esperadas fueron revisadas y validadas por profesionales del derecho argentino con experiencia en legislación minera.
+Este anexo presenta el benchmark utilizado para la evaluación del sistema. El conjunto de datos consta de 25 preguntas principales tipo caso de estudio legal, que se descomponen en 76 subpreguntas explícitas más 3 preguntas evaluadas como unidad única, totalizando 79 unidades de evaluación. Las preguntas fueron generadas a partir de los títulos del Código de Minería Argentino mediante GPT-4.1, y las respuestas esperadas fueron revisadas y validadas por un profesional del derecho argentino con experiencia en legislación minera.
+
+A continuación se describen los metadatos del conjunto de datos y se reproducen, a modo de ejemplo, dos de las 25 preguntas con sus respuestas esperadas. El benchmark completo —las 25 preguntas con sus subpreguntas, respuestas esperadas y artículos de referencia— se encuentra disponible en el repositorio de código del proyecto: #link("https://github.com/LUS24/tesis-maestria-data-mining")[https://github.com/LUS24/tesis-maestria-data-mining], en el directorio `data/`.
 
 == Metadatos del Benchmark
 
@@ -246,7 +256,7 @@ Este anexo presenta el benchmark utilizado para la evaluación del sistema. El c
       | Total de unidades de evaluación | 79                                               |
       | Tipo de pregunta                | Caso de estudio legal con múltiples subpreguntas |
       | Generación                      | GPT-4.1 a partir de títulos del Código de Minería    |
-      | Validación                      | Revisión por profesionales del derecho argentino |
+      | Validación                      | Revisión por un profesional del derecho argentino |
     ],
   ),
   caption: [Metadatos del benchmark de evaluación.],
@@ -256,7 +266,7 @@ Este anexo presenta el benchmark utilizado para la evaluación del sistema. El c
 
 Las 25 preguntas se distribuyen entre los títulos del Código de Minería Argentino, cubriendo temas como: dominio originario de las minas y clasificación (Título I), conflictos de interés de funcionarios judiciales (Título II), permisos de exploración y límites legales (Título III), derechos del descubridor y registro de minas (Título IV), dimensiones de pertenencias para sustancias de primera categoría (Título V), obligaciones ambientales y servidumbres mineras (Título VI), entre otros.
 
-Cada pregunta se formula como un caso de estudio legal con un escenario narrativo, seguido de subpreguntas específicas que requieren la identificación y aplicación de artículos concretos del Código de Minería. Las respuestas esperadas incluyen la fundamentación legal con citación de los artículos pertinentes. El benchmark completo está disponible en el repositorio de código del proyecto, en el directorio `data/`.
+Cada pregunta se formula como un caso de estudio legal con un escenario narrativo, seguido de subpreguntas específicas que requieren la identificación y aplicación de artículos concretos del Código de Minería. Las respuestas esperadas incluyen la fundamentación legal con citación de los artículos pertinentes. El benchmark completo está disponible en el repositorio de código del proyecto (`data/`).
 
 == Ejemplos de Preguntas
 

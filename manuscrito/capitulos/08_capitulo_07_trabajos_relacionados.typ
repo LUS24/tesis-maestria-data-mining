@@ -110,24 +110,26 @@ La @tab:comparacion_trabajos presenta una comparación del presente trabajo con 
 
 #figure(
   three-line-table(
-    columns: (1.2fr, 0.7fr, 0.7fr, 0.7fr, 0.7fr, 0.7fr),
+    columns: (1.3fr, 0.7fr, 0.55fr, 0.65fr, 0.9fr, 0.9fr),
     [
-      | *Sistema/Trabajo*  | *Código abierto* | *RAG* | *Agentes* | *Normativa argentina* | *Benchmark propio* |
-      | :----------------- | :--------------: | :---: | :-------: | :-------------------: | :----------------: |
-      | Infoleg / SAIJ     |       N/A        |  No   |    No     |          Sí           |         No         |
-      | Westlaw CoCounsel  |        No        |  Sí   |    Sí     |          No           |         No         |
-      | Lexis+ Protégé     |        No        |  Sí   |    Sí     |          No           |         No         |
-      | vLex Vincent AI    |        No        |  Sí   |    Sí     |        Parcial        |         No         |
-      | Lexius             |        No        |  Sí   |    Sí     |          Sí           |         No         |
-      | Juztina            |        No        |  Sí   |    Sí     |          Sí           |         No         |
-      | Veredicta          |        No        |  Sí   |    No     |          Sí           |         No         |
-      | Lexium             |        No        |  Sí   |    No     |          Sí           |         No         |
-      | AgentsCourt        |        Sí        |  No   |    Sí     |          No           |         No         |
-      | *Presente trabajo* |       *Sí*       | *Sí*  |   *Sí*    |         *Sí*          |        *Sí*        |
+      | *Sistema/Trabajo*  | *Código abierto* | *RAG* | *Agentes* | *Normativa argentina* | *Benchmark abierto* |
+      | :----------------- | :--------------: | :---: | :-------: | :-------------------: | :-----------------: |
+      | Infoleg / SAIJ     |       N/A        |  No   |    No     |          Sí           |         No          |
+      | Westlaw CoCounsel  |        No        |  Sí   |    Sí     |          No           |         No          |
+      | Lexis+ Protégé     |        No        |  Sí   |    Sí     |          No           |         No          |
+      | vLex Vincent AI    |        No        |  Sí   |    Sí     |        Parcial        |         No          |
+      | Lexius             |        No        |  Sí   |    Sí     |          Sí           |         No          |
+      | Juztina            |        No        |  Sí   |    Sí     |          Sí           |         No          |
+      | Veredicta          |        No        |  Sí   |    No     |          Sí           |         No          |
+      | Lexium             |        No        |  Sí   |    No     |          Sí           |         No          |
+      | AgentsCourt        |        Sí        |  No   |    Sí     |          No           |         No          |
+      | *Presente trabajo* |       *Sí*       | *Sí*  |   *Sí*    |         *Sí*          |        *Sí*         |
     ],
   ),
   caption: [Comparación del presente trabajo con sistemas y trabajos relacionados],
 ) <tab:comparacion_trabajos>
+
+La columna *RAG* indica si el sistema declara emplear recuperación aumentada como parte de su arquitectura; *Agentes*, si declara componentes agénticos (planificación, uso autónomo de herramientas o coordinación entre agentes); y *Benchmark abierto*, si publica el conjunto de evaluación con el que mide su desempeño de modo que un tercero pueda reproducir la medición. Para las plataformas comerciales (Westlaw CoCounsel, Lexis+ Protégé, vLex Vincent AI, Lexius, Juztina, Veredicta y Lexium) la clasificación se basa en la documentación pública, las notas de producto y el material de difusión disponibles al momento de la revisión (segundo semestre de 2025), dado que ninguna de ellas publica su arquitectura ni sus artefactos de evaluación: en consecuencia, las categorías reflejan lo que cada proveedor declara o describe públicamente y no una verificación independiente del sistema, limitación que se extiende a plataformas cuya implementación puede haber cambiado con posterioridad. Para los sistemas de código abierto (AgentsCourt y el presente trabajo) la clasificación se basa en el código y la documentación publicados. Infoleg/SAIJ se incluye como referencia del estado previo —búsqueda léxica sobre normativa argentina, sin componentes de IA— y por ello no aplica la categoría de código abierto (N/A).
 
 === Diferencias Metodológicas y Contribuciones Originales
 
@@ -137,7 +139,7 @@ El presente trabajo se diferencia de los trabajos y sistemas revisados en los si
 
 + *Enfoque integral Agentic-RAG sobre normativa argentina*: Si bien existen plataformas comerciales que ofrecen funcionalidades de IA sobre normativa argentina, ninguna de las identificadas publica su arquitectura ni permite evaluar independientemente su desempeño. El presente trabajo documenta de manera completa y trasparente la arquitectura Agentic-RAG empleada.
 
-+ *Benchmark específico*: No se han identificado benchmarks públicos para evaluar sistemas de consulta sobre normativa argentina. El desarrollo de un benchmark para el Código de Minería Argentino, elaborado con profesionales del derecho, constituye una contribución original que permite la evaluación reproducible del sistema.
++ *Benchmark específico*: No se han identificado benchmarks públicos para evaluar sistemas de consulta sobre normativa argentina. El desarrollo de un benchmark para el Código de Minería Argentino, elaborado con un profesional del derecho, constituye una contribución original que permite la evaluación reproducible del sistema.
 
 + *Dominio del derecho civil en español*: La mayoría de los benchmarks y trabajos académicos revisados se concentran en el common law anglosajón. El presente trabajo contribuye al subrepresentado dominio del derecho civil argentino en idioma español, complementando los esfuerzos de modelos como MEL @betancur2025mel y recursos como Legal-ES @samy2020legales.
 

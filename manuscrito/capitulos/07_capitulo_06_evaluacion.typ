@@ -1,5 +1,6 @@
 #import "@preview/oxdraw:0.1.0": *
 #import "@preview/tablem:0.3.0": three-line-table
+#import "../formato.typ": pagina-apaisada
 
 = Evaluación y Resultados <cap:evaluacion>
 
@@ -58,7 +59,7 @@ La @fig-boxplots-estrategia presenta la distribución de `respuesta_correcta_avg
 
 #figure(
   image("../media/boxplots_por_estrategia.pdf", width: 100%),
-  caption: [Distribución de `respuesta_correcta_avg` por estrategia de recuperación. Las cajas representan el rango intercuartílico (IQR); la línea central indica la mediana; los diamantes rojos señalan la media. Se observa una tendencia general de mejora desde la configuración sin RAG hacia Agentic-RAG, con mayor variabilidad en esta última debido a la interacción con el modelo.],
+  caption: [Distribución de las métricas de respuesta por estrategia de recuperación. La figura presenta seis paneles —`respuesta_correcta_avg`, Token F1, ROUGE-L, SBERT Similarity (español), BERTScore y `precision_legal_avg`—; en cada panel las cajas representan el rango intercuartílico (IQR), la línea central indica la mediana y los diamantes rojos señalan la media. En `respuesta_correcta_avg` se observa una tendencia general de mejora desde la configuración sin RAG hacia Agentic-RAG, con mayor variabilidad en esta última debido a la interacción con el modelo; las métricas textuales y semánticas muestran diferencias más atenuadas entre estrategias.],
 ) <fig-boxplots-estrategia>
 
 === Imputación de Valores Fuera de Rúbrica
@@ -73,13 +74,11 @@ Adicionalmente, se identificaron 27 observaciones (3.8% del total) con valores a
 
 == Verificación de Normalidad
 
-=== Test de Shapiro-Wilk
+=== Test de Shapiro-Wilk y Resultados
 
 Se aplicó el test de Shapiro-Wilk ($H_0$: los datos siguen una distribución normal, $alpha = 0.05$) a nivel global (todas las observaciones por métrica) y a nivel de grupos (dentro de cada combinación estrategia × modelo).
 
-=== Resultados
-
-La mayoría de las métricas rechazan la hipótesis nula de normalidad tanto a nivel global como por grupos. Los scores de evaluación por jueces, al ser mediciones ordinales en escala discreta {0.0, 0.25, 0.5, 0.75, 1.0}, no satisfacen el supuesto de normalidad por construcción.
+La mayoría de las métricas rechazan la hipótesis nula de normalidad tanto a nivel global como por grupos. El caso de los scores de evaluación por jueces requiere una aclaración: al tratarse de mediciones ordinales en una escala discreta {0.0, 0.25, 0.5, 0.75, 1.0}, la normalidad no es un supuesto plausible _por construcción_ —una variable con cinco valores posibles y masa de probabilidad concentrada en ellos no puede seguir una distribución normal—, de modo que el test de Shapiro-Wilk no aporta evidencia adicional en este caso: se incluye por uniformidad del diagnóstico y solo confirma, como era esperable, el rechazo de $H_0$. El test resulta informativo para las 13 métricas textuales y semánticas, que son continuas y para las cuales la normalidad no puede descartarse _a priori_; allí los resultados también conducen al rechazo, lo que motiva el uso de pruebas no paramétricas para todas las métricas por igual. Se reportan, en consecuencia, los resultados del test para las 15 métricas.
 
 === Implicación Metodológica
 
@@ -95,17 +94,13 @@ Los resultados justifican el uso de pruebas no paramétricas para las comparacio
 
 Se aplicó el test de Kruskal-Wallis como alternativa no paramétrica al ANOVA para comparar las distribuciones de cada VR entre los niveles de cada factor.
 
-==== Efecto de la Estrategia de Recuperación
-
-Para la métrica `respuesta_correcta_avg`, el test arrojó $H = 21.83$, $p < 0.001$, indicando diferencias significativas entre las tres estrategias de recuperación. Las medianas observadas fueron:
+En cuanto al *efecto de la estrategia de recuperación*, para la métrica `respuesta_correcta_avg` el test arrojó $H = 21.83$, $p < 0.001$, indicando diferencias significativas entre las tres estrategias de recuperación. Las medianas observadas fueron:
 
 + Agentic-RAG: 0.8333
 + RAG básico: 0.7083
 + Sin RAG: 0.5833
 
-==== Efecto del Modelo
-
-Para la misma métrica, $H = 49.01$, $p < 0.001$, confirmando diferencias significativas entre modelos. Las medianas fueron:
+Respecto del *efecto del modelo*, para la misma métrica se obtuvo $H = 49.01$, $p < 0.001$, lo que confirma diferencias significativas entre modelos. Las medianas fueron:
 
 + gpt-5: 0.8333
 + gpt-5-mini: 0.5417
@@ -141,25 +136,27 @@ El test de Scheirer-Ray-Hare reveló una interacción significativa entre estrat
 
 Dado que se realizan 9 comparaciones (3 modelos × 3 pares de estrategias), se aplicaron correcciones de Bonferroni y Holm-Bonferroni @holm1979simple mediante `statsmodels.stats.multitest.multipletests` @seabold2010statsmodels. La @tabla-efectos-simples presenta los resultados completos.
 
-#figure(
-  three-line-table(
-    columns: (auto, auto, auto, auto, auto, auto, auto, auto, auto),
-    [
-      | *Modelo*   | *Estrategia 1* | *Estrategia 2* | *Med. 1* | *Med. 2* |  *U*   |    *p*    | *p corr. Holm* | *Sig. Holm* |
-      | :--------- | :------------- | :------------- | :------: | :------: | :----: | :-------: | :------------: | :---------: |
-      | gpt-5      | agentic_rag    | base_rag       |  0.9583  |  0.8333  | 3475.5 | 0.024606  |    0.073819    |             |
-      | gpt-5      | agentic_rag    | no_rag         |  0.9583  |  0.8333  | 3545.5 | 0.012841  |    0.063887    |             |
-      | gpt-5      | base_rag       | no_rag         |  0.8333  |  0.8333  | 2850.5 | 0.889993  |    1.000000    |             |
-      | gpt-5-mini | agentic_rag    | base_rag       |  0.9167  |  0.6250  | 3666.0 | 0.003055  |    0.018331    |     ✓      |
-      | gpt-5-mini | agentic_rag    | no_rag         |  0.9167  |  0.3333  | 4964.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
-      | gpt-5-mini | base_rag       | no_rag         |  0.6250  |  0.3333  | 4349.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
-      | gpt-5-nano | agentic_rag    | base_rag       |  0.0833  |  0.5833  | 2076.0 | 0.002382  |    0.016676    |     ✓      |
-      | gpt-5-nano | agentic_rag    | no_rag         |  0.0833  |  0.5833  | 2221.5 | 0.012777  |    0.063887    |             |
-      | gpt-5-nano | base_rag       | no_rag         |  0.5833  |  0.5833  | 2923.5 | 0.896927  |    1.000000    |             |
-    ],
-  ),
-  caption: [Efectos simples de estrategia dentro de cada modelo (Mann-Whitney U). `Med. 1` y `Med. 2` son las medianas de `respuesta_correcta_avg` para cada estrategia. `p corr. Holm` es el p-value corregido por Holm-Bonferroni; ✓ indica significativo con corrección de Holm ($p_"corr" < 0.05$). $m = 9$ comparaciones.],
-) <tabla-efectos-simples>
+#pagina-apaisada[
+  #figure(
+    three-line-table(
+      columns: (1.1fr, 1.1fr, 1.1fr, 1fr, 1fr, 1fr, 1.1fr, 1.2fr, 1fr),
+      [
+        | *Modelo*   | *Estrategia 1* | *Estrategia 2* | *Med. 1* | *Med. 2* |  *U*   |    *p*    | *p corr. Holm* | *Sig. Holm* |
+        | :--------- | :------------- | :------------- | :------: | :------: | :----: | :-------: | :------------: | :---------: |
+        | gpt-5      | agentic_rag    | base_rag       |  0.9583  |  0.8333  | 3475.5 | 0.024606  |    0.073819    |             |
+        | gpt-5      | agentic_rag    | no_rag         |  0.9583  |  0.8333  | 3545.5 | 0.012841  |    0.063887    |             |
+        | gpt-5      | base_rag       | no_rag         |  0.8333  |  0.8333  | 2850.5 | 0.889993  |    1.000000    |             |
+        | gpt-5-mini | agentic_rag    | base_rag       |  0.9167  |  0.6250  | 3666.0 | 0.003055  |    0.018331    |     ✓      |
+        | gpt-5-mini | agentic_rag    | no_rag         |  0.9167  |  0.3333  | 4964.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
+        | gpt-5-mini | base_rag       | no_rag         |  0.6250  |  0.3333  | 4349.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
+        | gpt-5-nano | agentic_rag    | base_rag       |  0.0833  |  0.5833  | 2076.0 | 0.002382  |    0.016676    |     ✓      |
+        | gpt-5-nano | agentic_rag    | no_rag         |  0.0833  |  0.5833  | 2221.5 | 0.012777  |    0.063887    |             |
+        | gpt-5-nano | base_rag       | no_rag         |  0.5833  |  0.5833  | 2923.5 | 0.896927  |    1.000000    |             |
+      ],
+    ),
+    caption: [Efectos simples de estrategia dentro de cada modelo (Mann-Whitney U). `Med. 1` y `Med. 2` son las medianas de `respuesta_correcta_avg` para cada estrategia. `p corr. Holm` es el p-value corregido por Holm-Bonferroni; ✓ indica significativo con corrección de Holm ($p_"corr" < 0.05$). $m = 9$ comparaciones.],
+  ) <tabla-efectos-simples>
+]
 
 Los resultados revelan patrones diferenciados por modelo:
 
@@ -171,25 +168,27 @@ Estos resultados refuerzan el hallazgo de interacción: el efecto de Agentic-RAG
 
 La @tabla-resumen-medianas presenta las medianas de `respuesta_correcta_avg` y, con fines descriptivos, de las cinco métricas complementarias para las nueve configuraciones evaluadas. Los valores de las métricas textuales y semánticas se incluyen como referencia, pero las pruebas de hipótesis se realizaron exclusivamente sobre `respuesta_correcta_avg`.
 
-#figure(
-  three-line-table(
-    columns: (auto, auto, auto, auto, auto, auto, auto, auto),
-    [
-      | *Estrategia* | *Modelo*   | *Resp. correcta* | *Token F1* | *ROUGE-L* | *SBERT (es)* | *BERTScore* | *Prec. legal* |
-      | :----------- | :--------- | :--------------: | :--------: | :-------: | :----------: | :---------: | :-----------: |
-      | Sin RAG      | gpt-5-nano |      0,583       |   0,200    |   0,123   |    0,740     |    0,688    |     0,000     |
-      | Sin RAG      | gpt-5-mini |      0,333       |   0,176    |   0,123   |    0,629     |    0,674    |     0,000     |
-      | Sin RAG      | gpt-5      |      0,833       |   0,243    |   0,141   |    0,760     |    0,694    |     0,333     |
-      | RAG básico   | gpt-5-nano |      0,583       |   0,253    |   0,150   |    0,770     |    0,703    |     0,333     |
-      | RAG básico   | gpt-5-mini |      0,625       |   0,213    |   0,135   |    0,760     |    0,700    |     0,417     |
-      | RAG básico   | gpt-5      |      0,833       |   0,257    |   0,174   |    0,794     |    0,706    |     0,667     |
-      | Agentic-RAG  | gpt-5-nano |      0,083       |   0,125    |   0,083   |    0,389     |    0,648    |     0,125     |
-      | Agentic-RAG  | gpt-5-mini |      0,917       |   0,215    |   0,130   |    0,795     |    0,706    |     0,833     |
-      | Agentic-RAG  | gpt-5      |      0,958       |   0,277    |   0,190   |    0,791     |    0,708    |     0,875     |
-    ],
-  ),
-  caption: [Medianas por configuración (estrategia × modelo). `Resp. correcta` es la variable de respuesta principal utilizada en las pruebas de hipótesis; las columnas restantes (`Token F1`, `ROUGE-L`, `SBERT (es)`, `BERTScore`, `Prec. legal`) se incluyen con fines descriptivos. Los valores más altos indican mejor desempeño. Destaca la mediana de 0,958 de Agentic-RAG + gpt-5 en respuesta correcta, y el valor anómalamente bajo de 0,083 para Agentic-RAG + gpt-5-nano.],
-) <tabla-resumen-medianas>
+#pagina-apaisada[
+  #figure(
+    three-line-table(
+      columns: (1.2fr, 1.2fr, 1.2fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+      [
+        | *Estrategia* | *Modelo*   | *Resp. correcta* | *Token F1* | *ROUGE-L* | *SBERT (es)* | *BERTScore* | *Prec. legal* |
+        | :----------- | :--------- | :--------------: | :--------: | :-------: | :----------: | :---------: | :-----------: |
+        | Sin RAG      | gpt-5-nano |      0,583       |   0,200    |   0,123   |    0,740     |    0,688    |     0,000     |
+        | Sin RAG      | gpt-5-mini |      0,333       |   0,176    |   0,123   |    0,629     |    0,674    |     0,000     |
+        | Sin RAG      | gpt-5      |      0,833       |   0,243    |   0,141   |    0,760     |    0,694    |     0,333     |
+        | RAG básico   | gpt-5-nano |      0,583       |   0,253    |   0,150   |    0,770     |    0,703    |     0,333     |
+        | RAG básico   | gpt-5-mini |      0,625       |   0,213    |   0,135   |    0,760     |    0,700    |     0,417     |
+        | RAG básico   | gpt-5      |      0,833       |   0,257    |   0,174   |    0,794     |    0,706    |     0,667     |
+        | Agentic-RAG  | gpt-5-nano |      0,083       |   0,125    |   0,083   |    0,389     |    0,648    |     0,125     |
+        | Agentic-RAG  | gpt-5-mini |      0,917       |   0,215    |   0,130   |    0,795     |    0,706    |     0,833     |
+        | Agentic-RAG  | gpt-5      |      0,958       |   0,277    |   0,190   |    0,791     |    0,708    |     0,875     |
+      ],
+    ),
+    caption: [Medianas por configuración (estrategia × modelo). `Resp. correcta` es la variable de respuesta principal utilizada en las pruebas de hipótesis; las columnas restantes (`Token F1`, `ROUGE-L`, `SBERT (es)`, `BERTScore`, `Prec. legal`) se incluyen con fines descriptivos. Los valores más altos indican mejor desempeño. Destaca la mediana de 0,958 de Agentic-RAG + gpt-5 en respuesta correcta, y el valor anómalamente bajo de 0,083 para Agentic-RAG + gpt-5-nano.],
+  ) <tabla-resumen-medianas>
+]
 
 == Análisis Factorial: Interacción Estrategia × Modelo
 
@@ -229,10 +228,12 @@ La interacción significativa ($H = 56.62$, $p < 10^(-11)$) indica que el efecto
 
 La @fig-interaccion presenta el gráfico de interacción que visualiza cómo las líneas de los modelos se cruzan entre estrategias, evidenciando la interacción disordinal.
 
-#figure(
-  image("../media/interaccion_modelo_estrategia.pdf", width: 100%),
-  caption: [Gráficos de interacción modelo × estrategia de recuperación. Las líneas representan la media de cada modelo con intervalos de confianza del 95%. El cruce de las líneas confirma la interacción disordinal: el modelo óptimo depende de la estrategia empleada.],
-) <fig-interaccion>
+#pagina-apaisada[
+  #figure(
+    image("../media/interaccion_modelo_estrategia.pdf", width: 96%),
+    caption: [Gráficos de interacción modelo × estrategia de recuperación para las seis métricas de respuesta. Las líneas representan la media de cada modelo con intervalos de confianza del 95%; cada panel corresponde a una métrica. El cruce de las líneas en `respuesta_correcta_avg` confirma la interacción disordinal: el modelo óptimo depende de la estrategia empleada.],
+  ) <fig-interaccion>
+]
 
 El análisis de las medias por combinación revela un patrón de interacción disordinal (líneas cruzadas):
 
@@ -270,18 +271,20 @@ La interacción significativa matiza las conclusiones del análisis de Kruskal-W
 Se calculó el costo total de cada consulta sumando el costo de generación de la respuesta y el costo de recuperación (cuando aplica). Los costos se analizaron por modelo, por sistema y por combinación modelo × sistema. La @fig-costos-configuracion presenta el costo medio por configuración.
 
 #figure(
-  image("../media/costos_por_configuracion.pdf", width: 85%),
-  caption: [Costo medio por consulta (USD) para cada combinación modelo × estrategia de recuperación. El costo del sistema Agentic-RAG incluye las llamadas a los agentes de Recuperación y Calidad, que emplean gpt-5 independientemente del modelo del Agente Especialista.],
+  image("../media/costos_por_configuracion.pdf", width: 100%),
+  caption: [Costo medio por consulta (USD) para cada combinación modelo × estrategia de recuperación. El costo del sistema Agentic-RAG incluye las llamadas al Agente de Recuperación, que emplea gpt-5 independientemente del modelo del Agente Especialista Legal.],
 ) <fig-costos-configuracion>
 
 === Relación Costo-Desempeño
 
 Para cada combinación se graficó el costo medio versus el desempeño medio en `respuesta_correcta_avg` y, complementariamente, en las cinco métricas textuales y semánticas (@fig-costo-desempenio). Este análisis permite identificar las configuraciones con mejor balance de eficiencia.
 
-#figure(
-  image("../media/costo_desempenio.pdf", width: 100%),
-  caption: [Relación costo-desempeño para `respuesta_correcta_avg` y las cinco métricas complementarias. Cada punto representa una combinación modelo × estrategia. El cuadrante superior-izquierdo (alto desempeño, bajo costo) contiene las configuraciones más eficientes.],
-) <fig-costo-desempenio>
+#pagina-apaisada[
+  #figure(
+    image("../media/costo_desempenio.pdf", width: 100%),
+    caption: [Relación costo-desempeño para `respuesta_correcta_avg` y las cinco métricas complementarias. Cada punto representa una combinación modelo × estrategia; el color indica la estrategia y la forma, el modelo. El cuadrante superior-izquierdo (alto desempeño, bajo costo) contiene las configuraciones más eficientes.],
+  ) <fig-costo-desempenio>
+]
 
 === Índice de Eficiencia
 
@@ -298,13 +301,13 @@ El piso de 0.01 evita la división por cero para la configuración de menor cost
 La @fig-eficiencia presenta el índice de eficiencia para las nueve configuraciones, ordenadas de menor a mayor.
 
 #figure(
-  image("../media/eficiencia_costo.pdf", width: 85%),
+  image("../media/eficiencia_costo.pdf", width: 100%),
   caption: [Índice de eficiencia (desempeño / costo normalizado) para la métrica `respuesta_correcta_avg`. Las barras se colorean según el modelo y se texturizan según la estrategia. Las configuraciones más eficientes combinan alto desempeño con bajo costo relativo.],
 ) <fig-eficiencia>
 
 === Resumen de Tokens y Costos del Experimento
 
-Se reportaron los tokens totales consumidos y el costo acumulado por modelo y por estrategia. El costo total del experimento fue de USD 22.29, distribuido en Agentic-RAG (USD 14.24), RAG básico (USD 3.75) y sin RAG (USD 4.31). El mayor costo de Agentic-RAG refleja las llamadas adicionales a los agentes de Recuperación, que emplean gpt-5 independientemente del modelo del Agente Especialista.
+Se reportaron los tokens totales consumidos y el costo acumulado por modelo y por estrategia. El costo total del experimento fue de USD 22.29, distribuido en Agentic-RAG (USD 14.24), RAG básico (USD 3.75) y sin RAG (USD 4.31). El mayor costo de Agentic-RAG refleja las llamadas adicionales al Agente de Recuperación, que emplea gpt-5 independientemente del modelo del Agente Especialista Legal.
 
 == Evaluación LLM-as-a-Judge
 
@@ -342,7 +345,7 @@ Esto indica un ordenamiento relativo consistente de las respuestas entre los tre
 
 === Alpha de Krippendorff
 
-El Alpha de Krippendorff ($alpha$) es un coeficiente de acuerdo inter-anotadores que corrige el acuerdo esperado por azar, soporta múltiples anotadores y datos faltantes, y admite escala ordinal. Los umbrales de interpretación según Krippendorff (2004) son: $alpha >= 0.800$ (bueno), $0.667 <= alpha < 0.800$ (aceptable), $alpha < 0.667$ (insuficiente).
+El Alpha de Krippendorff ($alpha$) es un coeficiente de acuerdo inter-anotadores que corrige el acuerdo esperado por azar, soporta múltiples anotadores y datos faltantes, y admite escala ordinal @krippendorff2004content. Los umbrales de interpretación según Krippendorff (2004) son: $alpha >= 0.800$ (bueno), $0.667 <= alpha < 0.800$ (aceptable), $alpha < 0.667$ (insuficiente).
 
 Los resultados globales fueron:
 
@@ -377,8 +380,8 @@ Los resultados globales fueron:
 La @fig-krippendorff-alpha visualiza estos resultados, permitiendo comparar de un vistazo la consistencia entre sistemas y rúbricas con respecto al umbral de aceptabilidad.
 
 #figure(
-  image("../media/krippendorff_alpha_por_sistema.pdf", width: 85%),
-  caption: [Alpha de Krippendorff ordinal por sistema de recuperación y rúbrica. Las líneas punteadas indican los umbrales de acuerdo aceptable ($alpha = 0.667$) y bueno ($alpha = 0.8$). Se observa que `score_respuesta_correcta` supera el umbral aceptable en todos los sistemas, mientras que `score_precision_legal` cae por debajo en _base_rag_ y _no_rag_.],
+  image("../media/krippendorff_alpha_por_sistema.pdf", width: 100%),
+  caption: [Acuerdo inter-juez (Alpha de Krippendorff) por sistema de recuperación y rúbrica. Las líneas punteadas indican los umbrales de acuerdo aceptable ($alpha = 0.667$) y bueno ($alpha = 0.8$). Se observa que `score_respuesta_correcta` supera el umbral aceptable en todos los sistemas, mientras que `score_precision_legal` cae por debajo en _base_rag_ y _no_rag_.],
 ) <fig-krippendorff-alpha>
 
 Para `score_respuesta_correcta`, el acuerdo es bueno o cercano al umbral en los tres sistemas. Para `score_precision_legal`, dos de los tres sistemas caen por debajo del umbral aceptable ($alpha < 0.667$), lo que indica que los jueces no miden de forma consistente la precisión legal en esas condiciones.

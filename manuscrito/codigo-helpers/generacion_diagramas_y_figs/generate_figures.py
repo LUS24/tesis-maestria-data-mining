@@ -142,6 +142,10 @@ def fig_boxplots_by_strategy(df: pd.DataFrame):
 
         ax.set_title(VR_LABELS.get(metrica, metrica))
         ax.set_ylabel("Score")
+        # Etiquetas de estrategia solo en la fila inferior: en la fila superior
+        # colisionan con los títulos de los paneles de la fila siguiente.
+        if i < n_cols:
+            ax.set_xticklabels([])
         if i == 0:
             ax.legend(loc="lower right", fontsize=8)
 
@@ -149,7 +153,7 @@ def fig_boxplots_by_strategy(df: pd.DataFrame):
     for j in range(i + 1, len(axes)):
         axes[j].set_visible(False)
 
-    fig.suptitle("Distribución de métricas por estrategia de recuperación", fontsize=13, y=1.01)
+    # Sin suptitle: el título lo aporta el epígrafe de la figura en el manuscrito.
     fig.savefig(OUT_DIR / "boxplots_por_estrategia.pdf")
     plt.close(fig)
     print("  ✓ boxplots_por_estrategia.pdf")
@@ -187,6 +191,10 @@ def fig_interaction_plots(df: pd.DataFrame):
 
         ax.set_xticks(range(len(ESTRATEGIAS)))
         ax.set_xticklabels([STRATEGY_LABELS[e] for e in ESTRATEGIAS], fontsize=8)
+        # Etiquetas de estrategia solo en la fila inferior: en la fila superior
+        # colisionan con los títulos de los paneles de la fila siguiente.
+        if i < n_cols:
+            ax.set_xticklabels([])
         ax.set_title(VR_LABELS.get(metrica, metrica))
         ax.set_ylabel("Media ± IC 95%")
         if i == 0:
@@ -195,7 +203,7 @@ def fig_interaction_plots(df: pd.DataFrame):
     for j in range(i + 1, len(axes)):
         axes[j].set_visible(False)
 
-    fig.suptitle("Interacción modelo × estrategia de recuperación", fontsize=13, y=1.01)
+    # Sin suptitle: el título lo aporta el epígrafe de la figura en el manuscrito.
     fig.savefig(OUT_DIR / "interaccion_modelo_estrategia.pdf")
     plt.close(fig)
     print("  ✓ interaccion_modelo_estrategia.pdf")
@@ -336,7 +344,7 @@ def fig_efficiency_bars(df_metrics: pd.DataFrame, df_cost: pd.DataFrame):
     ax.set_yticks(range(len(merged)))
     ax.set_yticklabels(labels, fontsize=8)
     ax.set_xlabel("Índice de eficiencia (desempeño / costo normalizado)")
-    ax.set_title(f"Eficiencia: {VR_LABELS[metrica]}")
+    # Sin title: el título lo aporta el epígrafe de la figura en el manuscrito.
     fig.savefig(OUT_DIR / "eficiencia_costo.pdf")
     plt.close(fig)
     print("  ✓ eficiencia_costo.pdf")
@@ -421,7 +429,7 @@ def fig_krippendorff_alpha():
     ax.set_xticklabels(sistemas_labels)
     ax.set_ylabel("α de Krippendorff (ordinal)")
     ax.set_ylim([0, 1.05])
-    ax.set_title("Acuerdo inter-juez por sistema de recuperación")
+    # Sin title: el título lo aporta el epígrafe de la figura en el manuscrito.
     ax.legend(loc="lower left", fontsize=8)
     fig.savefig(OUT_DIR / "krippendorff_alpha_por_sistema.pdf")
     plt.close(fig)
@@ -512,7 +520,7 @@ def fig_cost_bars(df_cost: pd.DataFrame):
     ax.set_xticks(x + width)
     ax.set_xticklabels([STRATEGY_LABELS[e] for e in ESTRATEGIAS], fontsize=13)
     ax.set_ylabel("Costo medio por consulta (USD)", fontsize=14)
-    ax.set_title("Costo medio por consulta (USD) para cada combinación modelo", fontsize=15)
+    # Sin title: el título lo aporta el epígrafe de la figura en el manuscrito.
     ax.legend(loc="upper left", fontsize=12)
     ax.tick_params(labelsize=12)
     fig.savefig(OUT_DIR / "costos_por_configuracion.pdf")

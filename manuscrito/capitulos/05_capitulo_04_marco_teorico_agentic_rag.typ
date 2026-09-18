@@ -1,6 +1,7 @@
 = Agentic-RAG: Generación Aumentada por Recuperación Agéntica <cap:agentic-rag>
 
 #import "@preview/tablem:0.3.0": three-line-table
+#import "../formato.typ": pagina-apaisada
 
 Este capítulo presenta el marco teórico de Agentic-RAG, describiendo sus conceptos fundamentales, arquitecturas, patrones de flujo de trabajo, agentes especializados, casos de uso prácticos y consideraciones de ingeniería.
 
@@ -76,21 +77,23 @@ Este diseño mejora escalabilidad y permite extensibilidad incremental: añadir 
 
 La @tab:comparativa-arq sintetiza las diferencias entre las principales variantes arquitectónicas de RAG @singh2025agentic @du2026arag @mishra2026sok @maragheh2025arag @salve2024multiagent.
 
-#figure(
-  three-line-table(
-    columns: (1.2fr, 1.2fr, 1.6fr, 1.6fr),
-    [
-      | *Dimensión*             | *RAG clásico*             | *Agentic-RAG monolítico*                      | *Agentic-RAG multi-agente*                            |
-      | ----------------------- | ------------------------- | --------------------------------------------- | ----------------------------------------------------- |
-      | Control del flujo       | Pipeline fijo 1--2 pasos  | LLM decide secuencia de acciones              | Orquestador + múltiples agentes coordinados           |
-      | Recuperación            | Una llamada a un índice   | Múltiples llamadas iterativas y adaptativas   | Recuperadores especializados por agente/fuente        |
-      | Herramientas            | Normalmente solo búsqueda | Búsqueda + otras herramientas (cálculo, APIs) | Conjunto amplio de herramientas heterogéneas          |
-      | Escalabilidad semántica | Limitada por el embedding | Mejora vía planificación y re-consulta        | Mejora adicional vía especialización y paralelización |
-      | Complejidad de impl.    | Baja                      | Media (diseño de policy y herramientas)       | Alta (orquestación, memoria compartida, concurrencia) |
-    ],
-  ),
-  caption: [Comparativa de arquitecturas RAG.],
-) <tab:comparativa-arq>
+#pagina-apaisada[
+  #figure(
+    three-line-table(
+      columns: (1.2fr, 1.2fr, 1.6fr, 1.6fr),
+      [
+        | *Dimensión*             | *RAG clásico*             | *Agentic-RAG monolítico*                      | *Agentic-RAG multi-agente*                            |
+        | ----------------------- | ------------------------- | --------------------------------------------- | ----------------------------------------------------- |
+        | Control del flujo       | Pipeline fijo 1--2 pasos  | LLM decide secuencia de acciones              | Orquestador + múltiples agentes coordinados           |
+        | Recuperación            | Una llamada a un índice   | Múltiples llamadas iterativas y adaptativas   | Recuperadores especializados por agente/fuente        |
+        | Herramientas            | Normalmente solo búsqueda | Búsqueda + otras herramientas (cálculo, APIs) | Conjunto amplio de herramientas heterogéneas          |
+        | Escalabilidad semántica | Limitada por el embedding | Mejora vía planificación y re-consulta        | Mejora adicional vía especialización y paralelización |
+        | Complejidad de impl.    | Baja                      | Media (diseño de policy y herramientas)       | Alta (orquestación, memoria compartida, concurrencia) |
+      ],
+    ),
+    caption: [Comparativa de arquitecturas RAG.],
+  ) <tab:comparativa-arq>
+]
 
 == Agentes especializados en Agentic-RAG
 
