@@ -38,7 +38,7 @@ En los últimos años, múltiples plataformas comerciales han integrado intelige
 
 *Lexium* @lexium2025 es una plataforma de IA de gestión jurídica especializada en derecho argentino. Ofrece búsqueda inteligente en SAIJ, Infoleg y jurisprudencia, automatización de escritos y gestión de vencimientos procesales. La propia plataforma reconoce las limitaciones inherentes a los modelos de IA generativa, incluyendo la posibilidad de generar información incompleta, imprecisa o no actualizada con la legislación vigente, recomendando verificar siempre las fuentes oficiales.
 
-En Argentina también se destaca el sistema de *Búsqueda de Jurisprudencia Asistida por IA* del Tribunal Fiscal de la Nación @tribunalfiscal2025 @worldlawgroup2025, que constituye una de las primeras iniciativas gubernamentales en el país en incorporar inteligencia artificial a la búsqueda de documentos legales, aunque limitado a documentos emitidos por dicho tribunal.
+En Argentina también se destaca el sistema de *Búsqueda de Jurisprudencia Asistida por IA* del Tribunal Fiscal de la Nación @tribunalfiscal2025, que incorpora inteligencia artificial a la búsqueda de documentos legales, aunque limitado a documentos emitidos por dicho tribunal.
 
 == Sistemas RAG en Dominios Especializados
 

@@ -345,7 +345,7 @@ Esto indica un ordenamiento relativo consistente de las respuestas entre los tre
 
 === Alpha de Krippendorff
 
-El Alpha de Krippendorff ($alpha$) es un coeficiente de acuerdo inter-anotadores que corrige el acuerdo esperado por azar, soporta múltiples anotadores y datos faltantes, y admite escala ordinal @krippendorff2004content. Los umbrales de interpretación según Krippendorff (2004) son: $alpha >= 0.800$ (bueno), $0.667 <= alpha < 0.800$ (aceptable), $alpha < 0.667$ (insuficiente).
+El Alpha de Krippendorff ($alpha$) es un coeficiente de acuerdo inter-anotadores que corrige el acuerdo esperado por azar, soporta múltiples anotadores y datos faltantes, y admite escala ordinal @krippendorff2018content. Los umbrales de interpretación según Krippendorff (2018) son: $alpha >= 0.800$ (bueno), $0.667 <= alpha < 0.800$ (aceptable), $alpha < 0.667$ (insuficiente).
 
 Los resultados globales fueron:
 
