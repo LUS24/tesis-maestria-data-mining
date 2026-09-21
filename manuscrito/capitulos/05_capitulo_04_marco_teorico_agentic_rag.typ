@@ -333,7 +333,7 @@ A pesar de su efectividad, LLM-as-a-judge presenta sesgos significativos que deb
 
 - *Sesgo de posición (Position Bias)*: el LLM tiende a favorecer respuestas según su orden de presentación @zheng2023judging @wang2023large.
 - *Sesgo de verbosidad (Verbosity Bias)*: favorece respuestas más largas, equiparando extensión con calidad @koo2023benchmarking.
-- *Sesgo egoísta (Egocentric Bias)*: el LLM juez favorece respuestas generadas por sí mismo @liu2023llms.
+- *Sesgo egoísta (Egocentric Bias)*: el LLM juez favorece respuestas generadas por sí mismo @liu2023geval.
 - *Sesgo de autoridad (Authority Bias)*: favorece afirmaciones que citan fuentes que parecen autoritarias @chen2024humans.
 - *Vulnerabilidad adversarial*: secuencias adversariales cuidadosamente diseñadas pueden manipular las puntuaciones del juez @shi2024judgedeceiver @raina2024llm.
 
