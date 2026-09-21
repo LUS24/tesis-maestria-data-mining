@@ -154,7 +154,7 @@ Dado que se realizan 9 comparaciones (3 modelos × 3 pares de estrategias), se a
         | gpt-5-nano | base_rag       | no_rag         |  0.5833  |  0.5833  | 2923.5 | 0.896927  |    1.000000    |             |
       ],
     ),
-    caption: [Efectos simples de estrategia dentro de cada modelo (Mann-Whitney U). `Med. 1` y `Med. 2` son las medianas de `respuesta_correcta_avg` para cada estrategia. `p corr. Holm` es el p-value corregido por Holm-Bonferroni; ✓ indica significativo con corrección de Holm ($p_"corr" < 0.05$). $m = 9$ comparaciones.],
+    caption: [Efectos simples de estrategia dentro de cada modelo (Mann-Whitney U). `Med. 1` y `Med. 2` son las medianas de `respuesta_correcta_avg` para cada estrategia; en negrita, la mediana mayor de cada comparación. `p corr. Holm` es el p-value corregido por Holm-Bonferroni; ✓ indica significativo con corrección de Holm ($p_"corr" < 0.05$). $m = 9$ comparaciones.],
   ) <tabla-efectos-simples>
 ]
 
@@ -186,7 +186,7 @@ La @tabla-resumen-medianas presenta las medianas de `respuesta_correcta_avg` y, 
         | Agentic-RAG  | gpt-5      |     *0,958*      |  *0,277*   |  *0,190*  |    0,791     |   *0,708*   |    *0,875*    |
       ],
     ),
-    caption: [Medianas por configuración (estrategia × modelo). `Resp. correcta` es la variable de respuesta principal utilizada en las pruebas de hipótesis; las columnas restantes (`Token F1`, `ROUGE-L`, `SBERT (es)`, `BERTScore`, `Prec. legal`) se incluyen con fines descriptivos. Los valores más altos indican mejor desempeño. Destaca la mediana de 0,958 de Agentic-RAG + gpt-5 en respuesta correcta, y el valor anómalamente bajo de 0,083 para Agentic-RAG + gpt-5-nano.],
+    caption: [Medianas por configuración (estrategia × modelo). `Resp. correcta` es la variable de respuesta principal utilizada en las pruebas de hipótesis; las columnas restantes (`Token F1`, `ROUGE-L`, `SBERT (es)`, `BERTScore`, `Prec. legal`) se incluyen con fines descriptivos. Los valores más altos indican mejor desempeño y se destacan en negrita (el máximo de cada columna). Destaca la mediana de 0,958 de Agentic-RAG + gpt-5 en respuesta correcta, y el valor anómalamente bajo de 0,083 para Agentic-RAG + gpt-5-nano.],
   ) <tabla-resumen-medianas>
 ]
 
@@ -219,7 +219,7 @@ Los resultados para `respuesta_correcta_avg` fueron:
       | Sistema × Modelo | *56.62* |  4   | *$1.48 times 10^(-11)$* |   Sí   |
     ],
   ),
-  caption: [Resultados del test de Scheirer-Ray-Hare para `respuesta_correcta_avg`.],
+  caption: [Resultados del test de Scheirer-Ray-Hare para `respuesta_correcta_avg`. En negrita, el efecto de interacción, que reúne el mayor estadístico $H$ y el menor p-value del análisis y constituye el hallazgo principal del capítulo.],
 )
 
 La interacción significativa ($H = 56.62$, $p < 10^(-11)$) indica que el efecto de la estrategia de recuperación *depende* del modelo empleado, y viceversa. El estadístico de interacción supera a ambos efectos principales, lo que implica que las combinaciones explican más varianza que los factores individuales.
@@ -243,12 +243,12 @@ El análisis de las medias por combinación revela un patrón de interacción di
     [
       | *Modelo*   | *agentic_rag* | *base_rag* | *no_rag* |
       | :--------- | :-----------: | :--------: | :------: |
-      | gpt-5      |     *0.80*      |    *0.70*    |   *0.73*   |
-      | gpt-5-mini |     0.78      |    0.64    |   0.35   |
-      | gpt-5-nano |     0.40      |    0.59    |   0.58   |
+      | gpt-5      |    *0.80*     |    0.70    |   0.73   |
+      | gpt-5-mini |    *0.78*     |    0.64    |   0.35   |
+      | gpt-5-nano |     0.40      |   *0.59*   |   0.58   |
     ],
   ),
-  caption: [Medias de `respuesta_correcta_avg` por combinación modelo × sistema.],
+  caption: [Medias de `respuesta_correcta_avg` por combinación modelo × sistema. En negrita, la estrategia con mejor desempeño dentro de cada modelo.],
 )
 
 Las principales observaciones son:
@@ -359,7 +359,7 @@ Los resultados globales fueron:
       | `score_precision_legal`    |   0.7846    |    Aceptable     |
     ],
   ),
-  caption: [Alpha de Krippendorff global por rúbrica.],
+  caption: [Alpha de Krippendorff global por rúbrica. En negrita, el coeficiente de mayor valor.],
 )
 
 ==== Alpha por Sistema de Recuperación
@@ -374,7 +374,7 @@ Los resultados globales fueron:
       | `score_precision_legal`    |    *0.7550*     |   0.6389   |  0.6211  |
     ],
   ),
-  caption: [Alpha de Krippendorff ordinal por sistema de recuperación.],
+  caption: [Alpha de Krippendorff ordinal por sistema de recuperación. En negrita, el coeficiente de mayor valor de cada sistema.],
 )
 
 La @fig-krippendorff-alpha visualiza estos resultados, permitiendo comparar de un vistazo la consistencia entre sistemas y rúbricas con respecto al umbral de aceptabilidad.
