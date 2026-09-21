@@ -1,5 +1,6 @@
 #import "@preview/mmdr:0.2.2": mermaid
 #import "@preview/tablem:0.3.0": three-line-table
+#import "../formato.typ": pagina-apaisada
 
 = Metodología e Implementación <cap:metodologia>
 
@@ -664,28 +665,12 @@ Las versiones exactas de todas las librerías empleadas, incluyendo dependencias
 
 La infraestructura empleada combina un equipo local —donde se ejecutan íntegramente los notebooks de experimentación y el modelo de embeddings— con servicios externos accedidos por API para la generación de respuestas y la evaluación por jueces. La @fig-infraestructura resume los componentes y las conexiones entre ellos.
 
-#figure(
-  mermaid(
-    "graph TD
-     subgraph SL[Equipo local: x86_64, 16 nucleos, 32 GB RAM, sin GPU]
-       NB[Notebooks de experimentacion]
-       EMB[Modelo de embeddings sentence-transformers]
-       MIL[Milvus standalone en Docker Compose]
-       ETCD[etcd: almacen de metadatos]
-       NB --> EMB
-       EMB -->|Insercion de embeddings 768d| MIL
-       NB -->|Busqueda vectorial| MIL
-       MIL --- ETCD
-     end
-     subgraph SE[Servicios externos accedidos por API]
-       OAI[OpenAI API: GPT-5 nano, mini y estandar, GPT-4.1, o4-mini]
-       JUE[Jueces LLM: DeepSeek-V3, Grok 4.1 Fast, Kimi K2 0905]
-     end
-     NB -->|Generacion de respuestas| OAI
-     NB -->|Evaluacion por jueces| JUE",
-  ),
-  caption: [Infraestructura empleada en los experimentos. El equipo local aloja la base de datos vectorial (Milvus _standalone_ y etcd, desplegados con Docker Compose) y el modelo de embeddings, que se ejecuta en CPU; los notebooks de experimentación (Python con `uv`) orquestan la generación de respuestas —bajo las tres estrategias de recuperación— y la evaluación LLM-as-a-Judge, que se realizan mediante APIs externas.],
-) <fig-infraestructura>
+#pagina-apaisada[
+  #figure(
+    image("../media/diag_infraestructura.svg", width: 100%),
+    caption: [Infraestructura empleada en los experimentos. El equipo local aloja la base de datos vectorial (Milvus _stand-alone_ y etcd, desplegados con Docker Compose) y el modelo de embeddings, que se ejecuta en CPU; los notebooks de experimentación (Python con `uv`) orquestan la generación de respuestas —bajo las tres estrategias de recuperación— y la evaluación LLM-as-a-Judge, que se realizan mediante APIs externas. Diagrama generado con Mermaid (`manuscrito/media/diag_infraestructura.mmd`).],
+  ) <fig-infraestructura>
+]
 
 + *Milvus*: base de datos vectorial desplegada mediante Docker Compose, junto con etcd como almacén de metadatos. La instancia se ejecuta en el equipo local descrito en la @fig-infraestructura.
 + *OpenAI API*: acceso a los modelos GPT-5 (nano, mini, estándar), GPT-4.1 para generación de preguntas y o4-mini para extracción de contenido de archivos PDF.
