@@ -143,14 +143,14 @@ Dado que se realizan 9 comparaciones (3 modelos × 3 pares de estrategias), se a
       [
         | *Modelo*   | *Estrategia 1* | *Estrategia 2* | *Med. 1* | *Med. 2* |  *U*   |    *p*    | *p corr. Holm* | *Sig. Holm* |
         | :--------- | :------------- | :------------- | :------: | :------: | :----: | :-------: | :------------: | :---------: |
-        | gpt-5      | agentic_rag    | base_rag       |  0.9583  |  0.8333  | 3475.5 | 0.024606  |    0.073819    |             |
-        | gpt-5      | agentic_rag    | no_rag         |  0.9583  |  0.8333  | 3545.5 | 0.012841  |    0.063887    |             |
+        | gpt-5      | agentic_rag    | base_rag       | *0.9583* |  0.8333  | 3475.5 | 0.024606  |    0.073819    |             |
+        | gpt-5      | agentic_rag    | no_rag         | *0.9583* |  0.8333  | 3545.5 | 0.012841  |    0.063887    |             |
         | gpt-5      | base_rag       | no_rag         |  0.8333  |  0.8333  | 2850.5 | 0.889993  |    1.000000    |             |
-        | gpt-5-mini | agentic_rag    | base_rag       |  0.9167  |  0.6250  | 3666.0 | 0.003055  |    0.018331    |     ✓      |
-        | gpt-5-mini | agentic_rag    | no_rag         |  0.9167  |  0.3333  | 4964.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
-        | gpt-5-mini | base_rag       | no_rag         |  0.6250  |  0.3333  | 4349.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
-        | gpt-5-nano | agentic_rag    | base_rag       |  0.0833  |  0.5833  | 2076.0 | 0.002382  |    0.016676    |     ✓      |
-        | gpt-5-nano | agentic_rag    | no_rag         |  0.0833  |  0.5833  | 2221.5 | 0.012777  |    0.063887    |             |
+        | gpt-5-mini | agentic_rag    | base_rag       | *0.9167* |  0.6250  | 3666.0 | 0.003055  |    0.018331    |     ✓      |
+        | gpt-5-mini | agentic_rag    | no_rag         | *0.9167* |  0.3333  | 4964.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
+        | gpt-5-mini | base_rag       | no_rag         | *0.6250* |  0.3333  | 4349.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
+        | gpt-5-nano | agentic_rag    | base_rag       |  0.0833  | *0.5833* | 2076.0 | 0.002382  |    0.016676    |     ✓      |
+        | gpt-5-nano | agentic_rag    | no_rag         |  0.0833  | *0.5833* | 2221.5 | 0.012777  |    0.063887    |             |
         | gpt-5-nano | base_rag       | no_rag         |  0.5833  |  0.5833  | 2923.5 | 0.896927  |    1.000000    |             |
       ],
     ),
@@ -182,8 +182,8 @@ La @tabla-resumen-medianas presenta las medianas de `respuesta_correcta_avg` y, 
         | RAG básico   | gpt-5-mini |      0,625       |   0,213    |   0,135   |    0,760     |    0,700    |     0,417     |
         | RAG básico   | gpt-5      |      0,833       |   0,257    |   0,174   |    0,794     |    0,706    |     0,667     |
         | Agentic-RAG  | gpt-5-nano |      0,083       |   0,125    |   0,083   |    0,389     |    0,648    |     0,125     |
-        | Agentic-RAG  | gpt-5-mini |      0,917       |   0,215    |   0,130   |    0,795     |    0,706    |     0,833     |
-        | Agentic-RAG  | gpt-5      |      0,958       |   0,277    |   0,190   |    0,791     |    0,708    |     0,875     |
+        | Agentic-RAG  | gpt-5-mini |      0,917       |   0,215    |   0,130   |   *0,795*    |    0,706    |     0,833     |
+        | Agentic-RAG  | gpt-5      |     *0,958*      |  *0,277*   |  *0,190*  |    0,791     |   *0,708*   |    *0,875*    |
       ],
     ),
     caption: [Medianas por configuración (estrategia × modelo). `Resp. correcta` es la variable de respuesta principal utilizada en las pruebas de hipótesis; las columnas restantes (`Token F1`, `ROUGE-L`, `SBERT (es)`, `BERTScore`, `Prec. legal`) se incluyen con fines descriptivos. Los valores más altos indican mejor desempeño. Destaca la mediana de 0,958 de Agentic-RAG + gpt-5 en respuesta correcta, y el valor anómalamente bajo de 0,083 para Agentic-RAG + gpt-5-nano.],
@@ -212,11 +212,11 @@ Los resultados para `respuesta_correcta_avg` fueron:
   three-line-table(
     columns: (auto, auto, auto, auto, auto),
     [
-      | *Efecto*         |  *H*  | *gl* |          *p*          | *Sig.* |
-      | :--------------- | :---: | :--: | :-------------------: | :----: |
-      | Sistema          | 21.83 |  2   |       0.000018        |   Sí   |
-      | Modelo           | 49.01 |  2   |       < 0.0001        |   Sí   |
-      | Sistema × Modelo | 56.62 |  4   | $1.48 times 10^(-11)$ |   Sí   |
+      | *Efecto*         |  *H*   | *gl* |           *p*           | *Sig.* |
+      | :--------------- | :----: | :--: | :---------------------: | :----: |
+      | Sistema          | 21.83  |  2   |        0.000018         |   Sí   |
+      | Modelo           | 49.01  |  2   |        < 0.0001         |   Sí   |
+      | Sistema × Modelo | *56.62* |  4   | *$1.48 times 10^(-11)$* |   Sí   |
     ],
   ),
   caption: [Resultados del test de Scheirer-Ray-Hare para `respuesta_correcta_avg`.],
@@ -243,7 +243,7 @@ El análisis de las medias por combinación revela un patrón de interacción di
     [
       | *Modelo*   | *agentic_rag* | *base_rag* | *no_rag* |
       | :--------- | :-----------: | :--------: | :------: |
-      | gpt-5      |     0.80      |    0.70    |   0.73   |
+      | gpt-5      |     *0.80*      |    *0.70*    |   *0.73*   |
       | gpt-5-mini |     0.78      |    0.64    |   0.35   |
       | gpt-5-nano |     0.40      |    0.59    |   0.58   |
     ],
@@ -355,7 +355,7 @@ Los resultados globales fueron:
     [
       | *Rúbrica*                  | *α ordinal* | *Interpretación* |
       | :------------------------- | :---------: | :--------------: |
-      | `score_respuesta_correcta` |   0.8078    |      Bueno       |
+      | `score_respuesta_correcta` |   *0.8078*    |      Bueno       |
       | `score_precision_legal`    |   0.7846    |    Aceptable     |
     ],
   ),
@@ -370,8 +370,8 @@ Los resultados globales fueron:
     [
       | *Rúbrica*                  | *agentic_rag* | *base_rag* | *no_rag* |
       | :------------------------- | :-----------: | :--------: | :------: |
-      | `score_respuesta_correcta` |    0.8693     |   0.8219   |  0.6979  |
-      | `score_precision_legal`    |    0.7550     |   0.6389   |  0.6211  |
+      | `score_respuesta_correcta` |    *0.8693*     |   0.8219   |  0.6979  |
+      | `score_precision_legal`    |    *0.7550*     |   0.6389   |  0.6211  |
     ],
   ),
   caption: [Alpha de Krippendorff ordinal por sistema de recuperación.],
