@@ -1,6 +1,5 @@
 #import "@preview/mmdr:0.2.2": mermaid
 #import "@preview/tablem:0.3.0": three-line-table
-#import "../formato.typ": pagina-apaisada
 
 = Metodología e Implementación <cap:metodologia>
 
@@ -663,16 +662,10 @@ Las versiones exactas de todas las librerías empleadas, incluyendo dependencias
 
 === Infraestructura
 
-La infraestructura empleada combina un equipo local —donde se ejecutan íntegramente los notebooks de experimentación y el modelo de embeddings— con servicios externos accedidos por API para la generación de respuestas y la evaluación por jueces. La @fig-infraestructura resume los componentes y las conexiones entre ellos.
+La infraestructura empleada combina un equipo local —donde se ejecutan íntegramente los notebooks de experimentación, el modelo de embeddings y la base de datos vectorial— con servicios externos accedidos por API para la generación de respuestas y la evaluación por jueces. Los componentes son los siguientes:
 
-#pagina-apaisada[
-  #figure(
-    image("../media/diag_infraestructura.svg", width: 100%),
-    caption: [Infraestructura empleada en los experimentos. El equipo local aloja la base de datos vectorial (Milvus _stand-alone_ y etcd, desplegados con Docker Compose) y el modelo de embeddings, que se ejecuta en CPU; los notebooks de experimentación (Python con `uv`) orquestan la generación de respuestas —bajo las tres estrategias de recuperación— y la evaluación LLM-as-a-Judge, que se realizan mediante APIs externas. Diagrama generado con Mermaid (`manuscrito/media/diag_infraestructura.mmd`).],
-  ) <fig-infraestructura>
-]
-
-+ *Milvus*: base de datos vectorial desplegada mediante Docker Compose, junto con etcd como almacén de metadatos. La instancia se ejecuta en el equipo local descrito en la @fig-infraestructura.
++ *Equipo local*: estación de trabajo con procesador x86_64 de 16 núcleos y 32 GB de RAM, sin GPU. Aloja los notebooks de experimentación (Python con `uv`), el modelo de embeddings —que se ejecuta en CPU— y la base de datos vectorial.
++ *Milvus*: base de datos vectorial desplegada mediante Docker Compose, junto con etcd como almacén de metadatos.
 + *OpenAI API*: acceso a los modelos GPT-5 (nano, mini, estándar), GPT-4.1 para generación de preguntas y o4-mini para extracción de contenido de archivos PDF.
 + *APIs de terceros*: DeepSeek, Grok y Kimi K2 como modelos jueces.
 
