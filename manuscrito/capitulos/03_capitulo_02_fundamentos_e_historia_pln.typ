@@ -224,7 +224,7 @@ Ya por los años 60, el desarrollo inicial de los asistentes virtuales como los 
   caption: [Flujo de procesamiento de ELIZA. Basado en el mecanismo de descomposición y reensamblaje descrito por @weizenbaum1966.],
 ) <fig_flujo_eliza>
 
-Otro tipo de *chatbots* son aquellos basados en recuperación de información (Information Retrieval, IR), donde los sistemas formulan respuestas al contrastar los patrones de entrada con pares de solicitud-respuesta ya estructurados en una base de datos de diálogos @peng_ma_2019. Para seleccionar la respuesta óptima, se apoyan en metodologías de recuperación de datos a nivel de palabra tales como TF-IDF, similitud del coseno y modelos de espacio de estados. CleverBot es un referente de esta categoría; fue diseñado a finales de la década de 1980 y difundido formalmente a finales de los años 1990 @mnasri2019.
+Otro tipo de *chatbots* son aquellos basados en recuperación de información (Information Retrieval, IR), donde los sistemas formulan respuestas al contrastar los patrones de entrada con pares de solicitud-respuesta ya estructurados en una base de datos de diálogos @jurafsky_martin_2026. Para seleccionar la respuesta óptima, se apoyan en metodologías de recuperación de datos a nivel de palabra tales como TF-IDF, similitud del coseno y modelos de espacio de estados. CleverBot es un referente de esta categoría; fue diseñado a finales de la década de 1980 y difundido formalmente a finales de los años 1990 @mnasri2019.
 
 === Modelos basados en espacio de vectores y espacio de estados
 
