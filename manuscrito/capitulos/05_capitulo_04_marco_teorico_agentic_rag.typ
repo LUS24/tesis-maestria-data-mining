@@ -303,7 +303,7 @@ La literatura identifica al menos seis atributos que LLM-as-a-judge puede evalua
 - *Seguridad (Safety \& Security)*: evalúa si el modelo evita generar contenido dañino, tóxico o sesgado. Se ha validado que LLMs pueden actuar como moderadores de contenido siguiendo guías de políticas @bai2022constitutional.
 - *Confiabilidad (Reliability)*: mide la fidelidad de la respuesta a fuentes verificables y la calibración de la incertidumbre expresada. Incluye la detección de alucinaciones @min2023factscore.
 - *Relevancia (Relevance)*: evalúa qué tan bien se alinea la respuesta con la consulta o tarea original. Es particularmente importante en sistemas RAG @es2023ragas.
-- *Lógica (Logic)*: evalúa la coherencia interna y corrección del razonamiento, independientemente de la precisión factual @yao2023tree.
+- *Lógica (Logic)*: evalúa la coherencia interna y corrección del razonamiento, independientemente de la precisión factual @zhao2026reportlogic.
 - *Calidad general (Overall Quality)*: evaluación holística que integra múltiples dimensiones en una puntuación compuesta @lin2023unlocking.
 
 === Metodologías de prompting
@@ -333,7 +333,7 @@ A pesar de su efectividad, LLM-as-a-judge presenta sesgos significativos que deb
 
 - *Sesgo de posición (Position Bias)*: el LLM tiende a favorecer respuestas según su orden de presentación @zheng2023judging @wang2023large.
 - *Sesgo de verbosidad (Verbosity Bias)*: favorece respuestas más largas, equiparando extensión con calidad @koo2023benchmarking.
-- *Sesgo egoísta (Egocentric Bias)*: el LLM juez favorece respuestas generadas por sí mismo @liu2023geval.
+- *Sesgo egoísta (Egocentric Bias)*: el LLM juez favorece respuestas generadas por sí mismo @panickssery2024selfpref.
 - *Sesgo de autoridad (Authority Bias)*: favorece afirmaciones que citan fuentes que parecen autoritarias @chen2024humans.
 - *Vulnerabilidad adversarial*: secuencias adversariales cuidadosamente diseñadas pueden manipular las puntuaciones del juez @shi2024judgedeceiver @raina2024llm.
 
