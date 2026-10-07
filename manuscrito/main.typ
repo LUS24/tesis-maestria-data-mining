@@ -7,7 +7,6 @@
 #set page(paper: "a4", margin: 2.5cm, numbering: "i")
 #set text(font: "New Computer Modern", size: 12pt, lang: "es")
 #set par(justify: true, leading: 0.65em)
-#set par.line(numbering: "1") // TODO: quitar cuando se prepare la versión final.
 #set heading(numbering: "1.1")
 #show outline.entry: set par(justify: true)
 
