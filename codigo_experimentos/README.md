@@ -116,7 +116,7 @@ See the files [codigo_de_mineria_actualizado_2025_08_02.py](data/law_data/codigo
 Classical metrics don't show a difference between Basic RAG and Agentic RAG. --> This is the reason LLM as a Judge was used due to the complexity of the Law language.
 
 
-### Part K - Analyze metadata
+### ~~Part K - Analyze metadata~~ --> Done in part_j 05_analisis_costos.ipynb
 
 * Compare the different systems: number of tokens and costs
     - No RAG
