@@ -297,14 +297,14 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | PI-18 | Cerrada | Una sola profesional revisora; no existe segunda revisión independiente | Usar “revisión por una profesional” |
 | PI-19 | Cerrada | Fechas: 1886-11-25 y 1997-05-30; eliminar las no verificadas | Implementación editorial pendiente |
 | PI-20 | Cancelada | No se crea benchmark v2 en esta tesis | Sin acción |
-| PI-21 | Cerrada | Opción A: reemplazar Bommasani/Davis/Cardon por Bozdag, Sevim y Koç; reescribir las dos afirmaciones | Aplicar en `.bib` y texto |
-| PI-22 | Cerrada | Opción A: usar Magesh et al. (2025) para Westlaw/Lexis; conservar Dahl para su propio contenido | Reemplazar la cita |
-| PI-23 | Cerrada | Opción A: APA con nombres/iniciales para Wei/Zhao, sin letras a/b | Aplicar en citas |
+| PI-21 | Cerrada | Opción A: reemplazar Bommasani/Davis/Cardon por Bozdag, Sevim y Koç; reescribir las dos afirmaciones | Aplicada en `.bib` y texto; PDF compilado |
+| PI-22 | Cerrada | Opción A: usar Magesh et al. (2025) para Westlaw/Lexis; conservar Dahl para su propio contenido | Aplicada en `.bib` y texto; PDF compilado |
+| PI-23 | Cerrada | Opción A: APA con nombres/iniciales para Wei/Zhao, sin letras a/b | Aplicada en citas y texto; PDF compilado |
 | PI-24 | Cerrada | Opción A con la página institucional verificada (`https://www.argentina.gob.ar/tribunalfiscal/jurisprudencia`), que enlaza al buscador asistido por IA. El endpoint directo no respondió desde este entorno (timeout) | Entrada y cita actualizadas; PDF compilado |
 | PI-25 | Cerrada | Se adoptan las cinco entradas de `§6.4`: Hebb 2005, Minsky 2017, Miceli 2010 (Bonferroni), Jordan 1997 y Krippendorff 2019; claves actualizadas | Citas y `.bib` actualizados; PDF compilado |
-| PI-26 | Cerrada | Opción B: `et al.` estricto APA 7, como solicita el tribunal | Revisar `main.typ` y PDF |
-| PI-27 | Cerrada | Opción A: aplicar el paquete de correcciones factuales verificadas | Aplicar en `.bib` y texto |
-| PI-28 | Cerrada | Opción A: agregar Lewis, Código de Minería, Zheng, Bench-Capon, Tribunal Fiscal y Qwen3 | Incorporar referencias |
+| PI-26 | Cerrada | Opción B: `et al.` estricto APA 7, como solicita el tribunal | Reglas de traducción eliminadas; PDF usa `et al.` |
+| PI-27 | Cerrada | Opción A: aplicar el paquete de correcciones factuales verificadas | Aplicada en `.bib` y texto; PDF compilado |
+| PI-28 | Cerrada | Opción A: agregar Lewis, Código de Minería, Zheng, Bench-Capon, Tribunal Fiscal y Qwen3 | Referencias incorporadas y citadas; PDF compilado |
 | PI-29 | Cerrada | Opción A: mantener `nAGQ = 1` (Laplace) y declarar la limitación; reconciliar con NV-01 | `nAGQ > 1` no está disponible en `clmm` con dos efectos aleatorios |
 | PI-30 | Cerrada | Opción A: publicar después de revisar el manuscrito y ordenar el directorio | Ejecutar `run_all.sh`, clonación y registro al final |
 | PI-31 | Cerrada | Opción A: aplicar todo y generar una nueva versión del archivo | Implementación pendiente; coordinar con NV-07 |

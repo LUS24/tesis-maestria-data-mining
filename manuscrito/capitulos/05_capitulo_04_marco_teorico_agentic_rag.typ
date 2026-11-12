@@ -303,7 +303,7 @@ La literatura identifica al menos seis atributos que LLM-as-a-judge puede evalua
 - *Seguridad (Safety \& Security)*: evalúa si el modelo evita generar contenido dañino, tóxico o sesgado. Se ha validado que LLMs pueden actuar como moderadores de contenido siguiendo guías de políticas @bai2022constitutional.
 - *Confiabilidad (Reliability)*: mide la fidelidad de la respuesta a fuentes verificables y la calibración de la incertidumbre expresada. Incluye la detección de alucinaciones @min2023factscore.
 - *Relevancia (Relevance)*: evalúa qué tan bien se alinea la respuesta con la consulta o tarea original. Es particularmente importante en sistemas RAG @es2023ragas.
-- *Lógica (Logic)*: evalúa la coherencia interna y corrección del razonamiento, independientemente de la precisión factual @zhao2026reportlogic.
+- *Lógica (Logic)*: evalúa la coherencia interna y corrección del razonamiento, independientemente de la precisión factual (J. Zhao y cols., #cite(<zhao2026reportlogic>, form: "year")).
 - *Calidad general (Overall Quality)*: evaluación holística que integra múltiples dimensiones en una puntuación compuesta @lin2023unlocking.
 
 === Metodologías de prompting
@@ -345,7 +345,7 @@ En el contexto de RAG, LLM-as-a-judge se ha convertido en el método de evaluaci
 
 - *RAGAS* @es2023ragas: framework que utiliza LLMs para evaluar sistemas RAG en tres dimensiones: relevancia del contexto, fidelidad de la respuesta y relevancia de la respuesta.
 - *ARES* @saad2023ares: combina LLMs con clasificadores entrenados para evaluar RAG en las mismas tres dimensiones, utilizando PPI (_Prediction-Powered Inference_) para intervalos de confianza estadística.
-- *Self-RAG* @asai2023selfrag: el propio LLM genera _tokens reflectantes_ que indican si necesita recuperación y evalúa la calidad de sus propias salidas, integrando el juez dentro del pipeline de generación.
+- *Self-RAG* @asai2024selfrag: el propio LLM genera _tokens reflectantes_ que indican si necesita recuperación y evalúa la calidad de sus propias salidas, integrando el juez dentro del pipeline de generación.
 - *RAG-Gym* @xiong2025raggym: entorno unificado para entrenar agentes de búsqueda y razonamiento con supervisión de proceso, donde LLMs avanzados actúan como jueces de trayectoria.
 - *ConsJudge* @liu2025consjudge: método que mejora la consistencia del juez LLM en RAG utilizando consistencia entre juicios (_judge-consistency_) para seleccionar pares de preferencia y entrenar con DPO.
 

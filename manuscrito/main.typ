@@ -23,21 +23,8 @@
 // Estilo de captions: texto más pequeño para diferenciar del cuerpo
 #show figure.caption: set text(size: 10pt)
 
-// Corrección para las citas dentro del texto
-#show cite: it => {
-  // Cambia "et al." por "y col."
-  show regex("et\s+al\.?"): [y col.]
-  // Cambia "& others" por "y cols." dentro de los paréntesis
-  show regex("\s*&\s*others"): [ y cols.]
-  it
-}
-
-// Corrección para la lista de referencias
-#show bibliography: it => {
-  show regex("et\s+al\.?"): [y col.]
-  show regex(",\s*&\s*others\.?"): [, y col.]
-  it
-}
+// Citas y referencias con el estilo APA 7 de Typst, sin traducciones manuales.
+// Se mantiene "et al." también en el cuerpo, como solicita el tribunal.
 
 // ───────────────────────────────────────────
 // Portada

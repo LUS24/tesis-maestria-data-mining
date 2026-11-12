@@ -30,7 +30,7 @@ La historia del desarrollo de los modelos del lenguaje se remota hace más de 10
   (date: "2013", desc: [Word2Vec @mikolov2013word2vec y GloVe @pennington2014glove popularizan los _word embeddings_ como representación distribuida del lenguaje.]),
   (date: "2014", desc: [Sutskever y colaboradores introducen la arquitectura secuencia-a-secuencia (_seq2seq_) @sutskever2014seq2seq; GRU @cho2014 como alternativa a la LSTM.]),
   (date: "2017", desc: [Aparece la arquitectura *Transformer* @vaswani2017, basada enteramente en atención, desplazando a las arquitecturas recurrentes.]),
-  (date: "2018", desc: [BERT @devlin2018bert demuestra la potencia de los modelos bidireccionales basados en _encoder_; GPT-1 @radford2018improving funda la familia *decoder-only*.]),
+  (date: "2018", desc: [BERT @devlin2019bert demuestra la potencia de los modelos bidireccionales basados en _encoder_; GPT-1 @radford2018improving funda la familia *decoder-only*.]),
   (date: "2019", desc: [GPT-2 @radford2019language_models muestra habilidades _zero-shot_ sorprendentes a 1.5 mil millones de parámetros.]),
   (date: "2020", desc: [GPT-3 @brown2020gpt3 introduce el _in-context learning_ a 175 mil millones de parámetros, popularizando el paradigma _few-shot_ prompting.]),
   (date: "2021", desc: [Codex, CLIP y DALL-E extienden los LLMs a código y a modalidades visuales.]),
@@ -349,10 +349,10 @@ $ "donde" "head"_i = "Attention"(Q W_i^Q, K W_i^K, V W_i^V) $
 
 A partir de la arquitectura Transformer surgieron los grandes modelos de lenguaje (LLM, por sus siglas en inglés), entrenados a partir de corpus de texto de escala masiva. Dos familias principales dominaron el panorama inicial:
 
-- *BERT* @devlin2018bert: modelo bidireccional basado exclusivamente en el *encoder* del Transformer, optimizado para tareas de extracción y comprensión de información a partir de texto.
+- *BERT* @devlin2019bert: modelo bidireccional basado exclusivamente en el *encoder* del Transformer, optimizado para tareas de extracción y comprensión de información a partir de texto.
 - *GPT* @radford2018improving: modelo unidireccional basado en el *decoder* del Transformer, especializado en la predicción y generación de secuencias de texto.
 
-Estas arquitecturas dieron origen a diversas familias de LLMs como GPT, PaLM, LLaMA, entre otras, que se han convertido en la columna vertebral del PLN moderno. Para una revisión exhaustiva, consultar #cite(<zhao2026surveySpringer>, form: "prose").
+Estas arquitecturas dieron origen a diversas familias de LLMs como GPT, PaLM, LLaMA, entre otras, que se han convertido en la columna vertebral del PLN moderno. Para una revisión exhaustiva, consultar W. X. Zhao y cols. (#cite(<zhao2026surveySpringer>, form: "year")).
 
 // Quita la numeración de los sub-headers de "Innovaciones recientes" (los años)
 // Configura el nivel 4 (====) sin numeración, solo con cuerpo en negrita.
@@ -367,10 +367,10 @@ Estas arquitecturas dieron origen a diversas familias de LLMs como GPT, PaLM, LL
 A partir del transformer la investigación en los modelos se aceleró cada vez más, en esta sección se presenta una cronología de hitos relevantes en la evolución de los LLMs, desde 2022 hasta el momento de cierre del marco teórico de este trabajo (segundo semestre de 2025).
 
 #let eventos_evolucion_llm_3 = (
-  (date: "2022", desc: [Wei y colaboradores documentan las *capacidades emergentes* @wei2022emergent; *InstructGPT* introduce RLHF @ouyang2022instructgpt; *Constitutional AI* propone retroalimentación generada por IA @bai2022constitutional; *ChatGPT* populariza el acceso masivo a LLMs @openai2022chatgpt.]),
+  (date: "2022", desc: [Wei, Tay, y cols. (#cite(<wei2022emergent>, form: "year")) documentan las *capacidades emergentes*; *InstructGPT* introduce RLHF @ouyang2022instructgpt; *Constitutional AI* propone retroalimentación generada por IA @bai2022constitutional; *ChatGPT* populariza el acceso masivo a LLMs @openai2022chatgpt.]),
   (date: "2023", desc: [*GPT-4* @openai2023gpt4 introduce arquitectura MoE; *Claude* @anthropic2023claude enfatiza seguridad; *Toolformer* @schick2023toolformer y *Function Calling* incorporan herramientas externas.]),
-  (date: "2024", desc: [*OpenAI o1* @openai2024o1 mejora el razonamiento mediante cadenas de pensamiento internas; *DeepSeek-V3* @deepseek2024v3 y *DeepSeek-R1* @deepseek2025r1 demuestran que el RL sin supervisión humana compite con RLHF.]),
-  (date: "2025", desc: [*GPT-4.5* @openai2025gpt45, *Claude 4* y *Claude Code* @anthropic2025claude4, *Codex* @openai2025codex y *GPT-5* @openai2025gpt5 consolidan los agentes de programación autónoma y la siguiente generación de modelos fundacionales.]),
+  (date: "2024", desc: [*OpenAI o1* @openai2024o1 mejora el razonamiento mediante cadenas de pensamiento internas; *DeepSeek-V3* @deepseek2024v3 demuestra que el RL sin supervisión humana compite con RLHF.]),
+  (date: "2025", desc: [*DeepSeek-R1* @deepseek2025r1 demuestra que el RL sin supervisión humana compite con RLHF; *GPT-4.5* @openai2025gpt45, *Claude 4* y *Claude Code* @anthropic2025claude4, *Codex* @openai2025codex y *GPT-5* @openai2025gpt5 consolidan los agentes de programación autónoma y la siguiente generación de modelos fundacionales.]),
 )
 
 #figure(
@@ -399,10 +399,10 @@ A partir del transformer la investigación en los modelos se aceleró cada vez m
 
 ==== Año 2022
 
-- *Emergent Abilities of Large Language Models* @wei2022emergent: Wei y colaboradores documentaron que ciertas capacidades de los modelos de lenguaje —resolución de problemas aritméticos simples, comprensión lectora de varios pasos, decodificación de instrucciones compuestas, razonamiento por analogías, entre otras— aparecen de manera discontinua y no predecible a partir de cierto umbral de escala (número de parámetros y de datos de entrenamiento). Estas _capacidades emergentes_ no se observan en modelos pequeños ni pueden extrapolarse linealmente desde su comportamiento, lo que sugiere que los LLMs no son simplemente una versión _a mayor escala_ de sus contrapartes pequeñas, sino que en cierto régimen de tamaño exhiben habilidades cualitativamente nuevas. La caracterización rigurosa de este fenómeno abrió una línea de investigación muy activa sobre sus condiciones, límites e implicaciones para la seguridad y la interpretabilidad de los modelos.
+- *Emergent Abilities of Large Language Models* @wei2022emergent: Wei, Tay, y cols. (#cite(<wei2022emergent>, form: "year")) documentaron que ciertas capacidades de los modelos de lenguaje —resolución de problemas aritméticos simples, comprensión lectora de varios pasos, decodificación de instrucciones compuestas, razonamiento por analogías, entre otras— aparecen de manera discontinua y no predecible a partir de cierto umbral de escala (número de parámetros y de datos de entrenamiento). Estas _capacidades emergentes_ no se observan en modelos pequeños ni pueden extrapolarse linealmente desde su comportamiento, lo que sugiere que los LLMs no son simplemente una versión _a mayor escala_ de sus contrapartes pequeñas, sino que en cierto régimen de tamaño exhiben habilidades cualitativamente nuevas. La caracterización rigurosa de este fenómeno abrió una línea de investigación muy activa sobre sus condiciones, límites e implicaciones para la seguridad y la interpretabilidad de los modelos.
 - *InstructGPT* @ouyang2022instructgpt: entrenamiento de modelos de lenguaje para seguir instrucciones con retroalimentación humana (RLHF, por sus siglas en inglés).
 - *Constitutional AI* @bai2022constitutional: método para entrenar asistentes inofensivos mediante retroalimentación generada por la propia IA.
-- *ChatGPT* (noviembre 2022) @openai2022chatgpt: lanzamiento público que popularizó el acceso masivo a los LLMs. Este hito puede entenderse como una manifestación a gran escala de las capacidades emergentes descritas por @wei2022emergent: aunque los modelos GPT-3 de acceso programático ya exhibían buena parte de esas habilidades, fue la interfaz conversacional de ChatGPT la que las volvió evidentes para el público general. En la práctica, ChatGPT demostró que modelos entrenados primariamente para predecir el siguiente token eran capaces de seguir instrucciones matizadas, mantener el contexto a lo largo de un diálogo, rechazar pedidos inapropiados y producir texto de apariencia humana en una amplia variedad de dominios —capacidades para las que no habían sido entrenados de forma explícita. Este comportamiento, interpretado a la luz del trabajo de Wei y colaboradores, reforzó la idea de que las capacidades emergentes no son un artefacto de evaluación, sino una propiedad intrínseca de los modelos suficientemente grandes.
+- *ChatGPT* (noviembre 2022) @openai2022chatgpt: lanzamiento público que popularizó el acceso masivo a los LLMs. Este hito puede entenderse como una manifestación a gran escala de las capacidades emergentes descritas por Wei, Tay, y cols. (#cite(<wei2022emergent>, form: "year")): aunque los modelos GPT-3 de acceso programático ya exhibían buena parte de esas habilidades, fue la interfaz conversacional de ChatGPT la que las volvió evidentes para el público general. En la práctica, ChatGPT demostró que modelos entrenados primariamente para predecir el siguiente token eran capaces de seguir instrucciones matizadas, mantener el contexto a lo largo de un diálogo, rechazar pedidos inapropiados y producir texto de apariencia humana en una amplia variedad de dominios —capacidades para las que no habían sido entrenados de forma explícita. Este comportamiento, interpretado a la luz del trabajo de Wei y colaboradores, reforzó la idea de que las capacidades emergentes no son un artefacto de evaluación, sino una propiedad intrínseca de los modelos suficientemente grandes.
 
 ==== Año 2023
 

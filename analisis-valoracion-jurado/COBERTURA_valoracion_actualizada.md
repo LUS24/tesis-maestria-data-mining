@@ -60,7 +60,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | IX.1.4 Declarar confundidos, prompts y contradicciones | **Cubierto** | `correccion-04`; quedan decisiones editoriales menores (7/6, `16_01`, notebook) |
 | IX.1.5 Reformular Tabla 4 y conclusiones | **Cubierto como propuesta** | `correccion-05`; no se editó el manuscrito |
 | IX.1.6 Corpus, origen y respuestas de referencia | **Cubierto en análisis** | `correccion-06`; 1.2/1.3 verificados; Q23–Q25 fuera de alcance |
-| IX.1.7 Tablas 2 y 3, auditoría bibliográfica | **Cubierto** | `correccion-07`; quedan decisiones manuales de autoría/DOI/fuente |
+| IX.1.7 Tablas 2 y 3, auditoría bibliográfica | **Cubierto** | `correccion-07`; PI-21–PI-28 aplicadas en `.bib` y texto, incluidas las claves nuevas y la APA estricta |
 | IX.1.8 Ampliar declaración de IA | **Cubierto** | Declaración por etapas en `01_texto_preliminar.typ`: extracción, benchmark, respuestas, jueces, asistencia y verificación; incluye la referencia eliminada |
 | IX.1.9 Informar métricas de recuperación | **Cubierto** | `verificacion-analisis-estadistico/metricas_recuperacion/`: baseline y Agentic-RAG por modelo, con definiciones y límites |
 

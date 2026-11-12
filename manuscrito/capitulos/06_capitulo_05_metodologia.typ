@@ -44,7 +44,7 @@ El proyecto se estructura en las siguientes fases:
 
 === Características del Código de Minería Argentino
 
-Se seleccionó el Código de Minería Argentino#footnote[Ley Nacional 1.919, sancionada el 25 de noviembre de 1886, con las modificaciones introducidas por leyes posteriores. El texto actualizado puede consultarse en el sitio Infoleg del Ministerio de Justicia de la Nación (http://servicios.infoleg.gob.ar).] como corpus de prueba de concepto. Este cuerpo normativo presenta una estructura jerárquica definida (títulos, capítulos, secciones y artículos) que facilita la segmentación y vectorización. Además, su extensión es acotada (comparada con la totalidad de la legislación nacional), lo que permite iterar sobre el diseño del sistema sin incurrir en costos prohibitivos de procesamiento.
+Se seleccionó el Código de Minería Argentino @codigo_mineria_1919 como corpus de prueba de concepto. Este cuerpo normativo presenta una estructura jerárquica definida (títulos, capítulos, secciones y artículos) que facilita la segmentación y vectorización. Además, su extensión es acotada (comparada con la totalidad de la legislación nacional), lo que permite iterar sobre el diseño del sistema sin incurrir en costos prohibitivos de procesamiento.
 
 === Obtención del Texto Legal
 
