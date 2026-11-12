@@ -378,4 +378,4 @@ Se dedicó una sección al paradigma LLM-as-a-judge, que constituye el método d
 
 Se analizaron casos de uso concretos en salud, recomendación, pruebas de software, dominios regulados e investigación académica, así como las consideraciones prácticas de ingeniería para llevar estos sistemas a producción. Finalmente, se identificaron direcciones abiertas de investigación, entre las que se destacan la orquestación consciente de costos, la evaluación de trayectorias y la seguridad y robustez de los pipelines agénticos.
 
-El siguiente capítulo (@cap:metodologia) describe la metodología empleada para diseñar, implementar y evaluar el sistema Agentic-RAG para consulta de normativa argentina, detallando el diseño experimental, las fases del proyecto y los criterios de selección de herramientas y métricas.
+El #ref(<cap:metodologia>, supplement: [Capítulo]) describe la metodología empleada para diseñar, implementar y evaluar el sistema Agentic-RAG para consulta de normativa argentina, detallando el diseño experimental, las fases del proyecto y los criterios de selección de herramientas y métricas.

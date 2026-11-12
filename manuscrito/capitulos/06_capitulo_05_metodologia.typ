@@ -99,7 +99,7 @@ El Código de Minería se organiza en 22 títulos que abarcan desde el dominio d
 
 === Selección de la Base de Datos Vectorial
 
-Se seleccionó Milvus (versión 2.5.9) como base de datos vectorial por su capacidad de escalar a grandes volúmenes, soporte para múltiples tipos de índices y su disponibilidad como software de código abierto @wang2021milvus (véase el capítulo @cap:agentic-rag para los fundamentos de bases de datos vectoriales en sistemas RAG). La instancia se despliega mediante el script de instalación oficial de Milvus, que genera automáticamente la configuración de Docker Compose con los servicios de Milvus standalone y etcd como almacén de metadatos, lo que permite reproducir el entorno con un único comando.
+Se seleccionó Milvus (versión 2.5.9) como base de datos vectorial por su capacidad de escalar a grandes volúmenes, soporte para múltiples tipos de índices y su disponibilidad como software de código abierto @wang2021milvus (véase el #ref(<cap:agentic-rag>, supplement: [Capítulo]) para los fundamentos de bases de datos vectoriales en sistemas RAG). La instancia se despliega mediante el script de instalación oficial de Milvus, que genera automáticamente la configuración de Docker Compose con los servicios de Milvus standalone y etcd como almacén de metadatos, lo que permite reproducir el entorno con un único comando.
 
 === Esquema de Datos
 
@@ -168,7 +168,7 @@ La selección del modelo de embeddings se guió por cuatro criterios:
 
 === Modelo Seleccionado
 
-Se seleccionó el modelo `hiiamsid/sentence_similarity_spanish_es` @hiiamsid2023sentence, un modelo de la familia sentence-transformers especializado en similitud semántica para textos en español @reimers2019sentence. Genera vectores de 768 dimensiones, ofreciendo un balance adecuado entre capacidad representativa y eficiencia computacional (véase el capítulo @cap:fundamentos-pln para los fundamentos de representaciones vectoriales y embeddings).
+Se seleccionó el modelo `hiiamsid/sentence_similarity_spanish_es` @hiiamsid2023sentence, un modelo de la familia sentence-transformers especializado en similitud semántica para textos en español @reimers2019sentence. Genera vectores de 768 dimensiones, ofreciendo un balance adecuado entre capacidad representativa y eficiencia computacional (véase el #ref(<cap:fundamentos-pln>, supplement: [Capítulo]) para los fundamentos de representaciones vectoriales y embeddings).
 
 === Generación e Inserción de Embeddings
 
@@ -209,7 +209,7 @@ La @fig-arq-no-rag presenta el diagrama de secuencia de la configuración sin RA
 
 === Framework de Orquestación (Pydantic AI)
 
-La implementación de los agentes se realizó mediante el framework Pydantic AI @pydanticAI, cuya selección se fundamenta en los criterios presentados en el capítulo @cap:agentic-rag sobre frameworks de orquestación de agentes. Pydantic AI provee:
+La implementación de los agentes se realizó mediante el framework Pydantic AI @pydanticAI, cuya selección se fundamenta en los criterios presentados en el #ref(<cap:agentic-rag>, supplement: [Capítulo]) sobre frameworks de orquestación de agentes. Pydantic AI provee:
 
 + Definición declarativa de agentes con validación de tipos.
 + Gestión de herramientas (tools) con límites de invocación configurables.
@@ -355,7 +355,7 @@ A continuación se presentan fragmentos representativos de la implementación de
   ],
 )
 
-El prompt del sistema (`INSTRUCTIONS["law_specialist_agent"]`) fue presentado en la sección @sec:agente-especialista-legal. La herramienta `retrieve_relevant_documents` actúa como fachada que internamente invoca al Agente de Recuperación:
+El prompt del sistema (`INSTRUCTIONS["law_specialist_agent"]`) fue presentado en la #ref(<sec:agente-especialista-legal>, supplement: [Sección]). La herramienta `retrieve_relevant_documents` actúa como fachada que internamente invoca al Agente de Recuperación:
 
 #block(
   width: 100%,
@@ -599,7 +599,7 @@ Se emplearon métricas basadas en modelos de lenguaje preentrenados:
 
 === Evaluación LLM-as-a-Judge
 
-Complementariamente a las métricas automatizadas, se implementó un esquema de evaluación LLM-as-a-Judge (véase el capítulo @cap:agentic-rag, sección @sec:llm-as-a-judge para los fundamentos teóricos de esta técnica de evaluación) empleando la librería `pydantic_evals`, que permite definir rúbricas estructuradas y ejecutar evaluaciones de forma automatizada. Se definieron dos rúbricas de evaluación:
+Complementariamente a las métricas automatizadas, se implementó un esquema de evaluación LLM-as-a-Judge (véase el #ref(<cap:agentic-rag>, supplement: [Capítulo]), #ref(<sec:llm-as-a-judge>, supplement: [Sección]) para los fundamentos teóricos de esta técnica de evaluación) empleando la librería `pydantic_evals`, que permite definir rúbricas estructuradas y ejecutar evaluaciones de forma automatizada. Se definieron dos rúbricas de evaluación:
 
 + *Respuesta correcta* (`score_respuesta_correcta`): evalúa el grado de alineamiento de la respuesta con la respuesta esperada, en una escala de 0.0 a 1.0 con valores discretos {0.0, 0.25, 0.5, 0.75, 1.0}.
 + *Precisión legal* (`score_precision_legal`): evalúa la correcta citación de artículos del Código de Minería argentino, en la misma escala.
@@ -784,6 +784,6 @@ El diseño factorial de 3 estrategias × 3 modelos permite un análisis riguroso
 
 La organización modular en notebooks independientes facilita la reproducción del pipeline y la auditoría de los artefactos; no implica reproducibilidad exacta de las respuestas. El uso de frameworks como Pydantic AI para la orquestación de agentes y `pydantic_evals` para la evaluación automatizada simplifica la gestión de la complejidad inherente a un sistema multi-agente.
 
-El siguiente capítulo (@cap:evaluacion) presenta los resultados de la evaluación experimental, incluyendo el análisis comparativo de las nueve configuraciones mediante métricas de similitud textual y semántica, la evaluación por jueces LLM, el análisis de acuerdo inter-juez y el estudio de costos. Los resultados se presentan mediante tablas resumen, gráficos de caja (boxplots) y mapas de calor (heatmaps) que facilitan la interpretación de los efectos principales y las interacciones entre factores.
+El #ref(<cap:evaluacion>, supplement: [Capítulo]) presenta los resultados de la evaluación experimental, incluyendo el análisis comparativo de las nueve configuraciones mediante métricas de similitud textual y semántica, la evaluación por jueces LLM, el análisis de acuerdo inter-juez y el estudio de costos. Los resultados se presentan mediante tablas resumen, gráficos de caja (boxplots) y mapas de calor (heatmaps) que facilitan la interpretación de los efectos principales y las interacciones entre factores.
 
 
