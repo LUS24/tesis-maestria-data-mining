@@ -13,7 +13,7 @@ Esta carpeta reúne los artefactos para resolver el punto **IX.1.7** del plan:
 3. **`cotejo_tablas_2_3.csv`** — los 39 ítems de las Tablas 2 y 3 y de la auditoría adicional, con estado, acción, evidencia y prioridad.
 4. **`auditoria_bibliografia.md`** — auditoría completa: 238 entradas, DOI, arXiv, URL, preprints, ediciones y ambigüedades.
 5. **`propuestas_bibtex.bib`** — 28 entradas propuestas, con comentarios de reemplazo, renombre o adición.
-6. **`mapa_renombres.csv`** — las 9 claves que cambian y todas las ubicaciones de sus citas.
+6. **`mapa_renombres.csv`** — las 14 claves que cambian y todas las ubicaciones de sus citas.
 7. **`estado_por_entrada.csv`** — estado de las 238 entradas actuales.
 
 ## 2. Resultado en cifras
@@ -82,7 +82,7 @@ Typst ya asigna a/b a los autores institucionales del mismo año (OpenAI, Anthro
 | `propuesta_edicion_manuscrito.md` | Cambios concretos en `.typ`, con texto actual/propuesto |
 | `propuestas_bibtex.bib` | 28 entradas BibTeX propuestas |
 | `cotejo_tablas_2_3.csv` | Cotejo de 39 ítems de las Tablas 2/3 y auditoría adicional |
-| `mapa_renombres.csv` | 9 claves que cambian y sus citas |
+| `mapa_renombres.csv` | 14 claves que cambian y sus citas |
 | `cola_lectura_afirmaciones.csv` | Afirmaciones que requieren lectura completa o revisión jurídica |
 
 ### 4.2. Inventarios y verificaciones
@@ -159,14 +159,14 @@ cd analisis-valoracion-jurado/correccion-07-forma-y-bibliografia/pruebas
 typst compile citas_ambiguas.typ ../salidas/prueba_citas.pdf --root ../../..
 ```
 
-## 6. Decisiones pendientes
+## 6. Decisiones adoptadas y pendientes
 
-1. **Bozdag:** confirmar la reescritura; el artículo no demuestra por sí solo una relación con decisiones judiciales reales.
-2. **Magesh:** confirmar que se elimina `dahan2024stanford` o se conserva solo para su propio contenido.
-3. **Wei/Zhao:** elegir APA (nombres/iniciales) o la solución literal del jurado (a/b). Se recomienda APA.
-4. **Tribunal Fiscal:** elegir sitio oficial o nota de AUNO.
-5. **DOI de edición:** decidir si se retira el DOI o se cambia la edición en Hebb, Minsky, Bonferroni, Jordan y Krippendorff.
-6. **Forma de autoría:** “y cols.” uniforme o “et al.” estricto APA.
+1. **Bozdag (PI-21, opción A):** reemplazar la entrada y reescribir las dos afirmaciones; el artículo no demuestra por sí solo una relación con decisiones judiciales reales.
+2. **Magesh (PI-22, opción A):** usar Magesh et al. (2025) para Westlaw/Lexis; conservar Dahl solo para su propio contenido.
+3. **Wei/Zhao (PI-23, opción A):** usar APA con nombres/iniciales; no usar letras a/b.
+4. **Tribunal Fiscal (PI-24, opción B provisional):** usar la nota de AUNO/Tallarico porque el sitio oficial no respondió; cambiar a opción A si se verifica el acceso.
+5. **DOI de edición (PI-25, resuelta):** se adoptaron `hebb2005organization`, `minsky2017perceptrons`, `bonferroni2010teoria`, `jordan1997` y `krippendorff2019content`; el `.bib` y las citas del manuscrito ya usan las claves nuevas.
+6. **Forma de autoría (PI-26, opción B):** `et al.` estricto APA 7; eliminar las reglas de traducción a “y cols.” y unificar las citas renderizadas.
 
 ## 7. Límites
 
@@ -181,7 +181,7 @@ typst compile citas_ambiguas.typ ../salidas/prueba_citas.pdf --root ../../..
 - Las 238 entradas tienen estado en `estado_por_entrada.csv`.
 - Las 238 están citadas y no hay claves huérfanas.
 - Las 28 entradas de `propuestas_bibtex.bib` se revisaron y se incorporaron solo las aprobadas.
-- Las 9 claves renombradas se actualizaron en todas sus citas.
+- Las 14 claves renombradas se actualizaron en todas sus citas.
 - El PDF final no contiene las cadenas listadas en `propuesta_edicion_manuscrito.md` §5.
 - Las referencias cruzadas duplicadas desaparecen.
-- La forma “y col.”/“y cols.” queda unificada.
+- Se usa `et al.` estricto APA 7 de forma uniforme (decisión PI-26).

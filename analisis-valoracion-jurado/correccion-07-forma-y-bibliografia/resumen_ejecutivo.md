@@ -72,14 +72,14 @@ Typst ya asigna a/b a los autores institucionales del mismo año (OpenAI, Anthro
 - `tunstall2022`, `rogers1951` y `levenshtein1966` no tienen DOI/URL; se documentan como excepciones, no se inventan identificadores.
 - **No hay entradas no citadas**: las 12 que una primera extracción marcó como tales eran citas seguidas de dos puntos (`@clave:`), que el regex inicial no reconocía. La extracción corregida encuentra las 238 entradas citadas.
 
-## 6. Decisiones que requieren revisión humana
+## 6. Decisiones adoptadas y pendientes
 
-1. **Bozdag:** confirmar la reescritura de las dos afirmaciones; el artículo no demuestra por sí solo una relación con decisiones judiciales reales.
-2. **Magesh:** confirmar que se elimina `dahan2024stanford` o se conserva solo si se cita para su propio contenido.
-3. **Wei/Zhao:** elegir entre la solución APA (nombres/iniciales) y la solución literal del jurado (a/b). La recomendación técnica es APA.
-4. **Tribunal Fiscal:** elegir sitio oficial o nota de AUNO; no se pudo acceder al sitio oficial desde este entorno, aunque la búsqueda lo confirma.
-5. **DOI de edición:** decidir si se retira el DOI o se cambia la edición citada en Hebb, Minsky, Bonferroni, Jordan y Krippendorff.
-6. **Forma de autoría:** elegir “y cols.” (recomendado en español) o “et al.” (estricto APA). No dejar “y col.” singular.
+1. **Bozdag (PI-21, opción A):** reemplazar la entrada y reescribir las dos afirmaciones.
+2. **Magesh (PI-22, opción A):** usar Magesh et al. (2025) para Westlaw/Lexis; conservar Dahl solo para su propio contenido.
+3. **Wei/Zhao (PI-23, opción A):** usar APA con nombres/iniciales; no usar letras a/b.
+4. **Tribunal Fiscal (PI-24, opción B provisional):** usar la nota de AUNO/Tallarico porque el sitio oficial no respondió; cambiar a A si se verifica el acceso.
+5. **DOI de edición (PI-25, resuelta):** se adoptaron `hebb2005organization`, `minsky2017perceptrons`, `bonferroni2010teoria`, `jordan1997` y `krippendorff2019content`; el `.bib` y las citas del manuscrito ya usan las claves nuevas.
+6. **Forma de autoría (PI-26, opción B):** `et al.` estricto APA 7; eliminar las reglas de traducción a “y cols.” y unificar las citas renderizadas.
 
 ## 7. Qué revisar primero
 
