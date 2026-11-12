@@ -1,0 +1,434 @@
+{
+  "metadata": {
+    "generated_at_utc": "2026-11-12T00:49:08.416484+00:00",
+    "repo_commit": "b4a71aae754a13854fe938e55ab3d97debb0be10",
+    "repo_branch": "main",
+    "tracked_dirty_files": [],
+    "pydantic_ai_version": "1.1.0",
+    "pydantic_evals_version": "1.1.0",
+    "python": "3.13.18"
+  },
+  "prompts": [
+    {
+      "id": "sin_rag_system",
+      "kind": "system",
+      "strategy": "sin_rag",
+      "component": "generador",
+      "source": "codigo_experimentos/part_e/02_query_llms_for_responses.ipynb",
+      "source_lines": "67-71 (celda de código; valor de system_prompt)",
+      "status": "fuente_sin_logs_de_entrada",
+      "evidence": "Texto tomado del notebook que generó las respuestas; los JSON de salida no conservan el prompt de entrada.",
+      "sha256": "bdaa8c97c4889e773f8a4b84c865d57326b9cc83128d3e15a4f60839f0550755",
+      "chars": 497,
+      "text": "\nEres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia. Siempre que sea posible citas las fuentes legales en tu respuesta. Si no sabes la respuesta, dices que no lo sabes.\nDentro del texto de la respuesta debe mencionarse de donde provino la afirmación. Por ejemplo \"según el artículo... de la ...\". Las respuestas deben ser claras, concisas y directas al punto.\nSolo retorna la respuesta.\n"
+    },
+    {
+      "id": "rag_basico_system_template",
+      "kind": "system_template",
+      "strategy": "rag_basico",
+      "component": "generador",
+      "source": "codigo_experimentos/part_f/01_rag_llm_responses.ipynb",
+      "source_lines": "120-129 (celda de código; valor de system_prompt)",
+      "status": "fuente_sin_logs_de_entrada",
+      "evidence": "Plantilla del notebook; {retrieved_data} se sustituye por la representación Python de la lista de hasta diez documentos.",
+      "sha256": "c4bee157b0c7035d1d4a609ee0009037274c50beacf8d475eb25ca4de14161c6",
+      "chars": 725,
+      "text": "\nEres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia. Siempre que sea posible citas las fuentes legales en tu respuesta. Si no sabes la respuesta, dices que no lo sabes.\nDentro del texto de la respuesta debe mencionarse de donde provino la afirmación. Por ejemplo \"según el artículo... de la ...\". Las respuestas deben ser claras, concisas y directas al punto.\nSolo retorna la respuesta.\nTienes a tu disposición la siguiente información obtenida de un sistema RAG (Retrieval Augmented Generation). Utiliza esta información para responder la pregunta de la mejor manera posible.\n=========\n{retrieved_data}\n=========\n\n"
+    },
+    {
+      "id": "especialista_legal_system",
+      "kind": "system",
+      "strategy": "agentic_rag",
+      "component": "especialista_legal",
+      "source": "codigo_experimentos/part_g/01_generate_responses_using_agents.py",
+      "source_lines": "141-152",
+      "status": "observado_en_logs",
+      "evidence": "Una única variante en 237 sesiones y 476 solicitudes; coincide con INSTRUCTIONS['law_specialist_agent'] del script final.",
+      "sha256": "cc3db2a1e375782ee5d40db517d6e3224e20c3d3ea6d8511da8fef12b295f322",
+      "chars": 995,
+      "text": "## Descripción:Eres un asistente legal experto en derecho Argentino. Respondes preguntas legales basadas en la Constitución Nacional Argentina, Códigos, Leyes y jurisprudencia.## Requisitos* Analizas la pregunta del usuario, extraes los puntos importantes y utilizas la herramienta `retrieve_relevant_documents` una vez para obtener información de la base de datos legislativa.* Analizas los documentos para generar la respuesta final.* Siempre citas las fuentes legales consultadas para la elaboración de tu respuesta. Por ejemplo: Código de Minería. Ley 1919 y sus modificatorias. Artículos 2, 3 inc. a, 5, 7, 8, 10 y 44. 25 de noviembre 1886 (Argentina)* Si no sabes la respuesta y los documentos legales no son suficientes para crear una respuesta, di que no cuentas con información para responderla.* Las respuestas deben ser claras, concisas y directas al punto.* Solo retorna la respuesta. No agregues texto irrelevante.* Respondes en español al menos que el usuario solicite otro idioma."
+    },
+    {
+      "id": "recuperador_system_6",
+      "kind": "system",
+      "strategy": "agentic_rag",
+      "component": "agente_recuperacion",
+      "source": "codigo_experimentos/part_g/chat_data/**/retrieval_agent.json",
+      "source_lines": "Instrucción registrada; coincide con el script final, líneas 153-161",
+      "status": "observado_en_logs",
+      "evidence": "158 sesiones de gpt-5-mini y gpt-5-nano; 653 solicitudes; límite declarado 6.",
+      "sha256": "27e1a20b08700a425b6e4b22220c9c6fdb397e7faa5b1b99d29b6c281f30cac2",
+      "chars": 700,
+      "text": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=6) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}"
+    },
+    {
+      "id": "recuperador_system_7_gpt5",
+      "kind": "system",
+      "strategy": "agentic_rag",
+      "component": "agente_recuperacion",
+      "source": "codigo_experimentos/part_g/chat_data/openai_gpt-5/**/retrieval_agent.json",
+      "source_lines": "Instrucción registrada en la corrida histórica de gpt-5",
+      "status": "observado_en_logs",
+      "evidence": "79 sesiones de gpt-5, 12 de noviembre de 2025; 345 solicitudes; límite declarado 7. No coincide con el script actual, que declara 6.",
+      "sha256": "4a77f607a7392ed186bc54a2014b8032a282c2e94b1e80fcd82890b02e645e2b",
+      "chars": 700,
+      "text": "Eres un especialista en búsqueda de información legislativa que:* Recibes una consulta relacionada con cuestiones legales de derecho Argentino.* La consulta puede dividirse en máximo 3 subconsultas para mejorar la recuperación.* Realizas una búsqueda por cada subconsulta en una base de datos de vectores empleando la herramienta `cosine_distance_vector_search` como máximo UsageLimits(tool_calls_limit=7) veces.Usa el valor para la clave 'usage_counts' del resultado para monitorear cuantas consultas has hecho* Seleccionas los documentos que mejor se ajustan a la consulta inicial y respondes con los resultados de la búsqueda. por ejemplo: {\"selected_documents\": [<document_1>, <document_2>, ...]}"
+    },
+    {
+      "id": "calidad_recuperacion_system_no_ejecutado",
+      "kind": "system",
+      "strategy": "agentic_rag",
+      "component": "agente_calidad",
+      "source": "codigo_experimentos/part_g/01_generate_responses_using_agents.py",
+      "source_lines": "162-168",
+      "status": "definido_no_ejecutado",
+      "evidence": "0 archivos retrieval_quality_agent.json y 0 llamadas a evaluate_retrieval en 237 sesiones. El agente se instancia sin herramientas; su prompt nunca se envió a un modelo.",
+      "sha256": "f0cdae610e11215eb2879bfbfb2a911e631f434f6c2d08b5be7d35428beceb62",
+      "chars": 329,
+      "text": "## Descripción:Eres un especialista en \"retrieval augmented generation\" encargado de evaluar la calidad de la recuperación.* Comparas la consulta original con la información recuperada y decides si la información es suficiente para responder la consulta.* Provees feedback para mejorar la consulta.* El feedback debe ser conciso."
+    },
+    {
+      "id": "juez_sistema",
+      "kind": "judge_system",
+      "strategy": "evaluacion",
+      "component": "tres_jueces",
+      "source": "codigo_experimentos/.venv/lib/python3.13/site-packages/pydantic_evals/evaluators/llm_as_a_judge.py (pydantic-evals 1.1.0)",
+      "source_lines": "Agente judge_input_output_expected",
+      "status": "generado_por_libreria",
+      "evidence": "Prompt de sistema constante para los tres jueces; include_input=True e include_expected_output=True.",
+      "sha256": "2294a90c225a0d014a38fa4fbd31ed6cbdd46d964e67bb485a6a1548fbbc5d5b",
+      "chars": 819,
+      "text": "\nYou are grading output according to a user-specified rubric. If the statement in the rubric is true for the provided input, expected output, and output, then the output passes the test. You respond with a JSON object with this structure: {reason: string, pass: boolean, score: number}\n\nExamples:\n\n<Input>What color is the sky?</Input>\n<ExpectedOutput>Blue</ExpectedOutput>\n<Output>Cerulean</Output>\n<Rubric>The output is consistent with the expected output but doesn't have to match exactly</Rubric>\n{\"reason\": \"'Cerulean' is a shade of blue\", \"pass\": true, \"score\": 1.0}\n\n<Input>How many legs does a spider have?</Input>\n<ExpectedOutput>8</ExpectedOutput>\n<Output>Six</Output>\n<Rubric>The output is factually consistent with the expected output</Rubric>\n{\"reason\": \"Spiders have 8 legs\", \"pass\": false, \"score\": 0.0}\n"
+    },
+    {
+      "id": "juez_respuesta_correcta_template",
+      "kind": "judge_user_template",
+      "strategy": "evaluacion",
+      "component": "rubrica_respuesta_correcta",
+      "source": "codigo_experimentos/part_h_1/01_llm_as_a_judge.ipynb y batch_2",
+      "source_lines": "79-124 (definición de LLMJudge y rúbricas)",
+      "status": "generado_por_libreria",
+      "evidence": "Plantilla exacta construida con _build_prompt de pydantic-evals 1.1.0; los placeholders se sustituyen por pregunta, respuesta y respuesta esperada.",
+      "sha256": "e4216480d45fe72b18a2b31b27c3cc7c113948d63d845a1bc20309e151ba8e48",
+      "chars": 729,
+      "text": "<Input>\n⟦PREGUNTA⟧\n</Input>\n\n<Output>\n⟦RESPUESTA⟧\n</Output>\n\n<Rubric>\n{'nombre_evaluacion': 'respuesta_correcta', 'descripcion': 'La respuesta provista está alineada con la respuesta esperada. (Evalúa en español)', 'criterios': {'0.0': 'La respuesta está en blanco o no coincide en absoluto con la respuesta esperada.', '0.25': 'La respuesta tiene poca relación con la respuesta esperada y contiene errores significativos.', '0.5': 'La respuesta es parcialmente correcta, pero omite información clave o tiene errores menores.', '0.75': 'La respuesta es mayormente correcta, con solo errores menores.', '1.0': 'La respuesta es completamente correcta y precisa.'}}\n</Rubric>\n\n<ExpectedOutput>\n⟦RESPUESTA_ESPERADA⟧\n</ExpectedOutput>"
+    },
+    {
+      "id": "juez_precision_legal_template",
+      "kind": "judge_user_template",
+      "strategy": "evaluacion",
+      "component": "rubrica_precision_legal",
+      "source": "codigo_experimentos/part_h_1/01_llm_as_a_judge.ipynb y batch_2",
+      "source_lines": "79-124 (definición de LLMJudge y rúbricas)",
+      "status": "generado_por_libreria",
+      "evidence": "Plantilla exacta construida con _build_prompt de pydantic-evals 1.1.0; los placeholders se sustituyen por pregunta, respuesta y respuesta esperada.",
+      "sha256": "5807ee7e59eff27ddd2a108aac25eef90959125b65b18953d4a11c432575cde1",
+      "chars": 732,
+      "text": "<Input>\n⟦PREGUNTA⟧\n</Input>\n\n<Output>\n⟦RESPUESTA⟧\n</Output>\n\n<Rubric>\n{'nombre_evaluacion': 'precision_legal', 'descripcion': 'La respuesta cita correctamente los artículos relevantes del Código de Minería Argentino. (Evalúa en español)', 'criterios': {'0.0': 'No cita ningún artículo relevante o cita artículos incorrectos.', '0.25': 'Cita algunos artículos relevantes, pero omite otros importantes.', '0.5': 'Cita la mayoría de los artículos relevantes y otros irrelevantes.', '0.75': 'Cita casi todos los artículos relevantes con precisión y pocos irrelevantes.', '1.0': 'Cita todos los artículos relevantes y ninguno irrelevante de manera precisa y completa.'}}\n</Rubric>\n\n<ExpectedOutput>\n⟦RESPUESTA_ESPERADA⟧\n</ExpectedOutput>"
+    }
+  ],
+  "observed_configuration": [
+    {
+      "configuracion": "Sin RAG",
+      "componente": "Generador",
+      "modelo": "gpt-5-nano / gpt-5-mini / gpt-5",
+      "prompt_id": "sin_rag_system",
+      "limite_herramientas": "sin herramientas",
+      "evidencia": "Notebook de part_e; no hay logs de mensajes de entrada"
+    },
+    {
+      "configuracion": "RAG básico",
+      "componente": "Generador",
+      "modelo": "gpt-5-nano / gpt-5-mini / gpt-5",
+      "prompt_id": "rag_basico_system_template",
+      "limite_herramientas": "sin herramientas; top-10 en una búsqueda",
+      "evidencia": "Notebook de part_f; no hay logs de mensajes de entrada"
+    },
+    {
+      "configuracion": "Agentic-RAG + gpt-5",
+      "componente": "Especialista Legal",
+      "modelo": "gpt-5",
+      "prompt_id": "especialista_legal_system",
+      "limite_herramientas": "1 nominal; una sesión registra 3 llamadas",
+      "evidencia": "237 logs; caso 16_01 es la excepción"
+    },
+    {
+      "configuracion": "Agentic-RAG + gpt-5",
+      "componente": "Agente de Recuperación",
+      "modelo": "gpt-5",
+      "prompt_id": "recuperador_system_7_gpt5",
+      "limite_herramientas": "7; 33/79 sesiones usaron 7 búsquedas",
+      "evidencia": "79 sesiones del 12-11-2025"
+    },
+    {
+      "configuracion": "Agentic-RAG + gpt-5-mini",
+      "componente": "Agente de Recuperación",
+      "modelo": "gpt-5",
+      "prompt_id": "recuperador_system_6",
+      "limite_herramientas": "6",
+      "evidencia": "79 sesiones del 13-11-2025"
+    },
+    {
+      "configuracion": "Agentic-RAG + gpt-5-nano",
+      "componente": "Agente de Recuperación",
+      "modelo": "gpt-5",
+      "prompt_id": "recuperador_system_6",
+      "limite_herramientas": "6",
+      "evidencia": "79 sesiones del 13-11-2025"
+    },
+    {
+      "configuracion": "Agentic-RAG (todas)",
+      "componente": "Agente de Calidad",
+      "modelo": "gpt-5 (definido)",
+      "prompt_id": "calidad_recuperacion_system_no_ejecutado",
+      "limite_herramientas": "sin herramientas; no ejecutado",
+      "evidencia": "0 logs y 0 llamadas; exclusión confirmada por el autor por costo y complejidad"
+    }
+  ],
+  "agent_log_summary": {
+    "gpt-5": {
+      "sesiones": 79,
+      "prompt_variants": {
+        "4a77f607a7392ed186bc54a2014b8032a282c2e94b1e80fcd82890b02e645e2b": {
+          "sesiones": 79,
+          "limite_declarado": 7
+        }
+      },
+      "retrieval_search_calls": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 1,
+        "5": 1,
+        "6": 38,
+        "7": 33
+      },
+      "law_tool_calls": {
+        "1": 78,
+        "3": 1
+      },
+      "fecha_min": "2025-11-12T11:15:01+00:00",
+      "fecha_max": "2025-11-12T19:27:06+00:00"
+    },
+    "gpt-5-mini": {
+      "sesiones": 79,
+      "prompt_variants": {
+        "27e1a20b08700a425b6e4b22220c9c6fdb397e7faa5b1b99d29b6c281f30cac2": {
+          "sesiones": 79,
+          "limite_declarado": 6
+        }
+      },
+      "retrieval_search_calls": {
+        "3": 7,
+        "5": 6,
+        "6": 66
+      },
+      "law_tool_calls": {
+        "1": 79
+      },
+      "fecha_min": "2025-11-13T13:19:50+00:00",
+      "fecha_max": "2025-11-13T17:52:54+00:00"
+    },
+    "gpt-5-nano": {
+      "sesiones": 79,
+      "prompt_variants": {
+        "27e1a20b08700a425b6e4b22220c9c6fdb397e7faa5b1b99d29b6c281f30cac2": {
+          "sesiones": 79,
+          "limite_declarado": 6
+        }
+      },
+      "retrieval_search_calls": {
+        "2": 2,
+        "3": 9,
+        "4": 3,
+        "5": 5,
+        "6": 60
+      },
+      "law_tool_calls": {
+        "1": 79
+      },
+      "fecha_min": "2025-11-13T08:05:36+00:00",
+      "fecha_max": "2025-11-13T12:26:00+00:00"
+    }
+  },
+  "anomalies": {
+    "sesiones_con_mas_de_un_law_call": [
+      {
+        "modelo_especialista": "gpt-5",
+        "caso": "16_01",
+        "law_timestamp": "2025-11-12T17:21:41+00:00",
+        "retrieval_timestamp": "2025-11-12T17:20:58+00:00",
+        "law_prompt_hash": "cc3db2a1e375782ee5d40db517d6e3224e20c3d3ea6d8511da8fef12b295f322",
+        "retrieval_prompt_hash": "4a77f607a7392ed186bc54a2014b8032a282c2e94b1e80fcd82890b02e645e2b",
+        "retrieval_limit_declarado": 7,
+        "law_tool_calls": 3,
+        "retrieval_search_calls": 2,
+        "retrieval_finish_reasons": "tool_call|tool_call|stop",
+        "quality_agent_logs": 0
+      }
+    ],
+    "sesiones_gpt5_con_7_busquedas": 33,
+    "sesiones_restantes_con_mas_de_6_busquedas": 0
+  },
+  "judge_reports": {
+    "count": 27,
+    "by_judge": {
+      "grok_4_1_fast_free": 9,
+      "openrouter_deepseek_deepseek-chat-v3-1": 9,
+      "openrouter_moonshotai_kimi-k2-0905": 9
+    },
+    "evaluator_specs": [
+      {
+        "model": "openrouter:deepseek/deepseek-chat-v3.1",
+        "include_input": true,
+        "include_expected_output": true,
+        "model_settings": {
+          "temperature": 0.0,
+          "max_tokens": 5000
+        },
+        "score": {
+          "evaluation_name": "precision_legal",
+          "include_reason": true
+        },
+        "assertion": false,
+        "rubric_name": "precision_legal"
+      },
+      {
+        "model": "openrouter:deepseek/deepseek-chat-v3.1",
+        "include_input": true,
+        "include_expected_output": true,
+        "model_settings": {
+          "temperature": 0.0,
+          "max_tokens": 5000
+        },
+        "score": {
+          "evaluation_name": "respuesta_correcta",
+          "include_reason": true
+        },
+        "assertion": null,
+        "rubric_name": "respuesta_correcta"
+      },
+      {
+        "model": "openrouter:moonshotai/kimi-k2-0905",
+        "include_input": true,
+        "include_expected_output": true,
+        "model_settings": {
+          "temperature": 0.0,
+          "max_tokens": 5000
+        },
+        "score": {
+          "evaluation_name": "precision_legal",
+          "include_reason": true
+        },
+        "assertion": false,
+        "rubric_name": "precision_legal"
+      },
+      {
+        "model": "openrouter:moonshotai/kimi-k2-0905",
+        "include_input": true,
+        "include_expected_output": true,
+        "model_settings": {
+          "temperature": 0.0,
+          "max_tokens": 5000
+        },
+        "score": {
+          "evaluation_name": "respuesta_correcta",
+          "include_reason": true
+        },
+        "assertion": null,
+        "rubric_name": "respuesta_correcta"
+      },
+      {
+        "model": "openrouter:x-ai/grok-4.1-fast:free",
+        "include_input": true,
+        "include_expected_output": true,
+        "model_settings": {
+          "temperature": 0.0,
+          "max_tokens": 5000
+        },
+        "score": {
+          "evaluation_name": "precision_legal",
+          "include_reason": true
+        },
+        "assertion": false,
+        "rubric_name": "precision_legal"
+      },
+      {
+        "model": "openrouter:x-ai/grok-4.1-fast:free",
+        "include_input": true,
+        "include_expected_output": true,
+        "model_settings": {
+          "temperature": 0.0,
+          "max_tokens": 5000
+        },
+        "score": {
+          "evaluation_name": "respuesta_correcta",
+          "include_reason": true
+        },
+        "assertion": null,
+        "rubric_name": "respuesta_correcta"
+      }
+    ],
+    "rubrics": [
+      {
+        "nombre_evaluacion": "respuesta_correcta",
+        "descripcion": "La respuesta provista está alineada con la respuesta esperada. (Evalúa en español)",
+        "criterios": {
+          "0.0": "La respuesta está en blanco o no coincide en absoluto con la respuesta esperada.",
+          "0.25": "La respuesta tiene poca relación con la respuesta esperada y contiene errores significativos.",
+          "0.5": "La respuesta es parcialmente correcta, pero omite información clave o tiene errores menores.",
+          "0.75": "La respuesta es mayormente correcta, con solo errores menores.",
+          "1.0": "La respuesta es completamente correcta y precisa."
+        }
+      },
+      {
+        "nombre_evaluacion": "precision_legal",
+        "descripcion": "La respuesta cita correctamente los artículos relevantes del Código de Minería Argentino. (Evalúa en español)",
+        "criterios": {
+          "0.0": "No cita ningún artículo relevante o cita artículos incorrectos.",
+          "0.25": "Cita algunos artículos relevantes, pero omite otros importantes.",
+          "0.5": "Cita la mayoría de los artículos relevantes y otros irrelevantes.",
+          "0.75": "Cita casi todos los artículos relevantes con precisión y pocos irrelevantes.",
+          "1.0": "Cita todos los artículos relevantes y ninguno irrelevante de manera precisa y completa."
+        }
+      }
+    ]
+  },
+  "source_inventory": {
+    "agent_script": {
+      "path": "codigo_experimentos/part_g/01_generate_responses_using_agents.py",
+      "sha256": "5f3b383f0a101a9ed05299653b18690db49407c6bba21e8d979dfa071383f6e2",
+      "bytes": 16591
+    },
+    "agent_notebook": {
+      "path": "codigo_experimentos/part_g/01_generate_responses_using_agents.ipynb",
+      "sha256": "ba39b7ac6cd3b2192007633827276d7b2b58ef03289c6a4a7d4c26364381b7e5",
+      "bytes": 58695
+    },
+    "no_rag_notebook": {
+      "path": "codigo_experimentos/part_e/02_query_llms_for_responses.ipynb",
+      "sha256": "8cbfcac95cbc4fe1a6262125743937c49cc3f790f6d65eab9394635720c5de21",
+      "bytes": 638675
+    },
+    "base_rag_notebook": {
+      "path": "codigo_experimentos/part_f/01_rag_llm_responses.ipynb",
+      "sha256": "1684ef855728f28f84a5a14e86a2792c2a2d5de4f1e0a9743b23ab6a36c32ac9",
+      "bytes": 747468
+    },
+    "judge_notebook": {
+      "path": "codigo_experimentos/part_h_1/01_llm_as_a_judge.ipynb",
+      "sha256": "815a4c0107cd0ce064a9d2ee6aac377185c09eeb9a05405059497fcb7422584d",
+      "bytes": 13663
+    },
+    "judge_batch_2_notebook": {
+      "path": "codigo_experimentos/part_h_1/01_llm_as_a_judge_batch_2.ipynb",
+      "sha256": "50e0f7149527d8f8ac96d2a38640e4476e409bd6e88d75d5959feeeb70ac415c",
+      "bytes": 12892
+    },
+    "judge_library_source": {
+      "path": "codigo_experimentos/.venv/lib/python3.13/site-packages/pydantic_evals/evaluators/llm_as_a_judge.py",
+      "sha256": "04f7547c4b0b3d2c4dda424fb7776d24144204fe3a72d4685bf9f6e16b9b681d",
+      "bytes": 9567
+    }
+  }
+}

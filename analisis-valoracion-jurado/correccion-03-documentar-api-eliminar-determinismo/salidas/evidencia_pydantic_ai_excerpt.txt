@@ -1,0 +1,22 @@
+Archivo: /mnt/d/OneDrive/ex_dropbox/tesis-maestria-data-mining/codigo_experimentos/.venv/lib/python3.13/site-packages/pydantic_ai/models/openai.py
+Función: OpenAIChatModel._completions_create, desde línea 448
+SHA-256 del archivo: 9c2a85cb6b118a1ca06c16d36126cccbf5bd2e25f036847321434748993972d7
+Líneas del archivo: 477 a 493
+
+        ):  # pragma: no branch
+            response_format = {'type': 'json_object'}
+
+        unsupported_model_settings = OpenAIModelProfile.from_profile(self.profile).openai_unsupported_model_settings
+        for setting in unsupported_model_settings:
+            model_settings.pop(setting, None)
+
+        try:
+            extra_headers = model_settings.get('extra_headers', {})
+            extra_headers.setdefault('User-Agent', get_user_agent())
+            return await self.client.chat.completions.create(
+                model=self._model_name,
+                messages=openai_messages,
+                parallel_tool_calls=model_settings.get('parallel_tool_calls', NOT_GIVEN),
+                tools=tools or NOT_GIVEN,
+                tool_choice=tool_choice or NOT_GIVEN,
+                stream=stream,

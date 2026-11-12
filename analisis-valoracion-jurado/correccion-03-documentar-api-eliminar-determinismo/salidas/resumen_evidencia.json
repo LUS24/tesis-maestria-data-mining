@@ -1,0 +1,230 @@
+{
+  "fecha_ejecucion_utc": "2026-11-12T00:48:38.046612+00:00",
+  "hallazgos_clave": [
+    "Pydantic AI 1.1.0 declara temperature como setting no admitido para gpt-5-nano, gpt-5-mini y gpt-5.",
+    "La captura local confirma que temperature no se incluye en el cuerpo Chat Completions.",
+    "Los logs no son volcados HTTP: no-RAG/RAG registran temperature=0.0; Agentic-RAG registra {}.",
+    "No hay reasoning_effort explícito en el código de generación ni en los logs revisados.",
+    "Todas las respuestas primarias tienen reasoning_tokens, pero eso no identifica el esfuerzo aplicado.",
+    "Cada celda tiene 79 registros para 79 unidades y no existe un campo de réplica."
+  ],
+  "manifest": {
+    "archivos": 1880,
+    "bytes": 66035421,
+    "fecha_ejecucion_utc": "2026-11-12T00:48:21.994872+00:00",
+    "nota": "Los hashes se calculan antes de generar las tablas derivadas; no se modifica ninguna fuente.",
+    "por_categoria": {
+      "fuente_o_manuscrito": 15,
+      "log_agente": 1838,
+      "reporte_juez": 27
+    },
+    "sha256_conjunto": "18857449831a2cee0d559f4ed4c5464961488a3fd5c57327e2fb2151104a8e25"
+  },
+  "pydantic_ai": {
+    "captura_payload": {
+      "agentic_rag|especialista|gpt-5": {
+        "max_completion_tokens_presente": false,
+        "model": "gpt-5",
+        "reasoning_effort_presente": false,
+        "request_body_keys": [
+          "messages",
+          "model",
+          "stream",
+          "tool_choice",
+          "tools"
+        ],
+        "role": "especialista",
+        "strategy": "agentic_rag",
+        "temperature_presente": false,
+        "temperature_solicitada": 0.0
+      },
+      "agentic_rag|especialista|gpt-5-mini": {
+        "max_completion_tokens_presente": false,
+        "model": "gpt-5-mini",
+        "reasoning_effort_presente": false,
+        "request_body_keys": [
+          "messages",
+          "model",
+          "stream",
+          "tool_choice",
+          "tools"
+        ],
+        "role": "especialista",
+        "strategy": "agentic_rag",
+        "temperature_presente": false,
+        "temperature_solicitada": 0.0
+      },
+      "agentic_rag|especialista|gpt-5-nano": {
+        "max_completion_tokens_presente": false,
+        "model": "gpt-5-nano",
+        "reasoning_effort_presente": false,
+        "request_body_keys": [
+          "messages",
+          "model",
+          "stream",
+          "tool_choice",
+          "tools"
+        ],
+        "role": "especialista",
+        "strategy": "agentic_rag",
+        "temperature_presente": false,
+        "temperature_solicitada": 0.0
+      },
+      "agentic_rag|recuperador|gpt-5": {
+        "max_completion_tokens_presente": false,
+        "model": "gpt-5",
+        "reasoning_effort_presente": false,
+        "request_body_keys": [
+          "messages",
+          "model",
+          "stream",
+          "tool_choice",
+          "tools"
+        ],
+        "role": "recuperador",
+        "strategy": "agentic_rag",
+        "temperature_presente": false,
+        "temperature_solicitada": 0.0
+      },
+      "rag_basico|especialista|gpt-5": {
+        "max_completion_tokens_presente": false,
+        "model": "gpt-5",
+        "reasoning_effort_presente": false,
+        "request_body_keys": [
+          "messages",
+          "model",
+          "stream"
+        ],
+        "role": "especialista",
+        "strategy": "rag_basico",
+        "temperature_presente": false,
+        "temperature_solicitada": 0.0
+      },
+      "rag_basico|especialista|gpt-5-mini": {
+        "max_completion_tokens_presente": false,
+        "model": "gpt-5-mini",
+        "reasoning_effort_presente": false,
+        "request_body_keys": [
+          "messages",
+          "model",
+          "stream"
+        ],
+        "role": "especialista",
+        "strategy": "rag_basico",
+        "temperature_presente": false,
+        "temperature_solicitada": 0.0
+      },
+      "rag_basico|especialista|gpt-5-nano": {
+        "max_completion_tokens_presente": false,
+        "model": "gpt-5-nano",
+        "reasoning_effort_presente": false,
+        "request_body_keys": [
+          "messages",
+          "model",
+          "stream"
+        ],
+        "role": "especialista",
+        "strategy": "rag_basico",
+        "temperature_presente": false,
+        "temperature_solicitada": 0.0
+      },
+      "sin_rag|especialista|gpt-5": {
+        "max_completion_tokens_presente": false,
+        "model": "gpt-5",
+        "reasoning_effort_presente": false,
+        "request_body_keys": [
+          "messages",
+          "model",
+          "stream"
+        ],
+        "role": "especialista",
+        "strategy": "sin_rag",
+        "temperature_presente": false,
+        "temperature_solicitada": 0.0
+      },
+      "sin_rag|especialista|gpt-5-mini": {
+        "max_completion_tokens_presente": false,
+        "model": "gpt-5-mini",
+        "reasoning_effort_presente": false,
+        "request_body_keys": [
+          "messages",
+          "model",
+          "stream"
+        ],
+        "role": "especialista",
+        "strategy": "sin_rag",
+        "temperature_presente": false,
+        "temperature_solicitada": 0.0
+      },
+      "sin_rag|especialista|gpt-5-nano": {
+        "max_completion_tokens_presente": false,
+        "model": "gpt-5-nano",
+        "reasoning_effort_presente": false,
+        "request_body_keys": [
+          "messages",
+          "model",
+          "stream"
+        ],
+        "role": "especialista",
+        "strategy": "sin_rag",
+        "temperature_presente": false,
+        "temperature_solicitada": 0.0
+      }
+    },
+    "perfiles": {
+      "gpt-5": {
+        "openai_unsupported_model_settings": [
+          "temperature",
+          "top_p",
+          "presence_penalty",
+          "frequency_penalty",
+          "logit_bias",
+          "logprobs",
+          "top_logprobs"
+        ],
+        "temperatura_entre_no_admitidos": true,
+        "tipo_perfil": "OpenAIModelProfile"
+      },
+      "gpt-5-mini": {
+        "openai_unsupported_model_settings": [
+          "temperature",
+          "top_p",
+          "presence_penalty",
+          "frequency_penalty",
+          "logit_bias",
+          "logprobs",
+          "top_logprobs"
+        ],
+        "temperatura_entre_no_admitidos": true,
+        "tipo_perfil": "OpenAIModelProfile"
+      },
+      "gpt-5-nano": {
+        "openai_unsupported_model_settings": [
+          "temperature",
+          "top_p",
+          "presence_penalty",
+          "frequency_penalty",
+          "logit_bias",
+          "logprobs",
+          "top_logprobs"
+        ],
+        "temperatura_entre_no_admitidos": true,
+        "tipo_perfil": "OpenAIModelProfile"
+      }
+    },
+    "version": "1.1.0"
+  },
+  "reasoning_effort": {
+    "conclusion": "No se encontró un parámetro explícito de esfuerzo de razonamiento en el código de generación ni en los logs revisados. La presencia de reasoning_tokens demuestra consumo de tokens de razonamiento, pero no identifica el nivel de esfuerzo solicitado ni el aplicado por el proveedor. El esfuerzo histórico debe declararse desconocido.",
+    "ocurrencias": 0,
+    "respuestas_con_reasoning_tokens": 711,
+    "respuestas_primarias": 711
+  },
+  "tablas": {
+    "configuracion": 12,
+    "ejecuciones": 9,
+    "jueces": 3,
+    "reasoning": 12,
+    "ubicaciones_texto": 13
+  }
+}

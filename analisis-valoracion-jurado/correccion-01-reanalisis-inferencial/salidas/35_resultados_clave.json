@@ -1,0 +1,294 @@
+{
+  "n_observaciones": 2133,
+  "n_casos": 25,
+  "n_unidades": 79,
+  "n_jueces": 3,
+  "n_no_sustantivas": 57,
+  "modelo_principal": {
+    "LR_interaccion": 293.002586435998,
+    "gl_interaccion": 4,
+    "p_interaccion": 3.50019783419291e-62,
+    "var_caso": 0.163603826528409,
+    "var_unidad": 1.38333862036297,
+    "AIC_full": 5525.34260095405,
+    "AIC_reduced": 5810.34518739005
+  },
+  "nano_agentic": {
+    "principal_cero_no_sustantivas": {
+      "media": 0.3945147679324895,
+      "mediana": 0.0,
+      "p_ge_075": 0.3417721518987341,
+      "n_no_nulos": 79
+    },
+    "observado_jueces_rubric": {
+      "media": 0.4145569620253164,
+      "mediana": 0.25,
+      "p_ge_075": 0.3417721518987341,
+      "n_no_nulos": 79
+    },
+    "exclusion_no_sustantivas": {
+      "media": 0.8201754385964913,
+      "mediana": 0.9583333333333331,
+      "p_ge_075": 0.7105263157894737,
+      "n_no_nulos": 38
+    },
+    "solo_fallos_tecnicos_cero": {
+      "media": 0.3945147679324895,
+      "mediana": 0.0,
+      "p_ge_075": 0.3417721518987341,
+      "n_no_nulos": 79
+    }
+  },
+  "efectos_clave": {
+    "nano_agentic_menos_rag": {
+      "familia": "estrategia_dentro_de_modelo",
+      "bloque": "gpt-5-nano",
+      "comparacion": "Agentic-RAG - RAG basico",
+      "dif_esperada": -0.270101042623386,
+      "dif_esperada_ic95_inf": -0.330194411346405,
+      "dif_esperada_ic95_sup": -0.203345318810232,
+      "dif_p_ge_075": -0.307754201917349,
+      "dif_p_ge_075_ic95_inf": -0.382185751856327,
+      "dif_p_ge_075_ic95_sup": -0.223880500316974
+    },
+    "mini_agentic_menos_rag": {
+      "familia": "estrategia_dentro_de_modelo",
+      "bloque": "gpt-5-mini",
+      "comparacion": "Agentic-RAG - RAG basico",
+      "dif_esperada": 0.150034098194789,
+      "dif_esperada_ic95_inf": 0.0965164212877962,
+      "dif_esperada_ic95_sup": 0.20315106208851,
+      "dif_p_ge_075": 0.210006469038388,
+      "dif_p_ge_075_ic95_inf": 0.13485380292559,
+      "dif_p_ge_075_ic95_sup": 0.283484805906404
+    },
+    "gpt5_agentic_menos_rag": {
+      "familia": "estrategia_dentro_de_modelo",
+      "bloque": "gpt-5",
+      "comparacion": "Agentic-RAG - RAG basico",
+      "dif_esperada": 0.105859971231171,
+      "dif_esperada_ic95_inf": 0.0544975870511635,
+      "dif_esperada_ic95_sup": 0.156530344355956,
+      "dif_p_ge_075": 0.145964201635046,
+      "dif_p_ge_075_ic95_inf": 0.0747821748273645,
+      "dif_p_ge_075_ic95_sup": 0.217885779452116
+    }
+  },
+  "friedman_principal": [
+    {
+      "escenario": "principal_cero_no_sustantivas",
+      "familia": "estrategia_dentro_de_modelo",
+      "bloque": "gpt-5-nano",
+      "n_bloques": 79,
+      "k": 3,
+      "chi2": 12.048275862068976,
+      "gl": 2,
+      "p": 0.0024196365621187,
+      "kendall_w": 0.0762549105194239
+    },
+    {
+      "escenario": "principal_cero_no_sustantivas",
+      "familia": "estrategia_dentro_de_modelo",
+      "bloque": "gpt-5-mini",
+      "n_bloques": 79,
+      "k": 3,
+      "chi2": 54.80985915492956,
+      "gl": 2,
+      "p": 1.2536904209210065e-12,
+      "kendall_w": 0.3468978427527187
+    },
+    {
+      "escenario": "principal_cero_no_sustantivas",
+      "familia": "estrategia_dentro_de_modelo",
+      "bloque": "gpt-5",
+      "n_bloques": 79,
+      "k": 3,
+      "chi2": 12.882352941176434,
+      "gl": 2,
+      "p": 0.0015945296594522,
+      "kendall_w": 0.0815338793745344
+    },
+    {
+      "escenario": "principal_cero_no_sustantivas",
+      "familia": "modelo_dentro_de_estrategia",
+      "bloque": "Sin RAG",
+      "n_bloques": 79,
+      "k": 3,
+      "chi2": 61.243986254295486,
+      "gl": 2,
+      "p": 5.023858051914797e-14,
+      "kendall_w": 0.3876201661664271
+    },
+    {
+      "escenario": "principal_cero_no_sustantivas",
+      "familia": "modelo_dentro_de_estrategia",
+      "bloque": "RAG basico",
+      "n_bloques": 79,
+      "k": 3,
+      "chi2": 23.427272727272737,
+      "gl": 2,
+      "p": 8.181489253124857e-06,
+      "kendall_w": 0.1482738780207135
+    },
+    {
+      "escenario": "principal_cero_no_sustantivas",
+      "familia": "modelo_dentro_de_estrategia",
+      "bloque": "Agentic-RAG",
+      "n_bloques": 79,
+      "k": 3,
+      "chi2": 61.19313304721032,
+      "gl": 2,
+      "p": 5.1532355436818576e-14,
+      "kendall_w": 0.3872983104253817
+    }
+  ],
+  "jueces": [
+    {
+      "juez": "grok_4_1_fast_free",
+      "LR_interaccion": 100.461827016464,
+      "p_interaccion": 7.84374637314751e-21,
+      "convergencia": 0
+    },
+    {
+      "juez": "openrouter_deepseek_deepseek-chat-v3-1",
+      "LR_interaccion": 81.7963174360336,
+      "p_interaccion": 7.2502049988266e-17,
+      "convergencia": 0
+    },
+    {
+      "juez": "openrouter_moonshotai_kimi-k2-0905",
+      "LR_interaccion": 92.6606483636799,
+      "p_interaccion": 3.5820805052713103e-19,
+      "convergencia": 0
+    }
+  ],
+  "comparacion_manuscrito": [
+    {
+      "estrategia": "llm_responses_no_rag",
+      "estrategia_label": "Sin RAG",
+      "modelo": "gpt-5-nano",
+      "mediana_manuscrito_tabla11": 0.583,
+      "n_csv_original": 76,
+      "mediana_csv_original": 0.5833333333333334,
+      "mediana_observada_raw_79": 0.5833333333333334,
+      "mediana_observada_rubric_79": 0.5833333333333334,
+      "mediana_principal_cero_79": 0.5833333333333334,
+      "mediana_exclusion": 0.5833333333333334,
+      "n_exclusion": 78,
+      "n_no_sustantiva": 1
+    },
+    {
+      "estrategia": "llm_responses_no_rag",
+      "estrategia_label": "Sin RAG",
+      "modelo": "gpt-5-mini",
+      "mediana_manuscrito_tabla11": 0.333,
+      "n_csv_original": 76,
+      "mediana_csv_original": 0.3333333333333333,
+      "mediana_observada_raw_79": 0.25,
+      "mediana_observada_rubric_79": 0.25,
+      "mediana_principal_cero_79": 0.25,
+      "mediana_exclusion": 0.3333333333333333,
+      "n_exclusion": 65,
+      "n_no_sustantiva": 14
+    },
+    {
+      "estrategia": "llm_responses_no_rag",
+      "estrategia_label": "Sin RAG",
+      "modelo": "gpt-5",
+      "mediana_manuscrito_tabla11": 0.833,
+      "n_csv_original": 76,
+      "mediana_csv_original": 0.8333333333333334,
+      "mediana_observada_raw_79": 0.8333333333333334,
+      "mediana_observada_rubric_79": 0.8333333333333334,
+      "mediana_principal_cero_79": 0.8333333333333334,
+      "mediana_exclusion": 0.8333333333333334,
+      "n_exclusion": 79,
+      "n_no_sustantiva": 0
+    },
+    {
+      "estrategia": "llm_responses_base_rag",
+      "estrategia_label": "RAG basico",
+      "modelo": "gpt-5-nano",
+      "mediana_manuscrito_tabla11": 0.583,
+      "n_csv_original": 76,
+      "mediana_csv_original": 0.5833333333333334,
+      "mediana_observada_raw_79": 0.5833333333333334,
+      "mediana_observada_rubric_79": 0.5833333333333334,
+      "mediana_principal_cero_79": 0.5833333333333334,
+      "mediana_exclusion": 0.5833333333333334,
+      "n_exclusion": 79,
+      "n_no_sustantiva": 0
+    },
+    {
+      "estrategia": "llm_responses_base_rag",
+      "estrategia_label": "RAG basico",
+      "modelo": "gpt-5-mini",
+      "mediana_manuscrito_tabla11": 0.625,
+      "n_csv_original": 76,
+      "mediana_csv_original": 0.625,
+      "mediana_observada_raw_79": 0.6666666666666666,
+      "mediana_observada_rubric_79": 0.6666666666666666,
+      "mediana_principal_cero_79": 0.6666666666666666,
+      "mediana_exclusion": 0.6666666666666666,
+      "n_exclusion": 79,
+      "n_no_sustantiva": 0
+    },
+    {
+      "estrategia": "llm_responses_base_rag",
+      "estrategia_label": "RAG basico",
+      "modelo": "gpt-5",
+      "mediana_manuscrito_tabla11": 0.833,
+      "n_csv_original": 76,
+      "mediana_csv_original": 0.8333333333333334,
+      "mediana_observada_raw_79": 0.8333333333333334,
+      "mediana_observada_rubric_79": 0.8333333333333334,
+      "mediana_principal_cero_79": 0.8333333333333334,
+      "mediana_exclusion": 0.8333333333333334,
+      "n_exclusion": 79,
+      "n_no_sustantiva": 0
+    },
+    {
+      "estrategia": "llm_responses_agentic_rag",
+      "estrategia_label": "Agentic-RAG",
+      "modelo": "gpt-5-nano",
+      "mediana_manuscrito_tabla11": 0.083,
+      "n_csv_original": 76,
+      "mediana_csv_original": 0.0833333333333333,
+      "mediana_observada_raw_79": 0.25,
+      "mediana_observada_rubric_79": 0.25,
+      "mediana_principal_cero_79": 0.0,
+      "mediana_exclusion": 0.9583333333333331,
+      "n_exclusion": 38,
+      "n_no_sustantiva": 41
+    },
+    {
+      "estrategia": "llm_responses_agentic_rag",
+      "estrategia_label": "Agentic-RAG",
+      "modelo": "gpt-5-mini",
+      "mediana_manuscrito_tabla11": 0.917,
+      "n_csv_original": 76,
+      "mediana_csv_original": 0.9166666666666666,
+      "mediana_observada_raw_79": 0.9666666666666668,
+      "mediana_observada_rubric_79": 1.0,
+      "mediana_principal_cero_79": 1.0,
+      "mediana_exclusion": 1.0,
+      "n_exclusion": 78,
+      "n_no_sustantiva": 1
+    },
+    {
+      "estrategia": "llm_responses_agentic_rag",
+      "estrategia_label": "Agentic-RAG",
+      "modelo": "gpt-5",
+      "mediana_manuscrito_tabla11": 0.958,
+      "n_csv_original": 76,
+      "mediana_csv_original": 0.9583333333333331,
+      "mediana_observada_raw_79": 1.0,
+      "mediana_observada_rubric_79": 1.0,
+      "mediana_principal_cero_79": 1.0,
+      "mediana_exclusion": 1.0,
+      "n_exclusion": 79,
+      "n_no_sustantiva": 0
+    }
+  ],
+  "nota": "El escenario principal imputa 0 a todas las evaluaciones de respuestas no sustantivas. La exclusión es un análisis de sensibilidad con selección no aleatoria."
+}

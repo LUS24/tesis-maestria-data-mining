@@ -1,0 +1,20 @@
+sequenceDiagram
+    autonumber
+    actor U as Usuario
+    participant E as Agente Especialista Legal
+    participant R as Agente de Recuperación<br/>(gpt-5)
+    participant V as Base vectorial Milvus
+
+    U->>E: Pregunta
+    Note over E: Instrucción: usar retrieve_relevant_documents una vez
+    E->>R: retrieve_relevant_documents(consulta)
+    Note over E,R: Delegación de una sola ronda
+
+    loop Hasta 3 subconsultas y hasta 6 búsquedas (mini/nano) o 7 (gpt-5)
+        R->>V: cosine_distance_vector_search(subconsulta)
+        V-->>R: Hasta 5 fragmentos por búsqueda
+    end
+
+    R-->>E: selected_documents
+    Note over E,R: Sin verificación por el Agente de Calidad<br/>(definido, nunca ejecutado)
+    E-->>U: Respuesta final
