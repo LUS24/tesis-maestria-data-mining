@@ -3,7 +3,7 @@
 **Fecha:** 2026-11-12.  
 **Documento comparado:** `Valoracion_TF_Spairani_gp_actualizada.docx` / `.md`.  
 **Paquetes existentes:** `correccion-01` a `correccion-07` y `verificacion-analisis-estadistico`.  
-**Registro de decisiones:** `DECISIONES_integradas.md` (D-01–D-14 y PI-01–PI-31).
+**Registro de decisiones:** `DECISIONES_integradas.md` (D-01–D-14, PI-01–PI-32 y NV-01–NV-07).
 
 ## 1. Conclusión ejecutiva
 
@@ -28,7 +28,7 @@ Sin embargo, la nueva valoración **agrega o eleva a requerimiento** cuatro mate
 
 Además, siguen abiertas las recomendaciones de validación humana, réplicas/ablación y reducción de capítulos, que ya estaban identificadas como pendientes y no forman parte de los paquetes cerrados.
 
-**Ninguna decisión D-01–D-14 queda invalidada.** D-01 quedó aclarada por el autor: la “corrección humana” es la revisión manual de categorías, no una calificación humana de calidad. La única decisión en tensión directa es **D-12** (AUTOINDEX vs. IVF_FLAT), porque la nueva valoración repite “IVF_FLAT” sin incorporar la evidencia del código. Las decisiones pendientes PI-04, PI-06, PI-07, PI-08, PI-29 y PI-31 quedan reforzadas o ampliadas, no reemplazadas.
+**Ninguna decisión D-01–D-14 queda invalidada.** D-01 quedó aclarada por el autor: la “corrección humana” es la revisión manual de categorías, no una calificación humana de calidad. La única decisión en tensión directa es **D-12** (AUTOINDEX vs. IVF_FLAT), porque la nueva valoración repite “IVF_FLAT” sin incorporar la evidencia del código. Las decisiones pendientes PI-04, PI-06, PI-07, PI-08, PI-29 y PI-31 quedan reforzadas o ampliadas, no reemplazadas. Las NV-01–NV-07 se incorporaron a `DECISIONES_integradas.md` como Bloque G; PI-04, PI-29 y PI-31 se ampliaron para cubrirlas.
 
 ---
 
@@ -99,7 +99,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 
 ---
 
-## 6. Efecto sobre las decisiones pendientes PI-01–PI-31
+## 6. Efecto sobre las decisiones pendientes PI-01–PI-32
 
 | Grupo | Efecto | Prioridad |
 |---|---|---|
@@ -114,18 +114,19 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | PI-09 Nuevas corridas | Sin cambio; la nueva valoración no las exige para aceptar, pero siguen siendo necesarias para causalidad/réplicas | Media |
 | PI-10 Excepción `16_01` | Sin cambio | Baja |
 | PI-11 Notebook `part_g` | Sin cambio; V.11 valora el repositorio, no la discrepancia notebook/script | Media |
-| PI-12 Procedencia Infoleg | Sin cambio; V.9 no se actualizó | Alta |
-| PI-13–PI-20 Benchmark/corpus | **Reclasificadas:** PI-12, PI-16 y PI-18 resueltas; PI-13, PI-14, PI-17 y PI-20 canceladas por estar fuera de alcance; PI-15 y PI-19 resueltas con implementación editorial pendiente | Alta/Media |
+| PI-12 Procedencia Infoleg | **Resuelta**; V.9 no se actualizó; sin acción pendiente | — |
+| PI-13–PI-20 Benchmark/corpus | **Reclasificadas:** PI-16 y PI-18 resueltas; PI-13, PI-14, PI-17 y PI-20 canceladas por estar fuera de alcance; PI-15 y PI-19 resueltas con implementación editorial pendiente. PI-12 se registra en la fila anterior | Alta/Media |
 | PI-21–PI-28 Bibliografía | Sin cambio; VI/VII no se modificaron | Alta/Media |
 | PI-29 `nAGQ`/odds proporcionales | **Ampliada**: además de la sensibilidad, hay que reconciliar las cifras nuevas de V.1 con `correccion-01` | Media |
 | PI-30 Versionar verificación | Sin cambio | Alta |
 | PI-31 Sincronización final | **Ampliada**: incluir métricas de recuperación, declaración de IA y nuevas cifras de V.1/V.6 | Alta |
+| PI-32 Conteo de preguntas corregidas | **Resuelta**; V.7 confirma 18/17/1/7 | — |
 
 ---
 
-## 7. Nuevas decisiones necesarias
+## 7. Nuevas decisiones incorporadas (NV-01–NV-07)
 
-Las siguientes no estaban en `DECISIONES_integradas.md` o cambian de alcance por la nueva valoración.
+Las siguientes se incorporaron al registro de decisiones como **NV-01–NV-07** y siguen pendientes de resolución; PI-04, PI-29 y PI-31 se ampliaron para cubrirlas.
 
 | ID | Decisión | Opciones | Recomendación | Bloquea |
 |---|---|---|---|---|
