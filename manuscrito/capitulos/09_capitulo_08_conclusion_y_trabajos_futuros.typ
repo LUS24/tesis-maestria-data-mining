@@ -129,6 +129,10 @@ El benchmark podría ampliarse en varias direcciones:
 - Desarrollar rúbricas más específicas para la evaluación de precisión legal, incorporando anclas de dominio que mejoren el acuerdo inter-juez.
 - Incorporar la evaluación de la capacidad de abstención del sistema (es decir, su habilidad para reconocer cuando no tiene información suficiente para responder).
 
+=== Evaluación Determinista de Citas
+
+El marco teórico identifica la citación incorrecta o inexistente como el riesgo central de los sistemas de consulta legal. Esta tesis no midió ese riesgo de forma determinista: no se calculó la precisión ni la exhaustividad de las citas de las 711 respuestas, ni la tasa de artículos citados que no existen en el corpus. La evaluación de citas quedó limitada a la rúbrica `score_precision_legal` de los jueces, que además no alcanzó confiabilidad suficiente. Una línea de trabajo inmediata consiste en extraer automáticamente las citas de cada respuesta, contrastarlas contra los 398 nodos de artículo del corpus y reportar precisión, exhaustividad, F1 y tasa de citas inexistentes, de forma independiente de los jueces. Ese cálculo no requiere nuevas corridas: puede ejecutarse sobre las respuestas ya registradas.
+
 === Integración con Sistemas Existentes
 
 La integración del sistema con plataformas como Infoleg o SAIJ permitiría acceder a información actualizada de manera automática y ofrecer una interfaz de consulta más completa. Asimismo, la integración con grafos de conocimiento que modelen las relaciones entre normas (derogaciones, modificaciones, referencias cruzadas) habilitaría un razonamiento más profundo sobre la estructura del ordenamiento jurídico.
