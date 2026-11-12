@@ -681,7 +681,7 @@ Previo a la selección de pruebas de hipótesis, se verificó la normalidad de l
 
 Para comparar las métricas entre los tres sistemas de recuperación (no RAG, RAG básico y Agentic-RAG) y entre los tres modelos (gpt-5-nano, gpt-5-mini, gpt-5), se empleó el test de Kruskal-Wallis @kruskal1952use, una alternativa no paramétrica al ANOVA de un factor que no requiere el supuesto de normalidad. Este test evalúa si al menos uno de los grupos difiere significativamente de los demás.
 
-Ante resultados significativos en Kruskal-Wallis, se aplicó el test post-hoc de Dunn @dunn1964multiple con corrección de Bonferroni @bonferroni1936teoria para identificar qué pares de grupos presentan diferencias significativas, controlando la tasa de error familiar (family-wise error rate).
+Ante resultados significativos en Kruskal-Wallis, se aplicó el test post-hoc de Dunn @dunn1964multiple con corrección de Bonferroni @bonferroni2010teoria para identificar qué pares de grupos presentan diferencias significativas, controlando la tasa de error familiar (family-wise error rate).
 
 Para los análisis con más de cinco comparaciones —en particular, los efectos simples de estrategia dentro de cada modelo (9 comparaciones)— se aplicó adicionalmente la corrección de Holm-Bonferroni @holm1979simple, un procedimiento step-down secuencialmente rejectivo que ofrece mayor potencia estadística que Bonferroni manteniendo el control de la tasa de error familiar. El método de Holm ordena los p-values de menor a mayor y compara cada uno contra un umbral decreciente $alpha/(m - k + 1)$, donde $m$ es el número total de comparaciones y $k$ la posición en el ordenamiento. Ambas correcciones se implementaron mediante la función `multipletests` de la librería statsmodels @seabold2010statsmodels.
 
@@ -691,7 +691,7 @@ Para evaluar la interacción entre los factores "sistema de recuperación" y "mo
 
 ==== Análisis de Acuerdo Inter-Juez (Krippendorff's Alpha)
 
-Para evaluar la confiabilidad de las evaluaciones LLM-as-a-Judge, se calculó el coeficiente alpha de Krippendorff @krippendorff2018content @hayes2007answering entre los tres modelos jueces (DeepSeek-V3, Grok 4.1 Fast y Kimi K2 0905). Este coeficiente mide el acuerdo entre múltiples codificadores (en este caso, modelos LLM actuando como jueces) corrigiendo el acuerdo esperado por azar, y es aplicable a cualquier escala de medición (nominal, ordinal, intervalo o razón). Se complementó con el análisis de correlación de Spearman @spearman1904proof entre pares de jueces para identificar posibles sesgos sistemáticos.
+Para evaluar la confiabilidad de las evaluaciones LLM-as-a-Judge, se calculó el coeficiente alpha de Krippendorff @krippendorff2019content @hayes2007answering entre los tres modelos jueces (DeepSeek-V3, Grok 4.1 Fast y Kimi K2 0905). Este coeficiente mide el acuerdo entre múltiples codificadores (en este caso, modelos LLM actuando como jueces) corrigiendo el acuerdo esperado por azar, y es aplicable a cualquier escala de medición (nominal, ordinal, intervalo o razón). Se complementó con el análisis de correlación de Spearman @spearman1904proof entre pares de jueces para identificar posibles sesgos sistemáticos.
 
 == Desafíos Técnicos y Soluciones
 
