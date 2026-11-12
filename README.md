@@ -147,6 +147,8 @@ El sistema fue evaluado mediante un **diseño factorial 3 × 3**:
 
 **Análisis estadístico**: modelo ordinal mixto con interceptos por caso y unidad, Friedman/Wilcoxon como sensibilidad, bootstrap por casos, corrección de Holm dentro de familias y Krippendorff's alpha (acuerdo inter-juez).
 
+> **Nota metodológica (alcance de la inferencia):** se realizó una única ejecución por unidad y configuración, sin réplicas. El código solicitó `temperature=0.0`, pero Pydantic AI 1.1.0 elimina ese parámetro para los modelos GPT-5 antes de construir la solicitud; por tanto, las respuestas no se consideran deterministas. Los análisis respetan el apareamiento por unidad y el anidamiento en 25 casos, y la inferencia se refiere a esa corrida y a ese corpus.
+
 ---
 
 ## 📝 Citar este trabajo

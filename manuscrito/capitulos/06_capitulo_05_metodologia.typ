@@ -5,7 +5,7 @@
 
 == Introducción
 
-Este capítulo describe la metodología empleada para diseñar, implementar y evaluar el sistema Agentic-RAG para consulta de normativa argentina. Se detalla el enfoque metodológico adoptado, las fases del proyecto, las decisiones de diseño, los criterios de selección de herramientas y modelos, así como los detalles técnicos de la implementación. La implementación se organizó en módulos independientes ejecutados como notebooks de Jupyter, lo que favorece la reproducibilidad y la iteración.
+Este capítulo describe la metodología empleada para diseñar, implementar y evaluar el sistema Agentic-RAG para consulta de normativa argentina. Se detalla el enfoque metodológico adoptado, las fases del proyecto, las decisiones de diseño, los criterios de selección de herramientas y modelos, así como los detalles técnicos de la implementación. La implementación se organizó en módulos independientes ejecutados como notebooks de Jupyter, lo que favorece la auditabilidad y la iteración sobre los artefactos; la reproducibilidad de las respuestas no está garantizada por la configuración de muestreo.
 
 == Enfoque Metodológico
 
@@ -188,7 +188,7 @@ El módulo de recuperación del RAG básico realiza una búsqueda vectorial por 
 
 === Módulo de Generación
 
-Los fragmentos recuperados se inyectan en el prompt del sistema del LLM como contexto. El prompt instruye al modelo para responder basándose exclusivamente en la información proporcionada y citar los artículos relevantes. Se emplea la misma configuración de agente (Pydantic AI con temperatura 0) que en el baseline sin RAG, para mantener la comparabilidad.
+Los fragmentos recuperados se inyectan en el prompt del sistema del LLM como contexto. El prompt instruye al modelo para responder basándose exclusivamente en la información proporcionada y citar los artículos relevantes. Se emplea la misma configuración de agente (Pydantic AI) que en el baseline sin RAG para mantener la comparabilidad. El código solicitó `temperature=0.0`, pero la versión 1.1.0 de Pydantic AI elimina ese parámetro para los modelos GPT-5 antes de construir la solicitud (@sec:parametros-api); por lo tanto, no se lo presenta como un control efectivo de reproducibilidad.
 
 === Pipeline Completo
 
@@ -472,7 +472,7 @@ Este ejemplo ilustra el flujo completo de delegación, descomposición de consul
 
 === Hiperparámetros de Configuración
 
-La temperatura se conserva como valor solicitado en el código; su tratamiento efectivo se discute en la sección de parámetros de API. El límite de llamadas a herramientas restringe cuántas veces cada agente puede invocar sus herramientas. La herramienta disponible especifica la función que cada agente puede ejecutar. El máximo de subconsultas indica cuántas preguntas derivadas puede generar el Agente de Recuperación a partir de una consulta original. El modelo por defecto define el LLM asignado a cada agente.
+La temperatura se conserva como valor solicitado en el código; su tratamiento efectivo se documenta en @sec:parametros-api. El límite de llamadas a herramientas restringe cuántas veces cada agente puede invocar sus herramientas. La herramienta disponible especifica la función que cada agente puede ejecutar. El máximo de subconsultas indica cuántas preguntas derivadas puede generar el Agente de Recuperación a partir de una consulta original. El modelo por defecto define el LLM asignado a cada agente.
 
 La @tabla-hiperparametros-agentes presenta la configuración nominal y las variantes observadas de los agentes activos en la configuración Agentic-RAG.
 
@@ -489,7 +489,7 @@ La @tabla-hiperparametros-agentes presenta la configuración nominal y las varia
       | Modelo por defecto                |                Variable#super[‡]                 |                       gpt-5                        |
     ],
   ),
-  caption: [Configuración nominal y observada de los agentes activos del sistema Agentic-RAG. #super[†]La temperatura se conserva como valor solicitado; su tratamiento efectivo se discute en la corrección sobre parámetros de API. #super[‡]El modelo del Agente Especialista Legal varía según la configuración experimental (gpt-5-nano, gpt-5-mini o gpt-5). La corrida de gpt-5 usó un límite de 7 búsquedas; las de mini y nano usaron 6.],
+  caption: [Configuración nominal y observada de los agentes activos del sistema Agentic-RAG. #super[†]La temperatura se conserva como valor solicitado; no fue aplicada por los modelos GPT-5 (@sec:parametros-api). #super[‡]El modelo del Agente Especialista Legal varía según la configuración experimental (gpt-5-nano, gpt-5-mini o gpt-5). La corrida de gpt-5 usó un límite de 7 búsquedas; las de mini y nano usaron 6.],
 ) <tabla-hiperparametros-agentes>
 
 El límite nominal del código final es de seis búsquedas para el recuperador y una invocación para el especialista. La corrida histórica de gpt-5 utilizó siete búsquedas y una sesión del especialista registró tres invocaciones. Por tanto, los valores de la tabla describen la configuración nominal y las variantes observadas, no una regla uniforme aplicada a todas las configuraciones.
@@ -508,7 +508,6 @@ La selección de los modelos de lenguaje consideró:
 + Costo por token de entrada y salida.
 + Desempeño en benchmarks generales de lenguaje.
 + Capacidad de seguir instrucciones complejas (instruction following).
-+ Soporte para generación con temperatura cero (respuestas determinísticas).
 
 === Modelos Evaluados
 
@@ -518,7 +517,7 @@ Se evaluaron tres modelos de la familia GPT-5 de OpenAI, lo que permite analizar
 + *gpt-5-mini*: modelo intermedio que balancea capacidad y costo.
 + *gpt-5*: modelo de mayor capacidad, referencia de desempeño superior.
 
-Todos los modelos fueron configurados con temperatura 0 para maximizar la reproducibilidad de las respuestas.
+Los tres modelos pertenecen a la familia GPT-5 y fueron invocados con los identificadores `gpt-5-nano`, `gpt-5-mini` y `gpt-5`. El código solicitó `temperature=0.0`, pero Pydantic AI 1.1.0 elimina ese parámetro para estos modelos antes de enviar la solicitud; por tanto, operaron con el comportamiento de muestreo predeterminado del proveedor (@sec:parametros-api). No se registró el esfuerzo de razonamiento; el valor por defecto documentado del proveedor es `medium`. Se realizó una única ejecución por unidad y configuración, sin réplicas.
 
 === Costos por Token
 
@@ -611,7 +610,7 @@ Se emplearon tres modelos como jueces, seleccionados para diversificar las arqui
 + *Grok 4.1 Fast* (`openrouter:x-ai/grok-4.1-fast:free`): modelo con modo de razonamiento nativo que puede activarse mediante el parámetro `reasoning: enabled`, generando cadenas de pensamiento detalladas antes de producir la respuesta final @xai2025grok.
 + *Kimi K2 0905* (`openrouter:moonshotai/kimi-k2-0905`): modelo de mezcla de expertos con 1T parámetros totales y 32B activados, optimizado para uso agentivo @kimi2025k2. Es un modelo _reflex-grade_ sin modo de razonamiento nativo, aunque puede seguir instrucciones de cadena de pensamiento mediante prompting.
 
-Los tres modelos fueron configurados con temperatura 0,0 y un límite de 5.000 tokens de salida. Los prompts de evaluación se construyeron a partir de las rúbricas definidas, solicitando al juez que asigne un puntaje y proporcione una justificación textual de la calificación mediante el parámetro `include_reason=True`. Cabe señalar que los prompts no incluyeron instrucciones explícitas de razonamiento paso a paso (cadena de pensamiento), lo que constituye una limitación discutida en @sec:limitaciones. Los resultados se almacenan como reportes JSON con scores y justificaciones por caso.
+Los tres modelos jueces se configuraron en OpenRouter con `temperature=0.0` y un límite de 5.000 tokens de salida. Esa configuración corresponde a los jueces y no debe extrapolarse a los modelos generadores GPT-5, cuyo perfil elimina `temperature`. No se registró el esfuerzo de razonamiento de los jueces. Los prompts de evaluación se construyeron a partir de las rúbricas definidas, solicitando al juez que asigne un puntaje y proporcione una justificación textual de la calificación mediante el parámetro `include_reason=True`. Cabe señalar que los prompts no incluyeron instrucciones explícitas de razonamiento paso a paso (cadena de pensamiento), lo que constituye una limitación discutida en @sec:limitaciones. Los resultados se almacenan como reportes JSON con scores y justificaciones por caso.
 
 La @tabla-rubrica-correcta y la @tabla-rubrica-legal presentan los criterios detallados de cada rúbrica.
 
@@ -657,7 +656,7 @@ Cada llamada a la API de los proveedores de LLM registra los tokens de entrada y
 
 Se implementaron las siguientes estrategias para optimizar el uso de la API y controlar costos:
 
-+ Temperatura 0 para respuestas determinísticas (evita múltiples ejecuciones).
++ Una única ejecución por unidad y configuración, sin réplicas. La temperatura solicitada en el código no fue aplicada por los modelos GPT-5 y no se usa como garantía de determinismo.
 + Límites de invocaciones de herramientas en los agentes.
 + Procesamiento secuencial con almacenamiento incremental de resultados para permitir la reanudación ante fallos.
 + Almacenamiento en caché de respuestas intermedias (embeddings, búsquedas vectoriales).
@@ -732,6 +731,12 @@ El escenario principal es el que sostiene las conclusiones; los otros tres se re
 
 Para evaluar la confiabilidad de las evaluaciones LLM-as-a-Judge, se calculó el coeficiente alpha de Krippendorff @krippendorff2019content @hayes2007answering entre los tres modelos jueces (DeepSeek-V3, Grok 4.1 Fast y Kimi K2 0905). Este coeficiente mide el acuerdo entre múltiples codificadores (en este caso, modelos LLM actuando como jueces) corrigiendo el acuerdo esperado por azar, y es aplicable a cualquier escala de medición (nominal, ordinal, intervalo o razón). Se complementó con el análisis de correlación de Spearman @spearman1904proof entre pares de jueces para identificar posibles sesgos sistemáticos.
 
+=== Parámetros de API y Muestreo <sec:parametros-api>
+
+La configuración de muestreo se documentó a partir del código y de los payloads registrados, no a partir de lo que el manuscrito suponía. Los 12 payloads locales de las configuraciones generadoras no incluyen `temperature`, `reasoning_effort` ni `max_completion_tokens`. Pydantic AI 1.1.0 declara `temperature` como parámetro no admitido para los modelos GPT-5 y la biblioteca lo elimina antes de construir la solicitud, de modo que el valor `0.0` figura en el código y en algunos registros pero no fue enviado ni aplicado. La consecuencia es que las respuestas no son deterministas y que la única ejecución por unidad y configuración no puede presentarse como una réplica controlada.
+
+El esfuerzo de razonamiento tampoco se configuró. Pydantic AI 1.1.0 no define un valor por defecto y envía `NOT_GIVEN`; OpenAI documenta `medium` como valor por defecto para GPT-5. El valor efectivo no quedó registrado y no se infiere de los `reasoning_tokens`. Los jueces, en cambio, se invocaron mediante OpenRouter con `temperature=0.0` explícita y un límite de 5.000 tokens de salida; esa configuración es propia de la etapa de evaluación y no se extrapola a los generadores.
+
 == Desafíos Técnicos y Soluciones
 
 === Manejo de Errores y Reintentos
@@ -777,7 +782,7 @@ Este capítulo presentó el diseño metodológico y la implementación del siste
 
 El diseño factorial de 3 estrategias × 3 modelos permite un análisis riguroso de los efectos de cada factor y su interacción, mientras que la combinación de métricas textuales, semánticas y evaluación por jueces LLM proporciona una visión multidimensional de la calidad de las respuestas. El análisis estadístico detallado —que comprende pruebas de normalidad (Shapiro-Wilk), comparaciones no paramétricas (Kruskal-Wallis con post-hoc de Dunn), análisis de interacción factorial (Scheirer-Ray-Hare) y acuerdo inter-juez (Krippendorff's alpha)— proporciona un marco riguroso para la interpretación de los resultados experimentales.
 
-La organización modular en notebooks independientes facilita la reproducibilidad y permite iterar sobre componentes específicos sin afectar al resto del sistema. El uso de frameworks como Pydantic AI para la orquestación de agentes y `pydantic_evals` para la evaluación automatizada simplifica la gestión de la complejidad inherente a un sistema multi-agente.
+La organización modular en notebooks independientes facilita la reproducción del pipeline y la auditoría de los artefactos; no implica reproducibilidad exacta de las respuestas. El uso de frameworks como Pydantic AI para la orquestación de agentes y `pydantic_evals` para la evaluación automatizada simplifica la gestión de la complejidad inherente a un sistema multi-agente.
 
 El siguiente capítulo (@cap:evaluacion) presenta los resultados de la evaluación experimental, incluyendo el análisis comparativo de las nueve configuraciones mediante métricas de similitud textual y semántica, la evaluación por jueces LLM, el análisis de acuerdo inter-juez y el estudio de costos. Los resultados se presentan mediante tablas resumen, gráficos de caja (boxplots) y mapas de calor (heatmaps) que facilitan la interpretación de los efectos principales y las interacciones entre factores.
 
