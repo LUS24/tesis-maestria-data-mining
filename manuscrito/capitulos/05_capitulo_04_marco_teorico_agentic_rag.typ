@@ -303,7 +303,7 @@ La literatura identifica al menos seis atributos que LLM-as-a-judge puede evalua
 - *Seguridad (Safety \& Security)*: evalúa si el modelo evita generar contenido dañino, tóxico o sesgado. Se ha validado que LLMs pueden actuar como moderadores de contenido siguiendo guías de políticas @bai2022constitutional.
 - *Confiabilidad (Reliability)*: mide la fidelidad de la respuesta a fuentes verificables y la calibración de la incertidumbre expresada. Incluye la detección de alucinaciones @min2023factscore.
 - *Relevancia (Relevance)*: evalúa qué tan bien se alinea la respuesta con la consulta o tarea original. Es particularmente importante en sistemas RAG @es2023ragas.
-- *Lógica (Logic)*: evalúa la coherencia interna y corrección del razonamiento, independientemente de la precisión factual (J. Zhao y cols., #cite(<zhao2026reportlogic>, form: "year")).
+- *Lógica (Logic)*: evalúa la coherencia interna y corrección del razonamiento, independientemente de la precisión factual @zhao2026reportlogic.
 - *Calidad general (Overall Quality)*: evaluación holística que integra múltiples dimensiones en una puntuación compuesta @lin2023unlocking.
 
 === Metodologías de prompting
