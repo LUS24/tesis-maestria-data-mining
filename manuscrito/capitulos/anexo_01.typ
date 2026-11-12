@@ -83,7 +83,7 @@ tesis/
       | `part_h/`    | Integración de resultados de las tres estrategias en un archivo JSON unificado con todas las métricas.                                                                                                                                                         |
       | `part_h_1/`  | Evaluación LLM-as-a-Judge mediante `pydantic_evals` con tres jueces (DeepSeek, Grok, Kimi K2) y dos rúbricas de evaluación.                                                                                                                                    |
       | `part_i/`    | Transformación de datos JSON anidados a CSVs tabulares. Visualizaciones con Polars y plotnine (ggplot2).                                                                                                                                                       |
-      | `part_j/`    | Análisis estadístico en R/Python: exploración descriptiva, tests de normalidad, Kruskal-Wallis con post-hoc de Dunn, modelos mixtos y análisis de costos.                                                                                                      |
+      | `part_j/`    | Análisis exploratorio en Python: exploración descriptiva y correlación, verificación de normalidad, Kruskal-Wallis con post-hoc de Dunn, Scheirer-Ray-Hare, análisis de costos y acuerdo inter-juez. La estimación definitiva —modelo ordinal acumulativo mixto con efectos aleatorios por caso y unidad, Friedman/Wilcoxon, bootstrap por casos y escenarios de sensibilidad— se realizó después, en R y Python, en `analisis-valoracion-jurado/correccion-01-analisis-estadistico/`. |
     ],
   ),
   caption: [Descripción de los directorios del pipeline de experimentación.],
