@@ -168,7 +168,7 @@ Estas decisiones provienen de `COBERTURA_valoracion_actualizada.md` §7. El esta
 |---|---|---|---|---|---|
 | NV-01 | ¿Qué reanálisis se usa como fuente canónica: `correccion-01` o el de la nueva valoración? | A) `correccion-01` (modelo ordinal + Friedman/Wilcoxon); B) reanálisis de la valoración; C) reportar ambos y reconciliar | **A adoptada:** `correccion-01` es la fuente canónica; no usar el reanálisis de la valoración como sensibilidad | Autor + estadística | **Sí** para Tabla 4 y resultados |
 | NV-02 | Métricas de recuperación y comparación de recuperadores | A) Calcular desde `part_d` y logs en un notebook nuevo; B) adoptar las cifras de la nueva valoración; C) ambas | **A adaptada:** Milvus no está disponible (se perdió el volumen Docker); calcular recall@k/MRR desde las recuperaciones ya registradas en los `.json` y guardar los resultados en `verificacion-analisis-estadistico/metricas_recuperacion/`. No comparar contra BM25 desde la base | Autor | **Sí** para IX.1.9/IX.2.1 |
-| NV-03 | Métricas deterministas de citas sobre las 711 respuestas | A) Extender `correccion-06` para extraer citas de las respuestas generadas y calcular precisión/recall/F1/inexistentes; B) usar solo las citas de las respuestas esperadas; C) dejar la rúbrica de jueces | **No prioritaria por tiempo:** posponer. Si se retoma, opción A. No bloquea la entrega | Autor | No para la entrega |
+| NV-03 | Métricas deterministas de citas sobre las 711 respuestas | A) Extender `correccion-06` para extraer citas de las respuestas generadas y calcular precisión/recall/F1/inexistentes; B) usar solo las citas de las respuestas esperadas; C) dejar la rúbrica de jueces | **Cancelada por tiempo:** no se ejecuta; queda como trabajo futuro. No bloquea la entrega | Autor | No para la entrega |
 | NV-04 | Declaración de IA y antecedente de “referencia fabricada” | A) Declaración por etapas + revisión del historial; B) mantener la frase genérica; C) declaración mínima sin explicar el antecedente | **A adoptada:** extender la declaración a búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas. Revisar el antecedente de la “referencia fabricada” al redactar. Coordinar con PI-04 | Autor | **Sí** para IX.1.8 |
 | NV-05 | “Esfuerzo predeterminado” vs. “desconocido” | A) Mantener “desconocido” (lo que prueban los logs); B) afirmar “predeterminado” porque el código no lo fija; C) documentar ambos | **Resuelta:** se usó el valor por defecto de la API. Pydantic AI 1.1.0 no fija `reasoning_effort`; `OpenAIChatModel` envía `NOT_GIVEN` (`models/openai.py:500`). El default efectivo es del proveedor: OpenAI documenta `medium` para GPT-5. Declarar “default del proveedor = medium”, no un default de Pydantic AI | Autor | No para aceptar; **sí** para precisión |
 | NV-06 | Índice vectorial: IVF_FLAT vs. AUTOINDEX | A) Mantener D-12 y describir AUTOINDEX; B) verificar en Milvus el índice efectivo; C) aceptar IVF_FLAT de la nueva valoración | **A adoptada:** usar el valor del código (`AUTOINDEX`), que es el que se usaría si se recrea la base. No afirmar IVF_FLAT | Autor | **Sí** para coherencia de V.8/metodología |
@@ -213,13 +213,13 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | **P0** | **NV-01** (V.1/V.6) | Reconciliar las cifras de la valoración con `correccion-01`: reproducir los p-valores 0,19 y 0,003 declarando prueba (Wilcoxon/t pareada), unidad (respuesta, caso o unidad), escenario y corrección (Holm/Bonferroni); verificar LR = 293,28, gl = 4, p = 3,05 × 10⁻⁶², efectos e IC. No reemplazar el modelo canónico | `verificacion-analisis-estadistico/reconciliacion_v1/` (tabla comparativa, JSON y notas de método) | Tabla 4; resultados V.1/V.6; redacción de PI-29 |
 | **P0** | **NV-02** | Calcular recall@k, MRR y cobertura (todos/ninguno) desde las recuperaciones `.json` de `part_g`; reportar por estrategia y modelo. No requiere Milvus | `verificacion-analisis-estadistico/metricas_recuperacion/` (CSV, notebook y resumen) | IX.1.9, IX.2.1, V.8 y Tabla 4 |
 | **P1** | **D-02** | Recalcular la proporción de respuestas correctas y el costo por respuesta correcta con umbrales 0,50, 0,75 y 1,00. El recálculo coincide exactamente con la tabla de corrección 05 | `verificacion-analisis-estadistico/sensibilidad_umbral/` | Tabla 4, análisis de costos y enunciado de D-02 |
-| **P2** | **NV-03** | Extraer citas de las 711 respuestas generadas y calcular precisión, recall, F1 y tasa de citas inexistentes contra el corpus. Diferida: no bloquea la entrega | `verificacion-analisis-estadistico/citas_generadas/` o un anexo de `correccion-06` | IX.2.2 y V.7, solo si se retoma |
+| **P2** | **NV-03** | Extraer citas de las 711 respuestas generadas y calcular precisión, recall, F1 y tasa de citas inexistentes contra el corpus. **Cancelada por tiempo:** no se ejecuta y no bloquea la entrega | — | IX.2.2 y V.7 quedan como trabajo futuro |
 
 **Cálculos condicionales:** PI-08 no requiere un cálculo nuevo en esta entrega porque los 23 casos ya están identificados en la base final; solo un cambio de adjudicación obligaría a recalcular alpha. D-01 solo requiere el modelo de dos partes si se adopta esa sensibilidad opcional. **No requieren cálculo nuevo:** PI-29 (opción A: declarar Laplace; `nAGQ > 1` no es ejecutable con dos efectos aleatorios), PI-06/PI-07 (juicio humano), PI-09 (nuevas corridas) y NV-07/PI-31 (dependen de los resultados P0/P1).
 
 ### 5.2 Pendiente de decisión o verificación
 
-1. **NV-03:** no prioritaria por tiempo; no bloquea la entrega.
+No hay decisiones pendientes. **NV-03** se canceló por tiempo y no bloquea la entrega.
 
 ### 5.3 Implementación
 
@@ -233,7 +233,7 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 8. **PI-06, PI-07, PI-08, PI-12, PI-15, PI-16, PI-18, PI-19 y PI-32:** declarar la revisión humana y sus límites, fijar el proceso del corpus, corregir 1.2/1.3 y fechas, y usar el conteo de preguntas revisadas.
 9. **PI-01, PI-02 y PI-31 / NV-07:** actualizar plan/README y título/portada; sincronizar manuscrito, anexos y presentación con recuperación y cifras reconciliadas; generar una nueva versión.
 10. **PI-30:** publicar la verificación después de revisar el manuscrito y ordenar el directorio; ejecutar `run_all.sh` y la clonación de prueba.
-11. **P2 — NV-03:** retomar solo si el tiempo alcanza; no condiciona la entrega.
+11. **P2 — NV-03:** no se ejecuta por falta de tiempo; se declara trabajo futuro y no condiciona la entrega.
 
 ### 5.4 Verificación final
 
@@ -255,8 +255,8 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | Estado | IDs | Total |
 |---|---|---:|
 | Cerrada | D-01–D-14; PI-01–PI-12, PI-15, PI-16, PI-18, PI-19, PI-21–PI-32; NV-01, NV-02, NV-04, NV-05, NV-06, NV-07 | 48 |
-| Cancelada | PI-13, PI-14, PI-17, PI-20 | 4 |
-| Pendiente | NV-03 | 1 |
+| Cancelada | PI-13, PI-14, PI-17, PI-20; NV-03 | 5 |
+| Pendiente | — | 0 |
 | **Total** | **D-01–D-14, PI-01–PI-32, NV-01–NV-07** | **53** |
 
 ### 6.2 Decisiones cerradas y canceladas
@@ -315,12 +315,11 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | NV-05 | Cerrada | Se usó el valor por defecto de la API: Pydantic AI 1.1.0 no fija `reasoning_effort` y envía `NOT_GIVEN`; el default efectivo de OpenAI para GPT-5 es `medium` | Nota incorporada en método y declaración; PDF compilado |
 | NV-06 | Cerrada | Opción A: usar AUTOINDEX, valor del código; no afirmar IVF_FLAT | Aplicar en V.8/metodología |
 | NV-07 | Cerrada | Opción A: incorporar recuperación, IA y cifras reconciliadas a Tabla 4/IX | Cifras, recuperación y conclusiones incorporadas en evaluación y conclusiones |
+| NV-03 | Cancelada | No se ejecutan las métricas deterministas de citas por falta de tiempo; quedan como trabajo futuro | No bloquea la entrega |
 
 ### 6.3 Decisiones pendientes
 
-| ID | Tema | Qué falta decidir / verificar | Recomendación / bloqueo | Responsable |
-|---|---|---|---|---|
-| NV-03 | Citas deterministas | Métricas de citas sobre las 711 respuestas | **No prioritaria por tiempo**: posponer; cálculo P2 en `§5.1`; no bloquea la entrega | Autor |
+No hay decisiones pendientes.
 
 ### 6.4 PI-25 — Entradas adoptadas
 
