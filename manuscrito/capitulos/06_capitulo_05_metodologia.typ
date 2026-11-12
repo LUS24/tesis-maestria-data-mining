@@ -158,7 +158,7 @@ La @fig-esquema-milvus ilustra el proceso de generación de embeddings e inserci
 
 La selección del modelo de embeddings se guió por cuatro criterios:
 
-+ *Soporte para el idioma español*: el corpus y las consultas están íntegramente en español, con terminología del dominio jurídico. Un modelo entrenado específicamente en español evita la pérdida de matices que introduce la traducción implícita de los modelos multilingües de propósito general y evita depender de una etapa de traducción previa a la codificación.
++ *Soporte para el idioma español*: el corpus y las consultas están íntegramente en español, con terminología del dominio jurídico. Se prefirió un modelo entrenado sobre textos en español antes que uno multilingüe de propósito general, por dos razones de diseño: evita depender de una etapa de traducción previa a la codificación y concentra la capacidad del modelo en el vocabulario efectivamente usado. Esa preferencia es una decisión a priori y no una ventaja medida: esta tesis no comparó el modelo elegido contra un modelo multilingüe, de modo que no se afirma que el entrenamiento en español reduzca la pérdida de matices ni que mejore el recall.
 
 + *Desempeño en tareas de similitud semántica*: la recuperación se resuelve íntegramente por similitud entre la consulta y los artículos, de modo que la calidad del ranking depende directamente de la capacidad del modelo de ordenar pares de textos según su cercanía semántica. Los modelos de la familia _sentence-transformers_ entrenados para similitud textual ofrecen un desempeño sustancialmente superior al de los embeddings estáticos en esta tarea @reimers2019sentence.
 
