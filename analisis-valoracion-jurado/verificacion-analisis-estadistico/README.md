@@ -5,6 +5,10 @@
 **Fuente primaria:** `codigo_experimentos/part_i/final_judge_results.csv` (2.133 filas juez-observación).  
 **Estado:** verificación ejecutada. **No se modificó ningún archivo fuente.**
 
+## Reconciliación V.1/V.6 (NV-01)
+
+El subdirectorio `reconciliacion_v1/` fija las cifras de V.1 y V.6 para Tabla 4. Usa los p Holm de `correccion-01` en V.1 y Wilcoxon de Pratt sobre las 38 respuestas sustantivas en V.6. Informe: `reconciliacion_v1/INFORME_RECONCILIACION.md`.
+
 ## Resultado
 
 | Rúbrica | Valores | Observaciones | Jueces | α ordinal |

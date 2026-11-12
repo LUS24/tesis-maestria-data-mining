@@ -309,7 +309,7 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | PI-30 | Cerrada | Opción A: publicar después de revisar el manuscrito y ordenar el directorio | Ejecutar `run_all.sh`, clonación y registro al final |
 | PI-31 | Cerrada | Opción A: aplicar todo y generar una nueva versión del archivo | Implementación pendiente; coordinar con NV-07 |
 | PI-32 | Cerrada | 25 preguntas: 18 intervenidas, 17 corregidas, Q24 solo comentario, 7 sin intervención | `correccion-06/salidas/conteo_preguntas_revisadas.csv` |
-| NV-01 | Cerrada | Opción A: `correccion-01` como fuente canónica; no usar el reanálisis de la valoración | Reconciliar cifras de V.1; cálculo P0 en `§5.1` |
+| NV-01 | Cerrada | Opción A: `correccion-01` como fuente canónica; no usar el reanálisis de la valoración | Reconciliado en `verificacion-analisis-estadistico/reconciliacion_v1/`; usar p Holm en V.1 y Pratt en V.6 |
 | NV-02 | Cerrada | Opción A adaptada: sin Milvus; calcular recall@k/MRR desde las recuperaciones `.json` y guardar en `verificacion-analisis-estadistico/metricas_recuperacion/` | Cálculo P0 en `§5.1`; no comparar BM25 desde la base |
 | NV-04 | Cerrada | Opción A: extender la declaración a búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas; revisar el antecedente de la “referencia fabricada” | Redactar declaración |
 | NV-05 | Cerrada | Se usó el valor por defecto de la API: Pydantic AI 1.1.0 no fija `reasoning_effort` y envía `NOT_GIVEN`; el default efectivo de OpenAI para GPT-5 es `medium` | Declarar “valor por defecto del proveedor (`medium`), no configurado por Pydantic AI”; no inferirlo de tokens |

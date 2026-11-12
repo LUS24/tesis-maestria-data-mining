@@ -36,12 +36,12 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 
 | Sección nueva | Qué exige | Paquete que la cubre | Estado | Observación |
 |---|---|---|---|---|
-| V.1 | Reanálisis apareado/anidado, efectos e IC; corregir “modelos mixtos” | `correccion-01` | **Cubierto con salvedad** | El modelo ordinal mixto, Friedman/Wilcoxon y bootstrap existen. Las cifras nuevas de la valoración no coinciden exactamente con las de `correccion-01`; hay que reconciliar prueba, escenario y corrección (NV-01) |
+| V.1 | Reanálisis apareado/anidado, efectos e IC; corregir “modelos mixtos” | `correccion-01` | **Cubierto** | El modelo ordinal mixto, Friedman/Wilcoxon y bootstrap existen. La reconciliación está en `verificacion-analisis-estadistico/reconciliacion_v1/`: se usan los p Holm de `correccion-01`; los p de la valoración son ilustrativos y no se mezclan |
 | V.2 | Crítica a Scheirer-Ray-Hare | `correccion-01` | **Cubierto** | Se reemplaza por el modelo ordinal y análisis no paramétrico de sensibilidad |
 | V.3 | No inferir equivalencia de la falta de significación | `correccion-01`; `correccion-05` | **Cubierto** | Se reportan IC y se retira el “efecto igualador” |
 | V.4 | Temperatura no aplicada, no determinismo, esfuerzo y ejecución única | `correccion-03` | **Cubierto con salvedad** | La temperatura no se envía y la ejecución es única; se usó el valor por defecto de la API: Pydantic AI 1.1.0 no fija `reasoning_effort` y OpenAI documenta `medium` para GPT-5 (NV-05) |
 | V.5 | Factores confundidos, prompts, Agente de Calidad, límite de búsquedas | `correccion-04`; `correccion-05` | **Cubierto** | Quedan decisiones de redacción: 7/6, `16_01` y notebook canónico (PI-10, PI-11) |
-| V.6 | 41 salidas no sustantivas, reincorporar casos 23–25, corregir faltantes, reformular sobrecarga | `correccion-02`; `correccion-01`; `correccion-05` | **Cubierto** | La base final tiene 58 no sustantivas y 41 en nano agéntico; el join 23–25 está resuelto. Las medias 0,82/0,84/0,64 se reproducen; los valores `p = 0,19` y `p = 0,003` no coinciden exactamente con las pruebas pareadas locales y deben documentarse (método, unidad y corrección). Falta editar el manuscrito |
+| V.6 | 41 salidas no sustantivas, reincorporar casos 23–25, corregir faltantes, reformular sobrecarga | `correccion-02`; `correccion-01`; `correccion-05` | **Cubierto** | La base final tiene 58 no sustantivas y 41 en nano agéntico; el join 23–25 está resuelto. Las medias 0,82/0,84/0,64 se reproducen; `p = 0,19` y `p = 0,003` se reproducen con Wilcoxon de Pratt sobre las 38 respuestas sustantivas. Falta editar el manuscrito |
 | V.7 | Validez del benchmark, respuestas de referencia y jueces; citas deterministas; submuestra humana | `correccion-06`; `verificacion-analisis-estadistico`; `correccion-05` | **Parcial** | Hay auditoría de referencias y evidencia de jueces; no hay métricas de citas sobre respuestas generadas ni validación humana (NV-03) |
 | V.8 | Evaluar recuperación; comparar embedding/BM25 | `part_d` y datos de `correccion-06`; no hay notebook en los paquetes | **Parcial** | Las métricas de RAG básico se reproducen desde `part_d`: recall@10 0,333; MRR 0,214; 27,8 % con todos los artículos; 59,5 % sin ninguno. Falta el artefacto reproducible y la comparación con BM25/otro embedding (NV-02) |
 | V.9 | Versión y calidad del corpus | `correccion-06` | **Cubierto con salvedad** | Versión, conteos y linaje están auditados; la calidad de extracción no se cuantificó con tasa de error, solo con comparación de artículos clave |
@@ -144,7 +144,7 @@ El estado actualizado está en `DECISIONES_integradas.md` §6: todas las NV est�
 
 | Punto | Estado |
 |---|---|
-| NV-01 Reanálisis canónico | **Decidida (A):** `correccion-01`; falta implementar la reconciliación |
+| NV-01 Reanálisis canónico | **Reconciliada:** `correccion-01`; ver `verificacion-analisis-estadistico/reconciliacion_v1/` |
 | Edición del manuscrito | **Pendiente:** aplicar las correcciones 01–07 |
 | NV-04 Declaración de IA | **Decidida (A):** extender la declaración; falta redactarla y revisar el antecedente |
 | PI-02 / PI-06 / PI-08 | **Decididas:** título aprobado, sin validación humana adicional, casos adjudicados; falta implementarlas |
