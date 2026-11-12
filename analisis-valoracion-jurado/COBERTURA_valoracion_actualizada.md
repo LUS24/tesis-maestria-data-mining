@@ -39,7 +39,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | V.1 | Reanálisis apareado/anidado, efectos e IC; corregir “modelos mixtos” | `correccion-01` | **Cubierto con salvedad** | El modelo ordinal mixto, Friedman/Wilcoxon y bootstrap existen. Las cifras nuevas de la valoración no coinciden exactamente con las de `correccion-01`; hay que reconciliar prueba, escenario y corrección (NV-01) |
 | V.2 | Crítica a Scheirer-Ray-Hare | `correccion-01` | **Cubierto** | Se reemplaza por el modelo ordinal y análisis no paramétrico de sensibilidad |
 | V.3 | No inferir equivalencia de la falta de significación | `correccion-01`; `correccion-05` | **Cubierto** | Se reportan IC y se retira el “efecto igualador” |
-| V.4 | Temperatura no aplicada, no determinismo, esfuerzo y ejecución única | `correccion-03` | **Cubierto con salvedad** | La temperatura no se envía y la ejecución es única; `reasoning_effort` no se envió, Pydantic AI 1.1.0 no define default y OpenAI usa `medium` para GPT-5 (NV-05) |
+| V.4 | Temperatura no aplicada, no determinismo, esfuerzo y ejecución única | `correccion-03` | **Cubierto con salvedad** | La temperatura no se envía y la ejecución es única; se usó el valor por defecto de la API: Pydantic AI 1.1.0 no fija `reasoning_effort` y OpenAI documenta `medium` para GPT-5 (NV-05) |
 | V.5 | Factores confundidos, prompts, Agente de Calidad, límite de búsquedas | `correccion-04`; `correccion-05` | **Cubierto** | Quedan decisiones de redacción: 7/6, `16_01` y notebook canónico (PI-10, PI-11) |
 | V.6 | 41 salidas no sustantivas, reincorporar casos 23–25, corregir faltantes, reformular sobrecarga | `correccion-02`; `correccion-01`; `correccion-05` | **Cubierto** | La base final tiene 58 no sustantivas y 41 en nano agéntico; el join 23–25 está resuelto. Las medias 0,82/0,84/0,64 se reproducen; los valores `p = 0,19` y `p = 0,003` no coinciden exactamente con las pruebas pareadas locales y deben documentarse (método, unidad y corrección). Falta editar el manuscrito |
 | V.7 | Validez del benchmark, respuestas de referencia y jueces; citas deterministas; submuestra humana | `correccion-06`; `verificacion-analisis-estadistico`; `correccion-05` | **Parcial** | Hay auditoría de referencias y evidencia de jueces; no hay métricas de citas sobre respuestas generadas ni validación humana (NV-03) |
@@ -116,9 +116,9 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | PI-11 Notebook `part_g` | Sin cambio; V.11 valora el repositorio, no la discrepancia notebook/script | Media |
 | PI-12 Procedencia Infoleg | **Resuelta**; V.9 no se actualizó; sin acción pendiente | — |
 | PI-13–PI-20 Benchmark/corpus | **Reclasificadas:** PI-16 y PI-18 resueltas; PI-13, PI-14, PI-17 y PI-20 canceladas por estar fuera de alcance; PI-15 y PI-19 resueltas con implementación editorial pendiente. PI-12 se registra en la fila anterior | Alta/Media |
-| PI-21–PI-28 Bibliografía | **Resueltas:** PI-21, PI-22, PI-23, PI-26, PI-27 y PI-28 con opción A; PI-24 con opción B provisional; PI-25 con las cinco entradas y claves actualizadas | Alta/Media |
+| PI-21–PI-28 Bibliografía | **Resueltas:** PI-21, PI-22, PI-23, PI-26, PI-27 y PI-28 con opción A; PI-24 con opción A si el sitio oficial responde y B (AUNO/Tallarico) en caso contrario; PI-25 con las cinco entradas y claves actualizadas | Alta/Media |
 | PI-29 `nAGQ`/odds proporcionales | **Resuelta: opción A**; mantener `nAGQ = 1` (Laplace) y declarar la limitación. `nAGQ > 1` no está disponible con dos efectos aleatorios | Media |
-| PI-30 Versionar verificación | **Resuelta: opción A diferida**; publicar después de revisar el manuscrito y ordenar el directorio | Alta |
+| PI-30 Versionar verificación | **Resuelta: opción A**; publicar después de revisar el manuscrito y ordenar el directorio | Alta |
 | PI-31 Sincronización final | **Resuelta: opción A**; aplicar todo y generar una nueva versión del archivo | Alta |
 | PI-32 Conteo de preguntas corregidas | **Resuelta**; V.7 confirma 18/17/1/7 | — |
 
@@ -134,7 +134,7 @@ El estado actualizado está en `DECISIONES_integradas.md` §6: todas las NV est�
 | NV-02 | Métricas de recuperación y comparación de recuperadores | A) Calcular desde `part_d` y logs en un notebook nuevo; B) adoptar las cifras de la nueva valoración; C) ambas | **A adaptada:** Milvus no está disponible; calcular recall@k/MRR desde las recuperaciones `.json` y guardar en `verificacion-analisis-estadistico/metricas_recuperacion/`. No comparar BM25 desde la base | Sí, para IX.1.9/IX.2.1 |
 | NV-03 | Métricas deterministas de citas sobre las 711 respuestas | A) Extender `correccion-06` para extraer citas de las respuestas generadas y calcular precisión/recall/F1/inexistentes; B) usar solo las citas de las respuestas esperadas; C) dejar la rúbrica de jueces | **No prioritaria por tiempo:** posponer; no bloquea la entrega | No para la entrega |
 | NV-04 | Declaración de IA y antecedente de “referencia fabricada” | A) Declaración por etapas + revisión del historial; B) mantener la frase genérica; C) declaración mínima sin explicar el antecedente | **A adoptada:** extender la declaración a búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas; revisar el antecedente al redactar | Sí, para IX.1.8 |
-| NV-05 | “Esfuerzo predeterminado” vs. “desconocido” | A) Mantener “desconocido” (lo que prueban los logs); B) afirmar “predeterminado” porque el código no lo fija; C) documentar ambos | **Resuelta:** Pydantic AI 1.1.0 no define default; envía `NOT_GIVEN`. El default efectivo de OpenAI para GPT-5 es `medium`; declarar “no se envió; default del proveedor = medium” | No para aceptar; sí para precisión |
+| NV-05 | “Esfuerzo predeterminado” vs. “desconocido” | A) Mantener “desconocido” (lo que prueban los logs); B) afirmar “predeterminado” porque el código no lo fija; C) documentar ambos | **Resuelta:** se usó el valor por defecto de la API. Pydantic AI 1.1.0 no fija `reasoning_effort` y envía `NOT_GIVEN`; el default efectivo de OpenAI para GPT-5 es `medium`; declarar “default del proveedor = medium”, no un default de Pydantic AI | No para aceptar; sí para precisión |
 | NV-06 | Índice vectorial: IVF_FLAT vs. AUTOINDEX | A) Mantener D-12 y describir AUTOINDEX; B) verificar en Milvus el índice efectivo; C) aceptar IVF_FLAT de la nueva valoración | **A adoptada:** usar AUTOINDEX del código; no afirmar IVF_FLAT | Sí, para coherencia de V.8/metodología |
 | NV-07 | Actualización de Tabla 4/IX con los nuevos hallazgos | A) Incorporar recuperación, IA y cifras reconciliadas; B) dejar Tabla 4 como está y agregar anexo; C) solo cambios de forma | **A.** La nueva valoración cambia el sustento de V.1/V.6/V.8/V.11; Tabla 4 debe reflejarlo | Sí, para la versión final |
 
@@ -152,7 +152,7 @@ El estado actualizado está en `DECISIONES_integradas.md` §6: todas las NV est�
 | NV-02 Recuperación | **Decidida (A adaptada):** sin Milvus; usar recuperaciones `.json` en `verificacion-analisis-estadistico/metricas_recuperacion/` |
 | NV-03 Citas deterministas | **No prioritaria:** posponer por tiempo |
 | PI-25 DOIs de edición | **Resuelta:** cinco entradas adoptadas y claves/citas actualizadas; PDF compilado |
-| NV-05 Esfuerzo de razonamiento | **Resuelta:** Pydantic AI 1.1.0 no define default; OpenAI GPT-5 usa `medium` por defecto. No se registró localmente |
+| NV-05 Esfuerzo de razonamiento | **Resuelta:** valor por defecto de la API; Pydantic AI 1.1.0 no fija `reasoning_effort` y OpenAI GPT-5 usa `medium` por defecto. No se registró localmente |
 | PI-31 Sincronización final | **Decidida (A):** aplicar todo y generar una nueva versión |
 
 ## 9. Veredicto de cobertura
