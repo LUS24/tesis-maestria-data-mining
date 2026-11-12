@@ -280,7 +280,7 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | PI-01 | Cerrada | Opción A: mantener `correccion-*` y marcar como deprecados los análisis previos que ya no se usan | Actualizar plan y README; no duplicar |
 | PI-02 | Cerrada | Opción A: título aprobado por correo por el director de la maestría | Actualizar portada, `main.typ`, README y BibTeX |
 | PI-03 | Cerrada | Opción A: aplicar textos, anexo y SVG operativo; actualizar el diagrama para respetar colores y límites | Implementación editorial pendiente |
-| PI-04 | Cerrada | Opción B: declaración de IA por etapas; incluir búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas; revisar el antecedente de la “referencia fabricada” | Redactar declaración y actualizar README/manuscrito |
+| PI-04 | Cerrada | Opción B: declaración de IA por etapas; incluye extracción, benchmark, respuestas, jueces, asistencia y verificación; antecedente de la referencia eliminada | Declaración incorporada en `01_texto_preliminar.typ`; PDF compilado |
 | PI-05 | Cerrada | Opción A: “modelo del Agente Especialista Legal”; celdas agénticas como “recuperador gpt-5” | Aplicar en manuscrito |
 | PI-06 | Cerrada | Opción A: no realizar validaciones humanas adicionales; declarar la ausencia | Documentar en limitaciones |
 | PI-07 | Cerrada | Opción A: aceptar la revisión del autor y declararla como tal | No llamarla independiente |
@@ -311,8 +311,8 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | PI-32 | Cerrada | 25 preguntas: 18 intervenidas, 17 corregidas, Q24 solo comentario, 7 sin intervención | `correccion-06/salidas/conteo_preguntas_revisadas.csv` |
 | NV-01 | Cerrada | Opción A: `correccion-01` como fuente canónica; no usar el reanálisis de la valoración | Reconciliado en `verificacion-analisis-estadistico/reconciliacion_v1/`; usar p Holm en V.1 y Pratt en V.6 |
 | NV-02 | Cerrada | Opción A adaptada: sin Milvus; recall@k/MRR desde las recuperaciones `.json` | Calculado en `verificacion-analisis-estadistico/metricas_recuperacion/`; sin comparación BM25 |
-| NV-04 | Cerrada | Opción A: extender la declaración a búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas; revisar el antecedente de la “referencia fabricada” | Redactar declaración |
-| NV-05 | Cerrada | Se usó el valor por defecto de la API: Pydantic AI 1.1.0 no fija `reasoning_effort` y envía `NOT_GIVEN`; el default efectivo de OpenAI para GPT-5 es `medium` | Declarar “valor por defecto del proveedor (`medium`), no configurado por Pydantic AI”; no inferirlo de tokens |
+| NV-04 | Cerrada | Opción A: extender la declaración a búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas; revisar el antecedente de la “referencia fabricada” | Declaración incorporada en `01_texto_preliminar.typ`; PDF compilado |
+| NV-05 | Cerrada | Se usó el valor por defecto de la API: Pydantic AI 1.1.0 no fija `reasoning_effort` y envía `NOT_GIVEN`; el default efectivo de OpenAI para GPT-5 es `medium` | Nota incorporada en método y declaración; PDF compilado |
 | NV-06 | Cerrada | Opción A: usar AUTOINDEX, valor del código; no afirmar IVF_FLAT | Aplicar en V.8/metodología |
 | NV-07 | Cerrada | Opción A: incorporar recuperación, IA y cifras reconciliadas a Tabla 4/IX | Coordinar con PI-31 |
 

@@ -15,7 +15,17 @@ A mi familia ...
 // Declaraciones
 #heading(outlined: false, numbering: none)[Declaraciones]
 
-Se han empleado productos basados en inteligencia artificial para asistir en la elaboración de este trabajo.
+Se utilizaron herramientas de inteligencia artificial en distintas etapas de la investigación. La declaración siguiente distingue la etapa, el modelo empleado y el alcance de la verificación aplicada.
+
+- *Extracción y estructuración del corpus*: se empleó `o4-mini` para transcribir y estructurar el texto del Código de Minería a partir de imágenes y documentos, con revisión y corrección manual posterior.
+- *Generación del benchmark*: las preguntas y las respuestas esperadas se generaron con `GPT-4.1` y fueron revisadas por un profesional del derecho.
+- *Generación de las respuestas evaluadas*: se utilizaron `gpt-5-nano`, `gpt-5-mini` y `gpt-5` de OpenAI.
+- *Evaluación automática*: actuaron como jueces `DeepSeek V3.1`, `Grok 4.1 Fast` y `Kimi K2 0905`, con rúbricas explícitas.
+- *Asistencia en la investigación*: se emplearon asistentes de IA para búsqueda bibliográfica, revisión y validación de citas, edición del manuscrito, programación, análisis de datos y preparación de figuras y tablas.
+
+La verificación de los artefactos, las cifras, las citas y el código estuvo a cargo del autor. Esa verificación no incluyó una validación humana de la calidad de las 711 respuestas generadas: la revisión humana documentada corresponde al benchmark y fue realizada por un profesional del derecho. Durante la redacción se detectó y eliminó una referencia generada que no correspondía a una fuente verificable; la lista final de referencias fue auditada y contrastada con sus identificadores.
+
+En la generación de respuestas no se configuró el parámetro `reasoning_effort`. Pydantic AI 1.1.0 no define un valor por defecto y envía `NOT_GIVEN`; OpenAI documenta `medium` como valor por defecto para GPT-5. El valor efectivo no quedó registrado y no se infiere de los tokens de razonamiento.
 
 #outline(title: [Índice], indent: auto)
 

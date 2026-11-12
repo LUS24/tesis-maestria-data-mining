@@ -46,7 +46,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | V.8 | Evaluar recuperación; comparar embedding/BM25 | `part_d` y `verificacion-analisis-estadistico/metricas_recuperacion/` | **Cubierto con salvedad** | Se reprodujo el baseline (recall@10 0,333; MRR 0,214; 27,8 %/59,5 %) y se calcularon las métricas de Agentic-RAG desde los `.json`: recall@10 0,399–0,446; MRR 0,242–0,281. No hay comparación con BM25/otro embedding porque se perdió el volumen de Milvus |
 | V.9 | Versión y calidad del corpus | `correccion-06` | **Cubierto con salvedad** | Versión, conteos y linaje están auditados; la calidad de extracción no se cuantificó con tasa de error, solo con comparación de artículos clave |
 | V.10 | Costos, Pareto y recomendación | `correccion-05` | **Cubierto** | Costos históricos, frontera de Pareto y costo por respuesta ≥ 0,75 |
-| V.11 | Título, alcance, repositorio y declaración de IA | `correccion-05`; verificación pública | **Parcial** | Título/objetivo están propuestos; el repositorio es público; la declaración de IA sigue pendiente (NV-04) |
+| V.11 | Título, alcance, repositorio y declaración de IA | `correccion-05`; verificación pública | **Parcial** | La declaración de IA por etapas ya está incorporada; el repositorio es público; queda aplicar el título/portada y la declaración de alcance |
 
 ---
 
@@ -61,7 +61,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | IX.1.5 Reformular Tabla 4 y conclusiones | **Cubierto como propuesta** | `correccion-05`; no se editó el manuscrito |
 | IX.1.6 Corpus, origen y respuestas de referencia | **Cubierto en análisis** | `correccion-06`; 1.2/1.3 verificados; Q23–Q25 fuera de alcance |
 | IX.1.7 Tablas 2 y 3, auditoría bibliográfica | **Cubierto** | `correccion-07`; quedan decisiones manuales de autoría/DOI/fuente |
-| IX.1.8 Ampliar declaración de IA | **No cubierto** | Solo existe la propuesta general de `correccion-05`; falta una declaración por etapas y revisar el antecedente de la “referencia fabricada” que menciona la nueva valoración |
+| IX.1.8 Ampliar declaración de IA | **Cubierto** | Declaración por etapas en `01_texto_preliminar.typ`: extracción, benchmark, respuestas, jueces, asistencia y verificación; incluye la referencia eliminada |
 | IX.1.9 Informar métricas de recuperación | **Cubierto** | `verificacion-analisis-estadistico/metricas_recuperacion/`: baseline y Agentic-RAG por modelo, con definiciones y límites |
 
 ---
