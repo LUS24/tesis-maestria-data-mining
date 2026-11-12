@@ -93,7 +93,7 @@ Son los puntos de corte en la escala latente. No tienen una interpretación sust
 - `σ_c²` grande: los casos difieren en dificultad media.
 - Si ambas son cercanas a cero, el agrupamiento aporta poca heterogeneidad; el modelo igualmente respeta el diseño.
 
-En el modelo principal: `σ_c² = 0,164` y `σ_u² = 1,383`. La unidad explica mucha más heterogeneidad que el caso.
+En el modelo principal: `σ_c² = 0,1645` y `σ_u² = 1,3803`. La unidad explica mucha más heterogeneidad que el caso.
 
 #### Probabilidades predichas
 
@@ -152,7 +152,7 @@ gl = p_completo − p_reducido
 p = P(χ²_gl ≥ LR)
 ```
 
-En este análisis, `LR = 293,00`, `gl = 4`, `p = 3,50 × 10⁻⁶²`. Los 4 grados de libertad corresponden a los cuatro términos de interacción del diseño 3 × 3 (2 × 2).
+En este análisis, `LR = 293,28`, `gl = 4`, `p = 3,05 × 10⁻⁶²`. Los 4 grados de libertad corresponden a los cuatro términos de interacción del diseño 3 × 3 (2 × 2).
 
 ### 4.3 Cómo se interpreta
 

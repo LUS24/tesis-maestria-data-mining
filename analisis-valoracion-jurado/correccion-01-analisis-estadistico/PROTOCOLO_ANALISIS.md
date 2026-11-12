@@ -38,7 +38,7 @@ Se conservan los puntajes que asignaron los jueces a todas las respuestas, inclu
 
 ### 3.3 Sensibilidad: exclusión
 
-Se excluyen las 57 respuestas no sustantivas y se analizan solo las 654 respuestas sustantivas (1.962 evaluaciones juez-observación). Es una submuestra seleccionada: responde “¿qué calidad tienen las respuestas cuando el sistema responde?”, no “¿qué tan útil es el sistema?”. No se interpreta como efecto causal.
+Se excluyen las 58 respuestas no sustantivas y se analizan solo las 653 respuestas sustantivas (1.959 evaluaciones juez-observación). Es una submuestra seleccionada: responde “¿qué calidad tienen las respuestas cuando el sistema responde?”, no “¿qué tan útil es el sistema?”. No se interpreta como efecto causal.
 
 ### 3.4 Sensibilidad: solo fallos técnicos = 0
 
@@ -46,7 +46,7 @@ Se asigna 0 a vacías, solo espacios, errores, truncadas e indeterminadas, pero 
 
 ### 3.5 Revisión manual
 
-La clasificación automática se reemplaza por la clasificación manual cuando la plantilla de la corrección 02 está completa. El programa `build_dataset.py` verifica que las 87 filas tengan categoría válida y justificación; si no, usa la clasificación automática y lo registra en `datos/00_estado_revision_manual.json`. No se mezclan filas manuales y automáticas de manera parcial. El paquete de revisión contiene las 57 respuestas no sustantivas automáticas y 30 controles sustantivos; no es un censo de las 654 respuestas sustantivas, de modo que la revisión manual corrige falsos positivos y algunos falsos negativos, pero no valida por completo la clasificación.
+La base final de la corrección 02 (`14_dataset_categoria_final.csv`) se usa directamente; `build_dataset.py` conserva `categoria_final` y verifica que los puntajes derivados coincidan con `puntaje_final_fallo_cero`. La plantilla tiene 87 filas válidas y la base final incorpora `R052` como abstención explícita, fijando 58 no sustantivas y 653 sustantivas. El paquete de revisión contiene las 57 respuestas no sustantivas automáticas y 30 controles; no es un censo de las 653 respuestas sustantivas, de modo que corrige falsos positivos y algunos falsos negativos, pero no valida por completo la clasificación.
 
 ## 4. Modelo principal
 

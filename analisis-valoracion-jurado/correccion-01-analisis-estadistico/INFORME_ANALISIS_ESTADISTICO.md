@@ -3,7 +3,7 @@
 **Corrección:** IX.1.1 — corregir el análisis inferencial para respetar el apareamiento por unidad y el anidamiento en casos.  
 **Fecha:** 2026-11-12.  
 **Insumos:** 711 observaciones, 79 unidades, 25 casos y 2.133 evaluaciones juez-observación.  
-**Estado:** análisis ejecutado con la clasificación final de la revisión manual completa (87/87). No hubo cambios de categoría respecto de la clasificación automática en las 711 observaciones.
+**Estado:** análisis ejecutado con la base final de la revisión manual completa (87/87). La revisión incorporó `R052` (`Q14_01`, sin RAG + gpt-5-mini) como abstención explícita: 58 respuestas no sustantivas y 653 sustantivas.
 
 ---
 
@@ -29,13 +29,13 @@ Además, se corrigió el problema de join documentado en la corrección 02: las 
 | Unidades | 79 |
 | Casos | 25 |
 | Evaluaciones juez-observación | 2.133 |
-| Respuestas no sustantivas (clasificación final) | 57 |
-| Respuestas sustantivas | 654 |
+| Respuestas no sustantivas (base final) | 58 |
+| Respuestas sustantivas | 653 |
 | Celdas | 9 |
 
-La clasificación final de la corrección 02 identifica 57 respuestas no sustantivas. La celda Agentic-RAG + gpt-5-nano concentra 41: 27 vacías, 1 solo espacios, 2 abstenciones, 1 truncada y 10 indeterminadas. Las otras 16 se distribuyen principalmente en Sin RAG + gpt-5-mini (14 abstenciones).
+La base final de la corrección 02 identifica 58 respuestas no sustantivas. La celda Agentic-RAG + gpt-5-nano concentra 41: 27 vacías, 1 solo espacios, 2 abstenciones, 1 truncada y 10 indeterminadas. Las otras 17 se distribuyen principalmente en Sin RAG + gpt-5-mini (15 abstenciones).
 
-La revisión manual ciega está **completa** (87/87) y `datos/00_estado_revision_manual.json` lo registra. `build_dataset.py` usó las categorías revisadas; no hubo cambios de categoría respecto de la clasificación automática en las 711 observaciones. No se editan tablas a mano: cualquier cambio futuro en la plantilla exige volver a ejecutar el pipeline.
+La revisión manual ciega está **completa** (87/87) y `datos/00_estado_revision_manual.json` lo registra. `build_dataset.py` usa la base final `14_dataset_categoria_final.csv`; la revisión incorporó `R052` como abstención explícita. No se editan tablas a mano: cualquier cambio futuro en la plantilla exige volver a ejecutar el pipeline.
 
 ### 2.1 Escenario principal
 
@@ -77,9 +77,9 @@ score_respuesta_correcta ~ estrategia * modelo_especialista
 
 | Escenario | LR | gl | p | AIC completo | AIC reducido | Var(caso) | Var(unidad) |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Principal: no sustantivas = 0 | 293,00 | 4 | 3,50 × 10⁻⁶² | 5525,3 | 5810,3 | 0,164 | 1,383 |
+| Principal: no sustantivas = 0 | 293,28 | 4 | 3,05 × 10⁻⁶² | 5525,0 | 5810,3 | 0,164 | 1,380 |
 | Observado | 266,68 | 4 | 1,66 × 10⁻⁵⁶ | 5543,3 | 5802,0 | 0,158 | 1,373 |
-| Exclusión | 86,82 | 4 | 6,24 × 10⁻¹⁸ | 4959,0 | 5037,9 | 0,216 | 1,394 |
+| Exclusión | 82,52 | 4 | 5,09 × 10⁻¹⁷ | 4946,9 | 5021,5 | 0,212 | 1,410 |
 | Solo fallos técnicos = 0 | 286,12 | 4 | 1,07 × 10⁻⁶⁰ | 5532,0 | 5810,1 | 0,166 | 1,383 |
 
 La interacción es muy fuerte en todos los escenarios. Pero la dirección de algunos efectos simples **no es estable**: depende de si las respuestas no sustantivas se imputan a 0 o se excluyen. Esa es la razón por la que el manuscrito no debe presentar una única conclusión causal sobre “Agentic-RAG”.
@@ -90,17 +90,17 @@ Las predicciones son poblacionales: efectos aleatorios en cero y promedio sobre 
 
 | Estrategia | Modelo | Media esperada | IC 95% | P(≥ 0,75) | IC 95% |
 |---|---|---:|---:|---:|---:|
-| Sin RAG | gpt-5-nano | 0,588 | 0,518–0,660 | 0,452 | 0,362–0,551 |
-| Sin RAG | gpt-5-mini | 0,316 | 0,254–0,384 | 0,158 | 0,112–0,219 |
-| Sin RAG | gpt-5 | 0,755 | 0,690–0,812 | 0,685 | 0,592–0,766 |
-| RAG básico | gpt-5-nano | 0,616 | 0,544–0,685 | 0,490 | 0,393–0,588 |
-| RAG básico | gpt-5-mini | 0,678 | 0,610–0,742 | 0,577 | 0,479–0,670 |
-| RAG básico | gpt-5 | 0,744 | 0,678–0,803 | 0,670 | 0,576–0,753 |
-| Agentic-RAG | gpt-5-nano | 0,345 | 0,277–0,422 | 0,182 | 0,127–0,254 |
-| Agentic-RAG | gpt-5-mini | 0,828 | 0,771–0,873 | 0,787 | 0,707–0,847 |
-| Agentic-RAG | gpt-5 | 0,850 | 0,798–0,891 | 0,816 | 0,743–0,870 |
+| Sin RAG | gpt-5-nano | 0,588 | 0,519–0,660 | 0,453 | 0,362–0,552 |
+| Sin RAG | gpt-5-mini | 0,315 | 0,253–0,386 | 0,157 | 0,111–0,219 |
+| Sin RAG | gpt-5 | 0,755 | 0,690–0,812 | 0,686 | 0,593–0,766 |
+| RAG básico | gpt-5-nano | 0,616 | 0,545–0,683 | 0,490 | 0,395–0,586 |
+| RAG básico | gpt-5-mini | 0,678 | 0,610–0,744 | 0,577 | 0,483–0,671 |
+| RAG básico | gpt-5 | 0,744 | 0,680–0,805 | 0,670 | 0,579–0,756 |
+| Agentic-RAG | gpt-5-nano | 0,346 | 0,274–0,421 | 0,182 | 0,126–0,255 |
+| Agentic-RAG | gpt-5-mini | 0,828 | 0,774–0,875 | 0,787 | 0,711–0,849 |
+| Agentic-RAG | gpt-5 | 0,850 | 0,799–0,891 | 0,816 | 0,745–0,871 |
 
-La predicción de Agentic-RAG + nano (0,345) es menor que la descriptiva observada (0,395) porque el modelo poblacional no incorpora los efectos aleatorios de las unidades concretas. La conclusión cualitativa es la misma: la celda tiene una masa importante de puntajes cero.
+La predicción de Agentic-RAG + nano (0,346) es menor que la descriptiva observada (0,395) porque el modelo poblacional no incorpora los efectos aleatorios de las unidades concretas. La conclusión cualitativa es la misma: la celda tiene una masa importante de puntajes cero.
 
 ### 3.4 Efectos simples de estrategia dentro de modelo
 
@@ -108,29 +108,29 @@ Diferencias orientadas como `Agentic-RAG − RAG básico`, `Agentic-RAG − Sin 
 
 | Modelo | Contraste | Diferencia media | IC 95% | Diferencia P(≥ 0,75) | IC 95% |
 |---|---|---:|---:|---:|---:|
-| gpt-5-nano | Agentic-RAG − RAG básico | **−0,270** | −0,330 a −0,203 | **−0,308** | −0,382 a −0,224 |
-| gpt-5-nano | Agentic-RAG − Sin RAG | **−0,243** | −0,307 a −0,177 | **−0,271** | −0,348 a −0,193 |
-| gpt-5-nano | RAG básico − Sin RAG | 0,027 | −0,032 a 0,086 | 0,037 | −0,042 a 0,116 |
-| gpt-5-mini | Agentic-RAG − RAG básico | **+0,150** | 0,097 a 0,203 | **+0,210** | 0,135 a 0,283 |
-| gpt-5-mini | Agentic-RAG − Sin RAG | **+0,512** | 0,453 a 0,562 | **+0,629** | 0,563 a 0,680 |
-| gpt-5-mini | RAG básico − Sin RAG | **+0,362** | 0,302 a 0,417 | **+0,419** | 0,341 a 0,487 |
-| gpt-5 | Agentic-RAG − RAG básico | **+0,106** | 0,054 a 0,157 | **+0,146** | 0,075 a 0,218 |
-| gpt-5 | Agentic-RAG − Sin RAG | **+0,095** | 0,045 a 0,145 | **+0,130** | 0,062 a 0,201 |
-| gpt-5 | RAG básico − Sin RAG | −0,011 | −0,063 a 0,043 | −0,016 | −0,089 a 0,060 |
+| gpt-5-nano | Agentic-RAG − RAG básico | **−0,270** | −0,330 a −0,202 | **−0,308** | −0,382 a −0,225 |
+| gpt-5-nano | Agentic-RAG − Sin RAG | **−0,242** | −0,307 a −0,176 | **−0,270** | −0,349 a −0,192 |
+| gpt-5-nano | RAG básico − Sin RAG | 0,028 | −0,032 a 0,085 | 0,037 | −0,043 a 0,114 |
+| gpt-5-mini | Agentic-RAG − RAG básico | **+0,150** | 0,096 a 0,203 | **+0,210** | 0,134 a 0,283 |
+| gpt-5-mini | Agentic-RAG − Sin RAG | **+0,513** | 0,455 a 0,562 | **+0,630** | 0,564 a 0,680 |
+| gpt-5-mini | RAG básico − Sin RAG | **+0,363** | 0,304 a 0,417 | **+0,420** | 0,343 a 0,488 |
+| gpt-5 | Agentic-RAG − RAG básico | **+0,106** | 0,054 a 0,155 | **+0,146** | 0,074 a 0,216 |
+| gpt-5 | Agentic-RAG − Sin RAG | **+0,095** | 0,046 a 0,146 | **+0,130** | 0,063 a 0,202 |
+| gpt-5 | RAG básico − Sin RAG | −0,011 | −0,063 a 0,044 | −0,016 | −0,089 a 0,062 |
 
 En escala latente, los contrastes equivalentes tienen p de Holm:
 
 | Contraste | p Holm |
 |---|---:|
-| nano: Agentic-RAG − RAG básico | 3,07 × 10⁻¹⁴ |
-| nano: Agentic-RAG − Sin RAG | 1,11 × 10⁻¹¹ |
-| nano: RAG básico − Sin RAG | 0,726 |
-| mini: Agentic-RAG − RAG básico | 1,70 × 10⁻⁷ |
-| mini: Agentic-RAG − Sin RAG | 1,16 × 10⁻⁵³ |
-| mini: RAG básico − Sin RAG | 9,74 × 10⁻²⁹ |
-| gpt-5: Agentic-RAG − RAG básico | 1,02 × 10⁻⁴ |
-| gpt-5: Agentic-RAG − Sin RAG | 4,78 × 10⁻⁴ |
-| gpt-5: RAG básico − Sin RAG | 0,726 |
+| nano: Agentic-RAG − RAG básico | 3,25 × 10⁻¹⁴ |
+| nano: Agentic-RAG − Sin RAG | 1,18 × 10⁻¹¹ |
+| nano: RAG básico − Sin RAG | 0,724 |
+| mini: Agentic-RAG − RAG básico | 1,72 × 10⁻⁷ |
+| mini: Agentic-RAG − Sin RAG | 9,42 × 10⁻⁵⁴ |
+| mini: RAG básico − Sin RAG | 7,83 × 10⁻²⁹ |
+| gpt-5: Agentic-RAG − RAG básico | 1,03 × 10⁻⁴ |
+| gpt-5: Agentic-RAG − Sin RAG | 4,82 × 10⁻⁴ |
+| gpt-5: RAG básico − Sin RAG | 0,724 |
 
 **Cambio importante:** con el modelo apareado, gpt-5 **sí** muestra una diferencia Agentic-RAG − RAG básico (p Holm = 0,0001; diferencia media +0,106). El manuscrito anterior concluía que en gpt-5 no había diferencias tras Holm. Esa conclusión debe corregirse: la diferencia es menor que en mini, pero no nula.
 
@@ -140,17 +140,17 @@ Diferencias orientadas como `gpt-5-mini − nano`, `gpt-5 − nano` y `gpt-5 −
 
 | Estrategia | Contraste | Diferencia media | IC 95% | Diferencia P(≥ 0,75) | IC 95% |
 |---|---|---:|---:|---:|---:|
-| Sin RAG | mini − nano | **−0,272** | −0,325 a −0,212 | **−0,294** | −0,366 a −0,221 |
-| Sin RAG | gpt-5 − nano | **+0,167** | 0,108 a 0,224 | **+0,233** | 0,150 a 0,309 |
-| Sin RAG | gpt-5 − mini | **+0,438** | 0,379 a 0,491 | **+0,527** | 0,451 a 0,589 |
-| RAG básico | mini − nano | **+0,063** | 0,005 a 0,119 | **+0,088** | 0,008 a 0,165 |
-| RAG básico | gpt-5 − nano | **+0,128** | 0,071 a 0,186 | **+0,180** | 0,100 a 0,259 |
-| RAG básico | gpt-5 − mini | **+0,065** | 0,011 a 0,124 | **+0,093** | 0,016 a 0,174 |
-| Agentic-RAG | mini − nano | **+0,483** | 0,419 a 0,539 | **+0,605** | 0,533 a 0,662 |
-| Agentic-RAG | gpt-5 − nano | **+0,504** | 0,440 a 0,560 | **+0,634** | 0,566 a 0,687 |
-| Agentic-RAG | gpt-5 − mini | +0,021 | −0,023 a 0,067 | +0,029 | −0,031 a 0,091 |
+| Sin RAG | mini − nano | **−0,273** | −0,328 a −0,212 | **−0,295** | −0,366 a −0,223 |
+| Sin RAG | gpt-5 − nano | **+0,167** | 0,110 a 0,225 | **+0,233** | 0,153 a 0,309 |
+| Sin RAG | gpt-5 − mini | **+0,440** | 0,380 a 0,493 | **+0,528** | 0,452 a 0,589 |
+| RAG básico | mini − nano | **+0,063** | 0,005 a 0,120 | **+0,087** | 0,007 a 0,166 |
+| RAG básico | gpt-5 − nano | **+0,128** | 0,071 a 0,186 | **+0,180** | 0,100 a 0,260 |
+| RAG básico | gpt-5 − mini | **+0,065** | 0,011 a 0,124 | **+0,093** | 0,015 a 0,174 |
+| Agentic-RAG | mini − nano | **+0,483** | 0,419 a 0,539 | **+0,605** | 0,534 a 0,660 |
+| Agentic-RAG | gpt-5 − nano | **+0,504** | 0,439 a 0,561 | **+0,634** | 0,567 a 0,686 |
+| Agentic-RAG | gpt-5 − mini | +0,021 | −0,023 a 0,066 | +0,029 | −0,031 a 0,089 |
 
-Los contrastes de RAG básico mini − nano y gpt-5 − mini son **limítrofes**: sus IC de diferencia de media excluyen 0 por poco, pero el p de Holm en escala latente es 0,067 y 0,064, respectivamente. En Wilcoxon, mini − nano es significativo (p Holm = 0,0388) y gpt-5 − mini no lo es (0,0768). La evidencia es limítrofe y no debe presentarse como equivalencia ni como diferencia fuerte. En Agentic-RAG, gpt-5 y mini son indistinguibles; nano está muy por debajo.
+Los contrastes de RAG básico mini − nano y gpt-5 − mini son **limítrofes**: sus IC de diferencia de media excluyen 0 por poco, pero el p de Holm en escala latente es 0,068 y 0,064, respectivamente. En Wilcoxon, mini − nano es significativo (p Holm = 0,0388) y gpt-5 − mini no lo es (0,0768). La evidencia es limítrofe y no debe presentarse como equivalencia ni como diferencia fuerte. En Agentic-RAG, gpt-5 y mini son indistinguibles; nano está muy por debajo.
 
 ---
 
@@ -179,8 +179,8 @@ Los contrastes principales, orientados de forma intuitiva:
 | gpt-5-nano | Agentic-RAG − Sin RAG | 79 | −0,171 | 0,01055 | −0,423 |
 | gpt-5-nano | RAG básico − Sin RAG | 79 | 0,034 | 1,000 | 0,002 |
 | gpt-5-mini | Agentic-RAG − RAG básico | 79 | +0,138 | 0,000829 | +0,607 |
-| gpt-5-mini | Agentic-RAG − Sin RAG | 79 | +0,462 | 8,60 × 10⁻¹¹ | +0,887 |
-| gpt-5-mini | RAG básico − Sin RAG | 79 | +0,324 | 6,65 × 10⁻⁸ | +0,770 |
+| gpt-5-mini | Agentic-RAG − Sin RAG | 79 | +0,463 | 8,59 × 10⁻¹¹ | +0,887 |
+| gpt-5-mini | RAG básico − Sin RAG | 79 | +0,325 | 6,64 × 10⁻⁸ | +0,770 |
 | gpt-5 | Agentic-RAG − RAG básico | 79 | +0,105 | 0,0116 | +0,493 |
 | gpt-5 | Agentic-RAG − Sin RAG | 79 | +0,088 | 0,0306 | +0,381 |
 | gpt-5 | RAG básico − Sin RAG | 79 | −0,018 | 1,000 | −0,051 |
@@ -214,8 +214,8 @@ La media del escenario principal (0,395) y la observada (0,415) son parecidas po
 
 | Escenario | Diferencia media | IC 95% | Diferencia P(≥ 0,75) | IC 95% |
 |---|---:|---:|---:|---:|
-| Principal: no sustantivas = 0 | **−0,270** | −0,330 a −0,203 | **−0,308** | −0,382 a −0,224 |
-| Exclusión | **+0,215** | 0,146 a 0,279 | **+0,319** | 0,217 a 0,410 |
+| Principal: no sustantivas = 0 | **−0,270** | −0,330 a −0,202 | **−0,308** | −0,382 a −0,225 |
+| Exclusión | **+0,216** | 0,146 a 0,279 | **+0,321** | 0,217 a 0,411 |
 
 Este cambio de signo es el resultado más importante para la redacción. No significa que Agentic-RAG sea “bueno” o “malo” para nano en abstracto. Significa que:
 
@@ -226,7 +226,7 @@ La afirmación “sobrecarga agéntica” debe reemplazarse por una descripción
 
 ### 5.3 Interacción en los escenarios
 
-La interacción sigue siendo significativa en todos los escenarios (LR 86,8 a 293,0; p < 10⁻¹⁷). Lo que cambia es la interpretación de los efectos simples. El manuscrito debe reportar el escenario principal y, junto a él, la exclusión como sensibilidad; no elegir el escenario que produzca la conclusión más favorable.
+La interacción sigue siendo significativa en todos los escenarios (LR 82,5 a 293,3; p < 10⁻¹⁶). Lo que cambia es la interpretación de los efectos simples. El manuscrito debe reportar el escenario principal y, junto a él, la exclusión como sensibilidad; no elegir el escenario que produzca la conclusión más favorable.
 
 ---
 
@@ -237,7 +237,7 @@ La Tabla 11 se calculó sobre 76 observaciones por celda (684 en total), no sobr
 | Estrategia | Modelo | Mediana manuscrito | Mediana 79 observada | Mediana principal (0) | Mediana exclusión | n exclusión |
 |---|---|---:|---:|---:|---:|---:|
 | Sin RAG | gpt-5-nano | 0,583 | 0,583 | 0,583 | 0,583 | 78 |
-| Sin RAG | gpt-5-mini | 0,333 | 0,250 | 0,250 | 0,333 | 65 |
+| Sin RAG | gpt-5-mini | 0,333 | 0,250 | 0,250 | 0,375 | 64 |
 | Sin RAG | gpt-5 | 0,833 | 0,833 | 0,833 | 0,833 | 79 |
 | RAG básico | gpt-5-nano | 0,583 | 0,583 | 0,583 | 0,583 | 79 |
 | RAG básico | gpt-5-mini | 0,625 | 0,667 | 0,667 | 0,667 | 79 |
@@ -255,7 +255,7 @@ La tabla completa, con media y P(≥ 0,75), está en `salidas/30_tabla_celdas_pr
 | Juez | n | LR interacción | p | Convergencia |
 |---|---:|---:|---:|---:|
 | Grok 4.1 Fast | 711 | 100,46 | 7,84 × 10⁻²¹ | 0 |
-| DeepSeek V3.1 | 711 | 81,80 | 7,25 × 10⁻¹⁷ | 0 |
+| DeepSeek V3.1 | 711 | 82,04 | 6,45 × 10⁻¹⁷ | 0 |
 | Kimi K2 0905 | 711 | 92,66 | 3,58 × 10⁻¹⁹ | 0 |
 
 La interacción no depende de un solo juez. Las predicciones por juez están en `salidas/25_modelo_por_juez.csv`; las diferencias de severidad se controlan en el modelo principal con `juez` como efecto fijo.
@@ -285,14 +285,14 @@ La interacción no depende de un solo juez. Las predicciones por juez están en 
 
 ### 8.3 Redacción sugerida para la conclusión principal
 
-> “Con el Agente de Recuperación fijado en gpt-5, el efecto de la estrategia depende del modelo del Agente Especialista Legal. En el escenario principal —que asigna cero a las respuestas no sustantivas— Agentic-RAG reduce el desempeño de gpt-5-nano frente a RAG básico (diferencia media −0,270; IC 95% −0,330 a −0,203), mientras que lo aumenta en gpt-5-mini (+0,150; IC 95% 0,097 a 0,203) y, en menor medida, en gpt-5 (+0,106; IC 95% 0,054 a 0,157). La interacción es robusta a los escenarios de sensibilidad (LR = 293,0; gl = 4; p = 3,5 × 10⁻⁶²). En gpt-5-nano, la calidad de las respuestas sustantivas es alta (media 0,820; mediana 0,958), pero solo 38 de 79 unidades reciben una respuesta sustantiva; el patrón debe describirse como un problema de fiabilidad y no como una degradación uniforme de la calidad.”
+> “Con el Agente de Recuperación fijado en gpt-5, el efecto de la estrategia depende del modelo del Agente Especialista Legal. En el escenario principal —que asigna cero a las respuestas no sustantivas— Agentic-RAG reduce el desempeño de gpt-5-nano frente a RAG básico (diferencia media −0,270; IC 95% −0,330 a −0,202), mientras que lo aumenta en gpt-5-mini (+0,150; IC 95% 0,096 a 0,203) y, en menor medida, en gpt-5 (+0,106; IC 95% 0,054 a 0,155). La interacción es robusta a los escenarios de sensibilidad (LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶²). En gpt-5-nano, la calidad de las respuestas sustantivas es alta (media 0,820; mediana 0,958), pero solo 38 de 79 unidades reciben una respuesta sustantiva; el patrón debe describirse como un problema de fiabilidad y no como una degradación uniforme de la calidad.”
 
 ---
 
 ## 9. Limitaciones
 
 1. **Una ejecución por celda.** El modelo separa variabilidad entre unidades y casos, pero no variabilidad entre corridas. No se puede afirmar estabilidad de los efectos.
-2. **Alcance de la revisión manual.** La revisión manual de la corrección 02 está completa (87/87) y no cambió ninguna categoría respecto de la clasificación automática en las 711 observaciones. El paquete cubre las 57 no sustantivas automáticas y 30 controles, no las 654 respuestas sustantivas; por tanto, corrige falsos positivos y algunos falsos negativos, pero no es un censo de todas las respuestas.
+2. **Alcance de la revisión manual.** La revisión manual de la corrección 02 está completa (87/87) e incorporó `R052` como abstención explícita; la base final tiene 58 no sustantivas y 653 sustantivas. El paquete cubre las 57 no sustantivas automáticas y 30 controles, no las 653 respuestas sustantivas; por tanto, corrige falsos positivos y algunos falsos negativos, pero no es un censo de todas las respuestas.
 3. **Imputación normativa.** Asignar 0 a una abstención es una decisión sobre la utilidad del sistema, no una medición de calidad jurídica.
 4. **Exclusión seleccionada.** Los 38 pares de nano Agentic-RAG no son una muestra aleatoria; la comparación condicional no es causal.
 5. **Confundidos de la configuración agéntica.** El recuperador es siempre gpt-5; gpt-5 usó un prompt de recuperación con 7 búsquedas y mini/nano con 6 (corrección 04). El modelo no puede separar capacidad del especialista, capacidad del recuperador y presupuesto de búsqueda.
@@ -346,7 +346,7 @@ bash analisis-valoracion-jurado/correccion-01-analisis-estadistico/run_all.sh
 
 El script reconstruye la base, ejecuta el análisis no paramétrico, ajusta los modelos ordinales y regenera las figuras. No llama a APIs ni modifica archivos fuente.
 
-La revisión manual de la corrección 02 ya está completa. Si se modifica la plantilla, basta con volver a ejecutar `run_all.sh`; `build_dataset.py` detectará el estado y usará las categorías revisadas.
+La revisión manual de la corrección 02 ya está completa y consolidada en `14_dataset_categoria_final.csv`. Si se modifica la revisión, primero debe regenerarse esa base final con `consolidar_revision_manual.py` de la corrección 02 y luego ejecutar `run_all.sh`; `build_dataset.py` consume la base final.
 
 ---
 
@@ -358,7 +358,7 @@ La revisión manual de la corrección 02 ya está completa. Si se modifica la pl
 - [x] Friedman/Wilcoxon y bootstrap por casos.
 - [x] Escenarios de sensibilidad.
 - [x] Figuras y tablas.
-- [x] Revisión manual ciega (corrección 02, 87/87, sin cambios de categoría).
+- [x] Revisión manual ciega (corrección 02, 87/87; incorporó `R052` y fijó 58 no sustantivas).
 - [ ] Edición del manuscrito (no realizada en esta carpeta).
 
 La decisión editorial principal es **cómo tratar las respuestas no sustantivas**: el escenario principal de este paquete las imputa a 0, porque miden la utilidad del sistema. La exclusión se reporta como análisis condicional. Esa distinción debe quedar explícita en metodología, resultados y limitaciones; no debe presentarse una sola cifra como “el efecto de Agentic-RAG”.

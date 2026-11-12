@@ -16,7 +16,7 @@ También se incluye `propuestas/preview_tablas.pdf`, una previsualización Typst
 
 **Reemplazo propuesto:**
 
-> Los resultados muestran una interacción entre estrategia de recuperación y modelo del Agente Especialista Legal. En el escenario principal, que asigna cero a las respuestas no sustantivas, Agentic-RAG reduce el desempeño de gpt-5-nano frente a RAG básico (diferencia modelada de −0,270; IC 95% −0,330 a −0,203), mientras que lo aumenta en gpt-5-mini (+0,150; IC 95% 0,097 a 0,203) y en gpt-5 (+0,106; IC 95% 0,054 a 0,157). La interacción es robusta (LR = 293,0; gl = 4; p = 3,5 × 10⁻⁶²), pero no permite afirmar que el RAG básico “iguale” a los modelos ni que Agentic-RAG sea uniformemente superior. En gpt-5-nano, 41 de 79 unidades no reciben una respuesta sustantiva; cuando responde, la calidad es alta (media 0,820; mediana 0,958; n = 38). El patrón debe interpretarse como un problema de fiabilidad del sistema completo, no como una degradación uniforme de la calidad jurídica.
+> Los resultados muestran una interacción entre estrategia de recuperación y modelo del Agente Especialista Legal. En el escenario principal, que asigna cero a las respuestas no sustantivas, Agentic-RAG reduce el desempeño de gpt-5-nano frente a RAG básico (diferencia modelada de −0,270; IC 95% −0,330 a −0,202), mientras que lo aumenta en gpt-5-mini (+0,150; IC 95% 0,096 a 0,203) y en gpt-5 (+0,106; IC 95% 0,054 a 0,155). La interacción es robusta (LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶²), pero no permite afirmar que el RAG básico “iguale” a los modelos ni que Agentic-RAG sea uniformemente superior. En gpt-5-nano, 41 de 79 unidades no reciben una respuesta sustantiva; cuando responde, la calidad es alta (media 0,820; mediana 0,958; n = 38). El patrón debe interpretarse como un problema de fiabilidad del sistema completo, no como una degradación uniforme de la calidad jurídica.
 
 ### 1.2 Palabras clave
 
@@ -85,7 +85,7 @@ Las secciones antiguas de Kruskal–Wallis, Dunn, Mann–Whitney y Scheirer–Ra
 
 ### 3.3 Texto propuesto para “Interacción”
 
-> La interacción entre estrategia y modelo del especialista es estadísticamente significativa (LR = 293,00; gl = 4; p = 3,50 × 10⁻⁶²). El modelo completo reduce el AIC de 5.810,3 a 5.525,3. Las varianzas de los efectos aleatorios son 0,164 para caso y 1,383 para unidad, lo que confirma que una parte sustancial de la variabilidad se explica por la dificultad de las unidades y de los casos. La interacción se mantiene en los escenarios de sensibilidad (LR entre 86,82 y 293,00; p < 10⁻¹⁷), aunque la dirección de algunos efectos simples depende del tratamiento de las respuestas no sustantivas.
+> La interacción entre estrategia y modelo del especialista es estadísticamente significativa (LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶²). El modelo completo reduce el AIC de 5.810,3 a 5.525,0. Las varianzas de los efectos aleatorios son 0,164 para caso y 1,380 para unidad, lo que confirma que una parte sustancial de la variabilidad se explica por la dificultad de las unidades y de los casos. La interacción se mantiene en los escenarios de sensibilidad (LR entre 82,52 y 293,28; p < 10⁻¹⁶), aunque la dirección de algunos efectos simples depende del tratamiento de las respuestas no sustantivas.
 
 ### 3.4 Tabla propuesta para celdas
 
@@ -93,13 +93,13 @@ Las secciones antiguas de Kruskal–Wallis, Dunn, Mann–Whitney y Scheirer–Ra
 
 | Estrategia | Modelo | n | No sust. | Media | Mediana | Media modelo | P(≥ 0,75) |
 |---|---|---:|---:|---:|---:|---:|---:|
-| Sin RAG | gpt-5-nano | 79 | 1 | 0,565 | 0,583 | 0,588 | 0,452 |
-| Sin RAG | gpt-5-mini | 79 | 14 | 0,326 | 0,250 | 0,316 | 0,158 |
-| Sin RAG | gpt-5 | 79 | 0 | 0,725 | 0,833 | 0,755 | 0,685 |
+| Sin RAG | gpt-5-nano | 79 | 1 | 0,565 | 0,583 | 0,588 | 0,453 |
+| Sin RAG | gpt-5-mini | 79 | 15 | 0,325 | 0,250 | 0,315 | 0,157 |
+| Sin RAG | gpt-5 | 79 | 0 | 0,725 | 0,833 | 0,755 | 0,686 |
 | RAG básico | gpt-5-nano | 79 | 0 | 0,599 | 0,583 | 0,616 | 0,490 |
 | RAG básico | gpt-5-mini | 79 | 0 | 0,650 | 0,667 | 0,678 | 0,577 |
 | RAG básico | gpt-5 | 79 | 0 | 0,707 | 0,833 | 0,744 | 0,670 |
-| Agentic-RAG | gpt-5-nano | 79 | 41 | 0,395 | 0,000 | 0,345 | 0,182 |
+| Agentic-RAG | gpt-5-nano | 79 | 41 | 0,395 | 0,000 | 0,346 | 0,182 |
 | Agentic-RAG | gpt-5-mini | 79 | 1 | 0,788 | 1,000 | 0,828 | 0,787 |
 | Agentic-RAG | gpt-5 | 79 | 0 | 0,812 | 1,000 | 0,850 | 0,816 |
 
@@ -111,19 +111,19 @@ No usar esta tabla para reemplazar la Tabla 11 sin actualizar también la tabla 
 
 | Modelo | Contraste | Δ media | IC 95% | Δ P(≥ 0,75) | IC 95% | p Holm |
 |---|---|---:|---:|---:|---:|---:|
-| gpt-5-nano | Agentic − RAG | **−0,270** | −0,330 a −0,203 | **−0,308** | −0,382 a −0,224 | 3,07 × 10⁻¹⁴ |
-| gpt-5-nano | Agentic − Sin RAG | **−0,243** | −0,307 a −0,177 | **−0,271** | −0,348 a −0,193 | 1,11 × 10⁻¹¹ |
-| gpt-5-nano | RAG − Sin RAG | 0,027 | −0,032 a 0,086 | 0,037 | −0,042 a 0,116 | 0,726 |
-| gpt-5-mini | Agentic − RAG | **+0,150** | 0,097 a 0,203 | **+0,210** | 0,135 a 0,283 | 1,70 × 10⁻⁷ |
-| gpt-5-mini | Agentic − Sin RAG | **+0,512** | 0,453 a 0,562 | **+0,629** | 0,563 a 0,680 | 1,16 × 10⁻⁵³ |
-| gpt-5-mini | RAG − Sin RAG | **+0,362** | 0,302 a 0,417 | **+0,419** | 0,341 a 0,487 | 9,74 × 10⁻²⁹ |
-| gpt-5 | Agentic − RAG | **+0,106** | 0,054 a 0,157 | **+0,146** | 0,075 a 0,218 | 1,02 × 10⁻⁴ |
-| gpt-5 | Agentic − Sin RAG | **+0,095** | 0,045 a 0,145 | **+0,130** | 0,062 a 0,201 | 4,78 × 10⁻⁴ |
-| gpt-5 | RAG − Sin RAG | −0,011 | −0,063 a 0,043 | −0,016 | −0,089 a 0,060 | 0,726 |
+| gpt-5-nano | Agentic − RAG | **−0,270** | −0,330 a −0,202 | **−0,308** | −0,382 a −0,225 | 3,25 × 10⁻¹⁴ |
+| gpt-5-nano | Agentic − Sin RAG | **−0,242** | −0,307 a −0,176 | **−0,270** | −0,349 a −0,192 | 1,18 × 10⁻¹¹ |
+| gpt-5-nano | RAG − Sin RAG | 0,028 | −0,032 a 0,085 | 0,037 | −0,043 a 0,114 | 0,724 |
+| gpt-5-mini | Agentic − RAG | **+0,150** | 0,096 a 0,203 | **+0,210** | 0,134 a 0,283 | 1,72 × 10⁻⁷ |
+| gpt-5-mini | Agentic − Sin RAG | **+0,513** | 0,455 a 0,562 | **+0,630** | 0,564 a 0,680 | 9,42 × 10⁻⁵⁴ |
+| gpt-5-mini | RAG − Sin RAG | **+0,363** | 0,304 a 0,417 | **+0,420** | 0,343 a 0,488 | 7,83 × 10⁻²⁹ |
+| gpt-5 | Agentic − RAG | **+0,106** | 0,054 a 0,155 | **+0,146** | 0,074 a 0,216 | 1,03 × 10⁻⁴ |
+| gpt-5 | Agentic − Sin RAG | **+0,095** | 0,046 a 0,146 | **+0,130** | 0,063 a 0,202 | 4,82 × 10⁻⁴ |
+| gpt-5 | RAG − Sin RAG | −0,011 | −0,063 a 0,044 | −0,016 | −0,089 a 0,062 | 0,724 |
 
 ### 3.6 Texto propuesto para “Sensibilidad”
 
-> La celda Agentic-RAG + gpt-5-nano concentra 41 de las 79 respuestas no sustantivas. Bajo el escenario principal, su media es 0,395 y su mediana 0,000; bajo exclusión, la media asciende a 0,820 y la mediana a 0,958, pero solo sobre 38 unidades. La diferencia Agentic-RAG − RAG básico pasa de −0,270 (IC 95% −0,330 a −0,203) con fallo = 0 a +0,215 (IC 95% 0,146 a 0,279) con exclusión. No se trata de dos estimaciones contradictorias: la primera mide la utilidad del sistema completo y la segunda la calidad condicional a que el sistema responda. El manuscrito debe reportar ambas y no elegir una sola como “el efecto” de Agentic-RAG.
+> La celda Agentic-RAG + gpt-5-nano concentra 41 de las 79 respuestas no sustantivas. Bajo el escenario principal, su media es 0,395 y su mediana 0,000; bajo exclusión, la media asciende a 0,820 y la mediana a 0,958, pero solo sobre 38 unidades. La diferencia Agentic-RAG − RAG básico pasa de −0,270 (IC 95% −0,330 a −0,202) con fallo = 0 a +0,216 (IC 95% 0,146 a 0,279) con exclusión. No se trata de dos estimaciones contradictorias: la primera mide la utilidad del sistema completo y la segunda la calidad condicional a que el sistema responda. El manuscrito debe reportar ambas y no elegir una sola como “el efecto” de Agentic-RAG.
 
 ### 3.7 Reemplazo de “Fortalezas” y “Debilidades”
 
@@ -137,7 +137,7 @@ No usar esta tabla para reemplazar la Tabla 11 sin actualizar también la tabla 
 
 ### 3.8 Reemplazo de la conclusión del capítulo (línea 435)
 
-> El análisis apareado confirma una interacción fuerte entre estrategia y modelo del Agente Especialista Legal (LR = 293,00; gl = 4; p = 3,50 × 10⁻⁶²). Bajo el escenario principal, Agentic-RAG reduce el desempeño de gpt-5-nano frente a RAG básico (−0,270; IC 95% −0,330 a −0,203), lo aumenta en gpt-5-mini (+0,150; 0,097 a 0,203) y en gpt-5 (+0,106; 0,054 a 0,157). RAG básico no se distingue de Sin RAG en gpt-5 ni en nano; en mini, RAG básico supera a Sin RAG. La afirmación de que “el RAG básico iguala a los modelos” no se sostiene: hay diferencias pequeñas y algunas comparaciones limítrofes, pero no una equivalencia demostrada. La afirmación de que “en gpt-5 no hay diferencias” también debe corregirse: la diferencia Agentic-RAG − RAG básico es positiva y significativa, aunque menor que en mini.
+> El análisis apareado confirma una interacción fuerte entre estrategia y modelo del Agente Especialista Legal (LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶²). Bajo el escenario principal, Agentic-RAG reduce el desempeño de gpt-5-nano frente a RAG básico (−0,270; IC 95% −0,330 a −0,202), lo aumenta en gpt-5-mini (+0,150; 0,096 a 0,203) y en gpt-5 (+0,106; 0,054 a 0,155). RAG básico no se distingue de Sin RAG en gpt-5 ni en nano; en mini, RAG básico supera a Sin RAG. La afirmación de que “el RAG básico iguala a los modelos” no se sostiene: hay diferencias pequeñas y algunas comparaciones limítrofes, pero no una equivalencia demostrada. La afirmación de que “en gpt-5 no hay diferencias” también debe corregirse: la diferencia Agentic-RAG − RAG básico es positiva y significativa, aunque menor que en mini.
 
 ---
 
@@ -149,7 +149,7 @@ No usar esta tabla para reemplazar la Tabla 11 sin actualizar también la tabla 
 
 ### 4.2 Reemplazo del bullet “Sobrecarga agéntica” (línea 33)
 
-> **Aumento de fallos en Agentic-RAG con gpt-5-nano.** En el escenario principal, Agentic-RAG + gpt-5-nano obtiene una media de 0,395 y una mediana de 0,000; 41 de 79 unidades no reciben una respuesta sustantiva. La diferencia frente a RAG básico es −0,270 (IC 95% −0,330 a −0,203). Cuando produce una respuesta sustantiva, la calidad es alta (media 0,820; mediana 0,958; n = 38), de modo que el patrón debe describirse como un problema de fiabilidad del sistema completo. No se atribuye a la “complejidad agéntica” como causa: no hay réplicas ni ablación, y el recuperador está fijo en gpt-5.
+> **Aumento de fallos en Agentic-RAG con gpt-5-nano.** En el escenario principal, Agentic-RAG + gpt-5-nano obtiene una media de 0,395 y una mediana de 0,000; 41 de 79 unidades no reciben una respuesta sustantiva. La diferencia frente a RAG básico es −0,270 (IC 95% −0,330 a −0,202). Cuando produce una respuesta sustantiva, la calidad es alta (media 0,820; mediana 0,958; n = 38), de modo que el patrón debe describirse como un problema de fiabilidad del sistema completo. No se atribuye a la “complejidad agéntica” como causa: no hay réplicas ni ablación, y el recuperador está fijo en gpt-5.
 
 ### 4.3 Reemplazo del bullet “Análisis estadístico riguroso” (línea 63)
 
@@ -194,7 +194,7 @@ Al copiar las figuras a `manuscrito/media/`, usar nombres nuevos y no sobrescrib
 | “efecto igualador del RAG básico” | `07...:131, 265, 414`; `09...:31` | Eliminar o reformular como “diferencias reducidas, no equivalencia” |
 | “sobrecarga agéntica” como causa | `09...:33, 83, 101`; `07...` | Reformular como tasa de fallo observada y calidad condicional; no causal |
 | “para gpt-5 no se detectan diferencias significativas” | `07...:424, 435`; `09...:138` | Corregir: hay diferencia positiva Agentic-RAG − RAG básico |
-| “n = 79 observaciones por celda” sin desglose | `07...:424` | Aclarar 79 unidades, 2.133 evaluaciones, 654 en exclusión |
+| “n = 79 observaciones por celda” sin desglose | `07...:424` | Aclarar 79 unidades, 2.133 evaluaciones, 653 en exclusión |
 | “resultado transferible a otros dominios” | `09...:138` | Sustituir por hipótesis de transferibilidad |
 | “LLM-as-a-Judge validado” | `09...` y README | Cambiar por “acuerdo entre jueces”; la validez humana es otra corrección |
 

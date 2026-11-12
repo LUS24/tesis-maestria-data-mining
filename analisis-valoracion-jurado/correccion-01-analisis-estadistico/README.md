@@ -20,13 +20,13 @@ Esta carpeta resuelve el punto **IX.1.1** del plan: corregir el análisis infere
 ## Resultado principal
 
 - La base tiene **711 observaciones**, **79 unidades**, **25 casos** y **2.133 evaluaciones juez-observación**. Las 27 medias que faltaban en el manuscrito se recuperan: eran un problema de join entre subpregunta vacía y `0`, no 27 fallos de generación.
-- El modelo ordinal mixto principal (no sustantivas = 0) muestra una interacción muy fuerte: **LR = 293,00; gl = 4; p = 3,50 × 10⁻⁶²**.
+- El modelo ordinal mixto principal (no sustantivas = 0) muestra una interacción muy fuerte: **LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶²**.
 - Bajo el escenario principal:
-  - **gpt-5-nano + Agentic-RAG** es peor que RAG básico: diferencia modelada de **−0,270** (IC 95% −0,330 a −0,203).
-  - **gpt-5-mini + Agentic-RAG** es mejor que RAG básico: **+0,150** (0,097 a 0,203).
-  - **gpt-5 + Agentic-RAG** es mejor que RAG básico: **+0,106** (0,054 a 0,157). Esto cambia la conclusión anterior de “sin diferencias en gpt-5”.
+  - **gpt-5-nano + Agentic-RAG** es peor que RAG básico: diferencia modelada de **−0,270** (IC 95% −0,330 a −0,202).
+  - **gpt-5-mini + Agentic-RAG** es mejor que RAG básico: **+0,150** (0,096 a 0,203).
+  - **gpt-5 + Agentic-RAG** es mejor que RAG básico: **+0,106** (0,054 a 0,155). Esto cambia la conclusión anterior de “sin diferencias en gpt-5”.
 - La celda nano Agentic-RAG concentra **41/79 respuestas no sustantivas**. Cuando responde, su calidad es alta (media 0,820; mediana 0,958; n = 38), pero como sistema completo falla en más de la mitad de las unidades.
-- Por eso el contraste nano Agentic-RAG − RAG básico **cambia de signo** según el escenario: **−0,270** con fallo = 0 y **+0,215** con exclusión. No es una contradicción: mide dos preguntas distintas (utilidad del sistema vs. calidad condicional).
+- Por eso el contraste nano Agentic-RAG − RAG básico **cambia de signo** según el escenario: **−0,270** con fallo = 0 y **+0,216** con exclusión. No es una contradicción: mide dos preguntas distintas (utilidad del sistema vs. calidad condicional).
 - **No se sostiene** “efecto igualador del RAG básico”, “sobrecarga agéntica” como causa, ni equivalencia por falta de significación. La interacción es robusta, pero la interpretación debe ser condicional y no causal.
 
 ---
@@ -114,7 +114,7 @@ python3 analisis-valoracion-jurado/correccion-01-analisis-estadistico/citas_esta
 
 ## Revisión manual completada
 
-La revisión manual de la corrección 02 está completa: 87/87 filas con categoría y justificación. `build_dataset.py` usó las categorías revisadas y registró `fuente_clasificacion=manual_ciega` en las 87 filas revisadas; para las restantes conserva la clasificación automática. En las 711 observaciones no hubo cambios de categoría respecto de la clasificación automática. El paquete de revisión cubre las 57 no sustantivas automáticas y 30 controles; no es un censo de las 654 respuestas sustantivas.
+La revisión manual de la corrección 02 está completa: 87/87 filas con categoría y justificación. La base final es `14_dataset_categoria_final.csv`: incorpora `R052` (`Q14_01`, sin RAG + gpt-5-mini) como abstención explícita y fija **58 no sustantivas** y **653 sustantivas**. `build_dataset.py` usa directamente esa base final; para las observaciones no revisadas conserva la clasificación automática. El paquete de revisión cubre las 57 no sustantivas automáticas y 30 controles; no es un censo de las 653 respuestas sustantivas.
 
 ---
 

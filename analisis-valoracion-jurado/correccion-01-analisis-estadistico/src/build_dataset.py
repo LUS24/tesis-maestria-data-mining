@@ -30,7 +30,7 @@ DATOS = OUT / "datos"
 SALIDAS = OUT / "salidas"
 
 CORR02 = BASE / "analisis-valoracion-jurado" / "correccion-02-diagnostico-gpt-5-nano"
-SOURCE_WIDE = CORR02 / "salidas" / "01_dataset_derivado_711.csv"
+SOURCE_WIDE = CORR02 / "salidas" / "14_dataset_categoria_final.csv"
 SOURCE_JUDGES = BASE / "codigo_experimentos" / "part_i" / "final_judge_results.csv"
 SOURCE_METRICS = BASE / "codigo_experimentos" / "part_i" / "combined_metrics_for_analysis.csv"
 TEMPLATE = CORR02 / "revision_manual" / "plantilla_resultados.csv"
@@ -194,52 +194,41 @@ def main() -> None:
     judges["score_raw"] = pd.to_numeric(judges["score_respuesta_correcta"], errors="coerce")
     judges["score_rubric"] = judges["score_raw"].map(rubric_map)
 
-    # Clasificación: automática o manual completa.
+    # La base final de la corrección 02 ya contiene la clasificación aceptada.
+    # No se vuelve a aplicar la plantilla manual: hacerlo duplicaba el merge y
+    # dejaba fuera R052 (Q14_01, sin RAG + gpt-5-mini).
     status, manual = manual_status()
     wide = wide_raw.copy()
-    wide = wide.rename(
-        columns={
-            "categoria": "categoria_auto",
-            "subcategoria": "subcategoria_auto",
-            "evidencia": "evidencia_auto",
-            "es_no_sustantiva": "es_no_sustantiva_auto",
-            "es_fallo_tecnico": "es_fallo_tecnico_auto",
-        }
-    )
-    wide["categoria_final"] = wide["categoria_auto"]
-    wide["fuente_clasificacion"] = "automatica"
-    wide["categoria_manual"] = ""
-    wide["justificacion_manual"] = ""
-    wide["revisor_manual"] = ""
-    wide["fecha_manual"] = ""
 
-    if status["usa_manual"] and manual is not None:
-        lookup = manual[
-            [
-                "obs_id",
-                "estrategia",
-                "modelo",
-                "categoria_manual",
-                "justificacion_manual",
-                "revisor_manual",
-                "fecha_manual",
-            ]
-        ].drop_duplicates(["obs_id", "estrategia", "modelo"])
-        wide = wide.merge(
-            lookup,
-            on=["obs_id", "estrategia", "modelo"],
-            how="left",
-            suffixes=("", "_manual_join"),
-            validate="one_to_one",
-        )
-        has_manual = wide["categoria_manual"].notna() & (wide["categoria_manual"].astype(str).str.strip() != "")
-        wide.loc[has_manual, "categoria_final"] = wide.loc[has_manual, "categoria_manual"]
-        wide.loc[has_manual, "fuente_clasificacion"] = "manual_ciega"
-        for col in ["justificacion_manual", "revisor_manual", "fecha_manual"]:
-            manual_col = f"{col}_manual_join"
-            if manual_col in wide.columns:
-                wide[col] = wide[manual_col].fillna("")
-                wide = wide.drop(columns=[manual_col])
+    if "categoria_auto" not in wide.columns:
+        wide["categoria_auto"] = wide["categoria"]
+    if "subcategoria_auto" not in wide.columns:
+        wide["subcategoria_auto"] = wide.get("subcategoria", "")
+    if "evidencia_auto" not in wide.columns:
+        wide["evidencia_auto"] = wide.get("evidencia", "")
+    if "es_no_sustantiva_auto" not in wide.columns:
+        wide["es_no_sustantiva_auto"] = wide["categoria_auto"] != "sustantiva"
+    if "es_fallo_tecnico_auto" not in wide.columns:
+        wide["es_fallo_tecnico_auto"] = wide["categoria_auto"].isin(CATEGORIAS_TECNICAS)
+
+    if "categoria_final" not in wide.columns:
+        raise SystemExit("La base final no contiene categoria_final")
+    if "fuente_categoria" in wide.columns:
+        wide["fuente_clasificacion"] = wide["fuente_categoria"].map(
+            {
+                "clasificacion_automatica": "automatica",
+                "revision_manual": "manual_ciega",
+            }
+        ).fillna(wide["fuente_categoria"])
+    else:
+        wide["fuente_clasificacion"] = "final"
+
+    for col in ["categoria_manual", "justificacion_manual", "revision_manual_id"]:
+        if col not in wide.columns:
+            wide[col] = ""
+
+    status["fuente_datos"] = str(SOURCE_WIDE.relative_to(BASE))
+    status["usa_base_final"] = True
 
     wide["categoria_final"] = wide["categoria_final"].fillna("").astype(str).str.strip()
     if not wide["categoria_final"].isin(CATEGORIAS_VALIDAS).all():
@@ -321,6 +310,17 @@ def main() -> None:
     wide["delta_cero_menos_observado"] = wide["score_principal_prom"] - wide["score_observado_rubric_prom"]
     wide["score_observado_raw_prom"] = pd.to_numeric(wide["score_observado_raw_prom"], errors="coerce")
 
+    # La categoría final y los puntajes derivados deben coincidir con la base final.
+    if "puntaje_final_fallo_cero" in wide.columns:
+        diff_principal = (
+            pd.to_numeric(wide["score_principal_prom"], errors="coerce")
+            - pd.to_numeric(wide["puntaje_final_fallo_cero"], errors="coerce")
+        ).abs().max()
+        if pd.notna(diff_principal) and diff_principal > 1e-9:
+            raise SystemExit(f"El puntaje principal no coincide con la base final: {diff_principal}")
+    else:
+        diff_principal = None
+
     # Verificaciones de integridad.
     checks = {
         "n_wide": len(wide),
@@ -333,6 +333,8 @@ def main() -> None:
         "n_no_sustantivas": int(wide["es_no_sustantiva"].sum()),
         "n_sustantivas": int(wide["es_sustantiva"].sum()),
         "n_medianas_csv_original": int(pd.to_numeric(metrics["respuesta_correcta_avg"], errors="coerce").notna().sum()),
+        "fuente_datos": str(SOURCE_WIDE.relative_to(BASE)),
+        "max_abs_diff_principal_vs_base_final": None if diff_principal is None else float(diff_principal),
     }
     expected = {
         "n_wide": 711,
