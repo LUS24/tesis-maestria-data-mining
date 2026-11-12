@@ -196,10 +196,14 @@ Estos resultados refuerzan el hallazgo de interacción: el signo del efecto de A
 
 ]
 
-#figure(
-  image("../media/analisis_celdas_principal.pdf", width: 88%),
-  caption: [Media de `respuesta_correcta_avg` por configuración bajo el escenario principal, con intervalo de confianza del 95 %. La línea punteada marca el umbral de 0,75 usado para definir una respuesta correcta.],
-) <fig-analisis-celdas>
+#pagina-apaisada[
+  La @fig-analisis-celdas presenta la media de corrección por configuración bajo el escenario principal, con intervalo de confianza del 95 %, sobre la misma base de 79 unidades por celda.
+
+  #figure(
+    image("../media/analisis_celdas_principal.pdf", width: 96%),
+    caption: [Media de `respuesta_correcta_avg` por configuración bajo el escenario principal, con intervalo de confianza del 95 %. La línea punteada marca el umbral de 0,75 usado para definir una respuesta correcta.],
+  ) <fig-analisis-celdas>
+]
 
 #pagina-apaisada[
   La @fig-analisis-efectos presenta las dos familias de contrastes como gráfico de bosque, ordenadas por familia y por magnitud del efecto.
