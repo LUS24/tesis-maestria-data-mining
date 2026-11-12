@@ -82,7 +82,7 @@ La variable de respuesta principal es el puntaje ordinal de `score_respuesta_cor
 
 === Comparación con el Análisis Exploratorio
 
-La primera versión del análisis se apoyó en pruebas que tratan las observaciones como independientes: Shapiro-Wilk, Kruskal-Wallis con post-hoc de Dunn, análisis estratificado por estrategia y Scheirer-Ray-Hare. Esos resultados se conservan en el @anexo-analisis-exploratorio y no sostienen las conclusiones de este capítulo. La diferencia no es de grado: Kruskal-Wallis, Dunn y Scheirer-Ray-Hare asignan rangos globales a observaciones que pertenecen a la misma unidad y al mismo caso, de modo que sus valores p no tienen la interpretación habitual. En particular, el $p = 0.383$ de Agentic-RAG frente a RAG básico y el $p = 0.095$ de RAG básico no deben leerse como evidencia de equivalencia.
+La primera versión del análisis se apoyó en pruebas que tratan las observaciones como independientes: Shapiro-Wilk, Kruskal-Wallis con post-hoc de Dunn, análisis estratificado por estrategia y Scheirer-Ray-Hare. Esos resultados se conservan en el #ref(<anexo-analisis-exploratorio>, supplement: [Anexo]) y no sostienen las conclusiones de este capítulo. La diferencia no es de grado: Kruskal-Wallis, Dunn y Scheirer-Ray-Hare asignan rangos globales a observaciones que pertenecen a la misma unidad y al mismo caso, de modo que sus valores p no tienen la interpretación habitual. En particular, el $p = 0.383$ de Agentic-RAG frente a RAG básico y el $p = 0.095$ de RAG básico no deben leerse como evidencia de equivalencia.
 
 === Efectos Simples del Modelo Ordinal
 

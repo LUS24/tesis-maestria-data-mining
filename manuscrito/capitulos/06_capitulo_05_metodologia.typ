@@ -221,7 +221,7 @@ Cada agente se define como una instancia con su propio prompt del sistema, conju
 
 === Agente Especialista Legal <sec:agente-especialista-legal>
 
-El Agente Especialista Legal es el componente principal responsable de generar la respuesta final al usuario. Recibe la pregunta y, en la configuración Agentic-RAG, tiene acceso a la herramienta `retrieve_relevant_documents` para delegar una recuperación en el Agente de Recuperación. Su instrucción solicita utilizar esa herramienta una vez, analizar los documentos devueltos y citar las fuentes legales consultadas. El texto canónico completo se reproduce en el anexo de prompts del repositorio.
+El Agente Especialista Legal es el componente principal responsable de generar la respuesta final al usuario. Recibe la pregunta y, en la configuración Agentic-RAG, tiene acceso a la herramienta `retrieve_relevant_documents` para delegar una recuperación en el Agente de Recuperación. Su instrucción solicita utilizar esa herramienta una vez, analizar los documentos devueltos y citar las fuentes legales consultadas. El texto canónico completo se reproduce en el #ref(<anexo-prompts>, supplement: [Anexo]).
 
 El agente no recibe ejemplos etiquetados en el prompt ni una instrucción explícita de razonamiento paso a paso. Su diseño corresponde a prompting zero-shot con instrucciones estructuradas, una instrucción de citación y una herramienta de recuperación. La descomposición de la consulta y la selección de fragmentos se delegan al Agente de Recuperación. El límite nominal de invocaciones es una llamada; como se documenta en la sección de amenazas a la validez, una sesión histórica registró tres llamadas.
 
@@ -254,7 +254,7 @@ El Agente de Recuperación recibe una consulta del Agente Especialista Legal y p
 + Selección de documentos y retorno de fragmentos con metadatos estructurales (artículo, capítulo, título y distancia).
 + Retorno de los documentos seleccionados al Agente Especialista Legal.
 
-El prompt completo tuvo dos variantes observadas: la usada por gpt-5 declaró un límite de siete búsquedas y la usada por gpt-5-mini y gpt-5-nano, un límite de seis. Ambas se reproducen literalmente en el anexo de prompts del repositorio. Esta diferencia se declara como amenaza a la validez en la subsección siguiente.
+El prompt completo tuvo dos variantes observadas: la usada por gpt-5 declaró un límite de siete búsquedas y la usada por gpt-5-mini y gpt-5-nano, un límite de seis. Ambas se reproducen literalmente en el #ref(<anexo-prompts>, supplement: [Anexo]). Esta diferencia se declara como amenaza a la validez en la subsección siguiente.
 
 #block(
   width: 100%,
@@ -293,7 +293,7 @@ En 236 de las 237 sesiones el especialista realizó una llamada a `retrieve_rele
 
 El Agente de Calidad de Recuperación fue diseñado para evaluar la pertinencia de los fragmentos recuperados antes de enviarlos al Agente Especialista Legal. Su función prevista era comprobar si la recuperación inicial era suficiente y, en caso contrario, generar retroalimentación para reformular la consulta. Se excluyó de la configuración experimental por razones de costo y complejidad: añadía una llamada adicional a un LLM y exigía seleccionar y justificar un modelo adicional. No se realizó una comparación empírica de su contribución, de modo que no se afirma que su exclusión haya producido una mejora o un deterioro en el desempeño.
 
-Su prompt se reproduce en el anexo de prompts del repositorio. En el código final, el agente se instancia sin herramientas, la función `evaluate_retrieval` no está registrada como herramienta y no se encontró ningún registro de ejecución del agente de calidad. Por lo tanto, el prompt nunca se envió a un modelo y el agente no participó en las respuestas evaluadas.
+Su prompt se reproduce en el #ref(<anexo-prompts>, supplement: [Anexo]). En el código final, el agente se instancia sin herramientas, la función `evaluate_retrieval` no está registrada como herramienta y no se encontró ningún registro de ejecución del agente de calidad. Por lo tanto, el prompt nunca se envió a un modelo y el agente no participó en las respuestas evaluadas.
 
 #block(
   width: 100%,
@@ -496,7 +496,7 @@ El límite nominal del código final es de seis búsquedas para el recuperador y
 
 En la generación de respuestas no se configuró el parámetro `reasoning_effort`. La versión 1.1.0 de Pydantic AI no define un valor por defecto y envía `NOT_GIVEN`; OpenAI documenta `medium` como valor por defecto para GPT-5. El valor efectivo no quedó registrado y no se infiere de los tokens de razonamiento.
 
-En cuanto al registro de costos, la ejecución del Agente de Recuperación se contabiliza de forma independiente de la del Agente Especialista Legal: los metadatos de cada respuesta de la configuración Agentic-RAG incluyen los campos `retrieval_input_tokens`, `retrieval_output_tokens` y `retrieval_total_price`, que registran el consumo del modelo de recuperación (`gpt-5`). El costo informado para cada consulta con Agentic-RAG es, por lo tanto, la suma del costo del Agente Especialista Legal (`total_price`, con el modelo que corresponda a la configuración) y del costo del Agente de Recuperación (`retrieval_total_price`); los 79 registros de la estrategia agéntica incluyen este segundo componente, mientras que las estrategias sin RAG y RAG básico no registran costo de recuperación por tokens (en el RAG básico la búsqueda vectorial se ejecuta localmente sobre Milvus y no consume tokens de API). Dado que el Agente de Recuperación emplea siempre `gpt-5`, este componente domina el costo de la estrategia agéntica, en particular cuando el Agente Especialista Legal es un modelo pequeño: en el ejemplo del anexo @anexo-ejemplos, el Agente de Recuperación representó USD 0,05037 frente a USD 0,00285 del Agente Especialista Legal.
+En cuanto al registro de costos, la ejecución del Agente de Recuperación se contabiliza de forma independiente de la del Agente Especialista Legal: los metadatos de cada respuesta de la configuración Agentic-RAG incluyen los campos `retrieval_input_tokens`, `retrieval_output_tokens` y `retrieval_total_price`, que registran el consumo del modelo de recuperación (`gpt-5`). El costo informado para cada consulta con Agentic-RAG es, por lo tanto, la suma del costo del Agente Especialista Legal (`total_price`, con el modelo que corresponda a la configuración) y del costo del Agente de Recuperación (`retrieval_total_price`); los 79 registros de la estrategia agéntica incluyen este segundo componente, mientras que las estrategias sin RAG y RAG básico no registran costo de recuperación por tokens (en el RAG básico la búsqueda vectorial se ejecuta localmente sobre Milvus y no consume tokens de API). Dado que el Agente de Recuperación emplea siempre `gpt-5`, este componente domina el costo de la estrategia agéntica, en particular cuando el Agente Especialista Legal es un modelo pequeño: en el ejemplo del anexo #ref(<anexo-ejemplos>, supplement: [Anexo]), el Agente de Recuperación representó USD 0,05037 frente a USD 0,00285 del Agente Especialista Legal.
 
 == Selección de Modelos LLM
 

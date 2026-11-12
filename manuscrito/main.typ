@@ -127,6 +127,8 @@
 
 #include "capitulos/anexo_02_analisis_exploratorio.typ"
 
+#include "capitulos/anexo_03_prompts_y_parametros.typ"
+
 // ───────────────────────────────────────────
 // Acrónimos y Siglas
 // ───────────────────────────────────────────
