@@ -88,9 +88,10 @@ La primera versión del análisis se apoyó en pruebas que tratan las observacio
 
 Los efectos simples que se reportan a continuación provienen del modelo ordinal mixto, cuya interacción se contrasta en la @sec-interaccion-modelo. Se definieron dos familias de nueve comparaciones —estrategia dentro de cada modelo y modelo dentro de cada estrategia— y el p de Holm se aplicó dentro de cada familia @holm1979simple. Las diferencias de media esperada y de $P("score" >= 0,75)$ se acompañan con IC 95 % obtenidos por simulación de 4.000 extracciones de la distribución asintótica de los coeficientes y umbrales.
 
-La @tabla-efectos-simples presenta los contrastes de estrategia dentro de cada modelo, orientados como Agentic-RAG − RAG básico, Agentic-RAG − Sin RAG y RAG básico − Sin RAG.
+La @tabla-efectos-simples presenta los contrastes de estrategia dentro de cada modelo y la @tabla-efectos-modelo, la familia complementaria de modelo dentro de cada estrategia, orientada del modelo de menor a mayor capacidad.
 
 #pagina-apaisada[
+
   #figure(
     three-line-table(
       columns: (auto, auto, auto, auto, auto, auto, auto),
@@ -110,11 +111,10 @@ La @tabla-efectos-simples presenta los contrastes de estrategia dentro de cada m
     ),
     caption: [Efectos simples de estrategia dentro de cada modelo bajo el escenario principal (respuestas no sustantivas = 0), estimados con el modelo ordinal mixto. `Δ media` y `Δ P(≥ 0,75)` son diferencias de predicciones poblacionales con efectos aleatorios en cero y promedio sobre los tres jueces; los IC 95 % provienen de simulación de la distribución asintótica. El p de Holm corresponde a la familia de nueve contrastes de estrategia. En negrita, los contrastes significativos con Holm.],
   ) <tabla-efectos-simples>
-]
 
-La @tabla-efectos-modelo presenta la familia complementaria: modelo dentro de cada estrategia, orientada del modelo de menor a mayor capacidad.
+#v(1.2em)
 
-#pagina-apaisada[
+
   #figure(
     three-line-table(
       columns: (auto, auto, auto, auto, auto, auto, auto),
@@ -136,15 +136,6 @@ La @tabla-efectos-modelo presenta la familia complementaria: modelo dentro de ca
   ) <tabla-efectos-modelo>
 ]
 
-La @fig-analisis-efectos presenta las dos familias de contrastes como gráfico de bosque.
-
-#pagina-apaisada[
-  #figure(
-    image("../media/analisis_efectos_simples.pdf", width: 96%),
-    caption: [Efectos simples del modelo ordinal bajo el escenario principal. Panel izquierdo: estrategia dentro de cada modelo; panel derecho: modelo dentro de cada estrategia. Los puntos son diferencias de media esperada y las barras, intervalos de confianza del 95 % obtenidos por simulación de la distribución asintótica. La línea vertical en cero marca la ausencia de diferencia.],
-  ) <fig-analisis-efectos>
-]
-
 Los resultados revelan patrones diferenciados por modelo:
 
 + *gpt-5-mini* es el modelo más sensible a la estrategia: los tres contrastes son significativos con corrección de Holm. Agentic-RAG supera a RAG básico en 0,150 de media (IC 95 % 0,096 a 0,203) y a Sin RAG en 0,513, lo que evidencia una dependencia crítica del contexto externo.
@@ -155,9 +146,9 @@ En la familia de modelo dentro de estrategia, las tres comparaciones de Sin RAG 
 
 Estos resultados refuerzan el hallazgo de interacción: el signo del efecto de Agentic-RAG difiere entre modelos y su magnitud es máxima en los extremos de la escala evaluada.
 
-La @tabla-celdas-principal presenta la descripción y la predicción de la variable de respuesta principal para las nueve configuraciones sobre la base completa de 79 unidades por celda. A diferencia de la versión anterior de esta tabla, todas las celdas tienen $n = 79$; las diferencias respecto de los valores previos se deben a la recuperación de las 27 observaciones descrita antes y no a un cambio de los datos de origen.
-
 #pagina-apaisada[
+  La @tabla-celdas-principal presenta la descripción y la predicción de la variable de respuesta principal para las nueve configuraciones sobre la base completa de 79 unidades por celda. A diferencia de la versión anterior de esta tabla, todas las celdas tienen $n = 79$; las diferencias respecto de los valores previos se deben a la recuperación de las 27 observaciones descrita antes y no a un cambio de los datos de origen.
+
   #figure(
     three-line-table(
       columns: (1.2fr, 1.1fr, auto, auto, auto, auto, auto, auto),
@@ -177,16 +168,12 @@ La @tabla-celdas-principal presenta la descripción y la predicción de la varia
     ),
     caption: [Estadísticos descriptivos y predicciones por configuración bajo el escenario principal (respuestas no sustantivas = 0), con 79 unidades por celda. `Media` y `Mediana` describen la puntuación imputada; `Media modelo` y `P(≥ 0,75)` son predicciones poblacionales del modelo ordinal, con efectos aleatorios en cero y promedio sobre los tres jueces. En negrita, los tres valores más altos de cada columna de predicción.],
   ) <tabla-celdas-principal>
-]
 
-#figure(
-  image("../media/analisis_celdas_principal.pdf", width: 88%),
-  caption: [Media de `respuesta_correcta_avg` por configuración bajo el escenario principal, con intervalo de confianza del 95 %. La línea punteada marca el umbral de 0,75 usado para definir una respuesta correcta.],
-) <fig-analisis-celdas>
 
-La @tabla-resumen-medianas conserva, con fines exclusivamente descriptivos, las medianas de las cinco métricas complementarias calculadas sobre la misma base de 79 unidades. Esas métricas no se usaron en las pruebas de hipótesis, que se realizaron exclusivamente sobre `respuesta_correcta_avg`.
+  #v(1.2em)
 
-#pagina-apaisada[
+  La @tabla-resumen-medianas conserva, con fines exclusivamente descriptivos, las medianas de las cinco métricas complementarias calculadas sobre la misma base de 79 unidades. Esas métricas no se usaron en las pruebas de hipótesis, que se realizaron exclusivamente sobre `respuesta_correcta_avg`.
+
   #figure(
     three-line-table(
       columns: (1.2fr, 1.2fr, 1fr, 1fr, 1fr, 1fr, 1fr),
@@ -204,8 +191,24 @@ La @tabla-resumen-medianas conserva, con fines exclusivamente descriptivos, las 
         | Agentic-RAG  | gpt-5      |  *0,277*   |  *0,190*  |    0,791     |   *0,708*   |    *0,875*    |
       ],
     ),
-    caption: [Medianas de las cinco métricas complementarias por configuración (estrategia × modelo), calculadas sobre 79 unidades por celda. `Prec. legal` corresponde a `precision_legal_avg`, que no alcanzó confiabilidad inter-juez suficiente y se reporta solo con fines descriptivos. El máximo de cada columna se destaca en negrita.],
+    caption: [Medianas de las cinco métricas complementarias por configuración (estrategia × modelo), calculadas sobre 79 unidades por celda. `Prec. legal` corresponde a la métrica de precisión legal, que no alcanzó confiabilidad inter-juez suficiente y se reporta solo con fines descriptivos. El máximo de cada columna se destaca en negrita.],
   ) <tabla-resumen-medianas>
+
+]
+
+#figure(
+  image("../media/analisis_celdas_principal.pdf", width: 88%),
+  caption: [Media de `respuesta_correcta_avg` por configuración bajo el escenario principal, con intervalo de confianza del 95 %. La línea punteada marca el umbral de 0,75 usado para definir una respuesta correcta.],
+) <fig-analisis-celdas>
+
+#pagina-apaisada[
+  La @fig-analisis-efectos presenta las dos familias de contrastes como gráfico de bosque, ordenadas por familia y por magnitud del efecto.
+
+  #figure(
+    image("../media/analisis_efectos_simples.pdf", width: 96%),
+    caption: [Efectos simples del modelo ordinal bajo el escenario principal. Panel izquierdo: estrategia dentro de cada modelo; panel derecho: modelo dentro de cada estrategia. Los puntos son diferencias de media esperada y las barras, intervalos de confianza del 95 % obtenidos por simulación de la distribución asintótica. La línea vertical en cero marca la ausencia de diferencia.],
+  ) <fig-analisis-efectos>
+
 ]
 
 == Interacción Estrategia × Modelo <sec-interaccion-modelo>
