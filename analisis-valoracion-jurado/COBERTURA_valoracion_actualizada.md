@@ -118,7 +118,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | PI-13–PI-20 Benchmark/corpus | **Reclasificadas:** PI-16 y PI-18 resueltas; PI-13, PI-14, PI-17 y PI-20 canceladas por estar fuera de alcance; PI-15 y PI-19 resueltas con implementación editorial pendiente. PI-12 se registra en la fila anterior | Alta/Media |
 | PI-21–PI-28 Bibliografía | **Resueltas:** PI-21, PI-22, PI-23, PI-26, PI-27 y PI-28 con opción A; PI-24 con opción A usando la página institucional verificada (el endpoint directo del buscador no responde desde este entorno); PI-25 con las cinco entradas y claves actualizadas | Alta/Media |
 | PI-29 `nAGQ`/odds proporcionales | **Resuelta: opción A**; mantener `nAGQ = 1` (Laplace) y declarar la limitación. `nAGQ > 1` no está disponible con dos efectos aleatorios | Media |
-| PI-30 Versionar verificación | **Resuelta: opción A**; publicar después de revisar el manuscrito y ordenar el directorio | Alta |
+| PI-30 Versionar verificación | **Resuelta: opción A**; publicado y verificado con `run_all.sh` y clonación limpia | Alta |
 | PI-31 Sincronización final | **Resuelta: opción A**; aplicar todo y generar una nueva versión del archivo | Alta |
 | PI-32 Conteo de preguntas corregidas | **Resuelta**; V.7 confirma 18/17/1/7 | — |
 

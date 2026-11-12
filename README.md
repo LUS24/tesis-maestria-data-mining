@@ -73,6 +73,7 @@ El sistema permite realizar consultas en lenguaje natural sobre el Código de Mi
 │   ├── part_k/                     # Análisis de costos y tokens
 │   └── data/                       # Datos del Código de Minería (JSON, Python)
 │
+├── analisis-valoracion-jurado/     # Correcciones del jurado y verificaciones reproducibles
 ├── data/                           # Datos compartidos (benchmark, preguntas)
 ├── Makefile                        # Compilación del manuscrito
 └── AGENTS.md                       # Instrucciones para agentes de IA

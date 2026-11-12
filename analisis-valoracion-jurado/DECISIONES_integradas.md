@@ -306,7 +306,7 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | PI-27 | Cerrada | Opción A: aplicar el paquete de correcciones factuales verificadas | Aplicada en `.bib` y texto; PDF compilado |
 | PI-28 | Cerrada | Opción A: agregar Lewis, Código de Minería, Zheng, Bench-Capon, Tribunal Fiscal y Qwen3 | Referencias incorporadas y citadas; PDF compilado |
 | PI-29 | Cerrada | Opción A: mantener `nAGQ = 1` (Laplace) y declarar la limitación; reconciliar con NV-01 | Limitación y método incorporados en capítulos 5 y 8; `nAGQ > 1` no está disponible en `clmm` con dos efectos aleatorios |
-| PI-30 | Cerrada | Opción A: publicar después de revisar el manuscrito y ordenar el directorio | Ejecutar `run_all.sh`, clonación y registro al final |
+| PI-30 | Cerrada | Opción A: publicar después de revisar el manuscrito y ordenar el directorio | Publicado; `run_all.sh` y clonación limpia verificados (2026-11-12) |
 | PI-31 | Cerrada | Opción A: aplicar todo y generar una nueva versión del archivo | Sincronización principal aplicada; PDF recompilado |
 | PI-32 | Cerrada | 25 preguntas: 18 intervenidas, 17 corregidas, Q24 solo comentario, 7 sin intervención | Conteo incorporado en metodología; `correccion-06/salidas/conteo_preguntas_revisadas.csv` |
 | NV-01 | Cerrada | Opción A: `correccion-01` como fuente canónica; no usar el reanálisis de la valoración | Reconciliado en `verificacion-analisis-estadistico/reconciliacion_v1/`; usar p Holm en V.1 y Pratt en V.6 |
