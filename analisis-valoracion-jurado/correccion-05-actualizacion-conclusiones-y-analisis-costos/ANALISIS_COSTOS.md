@@ -109,5 +109,7 @@ A umbral 0,50, Sin RAG + nano es más barato por respuesta correcta porque mucha
 | `datos/comparacion_recomendacion_anterior.csv` | Celdas implicadas en la recomendación anterior |
 | `salidas/resumen_costos.json` | Totales, rankings y verificación de la recomendación |
 | `figuras/01_costo_vs_desempenio_pareto.pdf` | Costo vs. desempeño y frontera |
-| `figuras/02_costo_por_aceptable.pdf` | Costo por respuesta correcta (nombre interno conservado) |
+| `figuras/02_costo_por_aceptable.pdf` | Costo por respuesta correcta (nombre interno conservado); no incluye rayas ni frontera de Pareto |
 | `scripts/build_cost_analysis.py` | Reproducción del análisis |
+
+La frontera de Pareto se muestra únicamente en `figuras/01_costo_vs_desempenio_pareto.pdf`; la figura 02 es un gráfico de barras de costo por respuesta correcta sin marcas de Pareto.

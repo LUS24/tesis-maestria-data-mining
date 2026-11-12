@@ -434,7 +434,6 @@ def make_figures(cells: list[dict[str, Any]]) -> None:
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     from matplotlib.lines import Line2D
-    from matplotlib.patches import Patch
 
     plt.rcParams.update(
         {
@@ -530,8 +529,6 @@ def make_figures(cells: list[dict[str, Any]]) -> None:
     colors = [strategy_color[row["estrategia_label"]] for row in ordered]
     bars = ax.bar(range(len(ordered)), values, color=colors, edgecolor="black", linewidth=0.5)
     for bar, row in zip(bars, ordered):
-        if row["pareto"]:
-            bar.set_hatch("//")
         ax.annotate(
             f"${row['costo_por_aceptable_075']:.4f}\n{row['aceptables_075']}/79",
             (bar.get_x() + bar.get_width() / 2, bar.get_height()),
@@ -551,9 +548,8 @@ def make_figures(cells: list[dict[str, Any]]) -> None:
         handles=[
             Line2D([0], [0], color=color, lw=6, label=label)
             for label, color in strategy_color.items()
-        ]
-        + [Patch(facecolor="white", edgecolor="black", hatch="//", label="Frontera de Pareto")],
-        ncol=4,
+        ],
+        ncol=3,
         loc="upper left",
         fontsize=6.5,
     )
