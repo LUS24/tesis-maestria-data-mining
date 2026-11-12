@@ -16,7 +16,7 @@
 |---|---|---|---|---|
 | `correccion-01-analisis-estadistico` | Modelo ordinal mixto, Friedman/Wilcoxon, bootstrap por casos, escenarios, figuras y tablas | `37_validacion_artefactos.json` sin errores; conteos releídos: 711 observaciones, 2.133 evaluaciones, 58 no sustantivas, 9 celdas | **OK** | Insertar el análisis en el manuscrito; reconciliar cifras de V.1 (NV-01) y decidir sensibilidad (PI-29) |
 | `correccion-02-diagnostico-gpt-5-nano` | Clasificación de las 711 respuestas, auditoría de logs, jueces y faltantes | Acta de revisión 87/87; resumen final: 58 no sustantivas, 41 en nano agéntico; notebook válido sin errores | **OK** | Revisión independiente y tratamiento de jueces (PI-06, PI-07, PI-08) |
-| `correccion-03-documentar-api-eliminar-determinismo` | 12 payloads locales, perfiles de Pydantic AI, tokens de razonamiento, tabla solicitado/registrado/efectivo | Resumen de evidencia y notebook válido; 12/12 payloads sin temperatura ni `reasoning_effort` | **OK** | Aceptar la redacción y declarar el esfuerzo histórico como desconocido (NV-05) |
+| `correccion-03-documentar-api-eliminar-determinismo` | 12 payloads locales, perfiles de Pydantic AI, tokens de razonamiento, tabla solicitado/registrado/efectivo | Resumen de evidencia y notebook válido; 12/12 payloads sin temperatura ni `reasoning_effort` | **OK** | Declarar que no se envió `reasoning_effort`; Pydantic AI 1.1.0 no fija default y OpenAI usa `medium` por defecto (NV-05) |
 | `correccion-04-declarar-factores-pub-prompts-etc` | Auditoría de 237 sesiones, 27 reportes de jueces, prompts, anexo y diagrama | 237 logs, 27 reportes, 0 logs del Agente de Calidad; 236/237 sesiones con una llamada; scripts válidos | **OK con alerta** | Seis decisiones del checklist; el notebook de `part_g` no coincide con el script final |
 | `correccion-05-actualizacion-conclusiones-y-analisis-costos` | Tabla 4 reformulada, costos, Pareto, propuestas de texto y README | `verificacion_artefactos.json`: 46 controles, 0 fallos; 9 celdas, 711 observaciones, costo USD 22,2939 | **OK** | Aprobación institucional del título (PI-02), validación humana de jueces (PI-06) y declaración de IA (PI-04/NV-04); D-01 aclarada por el autor |
 | `correccion-06-precisar-corpus-revisar-respuestas` | Linaje del corpus, conteos, revisión por una profesional y conteo de preguntas | Verificador: 130 cambios, 80 párrafos, 482 nodos, 398 artículos, 79 unidades, 166 referencias y 12 propuestas (fuera de alcance); hashes fuente sin cambios | **OK** | 1.2/1.3 y conteo de preguntas; NV-03 (citas sobre respuestas generadas); Q23/Q24 y v2 fuera de alcance |
@@ -39,7 +39,7 @@
 3. **El notebook de `part_g` conserva una versión anterior** con `evaluate_retrieval` activo y prompts distintos. El script `.py` y los logs son la fuente canónica de la corrida final.
 4. **La asimetría 7/6 es real:** gpt-5 usó un prompt de recuperación con límite 7 y 33/79 sesiones agotaron las siete búsquedas; mini y nano usaron límite 6. Además, `16_01` registró tres llamadas del especialista, frente a una en las otras 236 sesiones.
 5. **El Agente de Calidad nunca se ejecutó:** 0 logs y 0 llamadas. No se puede afirmar que mejorara ni empeorara el sistema.
-6. **El esfuerzo de razonamiento histórico es desconocido:** los `reasoning_tokens` existen en las 711 respuestas, pero no se registró el nivel de esfuerzo. No debe inferirse “alto” o “bajo” a partir de los tokens.
+6. **El esfuerzo de razonamiento no se registró localmente:** no se envió `reasoning_effort`. Pydantic AI 1.1.0 no define un default; OpenAI documenta `medium` como default para GPT-5 cuando se omite. Los `reasoning_tokens` no permiten reconstruir el esfuerzo; no debe inferirse “alto” o “bajo” a partir de ellos.
 7. **D-01 quedó aclarada por el autor:** la “corrección humana” no es una calificación humana de la calidad de las respuestas, sino la revisión manual de categorías de `correccion-02-diagnostico-gpt-5-nano/revision_manual`. Esa revisión decide qué salidas son sustantivas y, por tanto, qué recibe fallo = 0 en el análisis del sistema. La crítica a los jueces que puntuaron por encima de cero esas salidas se conserva como un análisis separado de medición. Sigue sin existir una validación humana de las calificaciones de los jueces; eso permanece en PI-06.
 8. **El modelo ordinal usa `nAGQ = 1`** y no incluye una prueba formal de odds proporcionales. Es aceptable como análisis principal, pero conviene declararlo y añadir una sensibilidad si el costo computacional lo permite.
 9. **El benchmark v1 está congelado**, pero la revisión asistida por LLM detectó posibles errores que requieren revisión profesional. No debe llamarse “validación” a esa revisión automática.
@@ -64,7 +64,7 @@ Estas decisiones fueron aceptadas por el autor en `correccion-05-actualizacion-c
 | D-09 | Actualizar el título al alcance real | Aceptada | Requiere aprobación institucional (PI-02) |
 | D-10 | Objetivo 2 como cumplimiento parcial; dos agentes activos, sin verificador | Aceptada | Solo falta insertarlo en el manuscrito |
 | D-11 | Acceso público resuelto sin login; clonación recomendada para reproducibilidad | Aceptada | No bloquea el objetivo de acceso |
-| D-12 | Quitar “IVF_FLAT” y describir `AUTOINDEX` con similitud coseno | Aceptada; sujeta a NV-06 | Respaldado por `part_c`; la nueva valoración repite “IVF_FLAT” y exige verificar el índice efectivo antes de editar |
+| D-12 | Quitar “IVF_FLAT” y describir `AUTOINDEX` con similitud coseno | Aceptada; NV-06 resuelta con AUTOINDEX | Respaldado por `part_c`; la nueva valoración repite “IVF_FLAT” sin evidencia nueva |
 | D-13 | “No se identificaron antecedentes públicos comparables” en lugar de “primer sistema” | Aceptada | Mantener la cautela |
 | D-14 | Recalcular alpha desde los jueces originales en un directorio independiente | Aceptada y verificada | Valores: 0,807842 y 0,799542; precisión legal 0,784566 |
 
@@ -146,9 +146,9 @@ Reglas de implementación:
 | PI-21 | Bommasani/Davis/Cardon → Bozdag, Sevim y Koç | A) Reemplazar la entrada y reescribir las dos afirmaciones; B) conservar la entrada y corregir solo el DOI; C) dejar como está | **A.** El DOI 10.1145/3628602 corresponde a Bozdag et al. (2024), y el método es ajuste fino, no “adapters”. Revisar el texto completo antes de atribuir resultados | Autor + bibliografía | **Sí** para la Tabla 3 |
 | PI-22 | Dahl et al. (2024) frente a Magesh et al. (2025) | A) Usar Magesh et al. para la frase sobre Westlaw/Lexis y conservar Dahl solo para su propio contenido; B) conservar Dahl para la frase; C) eliminar ambas | **A.** El estudio de Westlaw/Lexis es Magesh et al. (2025), JELS 22(2), 216–242. Dahl no sustenta esa afirmación | Autor | **Sí** para la Tabla 3 |
 | PI-23 | Wei 2022 y Zhao 2026: APA frente a letras a/b | A) APA: “Wei, Wang, y cols.” / “Wei, Tay, y cols.” y “W. X. Zhao y cols.” / “J. Zhao y cols.”; B) letras (2022a/2022b, 2026a/2026b) como pedía literalmente el jurado | **A.** Es la regla APA 7 para coautores distintos e iniciales distintas; Typst ya maneja bien `form: "year"`. Probar en `pruebas/citas_ambiguas.typ` | Autor + bibliografía | No, pero afecta la Tabla 3 |
-| PI-24 | Tribunal Fiscal de la Nación | A) Entrada institucional con el sitio oficial; B) nota de AUNO con autora Milagros Denise Tallarico; C) mantener la mezcla actual | **A.** Si se conserva la nota, usar B y no atribuirla al organismo. No mezclar autor institucional con URL de un estudio jurídico | Autor + bibliografía | No, pero afecta la fuente |
-| PI-25 | DOI de edición en Hebb, Minsky, Bonferroni, Jordan y Krippendorff | A) Citar la edición efectivamente consultada y retirar el DOI si no corresponde; B) conservar el DOI y cambiar la edición; C) dejar el DOI actual | **A.** No atribuir a 1949/1969/1936/1986 un DOI de 2005/2017/2010/1997. Documentar la edición consultada | Autor + bibliografía | No, pero afecta la trazabilidad |
-| PI-26 | Forma de autoría: “y cols.” frente a “et al.” | A) “y cols.” uniforme en español; B) “et al.” estricto APA; C) mantener la mezcla actual | **A.** El PDF tiene 309 “y col.” y 11 “y cols.”; usar “y cols.” en ambas reglas de `main.typ` y corregir el singular | Autor | No, pero es corrección editorial obligatoria |
+| PI-24 | Tribunal Fiscal de la Nación | A) Entrada institucional con el sitio oficial; B) nota de AUNO con autora Milagros Denise Tallarico; C) mantener la mezcla actual | **B adoptada provisionalmente.** El sitio oficial no respondió (timeout) desde este entorno; se usa la nota de AUNO/Tallarico. Cambiar a A si se verifica el acceso al sitio oficial. No mezclar autor institucional con URL de un estudio jurídico | Autor + bibliografía | No, pero afecta la fuente |
+| PI-25 | DOI de edición en Hebb, Minsky, Bonferroni, Jordan y Krippendorff | A) Citar la edición efectivamente consultada y retirar el DOI si no corresponde; B) conservar el DOI y cambiar la edición; C) dejar el DOI actual | **Resuelta:** se adoptan las ediciones y entradas de `§6.4`; las cinco claves y todas sus citas se actualizaron en el manuscrito | Autor + bibliografía | No, pero afecta la trazabilidad |
+| PI-26 | Forma de autoría: “y cols.” frente a “et al.” | A) “y cols.” uniforme en español; B) “et al.” estricto APA; C) mantener la mezcla actual | **B adoptada:** `et al.` estricto APA 7, como solicita el tribunal. Revisar las dos reglas de `main.typ` y las citas renderizadas | Autor | No, pero es corrección editorial obligatoria |
 | PI-27 | Paquete de correcciones factuales de alta prioridad | A) Aplicar todas las correcciones verificadas: Niklaus 2023, DeepSeek-R1 2025, Llama 4 abril 2025, Qwen3 abril 2025, Yang en lugar de Wan, Pydantic 1.1.0, Springer 2025, Zhao survey, Raeini, etc.; B) aplicar solo las críticas; C) posponerlas | **A.** Son correcciones de metadatos y autoría respaldadas por Crossref/arXiv/sitios oficiales; no requieren nueva evidencia. Revisar las afirmaciones que dependen de ellas | Autor + bibliografía | **Sí** para la auditoría completa |
 | PI-28 | Referencias faltantes | A) Agregar Lewis et al. (2020), Código de Minería/Ley 1.919, Zheng et al. (2021), Bench-Capon et al. (2012), Tribunal Fiscal y Qwen3; B) agregar solo Lewis y Código; C) no agregar | **A.** Lewis es fundacional para RAG; el Código es la fuente legal del corpus; Zheng separa CaseHOLD del corpus de Legal-BERT; Bench-Capon reemplaza la nota a Wikipedia | Autor + bibliografía | **Sí** para la completitud de fuentes |
 
@@ -156,22 +156,22 @@ Reglas de implementación:
 
 | ID | Decisión pendiente | Opciones | Recomendación | Responsable | Bloquea |
 |---|---|---|---|---|---|
-| PI-29 | Sensibilidad del modelo ordinal (`nAGQ = 1`), odds proporcionales y reconciliación con V.1 | A) Mantener `nAGQ = 1` y declarar el supuesto; B) agregar una sensibilidad con `nAGQ = 7` o un modelo bayesiano; C) cambiar el modelo principal. En todos los casos, reconciliar las cifras nuevas de V.1 con `correccion-01` (NV-01) | **B si el cómputo lo permite; A como mínimo.** No cambiar el modelo principal después de ver los resultados. No mezclar cifras de V.1 y `correccion-01` sin declarar prueba, escenario y corrección | Autor + estadística | No para el resultado principal; **sí** para la robustez |
-| PI-30 | Versionado y publicación del directorio de verificación | A) Agregar `verificacion-analisis-estadistico/` al repositorio y hacer una clonación anónima de prueba; B) dejarlo fuera del repositorio; C) publicarlo sin verificar | **A.** Es el único directorio de corrección no rastreado. Incluirlo, ejecutar `run_all.sh`, compilar el manuscrito desde una clonación limpia y registrar el commit | Autor | **Sí** para la afirmación de reproducibilidad |
-| PI-31 | Sincronización final de manuscrito, README y presentación | A) Aplicar todas las propuestas de las correcciones 01–07 y recompilar, incorporando métricas de recuperación (NV-02), citas deterministas (NV-03), declaración de IA (NV-04) y cifras reconciliadas de V.1/V.6 (NV-01/NV-07); B) aplicar solo las críticas; C) dejar el manuscrito como está y entregar los paquetes como anexos | **A.** Es la única opción coherente con las decisiones D-01–D-14. Verificar con `make pdf`, búsquedas de frases prohibidas y revisión visual | Autor | **Sí** para la entrega |
+| PI-29 | Sensibilidad del modelo ordinal (`nAGQ = 1`), odds proporcionales y reconciliación con V.1 | A) Mantener `nAGQ = 1` y declarar el supuesto; B) agregar una sensibilidad con `nAGQ = 7` o un modelo bayesiano; C) cambiar el modelo principal. En todos los casos, reconciliar las cifras nuevas de V.1 con `correccion-01` (NV-01) | **A adoptada:** mantener `nAGQ = 1` (Laplace) y declarar la limitación. `nAGQ > 1` no está disponible en `ordinal::clmm` con dos términos de efectos aleatorios (`(1|caso) + (1|unidad)`); la opción `nAGQ = 7` no es ejecutable con esta fórmula. Reconciliar con NV-01 | Autor + estadística | No para el resultado principal; **sí** para la robustez |
+| PI-30 | Versionado y publicación del directorio de verificación | A) Agregar `verificacion-analisis-estadistico/` al repositorio y hacer una clonación anónima de prueba; B) dejarlo fuera del repositorio; C) publicarlo sin verificar | **A diferida:** publicar después de revisar el manuscrito y ordenar el directorio; luego ejecutar `run_all.sh`, compilar desde una clonación limpia y registrar el commit | Autor | **Sí** para la afirmación de reproducibilidad |
+| PI-31 | Sincronización final de manuscrito, README y presentación | A) Aplicar todas las propuestas de las correcciones 01–07 y recompilar, incorporando métricas de recuperación (NV-02), citas deterministas (NV-03), declaración de IA (NV-04) y cifras reconciliadas de V.1/V.6 (NV-01/NV-07); B) aplicar solo las críticas; C) dejar el manuscrito como está y entregar los paquetes como anexos | **A adoptada:** aplicar todo y generar una nueva versión del archivo. Verificar con `make pdf`, búsquedas de frases prohibidas y revisión visual | Autor | **Sí** para la entrega |
 
 ### Bloque G — Decisiones de la valoración actualizada (NV-01–NV-07)
 
-Estas decisiones provienen de `COBERTURA_valoracion_actualizada.md` §7. No estaban incluidas en PI-01–PI-32 y quedan pendientes de resolución.
+Estas decisiones provienen de `COBERTURA_valoracion_actualizada.md` §7. El estado actualizado de cada una está en `§6`.
 
 | ID | Decisión pendiente | Opciones | Recomendación | Responsable | Bloquea |
 |---|---|---|---|---|---|
-| NV-01 | ¿Qué reanálisis se usa como fuente canónica: `correccion-01` o el de la nueva valoración? | A) `correccion-01` (modelo ordinal + Friedman/Wilcoxon); B) reanálisis de la valoración; C) reportar ambos y reconciliar | **A como principal; B como sensibilidad.** Verificar prueba, escenario y corrección de los p-valores nuevos; no mezclar cifras sin declararlo | Autor + estadística | **Sí** para Tabla 4 y resultados |
-| NV-02 | Métricas de recuperación y comparación de recuperadores | A) Calcular desde `part_d` y logs en un notebook nuevo; B) adoptar las cifras de la nueva valoración; C) ambas | **A + B.** Las cifras de RAG básico se reproducen desde `part_d` (recall 0,333; MRR 0,214; 27,8 %/59,5 %). Falta el notebook y la comparación con BM25/embedding alternativo | Autor | **Sí** para IX.1.9/IX.2.1 |
-| NV-03 | Métricas deterministas de citas sobre las 711 respuestas | A) Extender `correccion-06` para extraer citas de las respuestas generadas y calcular precisión/recall/F1/inexistentes; B) usar solo las citas de las respuestas esperadas; C) dejar la rúbrica de jueces | **A.** `correccion-06` ya tiene el parser y las referencias; falta aplicarlo a las respuestas del sistema y validar una muestra | Autor | **Sí** para IX.2.2 |
-| NV-04 | Declaración de IA y antecedente de “referencia fabricada” | A) Declaración por etapas + revisión del historial; B) mantener la frase genérica; C) declaración mínima sin explicar el antecedente | **A.** La nueva V.11 lo pide expresamente. Revisar el commit/archivo mencionado, describir qué se corrigió y cómo se verificó; no ocultarlo. Coordinar con PI-04 | Autor | **Sí** para IX.1.8 |
-| NV-05 | “Esfuerzo predeterminado” vs. “desconocido” | A) Mantener “desconocido” (lo que prueban los logs); B) afirmar “predeterminado” porque el código no lo fija; C) documentar ambos | **A o C.** El código no fija el parámetro, pero no hay registro del valor efectivo. Decir “no se registró; se usó el valor predeterminado de la API” solo si se cita la documentación del proveedor | Autor | No para aceptar; **sí** para precisión |
-| NV-06 | Índice vectorial: IVF_FLAT vs. AUTOINDEX | A) Mantener D-12 y describir AUTOINDEX; B) verificar en Milvus el índice efectivo; C) aceptar IVF_FLAT de la nueva valoración | **A + B si Milvus está disponible.** D-12 se basa en el código de creación; la nueva V.8 no aporta evidencia nueva. No cambiar a IVF_FLAT sin `describe_index` | Autor | **Sí** para coherencia de V.8/metodología |
+| NV-01 | ¿Qué reanálisis se usa como fuente canónica: `correccion-01` o el de la nueva valoración? | A) `correccion-01` (modelo ordinal + Friedman/Wilcoxon); B) reanálisis de la valoración; C) reportar ambos y reconciliar | **A adoptada:** `correccion-01` es la fuente canónica; no usar el reanálisis de la valoración como sensibilidad | Autor + estadística | **Sí** para Tabla 4 y resultados |
+| NV-02 | Métricas de recuperación y comparación de recuperadores | A) Calcular desde `part_d` y logs en un notebook nuevo; B) adoptar las cifras de la nueva valoración; C) ambas | **A adaptada:** Milvus no está disponible (se perdió el volumen Docker); calcular recall@k/MRR desde las recuperaciones ya registradas en los `.json` y guardar los resultados en `verificacion-analisis-estadistico/metricas_recuperacion/`. No comparar contra BM25 desde la base | Autor | **Sí** para IX.1.9/IX.2.1 |
+| NV-03 | Métricas deterministas de citas sobre las 711 respuestas | A) Extender `correccion-06` para extraer citas de las respuestas generadas y calcular precisión/recall/F1/inexistentes; B) usar solo las citas de las respuestas esperadas; C) dejar la rúbrica de jueces | **No prioritaria por tiempo:** posponer. Si se retoma, opción A. No bloquea la entrega | Autor | No para la entrega |
+| NV-04 | Declaración de IA y antecedente de “referencia fabricada” | A) Declaración por etapas + revisión del historial; B) mantener la frase genérica; C) declaración mínima sin explicar el antecedente | **A adoptada:** extender la declaración a búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas. Revisar el antecedente de la “referencia fabricada” al redactar. Coordinar con PI-04 | Autor | **Sí** para IX.1.8 |
+| NV-05 | “Esfuerzo predeterminado” vs. “desconocido” | A) Mantener “desconocido” (lo que prueban los logs); B) afirmar “predeterminado” porque el código no lo fija; C) documentar ambos | **Resuelta:** Pydantic AI 1.1.0 no define un default; si no se configura, `OpenAIChatModel` envía `NOT_GIVEN` (`models/openai.py:500`). El default efectivo es del proveedor: OpenAI documenta `medium` para GPT-5 cuando se omite. Declarar “no se envió; default del proveedor = medium”, no un default de Pydantic AI | Autor | No para aceptar; **sí** para precisión |
+| NV-06 | Índice vectorial: IVF_FLAT vs. AUTOINDEX | A) Mantener D-12 y describir AUTOINDEX; B) verificar en Milvus el índice efectivo; C) aceptar IVF_FLAT de la nueva valoración | **A adoptada:** usar el valor del código (`AUTOINDEX`), que es el que se usaría si se recrea la base. No afirmar IVF_FLAT | Autor | **Sí** para coherencia de V.8/metodología |
 | NV-07 | Actualización de Tabla 4/IX con los nuevos hallazgos | A) Incorporar recuperación, IA y cifras reconciliadas; B) dejar Tabla 4 como está y agregar anexo; C) solo cambios de forma | **A.** La nueva valoración cambia el sustento de V.1/V.6/V.8/V.11; Tabla 4 debe reflejarlo. Coordinar con PI-31 | Autor | **Sí** para la versión final |
 
 ---
@@ -191,7 +191,7 @@ Estas no son alternativas abiertas; ya están respaldadas por los datos o por de
 | Agente de Calidad | Eliminar “no se tradujo en mejoras”; conservar solo costo/complejidad | 0 logs y 0 llamadas |
 | 7/6 | Declarar la asimetría; no afirmar que todas las configuraciones usaron seis búsquedas | 33/79 sesiones de gpt-5 agotaron 7; mini/nano usaron 6 |
 | `16_01` | Declarar la excepción de tres llamadas | 236/237 sesiones con una llamada |
-| Índice vectorial | Describir `AUTOINDEX` con similitud coseno y quitar “IVF_FLAT”; no cambiar a IVF_FLAT sin verificar el índice efectivo (NV-06) | `part_c/01_initial_vector_db_creation.ipynb`; D-12; NV-06 |
+| Índice vectorial | Describir `AUTOINDEX` con similitud coseno y quitar “IVF_FLAT”; no usar IVF_FLAT | `part_c/01_initial_vector_db_creation.ipynb`; D-12; NV-06 resuelta |
 | Corpus | 482 nodos, 398 nodos artículo, 397 con texto y 1 vacío (art. 239); no decir “399 artículos” ni “245 artículos” | Auditoría 06; verificación de hashes |
 | Fechas | Sanción 1886-11-25; texto ordenado B.O. 1997-05-30; no usar 1994-01-01 ni 2024-12-09 sin fuente | Auditoría 06 |
 | Alpha | Reportar 0,807842 (original) y 0,799542 (rúbrica); no llamarlo validación | D-14; recálculo independiente |
@@ -204,24 +204,20 @@ Estas no son alternativas abiertas; ya están respaldadas por los datos o por de
 
 ## 5. Ruta crítica recomendada
 
-### Antes de editar el manuscrito
+### Pendiente de decisión o verificación
 
-1. **PI-02:** resolver el título con la institución; si no hay aprobación, adoptar la opción B y declarar el alcance.
-2. **NV-01:** decidir qué reanálisis es canónico y reconciliar las cifras nuevas de V.1 con `correccion-01`; no mezclar prueba, escenario o corrección sin declararlo.
-3. **NV-06:** resolver IVF_FLAT/AUTOINDEX antes de dejar V.8 como está; si Milvus está disponible, verificar el índice efectivo.
-4. **PI-06 y PI-07:** D-01 ya está resuelta con la revisión manual de categorías. Decidir si se agrega una submuestra humana para validar las calificaciones de los jueces; si no, declarar la ausencia y no llamar “validación” al acuerdo entre jueces.
-5. **PI-09:** decidir si se ejecuta A′/B/C antes del **2026-12-11**; si no, declarar la ejecución única y la asimetría 7/6.
-6. **Bloque D:** no quedan decisiones pendientes. Aplicar la implementación editorial de PI-15 y PI-19; mantener PI-13, PI-14, PI-17 y PI-20 fuera de alcance.
-7. **PI-21 a PI-28:** aprobar el paquete bibliográfico; primero las dos críticas, luego las altas y finalmente las bajas.
+1. **NV-03:** no prioritaria por tiempo; no bloquea la entrega.
 
-### Antes de compilar la versión final
+### Implementación
 
-1. **PI-03, PI-05, PI-10, PI-11:** aplicar los textos de arquitectura, prompts, límites y notebook canónico.
-2. **PI-29:** agregar la sensibilidad del modelo o declarar la limitación, con las cifras reconciliadas de NV-01.
-3. **NV-02 y NV-03:** producir el notebook de recuperación y las métricas deterministas de citas; **NV-07** incorpora esos resultados a la Tabla 4/IX.
-4. **PI-31:** sincronizar resumen, introducción, metodología, evaluación, conclusiones, anexos y README con NV-01, NV-02, NV-03 y NV-04.
-5. **PI-30:** agregar la verificación al repositorio, ejecutar los verificadores y hacer la clonación anónima.
-6. **PI-04 / NV-04:** completar la declaración de IA por etapas y revisar el antecedente de la “referencia fabricada”.
+1. **PI-04 / NV-04:** redactar la declaración de IA por etapas y revisar el antecedente de la “referencia fabricada”. **NV-05:** declarar que no se envió `reasoning_effort`; el default efectivo del proveedor para GPT-5 es `medium`.
+2. **PI-21, PI-22, PI-23, PI-24, PI-26, PI-27 y PI-28:** aplicar las correcciones bibliográficas decididas.
+3. **PI-29:** mantener `nAGQ = 1`, declarar la limitación de Laplace y reconciliar las cifras con NV-01.
+4. **NV-01, NV-02 y NV-07:** reconciliar V.1 con `correccion-01`, calcular recuperación desde los `.json` y actualizar Tabla 4/IX.
+5. **PI-03, PI-05, PI-10 y PI-11:** aplicar textos de arquitectura, terminología, excepción `16_01` y notebook canónico.
+6. **PI-15, PI-16 y PI-19:** aplicar las correcciones editoriales de corpus, 1.2/1.3 y fechas.
+7. **PI-31:** sincronizar manuscrito, README, anexos y presentación, y generar una nueva versión.
+8. **PI-30:** publicar la verificación después de la revisión y el ordenamiento del directorio.
 
 ### Verificación final
 
@@ -236,16 +232,15 @@ Estas no son alternativas abiertas; ya están respaldadas por los datos o por de
 
 ## 6. Registro de decisión
 
-**Estados:** `Cerrada` = decisión adoptada; `Cerrada condicionada` = adoptada pero sujeta a una verificación; `Cancelada` = explícitamente fuera de alcance; `Pendiente` = falta una elección. Las opciones y recomendaciones no se repiten aquí: están en `§3` para PI/NV y en `§2` para D. Todas las decisiones cerradas/canceladas se registraron el **2026-11-12**.
+**Estados:** `Cerrada` = decisión adoptada; `Cancelada` = explícitamente fuera de alcance; `Pendiente` = falta una elección o una verificación. Las opciones y recomendaciones están en `§3` para PI/NV y en `§2` para D; este registro contiene la decisión vigente. Decisiones registradas el **2026-11-12**.
 
 ### 6.1 Resumen
 
 | Estado | IDs | Total |
 |---|---|---:|
-| Cerrada | D-01–D-11, D-13–D-14; PI-01–PI-03, PI-05–PI-12, PI-15, PI-16, PI-18, PI-19, PI-32 | 29 |
-| Cerrada condicionada | D-12 (sujeta a NV-06) | 1 |
+| Cerrada | D-01–D-14; PI-01–PI-12, PI-15, PI-16, PI-18, PI-19, PI-21–PI-32; NV-01, NV-02, NV-04, NV-05, NV-06, NV-07 | 48 |
 | Cancelada | PI-13, PI-14, PI-17, PI-20 | 4 |
-| Pendiente | PI-04, PI-21–PI-31, NV-01–NV-07 | 19 |
+| Pendiente | NV-03 | 1 |
 | **Total** | **D-01–D-14, PI-01–PI-32, NV-01–NV-07** | **53** |
 
 ### 6.2 Decisiones cerradas y canceladas
@@ -263,12 +258,13 @@ Estas no son alternativas abiertas; ya están respaldadas por los datos o por de
 | D-09 | Cerrada | Actualizar título al alcance real | `§2`; PI-02 |
 | D-10 | Cerrada | Objetivo 2 como cumplimiento parcial; dos agentes activos, sin verificador | `§2`; insertar en manuscrito |
 | D-11 | Cerrada | Acceso público sin login; clonación recomendada para reproducibilidad | `§2`; no afirmar reproducibilidad exacta |
-| D-12 | Cerrada condicionada | Quitar “IVF_FLAT” y describir AUTOINDEX con similitud coseno | `§2`; no cambiar a IVF_FLAT sin NV-06 |
+| D-12 | Cerrada | Quitar “IVF_FLAT” y describir AUTOINDEX con similitud coseno | `§2`; NV-06 resuelta con AUTOINDEX |
 | D-13 | Cerrada | “No se identificaron antecedentes públicos comparables” | `§2`; mantener cautela |
 | D-14 | Cerrada | Alpha 0,807842 original y 0,799542 rúbrica | `§2`; recálculo independiente |
 | PI-01 | Cerrada | Opción A: mantener `correccion-*` y marcar como deprecados los análisis previos que ya no se usan | Actualizar plan y README; no duplicar |
 | PI-02 | Cerrada | Opción A: título aprobado por correo por el director de la maestría | Actualizar portada, `main.typ`, README y BibTeX |
 | PI-03 | Cerrada | Opción A: aplicar textos, anexo y SVG operativo; actualizar el diagrama para respetar colores y límites | Implementación editorial pendiente |
+| PI-04 | Cerrada | Opción B: declaración de IA por etapas; incluir búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas; revisar el antecedente de la “referencia fabricada” | Redactar declaración y actualizar README/manuscrito |
 | PI-05 | Cerrada | Opción A: “modelo del Agente Especialista Legal”; celdas agénticas como “recuperador gpt-5” | Aplicar en manuscrito |
 | PI-06 | Cerrada | Opción A: no realizar validaciones humanas adicionales; declarar la ausencia | Documentar en limitaciones |
 | PI-07 | Cerrada | Opción A: aceptar la revisión del autor y declararla como tal | No llamarla independiente |
@@ -285,31 +281,42 @@ Estas no son alternativas abiertas; ya están respaldadas por los datos o por de
 | PI-18 | Cerrada | Una sola profesional revisora; no existe segunda revisión independiente | Usar “revisión por una profesional” |
 | PI-19 | Cerrada | Fechas: 1886-11-25 y 1997-05-30; eliminar las no verificadas | Implementación editorial pendiente |
 | PI-20 | Cancelada | No se crea benchmark v2 en esta tesis | Sin acción |
+| PI-21 | Cerrada | Opción A: reemplazar Bommasani/Davis/Cardon por Bozdag, Sevim y Koç; reescribir las dos afirmaciones | Aplicar en `.bib` y texto |
+| PI-22 | Cerrada | Opción A: usar Magesh et al. (2025) para Westlaw/Lexis; conservar Dahl para su propio contenido | Reemplazar la cita |
+| PI-23 | Cerrada | Opción A: APA con nombres/iniciales para Wei/Zhao, sin letras a/b | Aplicar en citas |
+| PI-24 | Cerrada | Opción B provisional: usar la nota de AUNO/Tallarico porque el sitio oficial no respondió (timeout). Cambiar a A si se verifica el acceso | Actualizar entrada y cita |
+| PI-25 | Cerrada | Se adoptan las cinco entradas de `§6.4`: Hebb 2005, Minsky 2017, Miceli 2010 (Bonferroni), Jordan 1997 y Krippendorff 2019; claves actualizadas | Citas y `.bib` actualizados; PDF compilado |
+| PI-26 | Cerrada | Opción B: `et al.` estricto APA 7, como solicita el tribunal | Revisar `main.typ` y PDF |
+| PI-27 | Cerrada | Opción A: aplicar el paquete de correcciones factuales verificadas | Aplicar en `.bib` y texto |
+| PI-28 | Cerrada | Opción A: agregar Lewis, Código de Minería, Zheng, Bench-Capon, Tribunal Fiscal y Qwen3 | Incorporar referencias |
+| PI-29 | Cerrada | Opción A: mantener `nAGQ = 1` (Laplace) y declarar la limitación; reconciliar con NV-01 | `nAGQ > 1` no está disponible en `clmm` con dos efectos aleatorios |
+| PI-30 | Cerrada | Opción A diferida: publicar después de revisar el manuscrito y ordenar el directorio | Ejecutar clonación y registro al final |
+| PI-31 | Cerrada | Opción A: aplicar todo y generar una nueva versión del archivo | Implementación pendiente |
 | PI-32 | Cerrada | 25 preguntas: 18 intervenidas, 17 corregidas, Q24 solo comentario, 7 sin intervención | `correccion-06/salidas/conteo_preguntas_revisadas.csv` |
+| NV-01 | Cerrada | Opción A: `correccion-01` como fuente canónica; no usar el reanálisis de la valoración | Reconciliar cifras de V.1 |
+| NV-02 | Cerrada | Opción A adaptada: sin Milvus; calcular recall@k/MRR desde las recuperaciones `.json` y guardar en `verificacion-analisis-estadistico/metricas_recuperacion/` | Implementación pendiente; no comparar BM25 desde la base |
+| NV-04 | Cerrada | Opción A: extender la declaración a búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas; revisar el antecedente de la “referencia fabricada” | Redactar declaración |
+| NV-05 | Cerrada | Pydantic AI 1.1.0 no define default; envía `NOT_GIVEN` y el default efectivo de OpenAI para GPT-5 es `medium` | Declarar “no se envió; default del proveedor = medium”; no atribuirlo a Pydantic AI |
+| NV-06 | Cerrada | Opción A: usar AUTOINDEX, valor del código; no afirmar IVF_FLAT | Aplicar en V.8/metodología |
+| NV-07 | Cerrada | Opción A: incorporar recuperación, IA y cifras reconciliadas a Tabla 4/IX | Coordinar con PI-31 |
 
 ### 6.3 Decisiones pendientes
 
-| ID | Tema | Qué falta decidir | Recomendación / bloqueo | Responsable |
+| ID | Tema | Qué falta decidir / verificar | Recomendación / bloqueo | Responsable |
 |---|---|---|---|---|
-| PI-04 | Declaración de IA | Declaración por etapas y antecedente de la “referencia fabricada” | B; se resuelve con NV-04. Bloquea IX.1.8 | Autor |
-| PI-21 | Bommasani/Davis/Cardon → Bozdag et al. | Reemplazar entrada y reescribir afirmaciones | A; bloquea Tabla 3 | Autor + bibliografía |
-| PI-22 | Dahl et al. → Magesh et al. | Usar Magesh para Westlaw/Lexis y conservar Dahl para su propio contenido | A; bloquea Tabla 3 | Autor |
-| PI-23 | Wei 2022 / Zhao 2026 | APA con iniciales o letras a/b | A (APA); revisar citas ambiguas | Autor + bibliografía |
-| PI-24 | Tribunal Fiscal de la Nación | Entrada institucional o nota de AUNO | A; no mezclar autor institucional con estudio jurídico | Autor + bibliografía |
-| PI-25 | DOI de edición | Citar la edición consultada o retirar DOI | A; documentar edición | Autor + bibliografía |
-| PI-26 | “y cols.” / “et al.” | Forma uniforme en español | A (“y cols.”) | Autor |
-| PI-27 | Correcciones factuales | Aplicar el paquete verificado | A; bloquea auditoría completa | Autor + bibliografía |
-| PI-28 | Referencias faltantes | Agregar Lewis, Código, Zheng, Bench-Capon, Tribunal Fiscal y Qwen3 | A; bloquea completitud | Autor + bibliografía |
-| PI-29 | Modelo ordinal y V.1 | Sensibilidad `nAGQ`/odds y reconciliación con `correccion-01` | B si el cómputo lo permite; A mínimo. Se apoya en NV-01 | Autor + estadística |
-| PI-30 | Versionado de la verificación | Incluir `verificacion-analisis-estadistico/` y probar clonación | A; bloquea reproducibilidad | Autor |
-| PI-31 | Sincronización final | Aplicar correcciones 01–07 e incorporar NV-01–NV-04/NV-07 | A; bloquea la entrega | Autor |
-| NV-01 | Reanálisis canónico | `correccion-01` principal o reanálisis de la valoración | A principal + B sensibilidad; bloquea Tabla 4 | Autor + estadística |
-| NV-02 | Recuperación y recuperadores | Notebook desde `part_d` y comparación BM25/embedding | A+B; bloquea IX.1.9/IX.2.1 | Autor |
-| NV-03 | Citas deterministas | Extender `correccion-06` a las 711 respuestas | A; bloquea IX.2.2 | Autor |
-| NV-04 | IA y referencia fabricada | Declaración por etapas y revisión del historial | A; bloquea IX.1.8 | Autor |
-| NV-05 | Esfuerzo de razonamiento | “Desconocido” o documentar el valor predeterminado | A o C; precisión | Autor |
-| NV-06 | Índice vectorial | AUTOINDEX o verificar IVF_FLAT en Milvus | A+B si Milvus está disponible; bloquea V.8 | Autor |
-| NV-07 | Tabla 4/IX | Incorporar recuperación, IA y cifras reconciliadas | A; coordinar con PI-31 | Autor |
+| NV-03 | Citas deterministas | Métricas de citas sobre las 711 respuestas | **No prioritaria por tiempo**: posponer; no bloquea la entrega | Autor |
+
+### 6.4 PI-25 — Entradas adoptadas
+
+| Clave nueva | Entrada | DOI | Cambio |
+|---|---|---|---|
+| `hebb2005organization` | Hebb, 2005, Routledge; nota “Originally published in 1949” | `10.4324/9781410612403` | Reemplaza `hebb1949organization` |
+| `minsky2017perceptrons` | Minsky y Papert, 2017, MIT Press; reissue de la edición ampliada de 1988 | `10.7551/mitpress/11301.001.0001` | Reemplaza `minsky1969perceptrons` |
+| `bonferroni2010teoria` | Miceli, 2010, en *Encyclopedia of Research Design*, ed. Salkind | `10.4135/9781412961288.n455` | Reemplaza `bonferroni1936teoria` |
+| `jordan1997` | Jordan, 1997, *Neural-Network Models of Cognition*, pp. 471–495 | `10.1016/S0166-4115(97)80111-2` | Reemplaza `jordan1986` |
+| `krippendorff2019content` | Krippendorff, 2019, 4.ª ed., SAGE | `10.4135/9781071878781` | Reemplaza `krippendorff2018content` |
+
+Las cinco entradas se incorporaron a `manuscrito/referencias.bib`; las citas de `manuscrito/capitulos/03_capitulo_02...typ`, `06_capitulo_05...typ` y `07_capitulo_06...typ` se actualizaron con las claves nuevas. `make pdf` compiló sin errores.
 
 ---
 

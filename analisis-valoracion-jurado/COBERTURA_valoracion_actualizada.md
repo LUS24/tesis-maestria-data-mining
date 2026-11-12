@@ -28,7 +28,7 @@ Sin embargo, la nueva valoración **agrega o eleva a requerimiento** cuatro mate
 
 Además, siguen abiertas las recomendaciones de validación humana, réplicas/ablación y reducción de capítulos, que ya estaban identificadas como pendientes y no forman parte de los paquetes cerrados.
 
-**Ninguna decisión D-01–D-14 queda invalidada.** D-01 quedó aclarada por el autor: la “corrección humana” es la revisión manual de categorías, no una calificación humana de calidad. La única decisión en tensión directa es **D-12** (AUTOINDEX vs. IVF_FLAT), porque la nueva valoración repite “IVF_FLAT” sin incorporar la evidencia del código. Las decisiones pendientes PI-04, PI-06, PI-07, PI-08, PI-29 y PI-31 quedan reforzadas o ampliadas, no reemplazadas. Las NV-01–NV-07 se incorporaron a `DECISIONES_integradas.md` como Bloque G; PI-04, PI-29 y PI-31 se ampliaron para cubrirlas.
+**Ninguna decisión D-01–D-14 queda invalidada.** D-01 quedó aclarada por el autor: la “corrección humana” es la revisión manual de categorías, no una calificación humana de calidad. **D-12 quedó resuelta con NV-06:** se usa AUTOINDEX del código y no se afirma IVF_FLAT. Las decisiones PI-04, PI-06, PI-07, PI-08, PI-29 y PI-31 fueron resueltas o ampliadas; el detalle está en `DECISIONES_integradas.md` §6.
 
 ---
 
@@ -39,7 +39,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | V.1 | Reanálisis apareado/anidado, efectos e IC; corregir “modelos mixtos” | `correccion-01` | **Cubierto con salvedad** | El modelo ordinal mixto, Friedman/Wilcoxon y bootstrap existen. Las cifras nuevas de la valoración no coinciden exactamente con las de `correccion-01`; hay que reconciliar prueba, escenario y corrección (NV-01) |
 | V.2 | Crítica a Scheirer-Ray-Hare | `correccion-01` | **Cubierto** | Se reemplaza por el modelo ordinal y análisis no paramétrico de sensibilidad |
 | V.3 | No inferir equivalencia de la falta de significación | `correccion-01`; `correccion-05` | **Cubierto** | Se reportan IC y se retira el “efecto igualador” |
-| V.4 | Temperatura no aplicada, no determinismo, esfuerzo y ejecución única | `correccion-03` | **Cubierto con salvedad** | La temperatura no se envía y la ejecución es única; el esfuerzo histórico se documenta como desconocido, no como “predeterminado” (NV-05) |
+| V.4 | Temperatura no aplicada, no determinismo, esfuerzo y ejecución única | `correccion-03` | **Cubierto con salvedad** | La temperatura no se envía y la ejecución es única; `reasoning_effort` no se envió, Pydantic AI 1.1.0 no define default y OpenAI usa `medium` para GPT-5 (NV-05) |
 | V.5 | Factores confundidos, prompts, Agente de Calidad, límite de búsquedas | `correccion-04`; `correccion-05` | **Cubierto** | Quedan decisiones de redacción: 7/6, `16_01` y notebook canónico (PI-10, PI-11) |
 | V.6 | 41 salidas no sustantivas, reincorporar casos 23–25, corregir faltantes, reformular sobrecarga | `correccion-02`; `correccion-01`; `correccion-05` | **Cubierto** | La base final tiene 58 no sustantivas y 41 en nano agéntico; el join 23–25 está resuelto. Las medias 0,82/0,84/0,64 se reproducen; los valores `p = 0,19` y `p = 0,003` no coinciden exactamente con las pruebas pareadas locales y deben documentarse (método, unidad y corrección). Falta editar el manuscrito |
 | V.7 | Validez del benchmark, respuestas de referencia y jueces; citas deterministas; submuestra humana | `correccion-06`; `verificacion-analisis-estadistico`; `correccion-05` | **Parcial** | Hay auditoría de referencias y evidencia de jueces; no hay métricas de citas sobre respuestas generadas ni validación humana (NV-03) |
@@ -56,7 +56,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 |---|---|---|
 | IX.1.1 Rehacer inferencia y corregir modelos mixtos | **Cubierto** | `correccion-01`; modelo ordinal, Friedman/Wilcoxon, efectos e IC |
 | IX.1.2 Informar 41 salidas, reincorporar 23–25, corregir faltantes | **Cubierto** | `correccion-02` y `correccion-01`; falta trasladarlo al manuscrito |
-| IX.1.3 Retirar determinismo, informar esfuerzo y ejecución única | **Cubierto con salvedad** | `correccion-03` demuestra que la temperatura no se envía. El esfuerzo histórico está documentado como desconocido; la nueva valoración afirma “predeterminado” sin registro directo |
+| IX.1.3 Retirar determinismo, informar esfuerzo y ejecución única | **Cubierto con salvedad** | `correccion-03` demuestra que la temperatura no se envía. `reasoning_effort` no se envió; el default efectivo del proveedor es `medium`, aunque no quedó registrado localmente |
 | IX.1.4 Declarar confundidos, prompts y contradicciones | **Cubierto** | `correccion-04`; quedan decisiones editoriales menores (7/6, `16_01`, notebook) |
 | IX.1.5 Reformular Tabla 4 y conclusiones | **Cubierto como propuesta** | `correccion-05`; no se editó el manuscrito |
 | IX.1.6 Corpus, origen y respuestas de referencia | **Cubierto en análisis** | `correccion-06`; 1.2/1.3 verificados; Q23–Q25 fuera de alcance |
@@ -93,7 +93,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | D-09 Actualizar título y alcance | **Sin cambio; reforzada** | V.11 mantiene la crítica al título/objetivo amplio |
 | D-10 Objetivo 2 parcial | **Sin cambio; confirmado** | V.5 y Tabla 4 describen dos agentes y ausencia de verificador |
 | D-11 Acceso público resuelto | **Sin cambio en lo sustantivo; añadir matiz** | La nueva V.11 confirma el acceso, pero señala que el historial empieza en junio de 2026 y no documenta la evolución experimental. Mantener “acceso público sí; reproducibilidad exacta no demostrada” |
-| D-12 AUTOINDEX, quitar IVF_FLAT | **En tensión** | La nueva V.8 sigue diciendo “índice IVF_FLAT”. No invalida la evidencia del código, pero exige resolver la contradicción antes de editar (NV-06) |
+| D-12 AUTOINDEX, quitar IVF_FLAT | **Resuelta con NV-06** | Se adopta AUTOINDEX, el valor del código; no se afirma IVF_FLAT |
 | D-13 “No se identificaron antecedentes” | **Sin cambio** | No es objeto de la nueva valoración |
 | D-14 Alpha 0,807842/0,799542 | **Sin cambio** | La nueva valoración no discute el alpha; la verificación independiente sigue vigente |
 
@@ -106,7 +106,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | PI-01 Ubicación de paquetes | Sin cambio | Media |
 | PI-02 Título/alcance | Reforzada por V.11 | Alta |
 | PI-03 Paquete 04 (textos, diagrama, anexo) | Reforzada por V.5 | Alta |
-| PI-04 Declaración de IA | **Elevada a requerimiento IX.1.8** | Alta |
+| PI-04 Declaración de IA | **Resuelta: opción B**; declaración por etapas y antecedente de la referencia fabricada | Alta |
 | PI-05 Terminología “modelo del especialista” | Reforzada por V.5 | Media |
 | PI-06 Validación humana de jueces | D-01 ya no depende de esto; V.7 agrega evidencia de puntajes altos a respuestas vacías | Alta |
 | PI-07 Independencia de la revisión de categorías | Reforzada: V.7 dice una sola profesional | Media |
@@ -116,58 +116,53 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | PI-11 Notebook `part_g` | Sin cambio; V.11 valora el repositorio, no la discrepancia notebook/script | Media |
 | PI-12 Procedencia Infoleg | **Resuelta**; V.9 no se actualizó; sin acción pendiente | — |
 | PI-13–PI-20 Benchmark/corpus | **Reclasificadas:** PI-16 y PI-18 resueltas; PI-13, PI-14, PI-17 y PI-20 canceladas por estar fuera de alcance; PI-15 y PI-19 resueltas con implementación editorial pendiente. PI-12 se registra en la fila anterior | Alta/Media |
-| PI-21–PI-28 Bibliografía | Sin cambio; VI/VII no se modificaron | Alta/Media |
-| PI-29 `nAGQ`/odds proporcionales | **Ampliada**: además de la sensibilidad, hay que reconciliar las cifras nuevas de V.1 con `correccion-01` | Media |
-| PI-30 Versionar verificación | Sin cambio | Alta |
-| PI-31 Sincronización final | **Ampliada**: incluir métricas de recuperación, declaración de IA y nuevas cifras de V.1/V.6 | Alta |
+| PI-21–PI-28 Bibliografía | **Resueltas:** PI-21, PI-22, PI-23, PI-26, PI-27 y PI-28 con opción A; PI-24 con opción B provisional; PI-25 con las cinco entradas y claves actualizadas | Alta/Media |
+| PI-29 `nAGQ`/odds proporcionales | **Resuelta: opción A**; mantener `nAGQ = 1` (Laplace) y declarar la limitación. `nAGQ > 1` no está disponible con dos efectos aleatorios | Media |
+| PI-30 Versionar verificación | **Resuelta: opción A diferida**; publicar después de revisar el manuscrito y ordenar el directorio | Alta |
+| PI-31 Sincronización final | **Resuelta: opción A**; aplicar todo y generar una nueva versión del archivo | Alta |
 | PI-32 Conteo de preguntas corregidas | **Resuelta**; V.7 confirma 18/17/1/7 | — |
 
 ---
 
 ## 7. Nuevas decisiones incorporadas (NV-01–NV-07)
 
-Las siguientes se incorporaron al registro de decisiones como **NV-01–NV-07** y siguen pendientes de resolución; PI-04, PI-29 y PI-31 se ampliaron para cubrirlas.
+El estado actualizado está en `DECISIONES_integradas.md` §6: todas las NV están resueltas salvo NV-03, que queda pendiente y no prioritaria.
 
 | ID | Decisión | Opciones | Recomendación | Bloquea |
 |---|---|---|---|---|
-| NV-01 | ¿Qué reanálisis se usa como fuente canónica: el de `correccion-01` o el de la nueva valoración? | A) `correccion-01` (modelo ordinal + Friedman/Wilcoxon); B) reanálisis de la valoración; C) reportar ambos y reconciliar | **A como principal; B como sensibilidad.** Verificar prueba, escenario y corrección de los p-valores nuevos; no mezclar cifras de ambos sin declararlo | Sí, para Tabla 4 y resultados |
-| NV-02 | Métricas de recuperación y comparación de recuperadores | A) Calcular desde `part_d` y logs en un notebook nuevo; B) adoptar las cifras de la nueva valoración; C) ambas | **A + B.** Las cifras de RAG básico se reproducen exactamente desde `part_d` (recall 0,333; MRR 0,214; 27,8 %/59,5 %). Falta el notebook y la comparación con BM25/embedding alternativo | Sí, para IX.1.9/IX.2.1 |
-| NV-03 | Métricas deterministas de citas sobre las 711 respuestas | A) Extender `correccion-06` para extraer citas de las respuestas generadas y calcular precisión/recall/F1/inexistentes; B) usar solo las citas de las respuestas esperadas; C) dejar la rúbrica de jueces | **A.** `correccion-06` ya tiene el parser y las referencias; falta aplicarlo a las respuestas del sistema y validar una muestra | Sí, para IX.2.2 |
-| NV-04 | Declaración de IA y antecedente de “referencia fabricada” | A) Declaración por etapas + revisión del historial; B) mantener la frase genérica; C) declaración mínima sin explicar el antecedente | **A.** La nueva V.11 lo pide expresamente. Revisar el commit/archivo mencionado, describir qué se corrigió y cómo se verificó; no ocultarlo | Sí, para IX.1.8 |
-| NV-05 | “Esfuerzo predeterminado” vs. “desconocido” | A) Mantener “desconocido” (lo que prueban los logs); B) afirmar “predeterminado” porque el código no lo fija; C) documentar ambos | **A o C.** El código no fija el parámetro, pero no hay registro del valor efectivo. Decir “no se registró; se usó el valor predeterminado de la API” solo si se cita la documentación del proveedor | No para aceptar; sí para precisión |
-| NV-06 | Índice vectorial: IVF_FLAT vs. AUTOINDEX | A) Mantener D-12 y describir AUTOINDEX; B) verificar en Milvus el índice efectivo; C) aceptar IVF_FLAT de la nueva valoración | **A + B si Milvus está disponible.** D-12 se basa en el código de creación; la nueva V.8 no aporta evidencia nueva. No cambiar a IVF_FLAT sin `describe_index` | Sí, para coherencia de V.8/metodología |
+| NV-01 | ¿Qué reanálisis se usa como fuente canónica: el de `correccion-01` o el de la nueva valoración? | A) `correccion-01` (modelo ordinal + Friedman/Wilcoxon); B) reanálisis de la valoración; C) reportar ambos y reconciliar | **A adoptada:** `correccion-01` es la fuente canónica; no usar el reanálisis de la valoración | Sí, para Tabla 4 y resultados |
+| NV-02 | Métricas de recuperación y comparación de recuperadores | A) Calcular desde `part_d` y logs en un notebook nuevo; B) adoptar las cifras de la nueva valoración; C) ambas | **A adaptada:** Milvus no está disponible; calcular recall@k/MRR desde las recuperaciones `.json` y guardar en `verificacion-analisis-estadistico/metricas_recuperacion/`. No comparar BM25 desde la base | Sí, para IX.1.9/IX.2.1 |
+| NV-03 | Métricas deterministas de citas sobre las 711 respuestas | A) Extender `correccion-06` para extraer citas de las respuestas generadas y calcular precisión/recall/F1/inexistentes; B) usar solo las citas de las respuestas esperadas; C) dejar la rúbrica de jueces | **No prioritaria por tiempo:** posponer; no bloquea la entrega | No para la entrega |
+| NV-04 | Declaración de IA y antecedente de “referencia fabricada” | A) Declaración por etapas + revisión del historial; B) mantener la frase genérica; C) declaración mínima sin explicar el antecedente | **A adoptada:** extender la declaración a búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas; revisar el antecedente al redactar | Sí, para IX.1.8 |
+| NV-05 | “Esfuerzo predeterminado” vs. “desconocido” | A) Mantener “desconocido” (lo que prueban los logs); B) afirmar “predeterminado” porque el código no lo fija; C) documentar ambos | **Resuelta:** Pydantic AI 1.1.0 no define default; envía `NOT_GIVEN`. El default efectivo de OpenAI para GPT-5 es `medium`; declarar “no se envió; default del proveedor = medium” | No para aceptar; sí para precisión |
+| NV-06 | Índice vectorial: IVF_FLAT vs. AUTOINDEX | A) Mantener D-12 y describir AUTOINDEX; B) verificar en Milvus el índice efectivo; C) aceptar IVF_FLAT de la nueva valoración | **A adoptada:** usar AUTOINDEX del código; no afirmar IVF_FLAT | Sí, para coherencia de V.8/metodología |
 | NV-07 | Actualización de Tabla 4/IX con los nuevos hallazgos | A) Incorporar recuperación, IA y cifras reconciliadas; B) dejar Tabla 4 como está y agregar anexo; C) solo cambios de forma | **A.** La nueva valoración cambia el sustento de V.1/V.6/V.8/V.11; Tabla 4 debe reflejarlo | Sí, para la versión final |
 
 ---
 
-## 8. Qué falta exactamente para decir “cobertura completa”
+## 8. Estado tras las decisiones
 
-### Imprescindible para la defensa
-
-1. **Reconciliar NV-01** y decidir qué cifras se reportan en V.1/Tabla 4.
-2. **Editar el manuscrito** con las correcciones 01–07; hoy son propuestas, no texto aplicado.
-3. **Cerrar NV-04**: declaración de IA y antecedente de la referencia fabricada.
-4. **Cerrar PI-02** (título/alcance) y **PI-06/PI-08** (qué se afirma sobre validación humana de los jueces).
-5. **Resolver NV-06** (IVF_FLAT/AUTOINDEX) antes de dejar V.8 como está.
-
-### Recomendado para responder a la nueva valoración
-
-6. **NV-02**: notebook de recuperación con recall@k, MRR, nDCG y comparación BM25/embedding.
-7. **NV-03**: métricas de citas sobre respuestas generadas.
-8. **PI-06**: submuestra humana para validar las calificaciones de los jueces; si no se hace, declarar la ausencia con claridad.
-9. **PI-09**: réplicas/ablación solo si se busca sostener causalidad o si el jurado lo exige.
-10. **PI-31**: sincronizar README, manuscrito, anexos y presentación con las nuevas cifras.
-
----
+| Punto | Estado |
+|---|---|
+| NV-01 Reanálisis canónico | **Decidida (A):** `correccion-01`; falta implementar la reconciliación |
+| Edición del manuscrito | **Pendiente:** aplicar las correcciones 01–07 |
+| NV-04 Declaración de IA | **Decidida (A):** extender la declaración; falta redactarla y revisar el antecedente |
+| PI-02 / PI-06 / PI-08 | **Decididas:** título aprobado, sin validación humana adicional, casos adjudicados; falta implementarlas |
+| NV-06 Índice vectorial | **Resuelta (A):** AUTOINDEX del código; no usar IVF_FLAT |
+| NV-02 Recuperación | **Decidida (A adaptada):** sin Milvus; usar recuperaciones `.json` en `verificacion-analisis-estadistico/metricas_recuperacion/` |
+| NV-03 Citas deterministas | **No prioritaria:** posponer por tiempo |
+| PI-25 DOIs de edición | **Resuelta:** cinco entradas adoptadas y claves/citas actualizadas; PDF compilado |
+| NV-05 Esfuerzo de razonamiento | **Resuelta:** Pydantic AI 1.1.0 no define default; OpenAI GPT-5 usa `medium` por defecto. No se registró localmente |
+| PI-31 Sincronización final | **Decidida (A):** aplicar todo y generar una nueva versión |
 
 ## 9. Veredicto de cobertura
 
 - **Núcleo metodológico:** cubierto.
 - **Diagnóstico de la celda anómala y faltantes:** cubierto.
 - **Corpus, benchmark y bibliografía:** cubierto en análisis, con revisiones jurídicas pendientes.
-- **Recuperación:** datos y métricas verificables, pero falta artefacto propio y comparación de recuperadores.
-- **Citas deterministas:** parcial; solo respuestas esperadas, no respuestas generadas.
+- **Recuperación:** datos verificables; decisión NV-02 adaptada a los `.json`, falta el artefacto propio y no hay comparación BM25 por pérdida de Milvus.
+- **Citas deterministas:** parcial; solo respuestas esperadas, no respuestas generadas. NV-03 queda no prioritaria.
 - **Validación humana, réplicas y reducción editorial:** no cubierto.
-- **Declaración de IA:** no cubierto.
+- **Declaración de IA:** decidida (PI-04/NV-04), pendiente de implementación.
 
 Por tanto, **el trabajo existente permite responder la mayor parte de la nueva valoración, pero no alcanza para declarar cobertura total**. La nueva valoración no invalida las decisiones tomadas; refuerza varias y agrega las decisiones NV-01 a NV-07.
