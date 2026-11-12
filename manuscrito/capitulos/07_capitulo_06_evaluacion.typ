@@ -130,41 +130,67 @@ Se realizaron tests de Kruskal-Wallis estratificados por sistema de recuperació
 
 Las diferencias entre modelos con RAG básico son menores que en las otras estrategias, pero no desaparecen. Un p no significativo no demuestra equivalencia; para sostenerla haría falta un margen definido a priori. Por eso no se afirma equivalencia.
 
-=== Efectos Simples: Estrategia dentro de cada Modelo
+=== Efectos Simples del Modelo Ordinal
 
-El test de Scheirer-Ray-Hare se conserva como antecedente exploratorio y sugiere una interacción entre estrategia y modelo. El análisis principal es el modelo ordinal mixto, que respeta el apareamiento y el anidamiento: LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶². Los efectos simples se estimaron con ese modelo y se corrigen con Holm dentro de cada familia.
+El test de Scheirer-Ray-Hare se conserva como antecedente exploratorio y sugiere una interacción entre estrategia y modelo. El análisis principal es el modelo ordinal mixto, que respeta el apareamiento y el anidamiento: LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶². Los efectos simples que se reportan a continuación provienen de ese modelo, no de pruebas para muestras independientes: se definieron dos familias de nueve comparaciones —estrategia dentro de cada modelo y modelo dentro de cada estrategia— y el p de Holm se aplicó dentro de cada familia @holm1979simple. Las diferencias de media esperada y de $P("score" >= 0,75)$ se acompañan con IC 95 % obtenidos por simulación de 4.000 extracciones de la distribución asintótica de los coeficientes y umbrales.
 
-Dado que se realizan 9 comparaciones (3 modelos × 3 pares de estrategias), se aplicaron correcciones de Bonferroni y Holm-Bonferroni @holm1979simple mediante `statsmodels.stats.multitest.multipletests` @seabold2010statsmodels. La @tabla-efectos-simples presenta los resultados completos.
+La @tabla-efectos-simples presenta los contrastes de estrategia dentro de cada modelo, orientados como Agentic-RAG − RAG básico, Agentic-RAG − Sin RAG y RAG básico − Sin RAG.
 
 #pagina-apaisada[
   #figure(
     three-line-table(
-      columns: (1.1fr, 1.1fr, 1.1fr, 1fr, 1fr, 1fr, 1.1fr, 1.2fr, 1fr),
+      columns: (auto, auto, auto, auto, auto, auto, auto),
       [
-        | *Modelo*   | *Estrategia 1* | *Estrategia 2* | *Med. 1* | *Med. 2* |  *U*   |    *p*    | *p corr. Holm* | *Sig. Holm* |
-        | :--------- | :------------- | :------------- | :------: | :------: | :----: | :-------: | :------------: | :---------: |
-        | gpt-5      | agentic_rag    | base_rag       | *0.9583* |  0.8333  | 3475.5 | 0.024606  |    0.073819    |             |
-        | gpt-5      | agentic_rag    | no_rag         | *0.9583* |  0.8333  | 3545.5 | 0.012841  |    0.063887    |             |
-        | gpt-5      | base_rag       | no_rag         |  0.8333  |  0.8333  | 2850.5 | 0.889993  |    1.000000    |             |
-        | gpt-5-mini | agentic_rag    | base_rag       | *0.9167* |  0.6250  | 3666.0 | 0.003055  |    0.018331    |     ✓      |
-        | gpt-5-mini | agentic_rag    | no_rag         | *0.9167* |  0.3333  | 4964.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
-        | gpt-5-mini | base_rag       | no_rag         | *0.6250* |  0.3333  | 4349.0 | $<0.0001$ |   $<0.0001$    |     ✓      |
-        | gpt-5-nano | agentic_rag    | base_rag       |  0.0833  | *0.5833* | 2076.0 | 0.002382  |    0.016676    |     ✓      |
-        | gpt-5-nano | agentic_rag    | no_rag         |  0.0833  | *0.5833* | 2221.5 | 0.012777  |    0.063887    |             |
-        | gpt-5-nano | base_rag       | no_rag         |  0.5833  |  0.5833  | 2923.5 | 0.896927  |    1.000000    |             |
+        | *Modelo* | *Contraste* | *Δ media* | *IC 95 %* | *Δ P(≥ 0,75)* | *IC 95 %* | *p de Holm* |
+        | :--- | :--- | ---: | :---: | ---: | :---: | ---: |
+        | gpt-5-nano | Agentic − RAG | *−0,270* | −0,330 a −0,202 | *−0,308* | −0,382 a −0,225 | 3,25 × 10⁻¹⁴ |
+        | gpt-5-nano | Agentic − Sin RAG | *−0,242* | −0,307 a −0,176 | *−0,270* | −0,349 a −0,192 | 1,18 × 10⁻¹¹ |
+        | gpt-5-nano | RAG − Sin RAG | 0,028 | −0,032 a 0,085 | 0,037 | −0,043 a 0,114 | 0,724 |
+        | gpt-5-mini | Agentic − RAG | *0,150* | 0,096 a 0,203 | *0,210* | 0,134 a 0,283 | 1,72 × 10⁻⁷ |
+        | gpt-5-mini | Agentic − Sin RAG | *0,513* | 0,455 a 0,562 | *0,630* | 0,564 a 0,680 | 9,42 × 10⁻⁵⁴ |
+        | gpt-5-mini | RAG − Sin RAG | *0,363* | 0,304 a 0,417 | *0,420* | 0,343 a 0,488 | 7,83 × 10⁻²⁹ |
+        | gpt-5 | Agentic − RAG | *0,106* | 0,054 a 0,155 | *0,146* | 0,074 a 0,216 | 1,03 × 10⁻⁴ |
+        | gpt-5 | Agentic − Sin RAG | *0,095* | 0,046 a 0,146 | *0,130* | 0,063 a 0,202 | 4,82 × 10⁻⁴ |
+        | gpt-5 | RAG − Sin RAG | −0,011 | −0,063 a 0,044 | −0,016 | −0,089 a 0,062 | 0,724 |
       ],
     ),
-    caption: [Efectos simples de estrategia dentro de cada modelo (Mann-Whitney U). `Med. 1` y `Med. 2` son las medianas de `respuesta_correcta_avg` para cada estrategia; en negrita, la mediana mayor de cada comparación. `p corr. Holm` es el p-value corregido por Holm-Bonferroni; ✓ indica significativo con corrección de Holm ($p_"corr" < 0.05$). $m = 9$ comparaciones.],
+    caption: [Efectos simples de estrategia dentro de cada modelo bajo el escenario principal (respuestas no sustantivas = 0), estimados con el modelo ordinal mixto. `Δ media` y `Δ P(≥ 0,75)` son diferencias de predicciones poblacionales con efectos aleatorios en cero y promedio sobre los tres jueces; los IC 95 % provienen de simulación de la distribución asintótica. El p de Holm corresponde a la familia de nueve contrastes de estrategia. En negrita, los contrastes significativos con Holm.],
   ) <tabla-efectos-simples>
+]
+
+La @tabla-efectos-modelo presenta la familia complementaria: modelo dentro de cada estrategia, orientada del modelo de menor a mayor capacidad.
+
+#pagina-apaisada[
+  #figure(
+    three-line-table(
+      columns: (auto, auto, auto, auto, auto, auto, auto),
+      [
+        | *Estrategia* | *Contraste* | *Δ media* | *IC 95 %* | *Δ P(≥ 0,75)* | *IC 95 %* | *p de Holm* |
+        | :--- | :--- | ---: | :---: | ---: | :---: | ---: |
+        | Sin RAG | mini − nano | *−0,273* | −0,328 a −0,212 | *−0,295* | −0,366 a −0,223 | 4,36 × 10⁻¹⁷ |
+        | Sin RAG | gpt-5 − nano | *0,167* | 0,110 a 0,225 | *0,233* | 0,153 a 0,309 | 1,15 × 10⁻⁷ |
+        | Sin RAG | gpt-5 − mini | *0,440* | 0,380 a 0,493 | *0,528* | 0,452 a 0,589 | 2,99 × 10⁻³⁹ |
+        | RAG básico | mini − nano | *0,063* | 0,005 a 0,120 | *0,087* | 0,007 a 0,166 | 0,068 |
+        | RAG básico | gpt-5 − nano | *0,128* | 0,071 a 0,186 | *0,180* | 0,100 a 0,260 | 4,93 × 10⁻⁵ |
+        | RAG básico | gpt-5 − mini | *0,065* | 0,011 a 0,124 | *0,093* | 0,015 a 0,174 | 0,064 |
+        | Agentic-RAG | mini − nano | *0,483* | 0,419 a 0,539 | *0,605* | 0,534 a 0,660 | 8,92 × 10⁻⁴³ |
+        | Agentic-RAG | gpt-5 − nano | *0,504* | 0,439 a 0,561 | *0,634* | 0,567 a 0,686 | 2,82 × 10⁻⁴⁷ |
+        | Agentic-RAG | gpt-5 − mini | 0,021 | −0,023 a 0,066 | 0,029 | −0,031 a 0,089 | 0,349 |
+      ],
+    ),
+    caption: [Efectos simples de modelo dentro de cada estrategia bajo el escenario principal, estimados con el modelo ordinal mixto. Las diferencias están orientadas del primer al segundo modelo indicado (por ejemplo, `mini − nano` = gpt-5-mini menos gpt-5-nano). El p de Holm corresponde a la familia de nueve contrastes de modelo. En negrita, los contrastes significativos con Holm.],
+  ) <tabla-efectos-modelo>
 ]
 
 Los resultados revelan patrones diferenciados por modelo:
 
-+ *gpt-5-mini* es el modelo más sensible a la estrategia: las tres comparaciones son significativas incluso con corrección de Holm-Bonferroni. Agentic-RAG (mediana 0.92) supera ampliamente a RAG básico (0.63) y a sin RAG (0.33), evidenciando una dependencia crítica del contexto externo.
-+ *gpt-5-nano* muestra un comportamiento contraintuitivo: Agentic-RAG (0.08) degrada significativamente el desempeño respecto a RAG básico (0.58, $p_"corr" = 0.017$), pero la degradación frente a sin RAG (0.58, $p_"corr" = 0.064$) no alcanza significación con corrección de Holm. Esto sugiere que la complejidad agéntica es excesiva para modelos de capacidad reducida.
-+ *gpt-5* se beneficia de Agentic-RAG (0.96 vs. 0.83 sin RAG, $p = 0.013$), aunque esta mejora no sobrevive a la corrección por comparaciones múltiples ($p_"corr" = 0.064$), indicando un efecto positivo pero moderado.
++ *gpt-5-mini* es el modelo más sensible a la estrategia: los tres contrastes son significativos con corrección de Holm. Agentic-RAG supera a RAG básico en 0,150 de media (IC 95 % 0,096 a 0,203) y a Sin RAG en 0,513, lo que evidencia una dependencia crítica del contexto externo.
++ *gpt-5-nano* presenta el patrón inverso: Agentic-RAG reduce la media en 0,270 frente a RAG básico (IC 95 % −0,330 a −0,202) y en 0,242 frente a Sin RAG. RAG básico no se distingue de Sin RAG (0,028; IC 95 % −0,032 a 0,085). La magnitud y la dirección del contraste se interpretan como un modo de fallo de respuesta; la atribución causal se discute más adelante.
++ *gpt-5* se beneficia de Agentic-RAG en 0,106 de media (IC 95 % 0,054 a 0,155) frente a RAG básico y en 0,095 frente a Sin RAG; RAG básico no se distingue de Sin RAG (−0,011). El efecto es positivo y significativo, aunque menor que en gpt-5-mini.
 
-Estos resultados refuerzan el hallazgo de interacción: el efecto de Agentic-RAG es marcadamente beneficioso para modelos de capacidad media-alta pero perjudicial para el modelo más pequeño.
+En la familia de modelo dentro de estrategia, las tres comparaciones de Sin RAG y de Agentic-RAG son significativas con Holm. En RAG básico, gpt-5 supera a gpt-5-nano, mientras que mini − nano y gpt-5 − mini no sobreviven a la corrección ($p_"Holm"$ = 0,068 y 0,064); esos dos contrastes no permiten afirmar equivalencia, solo ausencia de evidencia suficiente con este tamaño muestral.
+
+Estos resultados refuerzan el hallazgo de interacción: el signo del efecto de Agentic-RAG difiere entre modelos y su magnitud es máxima en los extremos de la escala evaluada.
 
 La @tabla-celdas-principal presenta la descripción y la predicción de la variable de respuesta principal para las nueve configuraciones sobre la base completa de 79 unidades por celda. A diferencia de la versión anterior de esta tabla, todas las celdas tienen $n = 79$; las diferencias respecto de los valores previos se deben a la recuperación de las 27 observaciones descrita antes y no a un cambio de los datos de origen.
 
