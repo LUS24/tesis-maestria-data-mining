@@ -53,4 +53,4 @@
 - 1 quedó solo con un comentario no aplicado (Q24).
 - 7 no fueron intervenidas: Q7, Q8, Q9, Q12, Q13, Q15, Q20.
 
-El conteo es una cota inferior: el ODT registra comentarios y cambios, pero no un campo de “aceptado/rechazado” por pregunta. Las decisiones del autor se verifican contra el JSON final en `decisiones_revision.csv`.
+El conteo es una cota inferior: el ODT registra comentarios y cambios, pero no un campo de “aceptado/rechazado” por pregunta. El estado de cada intervención se verifica contra el JSON final en `decisiones_revision.csv`; las decisiones de la tesis están en `resumen_ejecutivo.md`.

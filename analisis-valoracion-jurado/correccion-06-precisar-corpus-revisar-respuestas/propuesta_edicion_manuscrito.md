@@ -2,6 +2,8 @@
 
 Este documento propone cambios concretos en los archivos `.typ` y en los README. **No modifica ningún archivo existente**: las citas “Actual” son el texto que hoy figura en el repositorio y las citas “Propuesto” son textos para que el autor revise antes de editar.
 
+> **Este documento contiene textos de edición, no decisiones.** La evidencia está en `hallazgos_respuestas_referencia.md`; las decisiones locales, en `resumen_ejecutivo.md`; el registro global, en [`../DECISIONES_integradas.md`](../DECISIONES_integradas.md), Bloque D.
+
 ## 1. Procedencia y versión del corpus
 
 ### 1.1. `manuscrito/capitulos/06_capitulo_05_metodologia.typ`, líneas 51–58
@@ -123,9 +125,9 @@ Este documento propone cambios concretos en los archivos `.typ` y en los README.
 
 > Las preguntas fueron generadas con GPT-4.1 y revisadas por una profesional del derecho argentino con experiencia en legislación minera. La revisión quedó registrada en un archivo ODT con control de cambios; el documento sin revisión se conserva por separado. La revisión produjo comentarios y ediciones sobre los enunciados, las respuestas y las referencias. El ODT contiene 166 regiones de cambio, 130 fragmentos con texto y 80 párrafos con diferencias. La revisión alcanzó 18 de las 25 preguntas: 17 tienen cambio de contenido o corrección aplicada y Q24 quedó solo con un comentario no incorporado; 7 no fueron intervenidas. No hubo una segunda revisión independiente.
 >
-> El benchmark final contiene 25 casos y 79 unidades de evaluación. Cada unidad incluye enunciado, respuesta esperada y referencias. La versión 1 del benchmark se generó a partir del documento revisado; cualquier corrección posterior debe registrarse en una versión nueva.
+> El benchmark final contiene 25 casos y 79 unidades de evaluación. Cada unidad incluye enunciado, respuesta esperada y referencias. La versión 1 del benchmark se generó a partir del documento revisado; no se crea una versión nueva en esta tesis.
 
-**Por qué:** el ODT contiene 166 regiones de cambio, 130 con texto, y 80 párrafos con diferencias; muchas son comentarios editoriales, no cambios aprobados. Decir que hubo “validación final” y “segunda revisión” sin documentarla sobrestima el proceso. Si la segunda revisión existió, debe indicarse quién la hizo, cuándo y con qué resultado.
+**Por qué:** las 166 regiones de cambio incluyen comentarios editoriales y no todas son cambios aprobados. Por eso el texto propuesto no afirma “validación final” ni una segunda revisión; la decisión está en `resumen_ejecutivo.md` §2.
 
 ### 2.3. README raíz, línea 26
 
@@ -135,7 +137,7 @@ Este documento propone cambios concretos en los archivos `.typ` y en los README.
 
 **Propuesto**
 
-> ... un benchmark de 25 preguntas legales revisado por una profesional del derecho argentino, con cambios registrados y decisiones documentadas...
+> ... un benchmark de 25 preguntas legales revisado por una profesional del derecho argentino, con cambios registrados y criterios documentados...
 
 **Por qué:** hay una sola profesional revisora y el proceso de revisión incluyó comentarios no resueltos; “validadas por profesionales” en plural no es exacto.
 
@@ -151,7 +153,7 @@ Este documento propone cambios concretos en los archivos `.typ` y en los README.
 
 > El Estado puede otorgar la concesión sin el consentimiento de la propietaria del terreno. El artículo 7 establece que las minas son bienes privados de la Nación o de las provincias según el territorio. El artículo 10 dispone que, sin perjuicio del dominio originario del Estado, la propiedad particular de las minas se establece por concesión legal; el artículo 11 establece que las minas forman una propiedad distinta de la del terreno en que se encuentran; y el artículo 18 añade que las minas se conceden a los particulares por tiempo ilimitado. Por tanto, la propiedad minera es distinta de la propiedad del suelo y el consentimiento del superficiario no es el título de la concesión.
 
-**Por qué:** el artículo 8 se refiere a la facultad de buscar minas, aprovecharlas y disponer de ellas, no a la separación de la propiedad. El “tiempo ilimitado” está en el artículo 18, no en los artículos 10 y 11. La respuesta JSON de 1.2 y los artículos 8/11 del corpus y de `título_i.md` son correctos; el error está solo en el anexo Typst. No se modifica el benchmark: corregir únicamente el anexo. Agregar el artículo 18 solo si se mantiene la frase sobre “tiempo ilimitado”.
+**Por qué:** el artículo 8 se refiere a la facultad de buscar minas, aprovecharlas y disponer de ellas, no a la separación de la propiedad. El “tiempo ilimitado” está en el artículo 18, no en los artículos 10 y 11. La respuesta JSON de 1.2 y los artículos 8/11 del corpus y de `título_i.md` son correctos; el error está solo en el anexo Typst. El artículo 18 se agrega solo si se conserva la frase sobre “tiempo ilimitado”. La decisión está en `resumen_ejecutivo.md` §2.
 
 ### 3.2. Subpregunta 1.3: paráfrasis del artículo 17
 
@@ -163,11 +165,7 @@ Este documento propone cambios concretos en los archivos `.typ` y en los README.
 
 > El artículo 17 dispone que los trabajos de las minas no pueden ser impedidos ni suspendidos sino cuando lo exija la seguridad pública, la conservación de las pertenencias y la salud o existencia de los trabajadores. Por tanto, la propietaria no puede invocar sin más su propiedad para impedir la explotación; cualquier oposición debe encuadrarse en alguna de esas causales y ser resuelta por la autoridad competente.
 
-**Por qué:** el artículo 17 no dice “seguridad o ambientales” ni usa la palabra “solo”. La paráfrasis actual omite la conservación de las pertenencias y la salud o existencia de los trabajadores, y agrega una categoría ambiental que no está en el texto. El error está en el JSON y en el anexo Typst; el artículo 17 del corpus y de `título_i.md` es correcto. El benchmark v1 no se modifica porque ya fue usado para las 711 respuestas. Corregir el anexo del manuscrito para citar el artículo 17 literalmente y declarar la discrepancia como limitación; una nueva revisión o reevaluación corresponde a trabajo futuro.
-
-### 3.3. Hallazgos fuera del alcance de esta respuesta
-
-La auditoría adicional detectó Q1.1 (etiqueta “inciso” en el artículo 2), Q13.2/Q13.3, Q22.1 y Q25 (referencias incompletas), y Q23/Q24 (alcance de regímenes especiales). **No forman parte de la respuesta al jurado**: las preguntas ya fueron revisadas por la profesional y se mantienen como tales. Quedan documentados en `hallazgos_respuestas_referencia.md` para trabajo futuro. No se propone una nueva revisión, un benchmark v2 ni un cambio de las respuestas ya evaluadas en esta tesis.
+**Por qué:** el artículo 17 no dice “seguridad o ambientales” ni usa la palabra “solo”. La paráfrasis actual omite la conservación de las pertenencias y la salud o existencia de los trabajadores, y agrega una categoría ambiental que no está en el texto. El error está en el JSON y en el anexo Typst; el artículo 17 del corpus y de `título_i.md` es correcto. La decisión sobre el benchmark v1 está en `resumen_ejecutivo.md` §2.
 
 ## 4. Otras correcciones de consistencia
 
@@ -177,19 +175,11 @@ La auditoría adicional detectó Q1.1 (etiqueta “inciso” en el artículo 2),
 - `manuscrito/capitulos/anexo_01.typ`, línea 236: “revisadas y validadas por un profesional” → “revisadas por una profesional”; “validado” implica un proceso que no está documentado.
 - `manuscrito/capitulos/anexo_01.typ`, línea 238: el enlace al repositorio es correcto; verificar que la versión publicada incluya `data/20250804_101435_generated_questions-SIN_REVISION.docx` y el ODT revisado, o documentar que son evidencia interna y no forman parte del benchmark publicado.
 
-## 5. Lo que no debe afirmarse sin nueva evidencia
+## 5. Orden de aplicación
 
-- Que el corpus es una copia fiel del PDF de 1997.
-- Que Infoleg fue descartado por completo.
-- Que la extracción fue validada sobre una muestra representativa sin informar tamaño y error.
-- Que el benchmark fue validado por “profesionales” en plural o por una segunda revisión independiente.
-- Que la respuesta 1.2 se funda en el artículo 8.
-- Que el artículo 17 solo admite oposición por “seguridad o ambiente”.
+1. Corregir metadatos y conteos (`§1.4` y `§2.1`), que no dependen de decisiones jurídicas.
+2. Reescribir la procedencia del corpus y la descripción de la revisión (`§1.1–1.3` y `§2.2–2.3`).
+3. Corregir el anexo de 1.2 y 1.3 (`§3.1–3.2`).
+4. Sincronizar README, anexo y conclusiones (`§4`).
 
-## 6. Orden sugerido de edición
-
-1. Corregir metadatos y conteos (secciones 1.3–2.1), que no dependen de decisiones jurídicas.
-2. Corregir el anexo 1.2 y 1.3 (sección 3), con revisión de la abogada.
-3. Reescribir la procedencia del corpus y la descripción de la revisión (secciones 1.1–1.2 y 2.2).
-4. Corregir el anexo 1.2 (solo Typst) y documentar 1.3 (JSON y Typst) sin modificar el benchmark v1.
-5. Sincronizar README y conclusiones después de cerrar las decisiones anteriores.
+Las decisiones que respaldan estos cambios están solo en `resumen_ejecutivo.md` §2.

@@ -100,9 +100,9 @@ with (OUT / "propuestas_benchmark.csv").open("w", encoding="utf-8", newline="") 
     w.writerows(rows)
 
 lines = [
-    "# Propuestas para una versión v2 del benchmark",
+    "# Registro histórico de propuestas de la auditoría adicional",
     "",
-    "Estas propuestas no modifican `data/evaluation_questions_v20250804_101435.json`. Se ofrecen para que el autor y la abogada decidan qué cambios incorporar en una versión nueva y documentada.",
+    "Estas propuestas no modifican `data/evaluation_questions_v20250804_101435.json` y **no forman parte de las decisiones de esta tesis**. Se conservan solo como trazabilidad de la auditoría adicional; no se usan para crear una v2 ni para reabrir las preguntas ya revisadas (ver `resumen_ejecutivo.md` §5).",
     "",
     "| ID | Unidad | Campo | Actual | Propuesto | Motivo | Prioridad |",
     "| --- | --- | --- | --- | --- | --- | --- |",
@@ -111,9 +111,9 @@ for r in rows:
     lines.append(f"| {r['id']} | {r['unidad']} | {r['campo']} | {r['actual']} | {r['propuesto']} | {r['motivo']} | {r['prioridad']} |")
 lines += [
     "",
-    "## Criterio de versionado",
+    "## Condición histórica",
     "",
-    "Si se acepta cualquier cambio de B01–B12, crear `data/evaluation_questions_v20250804_101435_v2.json` (o un nombre con fecha) y dejar el archivo original intacto. Registrar en un changelog qué unidades cambiaron, quién los aprobó y con qué fuente. No recalcular las métricas históricas con el benchmark nuevo sin distinguir explícitamente la versión.",
+    "Este registro no es una decisión ni una hoja de ruta. Si en el futuro se decidiera crear una versión nueva, debería documentarse por separado; esa decisión no corresponde a esta tesis.",
 ]
 (OUT / "propuestas_benchmark.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 print("proposals", len(rows))

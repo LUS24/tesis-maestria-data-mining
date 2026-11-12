@@ -227,7 +227,7 @@ def main() -> None:
         + ", ".join(f"Q{r['numero_pregunta']}" for r in untouched)
         + ".",
         "",
-        "El conteo es una cota inferior: el ODT registra comentarios y cambios, pero no un campo de “aceptado/rechazado” por pregunta. Las decisiones del autor se verifican contra el JSON final en `decisiones_revision.csv`.",
+        "El conteo es una cota inferior: el ODT registra comentarios y cambios, pero no un campo de “aceptado/rechazado” por pregunta. El estado de cada intervención se verifica contra el JSON final en `decisiones_revision.csv`; las decisiones de la tesis están en `resumen_ejecutivo.md`.",
     ]
     (OUT / "resumen_conteo_preguntas.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"Preguntas: {total_q}; intervenidas: {len(with_changes)}; corregidas: {len(corrected)}; solo comentario: {len(comment_only)}; sin intervención: {len(untouched)}")

@@ -1,6 +1,6 @@
-# Propuestas para una versión v2 del benchmark
+# Registro histórico de propuestas de la auditoría adicional
 
-Estas propuestas no modifican `data/evaluation_questions_v20250804_101435.json`. Se ofrecen para que el autor y la abogada decidan qué cambios incorporar en una versión nueva y documentada.
+Estas propuestas no modifican `data/evaluation_questions_v20250804_101435.json` y **no forman parte de las decisiones de esta tesis**. Se conservan solo como trazabilidad de la auditoría adicional; no se usan para crear una v2 ni para reabrir las preguntas ya revisadas (ver `resumen_ejecutivo.md` §5).
 
 | ID | Unidad | Campo | Actual | Propuesto | Motivo | Prioridad |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -17,6 +17,6 @@ Estas propuestas no modifican `data/evaluation_questions_v20250804_101435.json`.
 | B11 | Q24.0 | enunciado | Un concesionario explota una mina desde antes de la vigencia de la Ley 24.585 y desea conocer su obligación ambiental transitoria. | Un concesionario explota una mina desde antes de la vigencia de la Ley 24.585 (ley de protección ambiental para la actividad minera) y desea conocer su obligación transitoria de presentar el informe de impacto ambiental. | La revisora pidió aclarar genéricamente el tema de la ley citada. La pregunta actual presupone conocimiento de la Ley 24.585. | media |
 | B12 | Q25.0 | enunciado | Una empresa de explotación de litio consulta sobre el régimen de multiplicidad de pertenencias aplicable a yacimientos de litio en 2025. | Una empresa de explotación de litio consulta sobre el régimen de multiplicidad de pertenencias aplicable a yacimientos de litio, según el Código de Minería vigente al año 2025. | La revisora pidió aclarar la temporalidad y la norma; el enunciado actual no identifica el Código ni la versión consultada. | media |
 
-## Criterio de versionado
+## Condición histórica
 
-Si se acepta cualquier cambio de B01–B12, crear `data/evaluation_questions_v20250804_101435_v2.json` (o un nombre con fecha) y dejar el archivo original intacto. Registrar en un changelog qué unidades cambiaron, quién los aprobó y con qué fuente. No recalcular las métricas históricas con el benchmark nuevo sin distinguir explícitamente la versión.
+Este registro no es una decisión ni una hoja de ruta. Si en el futuro se decidiera crear una versión nueva, debería documentarse por separado; esa decisión no corresponde a esta tesis.

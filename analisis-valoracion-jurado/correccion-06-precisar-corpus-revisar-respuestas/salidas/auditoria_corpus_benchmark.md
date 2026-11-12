@@ -59,30 +59,29 @@
 | --- | --- | --- | --- | --- |
 | Q1.1 | Artículo 2, inciso 1 | ok | sí | artículo 2 usa categorías/numerales, no incisos |
 
-### Unidades que requieren revisión jurídica inmediata
+### Unidades con alertas de referencias o citas
 
 | Unidad | Referencias | Citas en la respuesta | Alertas |
 | --- | --- | --- | --- |
-| Q1.1 | Artículo 2, inciso 1, Artículo 3, inciso a | 3, 2 | La referencia 'Artículo 2, inciso 1' debe expresarse como categoría/numeral 1°: el artículo 2 divide en categorías, no en incisos. |
-| Q1.2 | Artículo 7, Artículo 10, Artículo 11 | 7, 10, 11 | El anexo Typst cita art. 8 para la separación de propiedad; la respuesta JSON y el corpus sostienen arts. 7, 10 y 11. Corregir el anexo, no la respuesta. |
-| Q1.3 | Artículo 8, Artículo 13, Artículo 17 | 8, 13, 17 | La respuesta parafrasea el art. 17 como 'seguridad pública, salud o conservación ambiental'; el texto dice 'seguridad pública, conservación de las pertenencias y salud o existencia de los trabajadores'. Revisar la paráfrasis y el alcance de 'solamente'. |
+| Q1.1 | Artículo 2, inciso 1, Artículo 3, inciso a | 3, 2 | La referencia 'Artículo 2, inciso 1' usa 'inciso'; el artículo 2 divide en categorías, no en incisos. |
+| Q1.2 | Artículo 7, Artículo 10, Artículo 11 | 7, 10, 11 | El anexo Typst cita art. 8 para la separación de propiedad; la respuesta JSON y el corpus sostienen arts. 7, 10 y 11. Ver propuesta §3.1. |
+| Q1.3 | Artículo 8, Artículo 13, Artículo 17 | 8, 13, 17 | La respuesta parafrasea el art. 17 como 'seguridad pública, salud o conservación ambiental'; el texto dice 'seguridad pública, conservación de las pertenencias y salud o existencia de los trabajadores'. Ver propuesta §3.2. |
 | Q13.2 | Artículo 243 | 243, 236, 237, 235, 241, 240 | La respuesta cita 235, 236, 237, 240, 241 y 243; la lista de referencias solo incluye 243. |
 | Q13.3 | Artículo 245 | 245, 265, 264 | La respuesta cita 264 y 265 además de 245; la lista de referencias solo incluye 245. |
 | Q22.1 | Artículo 45, Artículo 353 | 45 | La unidad declara el artículo 353, pero la respuesta solo cita el 45; verificar si 353 corresponde a Q22.2. |
 | Q23.0 | Artículo 348, Artículo 349 | 348, 349 | Caso de Río Turbio con régimen especial no explicitado. La revisora no pidió eliminar Q23; el caso que propuso eliminar es el de hidrocarburos (Ley 17.319). |
-| Q24.0 | Artículo 355 | 355 | La pregunta usa la Ley 24.585 sin explicar su tema; la abogada sugirió aclararlo. |
+| Q24.0 | Artículo 355 | 355 | La pregunta usa la Ley 24.585 sin explicar su tema; la profesional sugirió aclararlo. |
 | Q25.0 | Artículo 351 | 76, 351 | La respuesta cita el artículo 76, pero la lista de referencias solo incluye el 351. |
 
 ### Cobertura de citas
 
 Los detalles por unidad están en `unidades_benchmark.csv`; cada cita extraída está en `citas_respuestas.csv`. Las alertas automáticas son un punto de partida: no sustituyen la lectura jurídica de la respuesta.
 
-## Lectura para la corrección del manuscrito
+## Trazabilidad
 
-1. Corregir la fecha de sanción y la fecha de publicación en el anexo y en el JSON de metadatos usado para generar tablas; no afirmar 1994.
-2. Describir el corpus como **texto actualizado a partir del HTML de Infoleg**, con el PDF de 1997 como fuente histórica y el OCR como insumo parcial. No afirmar que Infoleg fue descartado sin explicar que su texto quedó incorporado.
-3. Unificar el conteo: 398 nodos artículo = 347 cuerpo + 15 disposiciones + 36 apéndice; 362 números únicos; 239 derogado/vacío.
-4. Corregir el anexo Typst de la subpregunta 1.2 (art. 8 → arts. 7, 10 y 11) y revisar la paráfrasis de 1.3.
-5. Llevar a revisión de la abogada los casos Q23–Q25 y las respuestas que dependen de leyes especiales; no presentarlos como evaluación pura del Código.
-6. Resolver las referencias 'Artículo 2, inciso 1' y otras etiquetas de inciso antes de volver a calcular métricas de citación.
+Las alertas de este informe son evidencia, no decisiones. Las decisiones locales están en `resumen_ejecutivo.md`; los textos propuestos, en `propuesta_edicion_manuscrito.md`.
+
+- Q1.2 y Q1.3: ver `propuesta_edicion_manuscrito.md` §3.1 y §3.2.
+- Fechas y conteos: ver `propuesta_edicion_manuscrito.md` §1.4 y §2.1.
+- Q1.1, Q13, Q22 y Q23–Q25: fuera de alcance; ver `resumen_ejecutivo.md` §5.
 
