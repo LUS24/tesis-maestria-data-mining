@@ -9,6 +9,10 @@
 
 El subdirectorio `reconciliacion_v1/` fija las cifras de V.1 y V.6 para Tabla 4. Usa los p Holm de `correccion-01` en V.1 y Wilcoxon de Pratt sobre las 38 respuestas sustantivas en V.6. Informe: `reconciliacion_v1/INFORME_RECONCILIACION.md`.
 
+## Métricas de recuperación (NV-02)
+
+El subdirectorio `metricas_recuperacion/` calcula recall@k, MRR y cobertura desde los 1.364 registros de `part_g`, con el baseline de `part_d`. Informe: `metricas_recuperacion/INFORME_METRICAS_RECUPERACION.md`.
+
 ## Resultado
 
 | Rúbrica | Valores | Observaciones | Jueces | α ordinal |

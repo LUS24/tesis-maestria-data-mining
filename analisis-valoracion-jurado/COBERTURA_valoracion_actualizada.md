@@ -43,7 +43,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | V.5 | Factores confundidos, prompts, Agente de Calidad, límite de búsquedas | `correccion-04`; `correccion-05` | **Cubierto** | Quedan decisiones de redacción: 7/6, `16_01` y notebook canónico (PI-10, PI-11) |
 | V.6 | 41 salidas no sustantivas, reincorporar casos 23–25, corregir faltantes, reformular sobrecarga | `correccion-02`; `correccion-01`; `correccion-05` | **Cubierto** | La base final tiene 58 no sustantivas y 41 en nano agéntico; el join 23–25 está resuelto. Las medias 0,82/0,84/0,64 se reproducen; `p = 0,19` y `p = 0,003` se reproducen con Wilcoxon de Pratt sobre las 38 respuestas sustantivas. Falta editar el manuscrito |
 | V.7 | Validez del benchmark, respuestas de referencia y jueces; citas deterministas; submuestra humana | `correccion-06`; `verificacion-analisis-estadistico`; `correccion-05` | **Parcial** | Hay auditoría de referencias y evidencia de jueces; no hay métricas de citas sobre respuestas generadas ni validación humana (NV-03) |
-| V.8 | Evaluar recuperación; comparar embedding/BM25 | `part_d` y datos de `correccion-06`; no hay notebook en los paquetes | **Parcial** | Las métricas de RAG básico se reproducen desde `part_d`: recall@10 0,333; MRR 0,214; 27,8 % con todos los artículos; 59,5 % sin ninguno. Falta el artefacto reproducible y la comparación con BM25/otro embedding (NV-02) |
+| V.8 | Evaluar recuperación; comparar embedding/BM25 | `part_d` y `verificacion-analisis-estadistico/metricas_recuperacion/` | **Cubierto con salvedad** | Se reprodujo el baseline (recall@10 0,333; MRR 0,214; 27,8 %/59,5 %) y se calcularon las métricas de Agentic-RAG desde los `.json`: recall@10 0,399–0,446; MRR 0,242–0,281. No hay comparación con BM25/otro embedding porque se perdió el volumen de Milvus |
 | V.9 | Versión y calidad del corpus | `correccion-06` | **Cubierto con salvedad** | Versión, conteos y linaje están auditados; la calidad de extracción no se cuantificó con tasa de error, solo con comparación de artículos clave |
 | V.10 | Costos, Pareto y recomendación | `correccion-05` | **Cubierto** | Costos históricos, frontera de Pareto y costo por respuesta ≥ 0,75 |
 | V.11 | Título, alcance, repositorio y declaración de IA | `correccion-05`; verificación pública | **Parcial** | Título/objetivo están propuestos; el repositorio es público; la declaración de IA sigue pendiente (NV-04) |
@@ -62,7 +62,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | IX.1.6 Corpus, origen y respuestas de referencia | **Cubierto en análisis** | `correccion-06`; 1.2/1.3 verificados; Q23–Q25 fuera de alcance |
 | IX.1.7 Tablas 2 y 3, auditoría bibliográfica | **Cubierto** | `correccion-07`; quedan decisiones manuales de autoría/DOI/fuente |
 | IX.1.8 Ampliar declaración de IA | **No cubierto** | Solo existe la propuesta general de `correccion-05`; falta una declaración por etapas y revisar el antecedente de la “referencia fabricada” que menciona la nueva valoración |
-| IX.1.9 Informar métricas de recuperación | **Parcial** | Los datos están en `part_d` y los logs; las cifras de RAG básico se reproducen, pero no hay notebook/CSV de resultados en los paquetes. Falta un artefacto propio (NV-02) |
+| IX.1.9 Informar métricas de recuperación | **Cubierto** | `verificacion-analisis-estadistico/metricas_recuperacion/`: baseline y Agentic-RAG por modelo, con definiciones y límites |
 
 ---
 
@@ -70,7 +70,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 
 | Punto | Estado | Evidencia / faltante |
 |---|---|---|
-| IX.2.1 Comparar embedding con recuperador entrenado y BM25/híbrido | **No cubierto** | Solo existe la propuesta en el plan; no hay notebook ni resultados |
+| IX.2.1 Comparar embedding con recuperador entrenado y BM25/híbrido | **Parcial** | Se comparó el baseline registrado con Agentic-RAG; no se pudo comparar con BM25/otro embedding porque el volumen de Milvus se perdió y no se recreó |
 | IX.2.2 Precisión/exhaustividad de citas y citas inexistentes | **Parcial** | `correccion-06` extrae citas de las respuestas esperadas del benchmark (`unidades_benchmark.csv`, `citas_respuestas.csv`), no de las respuestas generadas por el sistema. No hay precisión/recall/F1 ni tasa de citas inexistentes sobre las 711 respuestas |
 | IX.2.3 Validación humana de jueces | **No cubierto** | Sigue pendiente; la revisión de 87 filas es del autor y la del benchmark es de una profesional, no de las respuestas generadas |
 | IX.2.4 Réplicas y ablación | **No cubierto** | `correccion-04` analiza el diseño, pero no se ejecutaron réplicas ni sustitución controlada |
