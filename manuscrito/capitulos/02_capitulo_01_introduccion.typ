@@ -116,7 +116,7 @@ Desarrollar y evaluar un prototipo Agentic-RAG de código abierto, utilizando el
 
 == Transferencia de los resultados obtenidos
 
-El código y la documentación generada durante el proyecto se cargarán a un repositorio del sistema de control de versiones "Git"#footnote[#link("https://git-scm.com/")] y luego se subirá la información a la plataforma "GitHub"#footnote[#link("https://github.com/")] en un repositorio público para que cualquier individuo pueda descargarlo.
+El código, el benchmark, el corpus, los logs de los agentes y las evaluaciones se publicaron en un repositorio público de "GitHub"#footnote[#link("https://github.com/")] bajo control de versiones con "Git"#footnote[#link("https://git-scm.com/")]: #link("https://github.com/LUS24/tesis-maestria-data-mining")[https://github.com/LUS24/tesis-maestria-data-mining]. El repositorio es accesible sin autenticación y cualquier persona puede descargarlo y auditarlo. La clonación y ejecución completas se documentan como recomendación de reproducibilidad y no como garantía de reproducibilidad exacta de las respuestas.
 
 La solución propuesta tiene aplicaciones prácticas que trascienden el ámbito específico de la normativa argentina:
 
