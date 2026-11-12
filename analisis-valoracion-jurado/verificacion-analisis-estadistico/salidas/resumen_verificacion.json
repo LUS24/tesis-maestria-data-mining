@@ -1,0 +1,95 @@
+{
+  "fuente_original": "codigo_experimentos/part_i/final_judge_results.csv",
+  "n_filas_jueces": 2133,
+  "n_unidades": 711,
+  "n_unidades_unicas": 79,
+  "n_jueces": 3,
+  "jueces": [
+    "Grok 4.1 Fast",
+    "DeepSeek V3.1",
+    "Kimi K2 0905"
+  ],
+  "alpha_global_raw": 0.8078424689763564,
+  "alpha_global_rubric": 0.7995418703552886,
+  "alpha_precision_global_raw": 0.7845657645755232,
+  "alpha_precision_global_rubric": 0.7839846183151695,
+  "alpha_por_sistema": [
+    {
+      "sistema": "llm_responses_no_rag",
+      "sistema_label": "Sin RAG",
+      "unidades": 237,
+      "evaluaciones": 711,
+      "alpha_raw": 0.6979371475393842,
+      "alpha_rubric": 0.6921802557417742,
+      "alpha_precision_raw": 0.6210906222924907,
+      "alpha_precision_rubric": 0.6212908000891874
+    },
+    {
+      "sistema": "llm_responses_base_rag",
+      "sistema_label": "RAG básico",
+      "unidades": 237,
+      "evaluaciones": 711,
+      "alpha_raw": 0.8219080703139857,
+      "alpha_rubric": 0.8139641035964996,
+      "alpha_precision_raw": 0.6388817998117198,
+      "alpha_precision_rubric": 0.6384000426858614
+    },
+    {
+      "sistema": "llm_responses_agentic_rag",
+      "sistema_label": "Agentic-RAG",
+      "unidades": 237,
+      "evaluaciones": 711,
+      "alpha_raw": 0.8693134124653613,
+      "alpha_rubric": 0.8622822821290432,
+      "alpha_precision_raw": 0.7550128942662557,
+      "alpha_precision_rubric": 0.7511084120974082
+    }
+  ],
+  "spearman_pares": [
+    {
+      "juez_1": "grok_4_1_fast_free",
+      "juez_1_label": "Grok 4.1 Fast",
+      "juez_2": "openrouter_deepseek_deepseek-chat-v3-1",
+      "juez_2_label": "DeepSeek V3.1",
+      "n": 711,
+      "rho": 0.8226418707274222,
+      "p": 4.9808386523379854e-176
+    },
+    {
+      "juez_1": "grok_4_1_fast_free",
+      "juez_1_label": "Grok 4.1 Fast",
+      "juez_2": "openrouter_moonshotai_kimi-k2-0905",
+      "juez_2_label": "Kimi K2 0905",
+      "n": 711,
+      "rho": 0.843769116113012,
+      "p": 8.576752530235585e-194
+    },
+    {
+      "juez_1": "openrouter_deepseek_deepseek-chat-v3-1",
+      "juez_1_label": "DeepSeek V3.1",
+      "juez_2": "openrouter_moonshotai_kimi-k2-0905",
+      "juez_2_label": "Kimi K2 0905",
+      "n": 711,
+      "rho": 0.7936709453172768,
+      "p": 3.466857742476605e-155
+    }
+  ],
+  "n_no_sustantivas": 58,
+  "nano_agentic_no_sustantivas": 41,
+  "costo_total_usd": 22.29387015,
+  "n_casos_discrepancia": 23,
+  "n_evaluaciones_positivas_no_sustantivas": 17,
+  "contraste_correccion_01": {
+    "alpha_publicado_raw": 0.8078424689763564,
+    "alpha_publicado_rubric": 0.7995418703552886,
+    "alpha_publicado_precision_raw": 0.7845657645755232,
+    "coincide_raw": true,
+    "coincide_rubric": true,
+    "coincide_precision_raw": true,
+    "publicado": {
+      "long_rows": 2133,
+      "long_units": 711
+    }
+  },
+  "nota": "El cálculo parte de final_judge_results.csv, no de la tabla larga derivada de la corrección 01. No se modificaron los archivos fuente."
+}
