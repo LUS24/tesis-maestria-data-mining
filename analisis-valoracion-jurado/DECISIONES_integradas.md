@@ -14,7 +14,7 @@
 
 | Directorio | Qué contiene | Verificación realizada | Estado | Pendiente principal |
 |---|---|---|---|---|
-| `correccion-01-analisis-estadistico` | Modelo ordinal mixto, Friedman/Wilcoxon, bootstrap por casos, escenarios, figuras y tablas | `37_validacion_artefactos.json` sin errores; conteos releídos: 711 observaciones, 2.133 evaluaciones, 58 no sustantivas, 9 celdas | **OK** | Insertar el análisis en el manuscrito; reconciliar cifras de V.1 (NV-01) y decidir sensibilidad (PI-29) |
+| `correccion-01-analisis-estadistico` | Modelo ordinal mixto, Friedman/Wilcoxon, bootstrap por casos, escenarios, figuras y tablas | `37_validacion_artefactos.json` sin errores; conteos releídos: 711 observaciones, 2.133 evaluaciones, 58 no sustantivas, 9 celdas | **OK** | Insertar el análisis en el manuscrito; reconciliar cifras de V.1 (NV-01) y declarar Laplace (PI-29) |
 | `correccion-02-diagnostico-gpt-5-nano` | Clasificación de las 711 respuestas, auditoría de logs, jueces y faltantes | Acta de revisión 87/87; resumen final: 58 no sustantivas, 41 en nano agéntico; notebook válido sin errores | **OK** | Revisión independiente y tratamiento de jueces (PI-06, PI-07, PI-08) |
 | `correccion-03-documentar-api-eliminar-determinismo` | 12 payloads locales, perfiles de Pydantic AI, tokens de razonamiento, tabla solicitado/registrado/efectivo | Resumen de evidencia y notebook válido; 12/12 payloads sin temperatura ni `reasoning_effort` | **OK** | Declarar que no se envió `reasoning_effort`; Pydantic AI 1.1.0 no fija default y OpenAI usa `medium` por defecto (NV-05) |
 | `correccion-04-declarar-factores-pub-prompts-etc` | Auditoría de 237 sesiones, 27 reportes de jueces, prompts, anexo y diagrama | 237 logs, 27 reportes, 0 logs del Agente de Calidad; 236/237 sesiones con una llamada; scripts válidos | **OK con alerta** | Seis decisiones del checklist; el notebook de `part_g` no coincide con el script final |
@@ -204,22 +204,38 @@ Estas no son alternativas abiertas; ya están respaldadas por los datos o por de
 
 ## 5. Ruta crítica recomendada
 
-### Pendiente de decisión o verificación
+### 5.1 Decisiones que requieren cálculos (prioridad)
+
+Estas decisiones no se resuelven solo redactando: su resultado numérico condiciona qué se puede afirmar en el manuscrito. Se ordenan por dependencia editorial, no por dificultad.
+
+| Prioridad | Decisión | Cálculo requerido | Salida | Condiciona |
+|---|---|---|---|---|
+| **P0** | **NV-01** (V.1/V.6) | Reconciliar las cifras de la valoración con `correccion-01`: reproducir los p-valores 0,19 y 0,003 declarando prueba (Wilcoxon/t pareada), unidad (respuesta, caso o unidad), escenario y corrección (Holm/Bonferroni); verificar LR = 293,28, gl = 4, p = 3,05 × 10⁻⁶², efectos e IC. No reemplazar el modelo canónico | `verificacion-analisis-estadistico/reconciliacion_v1/` (tabla comparativa, JSON y notas de método) | Tabla 4; resultados V.1/V.6; redacción de PI-29 |
+| **P0** | **NV-02** | Calcular recall@k, MRR y cobertura (todos/ninguno) desde las recuperaciones `.json` de `part_g`; reportar por estrategia y modelo. No requiere Milvus | `verificacion-analisis-estadistico/metricas_recuperacion/` (CSV, notebook y resumen) | IX.1.9, IX.2.1, V.8 y Tabla 4 |
+| **P1** | **D-02** | Recalcular la proporción de respuestas correctas y el costo por respuesta correcta con umbrales 0,50, 0,75 y 1,00. Hoy los artefactos solo calculan 0,75 | `verificacion-analisis-estadistico/sensibilidad_umbral/` | Tabla 4, análisis de costos y enunciado de D-02 |
+| **P2** | **NV-03** | Extraer citas de las 711 respuestas generadas y calcular precisión, recall, F1 y tasa de citas inexistentes contra el corpus. Diferida: no bloquea la entrega | `verificacion-analisis-estadistico/citas_generadas/` o un anexo de `correccion-06` | IX.2.2 y V.7, solo si se retoma |
+
+**Cálculos condicionales:** PI-08 no requiere un cálculo nuevo en esta entrega porque los 23 casos ya están identificados en la base final; solo un cambio de adjudicación obligaría a recalcular alpha. D-01 solo requiere el modelo de dos partes si se adopta esa sensibilidad opcional. **No requieren cálculo nuevo:** PI-29 (opción A: declarar Laplace; `nAGQ > 1` no es ejecutable con dos efectos aleatorios), PI-06/PI-07 (juicio humano), PI-09 (nuevas corridas) y NV-07/PI-31 (dependen de los resultados P0/P1).
+
+### 5.2 Pendiente de decisión o verificación
 
 1. **NV-03:** no prioritaria por tiempo; no bloquea la entrega.
 
-### Implementación
+### 5.3 Implementación
 
-1. **PI-04 / NV-04:** redactar la declaración de IA por etapas y revisar el antecedente de la “referencia fabricada”. **NV-05:** declarar que no se envió `reasoning_effort`; el default efectivo del proveedor para GPT-5 es `medium`.
-2. **PI-21, PI-22, PI-23, PI-24, PI-26, PI-27 y PI-28:** aplicar las correcciones bibliográficas decididas.
-3. **PI-29:** mantener `nAGQ = 1`, declarar la limitación de Laplace y reconciliar las cifras con NV-01.
-4. **NV-01, NV-02 y NV-07:** reconciliar V.1 con `correccion-01`, calcular recuperación desde los `.json` y actualizar Tabla 4/IX.
-5. **PI-03, PI-05, PI-10 y PI-11:** aplicar textos de arquitectura, terminología, excepción `16_01` y notebook canónico.
-6. **PI-15, PI-16 y PI-19:** aplicar las correcciones editoriales de corpus, 1.2/1.3 y fechas.
-7. **PI-31:** sincronizar manuscrito, README, anexos y presentación, y generar una nueva versión.
-8. **PI-30:** publicar la verificación después de la revisión y el ordenamiento del directorio.
+1. **P0 — NV-01:** reconciliar V.1/V.6 y fijar las cifras que se usarán en Tabla 4. No editar resultados antes de este paso.
+2. **P0 — NV-02:** calcular recuperación desde los `.json` y dejar el artefacto reproducible.
+3. **P1 — D-02:** calcular la sensibilidad 0,50/0,75/1,00 y el costo por respuesta correcta.
+4. **PI-04 / NV-04:** redactar la declaración de IA por etapas y revisar el antecedente de la “referencia fabricada”. **NV-05:** declarar que no se envió `reasoning_effort`; el default efectivo del proveedor para GPT-5 es `medium`.
+5. **PI-21, PI-22, PI-23, PI-24, PI-26, PI-27 y PI-28:** aplicar las correcciones bibliográficas decididas.
+6. **PI-29:** mantener `nAGQ = 1`, declarar la limitación de Laplace y usar las cifras reconciliadas de NV-01.
+7. **PI-03, PI-05, PI-10 y PI-11:** aplicar textos de arquitectura, terminología, excepción `16_01` y notebook canónico.
+8. **PI-15, PI-16 y PI-19:** aplicar las correcciones editoriales de corpus, 1.2/1.3 y fechas.
+9. **PI-31:** sincronizar manuscrito, README, anexos y presentación, y generar una nueva versión.
+10. **PI-30:** publicar la verificación después de la revisión y el ordenamiento del directorio.
+11. **P2 — NV-03:** retomar solo si el tiempo alcanza; no condiciona la entrega.
 
-### Verificación final
+### 5.4 Verificación final
 
 - `make pdf` compila sin errores.
 - Búsquedas en el PDF: “sobrecarga agéntica”, “efecto igualador”, “LLM-as-a-Judge validado”, “temperatura 0” asociada a determinismo, “transferible”, “IVF_FLAT”, “245 artículos”, “399 artículos”, “n = 79” sin aclarar exclusiones.
@@ -248,7 +264,7 @@ Estas no son alternativas abiertas; ya están respaldadas por los datos o por de
 | ID | Estado | Decisión adoptada | Implementación / evidencia |
 |---|---|---|---|
 | D-01 | Cerrada | Fallo = 0 para el sistema; auditoría de jueces en un plano separado | `§2`; `D-01 — implementación en dos planos` |
-| D-02 | Cerrada | “Respuesta correcta” = promedio ≥ 0,75; sensibilidad 0,50 y 1,00 | `§2`; aplicar en costos y Tabla 4 |
+| D-02 | Cerrada | “Respuesta correcta” = promedio ≥ 0,75; sensibilidad 0,50 y 1,00 | `§2`; aplicar en costos y Tabla 4; cálculo P1 en `§5.1` |
 | D-03 | Cerrada | Costos históricos, no precios corrientes (USD 22,2939) | `§2`; mantener en manuscrito |
 | D-04 | Cerrada | Sin ganador único: Pareto, costo por respuesta correcta y objetivo explícito | `§2`; aplicar en conclusiones |
 | D-05 | Cerrada | “Modo de fallo de respuesta”, sin “sobrecarga agéntica” | `§2`; retirar causalidad |
@@ -293,8 +309,8 @@ Estas no son alternativas abiertas; ya están respaldadas por los datos o por de
 | PI-30 | Cerrada | Opción A diferida: publicar después de revisar el manuscrito y ordenar el directorio | Ejecutar clonación y registro al final |
 | PI-31 | Cerrada | Opción A: aplicar todo y generar una nueva versión del archivo | Implementación pendiente |
 | PI-32 | Cerrada | 25 preguntas: 18 intervenidas, 17 corregidas, Q24 solo comentario, 7 sin intervención | `correccion-06/salidas/conteo_preguntas_revisadas.csv` |
-| NV-01 | Cerrada | Opción A: `correccion-01` como fuente canónica; no usar el reanálisis de la valoración | Reconciliar cifras de V.1 |
-| NV-02 | Cerrada | Opción A adaptada: sin Milvus; calcular recall@k/MRR desde las recuperaciones `.json` y guardar en `verificacion-analisis-estadistico/metricas_recuperacion/` | Implementación pendiente; no comparar BM25 desde la base |
+| NV-01 | Cerrada | Opción A: `correccion-01` como fuente canónica; no usar el reanálisis de la valoración | Reconciliar cifras de V.1; cálculo P0 en `§5.1` |
+| NV-02 | Cerrada | Opción A adaptada: sin Milvus; calcular recall@k/MRR desde las recuperaciones `.json` y guardar en `verificacion-analisis-estadistico/metricas_recuperacion/` | Cálculo P0 en `§5.1`; no comparar BM25 desde la base |
 | NV-04 | Cerrada | Opción A: extender la declaración a búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas; revisar el antecedente de la “referencia fabricada” | Redactar declaración |
 | NV-05 | Cerrada | Pydantic AI 1.1.0 no define default; envía `NOT_GIVEN` y el default efectivo de OpenAI para GPT-5 es `medium` | Declarar “no se envió; default del proveedor = medium”; no atribuirlo a Pydantic AI |
 | NV-06 | Cerrada | Opción A: usar AUTOINDEX, valor del código; no afirmar IVF_FLAT | Aplicar en V.8/metodología |
@@ -304,7 +320,7 @@ Estas no son alternativas abiertas; ya están respaldadas por los datos o por de
 
 | ID | Tema | Qué falta decidir / verificar | Recomendación / bloqueo | Responsable |
 |---|---|---|---|---|
-| NV-03 | Citas deterministas | Métricas de citas sobre las 711 respuestas | **No prioritaria por tiempo**: posponer; no bloquea la entrega | Autor |
+| NV-03 | Citas deterministas | Métricas de citas sobre las 711 respuestas | **No prioritaria por tiempo**: posponer; cálculo P2 en `§5.1`; no bloquea la entrega | Autor |
 
 ### 6.4 PI-25 — Entradas adoptadas
 
