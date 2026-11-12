@@ -70,7 +70,7 @@ $ r^* = arg min_(r in cal(R)) |x - r| $
 
 donde $cal(R) = {0.0, 0.25, 0.5, 0.75, 1.0}$.
 
-Adicionalmente, se identificaron 27 observaciones (3.8% del total) con valores ausentes en las métricas de evaluación por jueces, atribuibles a fallos puntuales en la generación de respuestas para ciertas combinaciones subpregunta-configuración. Estos valores fueron excluidos de las pruebas de hipótesis mediante eliminación por lista (listwise deletion), reduciendo el conjunto efectivo a 684 observaciones para los análisis que involucran `respuesta_correcta_avg`.
+Adicionalmente, un análisis inicial reportó 27 observaciones ausentes en las métricas de evaluación por jueces. La auditoría de las claves de identificación mostró que no se trataba de fallos de generación: las 27 medias ausentes correspondían a las unidades 23, 24 y 25 en las nueve configuraciones, porque en el archivo de métricas la subpregunta figuraba vacía y en el archivo de evaluaciones figuraba como `0`, de modo que la unión de ambas tablas no las encontraba. Las 27 respuestas y sus tres evaluaciones de jueces existen. Al normalizar la clave se recuperaron las 711 observaciones y las 2.133 evaluaciones (711 observaciones × 3 jueces), de manera que la base de análisis contiene 79 unidades por celda y no 76. No se aplicó eliminación por lista ni ninguna otra imputación de observaciones completas; la única transformación es la corrección de los valores fuera de rúbrica descrita arriba.
 
 == Verificación de Normalidad
 
