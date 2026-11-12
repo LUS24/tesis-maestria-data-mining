@@ -13,7 +13,6 @@
 / CSV: Comma-Separated Values (Valores Separados por Comas)
 / GPU: Graphics Processing Unit (Unidad de Procesamiento Gráfico)
 / GraphRAG: Graph Retrieval-Augmented Generation
-/ HNSW: Hierarchical Navigable Small World (algoritmo de búsqueda)
 / HTML: HyperText Markup Language (Lenguaje de Marcas de Hipertexto)
 / IA: Inteligencia Artificial
 / IQR: Interquartile Range (Rango Intercuartílico)
