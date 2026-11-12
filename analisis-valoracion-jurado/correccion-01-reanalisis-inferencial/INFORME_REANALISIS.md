@@ -331,6 +331,8 @@ La interacción no depende de un solo juez. Las predicciones por juez están en 
 | `figuras/04_sensibilidad_escenarios.*` | Sensibilidad a los escenarios |
 | `figuras/05_distribucion_puntajes_principal.*` | Distribución de puntajes |
 | `propuestas/preview_tablas.pdf` | Previsualización Typst de las tablas principales |
+| `GUIA_PRUEBAS_ESTADISTICAS.md` | Guía de pruebas, fórmulas, interpretación, figuras y citas |
+| `citas_estadisticas/citas_estadisticas.bib` | Citas estadísticas validadas |
 
 ---
 

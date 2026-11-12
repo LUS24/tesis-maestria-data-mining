@@ -9,10 +9,11 @@ Esta carpeta resuelve el punto **IX.1.1** del plan: rehacer el análisis inferen
 ## Qué revisar primero
 
 1. **`INFORME_REANALISIS.md`** — resultados, interpretación y límites.
-2. **`PROPUESTA_TEXTO_MANUSCRITO.md`** — reemplazos sugeridos para metodología, resultados y conclusiones.
-3. **`PROTOCOLO_ANALISIS.md`** — decisiones preespecificadas y justificación de las pruebas.
-4. **`salidas/30_tabla_celdas_principal.csv`** y **`salidas/31_efectos_simples_orientados.csv`** — tablas listas para revisar.
-5. **`figuras/02_interaccion_prob_ge_075.png`** y **`figuras/04_sensibilidad_escenarios.png`** — patrón visual.
+2. **`GUIA_PRUEBAS_ESTADISTICAS.md`** — cuándo, cómo y por qué se usa cada prueba; fórmulas, interpretación, figuras y citas.
+3. **`PROPUESTA_TEXTO_MANUSCRITO.md`** — reemplazos sugeridos para metodología, resultados y conclusiones.
+4. **`PROTOCOLO_ANALISIS.md`** — decisiones preespecificadas y justificación de las pruebas.
+5. **`salidas/30_tabla_celdas_principal.csv`** y **`salidas/31_efectos_simples_orientados.csv`** — tablas listas para revisar.
+6. **`figuras/02_interaccion_prob_ge_075.png`** y **`figuras/04_sensibilidad_escenarios.png`** — patrón visual.
 
 ---
 
@@ -36,6 +37,7 @@ Esta carpeta resuelve el punto **IX.1.1** del plan: rehacer el análisis inferen
 correccion-01-reanalisis-inferencial/
 ├── README.md
 ├── INFORME_REANALISIS.md
+├── GUIA_PRUEBAS_ESTADISTICAS.md
 ├── PROPUESTA_TEXTO_MANUSCRITO.md
 ├── PROTOCOLO_ANALISIS.md
 ├── run_all.sh
@@ -52,6 +54,7 @@ correccion-01-reanalisis-inferencial/
 ├── salidas/                          # tablas, JSON y logs
 ├── figuras/                          # PDF y PNG
 ├── propuestas/                       # tablas Typst y preview PDF
+├── citas_estadisticas/               # inventario, BibTeX y validación de citas
 └── modelos/                          # modelo principal .rds
 ```
 
@@ -74,6 +77,9 @@ correccion-01-reanalisis-inferencial/
 | `salidas/32_tabla_sensibilidad_nano.csv` | Sensibilidad de nano |
 | `salidas/35_resultados_clave.json` | Números principales |
 | `propuestas/preview_tablas.pdf` | Previsualización Typst de las tablas principales |
+| `citas_estadisticas/citas_estadisticas.bib` | 19 entradas BibTeX validadas |
+| `citas_estadisticas/verificacion_citas_estadisticas.csv` | Metadatos Crossref/URL de cada cita |
+| `citas_estadisticas/prueba_citas.pdf` | Compilación de prueba de las 19 citas |
 
 ---
 
@@ -97,6 +103,12 @@ El script:
 - escribe únicamente en esta carpeta;
 - valida 711 observaciones, 79 unidades, 9 celdas y 2.133 filas de jueces;
 - no llama a OpenAI, OpenRouter ni Milvus.
+
+La validación de citas es independiente y requiere red:
+
+```bash
+python3 analisis-valoracion-jurado/correccion-01-reanalisis-inferencial/citas_estadisticas/validar_citas.py
+```
 
 ---
 
