@@ -42,7 +42,7 @@ El sistema permite realizar consultas en lenguaje natural sobre el Código de Mi
 - **Acceso a la justicia**: explora una alternativa abierta para consultar normativa; no se evaluó su impacto ni su uso por ciudadanos o profesionales.
 - **Código abierto**: el repositorio es público y accesible sin login; el código, el benchmark y los logs permiten auditar y adaptar el prototipo a otras normativas, sujeto a validación externa.
 - **Metodología auditable**: el diseño apareado, el análisis de fallos y el costo por respuesta correcta (≥ 0,75) pueden reutilizarse en otras evaluaciones; no se demostró transferencia a otros dominios.
-- **Antecedentes**: no se identificaron sistemas públicos comparables para normativa argentina en la búsqueda realizada; no se afirma que sea el “primer sistema” en sentido absoluto.
+- **Antecedentes**: no se identificaron sistemas públicos comparables para normativa argentina en la búsqueda realizada; no se afirma una primacía absoluta.
 
 ---
 

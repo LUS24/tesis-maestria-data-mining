@@ -128,7 +128,7 @@ Se realizaron tests de Kruskal-Wallis estratificados por sistema de recuperació
 + *Sin RAG*: $H = 59.67$, $p < 0.0001$ — los modelos difieren significativamente.
 + *RAG básico*: $H = 4.71$, $p = 0.095$ — los modelos *no* difieren significativamente.
 
-Las diferencias entre modelos con RAG básico son menores que en las otras estrategias, pero no desaparecen. Un p no significativo no demuestra equivalencia; para sostenerla haría falta un margen definido a priori. Por eso no se conserva la expresión “efecto igualador”.
+Las diferencias entre modelos con RAG básico son menores que en las otras estrategias, pero no desaparecen. Un p no significativo no demuestra equivalencia; para sostenerla haría falta un margen definido a priori. Por eso no se afirma equivalencia.
 
 === Efectos Simples: Estrategia dentro de cada Modelo
 
