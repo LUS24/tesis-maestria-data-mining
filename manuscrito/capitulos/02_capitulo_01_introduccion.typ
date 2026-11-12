@@ -102,17 +102,17 @@ A continuación, se detallan los principales problemas identificados, con un bre
 
 === Objetivo general
 
-Desarrollar un sistema Agentic-RAG de código abierto como prueba de concepto, utilizando el Código de Minería Argentino, para responder consultas de usuarios profesionales y no profesionales en el derecho.
+Desarrollar y evaluar un prototipo Agentic-RAG de código abierto, utilizando el Código de Minería Argentino como prueba de concepto, para responder consultas en lenguaje natural sobre esa normativa. La evaluación se realiza con un benchmark específico de 25 casos; no se evalúa una interfaz de usuario ni la experiencia de usuarios finales.
 
 === Objetivos específicos
 
 + Desarrollar una base de datos vectorial del Código de Minería Argentino diseñada específicamente para trabajar con sistemas RAG.
 
-+ Desarrollar un sistema de agentes de inteligencia artificial para que trabajen de manera conjunta con el sistema RAG.
++ Implementar una arquitectura de dos agentes activos —el Agente Especialista Legal y el Agente de Recuperación— que coordinen la recuperación y la generación de respuestas sobre el Código de Minería. La configuración no incluye un ciclo iterativo de verificación ni la ejecución del Agente de Calidad.
 
 + Desarrollar un benchmark específico para el Código de Minería Argentino para evaluar el desempeño del sistema.
 
-+ Cargar el código y una descripción de la metodología a un repositorio abierto para que cualquier organización, empresa o individuo pueda replicar y adaptar el sistema a otras normativas.
++ Publicar el código y una descripción de la metodología en un repositorio público accesible sin autenticación, para que otras organizaciones o personas puedan auditarlo y adaptarlo a otras normativas. La verificación de una clonación y ejecución completas se documenta como recomendación de reproducibilidad.
 
 == Transferencia de los resultados obtenidos
 
@@ -132,15 +132,17 @@ La solución propuesta tiene aplicaciones prácticas que trascienden el ámbito 
 
 Las principales contribuciones del presente trabajo final son:
 
-+ *Sistema Agentic-RAG de código abierto*: Desarrollo de un sistema completo que integra recuperación semántica, base de datos vectorial y agentes inteligentes para la consulta del Código de Minería Argentino como prueba de concepto.
++ *Sistema Agentic-RAG de código abierto, con alcance acotado*: Desarrollo de un prototipo que integra recuperación semántica, base de datos vectorial y dos agentes activos: el Agente Especialista Legal y el Agente de Recuperación. El especialista realiza una delegación nominal de recuperación y no itera sobre los resultados; el Agente de Calidad fue diseñado pero no se ejecutó. No se implementó un ciclo completo de verificación multi-agente.
 
-+ *Base de datos vectorial del Código de Minería*: Creación de una base de datos especializada con embeddings semánticos de los artículos del Código de Minería Argentino, optimizada para búsquedas por similitud.
++ *Base de datos vectorial del Código de Minería*: Creación de una base especializada con embeddings semánticos de 398 nodos de tipo artículo (397 con texto; el artículo 239 está derogado y vacío), con índice `AUTOINDEX` y similitud coseno.
 
-+ *Benchmark para el Código de Minería Argentino*: Desarrollo de un benchmark específico para evaluar sistemas de consulta legal sobre el Código de Minería, generado con asistencia de LLM y revisado por una profesional del derecho.
++ *Benchmark para el Código de Minería Argentino*: Desarrollo de un benchmark de 25 casos y 79 unidades, generado con asistencia de LLM y revisado por una profesional del derecho. La versión experimental v1 se conserva congelada; una revisión posterior asistida por IA detectó posibles errores que requieren una nueva revisión profesional, documentados como v2 para evaluaciones futuras.
 
-+ *Metodología replicable*: Documentación detallada de la metodología empleada, permitiendo la replicación del sistema para otras normativas y jurisdicciones.
++ *Evidencia empírica sobre la interacción estrategia × modelo*: El análisis apareado muestra que el efecto de la estrategia depende del modelo del Agente Especialista Legal (LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶²), con patrones distintos en gpt-5-nano, gpt-5-mini y gpt-5. La interacción no identifica por sí sola qué componente de la estrategia la produce.
 
-+ *Contribución a la transparencia institucional*: Demostración del potencial para mejorar el acceso ciudadano a la información legal, fortaleciendo el Estado de derecho y la participación ciudadana.
++ *Caracterización de un modo de fallo de respuesta*: En Agentic-RAG con gpt-5-nano, 41 de 79 salidas no fueron sustantivas; cuando el sistema respondió, la calidad fue alta (38/79; media 0,820; mediana 0,958). El patrón se describe sin atribuirlo causalmente a la complejidad del sistema agéntico.
+
++ *Metodología de evaluación y artefactos abiertos*: Modelo ordinal mixto con interceptos por caso y unidad, escenarios de tratamiento de respuestas no sustantivas, efectos simples con intervalos de confianza, análisis de costos por respuesta correcta (≥ 0,75) y publicación de código, benchmark, logs y evaluaciones para auditoría.
 
 == Trabajos presentados vinculados con el trabajo final
 
