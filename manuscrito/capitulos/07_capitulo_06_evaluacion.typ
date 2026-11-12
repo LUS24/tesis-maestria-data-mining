@@ -166,27 +166,51 @@ Los resultados revelan patrones diferenciados por modelo:
 
 Estos resultados refuerzan el hallazgo de interacción: el efecto de Agentic-RAG es marcadamente beneficioso para modelos de capacidad media-alta pero perjudicial para el modelo más pequeño.
 
-La @tabla-resumen-medianas presenta las medianas de `respuesta_correcta_avg` y, con fines descriptivos, de las cinco métricas complementarias para las nueve configuraciones evaluadas. Los valores de las métricas textuales y semánticas se incluyen como referencia, pero las pruebas de hipótesis se realizaron exclusivamente sobre `respuesta_correcta_avg`.
+La @tabla-celdas-principal presenta la descripción y la predicción de la variable de respuesta principal para las nueve configuraciones sobre la base completa de 79 unidades por celda. A diferencia de la versión anterior de esta tabla, todas las celdas tienen $n = 79$; las diferencias respecto de los valores previos se deben a la recuperación de las 27 observaciones descrita antes y no a un cambio de los datos de origen.
 
 #pagina-apaisada[
   #figure(
     three-line-table(
-      columns: (1.2fr, 1.2fr, 1.2fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+      columns: (1.2fr, 1.1fr, auto, auto, auto, auto, auto, auto),
       [
-        | *Estrategia* | *Modelo*   | *Resp. correcta* | *Token F1* | *ROUGE-L* | *SBERT (es)* | *BERTScore* | *Prec. legal* |
-        | :----------- | :--------- | :--------------: | :--------: | :-------: | :----------: | :---------: | :-----------: |
-        | Sin RAG      | gpt-5-nano |      0,583       |   0,200    |   0,123   |    0,740     |    0,688    |     0,000     |
-        | Sin RAG      | gpt-5-mini |      0,333       |   0,176    |   0,123   |    0,629     |    0,674    |     0,000     |
-        | Sin RAG      | gpt-5      |      0,833       |   0,243    |   0,141   |    0,760     |    0,694    |     0,333     |
-        | RAG básico   | gpt-5-nano |      0,583       |   0,253    |   0,150   |    0,770     |    0,703    |     0,333     |
-        | RAG básico   | gpt-5-mini |      0,625       |   0,213    |   0,135   |    0,760     |    0,700    |     0,417     |
-        | RAG básico   | gpt-5      |      0,833       |   0,257    |   0,174   |    0,794     |    0,706    |     0,667     |
-        | Agentic-RAG  | gpt-5-nano |      0,083       |   0,125    |   0,083   |    0,389     |    0,648    |     0,125     |
-        | Agentic-RAG  | gpt-5-mini |      0,917       |   0,215    |   0,130   |   *0,795*    |    0,706    |     0,833     |
-        | Agentic-RAG  | gpt-5      |     *0,958*      |  *0,277*   |  *0,190*  |    0,791     |   *0,708*   |    *0,875*    |
+        | *Estrategia* | *Modelo* | *n* | *No sust.* | *Media* | *Mediana* | *Media modelo* | *P(≥ 0,75)* |
+        | :----------- | :------- | --: | --------: | ------: | -------: | -------------: | ----------: |
+        | Sin RAG      | gpt-5-nano | 79 | 1 | 0,565 | 0,583 | 0,588 | 0,453 |
+        | Sin RAG      | gpt-5-mini | 79 | 15 | 0,325 | 0,250 | 0,315 | 0,157 |
+        | Sin RAG      | gpt-5      | 79 | 0 | 0,725 | 0,833 | 0,755 | 0,686 |
+        | RAG básico   | gpt-5-nano | 79 | 0 | 0,599 | 0,583 | 0,616 | 0,490 |
+        | RAG básico   | gpt-5-mini | 79 | 0 | 0,650 | 0,667 | 0,678 | 0,577 |
+        | RAG básico   | gpt-5      | 79 | 0 | 0,707 | 0,833 | 0,744 | 0,670 |
+        | Agentic-RAG  | gpt-5-nano | 79 | 41 | 0,395 | 0,000 | 0,346 | 0,182 |
+        | Agentic-RAG  | gpt-5-mini | 79 | 1 | *0,788* | *1,000* | *0,828* | *0,787* |
+        | Agentic-RAG  | gpt-5      | 79 | 0 | *0,812* | *1,000* | *0,850* | *0,816* |
       ],
     ),
-    caption: [Medianas por configuración (estrategia × modelo). `Resp. correcta` es la variable de respuesta principal utilizada en las pruebas de hipótesis; las columnas restantes (`Token F1`, `ROUGE-L`, `SBERT (es)`, `BERTScore`, `Prec. legal`) se incluyen con fines descriptivos. Los valores más altos indican mejor desempeño y se destacan en negrita (el máximo de cada columna). Destaca la mediana de 0,958 de Agentic-RAG + gpt-5 en respuesta correcta, y el valor anómalamente bajo de 0,083 para Agentic-RAG + gpt-5-nano.],
+    caption: [Estadísticos descriptivos y predicciones por configuración bajo el escenario principal (respuestas no sustantivas = 0), con 79 unidades por celda. `Media` y `Mediana` describen la puntuación imputada; `Media modelo` y `P(≥ 0,75)` son predicciones poblacionales del modelo ordinal, con efectos aleatorios en cero y promedio sobre los tres jueces. En negrita, los tres valores más altos de cada columna de predicción.],
+  ) <tabla-celdas-principal>
+]
+
+La @tabla-resumen-medianas conserva, con fines exclusivamente descriptivos, las medianas de las cinco métricas complementarias calculadas sobre la misma base de 79 unidades. Esas métricas no se usaron en las pruebas de hipótesis, que se realizaron exclusivamente sobre `respuesta_correcta_avg`.
+
+#pagina-apaisada[
+  #figure(
+    three-line-table(
+      columns: (1.2fr, 1.2fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+      [
+        | *Estrategia* | *Modelo*   | *Token F1* | *ROUGE-L* | *SBERT (es)* | *BERTScore* | *Prec. legal* |
+        | :----------- | :--------- | :--------: | :-------: | :----------: | :---------: | :-----------: |
+        | Sin RAG      | gpt-5-nano |   0,201    |   0,123   |    0,740     |    0,688    |     0,000     |
+        | Sin RAG      | gpt-5-mini |   0,176    |   0,123   |    0,629     |    0,674    |     0,000     |
+        | Sin RAG      | gpt-5      |   0,243    |   0,141   |    0,760     |    0,694    |     0,333     |
+        | RAG básico   | gpt-5-nano |   0,253    |   0,150   |    0,769     |    0,703    |     0,333     |
+        | RAG básico   | gpt-5-mini |   0,213    |   0,135   |    0,760     |    0,700    |     0,417     |
+        | RAG básico   | gpt-5      |   0,257    |   0,174   |    0,794     |    0,706    |     0,667     |
+        | Agentic-RAG  | gpt-5-nano |   0,125    |   0,083   |    0,389     |    0,648    |     0,125     |
+        | Agentic-RAG  | gpt-5-mini |   0,215    |   0,130   |   *0,795*    |    0,706    |     0,833     |
+        | Agentic-RAG  | gpt-5      |  *0,277*   |  *0,190*  |    0,791     |   *0,708*   |    *0,875*    |
+      ],
+    ),
+    caption: [Medianas de las cinco métricas complementarias por configuración (estrategia × modelo), calculadas sobre 79 unidades por celda. `Prec. legal` corresponde a `precision_legal_avg`, que no alcanzó confiabilidad inter-juez suficiente y se reporta solo con fines descriptivos. El máximo de cada columna se destaca en negrita.],
   ) <tabla-resumen-medianas>
 ]
 
