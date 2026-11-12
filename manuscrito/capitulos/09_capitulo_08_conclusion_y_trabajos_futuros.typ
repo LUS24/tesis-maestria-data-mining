@@ -52,15 +52,15 @@ La disponibilidad del código y la metodología como recurso abierto habilita su
 
 El sistema desarrollado presenta las siguientes fortalezas:
 
-+ *Mejora significativa con recuperación.* Tanto el RAG básico como el Agentic-RAG superan significativamente al baseline sin RAG ($p < 0.001$ para Agentic-RAG vs. sin RAG; $p = 0.0066$ para RAG básico vs. sin RAG), confirmando el valor de anclar las respuestas en evidencia documental.
++ *Diseño factorial y benchmark propio.* El estudio compara tres estrategias de recuperación y tres modelos sobre las mismas 79 unidades, con un benchmark específico para el Código de Minería. El diseño permite examinar la interacción entre estrategia y modelo y no solo efectos marginales.
 
-+ *Configuración costo-eficiente viable.* La combinación Agentic-RAG con gpt-5-mini alcanza una media de 0.78 en corrección, comparable al 0.80 de gpt-5, ofreciendo una alternativa práctica para escenarios con restricciones presupuestarias.
++ *Mejora condicionada al modelo.* En gpt-5-mini, ambas estrategias de recuperación presentaron diferencias positivas frente a Sin RAG (+0,363 para RAG básico; +0,513 para Agentic-RAG). En gpt-5, Agentic-RAG presentó una diferencia positiva moderada frente a RAG básico (+0,106; IC 95 % 0,054 a 0,155) y frente a Sin RAG (+0,095). En gpt-5-nano, Agentic-RAG presentó un modo de fallo de respuesta. No se sostiene la afirmación de que la recuperación mejore el desempeño con independencia del modelo.
 
-+ *Evaluación multidimensional robusta.* La combinación de métricas textuales, semánticas y evaluación por jueces LLM proporciona una visión multidimensional de la calidad, mitigando los sesgos de cada familia de métricas por separado.
++ *Alternativa no dominada de costo-calidad.* Agentic-RAG con gpt-5-mini ofrece una media de 0,788 a USD 0,0564 por consulta, frente a 0,812 y USD 0,0792 de Agentic-RAG con gpt-5. La diferencia de calidad entre ambas no es concluyente; la de gpt-5-mini es una alternativa razonable cuando se prioriza calidad alta con menor costo, no la opción más barata.
 
-+ *Trazabilidad completa.* El sistema de logging registra todas las interacciones entre agentes, herramientas invocadas, fragmentos recuperados y decisiones intermedias, lo que facilita la auditoría y la depuración del sistema.
++ *Trazabilidad y auditabilidad.* Los logs de los agentes, las respuestas, las métricas y las evaluaciones de los jueces están disponibles para auditoría. Los registros no incluyen el payload HTTP completo ni el esfuerzo de razonamiento efectivo.
 
-+ *Análisis estadístico riguroso.* El uso de pruebas no paramétricas justificadas por la verificación de supuestos (Shapiro-Wilk, Kruskal-Wallis, Dunn con Bonferroni, Scheirer-Ray-Hare), complementadas con análisis de efectos simples (Mann-Whitney U con corrección de Holm-Bonferroni y el análisis de acuerdo inter-juez (Krippendorff's alpha), proporcionan una base estadística sólida para las conclusiones.
++ *Análisis inferencial adecuado al diseño.* El modelo ordinal mixto con interceptos por caso y unidad, la prueba de razón de verosimilitud para la interacción, las pruebas pareadas de Friedman y Wilcoxon y el bootstrap por casos respetan el apareamiento y el anidamiento. Los efectos se reportan con intervalos de confianza y las comparaciones múltiples se corrigen con Holm dentro de familias predefinidas. El acuerdo inter-juez se mide con el alpha de Krippendorff, que cuantifica confiabilidad y no validez.
 
 === Debilidades y Limitaciones <sec:limitaciones>
 
@@ -70,7 +70,7 @@ El trabajo presenta las siguientes limitaciones que deben considerarse al interp
 
 + *Aproximación de Laplace en el modelo ordinal.* El modelo acumulativo es el análisis principal y se estimó con `nAGQ = 1` (Laplace) porque `ordinal::clmm` no admite cuadratura adaptativa con más de un término de efectos aleatorios. No se realizó una prueba formal del supuesto de odds proporcionales. La aproximación se declara como limitación de la estimación, no se corrige con otra especificación y no convierte al modelo en un análisis secundario. Las pruebas de Friedman, Wilcoxon y el bootstrap por casos se reportan como sensibilidad no paramétrica del modelo principal, no como la inferencia de referencia.
 
-+ *Ausencia de diferencia marginal entre Agentic-RAG y RAG básico.* A nivel global, no se encontró diferencia significativa entre ambas estrategias ($p = 0.383$), aunque el análisis de interacción muestra que esta conclusión enmascara diferencias condicionales al modelo. Este resultado sugiere que, para ciertos modelos, la complejidad adicional del sistema agéntico no se traduce en mejora marginal respecto a un RAG más simple.
++ *No se demostró una superioridad global de Agentic-RAG.* El efecto depende del modelo: es negativo en gpt-5-nano, positivo en gpt-5-mini y moderado en gpt-5. No corresponde reportar un efecto marginal único ni usar la falta de significación de una comparación marginal como prueba de equivalencia: el promedio entre modelos con efectos de signo opuesto no tiene interpretación sustantiva.
 
 + *Modo de fallo de respuesta en Agentic-RAG con gpt-5-nano.* La celda produjo 41/79 salidas no sustantivas (27 vacías, 1 con solo espacios, 2 abstenciones, 1 truncada y 10 indeterminadas), pese a que los logs registran recuperación y tokens de salida. Cuando respondió, la calidad fue alta (38/79; media 0,820; mediana 0,958). Bajo el escenario principal, la diferencia frente a RAG básico es −0,270 (IC 95 % −0,330 a −0,202; $p_"Holm" = 3,25 times 10^(-14)$) y frente a Sin RAG es −0,242 (IC 95 % −0,307 a −0,176). El resultado es una limitación para despliegues con restricciones de costo, pero no hay evidencia para atribuir el fallo a la “complejidad agéntica”: no se realizaron réplicas ni ablaciones.
 
@@ -82,7 +82,7 @@ El trabajo presenta las siguientes limitaciones que deben considerarse al interp
 
 + *Ausencia de evaluación con usuarios reales.* No se realizaron pruebas de usabilidad con usuarios finales (abogados, funcionarios, ciudadanos), por lo que no se cuenta con evidencia directa sobre la utilidad percibida y la experiencia de usuario del sistema.
 
-+ *Alcance temporal de los modelos evaluados.* Los modelos de la familia GPT-5 evaluados corresponden al estado de las APIs disponibles durante el período experimental (segundo semestre de 2025). Modelos posteriores ---en particular modelos de razonamiento (_reasoning models_) lanzados entre fines de 2025 y 2026--- podrían mostrar patrones de comportamiento distintos, especialmente respecto al modo de fallo observado en Agentic-RAG con gpt-5-nano. La validez de los resultados se circunscribe al conjunto de modelos evaluados.
++ *Alcance temporal y de configuración.* Los modelos de la familia GPT-5 evaluados corresponden al estado de las APIs disponibles durante el período experimental (segundo semestre de 2025). El recuperador fue siempre gpt-5; la corrida de gpt-5 usó siete búsquedas y las de mini y nano seis. El modo de fallo de gpt-5-nano podría cambiar con otros modelos o configuraciones, pero no se atribuye a una propiedad estable de “los modelos pequeños”. La validez de los resultados se circunscribe al conjunto de modelos y configuraciones evaluados.
 
 + *Revisión humana limitada a la sustantividad y al benchmark.* La revisión de las 87 filas no sustantivas fue realizada por el autor y no constituye una validación humana independiente de la calidad de las respuestas. La única revisión profesional documentada corresponde al benchmark (preguntas y respuestas esperadas) y fue realizada por una sola profesional, sin segunda revisión. Se identificaron 23 discrepancias entre jueces y 17 evaluaciones positivas sobre salidas no sustantivas; se reportan como insumos para una auditoría futura, no como una validación de los jueces.
 
@@ -133,7 +133,7 @@ Los avances recientes en optimización de políticas Agentic-RAG mediante aprend
 
 === Re-evaluación sobre Modelos de Nueva Generación
 
-La velocidad de iteración en el desarrollo de LLMs hace deseable repetir el diseño experimental sobre modelos lanzados después del período de estudio, especialmente modelos de razonamiento que integran cadenas de pensamiento explícitas (_chain-of-thought_). Estos modelos podrían alterar la dinámica de interacción estrategia × modelo documentada en este trabajo, en particular reduciendo o eliminando el modo de fallo de respuesta observado en Agentic-RAG con gpt-5-nano. La metodología de evaluación propuesta ---diseño factorial, benchmark específico y validación mediante LLM-as-a-Judge--- es directamente aplicable a futuras generaciones de modelos sin modificaciones sustanciales.
+La velocidad de iteración en el desarrollo de LLMs hace deseable repetir el diseño experimental sobre modelos lanzados después del período de estudio, especialmente modelos de razonamiento que integran cadenas de pensamiento explícitas (_chain-of-thought_). Estos modelos podrían alterar la dinámica de interacción estrategia × modelo documentada en este trabajo, en particular reduciendo o eliminando el modo de fallo de respuesta observado en Agentic-RAG con gpt-5-nano. La metodología de evaluación propuesta ---diseño factorial, benchmark específico, modelo ordinal mixto, análisis de costos por respuesta correcta y acuerdo inter-juez como medida de confiabilidad--- es aplicable a futuras generaciones de modelos, pero no sustituye la validación con jueces humanos.
 
 == Reflexiones Finales
 
