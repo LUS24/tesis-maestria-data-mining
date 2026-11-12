@@ -190,6 +190,55 @@ La @tabla-resumen-medianas presenta las medianas de `respuesta_correcta_avg` y, 
   ) <tabla-resumen-medianas>
 ]
 
+== Sensibilidad No Paramétrica Pareada
+
+El modelo ordinal mixto descrito en el capítulo de metodología es el análisis principal. Para verificar que la interacción y la dirección de los efectos no dependen de la especificación paramétrica ni del tratamiento de los efectos aleatorios, se repitió el análisis con pruebas pareadas que usan la unidad de evaluación como bloque: Friedman para el efecto global de cada factor dentro del nivel del otro y Wilcoxon de rangos con signo para los pares, con corrección de Holm dentro de cada familia de nueve contrastes. Los intervalos de confianza provienen de un bootstrap por casos (25 casos remuestreados con todas sus unidades, 5.000 réplicas), no de un remuestreo de filas.
+
+La @tabla-friedman-sensibilidad presenta los resultados globales de Friedman. Los seis bloques rechazan la hipótesis de igualdad de distribuciones, incluido RAG básico, donde el test de Kruskal-Wallis para muestras independientes no había alcanzado significación.
+
+#figure(
+  three-line-table(
+    columns: (auto, auto, auto, auto, auto, auto),
+    [
+      | *Familia* | *Bloque* | *χ²* | *gl* | *p* | *W de Kendall* |
+      | :--- | :--- | ---: | :---: | ---: | ---: |
+      | Estrategia dentro del modelo | gpt-5-nano | 12,05 | 2 | 0,0024 | 0,076 |
+      | Estrategia dentro del modelo | gpt-5-mini | 54,81 | 2 | < 0,0001 | 0,347 |
+      | Estrategia dentro del modelo | gpt-5 | 12,88 | 2 | 0,0016 | 0,082 |
+      | Modelo dentro de la estrategia | Sin RAG | 61,24 | 2 | < 0,0001 | 0,388 |
+      | Modelo dentro de la estrategia | RAG básico | 23,43 | 2 | 8,2 × 10⁻⁶ | 0,148 |
+      | Modelo dentro de la estrategia | Agentic-RAG | 61,19 | 2 | < 0,0001 | 0,387 |
+    ],
+  ),
+  caption: [Pruebas de Friedman por bloque, escenario principal (respuestas no sustantivas = 0). `W de Kendall` es el tamaño de efecto global del bloque; los seis contrastes usan 79 unidades como bloques.],
+) <tabla-friedman-sensibilidad>
+
+La @tabla-wilcoxon-sensibilidad presenta los contrastes pareados de estrategia orientados como Agentic-RAG − RAG básico, Agentic-RAG − Sin RAG y RAG básico − Sin RAG.
+
+#pagina-apaisada[
+  #figure(
+    three-line-table(
+      columns: (auto, auto, auto, auto, auto, auto),
+      [
+        | *Modelo* | *Contraste* | *Δ media* | *IC 95 % (bootstrap por casos)* | *p de Wilcoxon* | *p de Holm* |
+        | :--- | :--- | ---: | :---: | ---: | ---: |
+        | gpt-5-nano | Agentic − RAG | −0,205 | −0,333 a −0,073 | 0,0008 | 0,0048 |
+        | gpt-5-nano | Agentic − Sin RAG | −0,171 | −0,300 a −0,031 | 0,0021 | 0,0106 |
+        | gpt-5-nano | RAG − Sin RAG | 0,034 | −0,075 a 0,160 | 0,9895 | 1,000 |
+        | gpt-5-mini | Agentic − RAG | 0,138 | 0,081 a 0,201 | 0,0001 | 0,0008 |
+        | gpt-5-mini | Agentic − Sin RAG | 0,463 | 0,368 a 0,560 | < 0,0001 | < 0,0001 |
+        | gpt-5-mini | RAG − Sin RAG | 0,325 | 0,227 a 0,431 | < 0,0001 | < 0,0001 |
+        | gpt-5 | Agentic − RAG | 0,106 | 0,046 a 0,160 | 0,0029 | 0,0116 |
+        | gpt-5 | Agentic − Sin RAG | 0,088 | 0,025 a 0,160 | 0,0102 | 0,0306 |
+        | gpt-5 | RAG − Sin RAG | −0,018 | −0,100 a 0,077 | 0,7267 | 1,000 |
+      ],
+    ),
+    caption: [Contrastes pareados de Wilcoxon con corrección de Holm dentro de la familia de nueve comparaciones; escenario principal (respuestas no sustantivas = 0). `Δ media` es la diferencia de medias de la puntuación imputada, orientada según el contraste indicado. Los intervalos provienen de un bootstrap por casos (25 casos, 5.000 réplicas).],
+  ) <tabla-wilcoxon-sensibilidad>
+]
+
+Los nueve signos coinciden con los del modelo ordinal y con los de la @tabla-efectos-simples; las magnitudes difieren porque Wilcoxon no modela el anidamiento ni la severidad del juez. La lectura sustantiva es la misma: Agentic-RAG reduce la utilidad del sistema en gpt-5-nano y la aumenta en gpt-5-mini y en gpt-5. La diferencia de RAG básico frente a Sin RAG no se distingue de cero en gpt-5-nano ni en gpt-5, y es positiva y significativa en gpt-5-mini. En RAG básico, las diferencias entre modelos siguen siendo significativas salvo gpt-5 − gpt-5-mini, que no sobrevive a la corrección de Holm ($p_"Holm" = 0,077$); un p no significativo no demuestra equivalencia.
+
 == Análisis Factorial: Interacción Estrategia × Modelo
 
 === Test de Scheirer-Ray-Hare

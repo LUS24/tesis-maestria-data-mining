@@ -705,7 +705,17 @@ Para los análisis con más de cinco comparaciones —en particular, los efectos
 
 Para evaluar la interacción entre los factores "sistema de recuperación" y "modelo" sobre las métricas de calidad, se empleó el test de Scheirer-Ray-Hare @scheirer1976analysis. Este test constituye la alternativa no paramétrica al ANOVA de dos factores y se basa en aplicar ANOVA sobre los rangos de los datos. Permite evaluar los efectos principales de cada factor y su interacción, siendo particularmente útil cuando no se cumplen los supuestos de normalidad y homocedasticidad del ANOVA paramétrico.
 
-Como análisis de robustez se ajustó un modelo ordinal acumulativo con enlace logit, efectos fijos de estrategia, modelo del especialista y juez, y efectos aleatorios por caso y por unidad: `score_respuesta_correcta ~ estrategia * modelo_especialista + juez + (1 | caso) + (1 | unidad)`. Se utilizó `ordinal::clmm` con `nAGQ = 1`, es decir, la aproximación de Laplace. No se realizó una prueba formal del supuesto de odds proporcionales; los resultados de este modelo se interpretan como un análisis de sensibilidad y no como una estimación exacta de los efectos. Las cifras reconciliadas se documentan en `verificacion-analisis-estadistico/reconciliacion_v1/`.
+==== Modelo Ordinal Mixto (Análisis Principal)
+
+El análisis inferencial principal de este trabajo no es el conjunto de pruebas para muestras independientes descrito en los apartados anteriores, sino un modelo ordinal acumulativo con enlace logit, efectos fijos de estrategia, modelo del especialista y juez, y efectos aleatorios por caso y por unidad: `score_respuesta_correcta ~ estrategia * modelo_especialista + juez + (1 | caso) + (1 | unidad)`. La elección obedece a que las 79 unidades de evaluación se responden en las nueve configuraciones —las observaciones están apareadas por unidad— y a que las unidades están anidadas en 25 casos con tres evaluaciones de jueces por respuesta; las pruebas para muestras independientes ignoran esas dependencias.
+
+La variable de respuesta es el puntaje ordinal de corrección en la escala {0; 0,25; 0,50; 0,75; 1}. La interacción se contrasta mediante una prueba de razón de verosimilitud entre el modelo completo y el modelo sin `estrategia:modelo_especialista` (4 grados de libertad). Los efectos simples se organizan en dos familias de nueve comparaciones —estrategia dentro de cada modelo y modelo dentro de cada estrategia— y se corrigen con Holm dentro de cada familia.
+
+Se utilizó `ordinal::clmm` con `nAGQ = 1`, es decir, la aproximación de Laplace; `clmm` no admite cuadratura adaptativa con más de un término de efectos aleatorios. La aproximación y la ausencia de una prueba formal del supuesto de odds proporcionales se declaran como limitaciones del análisis principal. Las cifras reconciliadas se documentan en `verificacion-analisis-estadistico/reconciliacion_v1/`.
+
+==== Sensibilidad No Paramétrica Pareada (Friedman, Wilcoxon y Bootstrap)
+
+Como análisis de sensibilidad se usaron pruebas pareadas que no imponen una forma funcional al puntaje: Friedman para las tres estrategias dentro de cada modelo y para los tres modelos dentro de cada estrategia, con la unidad como bloque y W de Kendall como tamaño de efecto global, y Wilcoxon de rangos con signo para los pares, con corrección de Holm dentro de cada familia. Los intervalos de confianza de las diferencias pareadas se estimaron por bootstrap por casos —remuestreando los 25 casos con todas sus unidades, 5.000 réplicas y semilla fija—, no por filas. Friedman y Wilcoxon no incorporan los efectos aleatorios ni covariable de juez; se interpretan como sensibilidad del modelo principal y no como la inferencia de referencia.
 
 ==== Análisis de Acuerdo Inter-Juez (Krippendorff's Alpha)
 
