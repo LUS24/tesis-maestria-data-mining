@@ -1,7 +1,7 @@
 # Agentic-RAG para consulta del Código de Minería argentino 🇦🇷
 
-[![Typst](https://img.shields.io/badge/Typst-0.11+-239DAD?logo=typst)](https://typst.app)
-[![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python)](https://python.org)
+[![Typst](https://img.shields.io/badge/Typst-0.14+-239DAD?logo=typst)](https://typst.app)
+[![Python](https://img.shields.io/badge/Python-3.13+-3776AB?logo=python)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![uv](https://img.shields.io/badge/uv-package%20manager-DE5FE9?logo=uv)](https://docs.astral.sh/uv/)
 
@@ -53,28 +53,31 @@ El sistema permite realizar consultas en lenguaje natural sobre el Código de Mi
 ├── manuscrito/                     # Manuscrito de la tesis (Typst)
 │   ├── main.typ                    # Documento raíz
 │   ├── referencias.bib             # Bibliografía (BibTeX)
-│   ├── capitulos/                  # Capítulos (Introducción, Marco Teórico, Metodología, etc.)
+│   ├── capitulos/                  # Capítulos y anexos
 │   ├── media/                      # Imágenes, diagramas y figuras
-│   ├── codigo-helpers/             # Scripts Python auxiliares (generación de figuras)
-│   └── salidas/                    # PDFs compilados
+│   ├── codigo-helpers/             # Scripts Python auxiliares
+│   └── salidas/                    # Salidas históricas de compilación
 │
 ├── codigo_experimentos/            # Código de experimentos (Python)
+│   ├── part_0/                     # Pruebas iniciales de extracción y pydantic-ai
 │   ├── part_a/                     # Generación del benchmark de preguntas
 │   ├── part_b/                     # Estructuración de datos normativos
 │   ├── part_c/                     # Creación de la base de datos vectorial (Milvus)
 │   ├── part_d/                     # Evaluación de recuperación sin LLM
 │   ├── part_e/                     # Baseline sin RAG
 │   ├── part_f/                     # RAG básico
-│   ├── part_g/                     # Agentic-RAG (sistema multi-agente)
+│   ├── part_g/                     # Agentic-RAG (dos agentes activos)
 │   ├── part_h/                     # Integración de datos
-│   ├── part_h1/                    # Evaluación LLM-as-a-Judge
+│   ├── part_h_1/                   # Evaluación LLM-as-a-Judge
 │   ├── part_i/                     # Comparación de métricas
-│   ├── part_j/                     # Análisis estadístico
-│   ├── part_k/                     # Análisis de costos y tokens
+│   ├── part_j/                     # Análisis estadístico y costos
 │   └── data/                       # Datos del Código de Minería (JSON, Python)
 │
 ├── analisis-valoracion-jurado/     # Correcciones del jurado y verificaciones reproducibles
+│   ├── correccion-01...07/         # Paquetes de corrección por observación
+│   └── verificacion-analisis-estadistico/  # Alpha, reconciliación V.1/V.6, recuperación y umbrales
 ├── data/                           # Datos compartidos (benchmark, preguntas)
+├── manuscrito_latest.pdf           # PDF generado por `make pdf`
 ├── Makefile                        # Compilación del manuscrito
 └── AGENTS.md                       # Instrucciones para agentes de IA
 ```
@@ -85,10 +88,11 @@ El sistema permite realizar consultas en lenguaje natural sobre el Código de Mi
 
 ### Requisitos
 
-- [Typst CLI](https://typst.app) ≥ 0.11 — para compilar el manuscrito
+- [Typst CLI](https://typst.app) ≥ 0.14 — para compilar el manuscrito
 - [uv](https://docs.astral.sh/uv/) — gestor de paquetes Python
 - [direnv](https://direnv.net/) — carga automática de variables de entorno
-- [Milvus](https://milvus.io/) — base de datos vectorial (para experimentos)
+- Python ≥ 3.13 para los experimentos y ≥ 3.14 para el entorno del manuscrito
+- [Milvus](https://milvus.io/) — base de datos vectorial (solo para reproducir la recuperación desde cero)
 - Acceso a APIs de LLM (OpenAI, etc.) — para ejecutar los experimentos
 
 ### Instalación de Typst
@@ -107,7 +111,7 @@ winget install typst
 ### Compilar el manuscrito
 
 ```bash
-# Compilar una vez → genera manuscrito/salidas/<timestamp>_main.pdf
+# Compilar una vez → genera manuscrito_latest.pdf
 make pdf
 ```
 
@@ -118,8 +122,9 @@ cd codigo_experimentos
 direnv allow          # Solo la primera vez
 uv sync               # Instalar dependencias
 
-# Ejecutar notebooks en orden: part_a → part_b → part_c → ... → part_k
-# Cada directorio contiene notebooks de Jupyter documentados
+# Los notebooks se organizan por etapa: part_0, part_a … part_j.
+# Cada directorio contiene notebooks de Jupyter documentados; consultar
+# codigo_experimentos/performed_tasks_summary.md para el orden exacto.
 ```
 
 > **Nota**: Los experimentos requieren credenciales para APIs de LLM, gestionadas mediante Bitwarden (ver `codigo_experimentos/.envrc`).
@@ -136,8 +141,8 @@ El sistema fue evaluado mediante un **diseño factorial 3 × 3**:
 | **Modelo de lenguaje**         | gpt-5-nano · gpt-5-mini · gpt-5    |
 
 **Métricas de evaluación**:
-- **Textuales**: BLEU, ROUGE-1, ROUGE-L, METEOR, exactitud de tokens
-- **Semánticas**: BERTScore (precisión, recall, F1)
+- **Textuales y léxicas**: Token F1, Jaccard, Levenshtein, BLEU, ROUGE-1/2/L, CER, ratios de longitud y `exact_match` auxiliar
+- **Semánticas**: SBERT Similarity (español y multilingüe) y BERTScore
 - **LLM-as-a-Judge**: "respuesta correcta" y precisión legal (3 jueces: DeepSeek, Grok, Kimi K2)
 
 **Análisis estadístico**: modelo ordinal mixto con interceptos por caso y unidad, Friedman/Wilcoxon como sensibilidad, bootstrap por casos, corrección de Holm dentro de familias y Krippendorff's alpha (acuerdo inter-juez).
@@ -169,4 +174,4 @@ Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo [LICENSE](
 
 ## 🙏 Agradecimientos
 
-A la Dra. Laura Lucía Bélfer y al Dr. Rafael Crescenzi por su dirección y apoyo durante el desarrollo de este trabajo. A los profesionales del derecho argentino que colaboraron en la validación del benchmark. A la Universidad Austral por proporcionar el marco académico para esta investigación.
+A la Dra. Laura Lucía Bélfer y al Dr. Rafael Crescenzi por su dirección y apoyo durante el desarrollo de este trabajo. A la profesional del derecho argentino que revisó el benchmark y registró sus observaciones. A la Universidad Austral por proporcionar el marco académico para esta investigación.
