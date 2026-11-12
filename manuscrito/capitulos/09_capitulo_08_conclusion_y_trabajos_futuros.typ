@@ -68,6 +68,8 @@ El trabajo presenta las siguientes limitaciones que deben considerarse al interp
 
 + *Alcance del corpus.* El sistema se limita al Código de Minería Argentino como prueba de concepto, sin incluir otras normativas nacionales, provinciales o municipales. La generalización de los resultados a otros cuerpos normativos requiere validación adicional.
 
++ *Aproximación de Laplace en el modelo ordinal.* El modelo acumulativo se estimó con `nAGQ = 1` (Laplace) porque `ordinal::clmm` no admite cuadratura adaptativa con más de un término de efectos aleatorios. No se realizó una prueba formal de odds proporcionales. Por ello, el modelo se reporta como análisis de robustez y sus coeficientes no deben interpretarse como estimaciones exactas; la inferencia principal se apoya en las pruebas pareadas y en los intervalos de confianza.
+
 + *Ausencia de diferencia marginal entre Agentic-RAG y RAG básico.* A nivel global, no se encontró diferencia significativa entre ambas estrategias ($p = 0.383$), aunque el análisis de interacción muestra que esta conclusión enmascara diferencias condicionales al modelo. Este resultado sugiere que, para ciertos modelos, la complejidad adicional del sistema agéntico no se traduce en mejora marginal respecto a un RAG más simple.
 
 + *Degradación con modelos pequeños.* El sistema Agentic-RAG perjudica el desempeño de gpt-5-nano, lo que constituye una limitación para despliegues con restricciones de costo o en entornos con acceso limitado a modelos de mayor capacidad. El análisis de efectos simples confirma que esta degradación es significativa frente a RAG básico ($p_"corr" = 0.017$, Holm-Bonferroni) pero marginal frente a sin RAG ($p_"corr" = 0.064$).
