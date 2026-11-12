@@ -11,6 +11,7 @@ from pathlib import Path
 PACKAGE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = PACKAGE_DIR / "datos"
 OUT_DIR = PACKAGE_DIR / "salidas"
+VERIF_DIR = PACKAGE_DIR.parent / "verificacion-analisis-estadistico"
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -52,7 +53,7 @@ def main() -> None:
     agentic_nano = lookup[("Agentic-RAG", "gpt-5-nano")]
 
     check(
-        "RAG básico + nano es el menor costo por aceptable",
+        "RAG básico + nano es el menor costo puntual por respuesta correcta",
         float(rag_nano["rank_costo_por_aceptable_075"]) == 1 and approx(float(rag_nano["costo_por_aceptable_075"]), 0.006094819696969697, 1e-9),
         f"rank={rag_nano['rank_costo_por_aceptable_075']} costo={rag_nano['costo_por_aceptable_075']}",
     )
@@ -83,11 +84,11 @@ def main() -> None:
     )
 
     required_docs = {
-        "README.md": ["LR = 293,28", "41/79", "USD 0,0061", "USD 0,0564"],
-        "TABLA_4_REFORMULADA.md": ["T4-01", "T4-09", "−0,270", "+0,106"],
-        "ANALISIS_COSTOS.md": ["USD 0,0061", "USD 0,0564", "USD 0,0392", "USD 0,0478"],
-        "PROPUESTA_TEXTO_MANUSCRITO.md": ["LR = 293,28", "41/79", "no se atribuye"],
-        "DECISIONES.md": ["D-01", "D-14"],
+        "README.md": ["LR = 293,28", "41/79", "USD 0,0061", "USD 0,0564", "AUTOINDEX", "sin login", "deepseek-v4.1-flash:1017-cloud"],
+        "TABLA_4_REFORMULADA.md": ["T4-01", "T4-09", "−0,270", "+0,106", "0,807842", "sin login"],
+        "ANALISIS_COSTOS.md": ["USD 0,0061", "USD 0,0564", "USD 0,0392", "USD 0,0478", "Definición operativa adoptada (D-02)"],
+        "PROPUESTA_TEXTO_MANUSCRITO.md": ["LR = 293,28", "41/79", "AUTOINDEX", "Desarrollo y evaluación de un prototipo Agentic-RAG", "verificacion-analisis-estadistico"],
+        "DECISIONES.md": ["D-01", "D-14", "Implementación de las decisiones aceptadas"],
     }
     for filename, strings in required_docs.items():
         path = PACKAGE_DIR / filename
@@ -95,7 +96,17 @@ def main() -> None:
         for value in strings:
             check(f"{filename} contiene {value!r}", value in text, f"archivo existe={path.exists()}")
 
-    # Coherencia interna: ningún costo por aceptable es negativo o NaN en el umbral principal.
+    verification_path = VERIF_DIR / "salidas" / "resumen_verificacion.json"
+    check("verificación D-14 existe", verification_path.exists(), str(verification_path))
+    if verification_path.exists():
+        verification = json.loads(verification_path.read_text(encoding="utf-8"))
+        check("alpha global original coincide", approx(float(verification["alpha_global_raw"]), 0.8078424689763564, 1e-10), str(verification["alpha_global_raw"]))
+        check("alpha global rúbrica coincide", approx(float(verification["alpha_global_rubric"]), 0.7995418703552886, 1e-10), str(verification["alpha_global_rubric"]))
+        check("alpha precisión legal coincide", approx(float(verification["alpha_precision_global_raw"]), 0.7845657645755232, 1e-10), str(verification["alpha_precision_global_raw"]))
+        check("23 discrepancias documentadas", int(verification["n_casos_discrepancia"]) == 23, str(verification["n_casos_discrepancia"]))
+        check("17 evaluaciones positivas no sustantivas", int(verification["n_evaluaciones_positivas_no_sustantivas"]) == 17, str(verification["n_evaluaciones_positivas_no_sustantivas"]))
+
+    # Coherencia interna: ningún costo por respuesta correcta es negativo o NaN en el umbral principal.
     check(
         "costos por aceptable finitos y positivos",
         all(

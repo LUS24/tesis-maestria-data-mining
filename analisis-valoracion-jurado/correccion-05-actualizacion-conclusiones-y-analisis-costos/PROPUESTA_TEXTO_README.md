@@ -24,7 +24,7 @@
 
 **Propuesto**
 
-> Pipeline de evaluación con un benchmark de 25 casos y 79 unidades, revisado por una profesional del derecho argentino. La versión experimental (v1) se conserva congelada; las correcciones detectadas en la auditoría se documentan como v2 para futuras evaluaciones.
+> Pipeline de evaluación con un benchmark de 25 casos y 79 unidades, revisado por una profesional del derecho argentino. La versión experimental (v1) se conserva congelada. Una revisión posterior asistida por `ollama-cloud:deepseek-v4.1-flash:1017-cloud` detectó posibles errores que requieren una nueva revisión por un profesional del derecho; las correcciones se documentan como v2 para futuras evaluaciones.
 
 ---
 
@@ -48,8 +48,8 @@
 | **Efecto condicionado al modelo** | En el escenario principal (fallo = 0), Agentic-RAG es inferior a RAG básico en gpt-5-nano (−0,270; IC 95% −0,330 a −0,202), superior en gpt-5-mini (+0,150; IC 95% 0,096 a 0,203) y superior en gpt-5 (+0,106; IC 95% 0,054 a 0,155). |
 | **Modo de fallo en Agentic-RAG + gpt-5-nano** | 41/79 salidas no sustantivas (27 vacías, 1 solo espacios, 2 abstenciones, 1 truncada y 10 indeterminadas). Cuando responde, la calidad es alta (38/79; media 0,820; mediana 0,958). No se atribuye a la “complejidad agéntica” sin réplicas ni ablaciones. |
 | **RAG básico no iguala a los modelos** | Las diferencias observadas son menores, pero no desaparecen: mini−nano +0,063 (IC 95% 0,005–0,120), gpt-5−nano +0,128 (IC 95% 0,071–0,186), gpt-5−mini +0,065 (IC 95% 0,011–0,124). No se demostró equivalencia. |
-| **Jueces: acuerdo, no validación** | α ordinal global de 0,808 con valores originales (0,800 tras transformar valores fuera de rúbrica). Mide confiabilidad entre jueces, no validez frente a criterio humano. La auditoría detectó puntajes positivos sobre salidas no sustantivas. |
-| **Costos: no hay ganador único** | RAG básico + gpt-5-nano presenta el menor costo puntual por respuesta aceptable (USD 0,0061; IC bootstrap 0,0043–0,0091; 33/79; media 0,599), con IC solapado con Sin RAG + nano; no se establece una diferencia formal. Agentic-RAG + gpt-5 maximiza la media (0,812; USD 0,0792). Agentic-RAG + gpt-5-mini (0,788; USD 0,0564) es una alternativa no dominada, no la más barata. |
+| **Jueces: acuerdo, no validación** | α ordinal global de 0,807842 con valores originales (0,799542 tras transformar valores fuera de rúbrica), verificado de forma independiente en `verificacion-analisis-estadistico/`. Mide confiabilidad entre jueces, no validez frente a criterio humano. No hay calificaciones humanas de las respuestas; se identificaron 23 discrepancias entre jueces y 17 evaluaciones positivas sobre salidas no sustantivas para revisión humana. |
+| **Costos: no hay ganador único** | “Respuesta correcta” se define como puntaje promedio ≥ 0,75 (D-02). RAG básico + gpt-5-nano presenta el menor costo puntual por respuesta correcta (USD 0,0061; IC bootstrap 0,0043–0,0091; 33/79; media 0,599), con IC solapado con Sin RAG + nano; no se establece una diferencia formal. Agentic-RAG + gpt-5 maximiza la media (0,812; USD 0,0792). Agentic-RAG + gpt-5-mini (0,788; USD 0,0564) es una alternativa no dominada, no la más barata. |
 | **Alcance** | Un corpus (Código de Minería), 25 casos, 79 unidades, una ejecución por celda y un recuperador fijo en gpt-5. Los resultados son evidencia de viabilidad, no una validación externa ni una recomendación universal. |
 
 **No conservar** las filas “RAG mejora significativamente”, “Efecto igualador”, “Sobrecarga agéntica” y “LLM-as-a-Judge validado” en su forma actual.
@@ -64,8 +64,8 @@
 
 ```markdown
 - **Acceso a la justicia**: explora una alternativa abierta para consultar normativa; no se evaluó su impacto ni su uso por ciudadanos o profesionales.
-- **Código abierto**: el código, el benchmark y los logs permiten auditar y adaptar el prototipo a otras normativas, sujeto a validación externa.
-- **Metodología auditable**: el diseño apareado, el análisis de fallos y el costo por respuesta aceptable pueden reutilizarse en otras evaluaciones.
+- **Código abierto**: el repositorio es público y accesible sin login; el código, el benchmark y los logs permiten auditar y adaptar el prototipo a otras normativas, sujeto a validación externa.
+- **Metodología auditable**: el diseño apareado, el análisis de fallos y el costo por respuesta correcta (≥ 0,75) pueden reutilizarse en otras evaluaciones.
 - **Antecedentes**: no se identificaron sistemas públicos comparables para normativa argentina en la búsqueda realizada; no se afirma que sea el “primer sistema” en sentido absoluto.
 ```
 
@@ -79,7 +79,7 @@
 
 **Propuesto**
 
-> Modelo ordinal mixto con interceptos aleatorios por caso y unidad (interacción estrategia × modelo), pruebas pareadas de Friedman/Wilcoxon como sensibilidad, bootstrap por casos, corrección de Holm dentro de familias y Krippendorff's alpha para el acuerdo inter-juez. Las pruebas para muestras independientes del análisis original se conservan solo como antecedente exploratorio.
+> Modelo ordinal mixto con interceptos aleatorios por caso y unidad (interacción estrategia × modelo), pruebas pareadas de Friedman/Wilcoxon como sensibilidad, bootstrap por casos, corrección de Holm dentro de familias y Krippendorff's alpha para el acuerdo inter-juez (recalculado y verificado en `verificacion-analisis-estadistico/`). Las pruebas para muestras independientes del análisis original se conservan solo como antecedente exploratorio.
 
 ---
 
@@ -119,9 +119,30 @@
 
 ---
 
-## 9. Qué no cambiar en el README sin evidencia
+## 9. Título y BibTeX (D-09)
 
-- No volver a afirmar que el repositorio “reproduce” el experimento sin una prueba de clonación anónima.
+Sustituir el título del README y del bloque BibTeX por:
+
+```markdown
+Desarrollo y evaluación de un prototipo Agentic-RAG para consulta del Código de Minería argentino
+```
+
+```bibtex
+@mastersthesis{spairani2026agenticrag,
+  author  = {Spairani, Leonardo Ulises},
+  title   = {Desarrollo y evaluación de un prototipo Agentic-RAG
+             para consulta del Código de Minería argentino},
+  school  = {Universidad Austral},
+  year    = {2026},
+  type    = {Tesis de Maestría en Ciencia de Datos}
+}
+```
+
+En la descripción inicial, sustituir “prototipo de sistema inteligente para consulta de normativa nacional argentina mediante Agentic-RAG” por “prototipo Agentic-RAG para consulta del Código de Minería argentino”. Actualizar también `manuscrito/main.typ`, la portada y el bloque BibTeX. Si la institución exige conservar el título aprobado, mantenerlo y agregar la declaración de alcance.
+
+## 10. Qué no cambiar en el README sin evidencia
+
+- No afirmar que el acceso público equivale a reproducibilidad exacta: el repositorio es accesible sin login, pero la clonación y ejecución se recomiendan como verificación.
 - No afirmar que los jueces están “validados”.
 - No presentar Agentic-RAG + mini como “costo-eficiente” sin aclarar que no es la opción más barata.
 - No usar medianas globales (0,58 → 0,83) como resumen del efecto: ocultan la interacción y los fallos.

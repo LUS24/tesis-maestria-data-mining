@@ -30,9 +30,9 @@
 
 ---
 
-## D-02 — Definición de “respuesta aceptable” para el análisis de costos
+## D-02 — Definición de “respuesta correcta” para el análisis de costos
 
-**Pregunta:** ¿qué umbral se usa para calcular costo por respuesta aceptable?
+**Pregunta:** ¿qué umbral se usa para calcular costo por respuesta correcta?
 
 | Opción | Umbral | Ventaja | Riesgo |
 | --- | --- | --- | --- |
@@ -40,7 +40,7 @@
 | B | `≥ 0,50` | Incluye respuestas parcialmente correctas. | Puede contar como aceptable una respuesta con omisiones clave. |
 | C | `= 1,00` | Exigencia máxima. | Reduce mucho el denominador y aumenta la sensibilidad al ruido de los jueces. |
 
-**Recomendación:** A como principal; B y C en tabla de sensibilidad. No usar un único umbral sin declararlo.
+**Recomendación:** A como principal; B y C en tabla de sensibilidad. No usar un único umbral sin declararlo. **Decisión aplicada:** A; “respuesta correcta” se define como puntaje promedio ≥ 0,75 y se documenta en `ANALISIS_COSTOS.md`.
 
 **Bloquea redacción:** solo para la recomendación de costos; no para la inferencia principal.  
 **Impacto:** `ANALISIS_COSTOS.md`, implicaciones prácticas, conclusión sobre “combinación costo-eficiente”.  
@@ -70,11 +70,11 @@
 
 | Opción | Formulación | Evaluación |
 | --- | --- | --- |
-| **A (recomendada)** | No hay una combinación costo-eficiente única. Reportar frontera de Pareto y elegir según objetivo: menor costo puntual por aceptable (RAG básico + nano; los IC bootstrap se solapan con Sin RAG + nano) o mayor calidad media (Agentic-RAG + gpt-5), con Agentic-RAG + mini como opción no dominada de calidad alta y costo intermedio. | Coherente con los datos: siete configuraciones son no dominadas; el costo por aceptable y la calidad media no ordenan igual. |
+| **A (recomendada)** | No hay una combinación costo-eficiente única. Reportar frontera de Pareto y elegir según objetivo: menor costo puntual por respuesta correcta (RAG básico + nano; los IC bootstrap se solapan con Sin RAG + nano) o mayor calidad media (Agentic-RAG + gpt-5), con Agentic-RAG + mini como opción no dominada de calidad alta y costo intermedio. | Coherente con los datos: siete configuraciones son no dominadas; el costo por respuesta correcta y la calidad media no ordenan igual. |
 | B | Mantener “Agentic-RAG + mini es la combinación costo-eficiente”. | Falso en sentido absoluto: cuesta USD 0,0564/consulta, más que RAG básico + gpt-5 (USD 0,0392) y Sin RAG + gpt-5 (USD 0,0478). Solo es más barata que Agentic-RAG + gpt-5 (USD 0,0792), con calidad media no distinguible. |
-| C | Declarar “RAG básico + nano es la mejor combinación” por tener el menor costo puntual por aceptable. | Es el menor costo puntual por aceptable (USD 0,0061; IC bootstrap 0,0043–0,0091, solapado con Sin RAG + nano 0,0058–0,0107), pero su media es 0,599 y solo 33/79 respuestas alcanzan ≥ 0,75. No es “la mejor” en calidad. |
+| C | Declarar “RAG básico + nano es la mejor combinación” por tener el menor costo puntual por respuesta correcta. | Es el menor costo puntual por respuesta correcta (USD 0,0061; IC bootstrap 0,0043–0,0091, solapado con Sin RAG + nano 0,0058–0,0107), pero su media es 0,599 y solo 33/79 respuestas alcanzan ≥ 0,75. No es “la mejor” en calidad. |
 
-**Recomendación:** A. Si se necesita una frase prescriptiva: “Para minimizar el costo puntual por respuesta aceptable, RAG básico + gpt-5-nano (sin diferencia formal con Sin RAG + nano); para maximizar calidad media, Agentic-RAG + gpt-5; Agentic-RAG + gpt-5-mini es una alternativa no dominada cuando se busca calidad alta con menor costo que gpt-5”.  
+**Recomendación:** A. Si se necesita una frase prescriptiva: “Para minimizar el costo puntual por respuesta correcta, RAG básico + gpt-5-nano (sin diferencia formal con Sin RAG + nano); para maximizar calidad media, Agentic-RAG + gpt-5; Agentic-RAG + gpt-5-mini es una alternativa no dominada cuando se busca calidad alta con menor costo que gpt-5”.  
 **Bloquea redacción:** sí, para la conclusión de costos y las implicaciones prácticas.  
 **Impacto:** Tabla 4, sección de costos, conclusiones, README.  
 **Evidencia:** `ANALISIS_COSTOS.md`; `datos/frontera_pareto.csv`; `datos/comparacion_recomendacion_anterior.csv`.
@@ -182,17 +182,17 @@
 
 ---
 
-## D-11 — Afirmación sobre repositorio y replicabilidad
+## D-11 — Acceso público y reproducibilidad
 
-**Pregunta:** ¿se declara el objetivo 4 completamente cumplido?
+**Pregunta:** ¿se considera cumplido el objetivo de acceso público?
 
 | Opción | Formulación | Evaluación |
 | --- | --- | --- |
-| **A (recomendada)** | “Acceso público verificado; la reproducción funcional desde una clonación anónima del commit final queda como verificación pendiente.” | Reconoce el estado actual: el repositorio es público, pero la prueba de clonación final no está hecha. |
+| **A (recomendada)** | “Acceso público verificado sin login; la clonación y ejecución se recomiendan como verificación de reproducibilidad.” | Coincide con la decisión del autor: el acceso desde el navegador está resuelto; la reproducibilidad exacta no se presume. |
 | B | “Cumplido completamente: código y metodología publicados.” | Solo si se ejecuta la clonación anónima, se compila el manuscrito y se corre el análisis base antes de la entrega. |
 | C | “Repositorio privado / no disponible.” | Ya no corresponde: la URL pública respondió 200 y la API de GitHub informó `private: false` el 2026-11-11. |
 
-**Recomendación:** A ahora; B solo después de la prueba de clonación.  
+**Recomendación:** A. El acceso público se considera cumplido; la clonación se recomienda para reproducibilidad, no como bloqueo.  
 **Bloquea redacción:** sí, para el objetivo 4 y la frase “replicable”.  
 **Impacto:** objetivo 4, contribución de metodología, reflexiones finales, README, anexo.  
 **Evidencia:** verificación pública del 2026-11-11; `plan_correcciones_y_recomendaciones.md` IX.1.8.
@@ -205,11 +205,11 @@
 
 | Opción | Acción | Consecuencia |
 | --- | --- | --- |
-| **A (recomendada)** | Eliminar “IVF_FLAT” de la conclusión y describir “índice vectorial con similitud coseno”. | Evita afirmar un tipo de índice que el código de creación muestra como `AUTOINDEX` y que no se verificó en la instancia histórica. |
+| **A (recomendada)** | Eliminar “IVF_FLAT” y describir “índice `AUTOINDEX` con similitud coseno”. | Coincide con el código de creación de la base y con la decisión del autor. |
 | B | Verificar en Milvus el índice efectivo (`describe_index`) y reportar el tipo real. | Es la única forma de conservar “IVF_FLAT” con respaldo. |
 | C | Mantener “IVF_FLAT” porque el manuscrito lo afirma. | No hay evidencia suficiente en el repositorio; no se recomienda. |
 
-**Recomendación:** A; si se dispone de Milvus, B.  
+**Recomendación:** A. Se documenta `AUTOINDEX`; no se afirma un parámetro de índice no verificado.  
 **Bloquea redacción:** no bloquea la conclusión principal, pero afecta el objetivo 1.  
 **Impacto:** objetivo 1, metodología, anexo.  
 **Evidencia:** `part_c/01_initial_vector_db_creation.ipynb` usa `AUTOINDEX`; plan IX.1.6/IX.2.1.
@@ -242,7 +242,7 @@
 | B | 0,808 (valores originales). | Coincide con el manuscrito actual; no refleja la transformación usada en el análisis ordinal. |
 | C | 0,800 (rúbrica transformada). | Coincide con la base del modelo; difiere del valor actual del manuscrito. |
 
-**Recomendación:** A. La conclusión no debe depender de la diferencia 0,808/0,800: en ambos casos el acuerdo es bueno, pero no es validación humana.  
+**Recomendación:** A. La conclusión no debe depender de la diferencia 0,808/0,800: en ambos casos el acuerdo es bueno, pero no es validación humana. **Decisión aplicada:** A, con recálculo independiente en `verificacion-analisis-estadistico/`.  
 **Bloquea redacción:** no para la conclusión cualitativa; sí para la cifra exacta.  
 **Impacto:** sección de acuerdo inter-juez, conclusión, README.  
 **Evidencia:** cálculo reproducido sobre `correccion-01.../datos/02_long_2133.csv` (`score_raw` = 0,807842; `score_rubric` = 0,799542).
@@ -253,19 +253,60 @@
 
 | ID | Decisión | Recomendación | Decisión autor |
 | --- | --- | --- | --- |
-| D-01 | Escenario principal | Fallo = 0, con sensibilidad de exclusión |  Fallo = 0, con sensibilidad de exclusión para la realización de las pruebas estadísticas que evalúan al sistema. La corrección humana predomina sobre la del LLM-as-a-Judge. Se debe documentar la discrepancias de los jueves con el criterio humano|
-| D-02 | Umbral de respuesta aceptable | ≥ 0,75, con sensibilidad 0,5 y 1,0 | "Opción A" documentando la decisión de lo que se considera "respuesta correcta" |
+| D-01 | Escenario principal | Fallo = 0, con sensibilidad de exclusión; sin calificaciones humanas de respuestas |  Fallo = 0, con sensibilidad de exclusión para la realización de las pruebas estadísticas que evalúan al sistema. La corrección humana predomina sobre la del LLM-as-a-Judge. Se debe documentar la discrepancias de los jueves con el criterio humano|
+| D-02 | Umbral de respuesta correcta | ≥ 0,75, con sensibilidad 0,5 y 1,0 | "Opción A" documentando la decisión de lo que se considera "respuesta correcta" |
 | D-03 | Base de costos | Costos registrados del experimento | "Opción A" |
 | D-04 | Recomendación de costos | Sin ganador único; Pareto y objetivo explícito | "Opción A" |
 | D-05 | Etiqueta del fallo nano | “Modo de fallo de respuesta”, sin causalidad | "Opción A" |
 | D-06 | Asimetría 7/6 | Declararla; no atribuir a capacidad sin salvedad | "Opción A" |
-| D-07 | Benchmark | Congelar v1; correcciones como v2 | "Opción A": Congelar el benchmark y aclarar que luego de una nueva revisión por un modelo LLM (ollama-cloud:deepseek-v4.1-flash:1017-cloud) se detectaron posibles errores que requieren una nueva revisión por un profesional del derecho |
-| D-08 | Validación humana | Declarar ausencia; no decir “validado” | "Opción A": vincular conclusiones con lo observado en D-01 |
-| D-09 | Título/alcance | Cambiar título o declarar alcance expreso | "Opción A": actualizar el título para subsanar los comentarios en "V.11 Título, objetivos, alcance y reproducibilidad" del archivo de valoración |
-| D-10 | Objetivo 2 | Cumplimiento parcial | "Opción A": actualizar el objetivo para subsanar los comentarios en "V.11 Título, objetivos, alcance y reproducibilidad" del archivo de valoración |
-| D-11 | Repositorio | Acceso verificado; clonación final pendiente | Considerar resuelto ya que se puede acceder desde el explorador web sin necesidad de login en github |
-| D-12 | Índice | Quitar “IVF_FLAT” o verificar en Milvus | Quitar “IVF_FLAT” y mencionar que se empleó AUTOINDEX como se respalda en el código de generación de la base de datos |
+| D-07 | Benchmark | Congelar v1; revisión LLM detectó posibles errores que requieren revisión profesional | "Opción A": Congelar el benchmark y aclarar que luego de una nueva revisión por un modelo LLM (ollama-cloud:deepseek-v4.1-flash:1017-cloud) se detectaron posibles errores que requieren una nueva revisión por un profesional del derecho |
+| D-08 | Validación humana | Declarar ausencia; documentar 23 discrepancias y 17 evaluaciones positivas no sustantivas | "Opción A": vincular conclusiones con lo observado en D-01 |
+| D-09 | Título/alcance | Título actualizado al alcance real | "Opción A": actualizar el título para subsanar los comentarios en "V.11 Título, objetivos, alcance y reproducibilidad" del archivo de valoración |
+| D-10 | Objetivo 2 | Cumplimiento parcial; objetivo específico actualizado | "Opción A": actualizar el objetivo para subsanar los comentarios en "V.11 Título, objetivos, alcance y reproducibilidad" del archivo de valoración |
+| D-11 | Repositorio | Acceso público verificado sin login; clonación recomendada para reproducibilidad | Considerar resuelto ya que se puede acceder desde el explorador web sin necesidad de login en github |
+| D-12 | Índice | AUTOINDEX con similitud coseno; quitar “IVF_FLAT” | Quitar “IVF_FLAT” y mencionar que se empleó AUTOINDEX como se respalda en el código de generación de la base de datos |
 | D-13 | “Primer sistema” | “No se identificaron antecedentes” | "Opción A" |
-| D-14 | Alpha | Reportar 0,808 y 0,800 | "Opción A": antes de usar ese valor se debe recalcular con los resultados originales de los jueces, sin editar los archivos originales. Replicar los análisis en un nuevo directorio `analisis-valoracion-jurado/verificacion-analisis-estadistico` |
+| D-14 | Alpha | Verificado en `verificacion-analisis-estadistico/`: 0,807842 y 0,799542 | "Opción A": antes de usar ese valor se debe recalcular con los resultados originales de los jueces, sin editar los archivos originales. Replicar los análisis en un nuevo directorio `analisis-valoracion-jurado/verificacion-analisis-estadistico` |
 
 Si se aceptan las recomendaciones, las propuestas de `PROPUESTA_TEXTO_MANUSCRITO.md` y `PROPUESTA_TEXTO_README.md` pueden aplicarse sin cambiar ningún dato fuente. Si se elige una alternativa, deben ajustarse las frases marcadas con el ID correspondiente.
+
+---
+
+## Implementación de las decisiones aceptadas
+
+Esta sección registra cómo se aplicaron las decisiones del autor en los artefactos de `correccion-05-actualizacion-conclusiones-y-analisis-costos`. No modifica las decisiones originales ni el manuscrito.
+
+| ID | Decisión aplicada | Implementación en el paquete | Observación |
+| --- | --- | --- | --- |
+| D-01 | Fallo = 0, con sensibilidad de exclusión; criterio humano como referencia | Se mantiene el escenario principal y la sensibilidad. Se agrega la aclaración de que no existen calificaciones humanas de las 711 respuestas; la revisión humana del benchmark es la referencia del instrumento. Se documentan 23 discrepancias entre jueces para revisión humana. | No se afirma que la “corrección humana” prevalezca sobre los jueces en la medición de respuestas, porque esa medición humana no existe. |
+| D-02 | Opción A: ≥ 0,75, con sensibilidad 0,5 y 1,0; documentar qué se considera “respuesta correcta” | Se define “respuesta correcta” como puntaje promedio de los tres jueces ≥ 0,75, equivalente a “mayormente correcta” en la rúbrica. Se mantiene la sensibilidad a 0,50 y 1,00. | Es una operacionalización normativa; no una verdad jurídica. Los nombres internos `aceptables_075` se conservan por compatibilidad. |
+| D-03 | Opción A: costos registrados | Se mantienen los costos históricos del experimento y se advierte que no son precios corrientes. | Total: USD 22,2939. |
+| D-04 | Opción A: sin ganador único; Pareto y objetivo explícito | Se reemplaza la recomendación única por Pareto, costo por respuesta correcta y elección según objetivo. | RAG básico + nano es el menor costo puntual por respuesta correcta, con IC solapado con Sin RAG + nano. |
+| D-05 | Opción A: “modo de fallo de respuesta”, sin causalidad | Se elimina “sobrecarga agéntica” como hallazgo y se describe 41/79 no sustantivas y la calidad condicional. | No se atribuye a la complejidad agéntica. |
+| D-06 | Opción A: declarar asimetría 7/6 | Se declara que gpt-5 usó 7 búsquedas y mini/nano 6; se advierte que el efecto de modelo no se atribuye a capacidad sin esa salvedad. | No se reejecutó la corrida. |
+| D-07 | Congelar v1; nueva revisión LLM detectó posibles errores que requieren revisión profesional | Se actualizan objetivo 3, contribución del benchmark y limitaciones para decir “benchmark v1 congelado” y mencionar la revisión con `ollama-cloud:deepseek-v4.1-flash:1017-cloud`. | No se aplicaron correcciones retroactivas ni se volvió a puntuar. |
+| D-08 | Opción A: declarar ausencia de validación humana; vincular con D-01 | Se reporta α como confiabilidad y se aclara que no hay validación humana de respuestas; se documentan 23 discrepancias y 17 evaluaciones positivas sobre salidas no sustantivas. | La revisión humana del benchmark no es validación de los jueces. |
+| D-09 | Opción A: actualizar el título | Se propone “Desarrollo y evaluación de un prototipo Agentic-RAG para consulta del Código de Minería argentino” y se actualizan portada, `main.typ`, README y BibTeX. | Requiere aprobación institucional si el título ya está registrado. |
+| D-10 | Opción A: objetivo 2 parcial | Se propone un objetivo específico 2 acotado a dos agentes activos, sin ciclo iterativo de verificación; la conclusión declara cumplimiento parcial. | El Agente de Calidad no se ejecutó. |
+| D-11 | Acceso público resuelto sin login | Se declara el repositorio público accesible desde el navegador sin autenticación. La clonación y ejecución se recomiendan como verificación de reproducibilidad, no como bloqueo del objetivo de acceso. | El acceso se verificó el 2026-11-11. |
+| D-12 | Quitar “IVF_FLAT” y mencionar AUTOINDEX | Se reemplaza “IVF_FLAT” por “índice AUTOINDEX con similitud coseno”, respaldado en `part_c/01_initial_vector_db_creation.ipynb`. | No se afirma un parámetro de índice no verificado. |
+| D-13 | Opción A: “no se identificaron antecedentes” | Se reemplaza “primer sistema” por “no se identificaron antecedentes públicos comparables en la búsqueda realizada”. | Se mantiene la cautela. |
+| D-14 | Recalcular alpha desde jueces originales en un directorio nuevo | Se creó `analisis-valoracion-jurado/verificacion-analisis-estadistico/`. α = 0,807842 (corrección original) y 0,799542 (rúbrica); α = 0,784566 para precisión legal original. Coinciden con la corrección 01. Se documentan 23 discrepancias y 17 evaluaciones positivas no sustantivas. | No se modificaron archivos originales. |
+
+### Nota de implementación sobre D-01 y D-08
+
+La decisión del autor indica que “la corrección humana predomina sobre la del LLM-as-a-Judge” y que deben documentarse las discrepancias con el criterio humano. En los datos disponibles:
+
+- existe una revisión humana del benchmark (preguntas, respuestas esperadas y referencias);
+- **no existen calificaciones humanas de las 711 respuestas generadas**;
+- por lo tanto, no es posible afirmar que la corrección humana prevalezca sobre los jueces en la medición de las respuestas, ni calcular acuerdo humano–juez.
+
+La implementación adoptada es: usar la revisión humana del benchmark como referencia principal del instrumento, reportar el α como confiabilidad entre jueces, no como validación, y dejar los 23 casos de discrepancia como insumo para una revisión humana futura. Si se obtiene una submuestra humana, este texto deberá actualizarse.
+
+### Nota de implementación sobre D-14
+
+La verificación independiente está en:
+
+`analisis-valoracion-jurado/verificacion-analisis-estadistico/`
+
+Allí se recalcula el alpha desde `codigo_experimentos/part_i/final_judge_results.csv`, sin usar como insumo la tabla derivada de la corrección 01. Los resultados y los casos para revisión humana están en `datos/` y `salidas/resumen_verificacion.json`.

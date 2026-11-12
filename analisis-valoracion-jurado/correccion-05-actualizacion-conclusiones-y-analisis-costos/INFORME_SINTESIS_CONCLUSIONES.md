@@ -16,9 +16,10 @@ Este paquete no reemplaza las correcciones anteriores: las integra. Las fuentes 
 | 02 — diagnóstico gpt-5-nano | 41/79 salidas no sustantivas; 38/79 sustantivas con calidad alta; jueces inconsistentes; no es falta de recuperación ni truncamiento | `correccion-02.../INFORME_DIAGNOSTICO.md`; `salidas/14_dataset_categoria_final.csv` |
 | 03 — parámetros de API | No hay determinismo; la temperatura no se aplicó; el esfuerzo de razonamiento no se registró; una ejecución por celda | `correccion-03.../propuestas_edicion.md`; `salidas/resumen_evidencia.json` |
 | 04 — factores confundidos y prompts | Recuperador fijo gpt-5; prompts distintos; límite 7 en gpt-5 y 6 en mini/nano; Agente de Calidad nunca ejecutado; objetivo 2 parcial | `correccion-04.../03_resolucion_contradicciones.md`; `propuestas/cambios_manuscrito.md` |
-| 06 — corpus y benchmark | Corpus actualizado, no copia del PDF de 1997; 398 nodos artículo; revisión por una profesional; referencias que requieren v2 | `correccion-06.../resumen_ejecutivo.md`; `salidas/auditoria_corpus_benchmark.md` |
+| 06 — corpus y benchmark | Corpus actualizado, no copia del PDF de 1997; 398 nodos artículo; revisión por una profesional; una revisión asistida por `ollama-cloud:deepseek-v4.1-flash:1017-cloud` detectó posibles errores que requieren revisión profesional | `correccion-06.../resumen_ejecutivo.md`; `salidas/auditoria_corpus_benchmark.md` |
+| Verificación D-14 | α recalculado desde jueces originales; 23 discrepancias y 17 evaluaciones positivas no sustantivas | `verificacion-analisis-estadistico/salidas/resumen_verificacion.json` |
 | 07 — bibliografía | Correcciones de citas y referencias; no altera la inferencia, pero impide sostener atribuciones erróneas | `correccion-07.../resumen_ejecutivo.md`; `propuesta_edicion_manuscrito.md` |
-| 05 — este paquete | Costos, Pareto, costo por aceptable, Tabla 4 reformulada y textos propuestos | `ANALISIS_COSTOS.md`; `TABLA_4_REFORMULADA.md` |
+| 05 — este paquete | Costos, Pareto, costo por respuesta correcta, Tabla 4 reformulada y textos propuestos | `ANALISIS_COSTOS.md`; `TABLA_4_REFORMULADA.md` |
 
 ---
 
@@ -69,10 +70,10 @@ Por eso “sobrecarga agéntica” debe retirarse como explicación causal y ree
 
 ### 2.5. Los jueces no están “validados”
 
-- α ordinal global de corrección: 0,808 con valores originales; 0,800 con transformación a rúbrica.
-- No se comparó con criterio humano.
-- En 58 observaciones no sustantivas hay 174 evaluaciones; 12 de corrección tienen puntaje > 0 (9 unidades distintas) y 5 de precisión legal > 0. Varias justificaciones describen contenido inexistente.
-- La precisión legal tiene α = 0,785 global, pero cae por debajo de 0,667 en RAG básico y Sin RAG.
+- α ordinal global de corrección: 0,807842 con valores originales; 0,799542 con transformación a rúbrica, recalculado de forma independiente en `verificacion-analisis-estadistico/`.
+- No se comparó con criterio humano ni existen calificaciones humanas de las respuestas; la revisión humana del benchmark no es validación de los jueces.
+- La verificación identificó 23 discrepancias entre jueces para revisión humana y 17 evaluaciones positivas sobre salidas no sustantivas.
+- La precisión legal tiene α = 0,784566 global, pero cae por debajo de 0,667 en RAG básico y Sin RAG.
 
 La conclusión correcta es “acuerdo inter-juez bueno para corrección, con inconsistencias en salidas no sustantivas; confiabilidad, no validez”.
 
@@ -91,16 +92,17 @@ No se puede afirmar “cumplimiento completo” ni “ciclo multi-agente de veri
 - 25 casos, 79 unidades.
 - Revisión por una profesional, registrada en ODT; no hay segunda revisión independiente.
 - 12 propuestas de corrección (referencias, paráfrasis, alcance de Q23–Q25).
+- Una revisión posterior asistida por `ollama-cloud:deepseek-v4.1-flash:1017-cloud` detectó posibles errores que requieren una nueva revisión por un profesional del derecho.
 - Las conclusiones corresponden al instrumento v1. No se debe corregir el anexo y presentarlo como si fuera el usado.
 
 ### 2.8. Los costos no tienen un ganador único
 
 - Costo total: USD 22,2939.
 - Agentic-RAG + mini: USD 0,0564/consulta; RAG básico + gpt-5: USD 0,0392; Sin RAG + gpt-5: USD 0,0478. La recomendación “costo-eficiente” no se sostiene en sentido absoluto.
-- Menor costo puntual por aceptable (≥ 0,75): RAG básico + nano, USD 0,0061 (33/79; media 0,599); su IC bootstrap se solapa con Sin RAG + nano, por lo que no hay una diferencia formal establecida.
+- Menor costo puntual por respuesta correcta (≥ 0,75, definición D-02): RAG básico + nano, USD 0,0061 (33/79; media 0,599); su IC bootstrap se solapa con Sin RAG + nano, por lo que no hay una diferencia formal establecida.
 - Mayor media: Agentic-RAG + gpt-5, 0,812 (USD 0,0792; 56/79).
 - Agentic-RAG + mini es no dominada: 0,788 a USD 0,0564, con diferencia no concluyente frente a Agentic-RAG + gpt-5.
-- Agentic-RAG + nano tiene el peor costo por aceptable: USD 0,1307 (27/79).
+- Agentic-RAG + nano tiene el peor costo por respuesta correcta: USD 0,1307 (27/79).
 
 ---
 
@@ -117,8 +119,8 @@ No se puede afirmar “cumplimiento completo” ni “ciclo multi-agente de veri
 
 1. **“La recuperación mejora significativamente.”** → “El efecto depende de la estrategia y del modelo; no hay mejora uniforme”.
 2. **“El objetivo 2 se cumplió completamente.”** → “Cumplimiento parcial: dos agentes activos, una delegación, sin verificador”.
-3. **“El benchmark fue validado por un profesional.”** → “Revisado por una profesional; v1 congelado; correcciones v2”.
-4. **“El repositorio es replicable.”** → “Acceso público verificado; reproducción funcional desde clonación limpia pendiente”.
+3. **“El benchmark fue validado por un profesional.”** → “Revisado por una profesional; v1 congelado; correcciones v2; revisión LLM posterior detectó posibles errores que requieren revisión profesional”.
+4. **“El repositorio es replicable.”** → “Acceso público verificado sin login; clonación y ejecución recomendadas como verificación de reproducibilidad”.
 5. **“El sistema atiende a usuarios profesionales y no profesionales.”** → “Uso potencial; no se evaluó con usuarios ni se desarrolló interfaz”.
 
 ### 3.3. Se retiran
@@ -141,12 +143,12 @@ No se puede afirmar “cumplimiento completo” ni “ciclo multi-agente de veri
 | “validación de LLM-as-a-Judge” | `09...:37`; README | Cambiar por “acuerdo inter-juez” |
 | “en gpt-5 no hay diferencias” | `07...:424, 435`; `09...:45, 138` | Corregir con +0,106 frente a RAG básico y +0,095 frente a Sin RAG |
 | “resultado transferible” | `09...:138` | Retirar; hablar de hipótesis |
-| “combinación costo-eficiente” | `07...:429`; `09...:57` | Reemplazar por Pareto/costo por aceptable |
+| “combinación costo-eficiente” | `07...:429`; `09...:57` | Reemplazar por Pareto/costo por respuesta correcta (≥ 0,75) |
 | “objetivo 2 cumplido completamente” | `09...:17` | Cambiar a cumplimiento parcial |
 | “temperatura 0” / “determinista” | `07...:16`; `06...:461, 644`; `09...:87` | Corregir según IX.1.3 |
 | “n = 79 observaciones por celda” sin desglose | `07...:424` | Aclarar 79 unidades, 2.133 evaluaciones, 653 en exclusión |
 | “245 artículos” / “399 artículos” | `04...:111`; `06...:101` | Usar 398 nodos artículo (397 con texto) o “artículo inexistente” |
-| “IVF_FLAT” | `09...:15`; `06...:138` | Quitar o verificar en Milvus (D-12) |
+| “IVF_FLAT” | `09...:15`; `06...:138` | Sustituir por “AUTOINDEX con similitud coseno” (D-12) |
 
 La lista completa está en `FRASES_A_ELIMINAR.csv`.
 
@@ -176,8 +178,8 @@ La lista completa está en `FRASES_A_ELIMINAR.csv`.
 5. Los jueces tienen acuerdo ordinal bueno para corrección, con inconsistencias en salidas no sustantivas.
 6. El objetivo 2 es parcial: dos agentes, una delegación, sin verificador.
 7. El benchmark es v1, revisado por una profesional, con correcciones pendientes para v2.
-8. Los costos no tienen un ganador único; RAG básico + nano presenta el menor costo puntual por aceptable (IC solapado con Sin RAG + nano) y Agentic-RAG + gpt-5 maximiza la media.
-9. El repositorio es público; la reproducción final desde una clonación limpia está pendiente.
+8. Los costos no tienen un ganador único; RAG básico + nano presenta el menor costo puntual por respuesta correcta (≥ 0,75; IC solapado con Sin RAG + nano) y Agentic-RAG + gpt-5 maximiza la media.
+9. El repositorio es público y accesible sin login; la clonación y ejecución se recomiendan como verificación de reproducibilidad.
 10. El sistema es un prototipo de investigación, no una interfaz evaluada con usuarios.
 
 ---
@@ -197,7 +199,7 @@ La lista completa está en `FRASES_A_ELIMINAR.csv`.
 ## 8. Limitaciones de esta síntesis
 
 - No reemplaza la revisión jurídica de las respuestas de referencia (IX.1.6); el benchmark v1 se conserva como instrumento usado.
-- No reemplaza la validación humana de los jueces (IX.2.3); solo declara su ausencia.
+- No reemplaza la validación humana de los jueces (IX.2.3); declara su ausencia y deja 23 discrepancias para revisión futura.
 - No reemplaza las réplicas ni la ablación (IX.2.4); solo declara que no existen.
 - No actualiza precios ni costos de producción; usa los costos registrados.
 - No decide el título ni el alcance institucional; eso queda en D-09.

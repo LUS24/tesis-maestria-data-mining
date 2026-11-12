@@ -544,8 +544,8 @@ def make_figures(cells: list[dict[str, Any]]) -> None:
     ax.set_yscale("log")
     ax.set_xticks(range(len(ordered)))
     ax.set_xticklabels(labels, rotation=0, fontsize=7)
-    ax.set_ylabel("USD por respuesta aceptable (log)")
-    ax.set_title("Costo por respuesta aceptable (umbral ≥ 0,75)")
+    ax.set_ylabel("USD por respuesta correcta (log)")
+    ax.set_title("Costo por respuesta correcta (umbral ≥ 0,75)")
     ax.grid(axis="y", which="both", alpha=0.25, linewidth=0.5)
     ax.legend(
         handles=[
@@ -640,6 +640,7 @@ def write_summary(cells: list[dict[str, Any]], by_strategy: list[dict[str, Any]]
             "n_no_sustantivas": results["n_no_sustantivas"],
             "nano_agentic_no_sustantivas": int(agentic_nano["n_no_sustantiva"]),
         },
+        "definicion_respuesta_correcta": "Puntaje promedio de los tres jueces >= 0,75; operacionalizacion adoptada en D-02.",
         "nota": "Los costos son los registrados en el experimento (precios de API del período). No se actualizaron a precios corrientes.",
     }
     (OUT_DIR / "resumen_costos.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
