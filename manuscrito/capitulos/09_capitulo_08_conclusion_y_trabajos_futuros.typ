@@ -72,7 +72,7 @@ El trabajo presenta las siguientes limitaciones que deben considerarse al interp
 
 + *Ausencia de diferencia marginal entre Agentic-RAG y RAG básico.* A nivel global, no se encontró diferencia significativa entre ambas estrategias ($p = 0.383$), aunque el análisis de interacción muestra que esta conclusión enmascara diferencias condicionales al modelo. Este resultado sugiere que, para ciertos modelos, la complejidad adicional del sistema agéntico no se traduce en mejora marginal respecto a un RAG más simple.
 
-+ *Degradación con modelos pequeños.* El sistema Agentic-RAG perjudica el desempeño de gpt-5-nano, lo que constituye una limitación para despliegues con restricciones de costo o en entornos con acceso limitado a modelos de mayor capacidad. El análisis de efectos simples confirma que esta degradación es significativa frente a RAG básico ($p_"corr" = 0.017$, Holm-Bonferroni) pero marginal frente a sin RAG ($p_"corr" = 0.064$).
++ *Modo de fallo de respuesta en Agentic-RAG con gpt-5-nano.* La celda produjo 41/79 salidas no sustantivas (27 vacías, 1 con solo espacios, 2 abstenciones, 1 truncada y 10 indeterminadas), pese a que los logs registran recuperación y tokens de salida. Cuando respondió, la calidad fue alta (38/79; media 0,820; mediana 0,958). Bajo el escenario principal, la diferencia frente a RAG básico es −0,270 (IC 95 % −0,330 a −0,202; $p_"Holm" = 3,25 times 10^(-14)$) y frente a Sin RAG es −0,242 (IC 95 % −0,307 a −0,176). El resultado es una limitación para despliegues con restricciones de costo, pero no hay evidencia para atribuir el fallo a la “complejidad agéntica”: no se realizaron réplicas ni ablaciones.
 
 + *Confiabilidad insuficiente de la métrica de precisión legal.* La rúbrica `score_precision_legal` no alcanzó niveles aceptables de acuerdo inter-juez en todos los subgrupos ($alpha < 0.667$ en base\_rag y no\_rag), lo que impidió su uso como variable de comparación y limitó la evaluación de la precisión en la citación de artículos.
 
@@ -133,7 +133,7 @@ Los avances recientes en optimización de políticas Agentic-RAG mediante aprend
 
 === Re-evaluación sobre Modelos de Nueva Generación
 
-La velocidad de iteración en el desarrollo de LLMs hace deseable repetir el diseño experimental sobre modelos lanzados después del período de estudio, especialmente modelos de razonamiento que integran cadenas de pensamiento explícitas (_chain-of-thought_). Estos modelos podrían alterar la dinámica de interacción estrategia × modelo documentada en este trabajo, en particular reduciendo o eliminando la degradación observada en el modo Agentic-RAG con modelos de menor capacidad. La metodología de evaluación propuesta ---diseño factorial, benchmark específico y validación mediante LLM-as-a-Judge--- es directamente aplicable a futuras generaciones de modelos sin modificaciones sustanciales.
+La velocidad de iteración en el desarrollo de LLMs hace deseable repetir el diseño experimental sobre modelos lanzados después del período de estudio, especialmente modelos de razonamiento que integran cadenas de pensamiento explícitas (_chain-of-thought_). Estos modelos podrían alterar la dinámica de interacción estrategia × modelo documentada en este trabajo, en particular reduciendo o eliminando el modo de fallo de respuesta observado en Agentic-RAG con gpt-5-nano. La metodología de evaluación propuesta ---diseño factorial, benchmark específico y validación mediante LLM-as-a-Judge--- es directamente aplicable a futuras generaciones de modelos sin modificaciones sustanciales.
 
 == Reflexiones Finales
 

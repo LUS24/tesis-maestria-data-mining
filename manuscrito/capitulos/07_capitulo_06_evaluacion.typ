@@ -229,9 +229,9 @@ El análisis de las medias por combinación —cuyas estimaciones modeladas figu
 
 Las principales observaciones son:
 
-+ *gpt-5 es robusto*: mantiene un desempeño alto (0.70–0.80) en todas las condiciones, compensando parcialmente la ausencia de contexto mediante su capacidad de razonamiento interna.
-+ *gpt-5-mini es sensible al RAG*: con Agentic-RAG alcanza 0.78 (comparable a gpt-5), pero sin RAG cae a 0.35, evidenciando una dependencia crítica del contexto externo.
-+ *gpt-5-nano muestra un comportamiento contraintuitivo*: su desempeño es *peor* con Agentic-RAG (0.40) que con RAG básico (0.59), lo que sugiere que el sistema agéntico genera instrucciones y contextos de complejidad excesiva para un modelo de capacidad reducida.
++ *gpt-5 mantiene el desempeño más alto en las tres estrategias*: su probabilidad predicha de obtener al menos 0,75 se mantiene por encima de 0,65 en todas las condiciones. No se atribuye esa estabilidad a un mecanismo interno de razonamiento del modelo: el diseño no permite separar el tamaño del modelo de otras diferencias entre proveedores y versiones.
++ *gpt-5-mini depende del contexto externo*: con Agentic-RAG alcanza una probabilidad predicha de 0,79 frente a 0,16 sin RAG, y la diferencia Agentic − Sin RAG es la mayor de la matriz (+0,513 de media).
++ *gpt-5-nano presenta un modo de fallo de respuesta*: 41 de las 79 salidas no son sustantivas, frente a 0 en RAG básico y 1 en Sin RAG. Cuando produce una respuesta sustantiva (38/79), su calidad es alta (media 0,820; mediana 0,958). La diferencia negativa a nivel sistema se explica por las salidas no sustantivas y no por una degradación uniforme de las respuestas efectivamente producidas.
 
 === Lectura del Patrón
 
