@@ -49,7 +49,7 @@ La primera extracción de citas marcó 12 entradas como no citadas. Era un **fal
 - **Llama 4:** Meta lo publicó el **5 de abril de 2025**, no en marzo de 2026.
 - **Qwen3:** se publicó el **29 de abril de 2025**; `qwen3_5` es Qwen 3.5 (2026).
 - **LEXTREME:** es de **2023**, no 2024, y falta Chalkidis como sexto autor.
-- **Tribunal Fiscal:** el autor institucional no corresponde a la URL de la nota de AUNO; el sitio oficial es `https://jurisprudenciatfn.mecon.gob.ar/`.
+- **Tribunal Fiscal:** el autor institucional no corresponde a la URL de la nota de AUNO; la página oficial es `https://www.argentina.gob.ar/tribunalfiscal/jurisprudencia`, que enlaza al buscador asistido por IA. El endpoint directo `https://jurisprudenciatfn.mecon.gob.ar/` no respondió desde este entorno.
 - **Lewis et al. (2020)** y el **Código de Minería** no estaban citados; se agregan.
 
 ### 3.2. Corrección al pedido de letras a/b
@@ -164,7 +164,7 @@ typst compile citas_ambiguas.typ ../salidas/prueba_citas.pdf --root ../../..
 1. **Bozdag (PI-21, opción A):** reemplazar la entrada y reescribir las dos afirmaciones; el artículo no demuestra por sí solo una relación con decisiones judiciales reales.
 2. **Magesh (PI-22, opción A):** usar Magesh et al. (2025) para Westlaw/Lexis; conservar Dahl solo para su propio contenido.
 3. **Wei/Zhao (PI-23, opción A):** usar APA con nombres/iniciales; no usar letras a/b.
-4. **Tribunal Fiscal (PI-24, opción B provisional):** usar la nota de AUNO/Tallarico porque el sitio oficial no respondió; cambiar a opción A si se verifica el acceso.
+4. **Tribunal Fiscal (PI-24, opción A):** usar `tribunalfiscal2024buscador` con la página institucional verificada; no usar la nota de AUNO como fuente institucional.
 5. **DOI de edición (PI-25, resuelta):** se adoptaron `hebb2005organization`, `minsky2017perceptrons`, `bonferroni2010teoria`, `jordan1997` y `krippendorff2019content`; el `.bib` y las citas del manuscrito ya usan las claves nuevas.
 6. **Forma de autoría (PI-26, opción B):** `et al.` estricto APA 7; eliminar las reglas de traducción a “y cols.” y unificar las citas renderizadas.
 
@@ -172,7 +172,7 @@ typst compile citas_ambiguas.typ ../salidas/prueba_citas.pdf --root ../../..
 
 - La verificación de DOI/URL es de **metadatos y localizadores**, no de lectura completa de las 238 obras.
 - Los 403 de OpenAI, ACM, ScienceDirect, ScholarWorks y Oxford son bloqueos de automatización; no prueban que el recurso no exista.
-- El sitio oficial del Tribunal Fiscal no respondió por timeout desde este entorno; la búsqueda web lo confirma, pero conviene verificarlo desde otra red antes de la entrega.
+- La página institucional del Tribunal Fiscal responde 200 y enlaza al buscador; el endpoint directo del buscador no respondió por timeout desde este entorno.
 - No se generaron citas de memoria: las entradas propuestas se obtuvieron de Crossref, DataCite, arXiv, OpenReview, ACL Anthology o sitios oficiales.
 - La decisión jurídica sobre las respuestas de referencia corresponde al profesional del derecho, no a esta auditoría.
 

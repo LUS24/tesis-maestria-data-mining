@@ -146,7 +146,7 @@ Reglas de implementación:
 | PI-21 | Bommasani/Davis/Cardon → Bozdag, Sevim y Koç | A) Reemplazar la entrada y reescribir las dos afirmaciones; B) conservar la entrada y corregir solo el DOI; C) dejar como está | **A.** El DOI 10.1145/3628602 corresponde a Bozdag et al. (2024), y el método es ajuste fino, no “adapters”. Revisar el texto completo antes de atribuir resultados | Autor + bibliografía | **Sí** para la Tabla 3 |
 | PI-22 | Dahl et al. (2024) frente a Magesh et al. (2025) | A) Usar Magesh et al. para la frase sobre Westlaw/Lexis y conservar Dahl solo para su propio contenido; B) conservar Dahl para la frase; C) eliminar ambas | **A.** El estudio de Westlaw/Lexis es Magesh et al. (2025), JELS 22(2), 216–242. Dahl no sustenta esa afirmación | Autor | **Sí** para la Tabla 3 |
 | PI-23 | Wei 2022 y Zhao 2026: APA frente a letras a/b | A) APA: “Wei, Wang, y cols.” / “Wei, Tay, y cols.” y “W. X. Zhao y cols.” / “J. Zhao y cols.”; B) letras (2022a/2022b, 2026a/2026b) como pedía literalmente el jurado | **A.** Es la regla APA 7 para coautores distintos e iniciales distintas; Typst ya maneja bien `form: "year"`. Probar en `pruebas/citas_ambiguas.typ` | Autor + bibliografía | No, pero afecta la Tabla 3 |
-| PI-24 | Tribunal Fiscal de la Nación | A) Entrada institucional con el sitio oficial; B) nota de AUNO con autora Milagros Denise Tallarico; C) mantener la mezcla actual | **A si el sitio oficial está disponible; B en caso contrario.** Estado actual: B porque el sitio no respondió (timeout); pasar a A cuando se verifique. No mezclar autor institucional con URL de un estudio jurídico | Autor + bibliografía | No, pero afecta la fuente |
+| PI-24 | Tribunal Fiscal de la Nación | A) Entrada institucional con el sitio oficial; B) nota de AUNO con autora Milagros Denise Tallarico; C) mantener la mezcla actual | **A adoptada con la página institucional:** `https://www.argentina.gob.ar/tribunalfiscal/jurisprudencia` responde 200 y enlaza al “Buscador de Jurisprudencia Asistido por IA”. El endpoint directo `https://jurisprudenciatfn.mecon.gob.ar/` no respondió desde este entorno (timeout). Usar `tribunalfiscal2024buscador`; no mezclar autor institucional con la nota de AUNO | Autor + bibliografía | No, pero afecta la fuente |
 | PI-25 | DOI de edición en Hebb, Minsky, Bonferroni, Jordan y Krippendorff | A) Citar la edición efectivamente consultada y retirar el DOI si no corresponde; B) conservar el DOI y cambiar la edición; C) dejar el DOI actual | **Resuelta:** se adoptan las ediciones y entradas de `§6.4`; las cinco claves y todas sus citas se actualizaron en el manuscrito | Autor + bibliografía | No, pero afecta la trazabilidad |
 | PI-26 | Forma de autoría: “y cols.” frente a “et al.” | A) “y cols.” uniforme en español; B) “et al.” estricto APA; C) mantener la mezcla actual | **B adoptada:** `et al.` estricto APA 7, como solicita el tribunal. Revisar las dos reglas de `main.typ` y las citas renderizadas | Autor | No, pero es corrección editorial obligatoria |
 | PI-27 | Paquete de correcciones factuales de alta prioridad | A) Aplicar todas las correcciones verificadas: Niklaus 2023, DeepSeek-R1 2025, Llama 4 abril 2025, Qwen3 abril 2025, Yang en lugar de Wan, Pydantic 1.1.0, Springer 2025, Zhao survey, Raeini, etc.; B) aplicar solo las críticas; C) posponerlas | **A.** Son correcciones de metadatos y autoría respaldadas por Crossref/arXiv/sitios oficiales; no requieren nueva evidencia. Revisar las afirmaciones que dependen de ellas | Autor + bibliografía | **Sí** para la auditoría completa |
@@ -219,8 +219,7 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 
 ### 5.2 Pendiente de decisión o verificación
 
-1. **PI-24:** verificar el acceso al sitio oficial del Tribunal Fiscal. Si responde, usar la opción A; si no, mantener la opción B (AUNO/Tallarico).
-2. **NV-03:** no prioritaria por tiempo; no bloquea la entrega.
+1. **NV-03:** no prioritaria por tiempo; no bloquea la entrega.
 
 ### 5.3 Implementación
 
@@ -228,7 +227,7 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 2. **P0 — NV-02:** calcular recuperación desde los `.json` y dejar el artefacto reproducible en `verificacion-analisis-estadistico/metricas_recuperacion/`.
 3. **P1 — D-02:** calcular la sensibilidad 0,50/0,75/1,00 y el costo por respuesta correcta.
 4. **PI-04 / NV-04:** redactar la declaración de IA por etapas y revisar el antecedente de la “referencia fabricada”. **NV-05:** declarar que se usó el valor por defecto de la API: Pydantic AI 1.1.0 no fija `reasoning_effort` y envía `NOT_GIVEN`; OpenAI documenta `medium` para GPT-5, pero no hay registro local del valor efectivo.
-5. **PI-21, PI-22, PI-23, PI-24, PI-26, PI-27 y PI-28:** aplicar las correcciones bibliográficas decididas. **PI-24:** usar A si el sitio oficial responde; B (AUNO/Tallarico) si no. **PI-25:** verificar en el PDF las cinco claves de `§6.4`; ya están aplicadas.
+5. **PI-21, PI-22, PI-23, PI-24, PI-26, PI-27 y PI-28:** aplicar las correcciones bibliográficas decididas. **PI-24:** usar `tribunalfiscal2024buscador` con la página institucional verificada; no usar la nota de AUNO como fuente institucional. **PI-25:** verificar en el PDF las cinco claves de `§6.4`; ya están aplicadas.
 6. **PI-29:** mantener `nAGQ = 1`, declarar la limitación de Laplace y usar las cifras reconciliadas de NV-01.
 7. **PI-03, PI-05, PI-10 y PI-11:** aplicar textos de arquitectura, terminología, excepción `16_01` y notebook canónico.
 8. **PI-06, PI-07, PI-08, PI-12, PI-15, PI-16, PI-18, PI-19 y PI-32:** declarar la revisión humana y sus límites, fijar el proceso del corpus, corregir 1.2/1.3 y fechas, y usar el conteo de preguntas revisadas.
@@ -301,7 +300,7 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | PI-21 | Cerrada | Opción A: reemplazar Bommasani/Davis/Cardon por Bozdag, Sevim y Koç; reescribir las dos afirmaciones | Aplicar en `.bib` y texto |
 | PI-22 | Cerrada | Opción A: usar Magesh et al. (2025) para Westlaw/Lexis; conservar Dahl para su propio contenido | Reemplazar la cita |
 | PI-23 | Cerrada | Opción A: APA con nombres/iniciales para Wei/Zhao, sin letras a/b | Aplicar en citas |
-| PI-24 | Cerrada | Opción A si el sitio oficial está disponible; opción B (nota de AUNO/Tallarico) si no lo está. Estado actual: B porque el sitio no respondió (timeout); pasar a A cuando se verifique | Verificar acceso; actualizar entrada y cita según corresponda |
+| PI-24 | Cerrada | Opción A con la página institucional verificada (`https://www.argentina.gob.ar/tribunalfiscal/jurisprudencia`), que enlaza al buscador asistido por IA. El endpoint directo no respondió desde este entorno (timeout) | Entrada y cita actualizadas; PDF compilado |
 | PI-25 | Cerrada | Se adoptan las cinco entradas de `§6.4`: Hebb 2005, Minsky 2017, Miceli 2010 (Bonferroni), Jordan 1997 y Krippendorff 2019; claves actualizadas | Citas y `.bib` actualizados; PDF compilado |
 | PI-26 | Cerrada | Opción B: `et al.` estricto APA 7, como solicita el tribunal | Revisar `main.typ` y PDF |
 | PI-27 | Cerrada | Opción A: aplicar el paquete de correcciones factuales verificadas | Aplicar en `.bib` y texto |

@@ -46,7 +46,7 @@ Los 18 DOI con discrepancia no son 18 errores fatales; la mayoría son diferenci
 | Llama 4 | Fechado en marzo de 2026; Meta lo publicó el **5 de abril de 2025**. | Corregir `llama4` y las dos menciones del capítulo 7. |
 | Qwen3 | El texto lo fecha en diciembre de 2025; Qwen3 se publicó el **29 de abril de 2025**. `qwen3_5` es Qwen 3.5 (2026). | Agregar `qwen2025qwen3` y corregir la frase de la línea 258. |
 | LEXTREME | El año es **2023**, no 2024, y falta **Chalkidis** como sexto autor. | Usar `niklaus2023lextreme`; actualizar cinco citas. |
-| Tribunal Fiscal | El autor institucional no corresponde a la URL: la URL es una nota de **AUNO Abogados**, autora **Milagros Denise Tallarico**. El sitio oficial es `https://jurisprudenciatfn.mecon.gob.ar/`. | Usar `tribunalfiscal2024buscador` o `tallarico_tfn`; no mezclar ambos. |
+| Tribunal Fiscal | El autor institucional no corresponde a la URL: la URL es una nota de **AUNO Abogados**, autora **Milagros Denise Tallarico**. La página oficial es `https://www.argentina.gob.ar/tribunalfiscal/jurisprudencia`, que enlaza al buscador; el endpoint directo no respondió desde este entorno. | Usar `tribunalfiscal2024buscador` con la página institucional; no mezclar con la nota de AUNO. |
 | Lewis et al. (2020) | No está citado. | Agregar `lewis2020rag` y citarlo al presentar RAG. |
 | Código de Minería | No hay entrada legal. | Agregar `codigo_mineria_1919`. |
 
@@ -77,7 +77,7 @@ Typst ya asigna a/b a los autores institucionales del mismo año (OpenAI, Anthro
 1. **Bozdag (PI-21, opción A):** reemplazar la entrada y reescribir las dos afirmaciones.
 2. **Magesh (PI-22, opción A):** usar Magesh et al. (2025) para Westlaw/Lexis; conservar Dahl solo para su propio contenido.
 3. **Wei/Zhao (PI-23, opción A):** usar APA con nombres/iniciales; no usar letras a/b.
-4. **Tribunal Fiscal (PI-24, opción B provisional):** usar la nota de AUNO/Tallarico porque el sitio oficial no respondió; cambiar a A si se verifica el acceso.
+4. **Tribunal Fiscal (PI-24, opción A):** usar `tribunalfiscal2024buscador` con la página institucional verificada; el endpoint directo no respondió desde este entorno.
 5. **DOI de edición (PI-25, resuelta):** se adoptaron `hebb2005organization`, `minsky2017perceptrons`, `bonferroni2010teoria`, `jordan1997` y `krippendorff2019content`; el `.bib` y las citas del manuscrito ya usan las claves nuevas.
 6. **Forma de autoría (PI-26, opción B):** `et al.` estricto APA 7; eliminar las reglas de traducción a “y cols.” y unificar las citas renderizadas.
 
