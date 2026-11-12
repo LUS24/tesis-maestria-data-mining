@@ -9,7 +9,7 @@
 
 == Introducción
 
-Este capítulo presenta la evaluación sistemática del sistema Agentic-RAG y los resultados obtenidos. Se describen el diseño experimental, las métricas empleadas, los resultados de cada configuración y el análisis estadístico que fundamenta las conclusiones. El análisis sigue una progresión desde la exploración descriptiva hasta pruebas de hipótesis y análisis de interacción factorial.
+Este capítulo presenta la evaluación sistemática del sistema Agentic-RAG y los resultados obtenidos. Se describen el diseño experimental, las métricas empleadas, los resultados de cada configuración y el análisis estadístico que fundamenta las conclusiones. El análisis sigue una progresión desde la exploración descriptiva hasta la especificación de un modelo ordinal mixto que respeta el apareamiento y el anidamiento del diseño, el contraste de la interacción estrategia × modelo y el análisis de sensibilidad a escenarios de fallo.
 
 == Diseño Experimental
 
@@ -72,67 +72,21 @@ donde $cal(R) = {0.0, 0.25, 0.5, 0.75, 1.0}$.
 
 Adicionalmente, un análisis inicial reportó 27 observaciones ausentes en las métricas de evaluación por jueces. La auditoría de las claves de identificación mostró que no se trataba de fallos de generación: las 27 medias ausentes correspondían a las unidades 23, 24 y 25 en las nueve configuraciones, porque en el archivo de métricas la subpregunta figuraba vacía y en el archivo de evaluaciones figuraba como `0`, de modo que la unión de ambas tablas no las encontraba. Las 27 respuestas y sus tres evaluaciones de jueces existen. Al normalizar la clave se recuperaron las 711 observaciones y las 2.133 evaluaciones (711 observaciones × 3 jueces), de manera que la base de análisis contiene 79 unidades por celda y no 76. No se aplicó eliminación por lista ni ninguna otra imputación de observaciones completas; la única transformación es la corrección de los valores fuera de rúbrica descrita arriba.
 
-== Verificación de Normalidad
+== Especificación del Análisis Inferencial
 
-=== Test de Shapiro-Wilk y Resultados
+=== Unidades Apareadas, Anidamiento y Modelo Ordinal
 
-Se aplicó el test de Shapiro-Wilk ($H_0$: los datos siguen una distribución normal, $alpha = 0.05$) a nivel global (todas las observaciones por métrica) y a nivel de grupos (dentro de cada combinación estrategia × modelo).
+El diseño no es de grupos independientes. Las 79 unidades de evaluación se responden en las nueve configuraciones, de modo que las observaciones están apareadas por unidad; además, las unidades están anidadas en 25 casos y cada respuesta recibe tres evaluaciones de jueces. Ignorar esas dependencias infla los grados de libertad, deja la dificultad de cada unidad dentro del error y vuelve inválidos los valores p de las pruebas para muestras independientes.
 
-La mayoría de las métricas rechazan la hipótesis nula de normalidad tanto a nivel global como por grupos. El caso de los scores de evaluación por jueces requiere una aclaración: al tratarse de mediciones ordinales en una escala discreta {0.0, 0.25, 0.5, 0.75, 1.0}, la normalidad no es un supuesto plausible _por construcción_ —una variable con cinco valores posibles y masa de probabilidad concentrada en ellos no puede seguir una distribución normal—, de modo que el test de Shapiro-Wilk no aporta evidencia adicional en este caso: se incluye por uniformidad del diagnóstico y solo confirma, como era esperable, el rechazo de $H_0$. El test resulta informativo para las 13 métricas textuales y semánticas, que son continuas y para las cuales la normalidad no puede descartarse _a priori_; allí los resultados también conducen al rechazo, lo que motiva el uso de pruebas no paramétricas para todas las métricas por igual. Se reportan, en consecuencia, los resultados del test para las 15 métricas.
+La variable de respuesta principal es el puntaje ordinal de `score_respuesta_correcta` en la escala {0; 0,25; 0,50; 0,75; 1}. El análisis principal es el modelo ordinal mixto de enlaces acumulativos descrito en el capítulo de metodología: `score_respuesta_correcta ~ estrategia * modelo_especialista + juez + (1 | caso) + (1 | unidad)`, estimado con `ordinal::clmm` (Laplace, `nAGQ = 1`). La interacción se contrastó con una prueba de razón de verosimilitud de 4 grados de libertad y los efectos simples se corrigen con Holm dentro de cada una de las dos familias de nueve contrastes.
 
-=== Implicación Metodológica
+=== Comparación con el Análisis Exploratorio
 
-Los resultados justifican el uso de pruebas no paramétricas para las comparaciones posteriores:
-
-+ *Kruskal-Wallis* en lugar de ANOVA unilateral.
-+ *Dunn con corrección de Bonferroni* como prueba post-hoc.
-+ *Scheirer-Ray-Hare* en lugar de ANOVA factorial para evaluar interacciones.
-
-== Comparaciones entre Estrategias y Modelos
-
-=== Test de Kruskal-Wallis
-
-Se aplicó el test de Kruskal-Wallis como alternativa no paramétrica al ANOVA para comparar las distribuciones de cada VR entre los niveles de cada factor.
-
-En cuanto al *efecto de la estrategia de recuperación*, para la métrica `respuesta_correcta_avg` el test arrojó $H = 21.83$, $p < 0.001$, indicando diferencias significativas entre las tres estrategias de recuperación. Las medianas observadas fueron:
-
-+ Agentic-RAG: 0.8333
-+ RAG básico: 0.7083
-+ Sin RAG: 0.5833
-
-Respecto del *efecto del modelo*, para la misma métrica se obtuvo $H = 49.01$, $p < 0.001$, lo que confirma diferencias significativas entre modelos. Las medianas fueron:
-
-+ gpt-5: 0.8333
-+ gpt-5-mini: 0.5417
-+ gpt-5-nano: 0.5833
-
-=== Prueba Post-Hoc de Dunn
-
-Las comparaciones por pares con corrección de Bonferroni revelaron los siguientes patrones para `respuesta_correcta_avg`:
-
-*Entre estrategias:*
-+ Agentic-RAG vs. sin RAG: $p = 0.000014$ — diferencia significativa.
-+ RAG básico vs. sin RAG: $p = 0.0066$ — diferencia significativa.
-+ Agentic-RAG vs. RAG básico: $p = 0.383$ — sin diferencia significativa.
-
-*Entre modelos:*
-+ gpt-5 vs. gpt-5-nano: $p < 0.0001$ — diferencia significativa.
-+ gpt-5 vs. gpt-5-mini: $p = 0.000007$ — diferencia significativa.
-+ gpt-5-mini vs. gpt-5-nano: $p = 0.101$ — sin diferencia significativa.
-
-=== Análisis Estratificado: Efecto del Modelo dentro de cada Sistema
-
-Se realizaron tests de Kruskal-Wallis estratificados por sistema de recuperación, con nivel de significación ajustado por Bonferroni ($alpha = 0.05 / 3 = 0.0167$):
-
-+ *Agentic-RAG*: $H = 40.64$, $p < 0.0001$ — los modelos difieren significativamente.
-+ *Sin RAG*: $H = 59.67$, $p < 0.0001$ — los modelos difieren significativamente.
-+ *RAG básico*: $H = 4.71$, $p = 0.095$ — los modelos *no* difieren significativamente.
-
-Las diferencias entre modelos con RAG básico son menores que en las otras estrategias, pero no desaparecen. Un p no significativo no demuestra equivalencia; para sostenerla haría falta un margen definido a priori. Por eso no se afirma equivalencia.
+La primera versión del análisis se apoyó en pruebas que tratan las observaciones como independientes: Shapiro-Wilk, Kruskal-Wallis con post-hoc de Dunn, análisis estratificado por estrategia y Scheirer-Ray-Hare. Esos resultados se conservan en el @anexo-analisis-exploratorio y no sostienen las conclusiones de este capítulo. La diferencia no es de grado: Kruskal-Wallis, Dunn y Scheirer-Ray-Hare asignan rangos globales a observaciones que pertenecen a la misma unidad y al mismo caso, de modo que sus valores p no tienen la interpretación habitual. En particular, el $p = 0.383$ de Agentic-RAG frente a RAG básico y el $p = 0.095$ de RAG básico no deben leerse como evidencia de equivalencia.
 
 === Efectos Simples del Modelo Ordinal
 
-El test de Scheirer-Ray-Hare se conserva como antecedente exploratorio y sugiere una interacción entre estrategia y modelo. El análisis principal es el modelo ordinal mixto, que respeta el apareamiento y el anidamiento: LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶². Los efectos simples que se reportan a continuación provienen de ese modelo, no de pruebas para muestras independientes: se definieron dos familias de nueve comparaciones —estrategia dentro de cada modelo y modelo dentro de cada estrategia— y el p de Holm se aplicó dentro de cada familia @holm1979simple. Las diferencias de media esperada y de $P("score" >= 0,75)$ se acompañan con IC 95 % obtenidos por simulación de 4.000 extracciones de la distribución asintótica de los coeficientes y umbrales.
+Los efectos simples que se reportan a continuación provienen del modelo ordinal mixto, cuya interacción se contrasta en la @sec-interaccion-modelo. Se definieron dos familias de nueve comparaciones —estrategia dentro de cada modelo y modelo dentro de cada estrategia— y el p de Holm se aplicó dentro de cada familia @holm1979simple. Las diferencias de media esperada y de $P("score" >= 0,75)$ se acompañan con IC 95 % obtenidos por simulación de 4.000 extracciones de la distribución asintótica de los coeficientes y umbrales.
 
 La @tabla-efectos-simples presenta los contrastes de estrategia dentro de cada modelo, orientados como Agentic-RAG − RAG básico, Agentic-RAG − Sin RAG y RAG básico − Sin RAG.
 
@@ -240,6 +194,39 @@ La @tabla-resumen-medianas conserva, con fines exclusivamente descriptivos, las 
   ) <tabla-resumen-medianas>
 ]
 
+== Interacción Estrategia × Modelo <sec-interaccion-modelo>
+
+=== Prueba de Razón de Verosimilitud
+
+La interacción entre estrategia de recuperación y modelo del Agente Especialista Legal se contrastó con una prueba de razón de verosimilitud entre el modelo completo y el modelo sin el término `estrategia:modelo_especialista` (4 grados de libertad). El estadístico fue LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶². El modelo completo reduce el AIC de 5.810,3 a 5.525,0. Las varianzas de los efectos aleatorios son 0,164 para caso y 1,380 para unidad, lo que confirma que una parte sustancial de la variabilidad se explica por la dificultad de las unidades y de los casos.
+
+La interacción se mantiene en los cuatro escenarios definidos en el capítulo de metodología (LR entre 82,52 y 293,28; p < 10⁻¹⁶), aunque la dirección de algunos efectos simples depende del tratamiento de las respuestas no sustantivas. El contraste por juez reproduce la interacción en los tres evaluadores (LR = 82,04 para DeepSeek-V3; 92,66 para Kimi K2 0905; 100,46 para Grok 4.1 Fast).
+
+=== Patrón de Interacción
+
+La @fig-interaccion presenta el gráfico de interacción que visualiza cómo las líneas de los modelos se cruzan entre estrategias, evidenciando la interacción disordinal.
+
+#pagina-apaisada[
+  #figure(
+    image("../media/interaccion_modelo_estrategia.pdf", width: 96%),
+    caption: [Gráficos de interacción modelo × estrategia de recuperación para las seis métricas de respuesta. Las líneas representan la media de cada modelo con intervalos de confianza del 95%; cada panel corresponde a una métrica. El cruce de las líneas en `respuesta_correcta_avg` confirma la interacción disordinal: el modelo óptimo depende de la estrategia empleada.],
+  ) <fig-interaccion>
+]
+
+El análisis de las medias por combinación —cuyas estimaciones modeladas figuran en la @tabla-celdas-principal— revela un patrón de interacción disordinal, con líneas que se cruzan.
+
+Las principales observaciones son:
+
++ *gpt-5 es robusto*: mantiene un desempeño alto (0.70–0.80) en todas las condiciones, compensando parcialmente la ausencia de contexto mediante su capacidad de razonamiento interna.
++ *gpt-5-mini es sensible al RAG*: con Agentic-RAG alcanza 0.78 (comparable a gpt-5), pero sin RAG cae a 0.35, evidenciando una dependencia crítica del contexto externo.
++ *gpt-5-nano muestra un comportamiento contraintuitivo*: su desempeño es *peor* con Agentic-RAG (0.40) que con RAG básico (0.59), lo que sugiere que el sistema agéntico genera instrucciones y contextos de complejidad excesiva para un modelo de capacidad reducida.
+
+=== Lectura del Patrón
+
++ La ausencia de diferencia marginal entre Agentic-RAG y RAG básico enmascara diferencias condicionales al modelo: en gpt-5-mini la diferencia es positiva y sustancial, mientras que en gpt-5-nano se invierte.
++ Con RAG básico las diferencias entre modelos son menores, pero no se demostró equivalencia; el sistema agéntico no las elimina.
++ El cruce de las líneas es disordinal, de modo que no existe un orden único de las estrategias ni de los modelos: la comparación debe hacerse célula por célula y con intervalos, no a partir del efecto marginal.
+
 == Sensibilidad No Paramétrica Pareada
 
 El modelo ordinal mixto descrito en el capítulo de metodología es el análisis principal. Para verificar que la interacción y la dirección de los efectos no dependen de la especificación paramétrica ni del tratamiento de los efectos aleatorios, se repitió el análisis con pruebas pareadas que usan la unidad de evaluación como bloque: Friedman para el efecto global de cada factor dentro del nivel del otro y Wilcoxon de rangos con signo para los pares, con corrección de Holm dentro de cada familia de nueve contrastes. Los intervalos de confianza provienen de un bootstrap por casos (25 casos remuestreados con todas sus unidades, 5.000 réplicas), no de un remuestreo de filas.
@@ -289,79 +276,28 @@ La @tabla-wilcoxon-sensibilidad presenta los contrastes pareados de estrategia o
 
 Los nueve signos coinciden con los del modelo ordinal y con los de la @tabla-efectos-simples; las magnitudes difieren porque Wilcoxon no modela el anidamiento ni la severidad del juez. La lectura sustantiva es la misma: Agentic-RAG reduce la utilidad del sistema en gpt-5-nano y la aumenta en gpt-5-mini y en gpt-5. La diferencia de RAG básico frente a Sin RAG no se distingue de cero en gpt-5-nano ni en gpt-5, y es positiva y significativa en gpt-5-mini. En RAG básico, las diferencias entre modelos siguen siendo significativas salvo gpt-5 − gpt-5-mini, que no sobrevive a la corrección de Holm ($p_"Holm" = 0,077$); un p no significativo no demuestra equivalencia.
 
-== Análisis Factorial: Interacción Estrategia × Modelo
+== Sensibilidad al Tratamiento de Respuestas No Sustantivas
 
-=== Test de Scheirer-Ray-Hare
-
-Para evaluar si los efectos de la estrategia de recuperación y del modelo operan de forma independiente o interactúan, se aplicó el test de Scheirer-Ray-Hare (SRH), análogo no paramétrico al ANOVA factorial de dos vías. El procedimiento consiste en:
-
-+ Asignar rangos globales a todas las observaciones.
-+ Aplicar ANOVA de dos vías sobre los rangos.
-+ Calcular el estadístico $H$ para cada efecto:
-
-$ H = frac(S S_"efecto", M S_"total rangos") $
-
-donde $H$ sigue una distribución $chi^2$ con los grados de libertad correspondientes.
-
-=== Resultados de la Interacción
-
-Los resultados para `respuesta_correcta_avg` fueron:
-
-#figure(
-  three-line-table(
-    columns: (auto, auto, auto, auto, auto),
-    [
-      | *Efecto*         |  *H*   | *gl* |           *p*           | *Sig.* |
-      | :--------------- | :----: | :--: | :---------------------: | :----: |
-      | Sistema          | 21.83  |  2   |        0.000018         |   Sí   |
-      | Modelo           | 49.01  |  2   |        < 0.0001         |   Sí   |
-      | Sistema × Modelo | *56.62* |  4   | *$1.48 times 10^(-11)$* |   Sí   |
-    ],
-  ),
-  caption: [Resultados del test de Scheirer-Ray-Hare para `respuesta_correcta_avg`, conservado como antecedente exploratorio. El análisis principal es el modelo ordinal mixto, que respeta el apareamiento y el anidamiento.],
-)
-
-El test exploratorio sugiere que el efecto de la estrategia depende del modelo empleado; el modelo ordinal confirma la interacción (LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶²). La interacción no identifica por sí sola qué componente de la estrategia la produce.
-
-=== Patrón de Interacción
-
-La @fig-interaccion presenta el gráfico de interacción que visualiza cómo las líneas de los modelos se cruzan entre estrategias, evidenciando la interacción disordinal.
-
-#pagina-apaisada[
-  #figure(
-    image("../media/interaccion_modelo_estrategia.pdf", width: 96%),
-    caption: [Gráficos de interacción modelo × estrategia de recuperación para las seis métricas de respuesta. Las líneas representan la media de cada modelo con intervalos de confianza del 95%; cada panel corresponde a una métrica. El cruce de las líneas en `respuesta_correcta_avg` confirma la interacción disordinal: el modelo óptimo depende de la estrategia empleada.],
-  ) <fig-interaccion>
-]
-
-El análisis de las medias por combinación revela un patrón de interacción disordinal (líneas cruzadas):
+Los cuatro escenarios definidos en el capítulo de metodología se estimaron con el mismo modelo ordinal. La @tabla-sensibilidad-escenarios presenta la diferencia modelada Agentic-RAG − RAG básico por modelo en cada escenario.
 
 #figure(
   three-line-table(
     columns: (auto, auto, auto, auto),
     [
-      | *Modelo*   | *agentic_rag* | *base_rag* | *no_rag* |
-      | :--------- | :-----------: | :--------: | :------: |
-      | gpt-5      |    *0.80*     |    0.70    |   0.73   |
-      | gpt-5-mini |    *0.78*     |    0.64    |   0.35   |
-      | gpt-5-nano |     0.40      |   *0.59*   |   0.58   |
+      | *Escenario* | *gpt-5-nano* | *gpt-5-mini* | *gpt-5* |
+      | :--- | ---: | ---: | ---: |
+      | Principal (fallo = 0) | *−0,270* | *0,150* | *0,106* |
+      | Puntajes observados | *−0,243* | *0,150* | *0,106* |
+      | Solo fallos técnicos = 0 | *−0,270* | *0,150* | *0,106* |
+      | Exclusión de no sustantivas | *0,216* | *0,160* | *0,111* |
     ],
   ),
-  caption: [Medias de `respuesta_correcta_avg` por combinación modelo × sistema. En negrita, la estrategia con mejor desempeño dentro de cada modelo.],
-)
+  caption: [Diferencia de media esperada Agentic-RAG − RAG básico por modelo y escenario, estimada con el modelo ordinal mixto. En negrita, los contrastes cuyo signo se mantiene en los cuatro escenarios; el único cambio de signo corresponde a gpt-5-nano bajo exclusión, donde la estimación condiciona a que el sistema responda.],
+) <tabla-sensibilidad-escenarios>
 
-Las principales observaciones son:
+La celda Agentic-RAG + gpt-5-nano concentra 41 de las 79 respuestas no sustantivas, de modo que es la única cuyo resultado depende del escenario. Bajo el escenario principal su media es 0,395 y su mediana 0,000; bajo exclusión la media asciende a 0,820 y la mediana a 0,958, pero sobre 38 unidades. Bajo puntajes observados la media es 0,415 y la mediana 0,250; bajo solo fallos técnicos = 0 los valores coinciden con el escenario principal, porque las abstenciones y los mensajes indeterminados de esa celda no recibieron puntajes positivos de los jueces.
 
-+ *gpt-5 es robusto*: mantiene un desempeño alto (0.70–0.80) en todas las condiciones, compensando parcialmente la ausencia de contexto mediante su capacidad de razonamiento interna.
-+ *gpt-5-mini es sensible al RAG*: con Agentic-RAG alcanza 0.78 (comparable a gpt-5), pero sin RAG cae a 0.35, evidenciando una dependencia crítica del contexto externo.
-+ *gpt-5-nano muestra un comportamiento contraintuitivo*: su desempeño es *peor* con Agentic-RAG (0.40) que con RAG básico (0.59), lo que sugiere que el sistema agéntico genera instrucciones y contextos de complejidad excesiva para un modelo de capacidad reducida.
-
-=== Implicaciones para Resultados Previos
-
-La interacción significativa matiza las conclusiones del análisis de Kruskal-Wallis:
-
-+ La no-diferencia marginal entre Agentic-RAG y RAG básico enmascara diferencias condicionales al modelo: para gpt-5-mini la diferencia es sustancial (0.78 vs. 0.64), mientras que para gpt-5-nano la relación se invierte (0.40 vs. 0.59).
-+ Con RAG básico las diferencias entre modelos son menores, pero no se demostró equivalencia; el sistema agéntico no las elimina.
+No se trata de estimaciones contradictorias. La primera mide la utilidad del sistema completo, la segunda la calidad condicional a que el sistema responda y la tercera la forma en que los jueces califican salidas que no contienen respuesta. El manuscrito reporta las tres y no elige una sola como “el efecto” de Agentic-RAG. En gpt-5-mini y en gpt-5 la diferencia es positiva en los cuatro escenarios, con variación de centésimas.
 
 == Análisis de Costos
 

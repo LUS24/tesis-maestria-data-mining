@@ -158,7 +158,7 @@ El presente trabajo final se estructura de la siguiente manera:
 
 - *Capítulo 5 - Metodología e Implementación*: Se describe la metodología empleada y la implementación técnica del sistema, incluyendo la selección del corpus legal, extracción y preprocesamiento de datos, diseño de la base de datos vectorial, arquitectura del sistema Agentic-RAG, diseño del benchmark y el sistema de evaluación.
 
-- *Capítulo 6 - Evaluación y Resultados*: Se presenta el diseño experimental factorial 3 × 3, las métricas utilizadas (textuales, semánticas y LLM-as-a-Judge), los resultados obtenidos para las nueve configuraciones, el análisis estadístico (Kruskal-Wallis, Dunn, Scheirer-Ray-Hare, Krippendorff's alpha) y el análisis de costos.
+- *Capítulo 6 - Evaluación y Resultados*: Se presenta el diseño experimental factorial 3 × 3, las métricas utilizadas (textuales, semánticas y LLM-as-a-Judge), los resultados obtenidos para las nueve configuraciones, el análisis estadístico —modelo ordinal mixto con efectos aleatorios por caso y unidad, prueba de razón de verosimilitud para la interacción, efectos simples con intervalos de confianza y corrección de Holm, sensibilidad a escenarios de tratamiento de respuestas no sustantivas y acuerdo inter-juez de Krippendorff— y el análisis de costos.
 
 - *Capítulo 7 - Trabajos Relacionados*: Se presenta una revisión de los trabajos previos y plataformas existentes, organizada en cuatro ejes: sistemas de búsqueda legal, RAG en dominios especializados, sistemas agénticos y benchmarks para evaluación legal, posicionando el presente trabajo en el contexto de la literatura.
 

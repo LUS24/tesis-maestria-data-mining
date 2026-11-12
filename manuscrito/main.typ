@@ -125,6 +125,8 @@
 
 #include "capitulos/anexo_01.typ"
 
+#include "capitulos/anexo_02_analisis_exploratorio.typ"
+
 // ───────────────────────────────────────────
 // Acrónimos y Siglas
 // ───────────────────────────────────────────

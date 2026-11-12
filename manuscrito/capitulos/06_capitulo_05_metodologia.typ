@@ -717,6 +717,17 @@ Se utilizó `ordinal::clmm` con `nAGQ = 1`, es decir, la aproximación de Laplac
 
 Como análisis de sensibilidad se usaron pruebas pareadas que no imponen una forma funcional al puntaje: Friedman para las tres estrategias dentro de cada modelo y para los tres modelos dentro de cada estrategia, con la unidad como bloque y W de Kendall como tamaño de efecto global, y Wilcoxon de rangos con signo para los pares, con corrección de Holm dentro de cada familia. Los intervalos de confianza de las diferencias pareadas se estimaron por bootstrap por casos —remuestreando los 25 casos con todas sus unidades, 5.000 réplicas y semilla fija—, no por filas. Friedman y Wilcoxon no incorporan los efectos aleatorios ni covariable de juez; se interpretan como sensibilidad del modelo principal y no como la inferencia de referencia.
 
+==== Escenarios de Tratamiento de las Respuestas No Sustantivas
+
+Una respuesta no sustantiva es una salida que no contiene una respuesta utilizable: cadena vacía, solo espacios, abstención explícita, error, salida truncada o mensaje indeterminado. La clasificación se realizó sobre las 711 respuestas del experimento y el resultado se documenta en `analisis-valoracion-jurado/correccion-02-diagnostico-gpt-5-nano/`. El tratamiento de esas salidas no es neutro, porque la evaluación del sistema completo y la evaluación de la calidad de las respuestas que el sistema produce son dos preguntas distintas. Se definieron cuatro escenarios:
+
++ *Principal (fallo = 0):* toda respuesta no sustantiva recibe puntaje 0 en las tres evaluaciones de jueces. Responde qué utilidad tiene el sistema completo para quien lo consulta.
++ *Puntajes observados:* se conservan los puntajes originales de los jueces, incluidas las evaluaciones positivas sobre salidas no sustantivas. No se usa para describir el sistema, sino para auditar a los jueces: una salida vacía calificada por encima de cero es un error de medición.
++ *Exclusión:* se excluyen las respuestas no sustantivas y se estima la calidad condicional a que el sistema responda. La selección no es aleatoria y reduce la celda Agentic-RAG + gpt-5-nano a 38 unidades.
++ *Solo fallos técnicos = 0:* reciben 0 únicamente las salidas vacías, con solo espacios, truncadas o con error; las abstenciones y los mensajes indeterminados conservan el puntaje del juez.
+
+El escenario principal es el que sostiene las conclusiones; los otros tres se reportan como sensibilidad y no se eligen después de ver los resultados. En todos los casos se mantienen el mismo modelo ordinal y las mismas familias de contrastes, de modo que las diferencias entre escenarios son atribuibles al tratamiento de las salidas no sustantivas y no a un cambio de especificación.
+
 ==== Análisis de Acuerdo Inter-Juez (Krippendorff's Alpha)
 
 Para evaluar la confiabilidad de las evaluaciones LLM-as-a-Judge, se calculó el coeficiente alpha de Krippendorff @krippendorff2019content @hayes2007answering entre los tres modelos jueces (DeepSeek-V3, Grok 4.1 Fast y Kimi K2 0905). Este coeficiente mide el acuerdo entre múltiples codificadores (en este caso, modelos LLM actuando como jueces) corrigiendo el acuerdo esperado por azar, y es aplicable a cualquier escala de medición (nominal, ordinal, intervalo o razón). Se complementó con el análisis de correlación de Spearman @spearman1904proof entre pares de jueces para identificar posibles sesgos sistemáticos.
