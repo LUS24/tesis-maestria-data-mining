@@ -7,65 +7,67 @@
 
 == Organización de Carpetas
 
-El repositorio del proyecto se organiza en dos grandes áreas: un directorio de exploración y módulos auxiliares (`archivo/`) y un directorio principal de experimentación (`examples/notebooks/`). A continuación se presenta el árbol de directorios con los componentes principales.
+El repositorio se organiza en cuatro áreas: el manuscrito, el código de experimentación, los datos compartidos y los paquetes de corrección y verificación asociados a la revisión del tribunal. La carpeta `archivo/` contiene material auxiliar y no forma parte del núcleo reproducible; está excluida del control de versiones.
 
 ```
 tesis/
-├── data/                          # Datos del benchmark y código de minería
-│   ├── evaluation_questions_*.json
-│   └── codigo_de_mineria_*.json
-├── evaluation_dataset/            # Conjunto de datos de evaluación
-├── system_description.md          # Descripción arquitectónica del sistema
+├── manuscrito/                      # Manuscrito en Typst
+│   ├── main.typ                     # Documento principal
+│   ├── formato.typ                  # Estilos y página apaisada
+│   ├── referencias.bib              # Bibliografía
+│   ├── capitulos/                   # Capítulos y anexos
+│   ├── media/                       # Figuras y diagramas
+│   ├── codigo-helpers/              # Scripts de apoyo para figuras
+│   └── salidas/                     # PDFs compilados (no versionados)
 │
-├── archivo/                       # Módulos auxiliares y exploración
-│   ├── 01_bo_web_scrapping/       # Scraping del Boletín Oficial
-│   ├── 01_descarga_normas_infoleg/# Descarga de normas desde Infoleg
-│   ├── 02_html_infoleg_parser/    # Parser de HTML a texto estructurado
-│   ├── 02_text_extraction/        # Extracción de texto de PDFs
-│   ├── 03_relational_database_creation/
-│   ├── 04_vector_database_creation/ # Docker Compose para pgvector
-│   ├── 05_graph_db_creation/
-│   ├── 06_llm_interface/
-│   ├── 07_evaluation/
-│   └── bo_llm_fine_tuning/        # Experimentos de fine-tuning
+├── codigo_experimentos/             # Pipeline experimental (Python, uv)
+│   ├── main.py                      # Punto de entrada
+│   ├── pyproject.toml / uv.lock     # Entorno y dependencias
+│   ├── performed_tasks_summary.md   # Resumen de tareas
+│   ├── data/                        # Datos locales de experimentación
+│   ├── part_0/                      # Extracción de texto de PDF (o4-mini)
+│   ├── part_a/                      # Generación del benchmark (GPT-4.1)
+│   ├── part_b/                      # Base relacional del benchmark (cancelada)
+│   ├── part_c/                      # Creación de la base vectorial (Milvus)
+│   ├── part_d/                      # Recuperación baseline
+│   ├── part_e/                      # Respuestas sin RAG + métricas
+│   ├── part_f/                      # Respuestas con RAG básico + métricas
+│   ├── part_g/                      # Respuestas con Agentic-RAG + logs
+│   ├── part_h/                      # Integración de resultados
+│   ├── part_h_1/                    # Evaluación LLM-as-a-Judge
+│   ├── part_i/                      # Preparación de datos para análisis
+│   └── part_j/                      # Análisis exploratorio y de costos
 │
-├── examples/notebooks/            # Pipeline principal de experimentación
-│   ├── main.py                    # Punto de entrada
-│   ├── pyproject.toml             # Dependencias del proyecto
-│   ├── performed_tasks_summary.md # Resumen de tareas realizadas
-│   ├── notebooks/                 # Exploración y descarga de datos
-│   ├── part_a/                    # Generación de preguntas del benchmark
-│   ├── part_b/                    # (Reservado)
-│   ├── part_c/                    # Creación de base de datos vectorial
-│   ├── part_d/                    # Pruebas de recuperación baseline
-│   ├── part_e/                    # Respuestas sin RAG + métricas
-│   ├── part_f/                    # Respuestas con RAG básico + métricas
-│   ├── part_g/                    # Respuestas con Agentic-RAG + métricas
-│   ├── part_h/                    # Integración de datos
-│   ├── part_h_1/                  # Evaluación LLM-as-a-Judge
-│   ├── part_i/                    # Preparación de datos para análisis
-│   └── part_j/                    # Análisis estadístico
+├── data/                            # Datos compartidos
+│   ├── codigo_de_mineria_*.json     # Corpus del Código de Minería
+│   └── evaluation_questions_*.json  # Benchmark v1 (congelado)
 │
-└── 00_escritura/                  # Manuscrito de la tesis (Typst)
+├── analisis-valoracion-jurado/      # Correcciones y verificación posteriores
+│   ├── correccion-01-analisis-estadistico/
+│   ├── correccion-02-diagnostico-gpt-5-nano/
+│   ├── correccion-03-documentar-api-eliminar-determinismo/
+│   ├── correccion-04-declarar-factores-pub-prompts-etc/
+│   ├── correccion-05-actualizacion-conclusiones-y-analisis-costos/
+│   ├── correccion-06-precisar-corpus-revisar-respuestas/
+│   ├── correccion-07-forma-y-bibliografia/
+│   └── verificacion-analisis-estadistico/
+│
+└── archivo/                         # Material auxiliar (no versionado)
 ```
+
+Los artefactos que el cuerpo cita viven en dos lugares. Los que sostienen los resultados —el modelo ordinal, los escenarios de sensibilidad, las figuras y las tablas canónicas— están en `analisis-valoracion-jurado/correccion-01-analisis-estadistico/`, con `run_all.sh` como punto de entrada y `salidas/` como destino. Los que auditan la corrida —la clasificación de las respuestas no sustantivas, los logs y las evaluaciones de los jueces— están en `analisis-valoracion-jurado/correccion-02-diagnostico-gpt-5-nano/`, y la reconciliación de cifras y las métricas de recuperación, en `analisis-valoracion-jurado/verificacion-analisis-estadistico/`. Los prompts y la configuración de los agentes se documentan en el capítulo de metodología y en `analisis-valoracion-jurado/correccion-04-declarar-factores-pub-prompts-etc/`; no existe un anexo de prompts dentro del manuscrito.
 
 == Descripción de Componentes Principales
 
-=== Módulos de Exploración y Extracción (`archivo/`)
+=== Manuscrito (`manuscrito/`)
 
-- *`01_bo_web_scrapping/`*: scraping del Boletín Oficial de la República Argentina mediante notebooks de Jupyter. Incluye almacenamiento de datos crudos en `bos_data/`.
+- *`main.typ`*: documento principal; incluye portada, capítulos, bibliografía y anexos, y toma la hora de compilación como entrada para la versión.
 
-- *`01_descarga_normas_infoleg/`*: descarga asíncrona de textos legales desde el sitio Infoleg del Ministerio de Justicia. Implementado como módulo Python con `src/`, tests y logs de ejecución.
+- *`media/`*: figuras vectoriales y diagramas referenciados por el texto. Las figuras canónicas del reanálisis se copiaron desde `correccion-01/figuras/` para que el manuscrito no dependa de rutas externas.
 
-- *`02_html_infoleg_parser/`*: parser que transforma HTML descargado de Infoleg en texto estructurado, preservando metadatos de artículos (número, título, capítulo, sección). Incluye Dockerfile para reproducibilidad, HTMLs de ejemplo y salidas de referencia.
+- *`codigo-helpers/`*: scripts de apoyo para generar diagramas y figuras del manuscrito.
 
-- *`02_text_extraction/`*: extracción de texto a partir de documentos PDF escaneados, empleando modelos de visión (o4-mini de OpenAI) para OCR estructurado.
-
-- *`04_vector_database_creation/`*: configuración de Docker Compose para el despliegue de PostgreSQL con la extensión pgvector, utilizada como alternativa local a Milvus para almacenamiento de embeddings.
-
-- *`bo_llm_fine_tuning/`*: experimentos preliminares de fine-tuning de modelos de lenguaje con datos del Boletín Oficial.
-
-=== Pipeline de Experimentación (`examples/notebooks/`)
+=== Pipeline de Experimentación (`codigo_experimentos/`)
 
 #figure(
   three-line-table(
@@ -73,8 +75,9 @@ tesis/
     [
       | *Directorio* | *Función*                                                                                                                                                                                                                                                      |
       | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-      | `notebooks/` | Exploración inicial: descarga del Código de Minería desde Infoleg (Docling y Requests), parsing de HTML/PDF, pruebas de Pydantic AI.                                                                                                                               |
+      | `part_0/`    | Extracción de texto de los PDF del Código de Minería mediante modelos de visión (o4-mini) y OCR estructurado.                                                                                                                                                    |
       | `part_a/`    | Generación del benchmark: segmentación del Código de Minería por títulos y generación de preguntas tipo caso de estudio legal mediante GPT-4.1, con respuestas esperadas y artículos de referencia.                                                                |
+      | `part_b/`    | Base relacional del benchmark: enfoque cancelado; el benchmark se conserva en archivos JSON.                                                                                                                                                                   |
       | `part_c/`    | Creación de la base de datos vectorial Milvus con embeddings de 768 dimensiones generados por el modelo `hiiamsid/sentence_similarity_spanish_es`. Población con artículos del Código de Minería.                                                                  |
       | `part_d/`    | Pruebas de recuperación baseline: evaluación de la precisión de búsqueda vectorial para las preguntas del benchmark.                                                                                                                                           |
       | `part_e/`    | Generación de respuestas sin RAG con tres modelos (gpt-5-nano, gpt-5-mini, gpt-5). Cálculo de más de 11 métricas de similitud textual y semántica.                                                                                                             |
@@ -88,6 +91,26 @@ tesis/
   ),
   caption: [Descripción de los directorios del pipeline de experimentación.],
 ) <tabla-pipeline-directorios>
+
+=== Correcciones y Verificación (`analisis-valoracion-jurado/`)
+
+Los directorios `correccion-01` a `correccion-07` se agregaron después de la primera versión del manuscrito para responder a la revisión del tribunal. No reemplazan al pipeline: lo auditan y, cuando corresponde, lo reestiman.
+
+- *`correccion-01-analisis-estadistico/`*: modelo ordinal mixto, Friedman y Wilcoxon, bootstrap por casos, escenarios de sensibilidad, figuras y tablas canónicas. Es la fuente de las cifras del capítulo de evaluación.
+
+- *`correccion-02-diagnostico-gpt-5-nano/`*: clasificación de las 711 respuestas, auditoría de los logs de los agentes y de las evaluaciones de los jueces, y revisión manual de las salidas no sustantivas.
+
+- *`correccion-03-documentar-api-eliminar-determinismo/`*: payloads registrados, perfiles de Pydantic AI y tabla de parámetros solicitados, registrados y efectivos.
+
+- *`correccion-04-declarar-factores-pub-prompts-etc/`*: auditoría de sesiones, prompts, factores confundidos y arquitectura efectiva.
+
+- *`correccion-05-actualizacion-conclusiones-y-analisis-costos/`*: costos por celda, costo por respuesta correcta y frontera de Pareto.
+
+- *`correccion-06-precisar-corpus-revisar-respuestas/`*: linaje del corpus, conteos de nodos y revisión de preguntas y respuestas de referencia.
+
+- *`correccion-07-forma-y-bibliografia/`*: auditoría bibliográfica y correcciones de forma.
+
+- *`verificacion-analisis-estadistico/`*: recálculo independiente de alpha, reconciliación de cifras del análisis previo y métricas de recuperación.
 
 === Principales Dependencias del Proyecto
 
