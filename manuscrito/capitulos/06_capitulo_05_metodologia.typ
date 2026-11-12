@@ -66,7 +66,7 @@ Se desarrolló un módulo específico de parsing (`02_html_infoleg_parser`) que 
 
 === Validación de Calidad de Extracción
 
-La calidad de la extracción se verificó mediante inspección manual de una muestra de artículos, comparando el texto extraído con el original en Infoleg. Se establecieron criterios de calidad basados en la completitud del texto, la preservación de la estructura jerárquica y la correcta identificación de los límites entre artículos.
+La extracción se revisó manualmente al actualizar cada archivo de título con el texto de Infoleg. La revisión aplicó tres criterios: completitud del texto de cada artículo, preservación de la estructura jerárquica y correcta identificación de los límites entre artículos. No se conservó un registro cuantitativo de discrepancias ni una tasa de error, y el tamaño de la muestra revisada no quedó documentado; por tanto, no se afirma una validación estadística de la extracción. La revisión se documenta como inspección manual por archivo y su ausencia de métrica de error se declara como limitación.
 
 === Segmentación y Estructuración del Corpus
 
