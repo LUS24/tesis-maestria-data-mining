@@ -166,4 +166,8 @@ El presente trabajo final se estructura de la siguiente manera:
 
 - *Capítulo 8 - Conclusiones y Trabajos Futuros*: Se sintetizan las conclusiones del trabajo, se revisa el cumplimiento de los objetivos, se discuten las fortalezas y limitaciones identificadas, y se proponen líneas de investigación futuras.
 
-Adicionalmente, el trabajo incluye anexos con la estructura del repositorio de código, ejemplos de consultas y respuestas, y el benchmark completo utilizado para la evaluación, así como un listado de acrónimos y siglas empleados en el documento.
+Adicionalmente, el trabajo incluye anexos con la estructura del repositorio de código, ejemplos de consultas y respuestas, el benchmark completo utilizado para la evaluación, el análisis exploratorio histórico y los prompts y parámetros de la configuración evaluada, así como un listado de acrónimos y siglas empleados en el documento.
+
+=== Decisión de alcance sobre la extensión de los capítulos de contexto
+
+Los capítulos 2 y 7 son más extensos que el resto del marco. La extensión es una decisión editorial explícita y no un descuido: el capítulo 2 recorre la evolución de los modelos de lenguaje porque el argumento del trabajo depende de mostrar por qué la recuperación y la orquestación de agentes se volvieron necesarias, y el capítulo 7 documenta el estado del arte hasta la fecha de cierre para situar el prototipo frente a plataformas comerciales y académicas. Ambos pueden leerse como contexto autocontenido: quien busque la contribución empírica puede pasar del capítulo 1 al 5 sin perder el hilo, y las referencias internas lo indican cuando corresponde. Se optó por conservar la extensión antes que por recortar la trazabilidad de las afirmaciones del marco teórico; una versión abreviada de esos capítulos queda como decisión editorial posterior a la defensa.
