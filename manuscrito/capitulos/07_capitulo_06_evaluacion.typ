@@ -436,7 +436,7 @@ Agentic-RAG mejora el recall en top-10 y el MRR respecto del baseline, pero la c
 
 === Modelos de Juez
 
-Se emplearon tres modelos como jueces independientes, cuyas características y configuración se detallan en el #ref(<cap:metodologia>, supplement: [Capítulo]) DeepSeek-V3, Grok 4.1 Fast y Kimi K2 0905. Cada juez evaluó las 9 configuraciones usando las dos rúbricas definidas en dicho capítulo (`score_respuesta_correcta`, @tabla-rubrica-correcta; `score_precision_legal`, @tabla-rubrica-legal).
+Se emplearon tres modelos como jueces independientes, cuyas características y configuración se detallan en el #ref(<cap:metodologia>, supplement: [Capítulo]): DeepSeek-V3, Grok 4.1 Fast y Kimi K2 0905. Cada juez evaluó las 9 configuraciones usando las dos rúbricas definidas en dicho capítulo (`score_respuesta_correcta`, @tabla-rubrica-correcta; `score_precision_legal`, @tabla-rubrica-legal).
 
 === Resultados de "respuesta_correcta"
 

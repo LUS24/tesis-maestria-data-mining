@@ -558,7 +558,7 @@ El benchmark contiene 25 preguntas distribuidas entre los títulos del Código d
 + Respuesta esperada elaborada por el LLM generador.
 + Identificadores de los artículos fuente.
 
-Las preguntas se normalizaron a un formato unificado donde cada subpregunta constituye una unidad de evaluación independiente, con su respectivo texto, contexto y respuesta esperada.
+Las preguntas se normalizaron a un formato unificado donde cada subpregunta constituye una unidad de evaluación, con su respectivo texto, contexto y respuesta esperada. Las unidades no son independientes entre configuraciones: la misma unidad se responde en las nueve combinaciones de estrategia y modelo.
 
 === Colaboración con Profesionales del Derecho
 
