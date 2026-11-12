@@ -10,7 +10,7 @@ _Agentic-RAG, Generación Aumentada por Recuperación, Código de Minería Argen
 // Dedicatoria
 #heading(outlined: false, numbering: none)[Dedicatoria]
 
-A mi familia ...
+A mi familia, por el sostén de todos los días; a los docentes y compañeros de la maestría, por las preguntas que mejoraron este trabajo; y a quienes trabajan por un acceso más igualitario a la información pública.
 
 // Declaraciones
 #heading(outlined: false, numbering: none)[Declaraciones]

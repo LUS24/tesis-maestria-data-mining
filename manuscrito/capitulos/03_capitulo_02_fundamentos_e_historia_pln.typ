@@ -98,7 +98,7 @@ De acuerdo a la taxonomía mencionada por #cite(<raeini2025evolution>, form: "pr
 
 === Modelos estadísticos
 
-La primera aproximación para tratar de predecir secuencias de texto fueron los trabajos de #cite(<markov1913anexampleof>, form: "prose") #cite(<markov2006anexampleof>, form: "prose") y #cite(<shannon1948>, form: "prose") que derivaron en la creación de modelos estadísticos permitiendo caracterizar la probabilidad de secuencias de letras (palabras y frases). Esta estrategia se basa en el uso de n-gramas, los cuales consisten en secuencias de caracteres de longitud $n$. Por ejemplo, para la frase "Pablito clavó un clavito qué clavito clavó Pablito" se pueden obtener los siguientes n-gramas:
+La primera aproximación para tratar de predecir secuencias de texto fueron los trabajos de #cite(<markov1913anexampleof>, form: "prose") #cite(<markov2006anexampleof>, form: "prose") y #cite(<shannon1948>, form: "prose") que derivaron en la creación de modelos estadísticos permitiendo caracterizar la probabilidad de secuencias de letras (palabras y frases). Esta estrategia se basa en el uso de n-gramas, es decir, secuencias de $n$ unidades consecutivas del texto. La unidad puede ser el carácter, la palabra o el token, según el nivel de análisis. En el ejemplo siguiente la unidad es la palabra, de modo que un unigrama es una palabra, un bigrama es un par de palabras consecutivas y un trigrama es una terna. Para la frase "Pablito clavó un clavito qué clavito clavó Pablito" se obtienen los siguientes n-gramas:
 
 *Unigramas — n = 1:*
 
@@ -330,7 +330,7 @@ El Transformer, introducido por #cite(<vaswani2017>, form: "prose"), representa 
 
 *Arquitectura encoder--decoder.* El Transformer original se organiza en dos mitades simétricas. El _encoder_ recibe la secuencia de entrada y produce, para cada token, una representación contextual que incorpora información de todos los demás tokens. El _decoder_ genera la secuencia de salida token a token, consumiendo tanto la salida del encoder como los tokens previamente generados. Cada mitad es una pila de bloques que se compone, básicamente, de dos sub-capas: una de atención multi-cabezal seguida de una red _feed-forward_ posición por posición, con conexiones residuales y normalización de capa.
 
-*Mecanismo de atención escalada (scaled dot-product attention).* Para cada posición de la secuencia se proyectan tres vectores a partir de su representación de entrada: una _query_ ($q$), una _key_ ($k$) y un _value_ ($v$). La atención entre una query y todas las keys se calcula como la similitud coseno escalada:
+*Mecanismo de atención escalada (scaled dot-product attention).* Para cada posición de la secuencia se proyectan tres vectores a partir de su representación de entrada: una _query_ ($q$), una _key_ ($k$) y un _value_ ($v$). La atención entre una query y todas las keys se calcula como el producto escalar entre ambas, dividido por $sqrt(d_k)$ para evitar que la magnitud del producto crezca con la dimensión:
 
 $ "Attention"(Q, K, V) = "softmax"((Q K^T) / sqrt(d_k)) V $
 
@@ -368,7 +368,7 @@ A partir del transformer la investigación en los modelos se aceleró cada vez m
 
 #let eventos_evolucion_llm_3 = (
   (date: "2022", desc: [#cite(<wei2022emergent>, form: "prose") documentan las *capacidades emergentes*; *InstructGPT* introduce RLHF @ouyang2022instructgpt; *Constitutional AI* propone retroalimentación generada por IA @bai2022constitutional; *ChatGPT* populariza el acceso masivo a LLMs @openai2022chatgpt.]),
-  (date: "2023", desc: [*GPT-4* @openai2023gpt4 introduce arquitectura MoE; *Claude* @anthropic2023claude enfatiza seguridad; *Toolformer* @schick2023toolformer y *Function Calling* incorporan herramientas externas.]),
+  (date: "2023", desc: [*GPT-4* @openai2023gpt4 introduce un modelo multimodal; *Claude* @anthropic2023claude enfatiza seguridad; *Toolformer* @schick2023toolformer y *Function Calling* incorporan herramientas externas.]),
   (date: "2024", desc: [*OpenAI o1* @openai2024o1 mejora el razonamiento mediante cadenas de pensamiento internas; *DeepSeek-V3* @deepseek2024v3 demuestra que el RL sin supervisión humana compite con RLHF.]),
   (date: "2025", desc: [*DeepSeek-R1* @deepseek2025r1 demuestra que el RL sin supervisión humana compite con RLHF; *GPT-4.5* @openai2025gpt45, *Claude 4* y *Claude Code* @anthropic2025claude4, *Codex* @openai2025codex y *GPT-5* @openai2025gpt5 consolidan los agentes de programación autónoma y la siguiente generación de modelos fundacionales.]),
 )
@@ -406,7 +406,7 @@ A partir del transformer la investigación en los modelos se aceleró cada vez m
 
 ==== Año 2023
 
-- *GPT-4* @openai2023gpt4: modelo multimodal con arquitectura *Mixture of Experts* (MoE), cuyos orígenes se remontan a @jacobs1991moe y @shazeer2017moe.
+- *GPT-4* @openai2023gpt4: modelo multimodal que acepta imágenes y texto como entrada. El informe técnico no detalla la arquitectura interna del modelo.
 - *Claude* (marzo 2023) @anthropic2023claude: asistente desarrollado por Anthropic con énfasis en seguridad y alineamiento.
 - *Toolformer* @schick2023toolformer y *OpenAI Function Calling*: incorporación de uso de herramientas externas por parte de los LLMs.
 
