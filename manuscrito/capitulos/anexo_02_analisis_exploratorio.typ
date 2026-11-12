@@ -1,5 +1,6 @@
 // Anexo de análisis exploratorio histórico
 #import "@preview/tablem:0.3.0": three-line-table
+#import "../formato.typ": pagina-apaisada
 
 #set heading(numbering: "A.1")
 
@@ -97,7 +98,16 @@ Los resultados para `respuesta_correcta_avg` fueron:
 
 === Implicaciones para los Resultados Previos
 
-La interacción detectada por el test exploratorio anticipó el patrón que el modelo ordinal confirmó: el efecto de la estrategia depende del modelo del especialista. La comparación entre Agentic-RAG y RAG básico, que en el análisis marginal aparecía como no significativa, se resuelve en diferencias de signo opuesto por modelo. El test de Scheirer-Ray-Hare no identifica cuál componente de la estrategia produce esa dependencia y no permite estimar magnitudes ni intervalos; por eso se conserva solo como antecedente.
+La interacción detectada por el test exploratorio anticipó el patrón que el modelo ordinal confirmó: el efecto de la estrategia depende del modelo del especialista. La @fig-interaccion-historica conserva el gráfico de medias con el que se describió ese patrón en la primera versión; las medias no coinciden con las del capítulo de evaluación porque provienen de la base de 76 observaciones por celda y del escenario de puntajes observados.
+
+#pagina-apaisada[
+  #figure(
+    image("../media/interaccion_modelo_estrategia.pdf", width: 96%),
+    caption: [Gráficos de interacción modelo × estrategia para las seis métricas de respuesta, cálculo exploratorio histórico. Las líneas representan la media de cada modelo con intervalos de confianza del 95 %. La figura se conserva como antecedente; las estimaciones vigentes son las del modelo ordinal (@fig-interaccion).],
+  ) <fig-interaccion-historica>
+]
+
+La comparación entre Agentic-RAG y RAG básico, que en el análisis marginal aparecía como no significativa, se resuelve en diferencias de signo opuesto por modelo. El test de Scheirer-Ray-Hare no identifica cuál componente de la estrategia produce esa dependencia y no permite estimar magnitudes ni intervalos; por eso se conserva solo como antecedente.
 
 == Nota sobre los Efectos Simples Históricos
 

@@ -136,6 +136,15 @@ La @tabla-efectos-modelo presenta la familia complementaria: modelo dentro de ca
   ) <tabla-efectos-modelo>
 ]
 
+La @fig-analisis-efectos presenta las dos familias de contrastes como gráfico de bosque.
+
+#pagina-apaisada[
+  #figure(
+    image("../media/analisis_efectos_simples.pdf", width: 96%),
+    caption: [Efectos simples del modelo ordinal bajo el escenario principal. Panel izquierdo: estrategia dentro de cada modelo; panel derecho: modelo dentro de cada estrategia. Los puntos son diferencias de media esperada y las barras, intervalos de confianza del 95 % obtenidos por simulación de la distribución asintótica. La línea vertical en cero marca la ausencia de diferencia.],
+  ) <fig-analisis-efectos>
+]
+
 Los resultados revelan patrones diferenciados por modelo:
 
 + *gpt-5-mini* es el modelo más sensible a la estrategia: los tres contrastes son significativos con corrección de Holm. Agentic-RAG supera a RAG básico en 0,150 de media (IC 95 % 0,096 a 0,203) y a Sin RAG en 0,513, lo que evidencia una dependencia crítica del contexto externo.
@@ -169,6 +178,11 @@ La @tabla-celdas-principal presenta la descripción y la predicción de la varia
     caption: [Estadísticos descriptivos y predicciones por configuración bajo el escenario principal (respuestas no sustantivas = 0), con 79 unidades por celda. `Media` y `Mediana` describen la puntuación imputada; `Media modelo` y `P(≥ 0,75)` son predicciones poblacionales del modelo ordinal, con efectos aleatorios en cero y promedio sobre los tres jueces. En negrita, los tres valores más altos de cada columna de predicción.],
   ) <tabla-celdas-principal>
 ]
+
+#figure(
+  image("../media/analisis_celdas_principal.pdf", width: 88%),
+  caption: [Media de `respuesta_correcta_avg` por configuración bajo el escenario principal, con intervalo de confianza del 95 %. La línea punteada marca el umbral de 0,75 usado para definir una respuesta correcta.],
+) <fig-analisis-celdas>
 
 La @tabla-resumen-medianas conserva, con fines exclusivamente descriptivos, las medianas de las cinco métricas complementarias calculadas sobre la misma base de 79 unidades. Esas métricas no se usaron en las pruebas de hipótesis, que se realizaron exclusivamente sobre `respuesta_correcta_avg`.
 
@@ -204,14 +218,12 @@ La interacción se mantiene en los cuatro escenarios definidos en el capítulo d
 
 === Patrón de Interacción
 
-La @fig-interaccion presenta el gráfico de interacción que visualiza cómo las líneas de los modelos se cruzan entre estrategias, evidenciando la interacción disordinal.
+La @fig-interaccion presenta la predicción del modelo ordinal para la probabilidad de obtener un puntaje de corrección de al menos 0,75 en cada combinación, con bandas de confianza del 95 %.
 
-#pagina-apaisada[
-  #figure(
-    image("../media/interaccion_modelo_estrategia.pdf", width: 96%),
-    caption: [Gráficos de interacción modelo × estrategia de recuperación para las seis métricas de respuesta. Las líneas representan la media de cada modelo con intervalos de confianza del 95%; cada panel corresponde a una métrica. El cruce de las líneas en `respuesta_correcta_avg` confirma la interacción disordinal: el modelo óptimo depende de la estrategia empleada.],
-  ) <fig-interaccion>
-]
+#figure(
+  image("../media/analisis_interaccion_prob.pdf", width: 88%),
+  caption: [Interacción estrategia × modelo bajo el escenario principal: probabilidad predicha de obtener un puntaje de corrección de al menos 0,75, con bandas de confianza del 95 %. Las líneas se cruzan entre RAG básico y Agentic-RAG: gpt-5-nano desciende y gpt-5-mini asciende, mientras gpt-5 se mantiene por encima de 0,65 en las tres estrategias.],
+) <fig-interaccion>
 
 El análisis de las medias por combinación —cuyas estimaciones modeladas figuran en la @tabla-celdas-principal— revela un patrón de interacción disordinal, con líneas que se cruzan.
 
@@ -226,6 +238,31 @@ Las principales observaciones son:
 + La ausencia de diferencia marginal entre Agentic-RAG y RAG básico enmascara diferencias condicionales al modelo: en gpt-5-mini la diferencia es positiva y sustancial, mientras que en gpt-5-nano se invierte.
 + Con RAG básico las diferencias entre modelos son menores, pero no se demostró equivalencia; el sistema agéntico no las elimina.
 + El cruce de las líneas es disordinal, de modo que no existe un orden único de las estrategias ni de los modelos: la comparación debe hacerse célula por célula y con intervalos, no a partir del efecto marginal.
+
+=== Diagnóstico de Agentic-RAG con gpt-5-nano
+
+La celda Agentic-RAG con gpt-5-nano requiere una lectura separada. De las 79 unidades, 41 no contienen una respuesta sustantiva: 27 vacías, una con solo espacios, dos abstenciones explícitas, una truncada y diez indeterminadas. La @fig-diagnostico-estados desglosa esas 79 salidas y la @fig-diagnostico-tasas compara la tasa de salidas no sustantivas con la de las otras ocho celdas, donde es 0 % o 1,3 %.
+
+#figure(
+  image("../media/diagnostico_estados_nano_agentic.pdf", width: 80%),
+  caption: [Estados de las 79 salidas de Agentic-RAG con gpt-5-nano. `Indeterminada` agrupa mensajes de proceso, marcadores de prueba y un mensaje interno; `Truncada` corresponde a una salida cortada.],
+) <fig-diagnostico-estados>
+
+#figure(
+  image("../media/diagnostico_tasas_fallo.pdf", width: 88%),
+  caption: [Tasa de salidas no sustantivas por celda, con intervalo de confianza del 95 % de Wilson sobre 79 unidades. El fenómeno está concentrado en Agentic-RAG con gpt-5-nano (51,9 %; IC 95 % 41,1–62,6) y, en menor medida, en Sin RAG con gpt-5-mini (19,0 %).],
+) <fig-diagnostico-tasas>
+
+La @fig-diagnostico-composicion muestra la composición completa de las nueve celdas. Los registros de los agentes permiten descartar varias explicaciones simples: los 79 logs contienen una llamada a `retrieve_relevant_documents` y al menos una a `final_result`, el `finish_reason` del especialista es `tool_call` en los 79 casos, y las salidas vacías o con solo espacios registran entre 1 y 12 documentos seleccionados, entre 2 y 6 búsquedas y entre 575 y 7.015 tokens de salida. No hay evidencia de falta de recuperación ni de truncamiento por límite de tokens; el texto final es vacío, contiene solo espacios o contiene un marcador no respondido. La causa de esa decisión de salida no puede determinarse con los logs disponibles.
+
+#pagina-apaisada[
+  #figure(
+    image("../media/diagnostico_composicion_respuestas.pdf", width: 96%),
+    caption: [Composición de las respuestas por estrategia y modelo, con 79 unidades por celda. La categoría `Sustantiva` reúne las salidas con contenido utilizable; las restantes corresponden a los tipos de salida no sustantiva definidos en el capítulo de metodología.],
+  ) <fig-diagnostico-composicion>
+]
+
+La celda es heterogénea. Cuando el sistema produjo una respuesta sustantiva (38 de 79 unidades), la media de `respuesta_correcta_avg` fue 0,820 y la mediana 0,958. Cuando se asigna 0 a las salidas no sustantivas, la media de la celda es 0,395 y la mediana 0,000; cuando se excluyen esas salidas, la media es 0,820 y la mediana 0,958. Por lo tanto, el resultado a nivel sistema es inferior al de RAG básico, pero la calidad condicional a que el sistema responda es alta. La segunda comparación usa una submuestra seleccionada y no debe interpretarse como el efecto causal de la estrategia.
 
 == Sensibilidad No Paramétrica Pareada
 
@@ -294,6 +331,11 @@ Los cuatro escenarios definidos en el capítulo de metodología se estimaron con
   ),
   caption: [Diferencia de media esperada Agentic-RAG − RAG básico por modelo y escenario, estimada con el modelo ordinal mixto. En negrita, los contrastes cuyo signo se mantiene en los cuatro escenarios; el único cambio de signo corresponde a gpt-5-nano bajo exclusión, donde la estimación condiciona a que el sistema responda.],
 ) <tabla-sensibilidad-escenarios>
+
+#figure(
+  image("../media/analisis_sensibilidad_escenarios.pdf", width: 96%),
+  caption: [Media de la puntuación de corrección por celda en los cuatro escenarios de tratamiento de respuestas no sustantivas. Las curvas se superponen en las celdas sin salidas no sustantivas y se separan en Agentic-RAG con gpt-5-nano y en Sin RAG con gpt-5-mini.],
+) <fig-analisis-sensibilidad>
 
 La celda Agentic-RAG + gpt-5-nano concentra 41 de las 79 respuestas no sustantivas, de modo que es la única cuyo resultado depende del escenario. Bajo el escenario principal su media es 0,395 y su mediana 0,000; bajo exclusión la media asciende a 0,820 y la mediana a 0,958, pero sobre 38 unidades. Bajo puntajes observados la media es 0,415 y la mediana 0,250; bajo solo fallos técnicos = 0 los valores coinciden con el escenario principal, porque las abstenciones y los mensajes indeterminados de esa celda no recibieron puntajes positivos de los jueces.
 
