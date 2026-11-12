@@ -42,7 +42,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | V.4 | Temperatura no aplicada, no determinismo, esfuerzo y ejecución única | `correccion-03` | **Cubierto con salvedad** | La temperatura no se envía y la ejecución es única; se usó el valor por defecto de la API: Pydantic AI 1.1.0 no fija `reasoning_effort` y OpenAI documenta `medium` para GPT-5 (NV-05) |
 | V.5 | Factores confundidos, prompts, Agente de Calidad, límite de búsquedas | `correccion-04`; `correccion-05` | **Cubierto** | Arquitectura acotada, límite 7/6, excepción `16_01`, notebook exploratorio y prompts declarados en el manuscrito |
 | V.6 | 41 salidas no sustantivas, reincorporar casos 23–25, corregir faltantes, reformular sobrecarga | `correccion-02`; `correccion-01`; `correccion-05` | **Cubierto** | La base final tiene 58 no sustantivas y 41 en nano agéntico; el join 23–25 está resuelto. Las medias 0,82/0,84/0,64 se reproducen; `p = 0,19` y `p = 0,003` se reproducen con Wilcoxon de Pratt sobre las 38 respuestas sustantivas. Falta editar el manuscrito |
-| V.7 | Validez del benchmark, respuestas de referencia y jueces; citas deterministas; submuestra humana | `correccion-06`; `verificacion-analisis-estadistico`; `correccion-05` | **Parcial** | Hay auditoría de referencias y evidencia de jueces; no hay métricas de citas sobre respuestas generadas ni validación humana (NV-03) |
+| V.7 | Validez del benchmark, respuestas de referencia y jueces; citas deterministas; submuestra humana | `correccion-06`; `verificacion-analisis-estadistico`; `correccion-05` | **Parcial** | Hay auditoría de referencias y evidencia de jueces; no se ejecutaron métricas de citas sobre respuestas generadas (NV-03, cancelada por tiempo) ni validación humana de los jueces |
 | V.8 | Evaluar recuperación; comparar embedding/BM25 | `part_d` y `verificacion-analisis-estadistico/metricas_recuperacion/` | **Cubierto con salvedad** | Baseline (recall top-10 0,333; MRR 0,214; 27,9 %/59,5 %) y Agentic-RAG (0,399–0,446; MRR 0,242–0,281) incorporados al capítulo de evaluación. No hay comparación con BM25/otro embedding porque se perdió el volumen de Milvus |
 | V.9 | Versión y calidad del corpus | `correccion-06` | **Cubierto con salvedad** | Versión, conteos y linaje están auditados; la calidad de extracción no se cuantificó con tasa de error, solo con comparación de artículos clave |
 | V.10 | Costos, Pareto y recomendación | `correccion-05` | **Cubierto** | Costos históricos, frontera de Pareto y costo por respuesta ≥ 0,75 |
@@ -115,7 +115,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | PI-10 Excepción `16_01` | Sin cambio | Baja |
 | PI-11 Notebook `part_g` | Sin cambio; V.11 valora el repositorio, no la discrepancia notebook/script | Media |
 | PI-12 Procedencia Infoleg | **Resuelta**; V.9 no se actualizó; sin acción pendiente | — |
-| PI-13–PI-20 Benchmark/corpus | **Reclasificadas:** PI-16 y PI-18 resueltas; PI-13, PI-14, PI-17 y PI-20 canceladas por estar fuera de alcance; PI-15 y PI-19 resueltas con implementación editorial pendiente. PI-12 se registra en la fila anterior | Alta/Media |
+| PI-13–PI-20 Benchmark/corpus | **Resueltas:** PI-12, PI-15, PI-16, PI-18 y PI-19 aplicadas; PI-13, PI-14, PI-17 y PI-20 canceladas por estar fuera de alcance | Alta/Media |
 | PI-21–PI-28 Bibliografía | **Resueltas:** PI-21, PI-22, PI-23, PI-26, PI-27 y PI-28 con opción A; PI-24 con opción A usando la página institucional verificada (el endpoint directo del buscador no responde desde este entorno); PI-25 con las cinco entradas y claves actualizadas | Alta/Media |
 | PI-29 `nAGQ`/odds proporcionales | **Resuelta: opción A**; mantener `nAGQ = 1` (Laplace) y declarar la limitación. `nAGQ > 1` no está disponible con dos efectos aleatorios | Media |
 | PI-30 Versionar verificación | **Resuelta: opción A**; publicado y verificado con `run_all.sh` y clonación limpia | Alta |
@@ -126,7 +126,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 
 ## 7. Nuevas decisiones incorporadas (NV-01–NV-07)
 
-El estado actualizado está en `DECISIONES_integradas.md` §6: todas las NV están resueltas salvo NV-03, que queda pendiente y no prioritaria.
+El estado actualizado está en `DECISIONES_integradas.md` §6: NV-01, NV-02 y NV-04–NV-07 resueltas; NV-03 cancelada por tiempo. No quedan decisiones pendientes.
 
 | ID | Decisión | Opciones | Recomendación | Bloquea |
 |---|---|---|---|---|
@@ -145,7 +145,7 @@ El estado actualizado está en `DECISIONES_integradas.md` §6: todas las NV est�
 | Punto | Estado |
 |---|---|
 | NV-01 Reanálisis canónico | **Reconciliada:** `correccion-01`; ver `verificacion-analisis-estadistico/reconciliacion_v1/` |
-| Edición del manuscrito | **Pendiente:** aplicar las correcciones 01–07 |
+| Edición del manuscrito | **Aplicada en esta versión:** título, resumen, metodología, evaluación, conclusiones, anexo y bibliografía corregidos |
 | NV-04 Declaración de IA | **Decidida (A):** extender la declaración; falta redactarla y revisar el antecedente |
 | PI-02 / PI-06 / PI-08 | **Decididas:** título aprobado, sin validación humana adicional, casos adjudicados; falta implementarlas |
 | NV-06 Índice vectorial | **Resuelta (A):** AUTOINDEX del código; no usar IVF_FLAT |
@@ -161,8 +161,8 @@ El estado actualizado está en `DECISIONES_integradas.md` §6: todas las NV est�
 - **Diagnóstico de la celda anómala y faltantes:** cubierto.
 - **Corpus, benchmark y bibliografía:** cubierto en análisis, con revisiones jurídicas pendientes.
 - **Recuperación:** datos verificables; decisión NV-02 adaptada a los `.json`, falta el artefacto propio y no hay comparación BM25 por pérdida de Milvus.
-- **Citas deterministas:** parcial; solo respuestas esperadas, no respuestas generadas. NV-03 queda no prioritaria.
+- **Citas deterministas:** no ejecutadas sobre respuestas generadas; NV-03 queda como trabajo futuro.
 - **Validación humana, réplicas y reducción editorial:** no cubierto.
-- **Declaración de IA:** decidida (PI-04/NV-04), pendiente de implementación.
+- **Declaración de IA:** incorporada en `01_texto_preliminar.typ` y en metodología.
 
 Por tanto, **el trabajo existente permite responder la mayor parte de la nueva valoración, pero no alcanza para declarar cobertura total**. La nueva valoración no invalida las decisiones tomadas; refuerza varias y agrega las decisiones NV-01 a NV-07.
