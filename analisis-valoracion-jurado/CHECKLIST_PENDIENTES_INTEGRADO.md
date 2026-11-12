@@ -15,7 +15,7 @@
 
 **Total: 27 pendientes** (9 bloqueantes · 10 altos · 8 medios/menores).
 
-**Estado: los 27 pendientes fueron resueltos** el 2026-11-12/13. Cada ítem se implementó en un commit propio para conservar la trazabilidad; el hash correspondiente figura en la columna `Commit` de §0.1. El manuscrito compila sin errores (199 páginas) y las verificaciones de §6 dan el resultado esperado.
+**Estado: los 27 pendientes fueron resueltos** el 2026-11-12/13. Cada ítem se implementó en un commit propio para conservar la trazabilidad; el hash correspondiente figura en la columna `Commit` de §0.1. El manuscrito compila sin errores (195 páginas) y las verificaciones de §6 dan el resultado esperado.
 
 ## 0.1. Registro de ejecución
 
@@ -49,6 +49,8 @@
 | C-07 | `fdfeccd` | Mes de ICLR en LoRA y Self-RAG (sin coma colgante) |
 | C-08 | `4e6b562` | Imputación: 50 evaluaciones en 11 combinaciones, por juez |
 | — | `a2da467` | Pasada final: transferencia al repositorio publicado |
+| — | `3b96a76` | Pasada final: remisiones y «unidad de evaluación» |
+| — | `20469cc` | Pasada final: agrupación de tablas anchas (199 → 195 páginas) |
 
 ---
 
@@ -265,5 +267,20 @@ grep -rn "293,28\|0,788\|0,812\|41 de 79" capitulos/*.typ
 ```
 
 ---
+
+### 6.1. Resultado de la verificación final
+
+Verificado sobre el PDF recompilado (195 páginas):
+
+| Control | Esperado | Obtenido |
+|---|---|---|
+| `temperatura 0` / `respuestas determinísticas` | 0 | 0 |
+| `684 observaciones` / `fallos puntuales en la generación` | 0 | 0 |
+| `friedman` / `wilcoxon` / `bootstrap` en `capitulos/*.typ` | > 0 | 18 |
+| `modelos mixtos` | 0 | 0 |
+| `complejidad agéntica es excesiva` / `capacidad de razonamiento interna` | 0 | 0 |
+| Referencias «capítulo Sección N» en el PDF | 0 | 0 |
+| Entradas con coma colgante `(2024, )` / `(2022, )` | 0 | 0 |
+| Cifras 293,28 / 0,788 / 0,812 / 41 de 79 presentes | > 0 | 8 / 4 / 4 / 3 |
 
 *Checklist integrado a partir de los tres reportes de verificación del 2026-11-12. Los ítems marcados con ✓ fueron re-verificados contra `manuscrito/capitulos/*.typ` y el PDF compilado durante la integración; las discrepancias entre informes están resueltas en §0.*
