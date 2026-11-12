@@ -153,7 +153,12 @@ El estado actualizado está en `DECISIONES_integradas.md` §6: NV-01, NV-02 y NV
 | NV-03 Citas deterministas | **Cancelada por tiempo:** trabajo futuro |
 | PI-25 DOIs de edición | **Resuelta:** cinco entradas adoptadas y claves/citas actualizadas; PDF compilado |
 | NV-05 Esfuerzo de razonamiento | **Resuelta:** valor por defecto de la API; Pydantic AI 1.1.0 no fija `reasoning_effort` y OpenAI GPT-5 usa `medium` por defecto. No se registró localmente |
-| PI-31 Sincronización final | **Decidida (A):** aplicar todo y generar una nueva versión |
+| PI-31 Sincronización final | **Aplicada:** manuscrito sincronizado y recompilado (199 páginas); ver `CHECKLIST_PENDIENTES_INTEGRADO.md` §0.1 |
+| Checklist de 27 pendientes | **Resuelto:** los 27 ítems (A-01–A-09, B-01–B-10, C-01–C-08) implementados con un commit por ítem |
+
+### 8.1. Pendientes del checklist integrado
+
+Los 27 pendientes de `CHECKLIST_PENDIENTES_INTEGRADO.md` se resolvieron el 2026-11-12/13. Los cambios de mayor alcance fueron: la base de cálculo quedó en 711 observaciones y 2.133 evaluaciones; el modelo ordinal mixto es el análisis principal y las pruebas pareadas se reportan como sensibilidad; el análisis exploratorio histórico (Kruskal-Wallis, Dunn, Scheirer-Ray-Hare) se trasladó al anexo D; se retiraron las afirmaciones de determinismo por temperatura 0 y el índice de eficiencia con piso 0,01; se incorporaron el anexo E de prompts y parámetros y las figuras canónicas del reanálisis; y las referencias cruzadas se corrigieron para que no impriman «capítulo Sección N».
 
 ## 9. Veredicto de cobertura
 
@@ -162,7 +167,8 @@ El estado actualizado está en `DECISIONES_integradas.md` §6: NV-01, NV-02 y NV
 - **Corpus, benchmark y bibliografía:** cubierto en análisis, con revisiones jurídicas pendientes.
 - **Recuperación:** datos verificables; decisión NV-02 adaptada a los `.json`, falta el artefacto propio y no hay comparación BM25 por pérdida de Milvus.
 - **Citas deterministas:** no ejecutadas sobre respuestas generadas; NV-03 queda como trabajo futuro.
-- **Validación humana, réplicas y reducción editorial:** no cubierto.
+- **Validación humana, réplicas:** declaradas como limitación y como trabajo futuro; no ejecutadas.
+- **Reducción editorial:** decidida y declarada en la introducción (capítulos 2 y 7 se conservan por trazabilidad).
 - **Declaración de IA:** incorporada en `01_texto_preliminar.typ` y en metodología.
 
 Por tanto, **el trabajo existente permite responder la mayor parte de la nueva valoración, pero no alcanza para declarar cobertura total**. La nueva valoración no invalida las decisiones tomadas; refuerza varias y agrega las decisiones NV-01 a NV-07.

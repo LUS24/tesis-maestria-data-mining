@@ -321,6 +321,23 @@ No hay decisiones pendientes. **NV-03** se canceló por tiempo y no bloquea la e
 
 No hay decisiones pendientes.
 
+### 6.5 Implementación del checklist de 27 pendientes
+
+El 2026-11-12/13 se ejecutó el `CHECKLIST_PENDIENTES_INTEGRADO.md` completo. Las decisiones que condicionaban la edición quedaron implementadas así:
+
+| Decisión | Implementación en el manuscrito |
+|---|---|
+| NV-01 / PI-29 (análisis canónico) | El modelo ordinal mixto es el análisis principal; Friedman, Wilcoxon y el bootstrap por casos se reportan como sensibilidad pareada en §6.5. Laplace y la ausencia de prueba de odds proporcionales se declaran como limitación |
+| A-01 (join 23–25) | 711 observaciones y 2.133 evaluaciones; se elimina la eliminación por lista |
+| A-05 (alcance de los capítulos analíticos) | Kruskal-Wallis, Dunn y Scheirer-Ray-Hare pasan al anexo D; el cuerpo conserva especificación, interacción, efectos con IC y escenarios de fallo |
+| NV-05 / A-06 (parámetros de API) | Subsección `sec:parametros-api`: `temperature` solicitada y no enviada, `reasoning_effort` no configurado, default `medium` del proveedor, ejecución única |
+| NV-02 / C-05 (recuperación) | Métricas desde los `.json`; sin comparación BM25, declarada como limitación y trabajo futuro |
+| NV-03 / C-02 (citas deterministas) | No ejecutada; declarada en trabajos futuros con el cálculo propuesto |
+| NV-06 (AUTOINDEX) | Sin cambios adicionales: el texto usa AUTOINDEX y no IVF_FLAT |
+| PI-31 / NV-07 (sincronización) | Manuscrito recompilado (199 páginas), cifras alineadas entre resumen, evaluación y conclusiones |
+
+El detalle ítem por ítem, con el commit de cada cambio, está en `CHECKLIST_PENDIENTES_INTEGRADO.md` §0.1.
+
 ### 6.4 PI-25 — Entradas adoptadas
 
 | Clave nueva | Entrada | DOI | Cambio |
