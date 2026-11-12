@@ -277,8 +277,8 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | D-12 | Cerrada | Quitar “IVF_FLAT” y describir AUTOINDEX con similitud coseno | `§2`; NV-06 resuelta con AUTOINDEX |
 | D-13 | Cerrada | “No se identificaron antecedentes públicos comparables” | `§2`; mantener cautela |
 | D-14 | Cerrada | Alpha 0,807842 original y 0,799542 rúbrica | `§2`; recálculo independiente |
-| PI-01 | Cerrada | Opción A: mantener `correccion-*` y marcar como deprecados los análisis previos que ya no se usan | Actualizar plan y README; no duplicar |
-| PI-02 | Cerrada | Opción A: título aprobado por correo por el director de la maestría | Actualizar portada, `main.typ`, README y BibTeX |
+| PI-01 | Cerrada | Opción A: mantener `correccion-*` y marcar como deprecados los análisis previos que ya no se usan | Nota de ubicación incorporada en el plan; no se crea `part_k` |
+| PI-02 | Cerrada | Opción A: título aprobado por correo por el director de la maestría | Título, portada, README y BibTeX actualizados |
 | PI-03 | Cerrada | Opción A: aplicar textos, anexo y SVG operativo; actualizar el diagrama para respetar colores y límites | Arquitectura, agentes y SVG operativo actualizados en el manuscrito |
 | PI-04 | Cerrada | Opción B: declaración de IA por etapas; incluye extracción, benchmark, respuestas, jueces, asistencia y verificación; antecedente de la referencia eliminada | Declaración incorporada en `01_texto_preliminar.typ`; PDF compilado |
 | PI-05 | Cerrada | Opción A: “modelo del Agente Especialista Legal”; celdas agénticas como “recuperador gpt-5” | Terminología y etiquetas aplicadas en arquitectura y tablas |
@@ -307,14 +307,14 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | PI-28 | Cerrada | Opción A: agregar Lewis, Código de Minería, Zheng, Bench-Capon, Tribunal Fiscal y Qwen3 | Referencias incorporadas y citadas; PDF compilado |
 | PI-29 | Cerrada | Opción A: mantener `nAGQ = 1` (Laplace) y declarar la limitación; reconciliar con NV-01 | Limitación y método incorporados en capítulos 5 y 8; `nAGQ > 1` no está disponible en `clmm` con dos efectos aleatorios |
 | PI-30 | Cerrada | Opción A: publicar después de revisar el manuscrito y ordenar el directorio | Ejecutar `run_all.sh`, clonación y registro al final |
-| PI-31 | Cerrada | Opción A: aplicar todo y generar una nueva versión del archivo | Implementación pendiente; coordinar con NV-07 |
+| PI-31 | Cerrada | Opción A: aplicar todo y generar una nueva versión del archivo | Sincronización principal aplicada; PDF recompilado |
 | PI-32 | Cerrada | 25 preguntas: 18 intervenidas, 17 corregidas, Q24 solo comentario, 7 sin intervención | Conteo incorporado en metodología; `correccion-06/salidas/conteo_preguntas_revisadas.csv` |
 | NV-01 | Cerrada | Opción A: `correccion-01` como fuente canónica; no usar el reanálisis de la valoración | Reconciliado en `verificacion-analisis-estadistico/reconciliacion_v1/`; usar p Holm en V.1 y Pratt en V.6 |
 | NV-02 | Cerrada | Opción A adaptada: sin Milvus; recall@k/MRR desde las recuperaciones `.json` | Calculado en `verificacion-analisis-estadistico/metricas_recuperacion/`; sin comparación BM25 |
 | NV-04 | Cerrada | Opción A: extender la declaración a búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas; revisar el antecedente de la “referencia fabricada” | Declaración incorporada en `01_texto_preliminar.typ`; PDF compilado |
 | NV-05 | Cerrada | Se usó el valor por defecto de la API: Pydantic AI 1.1.0 no fija `reasoning_effort` y envía `NOT_GIVEN`; el default efectivo de OpenAI para GPT-5 es `medium` | Nota incorporada en método y declaración; PDF compilado |
 | NV-06 | Cerrada | Opción A: usar AUTOINDEX, valor del código; no afirmar IVF_FLAT | Aplicar en V.8/metodología |
-| NV-07 | Cerrada | Opción A: incorporar recuperación, IA y cifras reconciliadas a Tabla 4/IX | Coordinar con PI-31 |
+| NV-07 | Cerrada | Opción A: incorporar recuperación, IA y cifras reconciliadas a Tabla 4/IX | Cifras, recuperación y conclusiones incorporadas en evaluación y conclusiones |
 
 ### 6.3 Decisiones pendientes
 

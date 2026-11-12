@@ -17,7 +17,7 @@
 / HTML: HyperText Markup Language (Lenguaje de Marcas de Hipertexto)
 / IA: Inteligencia Artificial
 / IQR: Interquartile Range (Rango Intercuartílico)
-/ IVF_FLAT: Inverted File Flat (índice vectorial)
+/ AUTOINDEX: índice vectorial automático de Milvus
 / JSON: JavaScript Object Notation
 / LLM: Large Language Model (Gran Modelo de Lenguaje)
 / LoRA: Low-Rank Adaptation

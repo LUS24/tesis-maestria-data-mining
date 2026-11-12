@@ -43,10 +43,10 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | V.5 | Factores confundidos, prompts, Agente de Calidad, límite de búsquedas | `correccion-04`; `correccion-05` | **Cubierto** | Arquitectura acotada, límite 7/6, excepción `16_01`, notebook exploratorio y prompts declarados en el manuscrito |
 | V.6 | 41 salidas no sustantivas, reincorporar casos 23–25, corregir faltantes, reformular sobrecarga | `correccion-02`; `correccion-01`; `correccion-05` | **Cubierto** | La base final tiene 58 no sustantivas y 41 en nano agéntico; el join 23–25 está resuelto. Las medias 0,82/0,84/0,64 se reproducen; `p = 0,19` y `p = 0,003` se reproducen con Wilcoxon de Pratt sobre las 38 respuestas sustantivas. Falta editar el manuscrito |
 | V.7 | Validez del benchmark, respuestas de referencia y jueces; citas deterministas; submuestra humana | `correccion-06`; `verificacion-analisis-estadistico`; `correccion-05` | **Parcial** | Hay auditoría de referencias y evidencia de jueces; no hay métricas de citas sobre respuestas generadas ni validación humana (NV-03) |
-| V.8 | Evaluar recuperación; comparar embedding/BM25 | `part_d` y `verificacion-analisis-estadistico/metricas_recuperacion/` | **Cubierto con salvedad** | Se reprodujo el baseline (recall@10 0,333; MRR 0,214; 27,8 %/59,5 %) y se calcularon las métricas de Agentic-RAG desde los `.json`: recall@10 0,399–0,446; MRR 0,242–0,281. No hay comparación con BM25/otro embedding porque se perdió el volumen de Milvus |
+| V.8 | Evaluar recuperación; comparar embedding/BM25 | `part_d` y `verificacion-analisis-estadistico/metricas_recuperacion/` | **Cubierto con salvedad** | Baseline (recall top-10 0,333; MRR 0,214; 27,9 %/59,5 %) y Agentic-RAG (0,399–0,446; MRR 0,242–0,281) incorporados al capítulo de evaluación. No hay comparación con BM25/otro embedding porque se perdió el volumen de Milvus |
 | V.9 | Versión y calidad del corpus | `correccion-06` | **Cubierto con salvedad** | Versión, conteos y linaje están auditados; la calidad de extracción no se cuantificó con tasa de error, solo con comparación de artículos clave |
 | V.10 | Costos, Pareto y recomendación | `correccion-05` | **Cubierto** | Costos históricos, frontera de Pareto y costo por respuesta ≥ 0,75 |
-| V.11 | Título, alcance, repositorio y declaración de IA | `correccion-05`; verificación pública | **Parcial** | La declaración de IA por etapas ya está incorporada; el repositorio es público; queda aplicar el título/portada y la declaración de alcance |
+| V.11 | Título, alcance, repositorio y declaración de IA | `correccion-05`; verificación pública | **Cubierto** | Título y portada actualizados, declaración de IA por etapas, repositorio público y alcance acotado en resumen/conclusiones |
 
 ---
 
@@ -58,7 +58,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | IX.1.2 Informar 41 salidas, reincorporar 23–25, corregir faltantes | **Cubierto** | `correccion-02` y `correccion-01`; las limitaciones y el conteo se incorporaron al manuscrito |
 | IX.1.3 Retirar determinismo, informar esfuerzo y ejecución única | **Cubierto con salvedad** | `correccion-03` demuestra que la temperatura no se envía. `reasoning_effort` no se envió; el default efectivo del proveedor es `medium`, aunque no quedó registrado localmente |
 | IX.1.4 Declarar confundidos, prompts y contradicciones | **Cubierto** | `correccion-04`; quedan decisiones editoriales menores (7/6, `16_01`, notebook) |
-| IX.1.5 Reformular Tabla 4 y conclusiones | **Cubierto como propuesta** | `correccion-05`; no se editó el manuscrito |
+| IX.1.5 Reformular Tabla 4 y conclusiones | **Cubierto** | `correccion-05`; conclusiones e implicaciones reformuladas en evaluación y conclusiones |
 | IX.1.6 Corpus, origen y respuestas de referencia | **Cubierto** | `correccion-06`; 1.2/1.3 corregidos en el anexo, fechas y proceso del corpus actualizados; Q23–Q25 fuera de alcance |
 | IX.1.7 Tablas 2 y 3, auditoría bibliográfica | **Cubierto** | `correccion-07`; PI-21–PI-28 aplicadas en `.bib` y texto, incluidas las claves nuevas y la APA estricta |
 | IX.1.8 Ampliar declaración de IA | **Cubierto** | Declaración por etapas en `01_texto_preliminar.typ`: extracción, benchmark, respuestas, jueces, asistencia y verificación; incluye la referencia eliminada |

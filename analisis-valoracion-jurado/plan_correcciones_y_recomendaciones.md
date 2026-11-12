@@ -5,6 +5,9 @@
 **Fecha de inspección:** 2026-11-11.  
 **Alcance de este documento:** plan de implementación; no contiene todavía resultados inferenciales corregidos ni sustituye la revisión de un profesional del derecho.
 
+> **Ubicación adoptada (PI-01):** la implementación se organizó en `analisis-valoracion-jurado/correccion-01` a `correccion-07`, más `verificacion-analisis-estadistico/`. No se crea `codigo_experimentos/part_k_correcciones_jurado`; esa propuesta del plan queda reemplazada. Los artefactos históricos de `part_k` no se usan como fuente de las correcciones.
+
+
 ## 1. Resumen ejecutivo
 
 La mayor parte de las correcciones requeridas puede resolverse **sin volver a generar respuestas**, porque el repositorio contiene las 711 respuestas, las evaluaciones de tres jueces, los metadatos de uso y los registros de los agentes. Las excepciones son la validación humana, las réplicas y la ablación, que dependen de personas, presupuesto y nuevas llamadas a APIs.

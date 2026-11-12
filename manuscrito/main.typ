@@ -1,7 +1,7 @@
 #import "@preview/mmdr:0.2.2"
 
 #set document(
-  title: "Desarrollo y evaluación de un prototipo de sistema inteligente para consulta de normativa nacional argentina mediante recuperación agéntica",
+  title: "Desarrollo y evaluación de un prototipo Agentic-RAG para consulta del Código de Minería argentino",
   author: "Leonardo Ulises Spairani",
 )
 #set page(paper: "a4", margin: 2.5cm, numbering: "i")
@@ -37,7 +37,7 @@
     #v(2cm)
 
     #text(16pt, weight: "bold")[
-      Desarrollo y evaluación de un prototipo de sistema inteligente para consulta de normativa nacional argentina mediante recuperación agéntica
+      Desarrollo y evaluación de un prototipo Agentic-RAG para consulta del Código de Minería argentino
     ]
 
     #v(1cm)

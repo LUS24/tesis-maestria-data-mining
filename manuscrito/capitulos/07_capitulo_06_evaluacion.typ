@@ -128,11 +128,11 @@ Se realizaron tests de Kruskal-Wallis estratificados por sistema de recuperació
 + *Sin RAG*: $H = 59.67$, $p < 0.0001$ — los modelos difieren significativamente.
 + *RAG básico*: $H = 4.71$, $p = 0.095$ — los modelos *no* difieren significativamente.
 
-Este último resultado sugiere un *efecto igualador* del RAG básico: al proveer contexto relevante, las diferencias de capacidad entre modelos se atenúan, permitiendo que modelos más pequeños y económicos alcancen un desempeño comparable al del modelo de mayor tamaño.
+Las diferencias entre modelos con RAG básico son menores que en las otras estrategias, pero no desaparecen. Un p no significativo no demuestra equivalencia; para sostenerla haría falta un margen definido a priori. Por eso no se conserva la expresión “efecto igualador”.
 
 === Efectos Simples: Estrategia dentro de cada Modelo
 
-El test de Scheirer-Ray-Hare reveló una interacción significativa entre estrategia y modelo ($H = 56.62$, $p < 10^(-11)$). Cuando existe interacción, los efectos principales no son interpretables de forma aislada: el efecto de la estrategia depende del modelo empleado. El análisis estratificado anterior evaluó el efecto del modelo dentro de cada estrategia; como complemento necesario, se evaluó el efecto de la estrategia dentro de cada modelo mediante tests de Mann-Whitney U (efectos simples de estrategia).
+El test de Scheirer-Ray-Hare se conserva como antecedente exploratorio y sugiere una interacción entre estrategia y modelo. El análisis principal es el modelo ordinal mixto, que respeta el apareamiento y el anidamiento: LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶². Los efectos simples se estimaron con ese modelo y se corrigen con Holm dentro de cada familia.
 
 Dado que se realizan 9 comparaciones (3 modelos × 3 pares de estrategias), se aplicaron correcciones de Bonferroni y Holm-Bonferroni @holm1979simple mediante `statsmodels.stats.multitest.multipletests` @seabold2010statsmodels. La @tabla-efectos-simples presenta los resultados completos.
 
@@ -219,10 +219,10 @@ Los resultados para `respuesta_correcta_avg` fueron:
       | Sistema × Modelo | *56.62* |  4   | *$1.48 times 10^(-11)$* |   Sí   |
     ],
   ),
-  caption: [Resultados del test de Scheirer-Ray-Hare para `respuesta_correcta_avg`. En negrita, el efecto de interacción, que reúne el mayor estadístico $H$ y el menor p-value del análisis y constituye el hallazgo principal del capítulo.],
+  caption: [Resultados del test de Scheirer-Ray-Hare para `respuesta_correcta_avg`, conservado como antecedente exploratorio. El análisis principal es el modelo ordinal mixto, que respeta el apareamiento y el anidamiento.],
 )
 
-La interacción significativa ($H = 56.62$, $p < 10^(-11)$) indica que el efecto de la estrategia de recuperación *depende* del modelo empleado, y viceversa. El estadístico de interacción supera a ambos efectos principales, lo que implica que las combinaciones explican más varianza que los factores individuales.
+El test exploratorio sugiere que el efecto de la estrategia depende del modelo empleado; el modelo ordinal confirma la interacción (LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶²). La interacción no identifica por sí sola qué componente de la estrategia la produce.
 
 === Patrón de Interacción
 
@@ -262,7 +262,7 @@ Las principales observaciones son:
 La interacción significativa matiza las conclusiones del análisis de Kruskal-Wallis:
 
 + La no-diferencia marginal entre Agentic-RAG y RAG básico enmascara diferencias condicionales al modelo: para gpt-5-mini la diferencia es sustancial (0.78 vs. 0.64), mientras que para gpt-5-nano la relación se invierte (0.40 vs. 0.59).
-+ El efecto igualador del RAG básico se confirma, pero no aplica al sistema agéntico, que amplifica las diferencias entre modelos.
++ Con RAG básico las diferencias entre modelos son menores, pero no se demostró equivalencia; el sistema agéntico no las elimina.
 
 == Análisis de Costos
 
@@ -308,6 +308,27 @@ La @fig-eficiencia presenta el índice de eficiencia para las nueve configuracio
 === Resumen de Tokens y Costos del Experimento
 
 Se reportaron los tokens totales consumidos y el costo acumulado por modelo y por estrategia. El costo total del experimento fue de USD 22.29, distribuido en Agentic-RAG (USD 14.24), RAG básico (USD 3.75) y sin RAG (USD 4.31). El mayor costo de Agentic-RAG refleja las llamadas adicionales al Agente de Recuperación, que emplea gpt-5 independientemente del modelo del Agente Especialista Legal.
+
+=== Métricas de recuperación
+
+Se calcularon métricas de recuperación desde los registros de búsqueda y desde el baseline de `part_d`; el detalle y la reproducción están en `verificacion-analisis-estadistico/metricas_recuperacion/`. La comparación usa `recall en top-10` (proporción media de artículos de referencia recuperados en el top-10), el rango recíproco medio (MRR) y la proporción de unidades con todos o ningún artículo de referencia en el top-10.
+
+#figure(
+  three-line-table(
+    columns: (auto, auto, auto, auto, auto),
+    [
+      | *Sistema* | *recall en top-10* | *MRR* | *unidades con todos en top-10* | *unidades sin ninguno en top-10* |
+      | :--- | ---: | ---: | ---: | ---: |
+      | RAG básico (baseline `part_d`) | 0,333 | 0,214 | 27,9 % | 59,5 % |
+      | Agentic-RAG, especialista gpt-5 | 0,415 | 0,242 | 32,9 % | 45,6 % |
+      | Agentic-RAG, especialista gpt-5-mini | 0,399 | 0,263 | 32,9 % | 50,6 % |
+      | Agentic-RAG, especialista gpt-5-nano | 0,446 | 0,281 | 35,4 % | 44,3 % |
+    ],
+  ),
+  caption: [Métricas de recuperación del baseline y de Agentic-RAG. El baseline usa una consulta; Agentic-RAG usa varias y el número de documentos únicos difiere. La comparación es descriptiva, no un experimento controlado de recuperadores.],
+) <tabla-metricas-recuperacion>
+
+Agentic-RAG mejora el recall en top-10 y el MRR respecto del baseline, pero la comparación no es causal: el baseline emplea una consulta y el sistema agéntico varias, y el presupuesto de recuperación no está igualado. No se comparó con BM25 ni con otro embedding porque el volumen de Milvus se perdió y no se recreó la base. El baseline de `part_d` reproduce los valores previos del manuscrito (recall en top-10 = 0,333; MRR = 0,214; 27,9 % con todos; 59,5 % sin ninguno).
 
 == Evaluación LLM-as-a-Judge
 
@@ -409,27 +430,27 @@ Se analizó el sesgo de cada juez mediante la media, mediana, desviación están
 
 === Fortalezas del Sistema
 
-+ Los sistemas con recuperación (RAG básico y Agentic-RAG) superan significativamente al baseline sin RAG en la métrica de corrección.
-+ El sistema Agentic-RAG combinado con gpt-5-mini alcanza un desempeño comparable al de gpt-5 (0.78 vs. 0.80), ofreciendo una alternativa de menor costo.
-+ El RAG básico presenta un efecto igualador sobre los modelos, eliminando las diferencias significativas de desempeño entre gpt-5, gpt-5-mini y gpt-5-nano.
-+ El acuerdo inter-juez para `score_respuesta_correcta` es bueno ($alpha = 0.81$), validando la confiabilidad de las evaluaciones.
++ La recuperación no produce una mejora uniforme: el efecto depende del modelo. En gpt-5-mini, RAG básico y Agentic-RAG superan a Sin RAG; en gpt-5, Agentic-RAG supera a ambas referencias; en gpt-5-nano, Agentic-RAG presenta un modo de fallo de respuesta.
++ Agentic-RAG + gpt-5-mini presenta una media de 0,788 y un costo de USD 0,0564 por consulta; es una alternativa no dominada frente a Agentic-RAG + gpt-5 (0,812; USD 0,0792), no una equivalencia demostrada.
++ Con RAG básico las diferencias entre modelos son menores, pero no desaparecen; no se demostró equivalencia.
++ El acuerdo inter-juez para `score_respuesta_correcta` es bueno ($alpha = 0.81$); mide confiabilidad, no validez frente a criterio humano.
 
 === Debilidades y Limitaciones
 
-+ El sistema Agentic-RAG degrada el desempeño de gpt-5-nano frente a RAG básico (0.40 vs. 0.59, $p_"corr" = 0.017$, Holm-Bonferroni), indicando que la complejidad agéntica es excesiva para modelos de capacidad reducida. La diferencia frente a sin RAG no es significativa tras la corrección ($p_"corr" = 0.064$).
++ En Agentic-RAG con gpt-5-nano, 41/79 salidas no fueron sustantivas (27 vacías, 1 solo espacios, 2 abstenciones, 1 truncada y 10 indeterminadas); la media con fallo = 0 fue 0,395 y la mediana 0,000. Cuando respondió (38/79), la media fue 0,820 y la mediana 0,958. El patrón se describe como un modo de fallo de respuesta, no como una degradación uniforme ni como efecto causal de la “complejidad agéntica”.
 + La métrica `score_precision_legal` no alcanza confiabilidad inter-juez suficiente para ser empleada en comparaciones, lo que limita la evaluación de la precisión de citación.
-+ No se encontró diferencia marginal significativa entre Agentic-RAG y RAG básico, aunque el análisis de interacción revela que esta conclusión global enmascara patrones condicionales al modelo.
++ No se demostró una superioridad global de Agentic-RAG: el efecto es negativo en gpt-5-nano, positivo en gpt-5-mini y moderado en gpt-5. No corresponde reportar un efecto marginal único ni usar la falta de significación como prueba de equivalencia.
 + El benchmark se limita al Código de Minería Argentino, por lo que la generalización a otros cuerpos normativos requiere validación adicional.
 
-La ausencia de diferencias significativas para gpt-5 entre estrategias tras la corrección de Holm-Bonferroni admite múltiples interpretaciones no mutuamente excluyentes. En primer lugar, el modelo podría poseer conocimiento paramétrico suficiente del Código de Minería —cuya última modificación data de 2024 y cuyos textos son de acceso público— para responder correctamente sin necesidad de recuperación externa, lo que explicaría su elevada mediana sin RAG (0.83). En segundo lugar, la escala discreta de cinco niveles de la rúbrica de evaluación podría generar un efecto de techo: si las respuestas de gpt-5 se concentran en los valores superiores (0.75–1.00), la resolución de la rúbrica resulta insuficiente para discriminar mejoras marginales que el RAG podría aportar. En tercer lugar, la potencia estadística disponible (n = 79 observaciones por celda, 9 comparaciones) podría ser insuficiente para detectar efectos moderados tras una corrección exigente como Holm-Bonferroni; la diferencia cruda entre Agentic-RAG y sin RAG ($p = 0.013$) es significativa sin corregir, pero no sobrevive a la corrección. Finalmente, la capacidad discriminatoria de los jueces LLM —que no fueron configurados con cadenas de razonamiento explícitas y cuya alineación con criterios humanos no ha sido validada— podría ser limitada para distinguir matices de corrección jurídica entre respuestas de alta calidad. La validación con expertos legales humanos constituye el único camino para dirimir entre estas hipótesis.
+La comparación pareada cambia la lectura de los resultados originales: Agentic-RAG no es equivalente a las otras estrategias en gpt-5, sino que presenta diferencias positivas moderadas. La interpretación debe basarse en las estimaciones e intervalos del modelo ordinal, no en la falta de significación de pruebas para muestras independientes.
 
 === Implicaciones Prácticas
 
-+ *Combinación óptima*: Agentic-RAG + gpt-5 (media 0.80), pero con costo superior.
-+ *Combinación costo-eficiente*: Agentic-RAG + gpt-5-mini (media 0.78) para escenarios con restricciones presupuestarias, siempre que el sistema RAG esté activo.
++ *Mayor calidad media*: Agentic-RAG + gpt-5 (media 0,812), con costo superior.
++ *Alternativa no dominada*: Agentic-RAG + gpt-5-mini (media 0,788; USD 0,0564 por consulta) es una opción de calidad alta, no la más barata. El menor costo puntual por respuesta correcta corresponde a RAG básico + gpt-5-nano (USD 0,0061; 33/79), con IC solapado con Sin RAG + nano.
 + *No existe una recomendación universal*: la interacción significativa entre factores implica que la selección de modelo y estrategia debe hacerse conjuntamente, no de forma independiente.
-+ *Advertencia para modelos pequeños*: evitar la combinación Agentic-RAG + gpt-5-nano, que constituye la peor configuración evaluada.
++ *Advertencia*: Agentic-RAG + gpt-5-nano presentó 41/79 salidas no sustantivas y el peor costo por respuesta correcta; no se recomienda sin réplicas ni ablaciones.
 
 == Conclusiones del Capítulo
 
-Los resultados confirman que la incorporación de un sistema de recuperación de información mejora significativamente la calidad de las respuestas de los LLM en el dominio legal argentino. La interacción significativa entre la estrategia de recuperación y el modelo ($H = 56.62$, $p < 10^(-11)$) es el hallazgo más relevante: demuestra que la efectividad de una estrategia depende del modelo con el que se combine, y viceversa. El análisis de efectos simples mediante Mann-Whitney U con corrección de Holm-Bonferroni revela que Agentic-RAG beneficia significativamente a gpt-5-mini (las tres comparaciones entre estrategias son significativas, $p_"corr" < 0.05$) pero degrada a gpt-5-nano frente a RAG básico ($p_"corr" = 0.017$). Para gpt-5, no se detectan diferencias significativas entre estrategias tras la corrección por comparaciones múltiples. El RAG básico actúa como igualador de capacidades entre modelos, mientras que el sistema agéntico amplifica las diferencias. La evaluación LLM-as-a-Judge con tres jueces es confiable para la métrica de corrección ($alpha = 0.81$) pero no para la de precisión legal ($alpha = 0.78$ global, con valores insuficientes por sistema).
+Los resultados muestran una interacción entre la estrategia de recuperación y el modelo del Agente Especialista Legal (LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶²). En el escenario principal, Agentic-RAG fue inferior a RAG básico en gpt-5-nano (−0,270; IC 95% −0,330 a −0,202), superior en gpt-5-mini (+0,150; IC 95% 0,096 a 0,203) y superior en gpt-5 (+0,106; IC 95% 0,054 a 0,155). RAG básico no eliminó las diferencias entre modelos: las estimaciones fueron positivas y los intervalos no definen equivalencia. En Agentic-RAG con gpt-5-nano, 41 de 79 salidas no fueron sustantivas; cuando respondió, la calidad fue alta (38/79; media 0,820; mediana 0,958). El alpha de Krippendorff (0,807842 original; 0,799542 rúbrica) mide confiabilidad entre jueces, no validez frente a criterio humano. Las pruebas para muestras independientes del análisis original se conservan solo como antecedente exploratorio.

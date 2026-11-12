@@ -58,7 +58,7 @@ Los sistemas RAG han encontrado aplicaciones significativas en múltiples domini
 
 En el ámbito financiero, se han explorado aplicaciones de RAG para la recuperación y consulta de documentación regulatoria, reportes financieros y normativa contable @srinivasan2025financial. En contextos de gobernanza electrónica, se ha evaluado la fidelidad de sistemas Agentic-RAG utilizando frameworks de evaluación basados en LLM-as-a-Judge con múltiples modelos evaluadores.
 
-Estos trabajos demuestran que la arquitectura RAG es transferible entre dominios especializados, y que las técnicas de fragmentación de texto, embeddings semánticos y recuperación por similitud desarrolladas en un dominio pueden informar el diseño de sistemas en otros.
+Estos trabajos muestran que las técnicas de fragmentación de texto, embeddings semánticos y recuperación por similitud desarrolladas en un dominio pueden informar el diseño de sistemas en otros.
 
 == Sistemas Agénticos
 
@@ -318,7 +318,7 @@ El resultado neto es que, para mediados de 2026, la brecha de rendimiento entre 
 
 === Implicaciones para el Presente Trabajo
 
-Estos desarrollos tienen implicaciones directas para la interpretación de los resultados de esta tesis. En primer lugar, el hallazgo de la sobrecarga agéntica observada en modelos de menor capacidad (gpt-5-nano) podría no reproducirse con los modelos de razonamiento de nueva generación (DeepSeek-R1, Gemini 3.1 Pro, Claude Opus 4.8), que integran cadenas de pensamiento explícitas capaces de gestionar instrucciones complejas de manera más efectiva. En segundo lugar, la disponibilidad de modelos de código abierto competitivos con las APIs propietarias (Kimi K2.7-Code, MiniMax M3, GLM-5.2) abre la posibilidad de eliminar la dependencia de APIs comerciales identificada como limitación del sistema, habilitando despliegues locales relevantes para entornos donde la confidencialidad de las consultas legales sea un requisito. Por último, la maduración de los _frameworks_ agénticos (Microsoft Agent Framework, Mastra) simplificaría una futura reimplementación del sistema multi-agente, potencialmente mejorando la eficiencia y modularidad de la arquitectura.
+Estos desarrollos tienen implicaciones directas para la interpretación de los resultados de esta tesis. En primer lugar, el modo de fallo de respuesta observado en Agentic-RAG con gpt-5-nano podría no reproducirse con los modelos de razonamiento de nueva generación (DeepSeek-R1, Gemini 3.1 Pro, Claude Opus 4.8), que integran cadenas de pensamiento explícitas capaces de gestionar instrucciones complejas de manera más efectiva. En segundo lugar, la disponibilidad de modelos de código abierto competitivos con las APIs propietarias (Kimi K2.7-Code, MiniMax M3, GLM-5.2) abre la posibilidad de eliminar la dependencia de APIs comerciales identificada como limitación del sistema, habilitando despliegues locales relevantes para entornos donde la confidencialidad de las consultas legales sea un requisito. Por último, la maduración de los _frameworks_ agénticos (Microsoft Agent Framework, Mastra) simplificaría una futura reimplementación del sistema multi-agente, potencialmente mejorando la eficiencia y modularidad de la arquitectura.
 
 La inclusión de estos desarrollos en el análisis comparativo requeriría experimentación adicional fuera del alcance del presente trabajo; no obstante, la metodología propuesta ---diseño factorial, _benchmark_ específico y evaluación LLM-as-a-Judge--- es directamente aplicable a futuras generaciones de modelos sin modificaciones sustanciales.
 

@@ -1,4 +1,4 @@
-# Agentic-RAG para Consulta de Normativa Argentina 🇦🇷
+# Agentic-RAG para consulta del Código de Minería argentino 🇦🇷
 
 [![Typst](https://img.shields.io/badge/Typst-0.11+-239DAD?logo=typst)](https://typst.app)
 [![Python](https://img.shields.io/badge/Python-3.12+-3776AB?logo=python)](https://python.org)
@@ -15,32 +15,34 @@ Tutores: Dra. Laura Lucía Bélfer y Dr. Rafael Crescenzi
 
 ## 📖 Sobre el proyecto
 
-Este repositorio contiene el código, los datos y el manuscrito de la tesis de maestría que desarrolla y evalúa un **prototipo de sistema inteligente para consulta de normativa nacional argentina mediante Agentic-RAG**, utilizando el **Código de Minería Argentino** como prueba de concepto.
+Este repositorio contiene el código, los datos y el manuscrito de la tesis de maestría que desarrolla y evalúa un **prototipo Agentic-RAG para consulta del Código de Minería argentino**.
 
 ### 🎯 ¿Qué hace el sistema?
 
 El sistema permite realizar consultas en lenguaje natural sobre el Código de Minería Argentino y obtener respuestas fundamentadas en los artículos reales de la normativa, en lugar de depender únicamente del conocimiento interno de un modelo de lenguaje. Para lograrlo, combina tres componentes:
 
 1. **Base de datos vectorial** (Milvus) con embeddings semánticos de cada artículo del Código de Minería, que permite búsquedas por similitud semántica.
-2. **Sistema multi-agente** (Pydantic AI) con agentes especializados en interpretación de consultas, recuperación de artículos y generación de respuestas.
-3. **Pipeline de evaluación** con un benchmark de 25 preguntas legales validadas por profesionales del derecho argentino, y evaluación mediante métricas textuales, semánticas y LLM-as-a-Judge.
+2. **Sistema de dos agentes activos** (Pydantic AI): el Agente Especialista Legal, que interpreta la consulta y redacta la respuesta, y el Agente de Recuperación, que descompone la consulta y busca artículos. El Agente de Calidad fue diseñado pero no se ejecutó; el especialista no itera sobre los resultados ni verifica la respuesta con un agente adicional.
+3. **Pipeline de evaluación** con un benchmark de 25 casos y 79 unidades, revisado por una profesional del derecho argentino, y evaluación mediante métricas textuales, semánticas y LLM-as-a-Judge.
 
 ### 🔬 Hallazgos principales
 
-| Hallazgo                                     | Descripción                                                                                                                         |
-| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **RAG mejora significativamente la calidad** | Tanto RAG básico como Agentic-RAG superan al baseline sin recuperación (p < 0.001)                                                  |
-| **Efecto igualador del RAG**                 | Con RAG básico, modelos pequeños alcanzan desempeño comparable al de modelos superiores                                             |
-| **Interacción estrategia × modelo**          | La efectividad de cada estrategia depende del modelo con el que se combine (p < 10⁻¹¹)                                              |
-| **Sobrecarga agéntica en modelos pequeños**  | Agentic-RAG puede degradar el desempeño de modelos de capacidad reducida                                                            |
-| **LLM-as-a-Judge validado**                  | Acuerdo inter-juez bueno (α = 0.81) para evaluación de la variable "respuesta correcta" en dominio legal |
+| Hallazgo | Descripción |
+| --- | --- |
+| **Interacción estrategia × modelo** | El efecto de la estrategia depende del modelo del Agente Especialista Legal (LR = 293,28; gl = 4; p = 3,05 × 10⁻⁶²). La interacción es robusta a los escenarios de fallo y a los tres jueces, pero no identifica un componente causal único. |
+| **Efecto condicionado al modelo** | En el escenario principal (fallo = 0), Agentic-RAG es inferior a RAG básico en gpt-5-nano (−0,270; IC 95% −0,330 a −0,202), superior en gpt-5-mini (+0,150; IC 95% 0,096 a 0,203) y superior en gpt-5 (+0,106; IC 95% 0,054 a 0,155). |
+| **Modo de fallo en Agentic-RAG + gpt-5-nano** | 41/79 salidas no sustantivas (27 vacías, 1 solo espacios, 2 abstenciones, 1 truncada y 10 indeterminadas). Cuando responde, la calidad es alta (38/79; media 0,820; mediana 0,958). No se atribuye a la “complejidad agéntica” sin réplicas ni ablaciones. |
+| **RAG básico no iguala a los modelos** | Las diferencias observadas son menores, pero no desaparecen: mini−nano +0,063 (IC 95% 0,005–0,120), gpt-5−nano +0,128 (IC 95% 0,071–0,186), gpt-5−mini +0,065 (IC 95% 0,011–0,124). No se demostró equivalencia. |
+| **Jueces: acuerdo, no validación** | α ordinal global de 0,807842 con valores originales (0,799542 tras transformar valores fuera de rúbrica), verificado de forma independiente. Mide confiabilidad entre jueces, no validez frente a criterio humano. No hay calificaciones humanas de las respuestas; se identificaron 23 discrepancias y 17 evaluaciones positivas sobre salidas no sustantivas. |
+| **Costos: no hay ganador único** | “Respuesta correcta” se define como puntaje promedio ≥ 0,75 (D-02). RAG básico + gpt-5-nano presenta el menor costo puntual por respuesta correcta (USD 0,0061; IC bootstrap 0,0043–0,0091; 33/79), con IC solapado con Sin RAG + nano. Agentic-RAG + gpt-5 maximiza la media (0,812; USD 0,0792). Agentic-RAG + gpt-5-mini (0,788; USD 0,0564) es una alternativa no dominada, no la más barata. |
+| **Alcance** | Un corpus (Código de Minería), 25 casos, 79 unidades, una ejecución por celda y un recuperador fijo en gpt-5. Los resultados son evidencia de viabilidad, no una validación externa ni una recomendación universal. |
 
 ### 🌍 ¿Por qué es relevante?
 
-- **Acceso a la justicia**: Facilita la consulta de normativa para ciudadanos y profesionales no especializados.
-- **Código abierto**: Cualquier organización, institución pública o desarrollador puede replicar y adaptar el sistema a otras normativas o jurisdicciones.
-- **Metodología replicable**: La documentación detallada permite extender el sistema a otros dominios (medicina, ingeniería, finanzas).
-- **Primer sistema de este tipo**: Hasta donde se tiene conocimiento, es el primer sistema Agentic-RAG de código abierto aplicado a normativa argentina.
+- **Acceso a la justicia**: explora una alternativa abierta para consultar normativa; no se evaluó su impacto ni su uso por ciudadanos o profesionales.
+- **Código abierto**: el repositorio es público y accesible sin login; el código, el benchmark y los logs permiten auditar y adaptar el prototipo a otras normativas, sujeto a validación externa.
+- **Metodología auditable**: el diseño apareado, el análisis de fallos y el costo por respuesta correcta (≥ 0,75) pueden reutilizarse en otras evaluaciones; no se demostró transferencia a otros dominios.
+- **Antecedentes**: no se identificaron sistemas públicos comparables para normativa argentina en la búsqueda realizada; no se afirma que sea el “primer sistema” en sentido absoluto.
 
 ---
 
@@ -137,7 +139,7 @@ El sistema fue evaluado mediante un **diseño factorial 3 × 3**:
 - **Semánticas**: BERTScore (precisión, recall, F1)
 - **LLM-as-a-Judge**: "respuesta correcta" y precisión legal (3 jueces: DeepSeek, Grok, Kimi K2)
 
-**Análisis estadístico**: Kruskal-Wallis, Dunn con corrección Bonferroni, Scheirer-Ray-Hare (interacción), Krippendorff's alpha (acuerdo inter-juez).
+**Análisis estadístico**: modelo ordinal mixto con interceptos por caso y unidad, Friedman/Wilcoxon como sensibilidad, bootstrap por casos, corrección de Holm dentro de familias y Krippendorff's alpha (acuerdo inter-juez).
 
 ---
 
@@ -146,11 +148,10 @@ El sistema fue evaluado mediante un **diseño factorial 3 × 3**:
 Si utilizas este código, datos o metodología en tu investigación, por favor cita:
 
 ```bibtex
-@mastersthesis{spairani2025agenticrag,
+@mastersthesis{spairani2026agenticrag,
   author  = {Spairani, Leonardo Ulises},
-  title   = {Desarrollo y evaluación de un prototipo de sistema inteligente
-             para consulta de normativa nacional argentina mediante
-             recuperación agéntica},
+  title   = {Desarrollo y evaluación de un prototipo Agentic-RAG
+             para consulta del Código de Minería argentino},
   school  = {Universidad Austral},
   year    = {2026},
   type    = {Tesis de Maestría en Ciencia de Datos}

@@ -132,7 +132,7 @@ La @tabla-esquema-milvus ilustra la estructura de la colección en Milvus.
 
 === Creación de Índices
 
-Se creó un índice de tipo IVF_FLAT sobre el campo de embeddings, que ofrece un balance entre velocidad de búsqueda y precisión de los resultados. La métrica de distancia empleada fue la similitud coseno (COSINE), adecuada para comparar representaciones semánticas: al medir el coseno del ángulo entre dos vectores, es invariante a la magnitud de estos y captura su orientación relativa, propiedad que la torna la medida estándar para comparar embeddings de oraciones @reimers2019sentence @zhelezniak2019correlation.
+Se creó un índice de tipo `AUTOINDEX` sobre el campo de embeddings, que ofrece un balance entre velocidad de búsqueda y precisión de los resultados. El código de creación de la base documenta `AUTOINDEX` con similitud coseno. La métrica de distancia empleada fue la similitud coseno (COSINE), adecuada para comparar representaciones semánticas: al medir el coseno del ángulo entre dos vectores, es invariante a la magnitud de estos y captura su orientación relativa, propiedad que la torna la medida estándar para comparar embeddings de oraciones @reimers2019sentence @zhelezniak2019correlation.
 
 === Estrategia de Chunking
 
