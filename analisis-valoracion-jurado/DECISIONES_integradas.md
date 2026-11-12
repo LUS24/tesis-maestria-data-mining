@@ -279,15 +279,15 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | D-14 | Cerrada | Alpha 0,807842 original y 0,799542 rúbrica | `§2`; recálculo independiente |
 | PI-01 | Cerrada | Opción A: mantener `correccion-*` y marcar como deprecados los análisis previos que ya no se usan | Actualizar plan y README; no duplicar |
 | PI-02 | Cerrada | Opción A: título aprobado por correo por el director de la maestría | Actualizar portada, `main.typ`, README y BibTeX |
-| PI-03 | Cerrada | Opción A: aplicar textos, anexo y SVG operativo; actualizar el diagrama para respetar colores y límites | Implementación editorial pendiente |
+| PI-03 | Cerrada | Opción A: aplicar textos, anexo y SVG operativo; actualizar el diagrama para respetar colores y límites | Arquitectura, agentes y SVG operativo actualizados en el manuscrito |
 | PI-04 | Cerrada | Opción B: declaración de IA por etapas; incluye extracción, benchmark, respuestas, jueces, asistencia y verificación; antecedente de la referencia eliminada | Declaración incorporada en `01_texto_preliminar.typ`; PDF compilado |
-| PI-05 | Cerrada | Opción A: “modelo del Agente Especialista Legal”; celdas agénticas como “recuperador gpt-5” | Aplicar en manuscrito |
+| PI-05 | Cerrada | Opción A: “modelo del Agente Especialista Legal”; celdas agénticas como “recuperador gpt-5” | Terminología y etiquetas aplicadas en arquitectura y tablas |
 | PI-06 | Cerrada | Opción A: no realizar validaciones humanas adicionales; declarar la ausencia | Documentar en limitaciones |
 | PI-07 | Cerrada | Opción A: aceptar la revisión del autor y declararla como tal | No llamarla independiente |
 | PI-08 | Cerrada | Opciones A+B: los 23 casos ya están adjudicados en la base final; incluir el análisis | Documentar en anexo/material suplementario |
 | PI-09 | Cerrada | Opción A: no ejecutar nuevas corridas; declarar 7/6, recuperador fijo y ejecución única | Documentar la limitación |
-| PI-10 | Cerrada | Opción A: declarar la excepción `16_01` de tres llamadas | Documentar |
-| PI-11 | Cerrada | Opción B: notebook de `part_g` exploratorio; script `.py` como fuente canónica | Marcarlo en el repositorio |
+| PI-10 | Cerrada | Opción A: declarar la excepción `16_01` de tres llamadas | Excepción incorporada en metodología y amenazas |
+| PI-11 | Cerrada | Opción B: notebook de `part_g` exploratorio; script `.py` como fuente canónica | Nota incorporada en metodología; PDF compilado |
 | PI-12 | Cerrada | Corpus: PDF 1997 + actualización manual con Infoleg + OCR histórico; proceso en 8 pasos | Ver `correccion-06/resumen_ejecutivo.md` §2 |
 | PI-13 | Cancelada | Q23 se mantiene como fue revisada; no se reabre | Sin acción |
 | PI-14 | Cancelada | Q24 se mantiene; el comentario no aplicado se documenta | Sin acción |

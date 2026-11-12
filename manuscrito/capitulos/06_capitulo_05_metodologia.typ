@@ -203,7 +203,7 @@ El pipeline completo del RAG básico sigue la secuencia: recepción de la pregun
 
 === Arquitectura General
 
-El sistema Agentic-RAG implementa una arquitectura multi-agente compuesta por dos agentes especializados que coordinan las tareas de recuperación y generación de respuestas: el Agente Especialista Legal y el Agente de Recuperación. Durante el diseño se contempló un tercer agente —el Agente de Calidad de Recuperación— encargado de evaluar la pertinencia de los fragmentos recuperados, pero fue desactivado en la configuración experimental final debido a que su complejidad adicional no se tradujo en mejoras marginales significativas respecto al pipeline de dos agentes. Esta arquitectura se compara con dos configuraciones de referencia: respuesta directa sin recuperación (no RAG) y RAG básico con recuperación vectorial simple.
+El sistema Agentic-RAG implementa una arquitectura multi-agente acotada, compuesta por dos agentes activos: el Agente Especialista Legal, que interpreta la consulta y redacta la respuesta final, y el Agente de Recuperación, que descompone la consulta, ejecuta búsquedas vectoriales y selecciona los fragmentos que devuelve al especialista. El Agente Especialista Legal realiza una delegación nominal de recuperación por consulta; no itera sobre los resultados ni verifica la respuesta mediante un agente adicional. Se diseñó un tercer agente —el Agente de Calidad de Recuperación—, pero se excluyó de la configuración experimental por razones de costo y complejidad: añadía una llamada adicional a un LLM y requería seleccionar y justificar un modelo adicional. El agente de calidad no participó en ninguna de las respuestas evaluadas. Esta arquitectura se compara con dos referencias: respuesta directa sin recuperación y RAG básico con una búsqueda vectorial y contexto inyectado.
 
 La @fig-arq-no-rag presenta el diagrama de secuencia de la configuración sin RAG.
 
@@ -226,7 +226,9 @@ Cada agente se define como una instancia con su propio prompt del sistema, conju
 
 === Agente Especialista Legal <sec:agente-especialista-legal>
 
-El Agente Especialista Legal es el componente principal responsable de generar la respuesta final al usuario. Recibe la pregunta del usuario y, en la configuración Agentic-RAG, tiene acceso a herramientas que le permiten solicitar búsquedas al Agente de Recuperación. Su prompt del sistema está diseñado para orientar las respuestas hacia el dominio legal argentino:
+El Agente Especialista Legal es el componente principal responsable de generar la respuesta final al usuario. Recibe la pregunta y, en la configuración Agentic-RAG, tiene acceso a la herramienta `retrieve_relevant_documents` para delegar una recuperación en el Agente de Recuperación. Su instrucción solicita utilizar esa herramienta una vez, analizar los documentos devueltos y citar las fuentes legales consultadas. El texto canónico completo se reproduce en el anexo de prompts del repositorio.
+
+El agente no recibe ejemplos etiquetados en el prompt ni una instrucción explícita de razonamiento paso a paso. Su diseño corresponde a prompting zero-shot con instrucciones estructuradas, una instrucción de citación y una herramienta de recuperación. La descomposición de la consulta y la selección de fragmentos se delegan al Agente de Recuperación. El límite nominal de invocaciones es una llamada; como se documenta en la sección de amenazas a la validez, una sesión histórica registró tres llamadas.
 
 #block(
   width: 100%,
@@ -250,7 +252,14 @@ La @fig-arq-base-rag presenta el diagrama de secuencia de la configuración RAG 
 
 === Agente de Recuperación
 
-El Agente de Recuperación se encarga de realizar búsquedas semánticas en la base de datos vectorial. Tiene la capacidad de descomponer consultas complejas en subconsultas más específicas, realizar múltiples búsquedas y consolidar los resultados. Retorna los fragmentos más relevantes junto con sus metadatos estructurales (artículo, capítulo, título). Su prompt del sistema es el siguiente:
+El Agente de Recuperación recibe una consulta del Agente Especialista Legal y puede dividirla en hasta tres subconsultas. Cada búsqueda vectorial devuelve hasta cinco documentos, y el recuperador selecciona los fragmentos que devuelve al especialista. Sus capacidades operativas son:
+
++ Descomposición de la consulta en hasta tres subconsultas semánticamente más específicas.
++ Ejecución de una o más búsquedas vectoriales en una misma ejecución, sujetas al límite configurado.
++ Selección de documentos y retorno de fragmentos con metadatos estructurales (artículo, capítulo, título y distancia).
++ Retorno de los documentos seleccionados al Agente Especialista Legal.
+
+El prompt completo tuvo dos variantes observadas: la usada por gpt-5 declaró un límite de siete búsquedas y la usada por gpt-5-mini y gpt-5-nano, un límite de seis. Ambas se reproducen literalmente en el anexo de prompts del repositorio. Esta diferencia se declara como amenaza a la validez en la subsección siguiente.
 
 #block(
   width: 100%,
@@ -270,16 +279,26 @@ Sus capacidades incluyen:
 + Consolidación y deduplicación de resultados.
 + Retorno de fragmentos con metadatos completos (artículo, capítulo, título, distancia de similitud).
 
-La @fig-arq-agentic-rag presenta el diagrama de secuencia de la configuración Agentic-RAG, ilustrando la interacción entre ambos agentes.
+La @fig-arq-agentic-rag presenta el diagrama de secuencia de la configuración Agentic-RAG observada, con la delegación nominal del especialista y el recuperador gpt-5.
 
 #figure(
-  image("../media/diag_agentic_rag.svg", width: 90%),
-  caption: [Configuración _Agentic-RAG_: el Agente Especialista Legal delega la recuperación al Agente de Recuperación, que descompone la consulta en subconsultas y ejecuta múltiples búsquedas vectoriales (bucle). Los fragmentos recuperados se retornan directamente al Agente Especialista Legal para la generación de la respuesta.],
+  image("../media/diag_agentic_rag_operativo.svg", width: 90%),
+  caption: [Configuración _Agentic-RAG_ observada: el Agente Especialista Legal realiza una delegación nominal al Agente de Recuperación (gpt-5); el recuperador ejecuta hasta 6 búsquedas en gpt-5-mini y gpt-5-nano y hasta 7 en gpt-5; el Agente de Calidad no participa.],
 ) <fig-arq-agentic-rag>
+
+=== Alcance operativo y factores confundidos
+
+La etiqueta Agentic-RAG designa en este trabajo una implementación acotada: dos agentes activos, una delegación nominal de recuperación y ninguna verificación automática de la respuesta. No debe interpretarse como un planificador autónomo ni como un ciclo iterativo del Agente Especialista Legal.
+
+Las tres estrategias no son variaciones de un único factor. En Agentic-RAG cambian simultáneamente el prompt del generador, la descomposición de la consulta, el número de candidatos recuperados, la selección de fragmentos, el modelo que recupera y el presupuesto de búsquedas. En las tablas, "modelo" designa el modelo del Agente Especialista Legal; en Agentic-RAG el recuperador es siempre gpt-5. Sin ablaciones, el efecto observado no puede atribuirse a la descomposición, al número de candidatos, a la selección o al cambio de prompt. La diferencia de límite entre gpt-5 (siete búsquedas) y mini/nano (seis) agrega una amenaza específica al contraste entre modelos.
+
+En 236 de las 237 sesiones el especialista realizó una llamada a `retrieve_relevant_documents`; la sesión `16_01` de gpt-5 registró tres. Esa excepción se conserva en los datos y se declara como excepción documentada.
 
 === Agente de Calidad de Recuperación (Diseñado pero no Activado)
 
-El Agente de Calidad de Recuperación fue diseñado para evaluar la pertinencia de los fragmentos recuperados antes de enviarlos al Agente Especialista Legal. Su función prevista era verificar que los documentos recuperados fueran relevantes para la consulta y solicitar búsquedas adicionales si la calidad de la recuperación inicial era insuficiente. Sin embargo, este agente fue desactivado en la configuración experimental final por dos motivos principales: (1) agregaba complejidad significativa en la gestión de llamadas a APIs, incrementando los costos operativos al requerir una capa adicional de invocación al LLM; y (2) requería la selección de un modelo adicional, introduciendo otra variable de configuración. En su lugar, se optó por actualizar los prompts del Agente Especialista Legal para que este pudiera solicitar búsquedas adicionales al Agente de Recuperación en caso de considerar que la información recuperada inicialmente era insuficiente, logrando un equilibrio entre calidad de recuperación y eficiencia. Su prompt del sistema era el siguiente:
+El Agente de Calidad de Recuperación fue diseñado para evaluar la pertinencia de los fragmentos recuperados antes de enviarlos al Agente Especialista Legal. Su función prevista era comprobar si la recuperación inicial era suficiente y, en caso contrario, generar retroalimentación para reformular la consulta. Se excluyó de la configuración experimental por razones de costo y complejidad: añadía una llamada adicional a un LLM y exigía seleccionar y justificar un modelo adicional. No se realizó una comparación empírica de su contribución, de modo que no se afirma que su exclusión haya producido una mejora o un deterioro en el desempeño.
+
+Su prompt se reproduce en el anexo de prompts del repositorio. En el código final, el agente se instancia sin herramientas, la función `evaluate_retrieval` no está registrada como herramienta y no se encontró ningún registro de ejecución del agente de calidad. Por lo tanto, el prompt nunca se envió a un modelo y el agente no participó en las respuestas evaluadas.
 
 #block(
   width: 100%,
@@ -458,9 +477,9 @@ Este ejemplo ilustra el flujo completo de delegación, descomposición de consul
 
 === Hiperparámetros de Configuración
 
-La temperatura controla la aleatoriedad de las respuestas del modelo (0,0 = determinista). El límite de llamadas a herramientas restringe cuántas veces cada agente puede invocar sus herramientas. La herramienta disponible especifica la función que cada agente puede ejecutar. El máximo de subconsultas indica cuántas preguntas derivadas puede generar el Agente de Recuperación a partir de una consulta original. El modelo por defecto define el LLM asignado a cada agente.
+La temperatura se conserva como valor solicitado en el código; su tratamiento efectivo se discute en la sección de parámetros de API. El límite de llamadas a herramientas restringe cuántas veces cada agente puede invocar sus herramientas. La herramienta disponible especifica la función que cada agente puede ejecutar. El máximo de subconsultas indica cuántas preguntas derivadas puede generar el Agente de Recuperación a partir de una consulta original. El modelo por defecto define el LLM asignado a cada agente.
 
-La @tabla-hiperparametros-agentes presenta los hiperparámetros de configuración de los agentes activos en la configuración Agentic-RAG experimental.
+La @tabla-hiperparametros-agentes presenta la configuración nominal y las variantes observadas de los agentes activos en la configuración Agentic-RAG.
 
 #figure(
   three-line-table(
@@ -468,17 +487,17 @@ La @tabla-hiperparametros-agentes presenta los hiperparámetros de configuració
     [
       | *Parámetro*                       |           *Agente Especialista Legal*            |              *Agente de Recuperación*              |
       | :-------------------------------- | :----------------------------------------------: | :------------------------------------------------: |
-      | Temperatura                       |                       0,0                        |                        0,0                         |
-      | Límite de llamadas a herramientas |                        1                         |                         6                          |
+      | Temperatura solicitada            |                0,0#super[†]                      |                 0,0#super[†]                       |
+      | Límite de llamadas a herramientas | 1 nominal; una sesión registró 3                 | 6 en mini/nano; 7 en gpt-5                         |
       | Herramienta disponible            | #text(size: 10pt)[`retrieve_relevant_documents`] | #text(size: 10pt)[`cosine_distance_vector_search`] |
       | Máx. subconsultas por consulta    |                        —                         |                         3                          |
-      | Modelo por defecto                |                Variable#super[†]                 |                       gpt-5                        |
+      | Modelo por defecto                |                Variable#super[‡]                 |                       gpt-5                        |
     ],
   ),
-  caption: [Hiperparámetros de configuración de los agentes activos del sistema Agentic-RAG. #super[†]El modelo del Agente Especialista Legal varía según la configuración experimental (gpt-5-nano, gpt-5-mini o gpt-5).],
+  caption: [Configuración nominal y observada de los agentes activos del sistema Agentic-RAG. #super[†]La temperatura se conserva como valor solicitado; su tratamiento efectivo se discute en la corrección sobre parámetros de API. #super[‡]El modelo del Agente Especialista Legal varía según la configuración experimental (gpt-5-nano, gpt-5-mini o gpt-5). La corrida de gpt-5 usó un límite de 7 búsquedas; las de mini y nano usaron 6.],
 ) <tabla-hiperparametros-agentes>
 
-El límite total de llamadas a herramientas del sistema está fijado en 6 invocaciones, lo que permite al Agente de Recuperación descomponer la consulta en hasta 3 subconsultas y realizar hasta 2 búsquedas por subconsulta, o realizar hasta 6 búsquedas con una única formulación.
+El límite nominal del código final es de seis búsquedas para el recuperador y una invocación para el especialista. La corrida histórica de gpt-5 utilizó siete búsquedas y una sesión del especialista registró tres invocaciones. Por tanto, los valores de la tabla describen la configuración nominal y las variantes observadas, no una regla uniforme aplicada a todas las configuraciones.
 
 En la generación de respuestas no se configuró el parámetro `reasoning_effort`. La versión 1.1.0 de Pydantic AI no define un valor por defecto y envía `NOT_GIVEN`; OpenAI documenta `medium` como valor por defecto para GPT-5. El valor efectivo no quedó registrado y no se infiere de los tokens de razonamiento.
 
@@ -727,6 +746,8 @@ El código se organizó en directorios temáticos que siguen el flujo del pipeli
 + `part_h_1/`: evaluación LLM-as-a-Judge.
 + `part_i/`: preparación de datos para análisis.
 + `part_j/`: análisis estadístico.
+
+El notebook `part_g/01_generate_responses_using_agents.ipynb` se conserva como registro exploratorio y no coincide exactamente con la corrida final; la fuente canónica es el script `01_generate_responses_using_agents.py` y los logs JSON. Las diferencias se documentan en el repositorio y no se usan para reconstruir los resultados.
 
 Los logs de interacción entre agentes correspondientes a la configuración Agentic-RAG se almacenan en `part_g/chat_data/`, organizados por modelo del Agente Especialista Legal y por número de pregunta. Cada sesión contiene archivos JSON independientes para el Agente Especialista Legal (`law_specialist_agent.json`) y el Agente de Recuperación (`retrieval_agent.json`), junto con el historial de búsquedas vectoriales (`retrieval_history/`). Los logs de las configuraciones sin RAG y RAG básico se encuentran en `part_e/` y `part_f/` respectivamente.
 
