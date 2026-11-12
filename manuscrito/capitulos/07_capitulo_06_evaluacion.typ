@@ -339,10 +339,14 @@ Los cuatro escenarios definidos en el capítulo de metodología se estimaron con
   caption: [Diferencia de media esperada Agentic-RAG − RAG básico por modelo y escenario, estimada con el modelo ordinal mixto. En negrita, los contrastes cuyo signo se mantiene en los cuatro escenarios; el único cambio de signo corresponde a gpt-5-nano bajo exclusión, donde la estimación condiciona a que el sistema responda.],
 ) <tabla-sensibilidad-escenarios>
 
-#figure(
-  image("../media/analisis_sensibilidad_escenarios.pdf", width: 96%),
-  caption: [Media de la puntuación de corrección por celda en los cuatro escenarios de tratamiento de respuestas no sustantivas. Las curvas se superponen en las celdas sin salidas no sustantivas y se separan en Agentic-RAG con gpt-5-nano y en Sin RAG con gpt-5-mini.],
-) <fig-analisis-sensibilidad>
+#pagina-apaisada[
+  La @fig-analisis-sensibilidad muestra la media de corrección de las nueve celdas en cada escenario de tratamiento de las respuestas no sustantivas.
+
+  #figure(
+    image("../media/analisis_sensibilidad_escenarios.pdf", width: 96%),
+    caption: [Media de la puntuación de corrección por celda en los cuatro escenarios de tratamiento de respuestas no sustantivas. Las curvas se superponen en las celdas sin salidas no sustantivas y se separan en Agentic-RAG con gpt-5-nano y en Sin RAG con gpt-5-mini.],
+  ) <fig-analisis-sensibilidad>
+]
 
 La celda Agentic-RAG + gpt-5-nano concentra 41 de las 79 respuestas no sustantivas, de modo que es la única cuyo resultado depende del escenario. Bajo el escenario principal su media es 0,395 y su mediana 0,000; bajo exclusión la media asciende a 0,820 y la mediana a 0,958, pero sobre 38 unidades. Bajo puntajes observados la media es 0,415 y la mediana 0,250; bajo solo fallos técnicos = 0 los valores coinciden con el escenario principal, porque las abstenciones y los mensajes indeterminados de esa celda no recibieron puntajes positivos de los jueces.
 
@@ -359,13 +363,13 @@ Se calculó el costo total de cada consulta sumando el costo de generación de l
   caption: [Costo medio por consulta (USD) para cada combinación modelo × estrategia de recuperación. El costo del sistema Agentic-RAG incluye las llamadas al Agente de Recuperación, que emplea gpt-5 independientemente del modelo del Agente Especialista Legal.],
 ) <fig-costos-configuracion>
 
-=== Relación Costo-Desempeño
-
-Para cada combinación se graficó el costo medio versus el desempeño medio en `respuesta_correcta_avg` y, complementariamente, en las cinco métricas textuales y semánticas (@fig-costo-desempenio). Este análisis permite identificar las configuraciones con mejor balance de eficiencia.
-
 #pagina-apaisada[
+  === Relación Costo-Desempeño
+
+  Para cada combinación se graficó el costo medio versus el desempeño medio en `respuesta_correcta_avg` y, complementariamente, en las cinco métricas textuales y semánticas (@fig-costo-desempenio). Este análisis permite identificar las configuraciones con mejor balance de eficiencia.
+
   #figure(
-    image("../media/costo_desempenio.pdf", width: 100%),
+    image("../media/costo_desempenio.pdf", width: 82%),
     caption: [Relación costo-desempeño para `respuesta_correcta_avg` y las cinco métricas complementarias. Cada punto representa una combinación modelo × estrategia; el color indica la estrategia y la forma, el modelo. El cuadrante superior-izquierdo (alto desempeño, bajo costo) contiene las configuraciones más eficientes.],
   ) <fig-costo-desempenio>
 ]
