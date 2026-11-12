@@ -114,6 +114,8 @@ Se identifican varias oportunidades de mejora en la arquitectura del sistema:
 
 - *Políticas adaptativas de complejidad.* Un agente clasificador podría decidir dinámicamente si emplear RAG básico o Agentic-RAG según la consulta y el modelo, con el objetivo de reducir la tasa de respuestas no sustantivas y evitar configuraciones con mal costo por respuesta correcta. La política debería evaluarse con réplicas y una métrica de fallo.
 
+- *Réplicas y ablaciones.* Repetir las celdas críticas entre tres y cinco veces y ejecutar una ablación con el mismo modelo en el especialista y en el recuperador. Sin réplicas no puede separarse el efecto de la estrategia de la variabilidad entre corridas; sin ablación no puede atribuirse el efecto a la descomposición de la consulta, a la selección de fragmentos o al prompt.
+
 - *Recuperación híbrida.* La combinación de búsqueda vectorial con búsqueda léxica (BM25) y búsqueda sobre grafos de conocimiento podría mejorar la cobertura de la recuperación, especialmente para consultas que requieren coincidencias exactas de términos legales o razonamiento sobre relaciones entre normas.
 
 - *Modelos de embeddings especializados.* El entrenamiento o ajuste fino de modelos de embeddings sobre texto jurídico argentino podría mejorar la calidad de la recuperación semántica, dado que los modelos de propósito general pueden no capturar adecuadamente los matices del lenguaje legal.

@@ -551,7 +551,7 @@ La comparación pareada cambia la lectura de los resultados originales: Agentic-
 + *Mayor calidad media*: Agentic-RAG + gpt-5 (media 0,812), con costo superior.
 + *Alternativa no dominada*: Agentic-RAG + gpt-5-mini (media 0,788; USD 0,0564 por consulta) es una opción de calidad alta, no la más barata. El menor costo puntual por respuesta correcta corresponde a RAG básico + gpt-5-nano (USD 0,0061; 33/79), con IC solapado con Sin RAG + nano.
 + *No existe una recomendación universal*: la interacción significativa entre factores implica que la selección de modelo y estrategia debe hacerse conjuntamente, no de forma independiente.
-+ *Advertencia*: Agentic-RAG + gpt-5-nano presentó 41/79 salidas no sustantivas y el peor costo por respuesta correcta; no se recomienda sin réplicas ni ablaciones.
++ *Advertencia*: Agentic-RAG + gpt-5-nano presentó 41/79 salidas no sustantivas y el peor costo por respuesta correcta; no se recomienda sin réplicas ni ablaciones. La advertencia no es solo operativa: las estimaciones de todas las celdas provienen de una única ejecución por unidad y configuración, de modo que no permiten afirmar estabilidad entre corridas (véase la limitación correspondiente en el capítulo de conclusiones).
 
 == Conclusiones del Capítulo
 
