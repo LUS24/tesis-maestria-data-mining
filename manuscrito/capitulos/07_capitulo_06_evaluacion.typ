@@ -64,7 +64,7 @@ La @fig-boxplots-estrategia presenta la distribución de `respuesta_correcta_avg
 
 === Imputación de Valores Fuera de Rúbrica
 
-Se detectaron valores de evaluación por jueces fuera del conjunto válido {0.0, 0.25, 0.5, 0.75, 1.0} (11 combinaciones únicas juez-métrica-valor). Se aplicó una estrategia de imputación al valor de rúbrica más cercano, resolviendo empates en favor del valor mayor (sesgo conservador hacia el reconocimiento parcial):
+Se detectaron valores de evaluación por jueces fuera del conjunto válido {0.0, 0.25, 0.5, 0.75, 1.0}: 50 evaluaciones sobre las 2.133, distribuidas en 11 combinaciones únicas de juez, métrica y valor. La imputación alcanzó 37 evaluaciones de corrección y 13 de precisión legal; por juez, 47 corresponden a DeepSeek-V3, 2 a Kimi K2 0905 y 1 a Grok 4.1 Fast. Se aplicó una estrategia de imputación al valor de rúbrica más cercano, resolviendo empates en favor del valor mayor (sesgo conservador hacia el reconocimiento parcial):
 
 $ r^* = arg min_(r in cal(R)) |x - r| $
 
