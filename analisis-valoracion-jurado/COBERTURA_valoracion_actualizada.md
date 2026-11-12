@@ -28,7 +28,7 @@ Sin embargo, la nueva valoración **agrega o eleva a requerimiento** cuatro mate
 
 Además, siguen abiertas las recomendaciones de validación humana, réplicas/ablación y reducción de capítulos, que ya estaban identificadas como pendientes y no forman parte de los paquetes cerrados.
 
-**Ninguna decisión D-01–D-14 queda invalidada.** La única decisión en tensión directa es **D-12** (AUTOINDEX vs. IVF_FLAT), porque la nueva valoración repite “IVF_FLAT” sin incorporar la evidencia del código. Las decisiones pendientes PI-04, PI-06, PI-07, PI-08, PI-29 y PI-31 quedan reforzadas o ampliadas, no reemplazadas.
+**Ninguna decisión D-01–D-14 queda invalidada.** D-01 quedó aclarada por el autor: la “corrección humana” es la revisión manual de categorías, no una calificación humana de calidad. La única decisión en tensión directa es **D-12** (AUTOINDEX vs. IVF_FLAT), porque la nueva valoración repite “IVF_FLAT” sin incorporar la evidencia del código. Las decisiones pendientes PI-04, PI-06, PI-07, PI-08, PI-29 y PI-31 quedan reforzadas o ampliadas, no reemplazadas.
 
 ---
 
@@ -82,7 +82,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 
 | Decisión | Efecto de la nueva valoración | Acción |
 |---|---|---|
-| D-01 Fallo = 0 y exclusión como sensibilidad | **Sin cambio; reforzada** | La nueva V.6 confirma que las salidas vacías se calificaron con cero y permanecen; reincorpora 23–25. Mantener |
+| D-01 Fallo = 0 y exclusión como sensibilidad | **Aclarada; dos planos** | La nueva V.6 confirma que las salidas vacías se calificaron con cero. Para el sistema se usa fallo = 0; para la auditoría de jueces se conservan los valores originales y se critican los puntajes > 0 sobre no sustantivas. Mantener |
 | D-02 “Respuesta correcta” ≥ 0,75 | **Sin cambio** | No es objeto de la nueva valoración |
 | D-03 Costos históricos | **Sin cambio; confirmada** | El Anexo A1 dice que el total USD 22,29 coincide con los registros |
 | D-04 Pareto y costo por respuesta correcta | **Sin cambio** | V.10 no se modifica |
@@ -108,8 +108,8 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | PI-03 Paquete 04 (textos, diagrama, anexo) | Reforzada por V.5 | Alta |
 | PI-04 Declaración de IA | **Elevada a requerimiento IX.1.8** | Alta |
 | PI-05 Terminología “modelo del especialista” | Reforzada por V.5 | Media |
-| PI-06 Validación humana | Reforzada por V.7 | Alta |
-| PI-07 Independencia de la revisión de 87 | Reforzada: V.7 dice una sola profesional | Media |
+| PI-06 Validación humana de jueces | D-01 ya no depende de esto; V.7 agrega evidencia de puntajes altos a respuestas vacías | Alta |
+| PI-07 Independencia de la revisión de categorías | Reforzada: V.7 dice una sola profesional | Media |
 | PI-08 23 discrepancias/17 positivas | Reforzada por V.7 (tres respuestas vacías) | Media |
 | PI-09 Nuevas corridas | Sin cambio; la nueva valoración no las exige para aceptar, pero siguen siendo necesarias para causalidad/réplicas | Media |
 | PI-10 Excepción `16_01` | Sin cambio | Baja |
@@ -146,14 +146,14 @@ Las siguientes no estaban en `DECISIONES_integradas.md` o cambian de alcance por
 1. **Reconciliar NV-01** y decidir qué cifras se reportan en V.1/Tabla 4.
 2. **Editar el manuscrito** con las correcciones 01–07; hoy son propuestas, no texto aplicado.
 3. **Cerrar NV-04**: declaración de IA y antecedente de la referencia fabricada.
-4. **Cerrar PI-02** (título/alcance) y **PI-06/PI-08** (qué se afirma sobre validación humana).
+4. **Cerrar PI-02** (título/alcance) y **PI-06/PI-08** (qué se afirma sobre validación humana de los jueces).
 5. **Resolver NV-06** (IVF_FLAT/AUTOINDEX) antes de dejar V.8 como está.
 
 ### Recomendado para responder a la nueva valoración
 
 6. **NV-02**: notebook de recuperación con recall@k, MRR, nDCG y comparación BM25/embedding.
 7. **NV-03**: métricas de citas sobre respuestas generadas.
-8. **PI-06**: submuestra humana; si no se hace, declarar la ausencia con claridad.
+8. **PI-06**: submuestra humana para validar las calificaciones de los jueces; si no se hace, declarar la ausencia con claridad.
 9. **PI-09**: réplicas/ablación solo si se busca sostener causalidad o si el jurado lo exige.
 10. **PI-31**: sincronizar README, manuscrito, anexos y presentación con las nuevas cifras.
 
