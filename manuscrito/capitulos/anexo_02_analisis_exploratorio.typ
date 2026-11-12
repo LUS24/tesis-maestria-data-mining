@@ -112,3 +112,18 @@ La comparación entre Agentic-RAG y RAG básico, que en el análisis marginal ap
 == Nota sobre los Efectos Simples Históricos
 
 La tabla de efectos simples de la primera versión se calculó con U de Mann-Whitney sobre la base de 76 observaciones por celda y con corrección de Holm-Bonferroni @holm1979simple @seabold2010statsmodels. Sus valores no son comparables con los del capítulo de evaluación: además del cambio de base, la prueba trata las observaciones como independientes y no incorpora el anidamiento por caso ni la severidad del juez. La tabla se retiró del manuscrito y sus conclusiones se reemplazaron por las dos familias de contrastes del modelo ordinal.
+
+== Métrica Retirada: Índice de Eficiencia
+
+Las versiones anteriores del capítulo de evaluación reportaban un índice de eficiencia definido como el cociente entre el desempeño y un costo normalizado min-max:
+
+$ "Eficiencia" = frac("Desempeño", "Costo normalizado") $
+
+$ c_"norm" = max(frac(c - c_min, c_max - c_min), 0.01) $
+
+El piso de 0,01 se introdujo para evitar la división por cero, pero tiene un efecto que invalida el ranking: asigna el mismo valor normalizado a la configuración más barata y a cualquier configuración cuyo costo relativo quede por debajo del piso, de modo que el orden depende de una constante elegida y no de los datos. La métrica se retiró del cuerpo y se reemplazó por el costo por respuesta correcta con intervalos de confianza y por la frontera de Pareto, que no requieren normalización ni constantes arbitrarias. La @fig-eficiencia-historica conserva el gráfico original como registro del cálculo retirado.
+
+#figure(
+  image("../media/eficiencia_costo.pdf", width: 100%),
+  caption: [Índice de eficiencia (desempeño / costo normalizado con piso 0,01) para `respuesta_correcta_avg`, cálculo retirado. Las barras se colorean según el modelo y se texturizan según la estrategia. El orden que muestra la figura depende del piso aplicado al costo normalizado y no se usa para sostener recomendaciones.],
+) <fig-eficiencia-historica>

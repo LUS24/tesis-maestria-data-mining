@@ -363,24 +363,49 @@ Para cada combinación se graficó el costo medio versus el desempeño medio en 
   ) <fig-costo-desempenio>
 ]
 
-=== Índice de Eficiencia
+=== Costo por Respuesta Correcta
 
-Se definió un índice de eficiencia como el cociente entre el desempeño y el costo normalizado (normalización min-max):
+El índice de eficiencia con costo normalizado min-max y piso de 0,01 se retiró: el piso determina por sí solo el valor de la configuración más barata y el ranking depende de una constante elegida. En su lugar se reporta el costo por respuesta correcta, definido como el costo total de la celda dividido por la cantidad de observaciones con puntaje promedio ≥ 0,75 (@tabla-costo-respuesta-correcta). La definición es una operacionalización de la rúbrica y no una categoría jurídica objetiva; el umbral 0,75 es el principal y la sensibilidad a 0,50 y 1,00 se documenta en el capítulo de metodología.
 
-$ "Eficiencia" = frac("Desempeño", "Costo normalizado") $
+#pagina-apaisada[
+  #figure(
+    three-line-table(
+      columns: (auto, auto, auto, auto, auto, auto, auto),
+      [
+        | *Estrategia* | *Modelo* | *Costo medio (USD)* | *Costo total (USD)* | *Correctas ≥ 0,75* | *Costo por correcta (USD)* | *IC 95 % bootstrap* |
+        | :--- | :--- | ---: | ---: | :---: | ---: | :---: |
+        | Sin RAG | gpt-5-nano | 0,0025 | 0,1981 | 26/79 | 0,0076 | 0,0058 a 0,0107 |
+        | Sin RAG | gpt-5-mini | 0,0043 | 0,3395 | 11/79 | 0,0309 | 0,0183 a 0,0665 |
+        | Sin RAG | gpt-5 | 0,0478 | 3,7731 | 49/79 | 0,0770 | 0,0652 a 0,0932 |
+        | RAG básico | gpt-5-nano | 0,0025 | 0,2011 | 33/79 | *0,0061* | 0,0043 a 0,0091 |
+        | RAG básico | gpt-5-mini | 0,0057 | 0,4465 | 38/79 | 0,0117 | 0,0088 a 0,0163 |
+        | RAG básico | gpt-5 | 0,0392 | 3,0997 | 52/79 | 0,0596 | 0,0494 a 0,0721 |
+        | Agentic-RAG | gpt-5-nano | 0,0447 | 3,5299 | 27/79 | 0,1307 | 0,0931 a 0,2036 |
+        | Agentic-RAG | gpt-5-mini | 0,0564 | 4,4530 | 55/79 | 0,0810 | 0,0675 a 0,0988 |
+        | Agentic-RAG | gpt-5 | 0,0792 | 6,2530 | 56/79 | 0,1117 | 0,0928 a 0,1370 |
+      ],
+    ),
+    caption: [Costo medio, costo total y costo por respuesta correcta por celda, con 79 observaciones por celda. `Correctas ≥ 0,75` cuenta las observaciones cuyo puntaje promedio de los tres jueces alcanza el umbral bajo el escenario principal. Los intervalos provienen de un bootstrap por casos (25 casos, 5.000 réplicas). En negrita, el menor costo puntual por respuesta correcta.],
+  ) <tabla-costo-respuesta-correcta>
+]
 
-donde el costo normalizado se calcula como:
-
-$ c_"norm" = max(frac(c - c_min, c_max - c_min), 0.01) $
-
-El piso de 0.01 evita la división por cero para la configuración de menor costo. Este índice permite comparar qué combinaciones ofrecen mayor desempeño por unidad de costo.
-
-La @fig-eficiencia presenta el índice de eficiencia para las nueve configuraciones, ordenadas de menor a mayor.
+El menor costo puntual por respuesta correcta corresponde a RAG básico con gpt-5-nano (USD 0,0061), seguido por Sin RAG con gpt-5-nano (USD 0,0076); los intervalos de ambas se solapan, de modo que el orden es descriptivo y no una diferencia formal. El mayor costo por respuesta correcta corresponde a Agentic-RAG con gpt-5-nano (USD 0,1307), porque solo 27 de 79 observaciones alcanzan el umbral. Agentic-RAG con gpt-5-mini cuesta USD 0,0564 por consulta y USD 0,0810 por respuesta correcta, frente a USD 0,0792 y USD 0,1117 de Agentic-RAG con gpt-5.
 
 #figure(
-  image("../media/eficiencia_costo.pdf", width: 100%),
-  caption: [Índice de eficiencia (desempeño / costo normalizado) para la métrica `respuesta_correcta_avg`. Las barras se colorean según el modelo y se texturizan según la estrategia. Las configuraciones más eficientes combinan alto desempeño con bajo costo relativo.],
-) <fig-eficiencia>
+  image("../media/costos_por_respuesta_correcta.pdf", width: 96%),
+  caption: [Costo por respuesta correcta (puntaje ≥ 0,75) por configuración. Las barras ordenan las celdas por costo; el costo bajo por consulta de las configuraciones con gpt-5-nano no se traduce en un costo bajo por respuesta correcta cuando la tasa de respuestas correctas es reducida.],
+) <fig-costo-respuesta-correcta>
+
+=== Frontera de Pareto
+
+La comparación entre costo medio y desempeño medio no admite un ganador único. Una configuración domina a otra si cuesta igual o menos y obtiene un desempeño igual o mayor, con al menos una desigualdad estricta. Siete de las nueve configuraciones son no dominadas y la frontera es escalonada (@fig-costos-pareto): Sin RAG con gpt-5-nano y RAG básico con gpt-5-nano ocupan el extremo de menor costo; RAG básico con gpt-5-mini y RAG básico con gpt-5 son las posiciones más estables bajo bootstrap (95,0 % y 94,3 % de las réplicas); Agentic-RAG con gpt-5-mini y con gpt-5 ocupan el extremo de mayor calidad y mayor costo.
+
+#figure(
+  image("../media/costos_pareto.pdf", width: 92%),
+  caption: [Costo medio por consulta y media de corrección por configuración, con la frontera de Pareto (línea punteada) y escala logarítmica en el eje de costo. Quedan fuera de la frontera Sin RAG con gpt-5-mini y Agentic-RAG con gpt-5-nano, dominadas por alternativas más baratas y con mejor media.],
+) <fig-costos-pareto>
+
+Quedan fuera de la frontera Sin RAG con gpt-5-mini, dominada por alternativas más baratas y mejores, y Agentic-RAG con gpt-5-nano, dominada por RAG básico con gpt-5-nano y por otras celdas. No existe una recomendación universal: la elección depende del objetivo declarado —menor costo por respuesta correcta, menor costo por consulta o mayor calidad media— y de si el sistema se evalúa por su utilidad completa o por la calidad condicional a que responda.
 
 === Resumen de Tokens y Costos del Experimento
 
