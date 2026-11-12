@@ -212,7 +212,7 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 |---|---|---|---|---|
 | **P0** | **NV-01** (V.1/V.6) | Reconciliar las cifras de la valoración con `correccion-01`: reproducir los p-valores 0,19 y 0,003 declarando prueba (Wilcoxon/t pareada), unidad (respuesta, caso o unidad), escenario y corrección (Holm/Bonferroni); verificar LR = 293,28, gl = 4, p = 3,05 × 10⁻⁶², efectos e IC. No reemplazar el modelo canónico | `verificacion-analisis-estadistico/reconciliacion_v1/` (tabla comparativa, JSON y notas de método) | Tabla 4; resultados V.1/V.6; redacción de PI-29 |
 | **P0** | **NV-02** | Calcular recall@k, MRR y cobertura (todos/ninguno) desde las recuperaciones `.json` de `part_g`; reportar por estrategia y modelo. No requiere Milvus | `verificacion-analisis-estadistico/metricas_recuperacion/` (CSV, notebook y resumen) | IX.1.9, IX.2.1, V.8 y Tabla 4 |
-| **P1** | **D-02** | Recalcular la proporción de respuestas correctas y el costo por respuesta correcta con umbrales 0,50, 0,75 y 1,00. Hoy los artefactos solo calculan 0,75 | `verificacion-analisis-estadistico/sensibilidad_umbral/` | Tabla 4, análisis de costos y enunciado de D-02 |
+| **P1** | **D-02** | Recalcular la proporción de respuestas correctas y el costo por respuesta correcta con umbrales 0,50, 0,75 y 1,00. El recálculo coincide exactamente con la tabla de corrección 05 | `verificacion-analisis-estadistico/sensibilidad_umbral/` | Tabla 4, análisis de costos y enunciado de D-02 |
 | **P2** | **NV-03** | Extraer citas de las 711 respuestas generadas y calcular precisión, recall, F1 y tasa de citas inexistentes contra el corpus. Diferida: no bloquea la entrega | `verificacion-analisis-estadistico/citas_generadas/` o un anexo de `correccion-06` | IX.2.2 y V.7, solo si se retoma |
 
 **Cálculos condicionales:** PI-08 no requiere un cálculo nuevo en esta entrega porque los 23 casos ya están identificados en la base final; solo un cambio de adjudicación obligaría a recalcular alpha. D-01 solo requiere el modelo de dos partes si se adopta esa sensibilidad opcional. **No requieren cálculo nuevo:** PI-29 (opción A: declarar Laplace; `nAGQ > 1` no es ejecutable con dos efectos aleatorios), PI-06/PI-07 (juicio humano), PI-09 (nuevas corridas) y NV-07/PI-31 (dependen de los resultados P0/P1).
@@ -225,7 +225,7 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 
 1. **P0 — NV-01:** reconciliar V.1/V.6 y fijar las cifras que se usarán en Tabla 4. No editar resultados antes de este paso.
 2. **P0 — NV-02:** calcular recuperación desde los `.json` y dejar el artefacto reproducible en `verificacion-analisis-estadistico/metricas_recuperacion/`.
-3. **P1 — D-02:** calcular la sensibilidad 0,50/0,75/1,00 y el costo por respuesta correcta.
+3. **P1 — D-02:** sensibilidad 0,50/0,75/1,00 y costo por respuesta correcta verificados en `verificacion-analisis-estadistico/sensibilidad_umbral/`; coinciden con corrección 05.
 4. **PI-04 / NV-04:** redactar la declaración de IA por etapas y revisar el antecedente de la “referencia fabricada”. **NV-05:** declarar que se usó el valor por defecto de la API: Pydantic AI 1.1.0 no fija `reasoning_effort` y envía `NOT_GIVEN`; OpenAI documenta `medium` para GPT-5, pero no hay registro local del valor efectivo.
 5. **PI-21, PI-22, PI-23, PI-24, PI-26, PI-27 y PI-28:** aplicar las correcciones bibliográficas decididas. **PI-24:** usar `tribunalfiscal2024buscador` con la página institucional verificada; no usar la nota de AUNO como fuente institucional. **PI-25:** verificar en el PDF las cinco claves de `§6.4`; ya están aplicadas.
 6. **PI-29:** mantener `nAGQ = 1`, declarar la limitación de Laplace y usar las cifras reconciliadas de NV-01.
@@ -264,7 +264,7 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | ID | Estado | Decisión adoptada | Implementación / evidencia |
 |---|---|---|---|
 | D-01 | Cerrada | Fallo = 0 para el sistema; auditoría de jueces en un plano separado | `§2`; `D-01 — implementación en dos planos` |
-| D-02 | Cerrada | “Respuesta correcta” = promedio ≥ 0,75; sensibilidad 0,50 y 1,00 | `§2`; aplicar en costos y Tabla 4; cálculo P1 en `§5.1` |
+| D-02 | Cerrada | “Respuesta correcta” = promedio ≥ 0,75; sensibilidad 0,50 y 1,00 | `§2`; verificado en `verificacion-analisis-estadistico/sensibilidad_umbral/` |
 | D-03 | Cerrada | Costos históricos, no precios corrientes (USD 22,2939) | `§2`; mantener en manuscrito |
 | D-04 | Cerrada | Sin ganador único: Pareto, costo por respuesta correcta y objetivo explícito | `§2`; aplicar en conclusiones |
 | D-05 | Cerrada | “Modo de fallo de respuesta”, sin “sobrecarga agéntica” | `§2`; retirar causalidad |

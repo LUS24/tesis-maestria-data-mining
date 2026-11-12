@@ -13,6 +13,10 @@ El subdirectorio `reconciliacion_v1/` fija las cifras de V.1 y V.6 para Tabla 4.
 
 El subdirectorio `metricas_recuperacion/` calcula recall@k, MRR y cobertura desde los 1.364 registros de `part_g`, con el baseline de `part_d`. Informe: `metricas_recuperacion/INFORME_METRICAS_RECUPERACION.md`.
 
+## Sensibilidad de umbrales (D-02)
+
+El subdirectorio `sensibilidad_umbral/` verifica los umbrales 0,50/0,75/1,00 y el costo por respuesta correcta. El recálculo coincide con corrección 05. Informe: `sensibilidad_umbral/INFORME_SENSIBILIDAD_UMBRAL.md`.
+
 ## Resultado
 
 | Rúbrica | Valores | Observaciones | Jueces | α ordinal |
