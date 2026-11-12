@@ -118,7 +118,9 @@ Se identifican varias oportunidades de mejora en la arquitectura del sistema:
 
 - *Recuperación híbrida.* La combinación de búsqueda vectorial con búsqueda léxica (BM25) y búsqueda sobre grafos de conocimiento podría mejorar la cobertura de la recuperación, especialmente para consultas que requieren coincidencias exactas de términos legales o razonamiento sobre relaciones entre normas.
 
-- *Modelos de embeddings especializados.* El entrenamiento o ajuste fino de modelos de embeddings sobre texto jurídico argentino podría mejorar la calidad de la recuperación semántica, dado que los modelos de propósito general pueden no capturar adecuadamente los matices del lenguaje legal.
+- *Comparación controlada de recuperadores.* Recrear la base vectorial con el mismo corpus y comparar, con idénticas consultas y presupuesto, la búsqueda densa actual frente a BM25 y frente a un segundo modelo de embeddings. Sin esa comparación no puede atribuirse el recall ni el MRR al embedding elegido.
+
+- *Modelos de embeddings especializados.* El entrenamiento o ajuste fino de modelos de embeddings sobre texto jurídico argentino podría mejorar la calidad de la recuperación semántica, aunque esa mejora debe medirse contra el recuperador actual y no suponerse por el dominio del modelo.
 
 - *Modelos de lenguaje de código abierto.* La evaluación de modelos de lenguaje de código abierto (por ejemplo, de las familias Llama, Mistral o Qwen) permitiría reducir la dependencia de APIs comerciales y facilitar el despliegue local, relevante para entornos donde la confidencialidad de las consultas sea un requisito.
 
