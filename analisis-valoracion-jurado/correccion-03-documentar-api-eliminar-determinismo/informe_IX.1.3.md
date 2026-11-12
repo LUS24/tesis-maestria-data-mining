@@ -13,7 +13,7 @@ En consecuencia:
 
 - No corresponde afirmar que las respuestas son deterministas.
 - No corresponde usar la temperatura como justificación de una única ejecución.
-- No se registró un nivel de esfuerzo de razonamiento. Los `reasoning_tokens` existen en las 711 respuestas primarias, pero no permiten reconstruir el esfuerzo solicitado ni el aplicado por el proveedor.
+- No se registró un nivel de esfuerzo de razonamiento. Pydantic AI 1.1.0 no define un default: envía `NOT_GIVEN`; OpenAI documenta `medium` como default para GPT-5. Los `reasoning_tokens` existen en las 711 respuestas primarias, pero no permiten reconstruir el valor efectivo local.
 - La ejecución única debe declararse como limitación.
 - Los registros de los agentes **no son volcados HTTP**. Los de sin RAG y RAG básico conservan `temperature=0.0`; los de Agentic-RAG guardan `{}`. Esa diferencia impide tratar el campo `model_settings` del log como prueba de lo enviado.
 
@@ -178,7 +178,7 @@ Estos modelos se ejecutaron vía OpenRouter y no son los modelos generadores GPT
 
 En metodología:
 
-> El código solicitó `temperature=0.0`, pero Pydantic AI 1.1.0 elimina ese parámetro para los modelos GPT-5 antes de construir la solicitud. Por tanto, la temperatura no fue un control efectivo y las respuestas no se consideran deterministas. No se registró el esfuerzo de razonamiento; su valor histórico debe considerarse desconocido. Se realizó una única ejecución por unidad y configuración, sin réplicas.
+> El código solicitó `temperature=0.0`, pero Pydantic AI 1.1.0 elimina ese parámetro para los modelos GPT-5 antes de construir la solicitud. Por tanto, la temperatura no fue un control efectivo y las respuestas no se consideran deterministas. No se registró el esfuerzo de razonamiento; Pydantic AI 1.1.0 no define un default y OpenAI documenta `medium` para GPT-5. No hay prueba local del valor efectivo. Se realizó una única ejecución por unidad y configuración, sin réplicas.
 
 En evaluación:
 
@@ -192,7 +192,7 @@ En las limitaciones, agregar un ítem específico sobre ejecución única y ause
 
 - No afirmar que la temperatura cero “garantizó” reproducibilidad.
 - No afirmar que la temperatura cero “evitó” múltiples ejecuciones; la causa fue el diseño de una ejecución por celda.
-- No afirmar que el esfuerzo de razonamiento fue “alto”, “bajo” o “el predeterminado” sin registro.
+- No afirmar un nivel distinto de `medium` sin registro; documentar que el default del proveedor es `medium` y que no se registró localmente.
 - No afirmar que los logs demuestran la temperatura aplicada.
 - No extrapolar la configuración de los jueces a los generadores GPT-5.
 - No presentar los tokens de razonamiento como equivalente del esfuerzo.
@@ -201,7 +201,7 @@ En las limitaciones, agregar un ítem específico sobre ejecución única y ause
 
 1. No existen volcados HTTP completos de 2025. La captura local prueba el comportamiento de la versión fijada, no reconstruye byte a byte la petición histórica.
 2. La conclusión supone que la ejecución histórica usó Pydantic AI 1.1.0, como declara `uv.lock` y el anexo. Si se usó otra versión, no hay evidencia en los logs para confirmarlo; debe declararse la incertidumbre.
-3. El esfuerzo de razonamiento no es recuperable si no fue registrado. No se infiere de los tokens.
+3. El valor efectivo del esfuerzo no se registró; la documentación del proveedor indica `medium` por defecto, pero no se infiere de los tokens.
 4. La captura local no reproduce la mutación de `agent.model_settings` observada en los logs Agentic-RAG; por eso el log se trata como metadata de aplicación y no como payload.
 5. La ejecución única no se corrige con análisis; se declara como limitación. Las réplicas pertenecen a IX.2.4 y requieren nuevas llamadas.
 
@@ -235,4 +235,4 @@ Comprobaciones realizadas:
 
 La parte documental y editorial queda resuelta con este paquete: se identifican los parámetros solicitados, se demuestra que la temperatura no se envía bajo la versión fijada, se distingue el log del payload, se documenta la ausencia de esfuerzo de razonamiento y se deja preparada la declaración de ejecución única.
 
-No se puede “demostrar” el esfuerzo histórico ni la petición exacta de 2025 porque no fueron registrados. Esa imposibilidad debe quedar escrita como limitación, no cubierta con una inferencia.
+No se puede demostrar el valor efectivo del esfuerzo ni la petición exacta de 2025 porque no fueron registrados. La documentación del proveedor indica `medium` por defecto; debe declararse como default documentado, no como valor observado.

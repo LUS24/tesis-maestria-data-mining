@@ -14,7 +14,7 @@ Esta carpeta contiene la evidencia y los borradores necesarios para resolver el 
 
 ## Conclusión operativa
 
-La afirmación de que la temperatura cero garantizaba reproducibilidad **no se sostiene**. El valor fue solicitado en el código, pero no llegó al payload de los modelos GPT-5. Además, no se registró el esfuerzo de razonamiento; por tanto, su valor histórico debe declararse **desconocido**, no inferirse de los tokens. La ejecución única debe declararse como limitación.
+La afirmación de que la temperatura cero garantizaba reproducibilidad **no se sostiene**. El valor fue solicitado en el código, pero no llegó al payload de los modelos GPT-5. Además, no se registró el esfuerzo de razonamiento. Pydantic AI 1.1.0 no define un default: `OpenAIChatModel` envía `NOT_GIVEN`. OpenAI documenta `medium` como default para GPT-5; el valor efectivo no quedó registrado localmente y no debe inferirse de los tokens. La ejecución única debe declararse como limitación.
 
 ## Artefactos
 

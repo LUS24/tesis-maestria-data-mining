@@ -10,7 +10,7 @@ El código solicitó `temperature=0.0` en los tres notebooks/scripts de generaci
 
 Los logs no son volcados HTTP: sin RAG y RAG básico registran `{"temperature": 0.0}`, mientras que Agentic-RAG registra `{}`. Por eso no se usan como prueba de lo enviado. La versión definitiva del manuscrito debe distinguir “temperatura solicitada en el código” de “parámetro aplicado”.
 
-No se registró el esfuerzo de razonamiento: la búsqueda de `reasoning_effort` en 1.873 archivos del alcance revisado —código de generación, respuestas primarias, reportes de jueces y logs— devolvió cero ocurrencias. Las 711 respuestas primarias tienen `reasoning_tokens` no nulo, pero esos tokens no identifican el nivel de esfuerzo solicitado ni el aplicado por el proveedor; su valor histórico se declara desconocido.
+No se registró el esfuerzo de razonamiento: la búsqueda de `reasoning_effort` en 1.873 archivos del alcance revisado —código de generación, respuestas primarias, reportes de jueces y logs— devolvió cero ocurrencias. Pydantic AI 1.1.0 no define un default y envía `NOT_GIVEN`; OpenAI documenta `medium` como default para GPT-5. Las 711 respuestas primarias tienen `reasoning_tokens` no nulo, pero esos tokens no identifican el valor efectivo local; se declara el default documentado, no un valor observado.
 
 Finalmente, cada celda contiene 79 registros para 79 unidades, sin duplicados y sin campo de réplica. La ejecución única debe incorporarse como limitación explícita. No se afirma determinismo ni estabilidad entre corridas.
 

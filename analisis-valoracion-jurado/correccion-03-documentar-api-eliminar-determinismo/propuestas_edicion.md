@@ -9,9 +9,9 @@ La formulación debe distinguir cuatro cosas:
 1. lo que el código **solicitó** (`temperature=0.0`);
 2. lo que el artefacto **registró** (`{"temperature": 0.0}` o `{}` según la estrategia);
 3. lo que la biblioteca **construyó y envió** (sin `temperature`, sin `reasoning_effort`, sin `max_completion_tokens`);
-4. lo que el proveedor **aplicó**, que no está documentado en los logs y, para el esfuerzo de razonamiento, debe declararse desconocido.
+4. lo que el proveedor **aplicó**, que no está documentado en los logs; para el esfuerzo de razonamiento, el default documentado de OpenAI para GPT-5 es `medium`, pero el valor efectivo local no se registró.
 
-No conviene escribir “temperatura 0” como si fuera un control efectivo. Tampoco conviene afirmar que el esfuerzo de razonamiento fue el predeterminado: no se registró.
+No conviene escribir “temperatura 0” como si fuera un control efectivo. Tampoco conviene afirmar un nivel de esfuerzo distinto de `medium`: no se registró el valor efectivo, pero OpenAI documenta `medium` como default para GPT-5.
 
 ## 2. Resumen de cambios
 
@@ -60,7 +60,7 @@ La temperatura controla la aleatoriedad de las respuestas del modelo (0,0 = dete
 **Propuesto**
 
 ```typst
-La temperatura es un parámetro de muestreo. En los modelos GPT-5 evaluados, el perfil de Pydantic AI 1.1.0 declara `temperature` como parámetro no admitido y la biblioteca lo elimina antes de construir la solicitud; el valor `0.0` figura en el código y en algunos registros, pero no fue aplicado. El esfuerzo de razonamiento no se registró y debe considerarse desconocido.
+La temperatura es un parámetro de muestreo. En los modelos GPT-5 evaluados, el perfil de Pydantic AI 1.1.0 declara `temperature` como parámetro no admitido y la biblioteca lo elimina antes de construir la solicitud; el valor `0.0` figura en el código y en algunos registros, pero no fue aplicado. El esfuerzo de razonamiento no se registró; Pydantic AI 1.1.0 no define default y OpenAI documenta `medium` para GPT-5.
 ```
 
 **Motivo:** distingue el valor solicitado del enviado y no presenta el cero como determinismo.
@@ -116,7 +116,7 @@ Todos los modelos fueron configurados con temperatura 0 para maximizar la reprod
 **Propuesto**
 
 ```typst
-Los tres modelos pertenecen a la familia GPT-5 y fueron invocados con los identificadores `gpt-5-nano`, `gpt-5-mini` y `gpt-5`. El código solicitó `temperature=0.0`, pero Pydantic AI 1.1.0 elimina ese parámetro para estos modelos antes de enviar la solicitud; por tanto, operaron con el comportamiento de muestreo predeterminado del proveedor. No se registró el esfuerzo de razonamiento. Se realizó una única ejecución por unidad y configuración, sin réplicas.
+Los tres modelos pertenecen a la familia GPT-5 y fueron invocados con los identificadores `gpt-5-nano`, `gpt-5-mini` y `gpt-5`. El código solicitó `temperature=0.0`, pero Pydantic AI 1.1.0 elimina ese parámetro para estos modelos antes de enviar la solicitud; por tanto, operaron con el comportamiento de muestreo predeterminado del proveedor. No se registró el esfuerzo de razonamiento; el default documentado del proveedor es `medium`. Se realizó una única ejecución por unidad y configuración, sin réplicas.
 ```
 
 **Motivo:** reemplaza una garantía inexistente por una descripción verificable y agrega la limitación de ejecución única.
@@ -256,7 +256,7 @@ Una versión completa de la tabla, coherente con el texto:
 Agregar en `09_capitulo_08_conclusion_y_trabajos_futuros.typ`, dentro de las limitaciones:
 
 ```typst
-+ *Ejecución única y ausencia de control efectivo de muestreo.* Se realizó una única ejecución por unidad y configuración, sin réplicas. Aunque el código solicitó `temperature=0.0`, Pydantic AI 1.1.0 elimina ese parámetro para los modelos GPT-5 antes de construir la solicitud; por tanto, no puede afirmarse que las respuestas sean deterministas ni estimarse la variabilidad entre corridas. Tampoco se registró el esfuerzo de razonamiento, de modo que su valor histórico se desconoce. La estabilidad de las diferencias observadas debería verificarse con nuevas réplicas.
++ *Ejecución única y ausencia de control efectivo de muestreo.* Se realizó una única ejecución por unidad y configuración, sin réplicas. Aunque el código solicitó `temperature=0.0`, Pydantic AI 1.1.0 elimina ese parámetro para los modelos GPT-5 antes de construir la solicitud; por tanto, no puede afirmarse que las respuestas sean deterministas ni estimarse la variabilidad entre corridas. Tampoco se registró el esfuerzo de razonamiento; el default documentado del proveedor es `medium`, pero no hay prueba local del valor efectivo. La estabilidad de las diferencias observadas debería verificarse con nuevas réplicas.
 ```
 
 **Motivo:** convierte la limitación en una declaración explícita y evita que la temperatura se use como coartada metodológica.
