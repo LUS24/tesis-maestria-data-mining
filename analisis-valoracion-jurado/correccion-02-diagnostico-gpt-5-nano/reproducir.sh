@@ -6,3 +6,6 @@ cd "$ROOT"
 
 uv run --project codigo_experimentos --no-sync --frozen \
   python analisis-valoracion-jurado/correccion-02-diagnostico-gpt-5-nano/src/diagnostico.py
+
+uv run --project codigo_experimentos --no-sync --frozen \
+  python analisis-valoracion-jurado/correccion-02-diagnostico-gpt-5-nano/src/consolidar_revision_manual.py

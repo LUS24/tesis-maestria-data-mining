@@ -11,6 +11,7 @@ No modifica la plantilla ni el paquete ciego.
 from __future__ import annotations
 
 from pathlib import Path
+import sys
 
 import pandas as pd
 
@@ -31,7 +32,7 @@ CATEGORIAS = {
 
 
 def main() -> None:
-    template_path = REVISION / "plantilla_resultados.csv"
+    template_path = Path(sys.argv[1]) if len(sys.argv) > 1 else REVISION / "plantilla_resultados.csv"
     mapping_path = SALIDAS / "mapa_revision_ciega.csv"
 
     if not template_path.exists() or not mapping_path.exists():
@@ -47,27 +48,55 @@ def main() -> None:
 
     template["categoria_revisada"] = template["categoria_revisada"].str.strip()
     template["justificacion"] = template["justificacion"].str.strip()
+    template["revisor"] = template["revisor"].str.strip()
+    template["fecha"] = template["fecha"].str.strip()
 
     invalid = template[
         (~template["categoria_revisada"].isin(CATEGORIAS))
         & (template["categoria_revisada"] != "")
     ]
     incomplete = template[template["categoria_revisada"] == ""]
+    blank_justification = template[template["justificacion"] == ""]
+    blank_reviewer = template[template["revisor"] == ""]
+    blank_date = template[template["fecha"] == ""]
+    invalid_date = template[
+        (template["fecha"] != "")
+        & (~template["fecha"].str.match(r"^\d{4}-\d{2}-\d{2}$"))
+    ]
 
     print(f"Filas en la plantilla: {len(template)}")
-    print(f"Filas completas: {len(template) - len(incomplete)}")
+    print(f"Filas con categoría: {len(template) - len(incomplete)}")
     print(f"Filas sin categoría: {len(incomplete)}")
     print(f"Categorías inválidas: {len(invalid)}")
+    print(f"Justificaciones vacías: {len(blank_justification)}")
+    print(f"Revisores vacíos: {len(blank_reviewer)}")
+    print(f"Fechas vacías: {len(blank_date)}")
+    print(f"Fechas con formato distinto de AAAA-MM-DD: {len(invalid_date)}")
 
     if len(invalid):
         print("\nCategorías inválidas:")
         print(invalid[["review_id", "categoria_revisada"]].to_string(index=False))
 
-    if len(incomplete):
-        print("\nFilas pendientes:")
-        print(incomplete[["review_id"]].to_string(index=False))
-        print("\nCompleta la plantilla antes de generar el resumen definitivo.")
+    if len(blank_justification):
+        print("\nFilas con justificación vacía:")
+        print(blank_justification[["review_id", "categoria_revisada"]].to_string(index=False))
+
+    if len(blank_reviewer) or len(blank_date) or len(invalid_date):
+        print("\nProblemas de revisor o fecha:")
+        print(template.loc[
+            template.index.isin(blank_reviewer.index)
+            | template.index.isin(blank_date.index)
+            | template.index.isin(invalid_date.index),
+            ["review_id", "revisor", "fecha"],
+        ].to_string(index=False))
+
+    if len(incomplete) or len(invalid):
+        print("\nCompleta las categorías antes de generar el resumen definitivo.")
         return
+
+    if len(blank_justification):
+        print("\nAdvertencia: las categorías están completas, pero faltan justificaciones.")
+        print("El resumen se genera igualmente; completa las justificaciones para el acta de revisión.")
 
     merged = template.merge(mapping, on="review_id", how="left", validate="one_to_one")
     if merged["obs_id"].isna().any():
@@ -109,6 +138,7 @@ def main() -> None:
     )
 
     print(f"\nAcuerdo automático–manual: {agreement:.1%}")
+    print(f"Justificaciones vacías: {len(blank_justification)}")
     print("\nMatriz de confusión:")
     print(confusion.to_string())
     print("\nDiscrepancias:", len(discrepancies))

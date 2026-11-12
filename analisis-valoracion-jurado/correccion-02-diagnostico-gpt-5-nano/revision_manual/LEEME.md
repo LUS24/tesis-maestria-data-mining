@@ -1,5 +1,7 @@
 # Revisión manual ciega — IX.1.2
 
+> **Estado:** revisión completada y aceptada el 2026-11-12. La plantilla canónica es `plantilla_resultados.csv`; la versión previa quedó en `plantilla_resultados_pre_aceptacion.csv`. El acta está en `../VALIDACION_REVISION_MANUAL.md`. Las instrucciones siguientes se conservan para trazabilidad.
+
 Este paquete contiene 87 respuestas para revisar:
 
 - las 57 salidas no sustantivas detectadas automáticamente;

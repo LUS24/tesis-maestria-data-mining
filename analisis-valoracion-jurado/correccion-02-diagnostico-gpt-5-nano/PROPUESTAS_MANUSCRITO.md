@@ -1,6 +1,6 @@
 # Propuestas de cambios en el manuscrito — IX.1.2
 
-Este archivo contiene texto sugerido para revisar antes de editar el manuscrito. No se modificó ningún `.typ`, README ni notebook existente. Las propuestas usan los resultados de `INFORME_DIAGNOSTICO.md` y los artefactos de `salidas/`.
+Este archivo contiene texto sugerido para revisar antes de editar el manuscrito. No se modificó ningún `.typ`, README ni notebook existente. Las propuestas usan la **base final aceptada** (`salidas/14_dataset_categoria_final.csv`): 58 salidas no sustantivas en total, con sin RAG + gpt-5-mini en 64 sustantivas / 15 abstenciones. Agentic-RAG + gpt-5-nano se mantiene en 41/79.
 
 ---
 
@@ -87,7 +87,7 @@ Se puede agregar una tabla como la siguiente, generada desde `salidas/03b_tabla_
       | *Estrategia* | *Modelo* | *Sustantivas* | *No sustantivas* | *Vacías / espacios* | *Abstenciones* | *Otras no sust.* | *Tasa no sust. (IC 95%)* |
       | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
       | Sin RAG | gpt-5-nano | 78 | 1 | 0 | 1 | 0 | 1,3% (0,2–6,8) |
-      | Sin RAG | gpt-5-mini | 65 | 14 | 0 | 14 | 0 | 17,7% (10,9–27,6) |
+      | Sin RAG | gpt-5-mini | 64 | 15 | 0 | 15 | 0 | 19,0% (11,9–29,0) |
       | Sin RAG | gpt-5 | 79 | 0 | 0 | 0 | 0 | 0,0% (0,0–4,6) |
       | RAG básico | gpt-5-nano | 79 | 0 | 0 | 0 | 0 | 0,0% (0,0–4,6) |
       | RAG básico | gpt-5-mini | 79 | 0 | 0 | 0 | 0 | 0,0% (0,0–4,6) |

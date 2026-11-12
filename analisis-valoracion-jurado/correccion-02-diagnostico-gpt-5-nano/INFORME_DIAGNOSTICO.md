@@ -5,6 +5,8 @@
 **Insumos:** respuestas, métricas, evaluaciones de jueces y logs históricos del repositorio.  
 **Restricción respetada:** no se modificó ningún archivo fuente, log, JSON, CSV, PDF o base SQLite. Todos los artefactos son derivados y están en esta carpeta.
 
+**Actualización (2026-11-12):** la revisión manual fue aceptada. La base final es `salidas/14_dataset_categoria_final.csv`; incorpora `R052` como abstención explícita y fija **58 salidas no sustantivas**. Las tablas de este informe usan esa base, salvo cuando se indica expresamente “clasificación automática”.
+
 ---
 
 ## 1. Resumen ejecutivo
@@ -13,9 +15,9 @@
 2. **La celda Agentic-RAG + gpt-5-nano contiene 41 salidas no sustantivas de 79** (51,9%; IC 95% Wilson 41,1–62,6%). El desglose es: 27 vacías, 1 solo espacios, 2 abstenciones explícitas, 1 truncada y 10 indeterminadas (mensajes de proceso, marcadores `TEST`/`placeholder`/`PENDING` y un mensaje interno). No hay errores técnicos explícitos.
 3. **Los logs no muestran truncamiento por tokens ni falta de recuperación.** Los 79 logs de nano contienen una llamada a `retrieve_relevant_documents` y al menos una llamada a `final_result`; 77 tienen exactamente una y 2 tienen más de una. El `finish_reason` del especialista es `tool_call` en los 79 casos. Las 28 salidas vacías/solo espacios tienen entre 1 y 12 documentos seleccionados, entre 2 y 6 búsquedas y entre 575 y 7.015 tokens de salida. El problema está en el `response_text` del `final_result`: vacío, con espacios o con un marcador no respondido.
 4. **Cuando nano responde, su calidad es alta.** Las 38 respuestas sustantivas tienen media 0,820 y mediana 0,958. Con fallo = 0, la celda completa tiene media 0,395 y mediana 0; con exclusión de no sustantivas, media 0,820 y mediana 0,958. La diferencia con RAG básico cambia de signo según el escenario: −0,205 con fallo = 0 y +0,182 con exclusión (38 pares). Esto describe un **modo de fallo de respuesta**, no una degradación uniforme de la calidad de las respuestas producidas.
-5. **Los puntajes de los jueces sobre salidas no sustantivas no son una medición válida de calidad.** En las 57 observaciones no sustantivas hay 171 evaluaciones. Once filas de corrección (9 combinaciones celda-unidad; 8 unidades distintas) tienen puntaje mayor que cero y cinco filas de precisión legal tienen puntaje mayor que cero. Varias justificaciones citan artículos que no aparecen en la respuesta o describen contenido inexistente. Estos puntajes deben auditarse, no promediarse como calidad.
+5. **Los puntajes de los jueces sobre salidas no sustantivas no son una medición válida de calidad.** En las 58 observaciones no sustantivas hay 174 evaluaciones. Doce filas de corrección (10 combinaciones celda-unidad; 9 unidades distintas) tienen puntaje mayor que cero y cinco filas de precisión legal tienen puntaje mayor que cero. Varias justificaciones citan artículos que no aparecen en la respuesta o describen contenido inexistente. Estos puntajes deben auditarse, no promediarse como calidad.
 6. **La tabla de medianas del manuscrito se calculó sobre 76 observaciones por celda**, no sobre 79. Al recuperar el join cambian cinco de las nueve medianas. La celda nano pasa de 0,083 a 0,250 con los jueces originales, a 0,000 con fallo = 0 y a 0,958 con exclusión.
-7. **La comparación sin RAG nano vs. mini también cambia.** gpt-5-mini tiene 14 abstenciones explícitas en sin RAG. Su mediana es 0,250 con las 79 unidades y 0,333 si se excluyen las abstenciones. La mediana de nano es 0,583 en ambos casos. El orden observado debe describirse, no explicarse causalmente por “capacidad” con estos datos.
+7. **La comparación sin RAG nano vs. mini también cambia.** gpt-5-mini tiene 15 abstenciones explícitas en sin RAG. Su mediana es 0,250 con las 79 unidades y 0,375 si se excluyen las abstenciones. La mediana de nano es 0,583 en ambos casos. El orden observado debe describirse, no explicarse causalmente por “capacidad” con estos datos.
 
 ---
 
@@ -29,10 +31,10 @@
 | Celdas estrategia × modelo | 9 |
 | Filas de jueces | 2.133 |
 | Medias ausentes por join | 27 |
-| Observaciones no sustantivas | 57 |
-| Evaluaciones de jueces sobre no sustantivas | 171 |
+| Observaciones no sustantivas | 58 |
+| Evaluaciones de jueces sobre no sustantivas | 174 |
 
-La tabla `salidas/04_auditoria_faltantes_join.csv` contiene las 27 filas recuperadas. Las 27 tienen `n_filas_juez = 3`; el valor de `respuesta_correcta_avg` del CSV original está vacío en las 27; el valor recalculado coincide con el promedio de los tres jueces. La tabla `salidas/08_comparacion_medianas_manuscrito.csv` compara la mediana publicada, la mediana calculada sobre las 76 filas originales, la mediana corregida sobre 79 y los escenarios de fallo.
+La tabla `salidas/04_auditoria_faltantes_join.csv` contiene las 27 filas recuperadas. Las 27 tienen `n_filas_juez = 3`; el valor de `respuesta_correcta_avg` del CSV original está vacío en las 27; el valor recalculado coincide con el promedio de los tres jueces. La tabla `salidas/08_comparacion_medianas_manuscrito.csv` compara la mediana publicada, la mediana calculada sobre las 76 filas originales, la mediana corregida sobre 79 y los escenarios de fallo. La tabla final, con la revisión aceptada, es `salidas/20_comparacion_medianas_final.csv`.
 
 **Implicación editorial:** la frase del manuscrito que atribuye las 27 ausencias a “fallos puntuales en la generación de respuestas” es incorrecta. Debe reemplazarse por la descripción del defecto de join y por la recuperación de las 711 observaciones.
 
@@ -53,7 +55,7 @@ Categorías mutuamente excluyentes:
 | Estrategia | Modelo | Sustantivas | No sustantivas | Vacías | Solo espacios | Abstenciones | Truncadas | Indeterminadas | Tasa no sustantiva (IC 95%) |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | Sin RAG | gpt-5-nano | 78 | 1 | 0 | 0 | 1 | 0 | 0 | 1,3% (0,2–6,8) |
-| Sin RAG | gpt-5-mini | 65 | 14 | 0 | 0 | 14 | 0 | 0 | 17,7% (10,9–27,6) |
+| Sin RAG | gpt-5-mini | 64 | 15 | 0 | 0 | 15 | 0 | 0 | 19,0% (11,9–29,0) |
 | Sin RAG | gpt-5 | 79 | 0 | 0 | 0 | 0 | 0 | 0 | 0,0% (0,0–4,6) |
 | RAG básico | gpt-5-nano | 79 | 0 | 0 | 0 | 0 | 0 | 0 | 0,0% (0,0–4,6) |
 | RAG básico | gpt-5-mini | 79 | 0 | 0 | 0 | 0 | 0 | 0 | 0,0% (0,0–4,6) |
@@ -64,7 +66,7 @@ Categorías mutuamente excluyentes:
 
 **Lectura:** el problema no es general a Agentic-RAG. Está concentrado en la combinación con gpt-5-nano; gpt-5-mini tiene un único mensaje de proceso y gpt-5 no tiene salidas no sustantivas. La tabla ancha está en `salidas/03b_tabla_categorias_ancha.csv`.
 
-La clasificación automática es reproducible y conserva la evidencia textual. Las 27 vacías y la salida de solo espacios son inequívocas. Los 10 casos indeterminados y las 2 abstenciones requieren la revisión manual incluida en `revision_manual/`.
+La clasificación automática produjo 57 salidas no sustantivas; la revisión manual aceptada incorporó `R052` y fijó 58. Las 27 vacías y la salida de solo espacios son inequívocas; los 10 casos indeterminados y las 2 abstenciones de nano ya fueron revisados en `revision_manual/`. La tabla ancha final está en `salidas/16b_tabla_categorias_ancha_final.csv`.
 
 ---
 
@@ -144,15 +146,15 @@ No se puede afirmar:
 
 ## 5. Jueces sobre salidas no sustantivas
 
-En las 57 observaciones no sustantivas hay 171 filas de jueces (3 por observación). Resultados:
+En las 58 observaciones no sustantivas hay 174 filas de jueces (3 por observación). Resultados:
 
-- 11 filas de corrección con puntaje > 0, distribuidas en 9 combinaciones celda-unidad (8 unidades distintas);
+- 12 filas de corrección con puntaje > 0, distribuidas en 10 combinaciones celda-unidad (9 unidades distintas);
 - 5 filas de precisión legal con puntaje > 0, en 5 observaciones;
-- 6 de las 11 filas de corrección corresponden a abstenciones de sin RAG + gpt-5-mini;
+- 7 de las 12 filas de corrección corresponden a abstenciones de sin RAG + gpt-5-mini;
 - las otras 5 corresponden a Agentic-RAG + gpt-5-nano: 3 salidas vacías y 2 mensajes de proceso;
 - las 5 filas de precisión legal > 0 corresponden a Agentic-RAG + gpt-5-nano: 3 vacías y 2 indeterminadas.
 
-Ejemplos verificables en `salidas/05_auditoria_jueces_salidas_no_sustantivas.csv`:
+Ejemplos verificables en `salidas/17_auditoria_jueces_salidas_no_sustantivas_final.csv`:
 
 | Observación | Salida | Juez | Puntaje | Problema |
 |---|---|---|---:|---|
@@ -194,19 +196,19 @@ La exclusión usa solo las 38 unidades en las que Agentic-RAG + nano produjo una
 | Métrica | gpt-5-nano | gpt-5-mini |
 |---|---:|---:|
 | n | 79 | 79 |
-| Sustantivas | 78 | 65 |
-| Abstenciones explícitas | 1 | 14 |
+| Sustantivas | 78 | 64 |
+| Abstenciones explícitas | 1 | 15 |
 | Media | 0,565 | 0,336 |
 | Mediana | 0,583 | 0,250 |
 | Q1–Q3 | 0,417–0,750 | 0,083–0,500 |
-| Mediana solo sustantivas | 0,583 | 0,333 |
+| Mediana solo sustantivas | 0,583 | 0,375 |
 | % puntaje ≥ 0,75 | 32,9% | 13,9% |
 | Mediana de longitud (caracteres) | 2.817 | 2.392 |
 | Menciona algún artículo | 57,0% | 100,0% |
 | Menciona limitación o falta de contexto | 20,3% | 77,2% |
 | Mediana de tokens de razonamiento | 5.376 | 1.408 |
 
-La diferencia persiste al excluir las abstenciones, pero el patrón no permite atribuirla a “capacidad”. gpt-5-mini se abstiene 14 veces, declara limitaciones con mucha frecuencia y sus respuestas son más cortas; nano responde casi siempre y con más tokens de razonamiento. Son diferencias de comportamiento que deben describirse y, si se quiere explicar, estudiarse con un diseño específico. La tabla está en `salidas/10_sin_rag_nano_vs_mini.csv`.
+La diferencia persiste al excluir las abstenciones, pero el patrón no permite atribuirla a “capacidad”. gpt-5-mini se abstiene 15 veces, declara limitaciones con mucha frecuencia y sus respuestas son más cortas; nano responde casi siempre y con más tokens de razonamiento. Son diferencias de comportamiento que deben describirse y, si se quiere explicar, estudiarse con un diseño específico. La tabla final está en `salidas/21_sin_rag_nano_vs_mini_final.csv`.
 
 ---
 
@@ -217,7 +219,7 @@ La Tabla 11 del manuscrito coincide con la mediana calculada sobre las 76 filas 
 | Estrategia | Modelo | Manuscrito | CSV original (n=76) | Corregida 79 (jueces) | Fallo = 0 | Exclusión (n) |
 |---|---:|---:|---:|---:|---:|---:|
 | Sin RAG | gpt-5-nano | 0,583 | 0,583 | 0,583 | 0,583 | 0,583 (78) |
-| Sin RAG | gpt-5-mini | 0,333 | 0,333 | 0,250 | 0,250 | 0,333 (65) |
+| Sin RAG | gpt-5-mini | 0,333 | 0,333 | 0,250 | 0,250 | 0,375 (64) |
 | Sin RAG | gpt-5 | 0,833 | 0,833 | 0,833 | 0,833 | 0,833 (79) |
 | RAG básico | gpt-5-nano | 0,583 | 0,583 | 0,583 | 0,583 | 0,583 (79) |
 | RAG básico | gpt-5-mini | 0,625 | 0,625 | 0,667 | 0,667 | 0,667 (79) |
@@ -247,8 +249,9 @@ El detalle está en `PROPUESTAS_MANUSCRITO.md`. En síntesis:
 
 `revision_manual/paquete_revision_ciega.csv` contiene:
 
-- las 57 observaciones no sustantivas;
+- las 57 salidas no sustantivas detectadas automáticamente;
 - 30 respuestas sustantivas de control, estratificadas por celda;
+- la revisión aceptada incorporó `R052`, por lo que el total final es 58;
 - 87 filas en orden aleatorio, sin estrategia, modelo ni categoría automática.
 
 El revisor debe completar `categoria_revisada` y `justificacion` en `revision_manual/plantilla_resultados.csv` usando las definiciones de `revision_manual/LEEME.md`. El mapa `salidas/mapa_revision_ciega.csv` no debe abrirse hasta terminar la revisión.
@@ -262,13 +265,15 @@ La revisión manual no es una evaluación de corrección jurídica. Solo decide 
 | Archivo | Contenido |
 |---|---|
 | `diagnostico_gpt5_nano.ipynb` | Notebook ejecutado con el flujo completo. |
-| `src/diagnostico.py` | Código reproducible; no modifica fuentes. |
+| `src/diagnostico.py` | Diagnóstico automático reproducible; no modifica fuentes. |
+| `src/consolidar_revision_manual.py` | Consolida la revisión aceptada y genera la base final. |
 | `salidas/01_dataset_derivado_711.csv` | 711 observaciones con categorías, jueces, escenarios y logs. |
 | `salidas/02_resumen_por_celda.csv` | Resumen por celda con tasas e IC. |
 | `salidas/03_conteo_categorias_por_celda.csv` | Conteo largo por categoría. |
 | `salidas/03b_tabla_categorias_ancha.csv` | Tabla ancha para el manuscrito. |
 | `salidas/04_auditoria_faltantes_join.csv` | Las 27 medias recuperadas. |
-| `salidas/05_auditoria_jueces_salidas_no_sustantivas.csv` | 171 filas de jueces sobre no sustantivas. |
+| `salidas/05_auditoria_jueces_salidas_no_sustantivas.csv` | 171 filas de la clasificación automática (histórico). |
+| `salidas/17_auditoria_jueces_salidas_no_sustantivas_final.csv` | 174 filas de jueces sobre las 58 no sustantivas finales. |
 | `salidas/06_logs_agentes_237.csv` | Logs parseados de las 237 respuestas agénticas. |
 | `salidas/07_resumen_logs_por_modelo.csv` | Resumen de logs por modelo. |
 | `salidas/08_comparacion_medianas_manuscrito.csv` | Manuscrito vs. 76 vs. 79 vs. escenarios. |
@@ -276,22 +281,33 @@ La revisión manual no es una evaluación de corrección jurídica. Solo decide 
 | `salidas/10_sin_rag_nano_vs_mini.csv` | Comparación descriptiva sin RAG. |
 | `salidas/11_celda_nano_agentic_79.csv` | Las 79 filas de la celda, con evidencia. |
 | `salidas/12_auditoria_27_medias_ausentes.csv` | Copia específica de la auditoría de join. |
-| `salidas/13_salidas_no_sustantivas_con_evidencia.csv` | Las 57 no sustantivas con evidencia. |
+| `salidas/13_salidas_no_sustantivas_con_evidencia.csv` | Las 57 no sustantivas automáticas con evidencia (histórico). |
+| `salidas/14_dataset_categoria_final.csv` | **Base final para IX.1.1**: 711 observaciones con `categoria_final`. |
+| `salidas/15_resumen_por_celda_final.csv` | Resumen final por celda. |
+| `salidas/16b_tabla_categorias_ancha_final.csv` | Tabla final de categorías para el manuscrito. |
+| `salidas/19_sensibilidad_pares_estrategias_final.csv` | Sensibilidad final pareada. |
+| `salidas/20_comparacion_medianas_final.csv` | Medianas finales y escenarios. |
+| `salidas/21_sin_rag_nano_vs_mini_final.csv` | Comparación final sin RAG. |
 | `salidas/lista_verificacion_no_sustantivas.csv` | Lista asistida para revisión. |
 | `salidas/mapa_revision_ciega.csv` | Mapa review_id → observación; no abrir durante la revisión. |
-| `salidas/resumen_ejecutivo.json` | Resumen numérico legible por máquina. |
-| `figuras/01…07` | Figuras en PDF y PNG. |
+| `salidas/resumen_ejecutivo.json` | Resumen de la clasificación automática (histórico). |
+| `salidas/resumen_ejecutivo_final.json` | Resumen numérico de la base final. |
+| `figuras/01…07` | Figuras de la clasificación automática (histórico). |
+| `figuras_final/01…07` | Figuras de la base final aceptada, en PDF y PNG. |
 | `revision_manual/LEEME.md` | Instrucciones de revisión ciega. |
 | `revision_manual/paquete_revision_ciega.csv` | Paquete ciego de 87 respuestas. |
-| `revision_manual/plantilla_resultados.csv` | Plantilla para completar. |
+| `revision_manual/plantilla_resultados.csv` | Plantilla aceptada y canónica. |
+| `VALIDACION_REVISION_MANUAL.md` | Acta de validación y decisión. |
 | `INFORME_DIAGNOSTICO.md` | Este informe. |
+| `VALIDACION_REVISION_MANUAL.md` | Acta de aceptación de la revisión manual. |
+| `DICCIONARIO_DATASET_FINAL.md` | Columnas y uso de la base final para IX.1.1. |
 | `PROPUESTAS_MANUSCRITO.md` | Cambios de texto sugeridos. |
 
 ---
 
 ## 12. Limitaciones del diagnóstico
 
-- La clasificación de las 57 no sustantivas es automática y debe confirmarse con la revisión ciega. Las 27 vacías y la salida de solo espacios son inequívocas; los 10 indeterminados y las 2 abstenciones requieren revisión.
+- La clasificación final incorpora la revisión manual aceptada de 87 filas. La revisión fue realizada por el autor, no por un revisor independiente; las 27 vacías y la salida de solo espacios son inequívocas. La base final es `salidas/14_dataset_categoria_final.csv`.
 - Los logs no registran el payload HTTP completo ni el esfuerzo de razonamiento efectivo. No se puede afirmar por qué el modelo devolvió un `final_result` vacío. IX.1.3 trata esa limitación.
 - No hay réplicas ni ablación. No se puede saber si el fallo es estable entre corridas ni si depende del modelo del recuperador, del prompt o de otra diferencia entre estrategias.
 - La comparación de respuestas sustantivas está condicionada a una submuestra seleccionada; no es el efecto causal de Agentic-RAG.

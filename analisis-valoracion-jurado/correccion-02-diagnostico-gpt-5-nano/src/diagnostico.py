@@ -781,8 +781,10 @@ def build_join_audit(data: pd.DataFrame, judges: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_judge_audit(data: pd.DataFrame, judges: pd.DataFrame) -> pd.DataFrame:
+    extra_cols = [c for c in ["fuente_categoria", "revision_manual_id"] if c in data.columns]
     non_sub = data[data["es_no_sustantiva"]][
         ["obs_id", "q", "sub", "estrategia", "modelo", "categoria", "subcategoria", "respuesta_obtenida"]
+        + extra_cols
     ].copy()
     merged = judges.merge(
         non_sub,
@@ -1233,7 +1235,10 @@ def build_review_packet(data: pd.DataFrame) -> None:
             "fecha": "",
         }
     )
-    template.to_csv(REVISION / "plantilla_resultados.csv", index=False, encoding="utf-8")
+    # No sobrescribir una plantilla ya completada o aceptada.
+    canonical_template = REVISION / "plantilla_resultados.csv"
+    if not canonical_template.exists():
+        template.to_csv(canonical_template, index=False, encoding="utf-8")
 
     # Lista de verificación asistida, separada del paquete ciego.
     non_sub[
