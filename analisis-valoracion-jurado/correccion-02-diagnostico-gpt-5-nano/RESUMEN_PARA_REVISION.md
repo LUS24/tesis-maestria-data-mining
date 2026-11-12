@@ -23,7 +23,7 @@
 ## Qué queda pendiente
 
 - La revisión manual ya fue aceptada y consolidada en `salidas/14_dataset_categoria_final.csv`. No hace falta volver a revisar.
-- Proceder con el reanálisis IX.1.1 usando esa base final.
+- Proceder con el análisis estadístico IX.1.1 usando esa base final.
 - Confirmar las decisiones editoriales después de IX.1.1 antes de editar la tabla de medianas y las conclusiones.
 
 ## Cómo reproducir
