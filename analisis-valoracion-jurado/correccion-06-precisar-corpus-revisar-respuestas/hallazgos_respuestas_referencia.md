@@ -69,7 +69,7 @@ El OCR disponible no permite afirmar que la extracción haya sido validada:
 - El OCR largo contiene versiones antiguas de los artículos 215, 351 y 355, y no contiene los artículos 216, 221 ni 239 del cuerpo.
 - El corpus contiene 397 nodos con texto y un nodo vacío (artículo 239).
 
-El manuscrito dice que se hizo una “inspección manual de una muestra” sin informar tamaño, estratos, criterios de muestreo ni tasa de error. Debe agregarse ese dato o declararse que la extracción no fue validada cuantitativamente. La simple existencia de un OCR no demuestra fidelidad.
+El manuscrito dice que se hizo una “inspección manual de una muestra”. El proceso declarado fue una revisión manual por archivo, no un muestreo; no se conservó un conteo de discrepancias ni una tasa de error. Debe declararse que la extracción no fue validada cuantitativamente. La simple existencia de un OCR no demuestra fidelidad.
 
 ## 2. Revisión del benchmark: qué hizo la abogada
 
@@ -107,6 +107,18 @@ No todas las intervenciones están incorporadas al JSON. Las más importantes qu
 | Q25 litio 2025 | Aclarar temporalidad | Parcial: dice “al año 2025”, sin versión normativa | Verificar artículo 351 y fecha de consulta. |
 | Caso de hidrocarburos | Omitir por ser trabajo específico (Ley 17.319) | Aparente omisión: no está en el JSON, pero no puede probarse que la decisión se tomara después de la revisión; el ODT conserva el borrador | Confirmar la omisión y no usar el ODT como benchmark final. |
 
+### 2.2.1. Conteo de preguntas intervenidas
+
+| Indicador | Valor |
+| --- | ---: |
+| Preguntas del benchmark | 25 |
+| Preguntas con alguna intervención | 18 |
+| Preguntas con cambio de contenido o corrección aplicada | 17 |
+| Preguntas solo con comentario no aplicado | 1 (Q24) |
+| Preguntas sin intervención | 7 (Q7, Q8, Q9, Q12, Q13, Q15, Q20) |
+
+El detalle está en `salidas/conteo_preguntas_revisadas.csv` y el método en `scripts/count_reviewed_questions.py`.
+
 ### 2.3. Consecuencia para el manuscrito
 
 El manuscrito describe la revisión como “validación” por un profesional y, en metodología, como un proceso de cuatro etapas que incluye “validación final” y una segunda revisión. La evidencia disponible muestra **una revisión registrada en un ODT**, con comentarios y cambios, no una validación independiente ni una segunda revisión documentada. Propuesta:
@@ -118,17 +130,10 @@ El manuscrito describe la revisión como “validación” por un profesional y,
 
 ## 3. Respuestas de referencia: hallazgos concretos
 
-### 3.1. Q1.1: “Artículo 2, inciso 1”
+**Alcance:** los apartados 3.1 (Q1.2) y 3.2 (Q1.3) responden a la observación V.7 del jurado. El apartado 3.3 enumera hallazgos adicionales que no forman parte de las decisiones de esta tesis; las preguntas ya revisadas se mantienen como tales.
 
-**Problema:** el artículo 2 no contiene incisos. Divide las minas en tres categorías:
 
-> Con relación a los derechos que este Código reconoce y acuerda, las minas se dividen en tres categorías.
->
-> 1ª Minas de las que el suelo es un accesorio, que pertenecen exclusivamente al Estado...
-
-**Corrección propuesta:** “Artículo 2, categoría 1ª (numeral 1°)” y, en la respuesta, “(art. 2°, categoría 1ª, numeral 1°)”. No cambiar el sentido jurídico; solo la etiqueta.
-
-### 3.2. Q1.2: el artículo 8 no es la separación de la propiedad
+### 3.1. Q1.2: el artículo 8 no es la separación de la propiedad
 
 **Texto del corpus:**
 
@@ -138,9 +143,9 @@ El manuscrito describe la revisión como “validación” por un profesional y,
 - Artículo 11: “Las minas forman una propiedad distinta de la del terreno en que se encuentran; pero se rigen por los mismos principios que la propiedad común, salvo las disposiciones especiales de este Código.”
 - Artículo 18: “Las minas se conceden a los particulares por tiempo ilimitado.”
 
-**Hallazgo:** el anexo Typst dice “La propiedad minera constituye un derecho real separado de la propiedad del suelo (art. 8)”. Es incorrecto: el artículo 8 no establece la separación; el artículo 11 sí. Además, el “tiempo ilimitado” está en el artículo 18, no en los artículos 10 y 11. La respuesta JSON de 1.2 ya cita 7, 10 y 11 y no comete el error del anexo. **Corregir el anexo, no la respuesta JSON.**
+**Hallazgo:** el anexo Typst dice “La propiedad minera constituye un derecho real separado de la propiedad del suelo (art. 8)”. Es incorrecto: el artículo 8 no establece la separación; el artículo 11 sí. Además, el “tiempo ilimitado” está en el artículo 18, no en los artículos 10 y 11. Verificación: la respuesta del JSON y los artículos 8/11 del corpus y de `título_i.md` son correctos; el error está **solo en el anexo Typst**. **Corregir el anexo, no la respuesta JSON ni el benchmark.**
 
-### 3.3. Q1.3: paráfrasis del artículo 17
+### 3.2. Q1.3: paráfrasis del artículo 17
 
 **Texto del corpus:**
 
@@ -156,46 +161,27 @@ El manuscrito describe la revisión como “validación” por un profesional y,
 - omite “salud o existencia de los trabajadores” y la reemplaza por “salud”;
 - agrega “solamente”, que el texto no formula de ese modo.
 
-No se afirma aquí cuál es la interpretación jurídica correcta; se afirma que la respuesta de referencia no reproduce el artículo que invoca. La abogada debe decidir si corrige la paráfrasis o si reformula la pregunta para que la respuesta sea defendible.
+No se afirma aquí cuál es la interpretación jurídica correcta; se afirma que la respuesta de referencia no reproduce el artículo que invoca. Verificación: el error está **en el JSON y en el anexo Typst**; el artículo 17 del corpus y de `título_i.md` es correcto. El benchmark v1 no se modifica porque ya fue usado para las 711 respuestas. Corregir el anexo del manuscrito para citar el artículo 17 literalmente y declarar la discrepancia como limitación; una nueva revisión o reevaluación corresponde a trabajo futuro.
 
-### 3.4. Q13.2 y Q13.3: referencias incompletas
+### 3.3. Hallazgos adicionales fuera de alcance
 
-La respuesta 13.2 cita los artículos 235, 236, 237, 240, 241 y 243; la lista de referencias solo contiene 243. La respuesta 13.3 cita 245, 264 y 265; la lista solo contiene 245. Esto no significa que las citas sean incorrectas, pero el benchmark no declara como referencia los artículos que la respuesta esperada utiliza. Si se usan para evaluar precisión de citas, deben incluirse en `contexto_para_respuesta` o justificarse como fundamentos adicionales.
-
-### 3.5. Q22.1: referencia no utilizada
-
-La unidad Q22.1 declara los artículos 45 y 353, pero la respuesta solo cita el 45. Verificar si el 353 corresponde a Q22.2 (consecuencias del incumplimiento) y moverlo o ampliar la respuesta. No es un error grave, pero afecta la métrica de exhaustividad de citas.
-
-### 3.6. Q23: Río Turbio y el alcance del régimen especial
-
-**Corrección de atribución:** la abogada **no** recomendó eliminar Q23. En el ODT, la recomendación de eliminar aparece al final, junto al caso de hidrocarburos añadido (`Explora S.A.`, Ley 17.319), y no junto a Q23. Lo que la revisora pidió para el caso final combinado fue separarlo en casos individuales; el autor generó Q22–Q25.
-
-Q23 sigue siendo un caso de Río Turbio. El artículo 349 del Código regula la cuenca carbonífera, pero el caso no explicita si el régimen aplicable se agota en el Código o requiere legislación especial. No se debe atribuir a la revisora una recomendación de eliminación que no hizo. La decisión sobre Q23 es independiente: mantenerlo, rotularlo como caso de régimen especial o moverlo a un anexo.
-
-### 3.7. Q24: Ley 24.585 sin contexto
-
-La pregunta dice “desde antes de la vigencia de la Ley 24.585” sin explicar que se trata de la ley de protección ambiental para la actividad minera. La abogada pidió aclararlo. La respuesta cita el artículo 355, que es correcto para la obligación transitoria, pero el enunciado presupone un conocimiento que el benchmark no provee. Aclarar la ley o mover el caso a un anexo de legislación especial.
-
-### 3.8. Q25: falta el artículo 76 en las referencias
-
-La respuesta cita el artículo 76 para caracterizar el litio como yacimiento diseminado de primera categoría y el artículo 351 para el multiplicador. La lista de referencias solo contiene el 351. Agregar el 76. Además, verificar que el artículo 351 citado sea la versión vigente en 2025 y dejar registrada la fecha de consulta.
+La auditoría adicional detectó Q1.1 (etiqueta “inciso” en el artículo 2), Q13.2/Q13.3, Q22.1 y Q25 (referencias incompletas), y Q23/Q24 (alcance de regímenes especiales). **No forman parte de la respuesta al jurado**: las preguntas ya fueron revisadas por la profesional y se mantienen como tales. Quedan documentados en `salidas/unidades_benchmark.csv` y `salidas/decisiones_revision.csv` para trabajo futuro. No se propone una nueva revisión, un benchmark v2 ni un cambio de las respuestas ya evaluadas en esta tesis.
 
 ## 4. Resumen de decisiones
 
-| Prioridad | Decisión | Responsable |
+| Prioridad | Decisión | Estado |
 | --- | --- | --- |
-| Alta | Corregir fecha de sanción y publicación en anexo/tablas. | Autor |
-| Alta | Reescribir procedencia del corpus (PDF 1997 + HTML actualizado; OCR parcial). | Autor |
-| Alta | Corregir 1.2 (art. 8 → 11; tiempo ilimitado → 18). | Autor + abogada |
-| Alta | Corregir 1.3 (art. 17) o reformular la pregunta. | Abogada |
-| Media | Revisar el alcance de Q23 (Río Turbio); no atribuir su eliminación a la revisora. | Autor + abogada |
-| Media | Aclarar Q24 (Ley 24.585) y Q25 (art. 76/versión 2025). | Autor + abogada |
-| Media | Completar referencias de Q13.2/Q13.3 y Q22.1. | Autor |
-| Media | Reemplazar “validación” por “revisión” y documentar el ODT. | Autor |
-| Baja | Unificar tildes y espacios en nombres (“Álvarez”, “Joaquín”). | Autor |
+| Alta | Documentar el proceso de corpus en 8 pasos: PDF → o4 → Markdown → títulos → revisión manual/Infoleg → GPT-4.1 → DOCX → revisión profesional → ODT → JSON | Resuelta |
+| Alta | Corregir 1.2 solo en el anexo Typst; el JSON y el corpus son correctos | Resuelta |
+| Alta | No modificar el benchmark v1 por 1.3; corregir el anexo para citar el artículo 17 y declarar la discrepancia | Resuelta |
+| Alta | Reemplazar “validación” por “revisión por una profesional”; no afirmar segunda revisión | Resuelta |
+| Alta | Corregir fecha de sanción/publicación en anexo y tablas | Resuelta |
+| Media | Documentar el conteo: 18 preguntas intervenidas, 17 corregidas, Q24 solo comentario, 7 sin intervención | Resuelta |
+| — | Q23/Q24/Q13/Q22/Q25 y benchmark v2 | Fuera de alcance; no se incluyen en las decisiones |
 
 ## 5. Lo que queda fuera de este informe
 
 - No se pronuncia sobre la interpretación jurídica definitiva de los artículos 17, 18 o 349; solo verifica la fidelidad textual de las respuestas de referencia.
 - No modifica el benchmark ni el corpus.
-- No recalcula las métricas de los jueces; los cambios de benchmark requerirían una nueva versión y, si se usan para evaluar, una nueva ejecución o una re-evaluación explícita.
+- No recalcula las métricas de los jueces; el benchmark v1 se mantiene y cualquier cambio de respuestas requeriría una nueva versión y una reevaluación explícita, fuera del alcance de esta tesis.
+- No se propone una nueva revisión profesional ni un benchmark v2; las preguntas ya revisadas se mantienen.

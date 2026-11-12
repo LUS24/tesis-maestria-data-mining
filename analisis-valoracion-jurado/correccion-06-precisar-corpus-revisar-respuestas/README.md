@@ -10,7 +10,7 @@ No se modificó ningún archivo existente del repositorio. Las fuentes, el manus
 
 1. **`resumen_ejecutivo.md`** — conclusiones y decisiones pendientes en dos páginas.
 2. **`propuesta_edicion_manuscrito.md`** — texto actual y texto propuesto para los `.typ` y README, con la justificación de cada cambio.
-3. **`hallazgos_respuestas_referencia.md`** — auditoría del corpus y de las respuestas 1.1, 1.2, 1.3, 13, 22, 23, 24 y 25.
+3. **`hallazgos_respuestas_referencia.md`** — auditoría del corpus y de las respuestas 1.2 y 1.3; los demás hallazgos quedan fuera de alcance.
 4. **`salidas/decisiones_revision.md`** — qué propuso la abogada, qué quedó en el JSON y qué sigue pendiente.
 5. **`salidas/parrafos_revisados.md`** — comparación completa antes/después de los 80 párrafos con cambios.
 
@@ -58,33 +58,39 @@ El manuscrito dice “399 artículos” en metodología y “245 artículos” e
 - `fecha_promulgacion = 1994-01-10` → no verificada; no usar sin fuente.
 - `fecha_ultima_actualizacion = 2024-12-09` → no verificada; el HTML local contiene notas hasta 2023. No usar como dato verificado.
 
-### 3.4. La revisión de la abogada está registrada, pero no es una “validación” cerrada
+### 3.4. La revisión de la profesional: alcance y conteo
 
-El ODT contiene **166 regiones de cambio**, **130 con texto** y **80 párrafos con diferencias** respecto del DOCX sin revisión. Incluye:
+El ODT contiene **166 regiones de cambio**, **130 con texto** y **80 párrafos con diferencias** respecto del DOCX sin revisión. La revisión fue realizada por **una única profesional del derecho argentino**; no hay evidencia de una segunda revisión independiente.
 
-- comentarios sobre el prompt y el perfil profesional;
-- nombres y lugares para los casos;
-- cambios de terminología (“Código Minero” → “Código de Minería”);
-- correcciones de redacción;
-- decisiones de alcance (separar el caso final, aclarar la Ley 24.585, omitir el caso de hidrocarburos).
+El conteo por pregunta es reproducible con `scripts/count_reviewed_questions.py` y está en `salidas/conteo_preguntas_revisadas.csv`:
 
-No todos los comentarios están incorporados al JSON. El autor aplicó algunas decisiones que no quedaron registradas como cambios rastreados (por ejemplo, San Juan, Chubut, Tierra del Fuego y Jujuy). La tabla `salidas/decisiones_revision.csv` separa propuesta, estado en el JSON y acción pendiente.
+| Indicador | Valor |
+| --- | ---: |
+| Preguntas del benchmark | 25 |
+| Preguntas con alguna intervención | **18** |
+| Preguntas con cambio de contenido o corrección aplicada | **17** |
+| Preguntas solo con comentario no aplicado | **1** (Q24) |
+| Preguntas sin intervención | **7** (Q7, Q8, Q9, Q12, Q13, Q15, Q20) |
+| Fragmentos de cambio con texto | 130 |
+| Fragmentos de contenido (enunciado, respuesta, referencia) | 99 |
+| Comentarios editoriales | 31 |
 
-**No debe describirse el proceso como “validación final” ni como “segunda revisión”** sin identificar al revisor, la fecha y el resultado. La evidencia disponible es una revisión con control de cambios.
+Q22 se contabiliza como corregida porque el nombre “Rodrigo Asís” fue incorporado al JSON, aunque el cambio esté registrado como comentario. Q24 quedó solo con un comentario de alcance que no se incorporó.
 
-### 3.5. Respuestas de referencia que requieren corrección
+**No debe describirse el proceso como “validación final” ni como “segunda revisión”.** La descripción correcta es: revisión por una profesional, registrada en un ODT con control de cambios, con 18 preguntas intervenidas y 17 correcciones de contenido.
 
-| Unidad | Problema | Corrección propuesta |
+### 3.5. Respuestas de referencia: alcance del jurado
+
+El jurado observó dos ejemplos concretos. La verificación distingue el dato del manuscrito:
+
+| Unidad | Verificación | Acción |
 | --- | --- | --- |
-| Q1.1 | “Artículo 2, inciso 1”: el artículo 2 usa categorías, no incisos. | “Artículo 2, categoría 1ª (numeral 1°)”. |
-| Q1.2 | El anexo Typst atribuye al artículo 8 la separación de la propiedad; el artículo 8 se refiere a la facultad de buscar minas. | Usar artículo 11 para la propiedad distinta; artículos 7 y 10 para dominio/concesión; artículo 18 para “tiempo ilimitado”. |
-| Q1.3 | La respuesta dice “seguridad pública, salud o conservación ambiental”; el artículo 17 dice “seguridad pública, conservación de las pertenencias y salud o existencia de los trabajadores”. | Reproducir el artículo 17 o reformular la pregunta. Revisión jurídica de la abogada. |
-| Q13.2 | La respuesta cita 235, 236, 237, 240, 241 y 243; las referencias solo incluyen 243. | Agregar las referencias que la respuesta utiliza. |
-| Q13.3 | La respuesta cita 264 y 265 además de 245; las referencias solo incluyen 245. | Agregar 264/265 o justificar por qué no son referencias. |
-| Q22.1 | Declara el artículo 353, pero la respuesta solo cita el 45. | Verificar si 353 corresponde a Q22.2 o ampliar la respuesta. |
-| Q23 | Río Turbio involucra un régimen especial que el caso no explicita. La revisora no pidió eliminar Q23; pidió separar el caso combinado. El caso que propuso eliminar es el de hidrocarburos. | Revisar el alcance de Q23 (mantener, rotular o mover a anexo); no atribuir su eliminación a la revisora. |
-| Q24 | La Ley 24.585 se menciona sin explicar su tema. | Aclarar que es la ley de protección ambiental para la actividad minera o mover a anexo. |
-| Q25 | La respuesta cita el artículo 76, pero las referencias solo incluyen el 351. | Agregar el 76 y verificar la versión vigente en 2025. |
+| Q1.2 | La respuesta del JSON cita correctamente 7, 10 y 11; los textos de los artículos 8 y 11 del corpus y de `título_i.md` son correctos. El error está **solo en el anexo Typst**, que atribuye al artículo 8 la separación de la propiedad. | Corregir únicamente el anexo Typst: art. 11 para propiedad distinta; 7 y 10 para dominio/concesión; 18 solo si se conserva “tiempo ilimitado”. No modificar el benchmark |
+| Q1.3 | La paráfrasis “seguridad pública, salud o conservación ambiental” está **en el JSON y en el anexo Typst**. El artículo 17 del corpus y de `título_i.md` dice “seguridad pública, conservación de las pertenencias y salud o existencia de los trabajadores”. | El benchmark v1 no se modifica porque ya fue usado para generar y evaluar las 711 respuestas. Corregir el anexo del manuscrito para citar el artículo 17 literalmente y declarar la discrepancia como limitación. Una corrección del benchmark y una nueva evaluación corresponden a trabajo futuro |
+
+### 3.6. Hallazgos fuera del alcance de esta respuesta
+
+La auditoría adicional detectó Q1.1 (etiqueta “inciso” en el artículo 2), Q13.2/Q13.3, Q22.1, Q25 (referencias incompletas) y Q23/Q24 (alcance de regímenes especiales). **No forman parte de la respuesta al jurado**: las preguntas ya fueron revisadas por la profesional y se mantienen como tales. Quedan documentados en `hallazgos_respuestas_referencia.md` para trabajo futuro; no se propone una nueva revisión ni un benchmark v2 en esta tesis.
 
 ## 4. Archivos generados
 
@@ -104,6 +110,8 @@ No todos los comentarios están incorporados al JSON. El autor aplicó algunas d
 | `comparacion_docx_odt.md` | Cambios rastreados con caso, sección y clasificación. |
 | `comparacion_docx_odt.json` | Índice máquina-legible de la comparación. |
 | `cambios_rastreados.csv` | 130 inserciones/eliminaciones con texto y contexto. |
+| `conteo_preguntas_revisadas.csv` | Conteo por pregunta: intervenciones, contenido, comentarios y estado. |
+| `resumen_conteo_preguntas.md` | Resumen legible: 18 intervenidas, 17 corregidas, 1 solo comentario, 7 sin intervención. |
 | `cambios_por_caso.md` | Los mismos cambios agrupados por caso. |
 | `parrafos_antes_despues.csv` | 80 párrafos con texto original y final. |
 | `parrafos_revisados.md` | Los 80 párrafos en formato de revisión. |
@@ -115,7 +123,7 @@ No todos los comentarios están incorporados al JSON. El autor aplicó algunas d
 | `referencias_benchmark.csv` | 166 referencias del benchmark y su resolución en el corpus. |
 | `unidades_benchmark.csv` | 79 unidades, citas extraídas y alertas. |
 | `citas_respuestas.csv` | Cada cita de artículo extraída de las respuestas. |
-| `propuestas_benchmark.csv` / `.md` | 12 cambios propuestos para una versión v2 del benchmark. |
+| `propuestas_benchmark.csv` / `.md` | 12 cambios detectados por la auditoría adicional; fuera de alcance, no se usan en esta tesis. |
 | `auditoria_corpus_benchmark.md` | Informe automático de la auditoría. |
 
 ### Scripts reproducibles (`scripts/`)
@@ -123,9 +131,10 @@ No todos los comentarios están incorporados al JSON. El autor aplicó algunas d
 | Archivo | Función |
 | --- | --- |
 | `extract_review_changes.py` | Reconstruye original/final del ODT, extrae cambios y los compara con el DOCX. |
+| `count_reviewed_questions.py` | Mapea los cambios a Q1-Q25 y genera el conteo por pregunta. |
 | `audit_corpus_benchmark.py` | Audita corpus, metadatos, referencias y citas. |
 | `build_revision_decisions.py` | Construye la tabla curada de decisiones de revisión. |
-| `build_benchmark_proposals.py` | Construye las propuestas de benchmark v2. |
+| `build_benchmark_proposals.py` | Genera propuestas históricas de la auditoría adicional; fuera de alcance. |
 | `build_manifest.py` | Genera el manifiesto SHA-256 de fuentes y artefactos. |
 | `verificar_artefactos.py` | Verifica conteos y que los hashes de las fuentes no hayan cambiado. |
 
@@ -143,14 +152,14 @@ python3 scripts/verificar_artefactos.py
 
 Los scripts usan solo la biblioteca estándar de Python y rutas relativas al repositorio. No escriben fuera de `salidas/`. El manifiesto `manifiesto_sha256.csv` conserva los hashes de las fuentes y de los artefactos; `verificar_artefactos.py` comprueba que las fuentes no hayan cambiado.
 
-## 5. Decisiones que necesito de ti antes de editar el manuscrito
+## 5. Estado de las decisiones
 
-1. **Corpus:** ¿confirmas que el texto actualizado de Infoleg se incorporó manualmente al corpus? ¿O mediante un parser? Necesito la ruta exacta para describir la procedencia sin ambigüedad.
-2. **Q23 (Río Turbio):** ¿se mantiene, se rotula como caso de régimen especial o se mueve a un anexo? La revisora no pidió eliminarlo; el caso que propuso eliminar es el de hidrocarburos.
-3. **Q24 (Ley 24.585):** ¿se aclara en el enunciado o se mueve a un anexo?
-4. **Q1.3 (art. 17):** ¿la abogada confirma la paráfrasis propuesta o prefiere reformular la pregunta?
-5. **Q1.2 (art. 8 vs 11):** ¿se corrige solo el anexo Typst o también se crea una versión v2 del benchmark con la referencia 18?
-6. **Revisión:** ¿hubo una segunda revisión independiente? Si no, el manuscrito debe decir “revisión por una profesional” y no “validación final”.
+1. **Corpus:** resuelto. El proceso fue: PDF → imágenes → Markdown con o4; división por títulos; revisión manual de cada archivo y actualización con Infoleg; envío a GPT-4.1; exportación a DOCX; revisión por una profesional; ODT con cambios; generación del JSON final. El parser HTML se intentó, pero se descartó porque la revisión manual fue más rápida. Documentar este proceso en metodología; no afirmar que Infoleg se descartó por completo.
+2. **Q23 y Q24:** fuera de alcance. Las preguntas ya fueron revisadas por la profesional y se mantienen como tales. No se propone nueva revisión ni cambio de benchmark en esta tesis.
+3. **Q1.3:** el error está en el JSON y en el anexo Typst; el artículo 17 del corpus es correcto. El benchmark v1 no se modifica porque ya fue usado para las 711 respuestas. Corregir el anexo para citar el artículo 17 literalmente y declarar la discrepancia como limitación; una nueva revisión/reevaluación es trabajo futuro.
+4. **Q1.2:** el error está solo en el anexo Typst; el JSON y el corpus son correctos. Corregir el anexo y no crear una v2 por este punto.
+5. **Revisión:** fue una sola profesional; no hubo segunda revisión independiente. Cambiar “validación” por “revisión por una profesional” y documentar el ODT.
+6. **Conteo:** 18 preguntas intervenidas, 17 con corrección de contenido, Q24 solo con comentario, 7 sin intervención. Ver `salidas/conteo_preguntas_revisadas.csv`.
 
 ## 6. Límites
 

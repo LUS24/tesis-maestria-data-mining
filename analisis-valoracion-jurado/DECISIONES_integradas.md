@@ -19,13 +19,13 @@
 | `correccion-03-documentar-api-eliminar-determinismo` | 12 payloads locales, perfiles de Pydantic AI, tokens de razonamiento, tabla solicitado/registrado/efectivo | Resumen de evidencia y notebook válido; 12/12 payloads sin temperatura ni `reasoning_effort` | **OK** | Aceptar la redacción y declarar el esfuerzo histórico como desconocido |
 | `correccion-04-declarar-factores-pub-prompts-etc` | Auditoría de 237 sesiones, 27 reportes de jueces, prompts, anexo y diagrama | 237 logs, 27 reportes, 0 logs del Agente de Calidad; 236/237 sesiones con una llamada; scripts válidos | **OK con alerta** | Seis decisiones del checklist; el notebook de `part_g` no coincide con el script final |
 | `correccion-05-actualizacion-conclusiones-y-analisis-costos` | Tabla 4 reformulada, costos, Pareto, propuestas de texto y README | `verificacion_artefactos.json`: 46 controles, 0 fallos; 9 celdas, 711 observaciones, costo USD 22,2939 | **OK** | Aprobación institucional del título (PI-02) y validación humana de jueces (PI-06); D-01 aclarada por el autor |
-| `correccion-06-precisar-corpus-revisar-respuestas` | Linaje del corpus, conteos, revisión de la abogada y benchmark v2 | Verificador: 130 cambios, 80 párrafos, 482 nodos, 398 artículos, 79 unidades, 166 referencias y 12 propuestas; hashes fuente sin cambios | **OK** | Procedencia Infoleg y decisiones Q23–Q25/art. 17 (PI-11 a PI-17) |
+| `correccion-06-precisar-corpus-revisar-respuestas` | Linaje del corpus, conteos, revisión por una profesional y conteo de preguntas | Verificador: 130 cambios, 80 párrafos, 482 nodos, 398 artículos, 79 unidades, 166 referencias y 12 propuestas (fuera de alcance); hashes fuente sin cambios | **OK** | 1.2/1.3 y conteo de preguntas; Q23/Q24 y v2 fuera de alcance |
 | `correccion-07-forma-y-bibliografia` | Auditoría de 238 referencias, Tablas 2 y 3, propuestas BibTeX | Verificador: 412 archivos del manifiesto coinciden; 238 entradas, 0 claves huérfanas; 45 decisiones manuales | **OK** | Seis decisiones editoriales y paquete de correcciones factuales (PI-20 a PI-27) |
 | `verificacion-analisis-estadistico` | Recálculo independiente de alpha, Spearman, 23 discrepancias y 17 evaluaciones positivas | Alpha recalculado en memoria desde `final_judge_results.csv`: 0,807842 original y 0,799542 rúbrica; coincide con el informe | **OK** | El directorio no está versionado; revisión humana de los 23 casos (PI-08, PI-29) |
 
 ### 1.2 Comprobaciones técnicas realizadas
 
-- Los 31 archivos Python de los paquetes compilan en memoria; no se ejecutaron notebooks que pudieran sobrescribir salidas.
+- Los 32 archivos Python de los paquetes compilan en memoria; no se ejecutaron notebooks que pudieran sobrescribir salidas.
 - Los dos notebooks de corrección (`diagnostico_gpt5_nano.ipynb` y `02_parametros_prompts_y_configuracion.ipynb`) son JSON válidos y no contienen celdas con salida de error.
 - Los verificadores de `correccion-06` y `correccion-07` se ejecutaron en modo de solo lectura y pasaron.
 - El alpha se recalculó desde la fuente original, no desde la tabla derivada de la corrección 01.
@@ -59,7 +59,7 @@ Estas decisiones fueron aceptadas por el autor en `correccion-05-actualizacion-c
 | D-04 | Sin ganador único: Pareto, costo por respuesta correcta y objetivo explícito | Aceptada | RAG básico + nano es el menor costo puntual; no es “la mejor” en calidad |
 | D-05 | “Modo de fallo de respuesta”, sin causalidad ni “sobrecarga agéntica” | Aceptada | 41/79 no sustantivas; 38/79 sustantivas con media 0,820 |
 | D-06 | Declarar la asimetría 7/6 y no atribuir el efecto de modelo a capacidad sin salvedad | Aceptada | Queda por decidir si se repite la corrida (PI-09) |
-| D-07 | Congelar benchmark v1; la revisión LLM detectó posibles errores que requieren revisión profesional | Aceptada | La revisión profesional sigue pendiente (PI-19) |
+| D-07 | Congelar benchmark v1; la revisión LLM detectó posibles errores que requieren revisión profesional | Aceptada | La revisión profesional sigue pendiente como trabajo futuro; no se reabre el benchmark v1 en esta tesis |
 | D-08 | Declarar ausencia de validación humana; alpha como confiabilidad, no validez | Aceptada | Documentar 23 discrepancias y 17 evaluaciones positivas (PI-08) |
 | D-09 | Actualizar el título al alcance real | Aceptada | Requiere aprobación institucional (PI-02) |
 | D-10 | Objetivo 2 como cumplimiento parcial; dos agentes activos, sin verificador | Aceptada | Solo falta insertarlo en el manuscrito |
@@ -122,17 +122,20 @@ Reglas de implementación:
 
 ### Bloque D — Corpus, benchmark y respuestas de referencia
 
-| ID | Decisión pendiente | Opciones | Recomendación | Responsable | Bloquea |
-|---|---|---|---|---|---|
-| PI-12 | Procedencia del texto actualizado de Infoleg | A) Incorporación manual documentada; B) incorporación mediante parser, indicando ruta y versión; C) no se puede reconstruir | **A o B con evidencia.** Si no se recuerda, describir “incorporación controlada del texto actualizado” solo si es cierto y dejar la ruta/versión como limitación. No afirmar que Infoleg “se descartó por completo” | Autor | **Sí** para la sección de corpus |
-| PI-13 | Q23 (Río Turbio) | A) Mantener con nota de alcance; B) rotular como régimen especial y agregar normas; C) mover a anexo | **A para v1; B/C para v2.** La revisora no pidió eliminar Q23; el caso que propuso eliminar es el de hidrocarburos. No atribuirle una decisión que no tomó | Autor + abogada | No para v1; **sí** para v2 |
-| PI-14 | Q24 (Ley 24.585) | A) Aclarar que es la ley de protección ambiental minera; B) mover a anexo; C) dejarla como está | **A para v2; nota de alcance en v1.** La pregunta actual presupone conocimiento de la ley | Autor + abogada | No para v1; **sí** para v2 |
-| PI-15 | Q1.3 y paráfrasis del artículo 17 | A) Reproducir literalmente el artículo 17; B) paráfrasis aprobada por la abogada; C) reformular la pregunta | **A + revisión de la abogada.** No usar “solo” ni “seguridad o ambiental”: el artículo 17 incluye seguridad pública, conservación de las pertenencias y salud o existencia de los trabajadores | Abogada | **Sí** para la exactitud jurídica |
-| PI-16 | Q1.2: artículo 8 frente a artículo 11 | A) Corregir solo el anexo Typst; B) crear v2 con artículo 18 si se conserva “tiempo ilimitado”; C) ambas | **C.** Corregir el anexo ahora (art. 11 para propiedad distinta; 7 y 10 para dominio/concesión) y decidir el art. 18 en v2 | Autor + abogada | No para v1; **sí** para v2 |
-| PI-17 | Referencias de Q13.2, Q13.3, Q22.1 y Q25 | A) Agregar las referencias que las respuestas usan, previa revisión jurídica; B) anotar la discrepancia en v1 y corregir en v2; C) dejar solo las referencias actuales | **B para v1; A para v2.** En v1 no cambiar las respuestas ni volver a puntuar; documentar la diferencia | Autor + abogada | No para v1; **sí** para v2 |
-| PI-18 | Segunda revisión independiente del benchmark | A) Confirmar que existe y documentarla; B) declarar que hubo una sola revisión profesional; C) mantener “validado por profesionales” sin evidencia | **B.** La evidencia disponible es una revisión con control de cambios, no una segunda revisión. Cambiar “validado” por “revisado por una profesional” | Autor | **Sí** para la afirmación de validación |
-| PI-19 | Fechas y metadatos del benchmark | A) Usar 1886-11-25 (sanción), 1997-05-30 (texto ordenado) y eliminar 1994-01-01/10/15 y 2024-12-09 no verificados; B) conservar los metadatos fuente y explicar que son erróneos; C) usar una fecha de “última actualización” solo si se identifica la versión | **A.** Si se conserva una fecha de actualización, que sea la de la versión efectivamente consultada y con fuente. No presentar 2024-12-09 como verificado | Autor | **Sí** para el anexo y la metodología |
-| PI-20 | Alcance y publicación del benchmark v2 | A) Congelar v1 para la tesis y publicar v2 como anexo/trabajo futuro; B) publicar v2 ahora con revisión profesional; C) publicar v2 solo con la revisión LLM | **A para la tesis; B si hay revisión profesional antes de la entrega.** La revisión LLM es un tamiz, no una validación jurídica | Autor + abogada | No para la defensa; **sí** para la contribución del benchmark |
+**No quedan decisiones pendientes en este bloque.** Las observaciones del jurado V.7 y IX.1.6 se resolvieron o se acotaron; las preguntas ya revisadas por la profesional se mantienen como tales.
+
+| ID | Tema | Estado | Resolución | Evidencia |
+|---|---|---|---|---|
+| PI-12 | Procedencia del corpus | **Resuelta** | Proceso en 8 pasos: PDF → imágenes → Markdown con o4 → división por títulos → revisión manual y actualización con Infoleg → GPT-4.1 → DOCX → revisión por una profesional → ODT → JSON final. El parser HTML se intentó y se descartó por complejidad; la actualización fue manual | Declaración del autor; `correccion-06/README.md` §5; `propuesta_edicion_manuscrito.md` §1.1 |
+| PI-13 | Q23 (Río Turbio) | **Cancelada / fuera de alcance** | La pregunta se mantiene como fue revisada; no se propone nueva revisión ni cambio de benchmark. No atribuir a la revisora una eliminación que no pidió | `correccion-06/README.md` §3.6; `decisiones_revision.csv` R24 |
+| PI-14 | Q24 (Ley 24.585) | **Cancelada / fuera de alcance** | La pregunta se mantiene como fue revisada; el comentario no aplicado se documenta, no genera una nueva decisión | `salidas/conteo_preguntas_revisadas.csv` |
+| PI-15 | Q1.3: artículo 17 | **Resuelta; implementación editorial pendiente** | El error está en el JSON y en el anexo Typst; el corpus es correcto. No se modifica el benchmark v1. Se corrige el anexo para citar el artículo 17 literalmente y se declara la discrepancia; corregir el JSON y reevaluar es trabajo futuro | `correccion-06/README.md` §3.5; `propuesta_edicion_manuscrito.md` §3.2 |
+| PI-16 | Q1.2: artículo 8 vs 11 | **Resuelta; implementación editorial pendiente** | El JSON, el corpus y `título_i.md` son correctos; el error está solo en el anexo Typst. Corregir únicamente el anexo; no crear v2 | `correccion-06/README.md` §3.5; `propuesta_edicion_manuscrito.md` §3.1 |
+| PI-17 | Referencias Q13/Q22/Q25 | **Cancelada / fuera de alcance** | Son hallazgos de auditoría adicional, no observaciones del jurado; las preguntas revisadas se mantienen y no se propone v2 | `correccion-06/README.md` §3.6 |
+| PI-18 | Segunda revisión independiente | **Resuelta** | Hubo una sola profesional revisora; no existe segunda revisión independiente. Usar “revisión por una profesional” | `correccion-06/README.md` §3.4; `resumen_conteo_preguntas.md` |
+| PI-19 | Fechas y metadatos | **Resuelta; implementación editorial pendiente** | Usar 1886-11-25 y 1997-05-30; eliminar 1994-01-01/10/15 y 2024-12-09 no verificados | `propuesta_edicion_manuscrito.md` §2.1 |
+| PI-20 | Benchmark v2 | **Cancelada / fuera de alcance** | No se crea ni publica benchmark v2 en esta tesis; nueva revisión = trabajo futuro | `correccion-06/README.md` §3.6 |
+| PI-32 | Conteo de preguntas corregidas | **Resuelta** | 25 preguntas: 18 con alguna intervención, 17 con cambio de contenido o corrección aplicada, 1 solo comentario no aplicado (Q24), 7 sin intervención (Q7, Q8, Q9, Q12, Q13, Q15, Q20) | `salidas/conteo_preguntas_revisadas.csv`; `salidas/resumen_conteo_preguntas.md` |
 
 ### Bloque E — Bibliografía y citas
 
@@ -191,7 +194,7 @@ Estas no son alternativas abiertas; ya están respaldadas por los datos o por de
 1. **PI-02:** resolver el título con la institución; si no hay aprobación, adoptar la opción B y declarar el alcance.
 2. **PI-06 y PI-07:** D-01 ya está resuelta con la revisión manual de categorías. Decidir si se agrega una submuestra humana para validar las calificaciones de los jueces; si no, declarar la ausencia y no llamar “validación” al acuerdo entre jueces.
 3. **PI-09:** decidir si se ejecuta A′/B/C antes del **2026-12-11**; si no, declarar la ejecución única y la asimetría 7/6.
-4. **PI-12 a PI-20:** cerrar procedencia del corpus, Q23–Q25, art. 17, fechas y alcance de v2 con la abogada.
+4. **Bloque D:** no quedan decisiones pendientes. Aplicar la implementación editorial de PI-15 y PI-19; mantener PI-13, PI-14, PI-17 y PI-20 fuera de alcance.
 5. **PI-21 a PI-28:** aprobar el paquete bibliográfico; primero las dos críticas, luego las altas y finalmente las bajas.
 
 ### Antes de compilar la versión final
@@ -230,15 +233,15 @@ Completar una fila por cada `PI-*` antes de editar el manuscrito. Si se elige un
 | PI-09 | 2026-11-12 | A) No ejecutar; declarar 7/6, recuperador fijo y ejecución única. Aceptar y documentar limitación en el texto| autor | |
 | PI-10 | 2026-11-12 | A) Declararla como excepción documentada | autor | |
 | PI-11 | 2026-11-12 | B) marcarlo como exploratorio y declarar el script como fuente canónica. | autor | |
-| PI-12 | 2026-11-12 | Se realizó una incorporación manual controlada pero no se documentó de manera explícita. Se generaron los archivos markdown a partir del PDF usando el modelo 4o para procesar las imágenes. Luego se revisó manualmente artículo por artículo agregando las actualizaciones registradas en infoleg. Se intentó parsear el HTML pero resultó más complejo de lo que se esperaba por lo que una revisión manual fue más rápida. | autor | |
-| PI-13 | | | | |
-| PI-14 | | | | |
-| PI-15 | | | | |
-| PI-16 | | | | |
-| PI-17 | | | | |
-| PI-18 | | | | |
-| PI-19 | | | | |
-| PI-20 | | | | |
+| PI-12 | 2026-11-12 | **Resuelta.** Proceso documentado: PDF → imágenes → Markdown con o4; división por títulos; revisión manual y actualización con Infoleg; GPT-4.1; DOCX; revisión por una profesional; ODT; JSON final. El parser HTML se intentó y se descartó por complejidad; la actualización fue manual | autor | `correccion-06/README.md` §5; `propuesta_edicion_manuscrito.md` §1.1 |
+| PI-13 | 2026-11-12 | **Cancelada / fuera de alcance.** Q23 se mantiene como fue revisada; no se propone nueva revisión ni cambio de benchmark | autor | `correccion-06/README.md` §3.6; `decisiones_revision.csv` R24 |
+| PI-14 | 2026-11-12 | **Cancelada / fuera de alcance.** Q24 se mantiene como fue revisada; el comentario no aplicado se documenta, no genera una nueva decisión | autor | `salidas/conteo_preguntas_revisadas.csv` |
+| PI-15 | 2026-11-12 | **Resuelta.** No se modifica el benchmark v1. Se corrige el anexo para citar el artículo 17 literalmente y se declara la discrepancia. Corregir el JSON y reevaluar es trabajo futuro | autor | `correccion-06/README.md` §3.5; `propuesta_edicion_manuscrito.md` §3 |
+| PI-16 | 2026-11-12 | **Resuelta.** El error de 1.2 está solo en el anexo Typst; el JSON y el corpus son correctos. Corregir el anexo; no crear v2 | autor | `correccion-06/README.md` §3.5 |
+| PI-17 | 2026-11-12 | **Cancelada / fuera de alcance.** Q13.2/Q13.3/Q22.1/Q25 son hallazgos adicionales, no observaciones del jurado; no se propone nueva revisión ni v2 | autor | `correccion-06/README.md` §3.6 |
+| PI-18 | 2026-11-12 | **Resuelta.** Una sola profesional revisora; no hubo segunda revisión independiente. Usar “revisión por una profesional”, no “validación” | autor | `correccion-06/README.md` §3.4; `resumen_conteo_preguntas.md` |
+| PI-19 | 2026-11-12 | **Resuelta.** Usar 1886-11-25 y 1997-05-30; eliminar 1994-01-01/10/15 y 2024-12-09 no verificados | autor | `propuesta_edicion_manuscrito.md` §2.1 |
+| PI-20 | 2026-11-12 | **Cancelada / fuera de alcance.** No se crea ni publica benchmark v2 en esta tesis; nueva revisión = trabajo futuro | autor | `correccion-06/README.md` §3.6 |
 | PI-21 | | | | |
 | PI-22 | | | | |
 | PI-23 | | | | |
@@ -250,6 +253,7 @@ Completar una fila por cada `PI-*` antes de editar el manuscrito. Si se elige un
 | PI-29 | | | | |
 | PI-30 | | | | |
 | PI-31 | | | | |
+| PI-32 | 2026-11-12 | **Resuelta.** 25 preguntas: 18 con alguna intervención; 17 con cambio de contenido o corrección aplicada; 1 solo comentario no aplicado (Q24); 7 sin intervención (Q7, Q8, Q9, Q12, Q13, Q15, Q20) | autor | `salidas/conteo_preguntas_revisadas.csv`; `salidas/resumen_conteo_preguntas.md` |
 
 ---
 

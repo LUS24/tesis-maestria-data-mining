@@ -1,27 +1,25 @@
 # Resumen ejecutivo — IX.1.6
 
-## Qué se pidió
+## Qué pidió el jurado
 
-Precisar la versión del corpus, resolver las contradicciones sobre su origen y revisar las respuestas de referencia, usando como evidencia el DOCX sin revisión, el ODT revisado por la abogada y el JSON generado por el autor.
+Precisar la versión del corpus, resolver las contradicciones sobre su origen y revisar las respuestas de referencia observadas en V.7: los ejemplos 1.2 (artículo 8) y 1.3 (artículo 17). También pidió documentar que el benchmark fue revisado por un único profesional y cuántas preguntas fueron corregidas.
 
-## Qué se encontró
+## 1. Procedencia del corpus
 
-### 1. El corpus contiene texto posterior a 1997
+El proceso efectivamente realizado fue:
 
-El corpus indexado **no puede describirse como una copia del PDF de 1997**. Contiene, entre otras, las siguientes modificaciones:
+1. Conversión del PDF del Boletín Oficial a imágenes y extracción a Markdown con o4.
+2. División del Markdown en los archivos de `codigo_experimentos/data/law_data/titulos_codigo_mineria/`.
+3. Revisión manual de cada archivo y actualización de los artículos con el texto de Infoleg.
+4. Envío del Markdown a GPT-4.1 para generar preguntas y respuestas.
+5. Exportación de las preguntas a DOCX.
+6. Revisión por una profesional del derecho.
+7. Devolución de un ODT con cambios y comentarios.
+8. Generación de `data/evaluation_questions_v20250804_101435.json` a partir de esas correcciones.
 
-- artículo 3: “wollastonita” (Ley 25.225/1999);
-- artículo 31: redacción de la Ley 27.111/2015;
-- artículos 215 y 221: actualizaciones de la Resolución 90/2023 y la Ley 27.701/2022;
-- artículos 351 y 355: redacciones distintas de las que aparecen en el OCR largo.
+El parser HTML se intentó, pero se descartó porque la revisión manual resultó más rápida y controlable. Por tanto, el corpus debe describirse como **PDF de 1997 + actualización manual con Infoleg + OCR parcial como insumo histórico**. No es una copia exclusiva del PDF de 1997 ni un producto automático del parser de Infoleg.
 
-El HTML de Infoleg conserva las notas de esas modificaciones y coincide con el corpus en los artículos verificados. La conclusión defendible es:
-
-> **PDF de 1997 como texto base + HTML actualizado de Infoleg para las modificaciones + OCR parcial como insumo histórico.**
-
-La afirmación de que “las estrategias basadas en Infoleg se descartaron” es incompleta: se descartaron como pipeline automático, pero el texto actualizado quedó incorporado. El autor debe confirmar si fue manual o mediante un parser.
-
-### 2. Los conteos deben corregirse
+## 2. Conteos del corpus
 
 | Dato | Valor verificado |
 | --- | ---: |
@@ -36,48 +34,53 @@ La afirmación de que “las estrategias basadas en Infoleg se descartaron” es
 
 El manuscrito dice “399 artículos” en metodología y “245 artículos” en el capítulo 3. La tabla de 398 es correcta como nodos, pero debe explicar la duplicación del apéndice y el artículo 239.
 
-### 3. Las fechas del benchmark son incorrectas o no están sustentadas
+## 3. Fechas del benchmark
 
 - Sanción: **1886-11-25**, no 1994-01-01.
 - Publicación original: Registro Nacional 1885/86, p. 578; texto ordenado: **B.O. 1997-05-30**.
 - `1994-01-10` no está verificado.
 - `2024-12-09` no está verificado; el HTML local contiene notas hasta 2023.
 
-### 4. La revisión de la abogada está registrada, pero no es una validación cerrada
+## 4. Revisión de la profesional
 
-El ODT contiene **166 regiones de cambio**, **130 con texto** y **80 párrafos con diferencias**. Incluye comentarios, nombres, lugares, cambios de terminología, correcciones de redacción y decisiones de alcance. No todos los comentarios fueron incorporados al JSON.
+El ODT contiene **166 regiones de cambio**, **130 con texto** y **80 párrafos con diferencias**. La revisión fue realizada por **una única profesional del derecho argentino**; no hubo segunda revisión independiente.
 
-El autor aplicó algunas decisiones que no están registradas como cambios rastreados (San Juan, Chubut, Tierra del Fuego, Jujuy). No hay evidencia de una segunda revisión independiente. Por tanto, el manuscrito debe decir **“revisión por una profesional”**, no “validación final” ni “revisión por segunda vez”, salvo que se documente.
+| Indicador | Valor |
+| --- | ---: |
+| Preguntas del benchmark | 25 |
+| Preguntas con alguna intervención | **18** |
+| Preguntas con cambio de contenido o corrección aplicada | **17** |
+| Preguntas solo con comentario no aplicado | **1** (Q24) |
+| Preguntas sin intervención | **7** (Q7, Q8, Q9, Q12, Q13, Q15, Q20) |
 
-### 5. Respuestas de referencia que requieren corrección
+El detalle está en `salidas/conteo_preguntas_revisadas.csv`; el método, en `scripts/count_reviewed_questions.py`.
 
-| Unidad | Hallazgo | Acción |
-| --- | --- | --- |
-| Q1.1 | “Artículo 2, inciso 1”: el artículo 2 usa categorías, no incisos. | “Artículo 2, categoría 1ª (numeral 1°)” |
-| Q1.2 | El anexo Typst atribuye al artículo 8 la separación de la propiedad; el artículo 8 se refiere a la facultad de buscar minas. | Usar art. 11 para propiedad distinta; 7 y 10 para dominio/concesión; 18 para “tiempo ilimitado”. |
-| Q1.3 | La respuesta dice “seguridad pública, salud o conservación ambiental”; el art. 17 dice “seguridad pública, conservación de las pertenencias y salud o existencia de los trabajadores”. | Reproducir el art. 17 o reformular la pregunta; revisión jurídica. |
-| Q13.2 | La respuesta cita 235, 236, 237, 240, 241 y 243; las referencias solo incluyen 243. | Agregar las referencias usadas. |
-| Q13.3 | La respuesta cita 264 y 265 además de 245; las referencias solo incluyen 245. | Agregar 264/265 o justificar. |
-| Q22.1 | Declara el artículo 353, pero la respuesta solo cita el 45. | Verificar Q22.2 o ampliar la respuesta. |
-| Q23 | Río Turbio involucra un régimen especial no explicitado. La revisora pidió separar el caso combinado, no eliminar Q23; el caso que propuso eliminar es el de hidrocarburos. | Revisar alcance de Q23 (mantener, rotular o mover a anexo). |
-| Q24 | La Ley 24.585 se menciona sin explicar su tema. | Aclarar que es la ley de protección ambiental minera o mover a anexo. |
-| Q25 | La respuesta cita el art. 76, pero las referencias solo incluyen el 351. | Agregar el 76 y verificar la versión vigente en 2025. |
+La descripción correcta del manuscrito es **“revisión por una profesional”**, no “validación final” ni “segunda revisión”.
 
-## Qué se entrega
+## 5. Respuestas de referencia observadas por el jurado
 
-- **`propuesta_edicion_manuscrito.md`**: texto actual y propuesto para los `.typ` y README.
-- **`hallazgos_respuestas_referencia.md`**: auditoría detallada con textos del corpus.
-- **`salidas/decisiones_revision.md`**: 30 decisiones de la revisión, con estado en el JSON.
-- **`salidas/parrafos_revisados.md`**: los 80 párrafos antes/después.
-- **`salidas/corpus_vs_fuentes.csv`**: comparación con HTML y OCR.
-- **`salidas/propuestas_benchmark.csv`**: 12 cambios para una versión v2 del benchmark.
-- **`salidas/referencias_benchmark.csv`** y **`unidades_benchmark.csv`**: auditoría de las 166 referencias y 79 unidades.
+### Q1.2
 
-## Qué necesito de ti
+- El JSON, el corpus y `título_i.md` citan correctamente los artículos 7, 10 y 11; el artículo 11 establece que la mina es una propiedad distinta.
+- El error está **solo en el anexo Typst**, que atribuye al artículo 8 la separación de la propiedad.
+- Acción: corregir únicamente el anexo. No modificar el benchmark.
 
-1. Confirmar si el texto actualizado de Infoleg se incorporó manualmente o con un parser.
-2. Decidir Q23 (Río Turbio): mantener, rotular como régimen especial o mover a anexo. La revisora no pidió eliminarlo.
-3. Decidir Q24 (Ley 24.585): aclarar o mover a anexo.
-4. Confirmar con la abogada la paráfrasis del artículo 17 (Q1.3).
-5. Decidir si Q1.2 se corrige solo en el anexo o también en una versión v2 del benchmark con el artículo 18.
-6. Confirmar si hubo una segunda revisión independiente; si no, ajustar el lenguaje del manuscrito.
+### Q1.3
+
+- La paráfrasis “seguridad pública, salud o conservación ambiental” está **en el JSON y en el anexo Typst**.
+- El artículo 17 del corpus y de `título_i.md` dice: “seguridad pública, conservación de las pertenencias y salud o existencia de los trabajadores”.
+- El benchmark v1 no se modifica porque ya fue usado para las 711 respuestas. Acción: corregir el anexo para citar el artículo 17 literalmente y declarar la discrepancia como limitación. Una corrección del benchmark y su reevaluación corresponden a trabajo futuro.
+
+## 6. Fuera de alcance
+
+La auditoría adicional detectó Q1.1 (etiqueta “inciso” en el artículo 2), Q13.2/Q13.3, Q22.1, Q25 (referencias incompletas) y Q23/Q24 (alcance de regímenes especiales). **No forman parte de la respuesta al jurado**: las preguntas ya fueron revisadas por la profesional y se mantienen como tales. No se propone una nueva revisión, un benchmark v2 ni un cambio de las respuestas ya evaluadas en esta tesis.
+
+## 7. Qué se entrega
+
+- `propuesta_edicion_manuscrito.md`: textos propuestos para corpus, revisión, 1.2 y 1.3.
+- `hallazgos_respuestas_referencia.md`: auditoría detallada.
+- `salidas/conteo_preguntas_revisadas.csv`: conteo por pregunta.
+- `salidas/resumen_conteo_preguntas.md`: resumen del conteo.
+- `salidas/parrafos_revisados.md`: los 80 párrafos antes/después.
+- `salidas/corpus_vs_fuentes.csv`: comparación con HTML y OCR.
+- `salidas/referencias_benchmark.csv` y `unidades_benchmark.csv`: evidencia adicional, fuera de las decisiones de esta tesis.

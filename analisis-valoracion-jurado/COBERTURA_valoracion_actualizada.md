@@ -59,7 +59,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | IX.1.3 Retirar determinismo, informar esfuerzo y ejecución única | **Cubierto con salvedad** | `correccion-03` demuestra que la temperatura no se envía. El esfuerzo histórico está documentado como desconocido; la nueva valoración afirma “predeterminado” sin registro directo |
 | IX.1.4 Declarar confundidos, prompts y contradicciones | **Cubierto** | `correccion-04`; quedan decisiones editoriales menores (7/6, `16_01`, notebook) |
 | IX.1.5 Reformular Tabla 4 y conclusiones | **Cubierto como propuesta** | `correccion-05`; no se editó el manuscrito |
-| IX.1.6 Corpus, origen y respuestas de referencia | **Cubierto en análisis** | `correccion-06`; decisiones jurídicas Q23–Q25/art. 17 pendientes |
+| IX.1.6 Corpus, origen y respuestas de referencia | **Cubierto en análisis** | `correccion-06`; 1.2/1.3 verificados; Q23–Q25 fuera de alcance |
 | IX.1.7 Tablas 2 y 3, auditoría bibliográfica | **Cubierto** | `correccion-07`; quedan decisiones manuales de autoría/DOI/fuente |
 | IX.1.8 Ampliar declaración de IA | **No cubierto** | Solo existe la propuesta general de `correccion-05`; falta una declaración por etapas y revisar el antecedente de la “referencia fabricada” que menciona la nueva valoración |
 | IX.1.9 Informar métricas de recuperación | **Parcial** | Los datos están en `part_d` y los logs; las cifras de RAG básico se reproducen, pero no hay notebook/CSV de resultados en los paquetes. Falta un artefacto propio (NV-02) |
@@ -115,7 +115,7 @@ Además, siguen abiertas las recomendaciones de validación humana, réplicas/ab
 | PI-10 Excepción `16_01` | Sin cambio | Baja |
 | PI-11 Notebook `part_g` | Sin cambio; V.11 valora el repositorio, no la discrepancia notebook/script | Media |
 | PI-12 Procedencia Infoleg | Sin cambio; V.9 no se actualizó | Alta |
-| PI-13–PI-20 Benchmark/corpus | Sin cambio; V.6 agrega reincorporar 23–25, ya cubierto | Alta/Media |
+| PI-13–PI-20 Benchmark/corpus | **Reclasificadas:** PI-12, PI-16 y PI-18 resueltas; PI-13, PI-14, PI-17 y PI-20 canceladas por estar fuera de alcance; PI-15 y PI-19 resueltas con implementación editorial pendiente | Alta/Media |
 | PI-21–PI-28 Bibliografía | Sin cambio; VI/VII no se modificaron | Alta/Media |
 | PI-29 `nAGQ`/odds proporcionales | **Ampliada**: además de la sensibilidad, hay que reconciliar las cifras nuevas de V.1 con `correccion-01` | Media |
 | PI-30 Versionar verificación | Sin cambio | Alta |
