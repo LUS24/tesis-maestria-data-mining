@@ -139,7 +139,7 @@ El presente trabajo se diferencia de los trabajos y sistemas revisados en los si
 
 + *Enfoque integral Agentic-RAG sobre normativa argentina*: Si bien existen plataformas comerciales que ofrecen funcionalidades de IA sobre normativa argentina, ninguna de las identificadas publica su arquitectura ni permite evaluar independientemente su desempeño. El presente trabajo documenta de manera completa y trasparente la arquitectura Agentic-RAG empleada.
 
-+ *Benchmark específico*: No se han identificado benchmarks públicos para evaluar sistemas de consulta sobre normativa argentina. El desarrollo de un benchmark para el Código de Minería Argentino, elaborado con un profesional del derecho, constituye una contribución original que permite la evaluación reproducible del sistema.
++ *Benchmark específico*: No se han identificado benchmarks públicos para evaluar sistemas de consulta sobre normativa argentina. El desarrollo de un benchmark para el Código de Minería Argentino, elaborado con asistencia de LLM y revisado por una profesional del derecho, constituye una contribución original que permite la evaluación reproducible del sistema.
 
 + *Dominio del derecho civil en español*: La mayoría de los benchmarks y trabajos académicos revisados se concentran en el common law anglosajón. El presente trabajo contribuye al subrepresentado dominio del derecho civil argentino en idioma español, complementando los esfuerzos de modelos como MEL @betancur2025mel y recursos como Legal-ES @samy2020legales.
 

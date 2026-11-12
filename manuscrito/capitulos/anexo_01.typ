@@ -233,7 +233,7 @@ La ventaja del enfoque agéntico se evidencia en la capacidad de descomponer con
 
 = Benchmark Empleado <anexo-benchmark>
 
-Este anexo presenta el benchmark utilizado para la evaluación del sistema. El conjunto de datos consta de 25 preguntas principales tipo caso de estudio legal, que se descomponen en 76 subpreguntas explícitas más 3 preguntas evaluadas como unidad única, totalizando 79 unidades de evaluación. Las preguntas fueron generadas a partir de los títulos del Código de Minería Argentino mediante GPT-4.1, y las respuestas esperadas fueron revisadas y validadas por un profesional del derecho argentino con experiencia en legislación minera.
+Este anexo presenta el benchmark utilizado para la evaluación del sistema. El conjunto de datos consta de 25 preguntas principales tipo caso de estudio legal, que se descomponen en 76 subpreguntas explícitas más 3 preguntas evaluadas como unidad única, totalizando 79 unidades de evaluación. Las preguntas fueron generadas a partir de los títulos del Código de Minería Argentino mediante GPT-4.1, y las respuestas esperadas fueron revisadas por una profesional del derecho argentino con experiencia en legislación minera; no hubo una segunda revisión independiente.
 
 A continuación se describen los metadatos del conjunto de datos y se reproducen, a modo de ejemplo, dos de las 25 preguntas con sus respuestas esperadas. El benchmark completo —las 25 preguntas con sus subpreguntas, respuestas esperadas y artículos de referencia— se encuentra disponible en el repositorio de código del proyecto: #link("https://github.com/LUS24/tesis-maestria-data-mining")[https://github.com/LUS24/tesis-maestria-data-mining], en el directorio `data/`.
 
@@ -248,15 +248,15 @@ A continuación se describen los metadatos del conjunto de datos y se reproducen
       | Título                          | Evaluación derecho minero argentino              |
       | Norma evaluada                  | Código de Minería de la República Argentina      |
       | Jerarquía normativa             | Código                                           |
-      | Fecha de sanción                | 1994-01-01                                       |
-      | Última actualización            | 2024-12-09                                       |
+      | Fecha de sanción                | 1886-11-25                                       |
+      | Texto ordenado                  | Decreto 456/1997 (B.O. 30/05/1997)               |
       | Estado                          | En vigencia                                      |
       | Autoridad de sanción            | Congreso de la Nación Argentina                  |
       | Total de preguntas principales  | 25                                               |
       | Total de unidades de evaluación | 79                                               |
       | Tipo de pregunta                | Caso de estudio legal con múltiples subpreguntas |
       | Generación                      | GPT-4.1 a partir de títulos del Código de Minería    |
-      | Validación                      | Revisión por un profesional del derecho argentino |
+      | Validación                      | Revisión por una profesional del derecho argentino |
     ],
   ),
   caption: [Metadatos del benchmark de evaluación.],
@@ -302,9 +302,9 @@ Las respuestas esperadas del benchmark se elaboraron a partir del texto vigente 
 
 *Subpregunta 1.1:* El yacimiento de litio corresponde a la primera categoría de minas, según el artículo 3° inciso a) del Código de Minería. Esta categoría comprende sustancias metalíferas, incluyendo expresamente el litio. Las minas de primera categoría "pertenecen exclusivamente al Estado, y sólo pueden explotarse en virtud de concesión legal otorgada por autoridad competente" (art. 2° inc. 1). El dominio originario del yacimiento es estatal, independientemente de la propiedad del suelo.
 
-*Subpregunta 1.2:* El Estado puede otorgar la concesión sin consentimiento de la propietaria del terreno. El artículo 7 establece que las minas son bienes privados de la Nación o de las provincias según el territorio. Los artículos 10 y 11 determinan que sin perjuicio del dominio del Estado, las minas se conceden a los particulares por tiempo ilimitado. La propiedad minera constituye un derecho real separado de la propiedad del suelo (art. 8).
+*Subpregunta 1.2:* El Estado puede otorgar la concesión sin consentimiento de la propietaria del terreno. El artículo 7 establece que las minas son bienes privados de la Nación o de las provincias según el territorio. Los artículos 10 y 11 determinan que sin perjuicio del dominio del Estado, las minas se conceden a los particulares por tiempo ilimitado. La propiedad minera constituye una propiedad distinta de la del terreno en que se encuentra (art. 11).
 
-*Subpregunta 1.3:* La Sra. Gómez no puede impedir la explotación. La actividad minera es declarada de utilidad pública (art. 13), lo que prevalece sobre la propiedad superficiaria. La propietaria solo puede oponerse por razones de seguridad o ambientales (art. 17), pero no puede invocar la propiedad del suelo para impedirla.
+*Subpregunta 1.3:* La Sra. Gómez no puede impedir la explotación. La actividad minera es declarada de utilidad pública (art. 13), lo que prevalece sobre la propiedad superficiaria. La propietaria solo puede oponerse cuando lo exija la seguridad pública, la conservación de las pertenencias y la salud o existencia de los trabajadores (art. 17), pero no puede invocar la propiedad del suelo para impedirla.
 
 === Respuestas a la Pregunta 2
 

@@ -282,20 +282,20 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | PI-03 | Cerrada | Opción A: aplicar textos, anexo y SVG operativo; actualizar el diagrama para respetar colores y límites | Arquitectura, agentes y SVG operativo actualizados en el manuscrito |
 | PI-04 | Cerrada | Opción B: declaración de IA por etapas; incluye extracción, benchmark, respuestas, jueces, asistencia y verificación; antecedente de la referencia eliminada | Declaración incorporada en `01_texto_preliminar.typ`; PDF compilado |
 | PI-05 | Cerrada | Opción A: “modelo del Agente Especialista Legal”; celdas agénticas como “recuperador gpt-5” | Terminología y etiquetas aplicadas en arquitectura y tablas |
-| PI-06 | Cerrada | Opción A: no realizar validaciones humanas adicionales; declarar la ausencia | Documentar en limitaciones |
-| PI-07 | Cerrada | Opción A: aceptar la revisión del autor y declararla como tal | No llamarla independiente |
-| PI-08 | Cerrada | Opciones A+B: los 23 casos ya están adjudicados en la base final; incluir el análisis | Documentar en anexo/material suplementario |
+| PI-06 | Cerrada | Opción A: no realizar validaciones humanas adicionales; declarar la ausencia | Ausencia declarada en limitaciones; PDF compilado |
+| PI-07 | Cerrada | Opción A: aceptar la revisión del autor y declararla como tal | Declarada como revisión del autor, no independiente |
+| PI-08 | Cerrada | Opciones A+B: los 23 casos ya están adjudicados en la base final; incluir el análisis | 23 discrepancias y 17 evaluaciones positivas documentadas en limitaciones |
 | PI-09 | Cerrada | Opción A: no ejecutar nuevas corridas; declarar 7/6, recuperador fijo y ejecución única | Documentar la limitación |
 | PI-10 | Cerrada | Opción A: declarar la excepción `16_01` de tres llamadas | Excepción incorporada en metodología y amenazas |
 | PI-11 | Cerrada | Opción B: notebook de `part_g` exploratorio; script `.py` como fuente canónica | Nota incorporada en metodología; PDF compilado |
 | PI-12 | Cerrada | Corpus: PDF 1997 + actualización manual con Infoleg + OCR histórico; proceso en 8 pasos | Ver `correccion-06/resumen_ejecutivo.md` §2 |
 | PI-13 | Cancelada | Q23 se mantiene como fue revisada; no se reabre | Sin acción |
 | PI-14 | Cancelada | Q24 se mantiene; el comentario no aplicado se documenta | Sin acción |
-| PI-15 | Cerrada | No modificar benchmark v1; corregir el anexo de 1.3 y declarar la discrepancia | Implementación editorial pendiente |
-| PI-16 | Cerrada | Corregir solo el anexo de 1.2; el JSON y el corpus son correctos | Implementación editorial pendiente |
+| PI-15 | Cerrada | No modificar benchmark v1; corregir el anexo de 1.3 y declarar la discrepancia | Anexo corregido con el texto del artículo 17; PDF compilado |
+| PI-16 | Cerrada | Corregir solo el anexo de 1.2; el JSON y el corpus son correctos | Anexo corregido con el artículo 11; PDF compilado |
 | PI-17 | Cancelada | Q13/Q22/Q25 fuera de alcance; no se reabren | Sin acción |
-| PI-18 | Cerrada | Una sola profesional revisora; no existe segunda revisión independiente | Usar “revisión por una profesional” |
-| PI-19 | Cerrada | Fechas: 1886-11-25 y 1997-05-30; eliminar las no verificadas | Implementación editorial pendiente |
+| PI-18 | Cerrada | Una sola profesional revisora; no existe segunda revisión independiente | “Revisión por una profesional” aplicada en todo el texto |
+| PI-19 | Cerrada | Fechas: 1886-11-25 y 1997-05-30; eliminar las no verificadas | Fechas aplicadas en anexo y metodología; PDF compilado |
 | PI-20 | Cancelada | No se crea benchmark v2 en esta tesis | Sin acción |
 | PI-21 | Cerrada | Opción A: reemplazar Bommasani/Davis/Cardon por Bozdag, Sevim y Koç; reescribir las dos afirmaciones | Aplicada en `.bib` y texto; PDF compilado |
 | PI-22 | Cerrada | Opción A: usar Magesh et al. (2025) para Westlaw/Lexis; conservar Dahl para su propio contenido | Aplicada en `.bib` y texto; PDF compilado |
@@ -308,7 +308,7 @@ Estas decisiones no se resuelven solo redactando: su resultado numérico condici
 | PI-29 | Cerrada | Opción A: mantener `nAGQ = 1` (Laplace) y declarar la limitación; reconciliar con NV-01 | Limitación y método incorporados en capítulos 5 y 8; `nAGQ > 1` no está disponible en `clmm` con dos efectos aleatorios |
 | PI-30 | Cerrada | Opción A: publicar después de revisar el manuscrito y ordenar el directorio | Ejecutar `run_all.sh`, clonación y registro al final |
 | PI-31 | Cerrada | Opción A: aplicar todo y generar una nueva versión del archivo | Implementación pendiente; coordinar con NV-07 |
-| PI-32 | Cerrada | 25 preguntas: 18 intervenidas, 17 corregidas, Q24 solo comentario, 7 sin intervención | `correccion-06/salidas/conteo_preguntas_revisadas.csv` |
+| PI-32 | Cerrada | 25 preguntas: 18 intervenidas, 17 corregidas, Q24 solo comentario, 7 sin intervención | Conteo incorporado en metodología; `correccion-06/salidas/conteo_preguntas_revisadas.csv` |
 | NV-01 | Cerrada | Opción A: `correccion-01` como fuente canónica; no usar el reanálisis de la valoración | Reconciliado en `verificacion-analisis-estadistico/reconciliacion_v1/`; usar p Holm en V.1 y Pratt en V.6 |
 | NV-02 | Cerrada | Opción A adaptada: sin Milvus; recall@k/MRR desde las recuperaciones `.json` | Calculado en `verificacion-analisis-estadistico/metricas_recuperacion/`; sin comparación BM25 |
 | NV-04 | Cerrada | Opción A: extender la declaración a búsqueda bibliográfica, escritura, validación de citas, implementación y otras tareas; revisar el antecedente de la “referencia fabricada” | Declaración incorporada en `01_texto_preliminar.typ`; PDF compilado |

@@ -18,7 +18,7 @@ Este proyecto se alinea con las tendencias actuales en inteligencia artificial y
 
 == Requerimientos y desafíos
 
-El desarrollo de un sistema Agentic-RAG para la consulta de normativa argentina implica abordar diversos requerimientos técnicos y desafíos específicos del dominio legal. El primer requisito es contar con una fuente de datos; en este caso particular, se empleará el Código de Minería Argentino extraído del archivo pdf descargado de la página del Boletín Oficial de la República Argentina y actualizado con los cambios publicados en el sitio Infoleg. El siguiente requisito es un sistema para extraer el texto de los artículos del código y almacenarlo en archivos de texto plano o en una base de datos para luego ser transformado en "embeddings" por un modelo de vectorización semántica y almacenarlo en una base de datos vectorial. Otros requisitos incluyen la integración de modelos de lenguaje preentrenados capaces de generar respuestas coherentes y contextualizadas a partir de la información recuperada, y el desarrollo de agentes inteligentes que coordinen las tareas de recuperación y generación, adaptándose a las necesidades y contextos específicos de las consultas.
+El desarrollo de un sistema Agentic-RAG para la consulta de normativa argentina implica abordar diversos requerimientos técnicos y desafíos específicos del dominio legal. El primer requisito es contar con una fuente de datos; en este caso particular, se empleará el Código de Minería Argentino, cuyo texto base proviene del PDF del Boletín Oficial de 1997 y cuyo texto actualizado se contrastó con la versión publicada en Infoleg. El corpus final contiene la versión actualizada de los artículos modificados; el detalle de fuentes y fechas se presenta en el capítulo de metodología. El siguiente requisito es un sistema para extraer el texto de los artículos del código y almacenarlo en archivos de texto plano o en una base de datos para luego ser transformado en "embeddings" por un modelo de vectorización semántica y almacenarlo en una base de datos vectorial. Otros requisitos incluyen la integración de modelos de lenguaje preentrenados capaces de generar respuestas coherentes y contextualizadas a partir de la información recuperada, y el desarrollo de agentes inteligentes que coordinen las tareas de recuperación y generación, adaptándose a las necesidades y contextos específicos de las consultas.
 
 Entre los desafíos del proyecto está en primer lugar, la complejidad del lenguaje jurídico, lo que presenta un obstáculo significativo, ya que el lenguaje legal es altamente técnico y especializado lo que necesita métodos más avanzados y complejos de evaluación de la calidad de recuperación. Una vez extraído el texto, se presenta la necesidad de seleccionar una estructura adecuada de representación de los datos, ya que depende de ello la calidad de los "embeddings" a ser almacenados en forma de vectores @tsitsulin2023unsupervised. Asimismo, la calidad de los "embeddings" también depende la correcta selección del tipo de "embedding" a emplear, por ejemplo, de documentos o tópicos @isbarov2024enhanced y del tamaño de fragmentación de texto, también conocido como "chunking" @zhong2024mix.
 
@@ -42,7 +42,7 @@ Por último, la mayor barrera al día de la fecha para el desarrollo de este tip
 
 La solución propuesta consiste en el desarrollo de un sistema de Generación Aumentada por Recuperación con agentes (Agentic-RAG) que será estructurado en tres módulos principales:
 
-+ *Extracción y estandarización de datos normativos*: Este módulo se encarga de la recopilación de los artículos del Código de Minería Argentino desde Infoleg, aplicando técnicas de web scraping y procesamiento de lenguaje natural para extraer y estructurar la información legal. La normalización de los datos incluye la estandarización de formatos, corrección de inconsistencias y eliminación de duplicados, asegurando la calidad y coherencia de la información recopilada.
++ *Extracción y estandarización de datos normativos*: Este módulo reúne el texto base del PDF oficial de 1997, lo contrasta con la versión actualizada de Infoleg y normaliza los artículos en una estructura jerárquica. Las rutas de descarga automática se evaluaron, pero no fueron el pipeline principal. La normalización de los datos incluye la estandarización de formatos, corrección de inconsistencias y eliminación de duplicados, asegurando la calidad y coherencia de la información recopilada.
 
 + *Base de datos vectorial*: Los artículos del Código de Minería normalizados se transforman en vectores semánticos utilizando modelos de generación de embeddings. Estos vectores se almacenan en una base de datos vectorial que permite realizar búsquedas basadas en la similitud semántica, facilitando la recuperación de información relevante incluso cuando las consultas no coincidan exactamente con los términos utilizados en los artículos @jing2024large.
 
@@ -66,7 +66,7 @@ La segunda funcionalidad será atender las consultas de los usuarios, lo que des
 
 Para evaluar la efectividad del sistema propuesto, se llevarán a cabo pruebas utilizando un conjunto de consultas representativas del dominio legal argentino. Se medirán métricas como la precisión, exhaustividad, relevancia y coherencia de las respuestas generadas, comparando el rendimiento del sistema Agentic-RAG con soluciones existentes.
 
-Además, se realizarán pruebas utilizando un *benchmark a pequeña escala, generado con asistencia de LLM y validado por un profesional del derecho argentino*. Este benchmark, al ser revisado por un experto en el campo, garantizará que las evaluaciones se basen en casos de uso reales y desafiantes, proporcionando una medida fidedigna de la capacidad del sistema para asistir en la práctica jurídica diaria.
+Además, se realizarán pruebas utilizando un *benchmark a pequeña escala, generado con asistencia de LLM y revisado por una profesional del derecho argentino*. Este benchmark, al ser revisado por una profesional del campo, permitirá que las evaluaciones se basen en casos de uso reales y desafiantes, proporcionando una medida fidedigna de la capacidad del sistema para asistir en la práctica jurídica diaria.
 
 === Limitaciones de la solución propuesta
 
@@ -92,7 +92,7 @@ A continuación, se detallan los principales problemas identificados, con un bre
       | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
       | Sistemas de búsqueda legal basados en palabras clave con limitada comprensión semántica | Implementación de búsqueda semántica mediante base de datos vectorial con embeddings                                 |
       | Alucinaciones en modelos de lenguaje que generan información no verificable             | Uso de RAG para anclar respuestas en documentos reales y verificables                                                |
-      | Ausencia de benchmarks para normativa argentina                                         | Desarrollo de benchmark específico generado con asistencia de LLM y validado por un profesional del derecho argentino |
+      | Ausencia de benchmarks para normativa argentina                                         | Desarrollo de benchmark específico generado con asistencia de LLM y revisado por una profesional del derecho argentino |
     ],
   ),
   caption: [Resumen de problemas identificados y soluciones propuestas],
@@ -136,7 +136,7 @@ Las principales contribuciones del presente trabajo final son:
 
 + *Base de datos vectorial del Código de Minería*: Creación de una base de datos especializada con embeddings semánticos de los artículos del Código de Minería Argentino, optimizada para búsquedas por similitud.
 
-+ *Benchmark para el Código de Minería Argentino*: Desarrollo de un benchmark específico para evaluar sistemas de consulta legal sobre el Código de Minería, generado con asistencia de LLM y validado por un profesional del derecho.
++ *Benchmark para el Código de Minería Argentino*: Desarrollo de un benchmark específico para evaluar sistemas de consulta legal sobre el Código de Minería, generado con asistencia de LLM y revisado por una profesional del derecho.
 
 + *Metodología replicable*: Documentación detallada de la metodología empleada, permitiendo la replicación del sistema para otras normativas y jurisdicciones.
 

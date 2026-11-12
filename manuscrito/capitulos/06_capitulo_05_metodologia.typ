@@ -48,14 +48,9 @@ Se seleccionó el Código de Minería Argentino @codigo_mineria_1919 como corpus
 
 === Obtención del Texto Legal
 
-El texto del Código de Minería fue obtenido de la sección primera boletín oficial N°28.658 del día viernes 30 de mayo de 1997, descargado manualmente desde el sitio del Boletín Oficial de la República Argentina (#link("https://www.boletinoficial.gob.ar")[www.boletinoficial.gob.ar] #label("boletinoficial")) en formato PDF. Este documento constituye la fuente primaria del corpus.
+El texto base del Código de Minería se obtuvo de la sección primera del Boletín Oficial N.° 28.658, del 30 de mayo de 1997, que contiene el texto ordenado por el Decreto 456/1997. Ese PDF se convirtió a imágenes y se procesó con un modelo de visión; el OCR resultante se conservó como insumo histórico, pero fue parcial: por ejemplo, el Markdown corto de `texto_original_codigo_mineria.md` contiene solo los artículos 1 a 24.
 
-Se exploraron dos estrategias adicionales de descarga desde el sistema Infoleg del Ministerio de Justicia de la Nación, que provee los textos legislativos en formato HTML:
-
-+ *Docling*: librería especializada en descarga y conversión de documentos legales a formato Markdown.
-+ *Requests + BeautifulSoup*: enfoque alternativo para descarga y parsing de HTML con extracción de metadatos estructurados (artículos individuales, fechas de sanción, anexos).
-
-Ambas estrategias basadas en Infoleg resultaron en documentos incompletos o con errores de parsing, por lo que se descartaron en favor del procesamiento directo del PDF oficial. Ambos enfoques se implementaron como notebooks independientes, permitiendo contrastar y validar los resultados de extracción.
+Para reflejar las modificaciones posteriores a 1997, el texto se contrastó con la versión actualizada publicada en Infoleg. El corpus final contiene texto de esa versión actualizada. La evidencia es verificable en artículos que el PDF de 1997 no podía contener: el artículo 3 incluye “wollastonita” (Ley 25.225/1999), el artículo 31 contiene la redacción sustituida por la Ley 27.111/2015 y los artículos 215 y 221 contienen las actualizaciones posteriores. El proceso efectivamente realizado fue: (1) conversión del PDF a imágenes y extracción a Markdown con o4; (2) división del Markdown en los archivos de `codigo_experimentos/data/law_data/titulos_codigo_mineria/`; (3) revisión manual de cada archivo y actualización de los artículos con el texto de Infoleg; (4) envío del Markdown a GPT-4.1 para generar preguntas y respuestas; (5) exportación a DOCX; (6) revisión por una profesional del derecho; (7) devolución de un ODT con cambios y comentarios; (8) generación de `data/evaluation_questions_v20250804_101435.json`. El parser HTML se intentó, pero se descartó porque la revisión manual resultó más rápida y controlable.
 
 === Extracción de Texto mediante Modelos de Visión
 
@@ -98,7 +93,7 @@ El corpus resultante está compuesto por un total de 482 partes distribuidas seg
   caption: [Estadísticas del corpus del Código de Minería Argentino. Desglose por tipo de parte estructural.],
 ) <tabla-estadisticas-corpus>
 
-El Código de Minería se organiza en 22 títulos que abarcan desde el dominio de las minas y su clasificación (Título I) hasta disposiciones sobre la caducidad de las concesiones (Título XXII). Los 399 artículos#footnote[362 en su cuerpo principal y 36 en su pie de apéndice.] constituyen las unidades normativas fundamentales, cada uno con contenido jurídico específico. Los 55 acápites agrupan artículos bajo subtemas dentro de cada título, mientras que las 6 secciones y el apéndice completan la estructura jerárquica del cuerpo legal. Esta organización jerárquica facilita la segmentación del corpus en fragmentos semánticamente coherentes para su indexación y recuperación en el sistema RAG.
+El Código de Minería se organiza en 22 títulos que abarcan desde el dominio de las minas y su clasificación (Título I) hasta disposiciones sobre la caducidad de las concesiones (Título XXII). Los 398 nodos de tipo artículo —347 del cuerpo principal, 15 disposiciones generales y transitorias y 36 del apéndice— constituyen las unidades normativas fundamentales. El apéndice repite los números 1 a 36, por lo que el corpus contiene 362 números únicos. El artículo 239 está derogado y su texto está vacío, de modo que solo 397 nodos tienen contenido textual. Los 55 acápites agrupan artículos bajo subtemas dentro de cada título, mientras que las 6 secciones y el apéndice completan la estructura jerárquica del cuerpo legal. Esta organización jerárquica facilita la segmentación del corpus en fragmentos semánticamente coherentes para su indexación y recuperación en el sistema RAG.
 
 == Base de Datos Vectorial
 
@@ -181,7 +176,7 @@ Los embeddings se generaron procesando cada fragmento de texto mediante el model
 
 Los vectores generados se insertaron en la colección de Milvus junto con sus metadatos textuales y estructurales. Se realizó una verificación post-inserción mediante consultas de prueba para confirmar la correcta indexación y recuperabilidad de los documentos. Los fragmentos sin contenido textual fueron representados con un vector nulo para mantener la consistencia del índice.
 
-La generación de embeddings se realizó sobre una máquina con procesador x86_64 de 16 núcleos y 32 GB de RAM, ejecutando el modelo en CPU. El tiempo total de procesamiento para los 398 artículos del corpus fue del orden de minutos, dado el tamaño acotado del conjunto de datos.
+La generación de embeddings se realizó sobre una máquina con procesador x86_64 de 16 núcleos y 32 GB de RAM, ejecutando el modelo en CPU. El tiempo total de procesamiento para los 398 nodos de tipo artículo del corpus (397 con texto) fue del orden de minutos, dado el tamaño acotado del conjunto de datos.
 
 == Sistema RAG Básico
 
@@ -557,7 +552,7 @@ Las preguntas del benchmark fueron generadas empleando GPT-4.1, a partir de cada
 
 === Estructura del Benchmark
 
-El benchmark contiene 25 preguntas distribuidas entre los títulos del Código de Minería, que a su vez se descomponen en 79 subpreguntas que constituyen las unidades de evaluación independientes. Cada pregunta incluye:
+El benchmark contiene 25 preguntas distribuidas entre los títulos del Código de Minería. De ellas, 18 recibieron alguna intervención en la revisión, 17 tuvieron cambios de contenido o correcciones aplicadas, una conservó solo un comentario no aplicado (Q24) y 7 no requirieron intervención (Q7, Q8, Q9, Q12, Q13, Q15 y Q20). Las preguntas se descomponen en 76 subpreguntas explícitas más 3 preguntas evaluadas como unidad única, hasta totalizar 79 unidades de evaluación. Cada pregunta incluye:
 
 + Texto de la pregunta (formulada como caso de estudio legal).
 + Contexto relevante (artículos y secciones de referencia).
@@ -568,7 +563,7 @@ Las preguntas se normalizaron a un formato unificado donde cada subpregunta cons
 
 === Colaboración con Profesionales del Derecho
 
-Las preguntas generadas y sus respuestas esperadas fueron revisadas por un profesional del derecho con experiencia en legislación minera argentina, con el objetivo de validar la pertinencia, corrección y completitud de las respuestas de referencia. El proceso de validación se estructuró en las siguientes etapas:
+Las preguntas generadas y sus respuestas esperadas fueron revisadas por una profesional del derecho con experiencia en legislación minera argentina, con el objetivo de verificar la pertinencia, corrección y completitud de las respuestas de referencia. El proceso se estructuró en las siguientes etapas:
 
 + *Revisión inicial*: el profesional examinó la totalidad de las preguntas generadas por GPT-4.1, verificando que los escenarios planteados fueran jurídicamente plausibles y que las subpreguntas abordaran aspectos relevantes de la normativa.
 
@@ -576,7 +571,7 @@ Las preguntas generadas y sus respuestas esperadas fueron revisadas por un profe
 
 + *Ajustes y correcciones*: se realizaron correcciones en los casos donde la respuesta generada contenía imprecisiones en la citación de artículos, omisiones de disposiciones relevantes o interpretaciones ambiguas.
 
-+ *Validación final*: las respuestas corregidas fueron revisadas por segunda vez para confirmar la consistencia del benchmark completo. Se verificó que las respuestas esperadas fueran autosuficientes y que los artículos de referencia citados correspondieran efectivamente a las disposiciones invocadas.
++ *Revisión final de consistencia*: la misma profesional revisó las respuestas corregidas para confirmar la consistencia del benchmark completo. No existió una segunda revisión independiente. Se verificó que las respuestas esperadas fueran autosuficientes y que los artículos de referencia citados correspondieran efectivamente a las disposiciones invocadas.
 
 == Métricas y Sistema de Evaluación
 
